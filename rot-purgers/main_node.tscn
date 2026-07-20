@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bogj2hsowywaw"]
+
+[ext_resource type="Script" uid="uid://b1y0ce2dn1ly0" path="res://main_node.gd" id="1_lwogq"]
+
+[node name="Main_node" type="Node" unique_id=1899757407]
+script = ExtResource("1_lwogq")
+
+[node name="Map_editor" type="Button" parent="." unique_id=260327138]
+offset_left = 120.0
+offset_top = 705.0
+offset_right = 297.0
+offset_bottom = 758.0
+theme_override_font_sizes/font_size = 32
+text = "Map Editor
+"
+
+[connection signal="pressed" from="Map_editor" to="." method="_on_map_editor_pressed"]

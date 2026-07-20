@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Terrain_data" format=3 uid="uid://flek0sua46a1"]
+
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://terrain_data.gd" id="1_jqnq4"]
+[ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="2_3yr3s"]
+
+[resource]
+script = ExtResource("1_jqnq4")
+sprite = ExtResource("2_3yr3s")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"

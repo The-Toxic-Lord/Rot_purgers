@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dfo3dhoh75aec"]
+
+[ext_resource type="StyleBox" uid="uid://8pv7eye5uwl5" path="res://Map_editor/terrain_button_normal.tres" id="1_qm3ld"]
+[ext_resource type="StyleBox" uid="uid://5wxiklgne4b7" path="res://Map_editor/terrain_button_pressed.tres" id="2_0eni0"]
+[ext_resource type="Script" uid="uid://n7ipjcmd1yv" path="res://Map_editor/terrain_button.gd" id="2_gwbxv"]
+
+[node name="Button" type="Button" unique_id=1493417272]
+custom_minimum_size = Vector2(64, 64)
+theme_override_styles/normal = ExtResource("1_qm3ld")
+theme_override_styles/pressed = ExtResource("2_0eni0")
+theme_override_styles/hover = ExtResource("1_qm3ld")
+toggle_mode = true
+script = ExtResource("2_gwbxv")

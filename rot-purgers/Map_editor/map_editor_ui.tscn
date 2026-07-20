@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://bifqkeg558atm"]
+
+[ext_resource type="Script" uid="uid://druh5f1b3yi4v" path="res://Map_editor/map_editor_ui.gd" id="1_kbdvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwy4y"]
+
+[node name="Map_Editor_UI" type="CanvasLayer" unique_id=1101434913]
+script = ExtResource("1_kbdvy")
+
+[node name="UI_panel_1" type="Panel" parent="." unique_id=1471110016]
+unique_name_in_owner = true
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -540.0
+offset_right = 262.0
+offset_bottom = 540.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vwy4y")
+
+[node name="UI_panel_2" type="Panel" parent="." unique_id=2116076719]
+unique_name_in_owner = true
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vwy4y")
+
+[node name="Terrain_menu" type="MarginContainer" parent="." unique_id=547886473]
+unique_name_in_owner = true
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -336.0
+offset_right = 262.0
+offset_bottom = 540.0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Terrain_grid" type="GridContainer" parent="Terrain_menu" unique_id=706500246]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Map_size_menu" type="MarginContainer" parent="." unique_id=937522812]
+offset_right = 262.0
+offset_bottom = 200.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Map_size_menu" unique_id=168925583]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Map_size_menu/VBoxContainer" unique_id=2121528709]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Map size"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Map_size_menu/VBoxContainer" unique_id=272037097]
+layout_mode = 2
+
+[node name="map_x" type="LineEdit" parent="Map_size_menu/VBoxContainer/HBoxContainer" unique_id=1142102790]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "30"
+placeholder_text = "0"
+alignment = 1
+max_length = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="lab" type="Label" parent="Map_size_menu/VBoxContainer/HBoxContainer" unique_id=1086073678]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="map_y" type="LineEdit" parent="Map_size_menu/VBoxContainer/HBoxContainer" unique_id=2040389313]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "30"
+placeholder_text = "0"
+alignment = 1
+max_length = 2
+
+[node name="Label2" type="Label" parent="Map_size_menu/VBoxContainer" unique_id=546992489]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Height"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Height" type="LineEdit" parent="Map_size_menu/VBoxContainer" unique_id=225514588]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "60"
+placeholder_text = "0"
+alignment = 1
+max_length = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[connection signal="text_changed" from="Map_size_menu/VBoxContainer/HBoxContainer/map_x" to="." method="_on_map_size_text_changed" flags=18]
+[connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_x" to="." method="_on_map_size_text_submitted" flags=18]
+[connection signal="text_changed" from="Map_size_menu/VBoxContainer/HBoxContainer/map_y" to="." method="_on_map_size_text_changed" flags=18]
+[connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_y" to="." method="_on_map_size_text_submitted" flags=18]
+[connection signal="text_changed" from="Map_size_menu/VBoxContainer/Height" to="." method="_on_height_text_changed"]

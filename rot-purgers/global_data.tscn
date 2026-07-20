@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cosxiqa26w5hj"]
+
+[ext_resource type="Script" uid="uid://ot2wysxuko4m" path="res://global_data.gd" id="1_215bx"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://terrain_data.gd" id="2_bnln1"]
+[ext_resource type="Resource" uid="uid://flek0sua46a1" path="res://Map_editor/Terrain_data_res/cave.tres" id="3_u4igo"]
+[ext_resource type="Resource" uid="uid://dfoccsqf81u56" path="res://Map_editor/Terrain_data_res/lava.tres" id="4_8776e"]
+
+[node name="Global_data" type="Node" unique_id=1876976633]
+script = ExtResource("1_215bx")
+terrain_data_holder = Array[ExtResource("2_bnln1")]([ExtResource("3_u4igo"), ExtResource("4_8776e")])
