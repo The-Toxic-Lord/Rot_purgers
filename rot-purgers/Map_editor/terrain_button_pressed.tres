@@ -1,7 +1,0 @@
-[gd_resource type="StyleBoxTexture" format=3 uid="uid://5wxiklgne4b7"]
-
-[ext_resource type="Texture2D" uid="uid://flp5605q5f7x" path="res://aseprite_stuff/terrain_lava.png" id="1_tcfs3"]
-
-[resource]
-texture = ExtResource("1_tcfs3")
-modulate_color = Color(0.62152386, 0.62152386, 0.6215238, 1)

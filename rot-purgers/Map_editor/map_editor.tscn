@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cx7jdespo6tsb"]
+
+[ext_resource type="Script" uid="uid://50dud4wj53y3" path="res://Map_editor/map_editor.gd" id="1_k8p0y"]
+[ext_resource type="TileSet" uid="uid://du6rk7f2ok1f" path="res://terrain_tileset.tres" id="5_wq8e7"]
+[ext_resource type="PackedScene" uid="uid://bifqkeg558atm" path="res://Map_editor/map_editor_ui.tscn" id="6_rucau"]
+[ext_resource type="Texture2D" uid="uid://cv7kk78gntqh5" path="res://aseprite_stuff/object_zones.png" id="8_yu7lw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssq50"]
+texture = ExtResource("8_yu7lw")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k8p0y"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_ssq50")
+
+[node name="Map_editor" type="Node2D" unique_id=982508508]
+script = ExtResource("1_k8p0y")
+
+[node name="Map_editor_camera" type="Camera2D" parent="." unique_id=846113549]
+unique_name_in_owner = true
+position = Vector2(960, 540)
+zoom = Vector2(0.25, 0.25)
+
+[node name="Terrain_map" type="TileMapLayer" parent="." unique_id=119762537]
+unique_name_in_owner = true
+tile_set = ExtResource("5_wq8e7")
+
+[node name="Height_holder" type="Node" parent="." unique_id=1421234003]
+unique_name_in_owner = true
+
+[node name="Map_Editor_UI" parent="." unique_id=1101434913 instance=ExtResource("6_rucau")]
+unique_name_in_owner = true
+
+[node name="Object_map" type="TileMapLayer" parent="." unique_id=1543169042]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_k8p0y")
+
+[connection signal="generate_map" from="Map_Editor_UI" to="." method="_on_map_editor_ui_generate_map"]

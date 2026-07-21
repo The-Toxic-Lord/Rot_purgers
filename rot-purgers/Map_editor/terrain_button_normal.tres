@@ -1,6 +1,0 @@
-[gd_resource type="StyleBoxTexture" format=3 uid="uid://8pv7eye5uwl5"]
-
-[ext_resource type="Texture2D" uid="uid://flp5605q5f7x" path="res://aseprite_stuff/terrain_lava.png" id="1_ccp5u"]
-
-[resource]
-texture = ExtResource("1_ccp5u")

@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="Terrain_data" format=3 uid="uid://dfoccsqf81u56"]
 
-[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://terrain_data.gd" id="1_gtgs3"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="1_gtgs3"]
 [ext_resource type="Texture2D" uid="uid://flp5605q5f7x" path="res://aseprite_stuff/terrain_lava.png" id="2_ityai"]
 
 [resource]
 script = ExtResource("1_gtgs3")
 sprite = ExtResource("2_ityai")
+atlas_coord = Vector2i(2, 0)
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"

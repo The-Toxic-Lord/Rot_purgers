@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://buyr0671du0pe"]
+
+[ext_resource type="Script" uid="uid://bjr75vs1yuglc" path="res://3d_map/map_generator.gd" id="1_38kli"]
+[ext_resource type="PackedScene" uid="uid://dtksvwf0a8hco" path="res://3d_map/camera_position.tscn" id="3_r00ey"]
+[ext_resource type="Texture2D" uid="uid://bwgnvdu114knh" path="res://icon.svg" id="4_ti2bc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_38kli"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_r00ey"]
+sky_material = SubResource("ProceduralSkyMaterial_38kli")
+
+[sub_resource type="Environment" id="Environment_ti2bc"]
+background_mode = 2
+sky = SubResource("Sky_r00ey")
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vwy4y"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8u4e"]
+albedo_texture = ExtResource("4_ti2bc")
+
+[node name="Map_generator" type="Node3D" unique_id=230936383]
+script = ExtResource("1_38kli")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2141279964]
+environment = SubResource("Environment_ti2bc")
+
+[node name="Map_cell_holder" type="Node3D" parent="." unique_id=1096133750]
+unique_name_in_owner = true
+
+[node name="Selector" type="Node3D" parent="." unique_id=830254333]
+unique_name_in_owner = true
+
+[node name="Selector_mesh" type="MeshInstance3D" parent="Selector" unique_id=1445648657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("PlaneMesh_vwy4y")
+surface_material_override/0 = SubResource("StandardMaterial3D_m8u4e")
+
+[node name="Camera_position" parent="." unique_id=810054930 instance=ExtResource("3_r00ey")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+move_speed = 0.2

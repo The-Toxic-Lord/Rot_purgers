@@ -6,6 +6,7 @@
 script = ExtResource("1_lwogq")
 
 [node name="Map_editor" type="Button" parent="." unique_id=260327138]
+unique_name_in_owner = true
 offset_left = 120.0
 offset_top = 705.0
 offset_right = 297.0

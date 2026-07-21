@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://dtn2y270dm171"]
+
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://map_object.gd" id="1_qbyd3"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="2_qg40w"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="3_01uvt"]
+[ext_resource type="Texture2D" uid="uid://flp5605q5f7x" path="res://aseprite_stuff/terrain_lava.png" id="4_bwvuj"]
+
+[sub_resource type="Resource" id="Resource_ys7s5"]
+script = ExtResource("1_qbyd3")
+name = "spawn_zone"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_alebe"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_2qeye"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_j7tpd"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ead5j"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_g2qwr"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_3mwm5"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_o70wc"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_jcw8x"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_kqyk2"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 60
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[resource]
+script = ExtResource("2_qg40w")
+map_size = Vector2i(30, 30)
+terrain_map_data = Dictionary[Vector2i, ExtResource("3_01uvt")]({
+Vector2i(13, 12): SubResource("Resource_alebe"),
+Vector2i(13, 13): SubResource("Resource_2qeye"),
+Vector2i(13, 14): SubResource("Resource_j7tpd"),
+Vector2i(14, 12): SubResource("Resource_ead5j"),
+Vector2i(14, 13): SubResource("Resource_g2qwr"),
+Vector2i(14, 14): SubResource("Resource_3mwm5"),
+Vector2i(15, 12): SubResource("Resource_o70wc"),
+Vector2i(15, 13): SubResource("Resource_jcw8x"),
+Vector2i(15, 14): SubResource("Resource_kqyk2")
+})
+object_map_data = Dictionary[Vector2i, ExtResource("1_qbyd3")]({
+Vector2i(14, 13): SubResource("Resource_ys7s5")
+})

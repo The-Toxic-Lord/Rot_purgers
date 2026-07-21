@@ -10,6 +10,25 @@ class_name Map_editor_UI
 	Rect2(%UI_panel_2.position, %UI_panel_2.size)
 	]
 
+@onready var height_increment_buttons : Dictionary[BaseButton, int] = {
+	%m10 : -10,
+	%m5 : -5,
+	%p5 : 5,
+	%p10 : 10
+}
+
+signal generate_map
+
+@onready var object_buttons : Dictionary[BaseButton, Map_object] = {
+	%Spawn_zone : GlobalData.map_objects[0],
+	%Enemy_zone : GlobalData.map_objects[1]
+}
+
+@onready var mode_buttons : Dictionary[BaseButton, Map_editor.modes] = {
+	%Terrain_button : Map_editor.modes.TERRAIN,
+	%Object_button : Map_editor.modes.OBJECTS
+}
+
 func _ready() -> void:
 	for terr_data in GlobalData.terrain_data_holder:
 		terrain_button_to_terrait_type[make_terrain_button(terr_data)] = terr_data
@@ -26,10 +45,11 @@ func make_terrain_button(terr_data : Terrain_data) -> BaseButton:
 	bt.add_theme_stylebox_override("pressed", style_box)
 	bt.toggle_mode = true
 	%Terrain_grid.add_child(bt)
-	bt.pressed.connect(terrain_button_toggled.bind(bt))
+	bt.pressed.connect(terrain_button_pressed.bind(bt))
 	return bt
 
-func _on_map_size_text_changed(new_text: String, source: LineEdit) -> void:
+@warning_ignore("unused_parameter")
+func _on_map_size_text_submitted(new_text: String, source: LineEdit) -> void:
 	if new_text.is_empty():
 		if source == %map_x:
 			map_editor.map_size.x = 0
@@ -47,18 +67,19 @@ func _on_map_size_text_changed(new_text: String, source: LineEdit) -> void:
 	else:
 		%map_y.text = str(map_editor.map_size.y)
 
-@warning_ignore("unused_parameter")
-func _on_map_size_text_submitted(new_text: String, source: LineEdit) -> void:
-	source.release_focus()
-
-func terrain_button_toggled(sourse : BaseButton):
-	for bt in terrain_button_to_terrait_type:
-		if bt != sourse:
-			bt.button_pressed = false
-	if sourse.button_pressed:
-		map_editor.selected_terrain_data = terrain_button_to_terrait_type[sourse]
+func terrain_button_pressed(source : BaseButton):
+	_on_mode_button_pressed(%Terrain_button)
+	untoggle_terrain_buttons(source)
+	untoggle_object_buttons()
+	if source.button_pressed:
+		map_editor.selected_terrain_data = terrain_button_to_terrait_type[source]
 	else:
 		map_editor.selected_terrain_data = null
+
+func untoggle_terrain_buttons(source = null):
+	for bt in terrain_button_to_terrait_type:
+		if bt != source:
+			bt.button_pressed = false
 
 func _on_height_text_changed(new_text: String) -> void:
 	if new_text.is_empty():
@@ -68,6 +89,58 @@ func _on_height_text_changed(new_text: String) -> void:
 		map_editor.selected_height = new_text.to_int()
 		return
 	%Height.text = map_editor.selected_height
+
+func _on_height_increment_pressed(source: BaseButton) -> void:
+	%Height.text = str(%Height.text.to_int() + height_increment_buttons[source])
+	_on_height_text_changed(%Height.text)
+
+func _on_generate_pressed() -> void:
+	generate_map.emit()
+
+func _on_depth_text_submitted(new_text: String) -> void:
+	if new_text.is_empty():
+		map_editor.selected_depth = 0
+		%Depth.text = "0"
+		return
+	if new_text.is_valid_int():
+		map_editor.selected_depth = new_text.to_int()
+		return
+
+func _on_object_button_pressed(source: BaseButton) -> void:
+	_on_mode_button_pressed(%Object_button)
+	untoggle_object_buttons(source)
+	untoggle_terrain_buttons()
+	if source.button_pressed:
+		map_editor.selected_object = object_buttons[source]
+	else:
+		map_editor.selected_object = null
+
+func untoggle_object_buttons(source = null):
+	for bt in object_buttons:
+		if bt == source:
+			continue
+		bt.button_pressed = false
+
+func _on_mode_button_pressed(source: BaseButton) -> void:
+	for bt in mode_buttons:
+		if bt != source:
+			bt.button_pressed = false
+	source.button_pressed = true
+	map_editor.paint_mode = mode_buttons[source]
+
+func _on_save_pressed() -> void:
+	map_editor.save_map_data()
+
+func _on_load_pressed() -> void:
+	map_editor.load_map_data()
+
+func load_data(map_size : Vector2i):
+	%map_x.text = str(map_size.x)
+	%map_y.text = str(map_size.y)
+
+
+
+
 
 
 

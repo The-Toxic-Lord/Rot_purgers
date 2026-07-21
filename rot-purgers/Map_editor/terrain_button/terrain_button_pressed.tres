@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://5wxiklgne4b7"]
+
+[ext_resource type="Texture2D" uid="uid://cv7kk78gntqh5" path="res://aseprite_stuff/object_zones.png" id="1_1rwc7"]
+
+[resource]
+texture = ExtResource("1_1rwc7")
+texture_margin_left = 64.0
+modulate_color = Color(0.62152386, 0.62152386, 0.6215238, 1)

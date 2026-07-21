@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://flp5605q5f7x"
-path.s3tc="res://.godot/imported/terrain_lava.png-0f8d9d58e26f0b3929facce28e803ec1.s3tc.ctex"
+uid="uid://dshy40lgh4esl"
+path.s3tc="res://.godot/imported/mesh_check.png-1fe499f00fefcd80e1cc9c3849c451b4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://aseprite_stuff/terrain_lava.png"
-dest_files=["res://.godot/imported/terrain_lava.png-0f8d9d58e26f0b3929facce28e803ec1.s3tc.ctex"]
+source_file="res://mesh_check.png"
+dest_files=["res://.godot/imported/mesh_check.png-1fe499f00fefcd80e1cc9c3849c451b4.s3tc.ctex"]
 
 [params]
 
