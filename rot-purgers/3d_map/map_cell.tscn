@@ -30,7 +30,6 @@ size = Vector3(1.8, 0.1, 1.8)
 [node name="Map_cell" type="Node3D" unique_id=215314247]
 script = ExtResource("1_2f0j5")
 temp_terr_data = SubResource("Resource_s44dr")
-cell_position = null
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=137455504]
 unique_name_in_owner = true

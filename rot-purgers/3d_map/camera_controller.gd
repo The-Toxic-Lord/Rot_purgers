@@ -33,16 +33,15 @@ func _input(event: InputEvent) -> void:
 		zoom_target += zoom_speed
 		zoom_target = clamp(zoom_target, zoom_min, zoom_max)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and Input.is_action_pressed("rotate"):
+		rotation_target -= event.relative.x * 0.2
+
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-	
 	handle_movement()
 	handle_height()
-	
-	var rotation_dir := Input.get_axis("rotate_left", "rotate_right")
-	rotation_target += rotation_dir * rotation_speed
-	rotation_degrees.y = lerp(rotation_degrees.y, rotation_target, 0.2)
-	
+	handle_rotarion()
 	camera.position.z = lerp(camera.position.z, zoom_target, 0.1)
 
 func handle_movement():
@@ -60,6 +59,14 @@ func handle_movement():
 
 func handle_height():
 	move_target.y =	map_generator.get_position_height(position)
+
+func handle_rotarion():
+	var rotation_dir := Input.get_axis("rotate_left", "rotate_right")
+	rotation_target += rotation_dir * rotation_speed
+	rotation_degrees.y = lerp(rotation_degrees.y, rotation_target, 0.2)
+
+
+
 
 
 

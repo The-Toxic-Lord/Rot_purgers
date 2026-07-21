@@ -209,10 +209,10 @@ func remove_cell(cell : Vector2i):
 	 
 	remove_object(cell)
 
-func make_cell_height(cell : Vector2i):
+func make_cell_height(cell : Vector2i, _height : int = selected_height):
 	var le := LineEdit.new()
 	cell_to_height_line[cell] = le
-	le.text = str(selected_height)
+	le.text = str(_height)
 	le.custom_maximum_size = Vector2(32, 32)
 	le.custom_minimum_size = Vector2(32, 32)
 	le.position = cell as Vector2 * 64 + le.custom_minimum_size / 2
@@ -220,10 +220,10 @@ func make_cell_height(cell : Vector2i):
 	le.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	%Height_holder.add_child(le)
 
-func make_cell_depth(cell : Vector2i):
+func make_cell_depth(cell : Vector2i, _depth : int = selected_depth):
 	var le := LineEdit.new()
 	cell_to_depth_line[cell] = le
-	le.text = str(selected_depth)
+	le.text = str(_depth)
 	le.custom_maximum_size = Vector2(32, 32)
 	le.custom_minimum_size = Vector2(32, 32)
 	le.position = cell as Vector2 * 64 + le.custom_minimum_size / 2 + Vector2(0, 16)
@@ -269,11 +269,11 @@ func load_map_data():
 func load_terrain(cell : Vector2i, terr_data : Terrain_data):
 	%Terrain_map.set_cell(cell, 0, terr_data.atlas_coord)
 	if !cell_to_height_line.has(cell):
-		make_cell_height(cell)
+		make_cell_height(cell, terr_data.height)
 	elif !cell_to_height_line[cell].has_focus():
 		cell_to_height_line[cell].text = str(terr_data.height)
 	if !cell_to_depth_line.has(cell) and terr_data.depth != 0:
-		make_cell_depth(cell)
+		make_cell_depth(cell, terr_data.depth)
 	elif cell_to_depth_line.has(cell):
 		if selected_depth == 0:
 			cell_to_depth_line[cell].queue_free()

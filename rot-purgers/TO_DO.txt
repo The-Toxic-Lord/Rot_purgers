@@ -1,0 +1,7 @@
+
+- add wall mesh to underside if neib has depth
+- move selector and camera with keyboard
+- spawn char
+- enemy editor to map editor
+- turns
+- battle system

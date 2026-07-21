@@ -1,34 +1,152 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://dtn2y270dm171"]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://bxltf8galtpxe"]
 
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://map_object.gd" id="1_qbyd3"]
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="2_qg40w"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="3_01uvt"]
 [ext_resource type="Texture2D" uid="uid://flp5605q5f7x" path="res://aseprite_stuff/terrain_lava.png" id="4_bwvuj"]
 
+[sub_resource type="Resource" id="Resource_aq4wr"]
+script = ExtResource("1_qbyd3")
+name = "enemy_zone"
+atlas_coord = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_qbyd3"]
+script = ExtResource("1_qbyd3")
+name = "spawn_zone"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
 [sub_resource type="Resource" id="Resource_ys7s5"]
 script = ExtResource("1_qbyd3")
 name = "spawn_zone"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
+[sub_resource type="Resource" id="Resource_bwvuj"]
+script = ExtResource("1_qbyd3")
+name = "enemy_zone"
+atlas_coord = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_qg40w"]
+script = ExtResource("1_qbyd3")
+name = "spawn_zone"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_01uvt"]
+script = ExtResource("1_qbyd3")
+name = "spawn_zone"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_u7ypl"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ahyom"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_l5vmc"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_alebe"]
 script = ExtResource("3_01uvt")
 sprite = ExtResource("4_bwvuj")
 atlas_coord = Vector2i(2, 0)
-height = 60
+height = 65
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_2qeye"]
 script = ExtResource("3_01uvt")
 sprite = ExtResource("4_bwvuj")
 atlas_coord = Vector2i(2, 0)
-height = 60
+height = 65
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_j7tpd"]
 script = ExtResource("3_01uvt")
 sprite = ExtResource("4_bwvuj")
 atlas_coord = Vector2i(2, 0)
-height = 60
+height = 65
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_to1fk"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 65
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_8rl3u"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_04wev"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_qhyuh"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_r8prx"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_kqj3p"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_f05un"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_34nle"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_5f6kb"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_fftg7"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 65
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_ead5j"]
@@ -52,6 +170,69 @@ atlas_coord = Vector2i(2, 0)
 height = 60
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_8dwos"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_oyqpw"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_xuijx"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_mjo53"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_provp"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_20agm"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_cx7s4"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_k28vi"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_8vpye"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 65
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_o70wc"]
 script = ExtResource("3_01uvt")
 sprite = ExtResource("4_bwvuj")
@@ -73,20 +254,103 @@ atlas_coord = Vector2i(2, 0)
 height = 60
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_46x75"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_idsk3"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_dno6c"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 70
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_cj7eg"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 65
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_e7og5"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 65
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_jyd4h"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 65
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_rm0aw"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 65
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [resource]
 script = ExtResource("2_qg40w")
 map_size = Vector2i(30, 30)
 terrain_map_data = Dictionary[Vector2i, ExtResource("3_01uvt")]({
-Vector2i(13, 12): SubResource("Resource_alebe"),
-Vector2i(13, 13): SubResource("Resource_2qeye"),
-Vector2i(13, 14): SubResource("Resource_j7tpd"),
+Vector2i(13, 3): SubResource("Resource_u7ypl"),
+Vector2i(13, 4): SubResource("Resource_ahyom"),
+Vector2i(13, 5): SubResource("Resource_l5vmc"),
+Vector2i(13, 11): SubResource("Resource_alebe"),
+Vector2i(13, 12): SubResource("Resource_2qeye"),
+Vector2i(13, 13): SubResource("Resource_j7tpd"),
+Vector2i(13, 14): SubResource("Resource_to1fk"),
+Vector2i(14, 3): SubResource("Resource_8rl3u"),
+Vector2i(14, 4): SubResource("Resource_04wev"),
+Vector2i(14, 5): SubResource("Resource_qhyuh"),
+Vector2i(14, 6): SubResource("Resource_r8prx"),
+Vector2i(14, 7): SubResource("Resource_kqj3p"),
+Vector2i(14, 8): SubResource("Resource_f05un"),
+Vector2i(14, 9): SubResource("Resource_34nle"),
+Vector2i(14, 10): SubResource("Resource_5f6kb"),
+Vector2i(14, 11): SubResource("Resource_fftg7"),
 Vector2i(14, 12): SubResource("Resource_ead5j"),
 Vector2i(14, 13): SubResource("Resource_g2qwr"),
 Vector2i(14, 14): SubResource("Resource_3mwm5"),
+Vector2i(15, 3): SubResource("Resource_8dwos"),
+Vector2i(15, 4): SubResource("Resource_oyqpw"),
+Vector2i(15, 5): SubResource("Resource_xuijx"),
+Vector2i(15, 6): SubResource("Resource_mjo53"),
+Vector2i(15, 7): SubResource("Resource_provp"),
+Vector2i(15, 8): SubResource("Resource_20agm"),
+Vector2i(15, 9): SubResource("Resource_cx7s4"),
+Vector2i(15, 10): SubResource("Resource_k28vi"),
+Vector2i(15, 11): SubResource("Resource_8vpye"),
 Vector2i(15, 12): SubResource("Resource_o70wc"),
 Vector2i(15, 13): SubResource("Resource_jcw8x"),
-Vector2i(15, 14): SubResource("Resource_kqyk2")
+Vector2i(15, 14): SubResource("Resource_kqyk2"),
+Vector2i(16, 3): SubResource("Resource_46x75"),
+Vector2i(16, 4): SubResource("Resource_idsk3"),
+Vector2i(16, 5): SubResource("Resource_dno6c"),
+Vector2i(16, 11): SubResource("Resource_cj7eg"),
+Vector2i(16, 12): SubResource("Resource_e7og5"),
+Vector2i(16, 13): SubResource("Resource_jyd4h"),
+Vector2i(16, 14): SubResource("Resource_rm0aw")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("1_qbyd3")]({
-Vector2i(14, 13): SubResource("Resource_ys7s5")
+Vector2i(14, 4): SubResource("Resource_aq4wr"),
+Vector2i(14, 12): SubResource("Resource_qbyd3"),
+Vector2i(14, 13): SubResource("Resource_ys7s5"),
+Vector2i(15, 4): SubResource("Resource_bwvuj"),
+Vector2i(15, 12): SubResource("Resource_qg40w"),
+Vector2i(15, 13): SubResource("Resource_01uvt")
 })

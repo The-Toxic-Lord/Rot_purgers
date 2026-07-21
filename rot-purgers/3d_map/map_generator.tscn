@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjr75vs1yuglc" path="res://3d_map/map_generator.gd" id="1_38kli"]
 [ext_resource type="PackedScene" uid="uid://dtksvwf0a8hco" path="res://3d_map/camera_position.tscn" id="3_r00ey"]
+[ext_resource type="PackedScene" uid="uid://2sjn27e2vr0r" path="res://3d_map/UI/map_ui.tscn" id="4_seipr"]
 [ext_resource type="Texture2D" uid="uid://bwgnvdu114knh" path="res://icon.svg" id="4_ti2bc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_38kli"]
@@ -43,3 +44,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m8u4e")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 move_speed = 0.2
+
+[node name="Map_UI" parent="." unique_id=1270663533 instance=ExtResource("4_seipr")]
+
+[connection signal="map_spawn_character" from="Map_UI" to="." method="spawn_ally"]
