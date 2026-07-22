@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cx7jdespo6tsb"]
 
 [ext_resource type="Script" uid="uid://50dud4wj53y3" path="res://Map_editor/map_editor.gd" id="1_k8p0y"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_k8p0y"]
+[ext_resource type="Resource" uid="uid://bkwt1lvhkpr71" path="res://data/Enemy_data/Crawler.tres" id="3_6uk1n"]
 [ext_resource type="TileSet" uid="uid://du6rk7f2ok1f" path="res://terrain_tileset.tres" id="5_wq8e7"]
 [ext_resource type="PackedScene" uid="uid://bifqkeg558atm" path="res://Map_editor/map_editor_ui.tscn" id="6_rucau"]
+[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="7_6uk1n"]
 [ext_resource type="Texture2D" uid="uid://cv7kk78gntqh5" path="res://aseprite_stuff/object_zones.png" id="8_yu7lw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssq50"]
@@ -15,8 +18,20 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_ssq50")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6uk1n"]
+texture = ExtResource("7_6uk1n")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6uk1n"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_6uk1n")
+
 [node name="Map_editor" type="Node2D" unique_id=982508508]
 script = ExtResource("1_k8p0y")
+enemy_to_atlas = Dictionary[ExtResource("2_k8p0y"), Vector2i]({
+ExtResource("3_6uk1n"): Vector2i(0, 0)
+})
 
 [node name="Map_editor_camera" type="Camera2D" parent="." unique_id=846113549]
 unique_name_in_owner = true
@@ -36,5 +51,9 @@ unique_name_in_owner = true
 [node name="Object_map" type="TileMapLayer" parent="." unique_id=1543169042]
 unique_name_in_owner = true
 tile_set = SubResource("TileSet_k8p0y")
+
+[node name="Enemy_map" type="TileMapLayer" parent="." unique_id=1442614591]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_6uk1n")
 
 [connection signal="generate_map" from="Map_Editor_UI" to="." method="_on_map_editor_ui_generate_map"]

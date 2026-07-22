@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://dmn08clp7e6tf"]
+
+[ext_resource type="Texture2D" uid="uid://bwgnvdu114knh" path="res://icon.svg" id="1_ohi4o"]
+[ext_resource type="Script" uid="uid://b6nnwf2disqtn" path="res://3d_map/UI/mini_char_stats.gd" id="1_xfbt5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wixou"]
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Mini_char_stats" type="MarginContainer" unique_id=1192290151]
+offset_right = 600.0
+offset_bottom = 220.0
+script = ExtResource("1_xfbt5")
+
+[node name="Panel" type="Panel" parent="." unique_id=753571624]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wixou")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=254182973]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=246838657]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=815942520]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer" unique_id=1690355546]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_ohi4o")
+stretch_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=991567295]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer2" unique_id=1930348963]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Char_name" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer" unique_id=892861164]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer" unique_id=1757077662]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4" unique_id=1800636723]
+layout_mode = 2
+
+[node name="Health_lb" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer" unique_id=160077040]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Hp : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Magic_lb" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer" unique_id=1028180637]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Mg : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4" unique_id=1488456210]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer2" unique_id=1348458014]
+custom_minimum_size = Vector2(0, 11)
+layout_mode = 2
+
+[node name="Health_bar" type="ProgressBar" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer2" unique_id=1604107176]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer2/Health_bar" unique_id=586947081]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -25.0
+offset_right = 74.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -1)
+theme_override_font_sizes/font_size = 36
+text = "500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer2" unique_id=478402994]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+
+[node name="Magic_bar" type="ProgressBar" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer2" unique_id=267279879]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+show_percentage = false
+
+[node name="Magic" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer2/Magic_bar" unique_id=428688933]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -25.0
+offset_right = 74.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -1)
+theme_override_font_sizes/font_size = 36
+text = "500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer" unique_id=127900490]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="Move_speed" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer3" unique_id=1110081989]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Mv : 99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Jump_height" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer3" unique_id=994646285]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Jm : 99"
+horizontal_alignment = 1
+vertical_alignment = 1

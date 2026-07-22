@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://q5kqmm06h7s5" path="res://3d_map/UI/map_ui.gd" id="1_cy5bf"]
 [ext_resource type="PackedScene" uid="uid://dk2af1blnp7lq" path="res://3d_map/UI/Character_select_button.tscn" id="2_tdycw"]
 [ext_resource type="PackedScene" uid="uid://bhgnsr07cjspy" path="res://3d_map/UI/focused_char_stats.tscn" id="3_wixou"]
+[ext_resource type="PackedScene" uid="uid://dmn08clp7e6tf" path="res://3d_map/UI/mini_char_stats.tscn" id="4_pf1q5"]
+[ext_resource type="PackedScene" uid="uid://c6unaq27q63vc" path="res://3d_map/UI/char_action_menu.tscn" id="5_fyh1b"]
+[ext_resource type="PackedScene" uid="uid://cqerhl6ublq57" path="res://3d_map/UI/turn_menu.tscn" id="6_qlg74"]
 
 [node name="Map_UI" type="CanvasLayer" unique_id=1270663533]
 script = ExtResource("1_cy5bf")
@@ -47,10 +50,53 @@ layout_mode = 2
 text = "Exit"
 
 [node name="Focused_char_stats" parent="." unique_id=1619212617 instance=ExtResource("3_wixou")]
+unique_name_in_owner = true
 visible = false
 offset_left = 100.0
 offset_top = 100.0
 offset_right = 600.0
 offset_bottom = 550.0
 
+[node name="Mini_char_stats" parent="." unique_id=1192290151 instance=ExtResource("4_pf1q5")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -270.0
+offset_right = 650.0
+offset_bottom = -50.0
+grow_vertical = 0
+
+[node name="Char_action_menu" parent="." unique_id=1823922911 instance=ExtResource("5_fyh1b")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 302.0
+grow_horizontal = 0
+
+[node name="Turn_menu" parent="." unique_id=1843473362 instance=ExtResource("6_qlg74")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 302.0
+grow_horizontal = 0
+
 [connection signal="pressed" from="Character_select_menu/Character_list/Close_spawn" to="." method="close_spawn_menu"]
+[connection signal="attack" from="Char_action_menu" to="." method="_on_char_action_menu_attack"]
+[connection signal="exit" from="Char_action_menu" to="." method="_on_char_action_menu_exit"]
+[connection signal="move" from="Char_action_menu" to="." method="_on_char_action_menu_move"]
+[connection signal="end_turn" from="Turn_menu" to="." method="_on_turn_menu_end_turn"]
+[connection signal="execute" from="Turn_menu" to="." method="_on_turn_menu_execute"]
+[connection signal="exit" from="Turn_menu" to="." method="_on_turn_menu_exit"]

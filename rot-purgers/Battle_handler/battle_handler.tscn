@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c7pofalu7knhn"]
+
+[ext_resource type="Script" uid="uid://bqhkvcxtf457" path="res://Battle_handler/battle_handler.gd" id="1_pjyf4"]
+[ext_resource type="Script" uid="uid://cjgx6lgm3u06q" path="res://Battle_handler/damage_manager.gd" id="2_fsmvl"]
+[ext_resource type="Script" uid="uid://sqpgx2ydy6v3" path="res://Battle_handler/enemy_manager.gd" id="3_fsmvl"]
+
+[node name="Battle_handler" type="Node" unique_id=1935889361]
+script = ExtResource("1_pjyf4")
+
+[node name="Damage_manager" type="Node" parent="." unique_id=788756639]
+script = ExtResource("2_fsmvl")
+
+[node name="Enemy_manager" type="Node" parent="." unique_id=1453955168]
+script = ExtResource("3_fsmvl")

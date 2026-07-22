@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://bkwt1lvhkpr71"]
+
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_its35"]
+[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="2_i40j3"]
+
+[resource]
+script = ExtResource("1_its35")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("2_i40j3")
+strength = 2
+defence = 1
+magic_strenght = 1
+accuracy = 3
+move_speed = 5
+jump_height = 10
+counter = 0
+metadata/_custom_type_script = "uid://by1rq468n504l"

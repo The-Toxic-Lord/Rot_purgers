@@ -2,7 +2,7 @@ extends MarginContainer
 
 class_name Focused_char_stats
 
-func update_stats(ch : Character):
+func update_stats(ch : Character_stats):
 	%Char_name.text = ch.name
 	%Class.text = ch.char_class
 	%Age.text = str(ch.age)

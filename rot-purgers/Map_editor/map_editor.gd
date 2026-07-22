@@ -13,17 +13,17 @@ class_name Map_editor
 var map_node_size : Vector2
 var dragging := false
 
-enum modes { TERRAIN, OBJECTS }
+enum modes { TERRAIN, OBJECTS, ENEMY }
 var paint_mode : modes = modes.TERRAIN:
 	set(value):
 		paint_mode = value
 		match value:
 			modes.TERRAIN:
 				show_height()
-				%Object_map.hide()
 			modes.OBJECTS:
 				hide_height()
-				%Object_map.show()
+			modes.ENEMY:
+				hide_height()
 var painting := false
 var erasing := false
 
@@ -39,6 +39,9 @@ var terrain_map_data : Dictionary[Vector2i, Terrain_data] = {}
 @onready var main_node : Main_node = get_parent()
 var selected_object : Map_object
 var object_map_data : Dictionary[Vector2i, Map_object] = {}
+
+var enemy_map_data : Dictionary[Vector2i, Character_stats] = {}
+@export var enemy_to_atlas : Dictionary[Character_stats, Vector2i]
 
 func _ready() -> void:
 	set_process(false)
@@ -75,12 +78,20 @@ func limit_camera():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_in"):
+		var _mouse_pos : Vector2 = event.position
+		for dead_zone : Rect2 in %Map_Editor_UI.mouse_dead_zone:
+			if dead_zone.has_point(_mouse_pos):
+				return
 		var mouse_pos : Vector2 = get_global_mouse_position()
 		camera.zoom += Vector2(0.05,0.05)
 		camera.zoom = camera.zoom.clamp(Vector2(0.25,0.25), Vector2(2,2))
 		camera.position += mouse_pos - get_global_mouse_position()
 		await limit_camera()
 	elif event.is_action_pressed("zoom_out"):
+		var _mouse_pos : Vector2 = event.position
+		for dead_zone : Rect2 in %Map_Editor_UI.mouse_dead_zone:
+			if dead_zone.has_point(_mouse_pos):
+				return
 		var mouse_pos : Vector2 = get_global_mouse_position()
 		camera.zoom -= Vector2(0.05,0.05)
 		camera.zoom = camera.zoom.clamp(Vector2(0.25,0.25), Vector2(2,2))
@@ -154,6 +165,10 @@ func _process(delta: float) -> void:
 				var cell : Vector2i = %Object_map.local_to_map(%Object_map.get_global_mouse_position())
 				if map_rect.has_point(cell):
 					change_object(cell)
+			modes.ENEMY:
+				var cell : Vector2i = %Enemy_map.local_to_map(%Enemy_map.get_global_mouse_position())
+				if map_rect.has_point(cell):
+					change_enemy(cell)
 	if erasing:
 		match paint_mode:
 			modes.TERRAIN:
@@ -164,6 +179,10 @@ func _process(delta: float) -> void:
 				var cell : Vector2i = %Object_map.local_to_map(%Object_map.get_global_mouse_position())
 				if map_rect.has_point(cell):
 					remove_object(cell)
+			modes.ENEMY:
+				var cell : Vector2i = %Enemy_map.local_to_map(%Enemy_map.get_global_mouse_position())
+				if map_rect.has_point(cell):
+					remove_enemy(cell)
 
 func change_terrain(cell : Vector2i):
 	%Terrain_map.set_cell(cell, 0, selected_terrain_data.atlas_coord)
@@ -171,8 +190,17 @@ func change_terrain(cell : Vector2i):
 		make_cell_height(cell)
 	elif !cell_to_height_line[cell].has_focus():
 		cell_to_height_line[cell].text = str(selected_height)
-	terrain_map_data[cell] = selected_terrain_data.duplicate(true)
-	terrain_map_data[cell].height = selected_height
+	if !terrain_map_data.has(cell):
+		terrain_map_data[cell] = selected_terrain_data.duplicate(true)
+		terrain_map_data[cell].height = selected_height
+		terrain_map_data[cell].depth = selected_depth
+	elif terrain_map_data[cell].atlas_coord != selected_terrain_data.atlas_coord:
+		terrain_map_data[cell] = selected_terrain_data.duplicate(true)
+		terrain_map_data[cell].height = selected_height
+		terrain_map_data[cell].depth = selected_depth
+	elif !cell_to_height_line[cell].has_focus():
+		terrain_map_data[cell].height = selected_height
+		terrain_map_data[cell].depth = selected_depth
 	if !cell_to_depth_line.has(cell) and selected_depth != 0:
 		make_cell_depth(cell)
 	elif cell_to_depth_line.has(cell):
@@ -182,7 +210,6 @@ func change_terrain(cell : Vector2i):
 			cell_to_height_line[cell].position += Vector2(0, 16)
 		else:
 			cell_to_depth_line[cell].text = str(selected_depth)
-	terrain_map_data[cell].depth = selected_depth
 
 func change_object(cell : Vector2i):
 	if !terrain_map_data.has(cell):
@@ -218,6 +245,7 @@ func make_cell_height(cell : Vector2i, _height : int = selected_height):
 	le.position = cell as Vector2 * 64 + le.custom_minimum_size / 2
 	le.add_theme_font_size_override("font_size", 14)
 	le.alignment = HORIZONTAL_ALIGNMENT_CENTER
+	le.text_submitted.connect(change_data_height.bind(cell))
 	%Height_holder.add_child(le)
 
 func make_cell_depth(cell : Vector2i, _depth : int = selected_depth):
@@ -230,10 +258,11 @@ func make_cell_depth(cell : Vector2i, _depth : int = selected_depth):
 	le.add_theme_font_size_override("font_size", 14)
 	le.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	%Height_holder.add_child(le)
+	le.text_submitted.connect(change_data_depth.bind(cell))
 	cell_to_height_line[cell].position -= Vector2(0, 16)
 
 func _on_map_editor_ui_generate_map() -> void:
-	main_node.generate_map(terrain_map_data, object_map_data)
+	main_node.generate_map(terrain_map_data, object_map_data, enemy_map_data)
 
 func hide_height():
 	for le : LineEdit in cell_to_height_line.values():
@@ -251,20 +280,29 @@ func save_map_data():
 	var save_data := Map_data.new()
 	save_data.terrain_map_data = terrain_map_data
 	save_data.object_map_data = object_map_data
+	save_data.enemy_map_data = enemy_map_data
 	save_data.map_size = map_size
 	ResourceSaver.save(save_data, "res://map_data_res/saved_map.tres")
 
 func load_map_data():
+	%Terrain_map.clear()
+	%Object_map.clear()
+	%Enemy_map.clear()
+	
 	var save_data : Map_data = ResourceLoader.load("res://map_data_res/saved_map.tres")
 	terrain_map_data = save_data.terrain_map_data
 	object_map_data = save_data.object_map_data
+	enemy_map_data = save_data.enemy_map_data
 	map_size = save_data.map_size
+	await update_map_size()
 	%Map_Editor_UI.load_data(map_size)
 	
 	for cell in terrain_map_data:
 		load_terrain(cell, terrain_map_data[cell])
 	for cell in object_map_data:
 		load_objects(cell, object_map_data[cell])
+	for cell in enemy_map_data:
+		load_enemy(cell, enemy_map_data[cell])
 
 func load_terrain(cell : Vector2i, terr_data : Terrain_data):
 	%Terrain_map.set_cell(cell, 0, terr_data.atlas_coord)
@@ -284,6 +322,45 @@ func load_terrain(cell : Vector2i, terr_data : Terrain_data):
 
 func load_objects(cell : Vector2i, map_obj : Map_object):
 	%Object_map.set_cell(cell, 0, map_obj.atlas_coord)
+
+func change_data_height(new_text : String, cell : Vector2i):
+	cell_to_height_line[cell].release_focus()
+	if new_text.is_empty():
+		cell_to_height_line[cell].text = "0"
+		terrain_map_data[cell].height = 0
+		return
+	if new_text.is_valid_int():
+		terrain_map_data[cell].height = new_text.to_int()
+		return
+
+func change_data_depth(new_text : String, cell : Vector2i):
+	cell_to_depth_line[cell].release_focus()
+	if new_text.is_empty():
+		cell_to_depth_line[cell].text = "0"
+		terrain_map_data[cell].depth = 0
+		return
+	if new_text.is_valid_int():
+		terrain_map_data[cell].depth = new_text.to_int()
+		return
+
+func change_enemy(cell : Vector2i):
+	if !terrain_map_data.has(cell):
+		return
+	var selected_enemy : Character_stats = %Map_Editor_UI.selected_enemy_data
+	%Enemy_map.set_cell(cell, 0, enemy_to_atlas[selected_enemy])
+	enemy_map_data[cell] = selected_enemy.duplicate(true)
+	enemy_map_data[cell].atlas_coords = enemy_to_atlas[selected_enemy]
+
+func remove_enemy(cell : Vector2i):
+	if !enemy_map_data.has(cell):
+		return
+	enemy_map_data.erase(cell)
+	%Enemy_map.erase_cell(cell)
+
+func load_enemy(cell : Vector2i, enemy_data : Character_stats):
+	%Enemy_map.set_cell(cell, 0, enemy_data.atlas_coords)
+
+
 
 
 

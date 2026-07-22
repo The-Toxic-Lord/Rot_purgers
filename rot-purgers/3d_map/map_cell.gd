@@ -36,20 +36,24 @@ func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector
 	cell_position = cell
 	make_floor_mesh()
 	for neib in neighbors_sides:
+		var depth : float
+		if terrain_map[cell].depth == 0:
+			depth = terrain_map[cell].height
+			depth *= 0.1
+		
 		if terrain_map.has(cell + neib):
-			var depth : float = terrain_map[cell].height - terrain_map[cell + neib].height
-			if depth <= 0:
-				continue
-			depth *= 0.1
-			make_wall(neib, depth)
-		else:
-			var depth : float
-			if terrain_map[cell].depth == 0:
-				depth = terrain_map[cell].height
-			else:
-				depth = terrain_map[cell].depth
-			depth *= 0.1
-			make_wall(neib, depth)
+			if terrain_map[cell + neib].depth == 0:
+				var depth_n : float = terrain_map[cell].height - terrain_map[cell + neib].height
+				if depth_n > 0:
+					depth_n *= 0.1
+					depth = depth_n
+				else:
+					continue
+		
+		if terrain_map[cell].depth != 0:
+			depth = terrain_map[cell].depth * 0.1
+		
+		make_wall(neib, depth)
 
 func make_wall(neib : Vector2i, depth : float):
 	var wall := MeshInstance3D.new()

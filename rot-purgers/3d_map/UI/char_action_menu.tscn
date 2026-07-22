@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c6unaq27q63vc"]
+
+[ext_resource type="Script" uid="uid://bwqjyvw4r0kx" path="res://3d_map/UI/char_action_menu.gd" id="1_6j4je"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onbvv"]
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Char_action_menu" type="MarginContainer" unique_id=1823922911]
+offset_right = 250.0
+offset_bottom = 252.0
+script = ExtResource("1_6j4je")
+
+[node name="Panel" type="Panel" parent="." unique_id=1970381339]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_onbvv")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=777824055]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1694672640]
+layout_mode = 2
+
+[node name="Move" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1180392878]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Move"
+
+[node name="Attack" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1069164114]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Attack"
+
+[node name="Spell" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1357512705]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Spell"
+
+[node name="Defend" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1725337120]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Defend"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1807635558]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Move" to="." method="_on_action_button_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Attack" to="." method="_on_action_button_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Spell" to="." method="_on_action_button_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Defend" to="." method="_on_action_button_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_action_button_pressed" flags=18]
