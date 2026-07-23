@@ -20,7 +20,7 @@ func _on_turn_button_pressed(source: BaseButton) -> void:
 
 func focus():
 	%Execute.grab_focus()
-	if BattleHandler.attack_array.is_empty():
+	if BattleHandler.order_array.is_empty():
 		%Execute.disabled = true
 	else:
 		%Execute.disabled = false

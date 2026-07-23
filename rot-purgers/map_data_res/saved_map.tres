@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="Map_data" format=3]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://83t6vm4dl7js"]
 
-[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_01uvt"]
-[ext_resource type="Script" path="res://map_object.gd" id="1_qbyd3"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler.png" id="2_bwvuj"]
-[ext_resource type="Script" path="res://map_data.gd" id="2_qg40w"]
-[ext_resource type="Script" path="res://data/terrain_data.gd" id="3_01uvt"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/terrain_lava.png" id="4_bwvuj"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_01uvt"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://map_object.gd" id="1_qbyd3"]
+[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="2_bwvuj"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="2_qg40w"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_ys7s5"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="3_01uvt"]
+[ext_resource type="Texture2D" uid="uid://flp5605q5f7x" path="res://aseprite_stuff/terrain_lava.png" id="4_bwvuj"]
 
 [sub_resource type="Resource" id="Resource_bwvuj"]
 script = ExtResource("1_01uvt")
@@ -42,6 +43,20 @@ metadata/_custom_type_script = "uid://m48jo33kjka0"
 script = ExtResource("1_qbyd3")
 name = "spawn_zone"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_xvbjr"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 40
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_aq4wr"]
+script = ExtResource("3_01uvt")
+sprite = ExtResource("4_bwvuj")
+atlas_coord = Vector2i(2, 0)
+height = 40
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_u7ypl"]
 script = ExtResource("3_01uvt")
@@ -317,20 +332,6 @@ sprite = ExtResource("4_bwvuj")
 atlas_coord = Vector2i(2, 0)
 height = 65
 depth = 10
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_aq4wr"]
-script = ExtResource("3_01uvt")
-sprite = ExtResource("4_bwvuj")
-atlas_coord = Vector2i(2, 0)
-height = 40
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_xvbjr"]
-script = ExtResource("3_01uvt")
-sprite = ExtResource("4_bwvuj")
-atlas_coord = Vector2i(2, 0)
-height = 40
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [resource]

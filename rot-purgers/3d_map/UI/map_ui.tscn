@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmn08clp7e6tf" path="res://3d_map/UI/mini_char_stats.tscn" id="4_pf1q5"]
 [ext_resource type="PackedScene" uid="uid://c6unaq27q63vc" path="res://3d_map/UI/char_action_menu.tscn" id="5_fyh1b"]
 [ext_resource type="PackedScene" uid="uid://cqerhl6ublq57" path="res://3d_map/UI/turn_menu.tscn" id="6_qlg74"]
+[ext_resource type="PackedScene" uid="uid://qu82b3iiw4hr" path="res://3d_map/UI/spell_select_menu.tscn" id="7_e57h2"]
 
 [node name="Map_UI" type="CanvasLayer" unique_id=1270663533]
 script = ExtResource("1_cy5bf")
@@ -93,10 +94,26 @@ offset_right = -50.0
 offset_bottom = 302.0
 grow_horizontal = 0
 
+[node name="Spell_select_menu" parent="." unique_id=813455581 instance=ExtResource("7_e57h2")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -636.0
+offset_top = 50.0
+offset_right = -336.0
+offset_bottom = 114.0
+grow_horizontal = 0
+
 [connection signal="pressed" from="Character_select_menu/Character_list/Close_spawn" to="." method="close_spawn_menu"]
 [connection signal="attack" from="Char_action_menu" to="." method="_on_char_action_menu_attack"]
+[connection signal="defend" from="Char_action_menu" to="." method="_on_char_action_menu_defend"]
 [connection signal="exit" from="Char_action_menu" to="." method="_on_char_action_menu_exit"]
 [connection signal="move" from="Char_action_menu" to="." method="_on_char_action_menu_move"]
+[connection signal="spell" from="Char_action_menu" to="." method="_on_char_action_menu_spell"]
 [connection signal="end_turn" from="Turn_menu" to="." method="_on_turn_menu_end_turn"]
 [connection signal="execute" from="Turn_menu" to="." method="_on_turn_menu_execute"]
 [connection signal="exit" from="Turn_menu" to="." method="_on_turn_menu_exit"]
+[connection signal="exit" from="Spell_select_menu" to="." method="_on_spell_select_menu_exit"]
+[connection signal="skill_selected" from="Spell_select_menu" to="." method="_on_spell_select_menu_skill_selected"]

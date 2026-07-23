@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://qu82b3iiw4hr"]
+
+[ext_resource type="Script" uid="uid://btjabkk88s8tp" path="res://3d_map/UI/spell_select_menu.gd" id="1_cko73"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ko7r"]
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Spell_select_menu" type="MarginContainer" unique_id=813455581]
+offset_right = 300.0
+offset_bottom = 64.0
+script = ExtResource("1_cko73")
+
+[node name="Panel" type="Panel" parent="." unique_id=25160455]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ko7r")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=116259320]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Skill_box" type="VBoxContainer" parent="MarginContainer" unique_id=1852178958]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="MarginContainer/Skill_box" unique_id=38937211]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="pressed" from="MarginContainer/Skill_box/Exit" to="." method="_on_exit_pressed"]

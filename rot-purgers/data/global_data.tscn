@@ -6,8 +6,12 @@
 [ext_resource type="Resource" uid="uid://dfoccsqf81u56" path="res://data/Terrain_data_res/lava.tres" id="4_8776e"]
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://map_object.gd" id="5_dwjne"]
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="6_lbxat"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="7_7c7dr"]
 [ext_resource type="Texture2D" uid="uid://bwgnvdu114knh" path="res://icon.svg" id="7_et4q3"]
+[ext_resource type="Resource" uid="uid://dhhs70r647yrx" path="res://Skills/Skill_res/Slash.tres" id="8_7c7dr"]
 [ext_resource type="Resource" uid="uid://bkwt1lvhkpr71" path="res://data/Enemy_data/Crawler.tres" id="8_lbxat"]
+[ext_resource type="Resource" uid="uid://d0lnxgg3anglw" path="res://Skills/Skill_res/Blast.tres" id="9_17ap7"]
+[ext_resource type="Resource" uid="uid://dfefbrwmuckxc" path="res://Skills/Skill_res/heal.tres" id="10_rdq6i"]
 
 [sub_resource type="Resource" id="Resource_66j8o"]
 script = ExtResource("5_dwjne")
@@ -24,12 +28,14 @@ metadata/_custom_type_script = "uid://m48jo33kjka0"
 script = ExtResource("6_lbxat")
 name = "Aven"
 sprite = ExtResource("7_et4q3")
+skills = Array[ExtResource("7_7c7dr")]([ExtResource("8_7c7dr"), ExtResource("9_17ap7"), ExtResource("10_rdq6i")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_lbxat"]
 script = ExtResource("6_lbxat")
 name = "Elliot"
 jump_height = 50
+skills = Array[ExtResource("7_7c7dr")]([ExtResource("8_7c7dr"), ExtResource("10_rdq6i")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_kbdvy"]

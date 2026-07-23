@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://d0lnxgg3anglw"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_iycuc"]
+[ext_resource type="Resource" uid="uid://byagistf7tt58" path="res://Skills/skill_map_data_res/blast.tres" id="2_8fhyb"]
+
+[resource]
+script = ExtResource("1_iycuc")
+name = "Blast"
+magic_cost = 10
+skill_map = ExtResource("2_8fhyb")
+"Is Attack" = true
+"Is Heal" = false
+Damage = 50.0
+"Maximum height difference" = 20
+"Maximum distance" = 5
+"Accuracy modifier" = 0.0
+"Crit chance" = 0.05
+"Stat used" = 7
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

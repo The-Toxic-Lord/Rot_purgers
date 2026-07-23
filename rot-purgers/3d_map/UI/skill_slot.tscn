@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dr6rxsokl8m6c"]
+
+[ext_resource type="Script" uid="uid://dk3mnwtnml204" path="res://3d_map/UI/skill_slot.gd" id="1_5612r"]
+
+[node name="Skill_slot" type="MarginContainer" unique_id=21188160]
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_5612r")
+
+[node name="Skill_button" type="Button" parent="." unique_id=1873824099]
+unique_name_in_owner = true
+z_as_relative = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2122154082]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Skill_name" type="Label" parent="HBoxContainer" unique_id=1891589115]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Skill"
+
+[node name="Skill_cost" type="Label" parent="HBoxContainer" unique_id=1522341774]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Skill"
+
+[connection signal="pressed" from="Skill_button" to="." method="_on_skill_button_pressed"]

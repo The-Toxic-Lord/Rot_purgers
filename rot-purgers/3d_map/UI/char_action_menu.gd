@@ -26,6 +26,12 @@ func update_disabled(ch_node : Character_node):
 		%Spell.disabled = true
 		%Defend.disabled = true
 		return
+	if ch_node.has_order:
+		%Move.disabled = true
+		%Attack.disabled = true
+		%Spell.disabled = true
+		%Defend.disabled = true
+		return
 	if ch_node.can_move:
 		%Move.disabled = false
 	else:
@@ -39,5 +45,6 @@ func update_disabled(ch_node : Character_node):
 		%Spell.disabled = true
 		%Defend.disabled = true
 
-func focus():
-	%Move.grab_focus()
+func focus(id : int = 0):
+	var bt_array : Array[BaseButton] = button_to_signal.keys()
+	bt_array[id].grab_focus()

@@ -1,16 +1,12 @@
 
 
-+ добавить логику чтобы строчки высоты и глубины модифицировали данные
-+ add wall mesh to underside if neib has depth
 - move selector and camera with keyboard
-+ spawn char
-+ enemy editor to map editor
-+ turns
-- battle system
++- battle system
 +- character animated movement
-+ удалять врагов полностью
-+ починить таргет союзников
-- skills
-- defence
++- skills
+- movement when using skill
++ healing
++- defence
 - settings
 - player characters models
+- stats rearange

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b7w5fn6u3h8p8"]
+
+[ext_resource type="Script" uid="uid://deixxh30w22nj" path="res://Skills/skill_map_data_maker.gd" id="1_1tdyk"]
+[ext_resource type="Texture2D" uid="uid://b6jm4arw4swlc" path="res://aseprite_stuff/Skill_colors_2.png" id="1_e5281"]
+[ext_resource type="Resource" uid="uid://byagistf7tt58" path="res://Skills/skill_map_data_res/blast.tres" id="3_uk1rf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk1rf"]
+texture = ExtResource("1_e5281")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e5281"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_uk1rf")
+
+[node name="Skill_map_data_maker" type="TileMapLayer" unique_id=547403321]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_e5281")
+script = ExtResource("1_1tdyk")
+data = ExtResource("3_uk1rf")

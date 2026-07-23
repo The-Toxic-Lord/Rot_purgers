@@ -10,6 +10,7 @@ class_name Camera_controller
 
 @export var move_speed := 0.3
 var move_target : Vector3
+var follow_target : Node3D = null
 var move_boundary : Rect2
 
 @export var rotation_speed := 0.02
@@ -19,6 +20,10 @@ var move_boundary : Rect2
 var zoom_target : float
 var zoom_min := -10.0
 var zoom_max := 10.0
+
+enum directions { N, E, S, W }
+var current_direction : directions = directions.N
+signal direction_change
 
 func _ready() -> void:
 	move_target = position
@@ -49,7 +54,9 @@ func _process(delta: float) -> void:
 	camera.position.z = lerp(camera.position.z, zoom_target, 0.1)
 
 func handle_movement():
-	if BattleHandler.state == Battle_handler.states.PLAYER:
+	if follow_target != null:
+		move_target = follow_target.position
+	elif BattleHandler.state == Battle_handler.states.PLAYER:
 		var input_vector := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		var move_dir := (transform.basis * Vector3(input_vector.x , 0, input_vector.y)).normalized()
 		
@@ -70,8 +77,20 @@ func handle_rotation():
 		var rotation_dir := Input.get_axis("rotate_left", "rotate_right")
 		var quat : Quaternion = Quaternion(Vector3.UP, rotation_dir * rotation_speed)
 		quaternion = quat * quaternion
+		handle_direction()
 
-
+func handle_direction():
+	var deg := rad_to_deg(rotation.y)
+	var new_dir : directions = directions.S
+	if deg >= -45 and deg <= 45:
+		new_dir = directions.N
+	elif deg >= -135 and deg <= -45:
+		new_dir = directions.E
+	elif deg >= 45 and deg <= 135:
+		new_dir = directions.W
+	if current_direction != new_dir:
+		current_direction = new_dir
+		direction_change.emit()
 
 
 

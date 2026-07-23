@@ -4,15 +4,34 @@ class_name Character_node
 
 @export var stats : Character_stats
 
-@export var can_move := true
-@export var can_attack := true
+var can_move := true
+var can_attack := true
+var is_defending := false
+var has_order := false
 var map_pos : Vector2i
+
+var previous_direction : Map_generator.directions = Map_generator.directions.N
+var current_direction : Map_generator.directions = Map_generator.directions.N
+var move_to_direction: Dictionary[Vector2i, Map_generator.directions] = {
+	Vector2i(0, -1) : Map_generator.directions.N,
+	Vector2i(0, 1) : Map_generator.directions.S,
+	Vector2i(1, 0) : Map_generator.directions.E,
+	Vector2i(-1, 0) : Map_generator.directions.W
+}
+var dir_to_angle : Dictionary[Map_generator.directions, float] = {
+	Map_generator.directions.N : 0.0,
+	Map_generator.directions.E : -PI/2,
+	Map_generator.directions.W : PI/2,
+	Map_generator.directions.S : PI
+}
+signal direction_changed
 
 signal move_finished
 
-func end_round():
+func new_round():
 	can_move = true
 	can_attack = true
+	is_defending = false
 
 func damage(value : float):
 	stats.health = clampi(stats.health - int(value), 0, stats.max_health)
@@ -37,9 +56,14 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 	a_star.update()
 	
 	var path : Array[Vector2i] = a_star.get_id_path(map_pos, target_cell)
+	var prev_pos : Vector2i = map_pos
 	path.remove_at(0)
 	for cell in path:
+		previous_direction = current_direction
+		turn(move_to_direction[cell - prev_pos])
+		current_direction = move_to_direction[cell - prev_pos]
 		await move_next(cell, terrain_map, map_cells)
+		prev_pos = map_pos
 	move_finished.emit()
 
 func move_next(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
@@ -54,7 +78,7 @@ map_cells : Dictionary[Vector2i, Map_cell]):
 			await move_jump(map_cells[target_cell].position)
 		else:
 			await move_drop(map_cells[target_cell].position)
-		map_pos = target_cell
+	map_pos = target_cell
 
 func move_normal(pos : Vector3):
 	var tween := create_tween()
@@ -99,6 +123,25 @@ func move_drop(pos : Vector3):
 	anim.track_set_key_value(0, 3, pos)
 	ap.play("move_jump")
 	await ap.animation_finished
+
+func defend():
+	can_attack = false
+	can_move = false
+	is_defending = true
+
+func turn(new_dir : Map_generator.directions):
+	if new_dir == current_direction:
+		return
+	previous_direction = current_direction
+	current_direction = new_dir
+	
+	rotation.y = dir_to_angle[new_dir]
+	
+	await get_tree().process_frame
+	direction_changed.emit()
+
+func heal(value : float):
+	stats.health = clampi(stats.health + int(value), 0, stats.max_health)
 
 
 

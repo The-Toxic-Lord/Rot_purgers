@@ -8,7 +8,7 @@ signal map_spawn_character
 var selected_char : Character_node
 
 @onready var menues : Array[Control] = [
-	%Turn_menu, %Char_action_menu, %Character_select_menu, %Focused_char_stats
+	%Turn_menu, %Char_action_menu, %Character_select_menu, %Focused_char_stats, %Spell_select_menu
 ]
 
 func _ready() -> void:
@@ -59,14 +59,14 @@ func show_mini_stats(ch : Character_stats):
 func hide_mini_stats():
 	%Mini_char_stats.hide()
 
-func open_char_action_menu(ch : Character_node):
+func open_char_action_menu(ch : Character_node, id : int = 0):
 	map_generator.freze_selector = true
 	selected_char = ch
 	hide_mini_stats()
 	%Char_action_menu.update_disabled(ch)
 	%Char_action_menu.show()
 	await get_tree().process_frame
-	%Char_action_menu.focus()
+	%Char_action_menu.focus(id)
 	show_focus_char_stats(ch.stats)
 
 func _on_char_action_menu_exit() -> void:
@@ -75,6 +75,8 @@ func _on_char_action_menu_exit() -> void:
 	$Focused_char_stats.hide()
 	map_generator.freze_selector = false
 	map_generator.state_select()
+	%Spell_select_menu.clear_skills()
+	%Spell_select_menu.hide()
 
 func _on_char_action_menu_move() -> void:
 	map_generator.spawn_select_zone(selected_char, Map_generator.states.MOVE)
@@ -102,6 +104,11 @@ func _on_turn_menu_exit() -> void:
 	map_generator.state_select()
 
 func close_all():
+	if %Spell_select_menu.visible:
+		%Spell_select_menu.hide()
+		%Spell_select_menu.clear_skills()
+		%Char_action_menu.focus(2)
+		return
 	for menu in menues:
 		menu.hide()
 	map_generator.freze_selector = false
@@ -122,8 +129,50 @@ func _on_turn_menu_end_turn() -> void:
 	%Turn_menu.hide()
 	map_generator.state_select()
 
+func _on_char_action_menu_defend() -> void:
+	selected_char.defend()
+	
+	show_mini_stats(selected_char.stats)
+	%Char_action_menu.hide()
+	$Focused_char_stats.hide()
+	map_generator.freze_selector = false
+	map_generator.state_select()
 
+func _on_char_action_menu_spell() -> void:
+	%Spell_select_menu.load_skills(selected_char)
+	%Spell_select_menu.show()
+	await get_tree().process_frame
+	%Spell_select_menu.focus()
 
+func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
+	%Spell_select_menu.hide()
+	%Char_action_menu.hide()
+	%Focused_char_stats.hide()
+	map_generator.freze_selector = false
+	if skill.is_attack:
+		map_generator.display_skill(skill)
+		map_generator.state = Map_generator.states.SKILL
+	if skill.is_heal:
+		map_generator.state_select()
+		BattleHandler.add_heal(selected_char, skill)
+		selected_char.can_attack = false
+		selected_char.has_order = true
+
+func _on_spell_select_menu_exit() -> void:
+	%Spell_select_menu.clear_skills()
+	%Spell_select_menu.hide()
+	%Char_action_menu.focus()
+
+func back_to_skill_selection():
+	map_generator.freze_selector = true
+	%Spell_select_menu.show()
+	%Char_action_menu.show()
+	%Focused_char_stats.show()
+	await get_tree().process_frame
+	%Spell_select_menu.focus()
+
+func flush_skill_menu():
+	%Spell_select_menu.clear_skills()
 
 
 
