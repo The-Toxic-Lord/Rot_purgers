@@ -25,14 +25,15 @@ func new_battle_start():
 	allies = []
 	enemies = []
 	order_array = []
+	en_mng.map_gen = map_gen
 
 func add_attack(attacker : Character_node, target : Character_node):
 	var order_data := Order_data.new(attacker, target)
 	order_array.append(order_data)
 
 func add_skill(attacker : Character_node, skill : Skill_base, 
-damage_cells : Array[Vector2i], move_cells : Array[Vector2i]):
-	var order := Order_skill_data.new(attacker, skill, damage_cells, move_cells)
+damage_cells : Array[Vector2i], move_cells : Array[Vector2i], selected_cell : Vector2i):
+	var order := Order_skill_data.new(attacker, skill, damage_cells, move_cells, selected_cell)
 	order_array.append(order)
 
 func add_heal(attacker : Character_node, skill : Skill_base):

@@ -171,7 +171,7 @@ func _on_enemy_selector_item_selected(index: int) -> void:
 	for i in stats_le.size():
 		stats_le[i].text = str(enemy_data[index].get(id_to_stat[i]))
 
-func _on_stat_text_submitted(new_text: String, source: LineEdit) -> void:
+func _on_stat_text_changed(new_text: String, source: LineEdit) -> void:
 	var id : int = stats_le.find(source)
 	if new_text.is_empty():
 		source.text = str(selected_enemy_data.get(id_to_stat[id]))
@@ -181,7 +181,14 @@ func _on_stat_text_submitted(new_text: String, source: LineEdit) -> void:
 		return
 	source.text = str(selected_enemy_data.get(id_to_stat[id]))
 
+var id_to_AI_type : Dictionary[int, Character_stats.AI_types] = {
+	0 : Character_stats.AI_types.NORMAL,
+	1 : Character_stats.AI_types.TURRET,
+	2 : Character_stats.AI_types.CHARGER
+}
 
+func _on_ai_type_item_selected(index: int) -> void:
+	selected_enemy_data.AI_type = id_to_AI_type[index]
 
 
 

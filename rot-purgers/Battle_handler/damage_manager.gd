@@ -14,6 +14,8 @@ func hit_check(target : Character_node, attacker : Character_node, acc_mod : flo
 		return false
 
 func attack_damage(target : Character_node, attacker : Character_node):
+	attacker.attack(target.map_pos)
+	await attacker.attack_finished
 	if hit_check(target, attacker):
 		var damage : float
 		if target.is_defending:
@@ -33,6 +35,8 @@ func skill_mass(order : Order_skill_data):
 	await get_tree().process_frame
 	var attacker : Character_node = get_node(order.attacker)
 	
+	attacker.skill(order.selected_cell)
+	await attacker.attack_finished
 	for cell in order.damage_cells:
 		if map_gen.char_positions.has(cell):
 			await skill_damage(map_gen.char_positions[cell], attacker, order.skill)
@@ -47,6 +51,8 @@ func skill_oneshot(order : Order_skill_data):
 			targets.append(map_gen.char_positions[cell])
 	
 	var attacker : Character_node = get_node(order.attacker)
+	attacker.skill(order.selected_cell)
+	await attacker.attack_finished
 	for target in targets:
 		await skill_damage(target, attacker, order.skill)
 	

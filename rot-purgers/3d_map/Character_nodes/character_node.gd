@@ -27,6 +27,7 @@ var dir_to_angle : Dictionary[Map_generator.directions, float] = {
 signal direction_changed
 
 signal move_finished
+signal attack_finished
 
 func new_round():
 	can_move = true
@@ -35,6 +36,13 @@ func new_round():
 
 func damage(value : float):
 	stats.health = clampi(stats.health - int(value), 0, stats.max_health)
+	%Damage_numbers.text = str(int(value))
+	display_damage()
+
+func display_damage():
+	%Damage_numbers.show()
+	await get_tree().create_timer(1).timeout
+	%Damage_numbers.hide()
 	if stats.health == 0:
 		BattleHandler.enemy_dies(self)
 
@@ -142,6 +150,59 @@ func turn(new_dir : Map_generator.directions):
 
 func heal(value : float):
 	stats.health = clampi(stats.health + int(value), 0, stats.max_health)
+
+func _ready() -> void:
+	%temp_anim.play("Idle")
+
+func attack(target_cell : Vector2i):
+	turn_to_target(target_cell)
+	await get_tree().process_frame
+	attack_finished.emit()
+
+func skill(target_cell : Vector2i):
+	turn_to_target(target_cell)
+	await get_tree().process_frame
+	attack_finished.emit()
+
+var dir_to_vector : Dictionary[Map_generator.directions, Vector2i] = {
+	Map_generator.directions.N : Vector2i(0, -1),
+	Map_generator.directions.S : Vector2i(0, 1),
+	Map_generator.directions.E : Vector2i(1, 0),
+	Map_generator.directions.W : Vector2i(-1, 0)
+}
+var dir_arr : Array[Map_generator.directions] = [
+	Map_generator.directions.N, Map_generator.directions.E, 
+	Map_generator.directions.S, Map_generator.directions.W]
+
+func turn_to_target(target_cell : Vector2i):
+	var angle : float
+	var dir : Vector2 = (target_cell - map_pos)
+	dir = dir.normalized()
+	angle = dir.angle_to(dir_to_vector[current_direction])
+	angle = rad_to_deg(angle)
+	if angle > -50 and angle < 50:
+		return
+	var id : int = dir_arr.find(current_direction)
+	var new_dir : Map_generator.directions
+	if angle > 50 and angle < 140:
+		if id == 0:
+			id = 4
+		new_dir = dir_arr[id - 1]
+	elif angle < -50 and angle > -140:
+		if id == 3:
+			id = -1
+		new_dir = dir_arr[id + 1]
+	else:
+		if id >= 2:
+			id -= 4
+		new_dir = dir_arr[id + 2]
+	turn(new_dir)
+
+
+
+
+
+
 
 
 

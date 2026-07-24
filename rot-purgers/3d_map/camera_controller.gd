@@ -21,10 +21,6 @@ var zoom_target : float
 var zoom_min := -10.0
 var zoom_max := 10.0
 
-enum directions { N, E, S, W }
-var current_direction : directions = directions.N
-signal direction_change
-
 func _ready() -> void:
 	move_target = position
 	#rotation_target = rotation_degrees.y
@@ -77,20 +73,7 @@ func handle_rotation():
 		var rotation_dir := Input.get_axis("rotate_left", "rotate_right")
 		var quat : Quaternion = Quaternion(Vector3.UP, rotation_dir * rotation_speed)
 		quaternion = quat * quaternion
-		handle_direction()
 
-func handle_direction():
-	var deg := rad_to_deg(rotation.y)
-	var new_dir : directions = directions.S
-	if deg >= -45 and deg <= 45:
-		new_dir = directions.N
-	elif deg >= -135 and deg <= -45:
-		new_dir = directions.E
-	elif deg >= 45 and deg <= 135:
-		new_dir = directions.W
-	if current_direction != new_dir:
-		current_direction = new_dir
-		direction_change.emit()
 
 
 

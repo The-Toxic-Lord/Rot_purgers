@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://bkwt1lvhkpr71" path="res://data/Enemy_data/Crawler.tres" id="8_lbxat"]
 [ext_resource type="Resource" uid="uid://d0lnxgg3anglw" path="res://Skills/Skill_res/Blast.tres" id="9_17ap7"]
 [ext_resource type="Resource" uid="uid://dfefbrwmuckxc" path="res://Skills/Skill_res/heal.tres" id="10_rdq6i"]
+[ext_resource type="Resource" uid="uid://bw766n42tsyfr" path="res://data/Enemy_data/Crystal.tres" id="13_idmur"]
 
 [sub_resource type="Resource" id="Resource_66j8o"]
 script = ExtResource("5_dwjne")
@@ -38,16 +39,9 @@ jump_height = 50
 skills = Array[ExtResource("7_7c7dr")]([ExtResource("8_7c7dr"), ExtResource("10_rdq6i")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_kbdvy"]
-script = ExtResource("6_lbxat")
-name = "temp"
-char_class = "Godot"
-sprite = ExtResource("7_et4q3")
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
 [node name="Global_data" type="Node" unique_id=1876976633]
 script = ExtResource("1_215bx")
 terrain_data_holder = Array[ExtResource("2_bnln1")]([ExtResource("3_u4igo"), ExtResource("4_8776e")])
 map_objects = Array[ExtResource("5_dwjne")]([SubResource("Resource_66j8o"), SubResource("Resource_dwjne")])
 ally_team = Array[ExtResource("6_lbxat")]([SubResource("Resource_17ap7"), SubResource("Resource_lbxat")])
-enemy_data = Array[ExtResource("6_lbxat")]([ExtResource("8_lbxat"), SubResource("Resource_kbdvy")])
+enemy_data = Array[ExtResource("6_lbxat")]([ExtResource("8_lbxat"), ExtResource("13_idmur")])

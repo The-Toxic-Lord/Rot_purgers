@@ -11,4 +11,5 @@ script = ExtResource("1_pjyf4")
 script = ExtResource("2_fsmvl")
 
 [node name="Enemy_manager" type="Node" parent="." unique_id=1453955168]
+unique_name_in_owner = true
 script = ExtResource("3_fsmvl")

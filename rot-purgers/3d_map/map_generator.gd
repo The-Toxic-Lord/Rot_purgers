@@ -226,11 +226,11 @@ func spawn_select_zone(ch_node : Character_node, st : states):
 	var ignore_enemies : bool = true
 	match st:
 		states.MOVE:
-			dist = ch_node.stats.move_speed + 1
+			dist = ch_node.stats.move_speed
 			ignore_chars = false
 			ignore_enemies = false
 		states.ATTACK:
-			dist = ch_node.stats.attack_distance + 1
+			dist = ch_node.stats.attack_distance
 	
 	move_cells = get_flow_cells(ch_node.map_pos, dist, ignore_chars, ignore_enemies, ch_node.stats.jump_height)
 	
@@ -246,10 +246,10 @@ func spawn_select_zone(ch_node : Character_node, st : states):
 		select_zones[cell] = move_zone
 
 func get_flow_cells(start_cell : Vector2i, dist : int = 1, ignore_chars := true, ignore_enemies := true,
-height_limit : int = 9999) -> Array[Vector2i]:
+height_limit : int = 9999, ignore_player := true) -> Array[Vector2i]:
 	var select_cells : Array[Vector2i] = []
 	var border : Array[Vector2i] = [start_cell]
-		
+	dist += 1
 	for i in dist:
 		var new_border : Array[Vector2i] = []
 		for cell in border:
@@ -265,6 +265,8 @@ height_limit : int = 9999) -> Array[Vector2i]:
 						continue
 				if char_positions.has(check_cell) and !ignore_chars:
 					if BattleHandler.enemies.has(char_positions[check_cell]) and !ignore_enemies:
+						continue
+					if BattleHandler.allies.has(char_positions[check_cell]) and !ignore_player:
 						continue
 				var current_height : int = terrain_map[cell].height
 				var ch_c_h : int = terrain_map[check_cell].height
@@ -336,7 +338,7 @@ func try_mouse_raycast():
 
 func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 	for cell in enemy_map:
-		var char_node : Character_node = load("uid://cf0xldnvalt5g").instantiate()
+		var char_node : Character_node = load("uid://c7bbx7glxoob8").instantiate()
 		add_child(char_node)
 		char_node.position = map_cells[cell].position
 		char_node.stats = enemy_map[cell]
@@ -420,10 +422,6 @@ func make_unboun_skill(skill : Skill_base):
 		if unbound_spell_range.has(cell):
 			unbound_spell_range[cell].hide()
 
-func camera_direction_change():
-	#rotate_skill()
-	pass
-
 enum directions { N, E, S, W }
 var dir_arr : Array[directions] = [directions.N, directions.E, directions.S, directions.W]
 var dir_to_rad : Dictionary[directions, float] = {
@@ -492,7 +490,7 @@ func add_skill_order():
 			damage_cells.append(cell)
 		else:
 			move_cells.append(cell)
-	BattleHandler.add_skill(selected_char, selected_skill, damage_cells, move_cells)
+	BattleHandler.add_skill(selected_char, selected_skill, damage_cells, move_cells, selected_cell)
 	clear_select_zone()
 	%Map_UI.flush_skill_menu()
 	selected_char.can_attack = false

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://bw766n42tsyfr"]
+
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_1t5y0"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_klvyd"]
+[ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="3_po2kh"]
+
+[resource]
+script = ExtResource("1_1t5y0")
+name = "Crystal"
+char_class = "Mineral"
+age = 468
+sprite = ExtResource("3_po2kh")
+attack_distance = 5
+attack_height = 30
+metadata/_custom_type_script = "uid://by1rq468n504l"

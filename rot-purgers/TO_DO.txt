@@ -10,3 +10,6 @@
 - settings
 - player characters models
 - stats rearange
++- enemy AI
+- in-game save
++ turn on attack

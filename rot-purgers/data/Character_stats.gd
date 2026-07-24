@@ -26,7 +26,11 @@ enum stats { max_health, health, max_magic, magic, strength, defence, magic_stre
 @export var move_speed : int = 4
 @export var jump_height : int = 20
 @export var attack_distance : int = 1
+@export var attack_height : int = 10
 @export var counter : int = 1
+
+enum AI_types { TURRET, NORMAL, CHARGER }
+@export var AI_type : AI_types = AI_types.NORMAL
 
 @export var skills : Array[Skill_base]
 @export_storage var atlas_coords : Vector2i
