@@ -3,12 +3,22 @@ extends Node3D
 class_name Character_node
 
 @export var stats : Character_stats
+@export var material : StandardMaterial3D
 
 var can_move := true
 var can_attack := true
 var is_defending := false
-var has_order := false
+var has_order := false:
+	set(value):
+		has_order = value
+		if value:
+			%Executed_order.show()
+		else:
+			%Executed_order.hide()
 var map_pos : Vector2i
+var previous_map_pos : Vector2i
+var can_undo_move := false
+var is_enemy := true
 
 var previous_direction : Map_generator.directions = Map_generator.directions.N
 var current_direction : Map_generator.directions = Map_generator.directions.N
@@ -28,26 +38,49 @@ signal direction_changed
 
 signal move_finished
 signal attack_finished
+signal animation_ended
+
+var rot_stage : Dictionary[int, float] = {
+	0 : 0,
+	1 : 0.39,
+	2 : 0.62,
+	3 : 0.77
+}
+func set_rot(stage : int):
+	var rot : StandardMaterial3D = material.next_pass
+	rot.albedo_color.a = rot_stage[stage]
 
 func new_round():
 	can_move = true
 	can_attack = true
 	is_defending = false
+	can_undo_move = false
+	previous_map_pos = Vector2i(-1, -1)
+	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.2), 0, stats.max_magic)
 
 func damage(value : float):
-	stats.health = clampi(stats.health - int(value), 0, stats.max_health)
-	%Damage_numbers.text = str(int(value))
+	await get_tree().process_frame
+	if value == -1:
+		%Damage_numbers.text = "miss"
+		%Damage_numbers.modulate = Color("ffffffff")
+	else:
+		stats.health = clampi(stats.health - int(value), 0, stats.max_health)
+		%Damage_numbers.text = str(int(value))
+		%Damage_numbers.modulate = Color("e80029")
 	display_damage()
 
 func display_damage():
 	%Damage_numbers.show()
+	SoundHandler.play_damage()
 	await get_tree().create_timer(1).timeout
 	%Damage_numbers.hide()
+	animation_ended.emit()
 	if stats.health == 0:
-		BattleHandler.enemy_dies(self)
+		BattleHandler.char_dies(self)
 
 func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
 select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Vector2i, Map_cell]):
+	previous_map_pos = map_pos
 	var a_star := AStarGrid2D.new()
 	a_star.region = map_boundary
 	a_star.cell_size = Vector2i(1,1)
@@ -59,19 +92,25 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 	a_star.fill_solid_region(a_star.region)
 	for cell in select_zones:
 		a_star.set_point_solid(cell, false)
-	for ally in BattleHandler.allies:
-		a_star.set_point_solid(ally.map_pos, false)
+	if BattleHandler.allies.has(self):
+		for ally in BattleHandler.allies:
+			a_star.set_point_solid(ally.map_pos, false)
+	else:
+		for enemy in BattleHandler.enemies:
+			a_star.set_point_solid(enemy.map_pos, false)
 	a_star.update()
 	
 	var path : Array[Vector2i] = a_star.get_id_path(map_pos, target_cell)
 	var prev_pos : Vector2i = map_pos
+	
 	path.remove_at(0)
 	for cell in path:
 		previous_direction = current_direction
-		turn(move_to_direction[cell - prev_pos])
+		turn(move_to_direction[cell - prev_pos], true)
 		current_direction = move_to_direction[cell - prev_pos]
 		await move_next(cell, terrain_map, map_cells)
 		prev_pos = map_pos
+	can_undo_move = true
 	move_finished.emit()
 
 func move_next(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
@@ -137,31 +176,48 @@ func defend():
 	can_move = false
 	is_defending = true
 
-func turn(new_dir : Map_generator.directions):
+func turn(new_dir : Map_generator.directions, skip_animation := false):
 	if new_dir == current_direction:
+		await get_tree().process_frame
+		turn_finished()
 		return
 	previous_direction = current_direction
 	current_direction = new_dir
 	
-	rotation.y = dir_to_angle[new_dir]
-	
-	await get_tree().process_frame
+	var q := Quaternion(Vector3.UP, dir_to_angle[new_dir])
+	if skip_animation:
+		quaternion = q
+		await get_tree().process_frame
+		turn_finished()
+	else:
+		var tween := create_tween()
+		tween.tween_property(self, "quaternion", q, 0.5)
+		tween.tween_callback(turn_finished)
+
+func turn_finished():
 	direction_changed.emit()
 
 func heal(value : float):
-	stats.health = clampi(stats.health + int(value), 0, stats.max_health)
+	var heal_val : int = int(stats.max_health * value)
+	stats.health = clampi(heal_val + stats.health, 0, stats.max_health)
+	%Damage_numbers.text = str(heal_val)
+	%Damage_numbers.modulate = Color("39ad00ff")
+	display_damage()
 
 func _ready() -> void:
-	%temp_anim.play("Idle")
+	if find_child("temp_anim", true):
+		%temp_anim.play("Idle")
 
 func attack(target_cell : Vector2i):
-	turn_to_target(target_cell)
 	await get_tree().process_frame
+	turn_to_target(target_cell)
+	await self.direction_changed
 	attack_finished.emit()
 
 func skill(target_cell : Vector2i):
-	turn_to_target(target_cell)
 	await get_tree().process_frame
+	turn_to_target(target_cell)
+	await self.direction_changed
 	attack_finished.emit()
 
 var dir_to_vector : Dictionary[Map_generator.directions, Vector2i] = {
@@ -181,6 +237,8 @@ func turn_to_target(target_cell : Vector2i):
 	angle = dir.angle_to(dir_to_vector[current_direction])
 	angle = rad_to_deg(angle)
 	if angle > -50 and angle < 50:
+		await get_tree().process_frame
+		turn_finished()
 		return
 	var id : int = dir_arr.find(current_direction)
 	var new_dir : Map_generator.directions
@@ -197,6 +255,30 @@ func turn_to_target(target_cell : Vector2i):
 			id -= 4
 		new_dir = dir_arr[id + 2]
 	turn(new_dir)
+
+func undo_move(map_cells : Dictionary[Vector2i, Map_cell]):
+	position = map_cells[previous_map_pos].position
+	can_move = true
+	map_pos = previous_map_pos
+	can_undo_move = false
+
+func load_state(save_char_data : Save_char_data):
+	can_move = save_char_data.can_move
+	can_attack = save_char_data.can_attack
+	is_defending = save_char_data.is_defending
+	has_order = save_char_data.has_order
+	can_undo_move = save_char_data.can_undo_move
+	map_pos = save_char_data.map_pos
+	previous_map_pos = save_char_data.previous_map_pos
+	stats = save_char_data.stats
+	is_enemy = save_char_data.is_enemy
+	turn(save_char_data.current_direction, true)
+
+func magic_cost(value : int):
+	stats.magic -= value
+
+
+
 
 
 

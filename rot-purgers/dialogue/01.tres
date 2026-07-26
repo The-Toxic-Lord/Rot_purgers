@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Text_data" format=3 uid="uid://5xt31o4d05r0"]
+
+[ext_resource type="Script" uid="uid://dlik2dowo2312" path="res://Line_data.gd" id="1_4r1gm"]
+[ext_resource type="PackedScene" uid="uid://c2hd250kce25a" path="res://import/first_map_export.tscn" id="1_p11pi"]
+[ext_resource type="Script" uid="uid://w5upts0exhjv" path="res://text_data.gd" id="2_p11pi"]
+[ext_resource type="AudioStream" uid="uid://dsn7qxqwnbl63" path="res://sound/Into Oblivion OGG.ogg" id="3_mqldu"]
+
+[sub_resource type="Resource" id="Resource_4r1gm"]
+script = ExtResource("1_4r1gm")
+char_name = "Alastor"
+text = "Oh! Good afternoon, High Chancellor. Were you perhaps waiting for me?"
+
+[sub_resource type="Resource" id="Resource_p11pi"]
+script = ExtResource("1_4r1gm")
+char_name = "Elliot"
+text = "Quite so. It would seem that our investigations have led us to the same place."
+
+[sub_resource type="Resource" id="Resource_mqldu"]
+script = ExtResource("1_4r1gm")
+char_name = "Alastor"
+text = "Have you already been down there?"
+
+[sub_resource type="Resource" id="Resource_04cnf"]
+script = ExtResource("1_4r1gm")
+char_name = "Elliot"
+text = "No. I sensed your presence approaching and decided to wait."
+
+[sub_resource type="Resource" id="Resource_e0qr1"]
+script = ExtResource("1_4r1gm")
+char_name = "Alastor"
+text = "Thank you! It is always a pleasure to see a master at work!"
+
+[sub_resource type="Resource" id="Resource_7g4dm"]
+script = ExtResource("1_4r1gm")
+char_name = "Elliot"
+text = "Hmm. As time goes by, your attitude still doesn't change. Follow me."
+
+[resource]
+script = ExtResource("2_p11pi")
+char_id = 1.0
+character_names = Array[String](["Alastor", "Elliot"])
+lines = Array[ExtResource("1_4r1gm")]([SubResource("Resource_4r1gm"), SubResource("Resource_p11pi"), SubResource("Resource_mqldu"), SubResource("Resource_04cnf"), SubResource("Resource_e0qr1"), SubResource("Resource_7g4dm")])
+cutscene = ExtResource("1_p11pi")
+music = ExtResource("3_mqldu")
+metadata/_custom_type_script = "uid://w5upts0exhjv"

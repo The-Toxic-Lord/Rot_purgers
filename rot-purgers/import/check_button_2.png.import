@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4j3flsixodyw"
-path.s3tc="res://.godot/imported/Aven7_Aven_texture.png-b910080e8ab87f8915ab1bb3da83b828.s3tc.ctex"
+uid="uid://dr71juhuy77tu"
+path="res://.godot/imported/check_button_2.png-db5a9e0d3f3b58d6c351af8be6e82938.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "647a486f3705a5332efc061cb44afb94"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://blender_models/Aven7_Aven_texture.png"
-dest_files=["res://.godot/imported/Aven7_Aven_texture.png-b910080e8ab87f8915ab1bb3da83b828.s3tc.ctex"]
+source_file="res://import/check_button_2.png"
+dest_files=["res://.godot/imported/check_button_2.png-db5a9e0d3f3b58d6c351af8be6e82938.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -41,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

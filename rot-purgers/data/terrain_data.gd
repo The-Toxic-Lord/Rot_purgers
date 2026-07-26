@@ -7,3 +7,5 @@ class_name Terrain_data
 @export var passable : bool = true
 @export var height := 0
 @export var depth := 0
+@export var floor_material : Material
+@export var wall_material : Material

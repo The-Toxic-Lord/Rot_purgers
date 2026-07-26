@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://d2mat2b43iwxg"]
+
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_miulx"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_vo2ee"]
+[ext_resource type="Resource" uid="uid://d0lnxgg3anglw" path="res://Skills/Skill_res/Blast.tres" id="3_6rxxe"]
+[ext_resource type="Resource" uid="uid://dfefbrwmuckxc" path="res://Skills/Skill_res/heal.tres" id="4_hn48a"]
+[ext_resource type="Resource" uid="uid://327ythhichbq" path="res://Skills/Skill_res/Shrapnel_rain.tres" id="5_3bdwe"]
+[ext_resource type="Resource" uid="uid://d3enrcnktuvq4" path="res://Skills/Skill_res/Plasma ball.tres" id="6_2ulin"]
+[ext_resource type="Texture2D" uid="uid://blrb3oenhm7o" path="res://dialogue/char_sprites/Alastor.png" id="7_2ulin"]
+
+[resource]
+script = ExtResource("1_miulx")
+name = "Alastor"
+char_class = "Chancellor"
+age = 516
+sprite = ExtResource("7_2ulin")
+max_magic = 80
+strength = 30
+defence = 30
+magic_strenght = 55
+accuracy = 70
+speed = 45
+attack_stat = 6
+defender_stat = 6
+jump_height = 30
+attack_distance = 3
+attack_height = 40
+node_UID = "uid://cpgsmi4r45bbx"
+skills = Array[ExtResource("2_vo2ee")]([ExtResource("3_6rxxe"), ExtResource("4_hn48a"), ExtResource("5_3bdwe"), ExtResource("6_2ulin")])
+metadata/_custom_type_script = "uid://by1rq468n504l"

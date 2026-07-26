@@ -16,6 +16,8 @@ var order_array : Array[Order_data] = []
 
 @onready var en_mng : Enemy_manager = $Enemy_manager
 
+var main_node : Main_node
+
 signal order_handled
 signal orders_executed
 
@@ -28,16 +30,19 @@ func new_battle_start():
 	en_mng.map_gen = map_gen
 
 func add_attack(attacker : Character_node, target : Character_node):
-	var order_data := Order_data.new(attacker, target)
+	var order_data := Order_data.new()
+	order_data.make(attacker, target)
 	order_array.append(order_data)
 
 func add_skill(attacker : Character_node, skill : Skill_base, 
 damage_cells : Array[Vector2i], move_cells : Array[Vector2i], selected_cell : Vector2i):
-	var order := Order_skill_data.new(attacker, skill, damage_cells, move_cells, selected_cell)
+	var order := Order_skill_data.new()
+	order.make_skill(attacker, skill, damage_cells, move_cells, selected_cell)
 	order_array.append(order)
 
 func add_heal(attacker : Character_node, skill : Skill_base):
-	var order := Order_heal.new(attacker, skill)
+	var order := Order_heal.new()
+	order.make_heal(attacker, skill)
 	order_array.append(order)
 
 func handle_attack(order_data : Order_data):
@@ -54,7 +59,10 @@ func execute_orders():
 	prev_state = state
 	state = states.ANIMATION
 	for order_data in order_array:
-		map_gen.move_camera(get_node(order_data.attacker))
+		var attacker : Character_node = get_node(order_data.attacker)
+		map_gen.set_camera_target(attacker)
+		map_gen.set_selector(attacker.map_pos)
+		attacker.can_undo_move = false
 		if order_data is Order_skill_data:
 			handle_skill(order_data)
 		elif order_data is Order_heal:
@@ -64,28 +72,47 @@ func execute_orders():
 		await order_handled
 	order_array.clear()
 	state = prev_state
-	orders_executed.emit()
+	if map_gen != null:
+		map_gen.camera.follow_target = null
+		orders_executed.emit()
 
 func end_player_turn():
+	if map_gen == null:
+		return
 	state = states.ENEMY
 	if !order_array.is_empty():
 		execute_orders()
 		await orders_executed
+	if map_gen == null:
+		return
 	en_mng.start_enemy_turn()
 	await en_mng.enemies_turn_ended
 	start_player_turn()
 
 func start_player_turn():
+	if map_gen == null:
+		return
+	map_gen.set_camera_target()
 	for ch in allies:
 		ch.new_round()
 	state = states.PLAYER
 	map_gen.freze_selector = false
+	map_gen.set_selector(map_gen.selected_cell)
+	if map_gen is Tutorial:
+		map_gen.end_turn_check = true
 
-func enemy_dies(enemy : Character_node):
-	enemies.erase(enemy)
-	map_gen.remove_enemy(enemy)
-	if enemies.is_empty():
-		print("Victory!")
+func char_dies(char_node : Character_node):
+	if enemies.has(char_node):
+		enemies.erase(char_node)
+		await map_gen.remove_enemy(char_node)
+		if enemies.is_empty() and map_gen.map_data.end_condition == Map_data.map_end_conditions.ENEMY:
+			end_battle()
+	else:
+		allies.erase(char_node)
+		map_gen.remove_enemy(char_node)
+		if allies.is_empty() and GlobalData.ally_team.is_empty():
+			game_over()
+			# ADD game_over
 
 func start_animation_freeze():
 	prev_state = state
@@ -122,11 +149,24 @@ func free_char_from_order(order : Order_data):
 		var attacker : Character_node = get_node(order.attacker)
 		attacker.has_order = false
 
+func remove_order(char_node : Character_node):
+	var attacker_path : NodePath = char_node.get_path()
+	
+	for order in order_array:
+		if order.attacker == attacker_path:
+			order_array.erase(order)
+			return
 
+func end_battle():
+	var ally_data_array : Array[Character_stats] = []
+	for ally in allies:
+		ally.stats.new()
+		ally_data_array.append(ally.stats)
+	GlobalData.ally_team.append_array(ally_data_array)
+	map_gen.get_parent().load_map()
 
-
-
-
+func game_over():
+	main_node.game_over()
 
 
 

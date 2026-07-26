@@ -33,11 +33,12 @@ theme_override_constants/separation = 40
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=815942520]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer" unique_id=1690355546]
+[node name="Sprite" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer" unique_id=1690355546]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("1_ohi4o")
-stretch_mode = 2
 
 [node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=991567295]
 layout_mode = 2

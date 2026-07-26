@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cfvfk3hl011jv"]
+
+[ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="1_x4d4u"]
+
+[resource]
+albedo_texture = ExtResource("1_x4d4u")

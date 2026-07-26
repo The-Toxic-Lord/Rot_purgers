@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bl6uegavo3hjd"]
+
+[ext_resource type="Script" uid="uid://duawm8aygvli2" path="res://dialogue/dialogue_balloon.gd" id="1_md88y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwy4y"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ggxxn"]
+
+[node name="Dialogue_balloon" type="CanvasLayer" unique_id=1839252449]
+layer = 100
+script = ExtResource("1_md88y")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1220694714]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -330.0
+offset_right = 600.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1207921599]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vwy4y")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=2074633728]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer" unique_id=1461444970]
+layout_mode = 2
+
+[node name="Char_name" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=203496621]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(30, 0)
+theme_override_font_sizes/font_size = 30
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer" unique_id=360502687]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=486686027]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ggxxn")
+
+[node name="Char_text" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=286026391]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_position = Vector2(30, 0)
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 2

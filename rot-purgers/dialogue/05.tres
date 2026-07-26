@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Text_data" format=3 uid="uid://bk5os3tkabrcf"]
+
+[ext_resource type="Script" uid="uid://dlik2dowo2312" path="res://Line_data.gd" id="1_xslrg"]
+[ext_resource type="Script" uid="uid://w5upts0exhjv" path="res://text_data.gd" id="2_e76n4"]
+
+[sub_resource type="Resource" id="Resource_xslrg"]
+script = ExtResource("1_xslrg")
+char_name = "Alastor"
+text = "Do my eyes deceive me?"
+
+[sub_resource type="Resource" id="Resource_e76n4"]
+script = ExtResource("1_xslrg")
+char_name = "Elliot"
+text = "I am afraid not. Whatever that thing is, it's not of this world."
+
+[sub_resource type="Resource" id="Resource_ntmag"]
+script = ExtResource("1_xslrg")
+char_name = "Alastor"
+text = "What should we do? Kill? Restrain? Study?"
+
+[sub_resource type="Resource" id="Resource_0nuci"]
+script = ExtResource("1_xslrg")
+char_name = "Elliot"
+text = "Purge it."
+
+[resource]
+script = ExtResource("2_e76n4")
+character_names = Array[String](["Alastor", "Elliot"])
+lines = Array[ExtResource("1_xslrg")]([SubResource("Resource_xslrg"), SubResource("Resource_e76n4"), SubResource("Resource_ntmag"), SubResource("Resource_0nuci")])
+metadata/_custom_type_script = "uid://w5upts0exhjv"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://q32sww7y2ms6"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_bkwwl"]
+[ext_resource type="Resource" uid="uid://cp6yhgk7l0s7g" path="res://Skills/skill_map_data_res/blade_wave_cut.tres" id="2_ggr38"]
+
+[resource]
+script = ExtResource("1_bkwwl")
+name = "Blade wave"
+magic_cost = 10
+skill_map = ExtResource("2_ggr38")
+"Is Attack" = true
+"Is Heal" = false
+Damage = 1.0
+"Maximum height difference" = 15
+"Maximum distance" = 1
+"Accuracy modifier" = 0.0
+"Crit chance" = 0.05
+"Stat used" = 6
+"Defence stat" = 6

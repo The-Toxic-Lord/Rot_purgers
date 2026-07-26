@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://2imm1twj3hd"]
+
+[ext_resource type="Script" uid="uid://da58ey0o80irr" path="res://3d_map/tutorial.gd" id="1_d55np"]
+[ext_resource type="PackedScene" uid="uid://0mb7w8g2nupj" path="res://3d_map/selector.tscn" id="2_e04l2"]
+[ext_resource type="PackedScene" uid="uid://dtksvwf0a8hco" path="res://3d_map/camera_position.tscn" id="3_ne87w"]
+[ext_resource type="Script" uid="uid://dytrujpc7xx40" path="res://3d_map/camera_tutorial.gd" id="4_e04l2"]
+[ext_resource type="PackedScene" uid="uid://2sjn27e2vr0r" path="res://3d_map/UI/map_ui.tscn" id="4_vmawb"]
+[ext_resource type="Script" uid="uid://dxyk1medtmjeb" path="res://3d_map/UI/map_ui_tutorial.gd" id="6_ne87w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_38kli"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_r00ey"]
+sky_material = SubResource("ProceduralSkyMaterial_38kli")
+
+[sub_resource type="Environment" id="Environment_ti2bc"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_r00ey")
+glow_enabled = true
+
+[node name="Map_generator" type="Node3D" unique_id=230936383]
+script = ExtResource("1_d55np")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2141279964]
+environment = SubResource("Environment_ti2bc")
+
+[node name="Map_cell_holder" type="Node3D" parent="." unique_id=1096133750]
+unique_name_in_owner = true
+
+[node name="Selector" parent="." unique_id=142981529 instance=ExtResource("2_e04l2")]
+unique_name_in_owner = true
+
+[node name="Camera_position" parent="." unique_id=810054930 instance=ExtResource("3_ne87w")]
+unique_name_in_owner = true
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 6, 0)
+rotation_edit_mode = 0
+script = ExtResource("4_e04l2")
+move_speed = 0.2
+
+[node name="Map_UI" parent="." unique_id=1270663533 instance=ExtResource("4_vmawb")]
+unique_name_in_owner = true
+script = ExtResource("6_ne87w")
+
+[connection signal="map_spawn_character" from="Map_UI" to="." method="spawn_ally"]

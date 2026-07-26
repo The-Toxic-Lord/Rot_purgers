@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://d3enrcnktuvq4"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_kpt6o"]
+[ext_resource type="Resource" uid="uid://yrgoq240tx0j" path="res://Skills/skill_map_data_res/Plasma_ball.tres" id="2_egmsf"]
+
+[resource]
+script = ExtResource("1_kpt6o")
+name = "Plasma ball"
+magic_cost = 50
+skill_map = ExtResource("2_egmsf")
+"Is Attack" = true
+"Is Heal" = false
+Damage = 2.0
+"Maximum height difference" = 10
+"Maximum distance" = 1
+"Accuracy modifier" = 0.3
+"Crit chance" = 0.05
+"Stat used" = 6
+"Defence stat" = 6

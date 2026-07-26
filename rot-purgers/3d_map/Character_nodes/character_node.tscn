@@ -770,3 +770,16 @@ skeleton = NodePath("..")
 [node name="temp_anim" type="AnimationPlayer" parent="Aven8" unique_id=1010914774]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_2yj8h")
+
+[node name="Executed_order" type="Label3D" parent="." unique_id=1303701797]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4014068, 0)
+visible = false
+pixel_size = 0.0025
+billboard = 1
+fixed_size = true
+alpha_cut = 1
+modulate = Color(0.5957073, 0.4703809, 1.92523e-07, 1)
+text = "E"
+font_size = 24
+outline_size = 8

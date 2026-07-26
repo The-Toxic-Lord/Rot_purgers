@@ -20,7 +20,14 @@ enum stats { max_health, health, max_magic, magic, strength, defence, magic_stre
 @export var magic_strenght : int = 10
 @export var accuracy : int = 10
 @export var speed : int = 5
+@export var attack_stat : stats = stats.strength
+@export var defender_stat : stats = stats.defence
 
+func get_attack_stat_used() -> int:
+	return get(stats.keys()[attack_stat])
+
+func get_defence_stat(st : stats):
+	return get(stats.keys()[st])
 
 @export_group("", "")
 @export var move_speed : int = 4
@@ -28,8 +35,10 @@ enum stats { max_health, health, max_magic, magic, strength, defence, magic_stre
 @export var attack_distance : int = 1
 @export var attack_height : int = 10
 @export var counter : int = 1
+@export var node_UID : String
+@export var start_dir : Map_generator.directions
 
-enum AI_types { TURRET, NORMAL, CHARGER }
+enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL }
 @export var AI_type : AI_types = AI_types.NORMAL
 
 @export var skills : Array[Skill_base]

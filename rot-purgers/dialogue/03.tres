@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="Text_data" format=3 uid="uid://dqccj25tmkwmi"]
+
+[ext_resource type="Script" uid="uid://dlik2dowo2312" path="res://Line_data.gd" id="1_4wvur"]
+[ext_resource type="Script" uid="uid://w5upts0exhjv" path="res://text_data.gd" id="2_k60s8"]
+
+[sub_resource type="Resource" id="Resource_4wvur"]
+script = ExtResource("1_4wvur")
+char_name = "Alastor"
+text = "What are those? I have not seen such creatures in my life."
+
+[sub_resource type="Resource" id="Resource_k60s8"]
+script = ExtResource("1_4wvur")
+char_name = "Elliot"
+text = "Remnants of the ancient war."
+
+[sub_resource type="Resource" id="Resource_2garr"]
+script = ExtResource("1_4wvur")
+char_name = "Alastor"
+text = "?"
+
+[sub_resource type="Resource" id="Resource_whcsi"]
+script = ExtResource("1_4wvur")
+char_name = "Alastor"
+text = "No! That cannot be! You, of all mages, believe in those myths?"
+
+[sub_resource type="Resource" id="Resource_cmow7"]
+script = ExtResource("1_4wvur")
+char_name = "Elliot"
+text = "When you get as old as me, you will be able to believe even the most outrageous claims. Especially when the one saying them is the Archchancellor."
+
+[sub_resource type="Resource" id="Resource_xyivf"]
+script = ExtResource("1_4wvur")
+char_name = "Alastor"
+text = "…"
+
+[sub_resource type="Resource" id="Resource_wyy6u"]
+script = ExtResource("1_4wvur")
+char_name = "Elliot"
+text = "Also, this is a perfect place for them to hide. The place that no fool would be able to leave to tell the tale and no wise men would enter."
+
+[sub_resource type="Resource" id="Resource_22i18"]
+script = ExtResource("1_4wvur")
+char_name = "Alastor"
+text = "Heh. Good thing that we are neither. "
+
+[sub_resource type="Resource" id="Resource_ljqnj"]
+script = ExtResource("1_4wvur")
+char_name = "Elliot"
+text = "Hm. Let's wipe them out."
+
+[resource]
+script = ExtResource("2_k60s8")
+char_id = 1.0
+character_names = Array[String](["Alastor", "Elliot"])
+lines = Array[ExtResource("1_4wvur")]([SubResource("Resource_4wvur"), SubResource("Resource_k60s8"), SubResource("Resource_2garr"), SubResource("Resource_whcsi"), SubResource("Resource_cmow7"), SubResource("Resource_xyivf"), SubResource("Resource_wyy6u"), SubResource("Resource_22i18"), SubResource("Resource_ljqnj")])
+metadata/_custom_type_script = "uid://w5upts0exhjv"

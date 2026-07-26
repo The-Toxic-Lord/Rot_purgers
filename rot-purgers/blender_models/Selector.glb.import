@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b80mc7fckojse"
-path="res://.godot/imported/Aven7.glb-3fdbc6c7548b5712a48d23c309b72324.scn"
+uid="uid://64sli2i3xbwo"
+path="res://.godot/imported/Selector.glb-91ebddaaebb4fcab8e7883cde0216af2.scn"
 
 [deps]
 
-source_file="res://blender_models/Aven7.glb"
-dest_files=["res://.godot/imported/Aven7.glb-3fdbc6c7548b5712a48d23c309b72324.scn"]
+source_file="res://blender_models/Selector.glb"
+dest_files=["res://.godot/imported/Selector.glb-91ebddaaebb4fcab8e7883cde0216af2.scn"]
 
 [params]
 

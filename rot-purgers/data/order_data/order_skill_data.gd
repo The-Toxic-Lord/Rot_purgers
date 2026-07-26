@@ -7,7 +7,7 @@ class_name Order_skill_data
 @export var move_cells : Array[Vector2i]
 @export var selected_cell : Vector2i
 
-func _init(_attacker : Character_node, _skill : Skill_base, 
+func make_skill(_attacker : Character_node, _skill : Skill_base, 
 _damage_cells : Array[Vector2i], _move_cells : Array[Vector2i], _selected_cell : Vector2i) -> void:
 	attacker = _attacker.get_path()
 	skill = _skill

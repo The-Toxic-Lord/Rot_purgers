@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://dg6k5myc0u1ir"]
+
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_dnv0a"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_gkyuj"]
+[ext_resource type="Resource" uid="uid://dhhs70r647yrx" path="res://Skills/Skill_res/Slash.tres" id="3_xc611"]
+[ext_resource type="Resource" uid="uid://dfefbrwmuckxc" path="res://Skills/Skill_res/heal.tres" id="4_1grv0"]
+[ext_resource type="Resource" uid="uid://q32sww7y2ms6" path="res://Skills/Skill_res/Blade wave.tres" id="5_eurt7"]
+[ext_resource type="Texture2D" uid="uid://d1ht125wx8k8d" path="res://dialogue/char_sprites/Elliot.png" id="6_gkyuj"]
+
+[resource]
+script = ExtResource("1_dnv0a")
+name = "Elliot"
+char_class = "High chancellor"
+age = 2167
+sprite = ExtResource("6_gkyuj")
+max_health = 200
+strength = 50
+defence = 55
+magic_strenght = 70
+accuracy = 40
+speed = 30
+move_speed = 3
+counter = 3
+node_UID = "uid://dk1kcb3icintd"
+skills = Array[ExtResource("2_gkyuj")]([ExtResource("3_xc611"), ExtResource("5_eurt7"), ExtResource("4_1grv0")])
+metadata/_custom_type_script = "uid://by1rq468n504l"

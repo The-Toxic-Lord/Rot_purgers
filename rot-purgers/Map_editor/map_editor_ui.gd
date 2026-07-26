@@ -21,7 +21,7 @@ signal generate_map
 
 @onready var object_buttons : Dictionary[BaseButton, Map_object] = {
 	%Spawn_zone : GlobalData.map_objects[0],
-	%Enemy_zone : GlobalData.map_objects[1]
+	%Exit_zone : GlobalData.map_objects[1]
 }
 
 @onready var mode_buttons : Dictionary[int, Map_editor.modes] = {
@@ -31,7 +31,8 @@ signal generate_map
 }
 
 @onready var stats_le : Array[LineEdit] = [
-	%Health_le, %Magic_le, %Strength_le, %Defence_le, %Magic_strenght_le, %Accuracy_le, %Speed_le, %Move_speed_le, %Jump_height_le, %Attack_distance_le, %Counter_le
+	%Health_le, %Magic_le, %Strength_le, %Defence_le, %Magic_strenght_le,\
+	 %Accuracy_le, %Speed_le, %Move_speed_le, %Jump_height_le, %Attack_distance_le, %Counter_le
 ]
 
 var id_to_stat : Dictionary = {
@@ -182,13 +183,26 @@ func _on_stat_text_changed(new_text: String, source: LineEdit) -> void:
 	source.text = str(selected_enemy_data.get(id_to_stat[id]))
 
 var id_to_AI_type : Dictionary[int, Character_stats.AI_types] = {
-	0 : Character_stats.AI_types.NORMAL,
-	1 : Character_stats.AI_types.TURRET,
-	2 : Character_stats.AI_types.CHARGER
+	0 : Character_stats.AI_types.TURRET,
+	1 : Character_stats.AI_types.NORMAL,
+	2 : Character_stats.AI_types.CHARGER,
+	3 : Character_stats.AI_types.MEATWALL
 }
 
 func _on_ai_type_item_selected(index: int) -> void:
 	selected_enemy_data.AI_type = id_to_AI_type[index]
+
+var dir_arr : Array[Map_generator.directions] = [Map_generator.directions.N, Map_generator.directions.E, 
+Map_generator.directions.S, Map_generator.directions.W]
+func _on_start_dir_item_selected(index: int) -> void:
+	selected_enemy_data.start_dir = dir_arr[index]
+
+func load_enemy_data(enemy : Character_stats):
+	selected_enemy_data = enemy
+	for i in stats_le.size():
+		stats_le[i].text = str(enemy.get(id_to_stat[i]))
+	%AI_type.selected = enemy.AI_type
+	%start_dir.selected = dir_arr.find(enemy.start_dir)
 
 
 

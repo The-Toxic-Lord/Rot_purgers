@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://h18rt24u5x2b"]
+
+[ext_resource type="Script" uid="uid://d36vfk32xklka" path="res://3d_map/UI/main_menu.gd" id="1_qy1io"]
+[ext_resource type="PackedScene" uid="uid://cw74744wjquox" path="res://import/settings.tscn" id="2_bctjb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bctjb"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lduah"]
+bg_color = Color(0.047557652, 0.047557652, 0.047557607, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Main_menu" type="CanvasLayer" unique_id=1506471088]
+script = ExtResource("1_qy1io")
+
+[node name="Menu" type="MarginContainer" parent="." unique_id=483753304]
+unique_name_in_owner = true
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = -204.0
+offset_right = 417.0
+offset_bottom = 204.0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=1502884895]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="New_game" type="Button" parent="Menu/VBoxContainer" unique_id=623741292]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "New game"
+
+[node name="Load" type="Button" parent="Menu/VBoxContainer" unique_id=953377436]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Load"
+
+[node name="Tutorial" type="Button" parent="Menu/VBoxContainer" unique_id=1702764992]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Tutorial"
+
+[node name="Map_editor" type="Button" parent="Menu/VBoxContainer" unique_id=1790007543]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Map Editor
+"
+
+[node name="Settings_button" type="Button" parent="Menu/VBoxContainer" unique_id=2088237208]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Settings
+"
+
+[node name="Credits" type="Button" parent="Menu/VBoxContainer" unique_id=1599609011]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+
+[node name="Exit" type="Button" parent="Menu/VBoxContainer" unique_id=964471579]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="Settings" parent="." unique_id=1104411629 instance=ExtResource("2_bctjb")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Game_over_screen" type="MarginContainer" parent="." unique_id=1093114002]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Game_over_screen" unique_id=984261964]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bctjb")
+
+[node name="Label" type="Label" parent="Game_over_screen" unique_id=993201020]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 80
+text = "Game over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Demo_victory" type="MarginContainer" parent="." unique_id=271234960]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Demo_victory" unique_id=1590161370]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bctjb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Demo_victory" unique_id=1775436114]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="Demo_victory/MarginContainer" unique_id=1212245288]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Demo_victory/MarginContainer/CenterContainer" unique_id=1756582197]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Demo_victory/MarginContainer/CenterContainer/VBoxContainer" unique_id=1748576473]
+custom_minimum_size = Vector2(1600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 80
+text = "Thanks for playing!
+This is the end of the demo.
+I had to cut it short.
+But after jam is over I will update this project. Hope you will be there to see it!."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="exit_demo" type="Button" parent="Demo_victory/MarginContainer/CenterContainer/VBoxContainer" unique_id=71066149]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 70
+text = "Exit"
+
+[node name="Credit_box" type="MarginContainer" parent="." unique_id=1123063736]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -400.0
+offset_right = 750.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Credit_box" unique_id=69108825]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lduah")
+
+[node name="MarginContainer" type="MarginContainer" parent="Credit_box" unique_id=573229433]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="Credit_box/MarginContainer" unique_id=159225096]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credit_box/MarginContainer/CenterContainer" unique_id=2128149025]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Credit_box/MarginContainer/CenterContainer/VBoxContainer" unique_id=1072424883]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Most of stuff : The Toxic Lord
+
+
+Music:
+Inside The Tomb - Darren Curtis
+Dark Procession - Darren Curtis
+Into Oblivion - Darren Curtis
+'Windfish' by Of Far Different Nature
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credit_back" type="Button" parent="Credit_box/MarginContainer/CenterContainer/VBoxContainer" unique_id=186645751]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[connection signal="pressed" from="Menu/VBoxContainer/New_game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Map_editor" to="." method="_on_map_editor_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Settings_button" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Demo_victory/MarginContainer/CenterContainer/VBoxContainer/exit_demo" to="." method="_on_exit_demo_pressed"]
+[connection signal="pressed" from="Credit_box/MarginContainer/CenterContainer/VBoxContainer/credit_back" to="." method="_on_credit_back_pressed"]

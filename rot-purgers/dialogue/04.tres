@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Text_data" format=3 uid="uid://c61t0wcmmf7h3"]
+
+[ext_resource type="Script" uid="uid://dlik2dowo2312" path="res://Line_data.gd" id="1_rimxd"]
+[ext_resource type="Script" uid="uid://w5upts0exhjv" path="res://text_data.gd" id="2_vqfrl"]
+
+[sub_resource type="Resource" id="Resource_rimxd"]
+script = ExtResource("1_rimxd")
+char_name = "Alastor"
+text = "These look strange… "
+
+[sub_resource type="Resource" id="Resource_vqfrl"]
+script = ExtResource("1_rimxd")
+char_name = "Alastor"
+text = "AH! The Rot is affecting them. Its source must be here after all."
+
+[sub_resource type="Resource" id="Resource_n2jmh"]
+script = ExtResource("1_rimxd")
+char_name = "Elliot"
+text = "Let's not jump to conclusions, Chancellor. We have yet to witness it. We must go deeper."
+
+[resource]
+script = ExtResource("2_vqfrl")
+character_names = Array[String](["Alastor", "Elliot"])
+lines = Array[ExtResource("1_rimxd")]([SubResource("Resource_rimxd"), SubResource("Resource_vqfrl"), SubResource("Resource_n2jmh")])
+metadata/_custom_type_script = "uid://w5upts0exhjv"

@@ -4,7 +4,7 @@
 
 [node name="Turn_menu" type="MarginContainer" unique_id=1843473362]
 offset_right = 250.0
-offset_bottom = 252.0
+offset_bottom = 198.0
 script = ExtResource("1_v336p")
 
 [node name="Panel" type="Panel" parent="." unique_id=448886064]
@@ -34,6 +34,7 @@ text = "End turn"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1284371208]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Settings"

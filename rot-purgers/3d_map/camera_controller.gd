@@ -27,6 +27,8 @@ func _ready() -> void:
 	zoom_target = camera.position.z
 
 func _input(event: InputEvent) -> void:
+	if DialogueBalloon.dialogue_in_progress:
+		return
 	if BattleHandler.state != Battle_handler.states.PLAYER:
 		return
 	if event.is_action_pressed("zoom_in"):
@@ -37,6 +39,8 @@ func _input(event: InputEvent) -> void:
 		zoom_target = clamp(zoom_target, zoom_min, zoom_max)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if DialogueBalloon.dialogue_in_progress:
+		return
 	if BattleHandler.state == Battle_handler.states.PLAYER:
 		if event is InputEventMouseMotion and Input.is_action_pressed("rotate"):
 			var quat : Quaternion = Quaternion(Vector3.DOWN, event.relative.x * rotation_speed * 0.25)
@@ -52,6 +56,8 @@ func _process(delta: float) -> void:
 func handle_movement():
 	if follow_target != null:
 		move_target = follow_target.position
+	elif DialogueBalloon.dialogue_in_progress:
+		return
 	elif BattleHandler.state == Battle_handler.states.PLAYER:
 		var input_vector := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		var move_dir := (transform.basis * Vector3(input_vector.x , 0, input_vector.y)).normalized()
@@ -69,6 +75,8 @@ func handle_height():
 	move_target.y =	map_generator.get_position_height(position)
 
 func handle_rotation():
+	if DialogueBalloon.dialogue_in_progress:
+		return
 	if BattleHandler.state == Battle_handler.states.PLAYER:
 		var rotation_dir := Input.get_axis("rotate_left", "rotate_right")
 		var quat : Quaternion = Quaternion(Vector3.UP, rotation_dir * rotation_speed)

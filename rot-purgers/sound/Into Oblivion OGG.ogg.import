@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsn7qxqwnbl63"
+path="res://.godot/imported/Into Oblivion OGG.ogg-b8fc47fe40dae99ea9a8a6021c9a35b3.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/Into Oblivion OGG.ogg"
+dest_files=["res://.godot/imported/Into Oblivion OGG.ogg-b8fc47fe40dae99ea9a8a6021c9a35b3.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

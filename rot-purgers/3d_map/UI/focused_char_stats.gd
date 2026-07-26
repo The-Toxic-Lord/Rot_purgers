@@ -15,7 +15,8 @@ func update_stats(ch : Character_stats):
 	%Mag_str.text = "Magic Str : " + str(ch.magic_strenght)
 	%Accuracy.text = "Acc : " + str(ch.accuracy)
 	%Speed.text = "Spd : " + str(ch.speed)
-
+	if ch.sprite != null:
+		%Sprite.texture = ch.sprite
 
 
 

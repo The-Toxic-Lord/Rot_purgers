@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dy4l8inqadexy"]
+
+[ext_resource type="Shader" uid="uid://c872gb4p0iwt1" path="res://black_hole.gdshader" id="1_5r2vm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8u4e"]
+render_priority = 0
+shader = ExtResource("1_5r2vm")
+shader_parameter/scale = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_vwy4y"]
+material = SubResource("ShaderMaterial_m8u4e")
+flip_faces = true
+radius = 1.5
+height = 3.0
+
+[node name="Node3D" type="Node3D" unique_id=1258112466]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=903844355]
+mesh = SubResource("SphereMesh_vwy4y")

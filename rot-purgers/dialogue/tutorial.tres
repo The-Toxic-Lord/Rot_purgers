@@ -1,0 +1,156 @@
+[gd_resource type="Resource" script_class="Text_data" format=3 uid="uid://7mh3r02buoes"]
+
+[ext_resource type="Script" uid="uid://dlik2dowo2312" path="res://Line_data.gd" id="1_w8tro"]
+[ext_resource type="Script" uid="uid://w5upts0exhjv" path="res://text_data.gd" id="2_dotij"]
+
+[sub_resource type="Resource" id="Resource_w8tro"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "YO! LUNACY!
+Let us get through this quick. I have to finish this game after all."
+
+[sub_resource type="Resource" id="Resource_dotij"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "You can move the camera with WASD buttons."
+
+[sub_resource type="Resource" id="Resource_11ncd"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_tg6o4"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "You can rotate it with Q and R buttons or by holding the middle mouse button."
+
+[sub_resource type="Resource" id="Resource_pbki7"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_tsadq"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "Try zooming with the mouse wheel."
+
+[sub_resource type="Resource" id="Resource_gq5n5"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_ysote"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "The green zone is the entrance to the map. Click it, then select the character that you want to enter."
+
+[sub_resource type="Resource" id="Resource_2yea6"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_5t3be"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "Click on character to open his action menu. Then click on the move button."
+
+[sub_resource type="Resource" id="Resource_pf4pq"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_edtlf"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "Blue zones represent where this character can go. Select one near an enemy."
+
+[sub_resource type="Resource" id="Resource_ogk63"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_jk2ue"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "Now select character again and choose attack."
+
+[sub_resource type="Resource" id="Resource_o81rk"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_kk6ip"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "Red zones under enemies show who you can target with a basic attack. Press ESC to cancel the attack, open the skill menu, and choose Slash."
+
+[sub_resource type="Resource" id="Resource_fbc5g"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_4g7fg"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "This skill is bound to character and will rotate with him. Cancel it and choose Blast."
+
+[sub_resource type="Resource" id="Resource_jlwdr"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_kawbg"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "This one is unbound. Blue zones show where it can be cast. You can rotate unbound spells by pressing R. Now choose where to cast it."
+
+[sub_resource type="Resource" id="Resource_40rrf"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_8lnfq"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "Now press ESC to open the turn menu and press the execute button."
+
+[sub_resource type="Resource" id="Resource_pohcs"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_byqlc"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "With this, every action you chose is sealed. Open the turn menu and end the turn."
+
+[sub_resource type="Resource" id="Resource_3k8h2"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_wjxvl"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "If you made a wrong move or want to cancel an attack or skill before execution, move the selector over character and press Z."
+
+[sub_resource type="Resource" id="Resource_t8g04"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "*"
+
+[sub_resource type="Resource" id="Resource_evid3"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "Some maps require to kill all enemies. Some to reach a certain zone."
+
+[sub_resource type="Resource" id="Resource_rcnki"]
+script = ExtResource("1_w8tro")
+char_name = "The Toxic Lord"
+text = "With this tutorial is concluded. Good luck!"
+
+[resource]
+script = ExtResource("2_dotij")
+character_names = Array[String](["The Toxic Lord"])
+lines = Array[ExtResource("1_w8tro")]([SubResource("Resource_w8tro"), SubResource("Resource_dotij"), SubResource("Resource_11ncd"), SubResource("Resource_tg6o4"), SubResource("Resource_pbki7"), SubResource("Resource_tsadq"), SubResource("Resource_gq5n5"), SubResource("Resource_ysote"), SubResource("Resource_2yea6"), SubResource("Resource_5t3be"), SubResource("Resource_pf4pq"), SubResource("Resource_edtlf"), SubResource("Resource_ogk63"), SubResource("Resource_jk2ue"), SubResource("Resource_o81rk"), SubResource("Resource_kk6ip"), SubResource("Resource_fbc5g"), SubResource("Resource_4g7fg"), SubResource("Resource_jlwdr"), SubResource("Resource_kawbg"), SubResource("Resource_40rrf"), SubResource("Resource_8lnfq"), SubResource("Resource_pohcs"), SubResource("Resource_byqlc"), SubResource("Resource_3k8h2"), SubResource("Resource_wjxvl"), SubResource("Resource_t8g04"), SubResource("Resource_evid3"), SubResource("Resource_rcnki")])
+metadata/_custom_type_script = "uid://w5upts0exhjv"

@@ -11,9 +11,6 @@ var selected_char : Character_node
 	%Turn_menu, %Char_action_menu, %Character_select_menu, %Focused_char_stats, %Spell_select_menu
 ]
 
-func _ready() -> void:
-	populate_spawn_list()
-
 func open_spawn_menu():
 	map_generator.freze_selector = true
 	%Character_select_menu.show()
@@ -50,6 +47,7 @@ func spawn_character(ch : Character_stats):
 	button_to_char.erase(spawn_list[ch])
 	spawn_list[ch].queue_free()
 	spawn_list.erase(ch)
+	GlobalData.ally_team.erase(ch)
 	close_spawn_menu()
 
 func show_mini_stats(ch : Character_stats):
@@ -84,6 +82,8 @@ func _on_char_action_menu_move() -> void:
 	map_generator.state = Map_generator.states.MOVE
 	%Char_action_menu.hide()
 	$Focused_char_stats.hide()
+	%Spell_select_menu.clear_skills()
+	%Spell_select_menu.hide()
 
 func _on_char_action_menu_attack() -> void:
 	map_generator.spawn_select_zone(selected_char, Map_generator.states.ATTACK)
@@ -99,9 +99,14 @@ func open_turn_menu():
 	%Turn_menu.focus()
 
 func _on_turn_menu_exit() -> void:
-	%Turn_menu.hide()
-	map_generator.freze_selector = false
-	map_generator.state_select()
+	if map_generator is not Tutorial:
+		await make_save()
+	var main : Main_node = map_generator.get_parent()
+	main.current_map_id = -1
+	await main.load_background()
+	main.show_menu()
+	GlobalData.reset_data()
+	map_generator.queue_free()
 
 func close_all():
 	if %Spell_select_menu.visible:
@@ -145,6 +150,7 @@ func _on_char_action_menu_spell() -> void:
 	%Spell_select_menu.focus()
 
 func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
+	%Spell_select_menu.clear_skills()
 	%Spell_select_menu.hide()
 	%Char_action_menu.hide()
 	%Focused_char_stats.hide()
@@ -165,6 +171,7 @@ func _on_spell_select_menu_exit() -> void:
 
 func back_to_skill_selection():
 	map_generator.freze_selector = true
+	%Spell_select_menu.load_skills(selected_char)
 	%Spell_select_menu.show()
 	%Char_action_menu.show()
 	%Focused_char_stats.show()
@@ -174,7 +181,11 @@ func back_to_skill_selection():
 func flush_skill_menu():
 	%Spell_select_menu.clear_skills()
 
-
+func make_save():
+	var game_save := Game_save.new()
+	await game_save.make_save()
+	@warning_ignore("redundant_await")
+	await ResourceSaver.save(game_save, "user://save.tres")
 
 
 

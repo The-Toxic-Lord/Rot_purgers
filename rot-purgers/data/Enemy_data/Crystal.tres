@@ -7,9 +7,10 @@
 [resource]
 script = ExtResource("1_1t5y0")
 name = "Crystal"
-char_class = "Mineral"
+char_class = "Granulocyte"
 age = 468
 sprite = ExtResource("3_po2kh")
 attack_distance = 5
 attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
 metadata/_custom_type_script = "uid://by1rq468n504l"

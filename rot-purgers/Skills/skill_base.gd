@@ -16,6 +16,7 @@ var max_dist : int = 1
 var accuracy_modifier : float = 0.0
 var crit_chance : float = 0.05
 var stat_used : Character_stats.stats = Character_stats.stats.magic_strenght
+var defence_stat : Character_stats.stats = Character_stats.stats.magic_strenght
 
 func attack_show_prop(ret : Array[Dictionary]) -> Array[Dictionary]:
 	
@@ -48,15 +49,25 @@ func attack_show_prop(ret : Array[Dictionary]) -> Array[Dictionary]:
 		"name": "Stat used",
 		"type": typeof(stat_used),
 		"hint": PROPERTY_HINT_ENUM,
-		"hint_string": "level, max_health, health, max_magic, magic, strength, defence, magic_strenght, accuracy, speed"
+		"hint_string": "max_health, health, max_magic, magic, strength, defence, magic_strenght, accuracy, speed"
+	})
+	
+	ret.append({
+		"name": "Defence stat",
+		"type": typeof(defence_stat),
+		"hint": PROPERTY_HINT_ENUM,
+		"hint_string": "max_health, health, max_magic, magic, strength, defence, magic_strenght, accuracy, speed"
 	})
 	return ret
 
-func get_stat_used(st : Character_stats) -> int:
+func get_attack_stat_used(st : Character_stats) -> int:
 	return st.get(Character_stats.stats.keys()[stat_used])
 
+func get_defence_stat_used(st : Character_stats) -> int:
+	return st.get(Character_stats.stats.keys()[defence_stat])
+
 var is_heal := false
-var heal_value : int
+var heal_value : float
 
 func _get_property_list() -> Array[Dictionary]:
 	var ret: Array[Dictionary] = []
@@ -77,7 +88,7 @@ func _get_property_list() -> Array[Dictionary]:
 	if is_heal:
 		ret.append({
 				"name": "Heal value",
-				"type": TYPE_INT
+				"type": TYPE_FLOAT
 			})
 	
 	return ret
@@ -107,6 +118,8 @@ func _set(prop_name: StringName, val) -> bool:
 			max_height_difference = val
 		"Maximum distance":
 			max_dist = val
+		"Defence stat":
+			defence_stat = val
 	return retval
 
 func _get(prop_name: StringName):
@@ -129,4 +142,6 @@ func _get(prop_name: StringName):
 			return max_height_difference
 		"Maximum distance":
 			return max_dist
+		"Defence stat":
+			return defence_stat
 	return null

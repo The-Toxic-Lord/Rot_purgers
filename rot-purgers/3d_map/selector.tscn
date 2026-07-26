@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://0mb7w8g2nupj"]
+
+[ext_resource type="PackedScene" uid="uid://64sli2i3xbwo" path="res://blender_models/Selector.glb" id="1_cbcmt"]
+
+[node name="Selector" type="Node3D" unique_id=142981529]
+
+[node name="mesh" parent="." unique_id=1930249624 instance=ExtResource("1_cbcmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)

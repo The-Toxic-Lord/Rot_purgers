@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bcjtmasx0q6dh"]
+
+[ext_resource type="Shader" uid="uid://b86xvlutdcbji" path="res://3d_map/action_nodes/Exit_zone.gdshader" id="1_qqbta"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qqbta"]
+top_radius = 1.0
+bottom_radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8u4e"]
+render_priority = 5
+shader = ExtResource("1_qqbta")
+shader_parameter/threshold = -0.4999999925494
+shader_parameter/error_correction = 0.0
+shader_parameter/color = Color(0.83565956, 0.37198257, 0.06772785, 1)
+
+[node name="ExitZone" type="Node3D" unique_id=416710968]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=789279522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+mesh = SubResource("CylinderMesh_qqbta")
+surface_material_override/0 = SubResource("ShaderMaterial_m8u4e")

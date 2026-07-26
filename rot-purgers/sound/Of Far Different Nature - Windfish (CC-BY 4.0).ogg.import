@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://disxvjp2bh0p5"
+path="res://.godot/imported/Of Far Different Nature - Windfish (CC-BY 4.0).ogg-e27f504ed9ade8753cf8470adbcb165a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/Of Far Different Nature - Windfish (CC-BY 4.0).ogg"
+dest_files=["res://.godot/imported/Of Far Different Nature - Windfish (CC-BY 4.0).ogg-e27f504ed9ade8753cf8470adbcb165a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

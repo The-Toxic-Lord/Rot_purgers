@@ -31,6 +31,7 @@ var neib_reverse : Dictionary[Vector2i, bool] = {
 var neib_to_wall : Dictionary[Vector2i, MeshInstance3D] = {}
 signal mouse_entered
 
+var walls : Array[MeshInstance3D] = []
 
 func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector2i):
 	cell_position = cell
@@ -53,14 +54,20 @@ func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector
 		if terrain_map[cell].depth != 0:
 			depth = terrain_map[cell].depth * 0.1
 		
-		make_wall(neib, depth)
+		await make_wall(neib, depth)
+	load_materials(terrain_map[cell])
+
+func load_materials(terrain_data : Terrain_data):
+	%Floor.set_surface_override_material(0, terrain_data.floor_material)
+	for wall in walls:
+		wall.set_surface_override_material(0, terrain_data.wall_material)
 
 func make_wall(neib : Vector2i, depth : float):
 	var wall := MeshInstance3D.new()
 	add_child(wall)
+	walls.append(wall)
 	wall.mesh = make_wall_mesh(neib_to_side[neib], depth, neib_reverse[neib])
 	neib_to_wall[neib] = wall
-	wall.set_surface_override_material(0, load("uid://cbgfd2qcbdywn"))
 
 func make_wall_mesh(_wall_border : Array[int], depth : float, reverse := true) -> ArrayMesh:
 	var array_mesh := ArrayMesh.new()

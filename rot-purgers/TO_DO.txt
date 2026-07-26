@@ -1,15 +1,31 @@
 
-
-- move selector and camera with keyboard
 +- battle system
 +- character animated movement
 +- skills
-- movement when using skill
 + healing
 +- defence
-- settings
-- player characters models
-- stats rearange
-+- enemy AI
-- in-game save
++ enemy AI
 + turn on attack
++ at turn end await until all enemies are dead (they can attack until animation is over)
++ undo
++ tutorial
+
+critical:
+	- damage sounds
+	- music
+	+- game over
+	+- player characters models
+	+- in-game save
+	+- settings
+	+- main menu
+	- level maps
+	+- level transition
+	- level textures
+	+- dialogue system
+
+
+- background image
+- move selector and camera with keyboard
+- movement when using skill
+- stats rearange
+- animations

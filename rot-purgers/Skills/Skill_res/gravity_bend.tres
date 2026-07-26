@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://c5ughog08rjix"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_f0bxu"]
+[ext_resource type="Resource" uid="uid://bhfpajhouf2so" path="res://Skills/skill_map_data_res/Gravity_bend.tres" id="2_h58qe"]
+
+[resource]
+script = ExtResource("1_f0bxu")
+name = "Gravity bend"
+magic_cost = 40
+skill_map = ExtResource("2_h58qe")
+"Is Attack" = true
+"Is Heal" = false
+Damage = 30.0
+"Maximum height difference" = 50
+"Maximum distance" = 5
+"Accuracy modifier" = -0.1
+"Crit chance" = 0.05
+"Stat used" = 6
+"Defence stat" = 6

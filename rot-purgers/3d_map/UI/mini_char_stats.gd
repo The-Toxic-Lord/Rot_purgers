@@ -14,3 +14,6 @@ func update_stats(ch : Character_stats):
 	
 	%Magic_bar.max_value = ch.max_magic
 	%Magic_bar.value = ch.magic
+	
+	if ch.sprite != null:
+		%Sprite.texture = ch.sprite

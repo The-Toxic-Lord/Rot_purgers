@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_neo6o")
 name = "heal"
-magic_cost = 2
+magic_cost = 20
 "Is Attack" = false
 "Is Heal" = true
-"Heal value" = 10
-metadata/_custom_type_script = "uid://ceg7shg67rmfw"
+"Heal value" = 0.5

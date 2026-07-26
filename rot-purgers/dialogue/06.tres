@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Text_data" format=3 uid="uid://5jk10fhsti8m"]
+
+[ext_resource type="Script" uid="uid://dlik2dowo2312" path="res://Line_data.gd" id="1_llgtw"]
+[ext_resource type="PackedScene" uid="uid://b213luqwl2tnl" path="res://test.tscn" id="1_x22x3"]
+[ext_resource type="Script" uid="uid://w5upts0exhjv" path="res://text_data.gd" id="2_x22x3"]
+[ext_resource type="AudioStream" uid="uid://dsn7qxqwnbl63" path="res://sound/Into Oblivion OGG.ogg" id="3_rkwo7"]
+
+[sub_resource type="Resource" id="Resource_x22x3"]
+script = ExtResource("1_llgtw")
+char_name = "Alastor"
+text = "So … What now?"
+
+[sub_resource type="Resource" id="Resource_rkwo7"]
+script = ExtResource("1_llgtw")
+char_name = "Elliot"
+text = "We should go back and inform Archchancellor. The two of us are not enough to deal with whatever is going on here."
+
+[sub_resource type="Resource" id="Resource_yperk"]
+script = ExtResource("1_llgtw")
+char_name = "Alastor"
+text = "Right. With his help we surely will get to the bottom of this!"
+
+[resource]
+script = ExtResource("2_x22x3")
+character_names = Array[String](["Alastor", "Elliot"])
+lines = Array[ExtResource("1_llgtw")]([SubResource("Resource_x22x3"), SubResource("Resource_rkwo7"), SubResource("Resource_yperk")])
+cutscene = ExtResource("1_x22x3")
+music = ExtResource("3_rkwo7")
+metadata/_custom_type_script = "uid://w5upts0exhjv"

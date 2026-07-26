@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Terrain_data" format=3 uid="uid://flek0sua46a1"]
 
+[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="1_4i5n6"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="1_jqnq4"]
 [ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="2_3yr3s"]
 
@@ -7,4 +8,6 @@
 script = ExtResource("1_jqnq4")
 sprite = ExtResource("2_3yr3s")
 atlas_coord = Vector2i(1, 0)
+floor_material = ExtResource("1_4i5n6")
+wall_material = ExtResource("1_4i5n6")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"

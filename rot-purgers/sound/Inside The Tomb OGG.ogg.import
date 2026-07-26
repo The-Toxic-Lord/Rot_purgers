@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://oci6v1hpv8g5"
+path="res://.godot/imported/Inside The Tomb OGG.ogg-c5c5f64eb89e37fe0b1558cae7fe420e.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/Inside The Tomb OGG.ogg"
+dest_files=["res://.godot/imported/Inside The Tomb OGG.ogg-c5c5f64eb89e37fe0b1558cae7fe420e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

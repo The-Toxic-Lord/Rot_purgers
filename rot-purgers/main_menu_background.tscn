@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cc2fywiyu0mah"]
+
+[ext_resource type="PackedScene" uid="uid://c7amneiqfibus" path="res://import/spawner_node.tscn" id="1_30sdh"]
+[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://import/magic_envt.tres" id="1_cc2c2"]
+[ext_resource type="PackedScene" uid="uid://dyctrkv6gr2dx" path="res://3d_map/Character_nodes/Mad_mage.tscn" id="2_ychtm"]
+
+[node name="Main_menu_background" type="Node3D" unique_id=1246800858]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=371401033]
+environment = ExtResource("1_cc2c2")
+
+[node name="Spawner" parent="." unique_id=1516056490 instance=ExtResource("1_30sdh")]
+transform = Transform3D(0.07071068, 0, 0.07071068, 0, 0.1, 0, -0.07071068, 0, 0.07071068, 0, 3.091438, -5.6762023)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=616385523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0626965, 3.7899542)
+
+[node name="Character_node" parent="." unique_id=741036927 instance=ExtResource("2_ychtm")]

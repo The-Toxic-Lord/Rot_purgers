@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Text_data" format=3 uid="uid://vdryrpxuapbo"]
+
+[ext_resource type="PackedScene" uid="uid://wjt5k3krqruv" path="res://import/map_test_export.tscn" id="1_auvwf"]
+[ext_resource type="Script" uid="uid://dlik2dowo2312" path="res://Line_data.gd" id="1_ghnu5"]
+[ext_resource type="Script" uid="uid://w5upts0exhjv" path="res://text_data.gd" id="2_auvwf"]
+
+[sub_resource type="Resource" id="Resource_auvwf"]
+script = ExtResource("1_ghnu5")
+char_name = "Alastor"
+text = "Ambient magic seems more powerful here. "
+
+[sub_resource type="Resource" id="Resource_i3cih"]
+script = ExtResource("1_ghnu5")
+char_name = "Elliot"
+text = "Too powerful."
+
+[sub_resource type="Resource" id="Resource_1flnf"]
+script = ExtResource("1_ghnu5")
+char_name = "Alastor"
+text = "I fail to see the harm."
+
+[sub_resource type="Resource" id="Resource_f0e7p"]
+script = ExtResource("1_ghnu5")
+char_name = "Elliot"
+text = "The deeper we descend, the more uncontrollable spells become. At best they collapse. At worst, they amplify. I was with a team here long before. We had to retreat after one fool smashed his head on the ceiling, trying to fly."
+
+[sub_resource type="Resource" id="Resource_kxx33"]
+script = ExtResource("1_ghnu5")
+char_name = "Alastor"
+text = "I begin to see how this place can be the source of the Rot."
+
+[sub_resource type="Resource" id="Resource_x2cqe"]
+script = ExtResource("1_ghnu5")
+char_name = "Elliot"
+text = "We will find our answer deeper."
+
+[resource]
+script = ExtResource("2_auvwf")
+char_id = 1.0
+character_names = Array[String](["Alastor", "Elliot"])
+lines = Array[ExtResource("1_ghnu5")]([SubResource("Resource_auvwf"), SubResource("Resource_i3cih"), SubResource("Resource_1flnf"), SubResource("Resource_f0e7p"), SubResource("Resource_kxx33"), SubResource("Resource_x2cqe")])
+cutscene = ExtResource("1_auvwf")
+metadata/_custom_type_script = "uid://w5upts0exhjv"

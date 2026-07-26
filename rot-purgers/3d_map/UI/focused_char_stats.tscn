@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bhgnsr07cjspy"]
 
-[ext_resource type="Texture2D" uid="uid://bwgnvdu114knh" path="res://icon.svg" id="1_hm4rc"]
 [ext_resource type="Script" uid="uid://dryjvsi2b5nxr" path="res://3d_map/UI/focused_char_stats.gd" id="1_pkc2t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdycw"]
@@ -47,9 +46,10 @@ layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1849537623]
+[node name="Sprite" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1849537623]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("1_hm4rc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1059384369]
 layout_mode = 2

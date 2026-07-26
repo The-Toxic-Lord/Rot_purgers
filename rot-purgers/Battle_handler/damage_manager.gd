@@ -17,16 +17,19 @@ func attack_damage(target : Character_node, attacker : Character_node):
 	attacker.attack(target.map_pos)
 	await attacker.attack_finished
 	if hit_check(target, attacker):
-		var damage : float
+		var damage : float = attacker.stats.get_attack_stat_used()
 		if target.is_defending:
-			damage = attacker.stats.strength - target.stats.defence
+			damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
 		else:
-			damage = attacker.stats.strength - (float(target.stats.defence) / 2)
+			damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
 		if damage < 0:
 			damage = 0
 		await target.damage(damage)
 	else:
-		pass
+		await target.damage(-1)
+	map_gen.set_camera_target(target)
+	map_gen.set_selector(target.map_pos)
+	await target.animation_ended
 		# ADD miss
 	await get_tree().process_frame
 	order_ended.emit()
@@ -34,12 +37,22 @@ func attack_damage(target : Character_node, attacker : Character_node):
 func skill_mass(order : Order_skill_data):
 	await get_tree().process_frame
 	var attacker : Character_node = get_node(order.attacker)
-	
+	if map_gen.map_data != null:
+		attacker.magic_cost(int(order.skill.magic_cost * map_gen.map_data.magic_cost_adjustment))
+	else:
+		attacker.magic_cost(int(order.skill.magic_cost))
+	map_gen.set_selector(attacker.map_pos)
 	attacker.skill(order.selected_cell)
 	await attacker.attack_finished
+	var target_damage : Dictionary[Character_node, float] = {}
 	for cell in order.damage_cells:
 		if map_gen.char_positions.has(cell):
-			await skill_damage(map_gen.char_positions[cell], attacker, order.skill)
+			target_damage[map_gen.char_positions[cell]] = \
+			skill_damage(map_gen.char_positions[cell], attacker, order.skill)
+	if !target_damage.is_empty():
+		for target in target_damage.keys():
+			target.damage(target_damage[target])
+		await target_damage.keys()[0].animation_ended
 	
 	order_ended.emit()
 
@@ -49,31 +62,44 @@ func skill_oneshot(order : Order_skill_data):
 	for cell in order.damage_cells:
 		if map_gen.char_positions.has(cell):
 			targets.append(map_gen.char_positions[cell])
-	
 	var attacker : Character_node = get_node(order.attacker)
+	if map_gen.map_data != null:
+		attacker.magic_cost(int(order.skill.magic_cost * map_gen.map_data.magic_cost_adjustment))
+	else:
+		attacker.magic_cost(int(order.skill.magic_cost))
+	map_gen.set_selector(attacker.map_pos)
 	attacker.skill(order.selected_cell)
 	await attacker.attack_finished
+	var target_damage : Dictionary[Character_node, float] = {}
 	for target in targets:
-		await skill_damage(target, attacker, order.skill)
+		target_damage[target] = skill_damage(target, attacker, order.skill)
+	for target in targets:
+		target.damage(target_damage[target])
+	await targets[0].animation_ended
 	
 	order_ended.emit()
 
-func skill_damage(target : Character_node, attacker : Character_node, skill : Skill_base):
+func skill_damage(target : Character_node, attacker : Character_node, skill : Skill_base) -> float:
 	if hit_check(target, attacker, skill.accuracy_modifier):
 		var damage := skill.damage
-		damage *= float(skill.get_stat_used(attacker.stats)) -\
-			(float(target.stats.magic_strenght)/2) * (float(target.stats.magic)/target.stats.max_magic)
+		#print(float(skill.get_attack_stat_used(attacker.stats)) -\
+			#(float(skill.get_defence_stat_used(target.stats))/2))
+		#print(float(skill.get_attack_stat_used(attacker.stats)))
+		#print(skill.get_defence_stat_used(target.stats))
+		damage *= float(skill.get_attack_stat_used(attacker.stats))
+		damage -= float(skill.get_defence_stat_used(target.stats)) / 2
 		if damage < 0.0:
 			damage = 0.0
-		await target.damage(damage)
+		return damage
 	else:
-		pass
-		# ADD miss
+		return -1
 
 func heal(order : Order_heal):
 	await get_tree().process_frame
 	var attacker : Character_node = get_node(order.attacker)
+	attacker.magic_cost(int(order.skill.magic_cost * map_gen.map_data.magic_cost_adjustment))
 	attacker.heal(order.skill.heal_value)
+	await attacker.animation_ended
 	order_ended.emit()
 
 

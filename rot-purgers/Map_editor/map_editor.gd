@@ -48,6 +48,8 @@ func _ready() -> void:
 	await update_map_size()
 	map_node_size = map_size * 64
 	await limit_camera()
+	for enemy in enemy_to_atlas:
+		enemy.atlas_coords = enemy_to_atlas[enemy]
 
 func update_map_size():
 	map_rect = Rect2i(0, 0, map_size.x, map_size.y)
@@ -346,10 +348,12 @@ func change_data_depth(new_text : String, cell : Vector2i):
 func change_enemy(cell : Vector2i):
 	if !terrain_map_data.has(cell):
 		return
-	var selected_enemy : Character_stats = %Map_Editor_UI.selected_enemy_data
-	%Enemy_map.set_cell(cell, 0, enemy_to_atlas[selected_enemy])
-	enemy_map_data[cell] = selected_enemy.duplicate(true)
-	enemy_map_data[cell].atlas_coords = enemy_to_atlas[selected_enemy]
+	if enemy_map_data.has(cell):
+		%Map_Editor_UI.load_enemy_data(enemy_map_data[cell])
+	else:
+		var selected_enemy : Character_stats = %Map_Editor_UI.selected_enemy_data
+		%Enemy_map.set_cell(cell, 0, selected_enemy.atlas_coords)
+		enemy_map_data[cell] = selected_enemy.duplicate(true)
 
 func remove_enemy(cell : Vector2i):
 	if !enemy_map_data.has(cell):
@@ -359,6 +363,8 @@ func remove_enemy(cell : Vector2i):
 
 func load_enemy(cell : Vector2i, enemy_data : Character_stats):
 	%Enemy_map.set_cell(cell, 0, enemy_data.atlas_coords)
+
+
 
 
 

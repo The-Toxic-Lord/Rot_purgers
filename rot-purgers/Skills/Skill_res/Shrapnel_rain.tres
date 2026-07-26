@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://327ythhichbq"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_8c4m3"]
+[ext_resource type="Resource" uid="uid://cvgpkn2vbxbw0" path="res://Skills/skill_map_data_res/Shrapnel_rain.tres" id="2_6b5aj"]
+
+[resource]
+script = ExtResource("1_8c4m3")
+name = "Shrapnel rain"
+magic_cost = 30
+skill_map = ExtResource("2_6b5aj")
+"Is Attack" = true
+"Is Heal" = false
+Damage = 1.5
+"Maximum height difference" = 10
+"Maximum distance" = 5
+"Accuracy modifier" = 0.2
+"Crit chance" = 0.05
+"Stat used" = 6
+"Defence stat" = 6

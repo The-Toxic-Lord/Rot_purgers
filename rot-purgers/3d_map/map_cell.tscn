@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dom3a03xunylw" path="res://3d_map/map_cell.gd" id="1_2f0j5"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="2_i3qa4"]
 [ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="3_qphp4"]
-[ext_resource type="Material" uid="uid://cbgfd2qcbdywn" path="res://temp_mat.tres" id="4_qphp4"]
+[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="4_qphp4"]
 
 [sub_resource type="Resource" id="Resource_s44dr"]
 script = ExtResource("2_i3qa4")

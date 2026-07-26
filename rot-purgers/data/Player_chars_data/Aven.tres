@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://c8uo7wqbb15qk"]
+
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_qo432"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_uuhbo"]
+[ext_resource type="Resource" uid="uid://dhhs70r647yrx" path="res://Skills/Skill_res/Slash.tres" id="3_i27qx"]
+[ext_resource type="Resource" uid="uid://d0lnxgg3anglw" path="res://Skills/Skill_res/Blast.tres" id="3_l4prs"]
+
+[resource]
+script = ExtResource("1_qo432")
+name = "Aven"
+char_class = "Archchancellor"
+age = 4576
+max_health = 10
+max_magic = 200
+magic_strenght = 50
+attack_stat = 6
+defender_stat = 6
+move_speed = 3
+attack_distance = 6
+attack_height = 40
+node_UID = "uid://mcx4phaimhpc"
+skills = Array[ExtResource("2_uuhbo")]([ExtResource("3_i27qx"), ExtResource("3_l4prs")])
+metadata/_custom_type_script = "uid://by1rq468n504l"

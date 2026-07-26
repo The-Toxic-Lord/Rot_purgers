@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b2tvljyop82p8"]
+
+[ext_resource type="Script" uid="uid://d205e5ysnrxov" path="res://sound/sound_handler.gd" id="1_dbx84"]
+[ext_resource type="AudioStream" uid="uid://cumdvk255psmc" path="res://sound/Hit3.ogg" id="2_bq2ro"]
+[ext_resource type="AudioStream" uid="uid://dki2gptcubi6f" path="res://sound/Dark Procession OGG.ogg" id="2_psjqt"]
+[ext_resource type="AudioStream" uid="uid://dc516g15tuvgw" path="res://sound/Spellbound MP3.mp3" id="3_psjqt"]
+
+[node name="Sound_handler" type="Node" unique_id=1527645248]
+script = ExtResource("1_dbx84")
+menu_music = ExtResource("2_psjqt")
+tutor_music = ExtResource("3_psjqt")
+
+[node name="Damage" type="AudioStreamPlayer" parent="." unique_id=783939045]
+unique_name_in_owner = true
+stream = ExtResource("2_bq2ro")
+bus = &"Sfx"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1423049762]
+unique_name_in_owner = true
+bus = &"Music"
