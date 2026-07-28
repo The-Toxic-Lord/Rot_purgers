@@ -22,7 +22,10 @@ critical:
 	+- level transition
 	- level textures
 	+- dialogue system
-
+	- исправить баг со спавном зон дальности скилла
+	- добавить показатель высоты и ассоциированные вещи
+	- исправить для скиллов поиск клеток на от высоты скилла
+	
 
 - background image
 - move selector and camera with keyboard

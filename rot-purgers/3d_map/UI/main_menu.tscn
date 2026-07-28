@@ -60,7 +60,6 @@ text = "Tutorial"
 
 [node name="Map_editor" type="Button" parent="Menu/VBoxContainer" unique_id=1790007543]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Map Editor

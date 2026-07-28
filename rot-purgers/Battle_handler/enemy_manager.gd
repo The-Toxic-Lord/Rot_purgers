@@ -179,8 +179,8 @@ func handle_charger_AI(enemy : Character_node):
 		if path.is_empty() or path.size() == 1:
 			return
 		var cell : Vector2i
-		if path.size() >= enemy.stats.move_speed:
-			cell = path[enemy.stats.move_speed - 1]
+		if path.size() >= enemy.stats.move_speed + 1:
+			cell = path[enemy.stats.move_speed]
 		else:
 			cell = path.back()
 		await move_charger(cell, enemy, move_cells)
