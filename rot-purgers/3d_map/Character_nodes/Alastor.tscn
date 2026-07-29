@@ -487,8 +487,9 @@ _data = {
 &"Idle": SubResource("Animation_7ax6w")
 }
 
-[node name="Character_node" type="Node3D" unique_id=741036927]
+[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation")]
 script = ExtResource("1_nnxq0")
+char_animation = NodePath("Aven8/temp_anim")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
 libraries/ = SubResource("AnimationLibrary_pnqru")

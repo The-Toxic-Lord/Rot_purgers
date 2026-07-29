@@ -112,6 +112,7 @@ func move_selector_to_spawn():
 			focus_cell = cell
 			break
 	%Selector.position = map_cells[focus_cell].position
+	selected_cell = focus_cell
 	%Camera_position.position = %Selector.position
 	%Camera_position.move_target = %Selector.position
 

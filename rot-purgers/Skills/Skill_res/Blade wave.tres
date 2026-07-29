@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://q32sww7y2ms6"]
 
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_bkwwl"]
-[ext_resource type="Resource" uid="uid://cp6yhgk7l0s7g" path="res://Skills/skill_map_data_res/blade_wave_cut.tres" id="2_ggr38"]
+[ext_resource type="Resource" uid="uid://1c3ioe1yf6j8" path="res://Skills/skill_map_data_res/blast_wave.tres" id="2_bkwwl"]
 
 [resource]
 script = ExtResource("1_bkwwl")
 name = "Blade wave"
 magic_cost = 10
-skill_map = ExtResource("2_ggr38")
+skill_map = ExtResource("2_bkwwl")
 "Is Attack" = true
 "Is Heal" = false
 Damage = 1.0

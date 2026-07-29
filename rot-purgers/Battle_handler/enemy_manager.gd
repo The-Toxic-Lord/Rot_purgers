@@ -5,6 +5,7 @@ class_name Enemy_manager
 signal enemies_turn_ended
 
 var map_gen : Map_generator
+@export var temp : Array[Skill_able_data]
 
 func start_enemy_turn():
 	await get_tree().process_frame
@@ -107,6 +108,39 @@ func handle_charger_AI(enemy : Character_node):
 	for en in BattleHandler.enemies:
 		move_cells.erase(en.map_pos)
 	
+	var skill_possibilities : Array[Skill_able_data] = []
+	for cell in move_cells:
+		skill_possibilities.append_array(can_use_skills_in_position(enemy, cell))
+	temp = skill_possibilities
+	if !skill_possibilities.is_empty():
+		# ADD difficulty paths
+		# on hight difficulties enemies must evade damage cells in already issued orders
+		var max_targets := 0
+		var frienly_targets := 0
+		var chosen_possibility : Skill_able_data
+		for skill_possible in skill_possibilities:
+			if max_targets < skill_possible.enemy_targets.size():
+				chosen_possibility = skill_possible
+				max_targets = skill_possible.enemy_targets.size()
+				frienly_targets = skill_possible.targets.size() - max_targets
+			elif max_targets == skill_possible.enemy_targets.size() and\
+			 frienly_targets < skill_possible.targets.size() - max_targets:
+				chosen_possibility = skill_possible
+				max_targets = skill_possible.enemy_targets.size()
+				frienly_targets = skill_possible.targets.size() - max_targets
+		var zero_array : Array[Vector2i] = []
+		await move_charger(chosen_possibility.used_position, enemy, move_cells)
+		BattleHandler.add_skill(enemy, chosen_possibility.skill, 
+		chosen_possibility.damage_cells, zero_array, chosen_possibility.target_cell)
+		return
+	
+	var attack_possibilities : Dictionary[Vector2i, Array] = {}
+	for cell in move_cells:
+		attack_possibilities[cell] = can_attack_fom_position(enemy.stats.attack_distance, cell)
+	
+	if !attack_possibilities.is_empty():
+		pass
+	
 	var a_star := AStarGrid2D.new()
 	a_star.region = map_gen.selector_boundary
 	a_star.cell_size = Vector2i(1,1)
@@ -202,6 +236,125 @@ func move_charger(cell : Vector2i, enemy : Character_node, move_cells : Array[Ve
 			move_cells, map_gen.selector_boundary,map_gen.map_cells)
 	await enemy.move_finished
 	await map_gen.update_char_position(enemy, enemy.map_pos)
+
+
+func can_attack_fom_position(attack_distance : int, position_cell : Vector2i) -> Array[Vector2i]:
+	var range_cells : Array[Vector2i] = map_gen.get_flow_cells(position_cell, attack_distance)
+	var targers : Array[Vector2i] = []
+	for cell in range_cells:
+		if map_gen.char_positions.has(cell):
+			var char_node : Character_node = map_gen.char_positions[cell]
+			if BattleHandler.allies.has(char_node):
+				targers.append(cell)
+	return targers
+
+func can_use_skills_in_position(char_node : Character_node, 
+position_cell : Vector2i) -> Array[Skill_able_data]:
+	var skills_able_data : Array[Skill_able_data] = []
+	for skill in char_node.stats.skills:
+		if skill.magic_cost > char_node.stats.magic:
+			continue
+		if skill.skill_map.bound_to_char:
+			skills_able_data.append_array(can_use_bound_skill_in_position(skill, position_cell))
+		else:
+			skills_able_data.append_array(can_use_unbound_skill_in_position(skill, position_cell))
+	return skills_able_data
+
+func can_use_bound_skill_in_position(skill : Skill_base, 
+char_map_pos : Vector2i) -> Array[Skill_able_data]:
+	var dir_able : Dictionary[Map_generator.directions, bool] = {
+		Map_generator.directions.N : false,
+		Map_generator.directions.E : false,
+		Map_generator.directions.S : false,
+		Map_generator.directions.W : false
+	}
+	var skill_able_data_arr : Array[Skill_able_data] = []
+	for dir in Map_generator.directions.values():
+		var damage_cells : Array[Vector2i] = skill.skill_map.damage_cells.duplicate(true)
+		for i in damage_cells.size():
+			damage_cells[i] += char_map_pos
+		if dir != Map_generator.directions.N:
+			damage_cells = rotare_skill_cells_around_position(damage_cells, char_map_pos, dir)
+		for cell in damage_cells:
+			if map_gen.char_positions.has(cell):
+				var char_node : Character_node = map_gen.char_positions[cell]
+				if BattleHandler.allies.has(char_node):
+					dir_able[dir] = true
+		if dir_able[dir]:
+			var move_cells : Array[Vector2i] = skill.skill_map.move_cells.duplicate(true)
+			if !move_cells.is_empty():
+				for i in move_cells.size():
+					move_cells[i] += char_map_pos
+				if dir != Map_generator.directions.N:
+					move_cells = rotare_skill_cells_around_position(move_cells, char_map_pos, dir)
+				for cell in move_cells:
+					if map_gen.char_positions.has(cell):
+						dir_able[dir] = false
+		if dir_able[dir]:
+			var skill_able_data := Skill_able_data.new()
+			skill_able_data.skill = skill
+			skill_able_data.dir = dir
+			skill_able_data.damage_cells = damage_cells
+			skill_able_data.used_position = char_map_pos
+			skill_able_data.target_cell = map_gen.dir_to_vector[dir] + char_map_pos
+			skill_able_data_arr.append(skill_able_data)
+			for cell in damage_cells:
+				if map_gen.char_positions.has(cell):
+					skill_able_data.targets.append(cell)
+					var char_node : Character_node = map_gen.char_positions[cell]
+					if BattleHandler.allies.has(char_node):
+						skill_able_data.enemy_targets.append(cell)
+	return skill_able_data_arr
+
+func rotare_skill_cells_around_position(cells : Array[Vector2i], 
+cell_pos : Vector2i, dir : Map_generator.directions) -> Array[Vector2i]:
+	var rotated_cells : Array[Vector2i] = []
+	for cell in cells:
+		var temp_v : Vector2 = cell - cell_pos
+		var angle : float = map_gen.dir_to_rad[dir] - map_gen.dir_to_rad[Map_generator.directions.N]
+		temp_v = temp_v.rotated(angle)
+		var new_cell : Vector2i = cell_pos + Vector2i(round(temp_v.x), round(temp_v.y))
+		rotated_cells.append(new_cell)
+	return rotated_cells
+
+func can_use_unbound_skill_in_position(skill : Skill_base, map_pos : Vector2i) -> Array[Skill_able_data]:
+	var range_cells : Array[Vector2i] = map_gen.get_flow_cells(
+		map_pos, skill.max_dist
+	)
+	var skill_able_data_arr : Array[Skill_able_data] = []
+	for range_cell in range_cells:
+		for dir in Map_generator.directions.values():
+			var damage_cells : Array[Vector2i] = skill.skill_map.damage_cells.duplicate(true)
+			for i in damage_cells.size():
+				damage_cells[i] += range_cell
+			if dir != Map_generator.directions.N:
+				damage_cells = rotare_skill_cells_around_position(damage_cells, range_cell, dir)
+			var check := false
+			for cell in damage_cells:
+				if map_gen.char_positions.has(cell):
+					var char_node : Character_node = map_gen.char_positions[cell]
+					if BattleHandler.allies.has(char_node):
+						check = true
+			if check:
+				var skill_able_data := Skill_able_data.new()
+				skill_able_data.skill = skill
+				skill_able_data.dir = dir
+				skill_able_data.damage_cells = damage_cells
+				skill_able_data.used_position = map_pos
+				skill_able_data.target_cell = range_cell
+				skill_able_data_arr.append(skill_able_data)
+				for cell in damage_cells:
+					if map_gen.char_positions.has(cell):
+						skill_able_data.targets.append(cell)
+						var char_node : Character_node = map_gen.char_positions[cell]
+						if BattleHandler.allies.has(char_node):
+							skill_able_data.enemy_targets.append(cell)
+	return skill_able_data_arr
+
+
+
+
+
 
 
 #

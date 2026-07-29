@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://nfbxfp8f3p7r"
-path="res://.godot/imported/Elliot.glb-9cdf7dc66527a96bccbba41b515e51c2.scn"
+uid="uid://ka87d2icm3pw"
+path="res://.godot/imported/Ellio1.glb-67662c8a00d7ccf5333f8e65181faed9.scn"
 
 [deps]
 
-source_file="res://blender_models/Elliot.glb"
-dest_files=["res://.godot/imported/Elliot.glb-9cdf7dc66527a96bccbba41b515e51c2.scn"]
+source_file="res://blender_models/Ellio1.glb"
+dest_files=["res://.godot/imported/Ellio1.glb-67662c8a00d7ccf5333f8e65181faed9.scn"]
 
 [params]
 
@@ -42,7 +42,7 @@ materials/extract_path=""
 _subresources={
 "animations": {
 "Idle": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/fallback_path": "",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "",

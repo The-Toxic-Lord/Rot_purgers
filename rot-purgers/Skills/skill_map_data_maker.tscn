@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://deixxh30w22nj" path="res://Skills/skill_map_data_maker.gd" id="1_1tdyk"]
 [ext_resource type="Texture2D" uid="uid://b6jm4arw4swlc" path="res://aseprite_stuff/Skill_colors_2.png" id="1_e5281"]
-[ext_resource type="Resource" uid="uid://yrgoq240tx0j" path="res://Skills/skill_map_data_res/Plasma_ball.tres" id="3_uk1rf"]
+[ext_resource type="Script" uid="uid://dx7gtvivqkl2s" path="res://skill_map_data.gd" id="3_uk1rf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk1rf"]
 texture = ExtResource("1_e5281")
@@ -28,8 +28,12 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_uk1rf")
 
+[sub_resource type="Resource" id="Resource_13j71"]
+script = ExtResource("3_uk1rf")
+damage_cells = Array[Vector2i]([Vector2i(0, -2), Vector2i(0, -1), Vector2i(0, 0), Vector2i(1, -1), Vector2i(1, -2), Vector2i(-1, -1), Vector2i(-1, -2), Vector2i(2, -2), Vector2i(-2, -2)])
+
 [node name="Skill_map_data_maker" type="TileMapLayer" unique_id=547403321]
-tile_map_data = PackedByteArray("AAAAAAAAAAAHAAEAAAAAAP3/AAAAAAAAAAD///3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP3/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAACAP7/AAAAAAAAAAD+//7/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_e5281")
 script = ExtResource("1_1tdyk")
-data = ExtResource("3_uk1rf")
+data = SubResource("Resource_13j71")

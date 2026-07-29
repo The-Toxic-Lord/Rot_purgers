@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6hivfhvf3lxd"
-path.s3tc="res://.godot/imported/Elliot_Elliot.png-cec8a84a599351cefadd43345d603890.s3tc.ctex"
+uid="uid://dj67sdw8oodpr"
+path.s3tc="res://.godot/imported/Ellio1_Elliot.png-979a3e1dae86ee5d614dbb5ae718d511.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://blender_models/Elliot_Elliot.png"
-dest_files=["res://.godot/imported/Elliot_Elliot.png-cec8a84a599351cefadd43345d603890.s3tc.ctex"]
+source_file="res://blender_models/Ellio1_Elliot.png"
+dest_files=["res://.godot/imported/Ellio1_Elliot.png-979a3e1dae86ee5d614dbb5ae718d511.s3tc.ctex"]
 
 [params]
 

@@ -4,6 +4,7 @@ class_name Character_node
 
 @export var stats : Character_stats
 @export var material : StandardMaterial3D
+@export var char_animation : AnimationPlayer
 
 var can_move := true
 var can_attack := true
@@ -72,7 +73,11 @@ func damage(value : float):
 func display_damage():
 	%Damage_numbers.show()
 	SoundHandler.play_damage()
-	await get_tree().create_timer(1).timeout
+	if char_animation.has_animation("Damage"):
+		char_animation.play("Damage")
+		await char_animation.animation_finished
+	else:
+		await get_tree().create_timer(1).timeout
 	%Damage_numbers.hide()
 	animation_ended.emit()
 	if stats.health == 0:
@@ -155,8 +160,24 @@ func move_jump(pos : Vector3):
 	step = position + Vector3(dir.x * 0.75, dir.y + 0.5, dir.z * 0.75)
 	anim.track_set_key_value(0, 2, step)
 	anim.track_set_key_value(0, 3, pos)
-	ap.play("move_jump")
-	await ap.animation_finished
+	if char_animation.has_animation("Jump_up"):
+		await play_jump()
+	else:
+		ap.play("move_jump")
+		await ap.animation_finished
+	play_idle()
+
+func play_jump():
+	char_animation.play("Crouch_jump_up")
+	await char_animation.animation_finished
+	$AnimationPlayer.play("move_jump")
+	char_animation.play("Jump_up")
+	await $AnimationPlayer.animation_finished
+	char_animation.play("Land_jump_up")
+	await char_animation.animation_finished
+
+func play_idle():
+	char_animation.play("Idle")
 
 func move_drop(pos : Vector3):
 	var ap : AnimationPlayer = $AnimationPlayer
@@ -168,8 +189,21 @@ func move_drop(pos : Vector3):
 	step = position + Vector3(dir.x * 0.75, 0, dir.z * 0.75)
 	anim.track_set_key_value(0, 2, step)
 	anim.track_set_key_value(0, 3, pos)
-	ap.play("move_jump")
-	await ap.animation_finished
+	if char_animation.has_animation("Jump_up"):
+		await play_jump_down()
+	else:
+		ap.play("move_jump")
+		await ap.animation_finished
+	play_idle()
+
+func play_jump_down():
+	char_animation.play("Crouch_jump_down")
+	await char_animation.animation_finished
+	$AnimationPlayer.play("move_jump")
+	char_animation.play("Jump_down")
+	await $AnimationPlayer.animation_finished
+	char_animation.play("Land_jump_down")
+	await char_animation.animation_finished
 
 func defend():
 	can_attack = false
@@ -205,13 +239,17 @@ func heal(value : float):
 	display_damage()
 
 func _ready() -> void:
-	if find_child("temp_anim", true):
-		%temp_anim.play("Idle")
+	if char_animation.has_animation("Idle"):
+		char_animation.play("Idle")
 
 func attack(target_cell : Vector2i):
-	await get_tree().process_frame
 	turn_to_target(target_cell)
 	await self.direction_changed
+	if char_animation.has_animation("Attack_1"):
+		char_animation.play("Attack_1")
+		await char_animation.animation_finished
+		if char_animation.has_animation("Attack_1_back"):
+			char_animation.play("Attack_1_back")
 	attack_finished.emit()
 
 func skill(target_cell : Vector2i):
