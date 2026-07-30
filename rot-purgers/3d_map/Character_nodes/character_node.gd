@@ -116,6 +116,7 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 		await move_next(cell, terrain_map, map_cells)
 		prev_pos = map_pos
 	can_undo_move = true
+	char_animation.play("Idle")
 	move_finished.emit()
 
 func move_next(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
@@ -124,7 +125,7 @@ map_cells : Dictionary[Vector2i, Map_cell]):
 		await move_normal(map_cells[target_cell].position)
 	else:
 		var height : int = terrain_map[target_cell].height - terrain_map[map_pos].height
-		if height > 0 and height <= 5:
+		if height >=-5 and height <= 5:
 			await move_step(map_cells[target_cell].position)
 		elif height > 0:
 			await move_jump(map_cells[target_cell].position)
@@ -135,6 +136,8 @@ map_cells : Dictionary[Vector2i, Map_cell]):
 func move_normal(pos : Vector3):
 	var tween := create_tween()
 	tween.tween_property(self, "position", pos, 0.5)
+	if char_animation.has_animation("Walk"):
+		char_animation.play("Walk")
 	await tween.finished
 
 func move_step(pos : Vector3):
@@ -314,7 +317,6 @@ func load_state(save_char_data : Save_char_data):
 
 func magic_cost(value : int):
 	stats.magic -= value
-
 
 
 

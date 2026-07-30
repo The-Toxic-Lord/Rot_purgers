@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_7teap"]
 [ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="3_346bi"]
 [ext_resource type="AudioStream" uid="uid://disxvjp2bh0p5" path="res://sound/Of Far Different Nature - Windfish (CC-BY 4.0).ogg" id="4_7teap"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://map_object.gd" id="4_kmpbo"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="4_kmpbo"]
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="5_ishe6"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_nesw8"]
 [ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="7_3pt6j"]

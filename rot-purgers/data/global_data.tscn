@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="2_bnln1"]
 [ext_resource type="Resource" uid="uid://flek0sua46a1" path="res://data/Terrain_data_res/cave.tres" id="3_u4igo"]
 [ext_resource type="Resource" uid="uid://dfoccsqf81u56" path="res://data/Terrain_data_res/lava.tres" id="4_8776e"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://map_object.gd" id="5_dwjne"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="5_dwjne"]
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="6_lbxat"]
 [ext_resource type="Resource" uid="uid://bkwt1lvhkpr71" path="res://data/Enemy_data/Crawler.tres" id="8_lbxat"]
 [ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="8_rdq6i"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Map_data" format=3]
 
 [ext_resource type="Script" path="res://data/Character_stats.gd" id="1_qbyd3"]
-[ext_resource type="Script" path="res://map_object.gd" id="2_qg40w"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_qg40w"]
 [ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_ys7s5"]
 [ext_resource type="Script" path="res://map_data.gd" id="3_01uvt"]
 [ext_resource type="Resource" path="res://Skills/Skill_res/Slash.tres" id="3_2qeye"]
@@ -17,6 +17,7 @@ name = "Crystal"
 char_class = "Granulocyte"
 age = 468
 sprite = ExtResource("3_alebe")
+move_speed = 2
 attack_distance = 5
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
@@ -113,6 +114,87 @@ floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_fftg7"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_8vpye"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_cj7eg"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_e7og5"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_jyd4h"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_rm0aw"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_5f6kb"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_34nle"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_f05un"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 30
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_o70wc"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("6_bwvuj")
@@ -153,6 +235,15 @@ Vector2i(14, 14): SubResource("Resource_3mwm5"),
 Vector2i(14, 15): SubResource("Resource_aq4wr"),
 Vector2i(14, 16): SubResource("Resource_01uvt"),
 Vector2i(14, 17): SubResource("Resource_bwvuj"),
+Vector2i(14, 18): SubResource("Resource_fftg7"),
+Vector2i(14, 19): SubResource("Resource_8vpye"),
+Vector2i(14, 20): SubResource("Resource_cj7eg"),
+Vector2i(14, 21): SubResource("Resource_e7og5"),
+Vector2i(14, 22): SubResource("Resource_jyd4h"),
+Vector2i(14, 23): SubResource("Resource_rm0aw"),
+Vector2i(14, 24): SubResource("Resource_5f6kb"),
+Vector2i(14, 25): SubResource("Resource_34nle"),
+Vector2i(14, 26): SubResource("Resource_f05un"),
 Vector2i(15, 12): SubResource("Resource_o70wc"),
 Vector2i(15, 13): SubResource("Resource_jcw8x"),
 Vector2i(15, 14): SubResource("Resource_kqyk2")

@@ -16,6 +16,7 @@ func open_spawn_menu():
 	%Character_select_menu.show()
 	await get_tree().process_frame
 	%Character_list.get_child(0).grab_focus()
+	%Height_box.hide()
 
 var button_to_char : Dictionary[BaseButton, Character_stats] = {}
 var spawn_list : Dictionary[Character_stats, BaseButton]
@@ -37,10 +38,14 @@ func populate_spawn_list():
 func show_focus_char_stats(ch : Character_stats):
 	%Focused_char_stats.update_stats(ch)
 	%Focused_char_stats.show()
+	%Height_box.hide()
 
 func close_spawn_menu():
+	map_generator.freze_selector = false
+	map_generator.state_select()
 	$Focused_char_stats.hide()
 	%Character_select_menu.hide()
+	%Height_box.show()
 
 func spawn_character(ch : Character_stats):
 	map_spawn_character.emit(ch)
@@ -61,6 +66,7 @@ func open_char_action_menu(ch : Character_node, id : int = 0):
 	map_generator.freze_selector = true
 	selected_char = ch
 	hide_mini_stats()
+	%Height_box.hide()
 	%Char_action_menu.update_disabled(ch)
 	%Char_action_menu.show()
 	await get_tree().process_frame
@@ -70,6 +76,7 @@ func open_char_action_menu(ch : Character_node, id : int = 0):
 func _on_char_action_menu_exit() -> void:
 	show_mini_stats(selected_char.stats)
 	%Char_action_menu.hide()
+	%Height_box.show()
 	$Focused_char_stats.hide()
 	map_generator.freze_selector = false
 	map_generator.state_select()
@@ -81,6 +88,7 @@ func _on_char_action_menu_move() -> void:
 	map_generator.freze_selector = false
 	map_generator.state = Map_generator.states.MOVE
 	%Char_action_menu.hide()
+	%Height_box.show()
 	$Focused_char_stats.hide()
 	%Spell_select_menu.clear_skills()
 	%Spell_select_menu.hide()
@@ -90,11 +98,13 @@ func _on_char_action_menu_attack() -> void:
 	map_generator.freze_selector = false
 	map_generator.state = Map_generator.states.ATTACK
 	%Char_action_menu.hide()
+	%Height_box.show()
 	$Focused_char_stats.hide()
 
 func open_turn_menu():
 	map_generator.freze_selector = true
 	%Turn_menu.show()
+	%Height_box.hide()
 	await get_tree().process_frame
 	%Turn_menu.focus()
 
@@ -118,6 +128,7 @@ func close_all():
 		menu.hide()
 	map_generator.freze_selector = false
 	map_generator.state_select()
+	%Height_box.show()
 	if map_generator.char_positions.has(map_generator.selected_cell):
 		show_mini_stats(map_generator.char_positions[map_generator.selected_cell].stats)
 	map_generator.try_mouse_raycast()
@@ -139,6 +150,7 @@ func _on_char_action_menu_defend() -> void:
 	
 	show_mini_stats(selected_char.stats)
 	%Char_action_menu.hide()
+	%Height_box.show()
 	$Focused_char_stats.hide()
 	map_generator.freze_selector = false
 	map_generator.state_select()
@@ -153,6 +165,7 @@ func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
 	%Spell_select_menu.clear_skills()
 	%Spell_select_menu.hide()
 	%Char_action_menu.hide()
+	%Height_box.show()
 	%Focused_char_stats.hide()
 	map_generator.freze_selector = false
 	if skill.is_attack:
@@ -173,6 +186,7 @@ func back_to_skill_selection():
 	map_generator.freze_selector = true
 	%Spell_select_menu.load_skills(selected_char)
 	%Spell_select_menu.show()
+	%Height_box.hide()
 	%Char_action_menu.show()
 	%Focused_char_stats.show()
 	await get_tree().process_frame
@@ -187,7 +201,8 @@ func make_save():
 	@warning_ignore("redundant_await")
 	await ResourceSaver.save(game_save, "user://save.tres")
 
-
+func update_height(value : int):
+	%Height_lb.text = str(value)
 
 
 

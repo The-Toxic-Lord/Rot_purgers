@@ -22,6 +22,7 @@ accuracy = 70
 speed = 45
 attack_stat = 6
 defender_stat = 6
+move_speed = 5
 jump_height = 30
 attack_distance = 3
 attack_height = 40

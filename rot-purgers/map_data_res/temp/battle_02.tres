@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://csfextsd81u6j"]
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_01uvt"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://map_object.gd" id="2_bwvuj"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="2_bwvuj"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_ys7s5"]
 [ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="3_alebe"]
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="3_ys7s5"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_4ig5i"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_6i6nm"]
 [ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="3_xyfd7"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://map_object.gd" id="4_ay0ur"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="4_ay0ur"]
 [ext_resource type="AudioStream" uid="uid://oci6v1hpv8g5" path="res://sound/Inside The Tomb OGG.ogg" id="4_ykjof"]
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="5_05g0c"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_mkndj"]

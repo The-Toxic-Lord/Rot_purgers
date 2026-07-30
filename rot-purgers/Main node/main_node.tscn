@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bogj2hsowywaw"]
 
-[ext_resource type="Script" uid="uid://b1y0ce2dn1ly0" path="res://main_node.gd" id="1_lwogq"]
+[ext_resource type="Script" uid="uid://b1y0ce2dn1ly0" path="res://Main node/main_node.gd" id="1_lwogq"]
 [ext_resource type="PackedScene" uid="uid://h18rt24u5x2b" path="res://3d_map/UI/main_menu.tscn" id="2_dhalm"]
 
 [node name="Main_node" type="Node" unique_id=1899757407]

@@ -113,6 +113,7 @@ func move_selector_to_spawn():
 			break
 	%Selector.position = map_cells[focus_cell].position
 	selected_cell = focus_cell
+	%Map_UI.update_height(terrain_map[selected_cell].height)
 	%Camera_position.position = %Selector.position
 	%Camera_position.move_target = %Selector.position
 
@@ -133,6 +134,7 @@ func move_selector(map_cell : Map_cell):
 	var prev_selector_cell := selected_cell
 	selected_map_cell = map_cell
 	selected_cell = map_cell_to_data_cell[selected_map_cell]
+	%Map_UI.update_height(terrain_map[selected_cell].height)
 	if char_positions.has(selected_cell):
 		%Map_UI.show_mini_stats(char_positions[selected_cell].stats)
 	else:
@@ -145,6 +147,7 @@ func move_selector(map_cell : Map_cell):
 func set_selector(cell : Vector2i):
 	selected_cell = cell
 	%Selector.position = map_cells[cell].position
+	%Map_UI.update_height(terrain_map[selected_cell].height)
 	if char_positions.has(selected_cell):
 		%Map_UI.show_mini_stats(char_positions[selected_cell].stats)
 
@@ -314,7 +317,7 @@ func spawn_select_zone(ch_node : Character_node, st : states):
 		select_zones[cell] = move_zone
 
 func get_flow_cells(start_cell : Vector2i, dist : int = 1, ignore_chars := true, ignore_enemies := true,
-height_limit : int = 9999, ignore_player := true) -> Array[Vector2i]:
+height_limit : int = 9999, ignore_player := true, height_limit_between_neib := true) -> Array[Vector2i]:
 	var select_cells : Array[Vector2i] = []
 	var border : Array[Vector2i] = [start_cell]
 	dist += 1
@@ -336,10 +339,16 @@ height_limit : int = 9999, ignore_player := true) -> Array[Vector2i]:
 						continue
 					if BattleHandler.allies.has(char_positions[check_cell]) and !ignore_player:
 						continue
-				var current_height : int = terrain_map[cell].height
-				var ch_c_h : int = terrain_map[check_cell].height
-				if ch_c_h - current_height > height_limit:
-					continue
+				if height_limit_between_neib:
+					var current_height : int = terrain_map[cell].height
+					var ch_c_h : int = terrain_map[check_cell].height
+					if ch_c_h - current_height > height_limit:
+						continue
+				else:
+					var current_height : int = terrain_map[start_cell].height
+					var ch_c_h : int = terrain_map[check_cell].height
+					if abs(ch_c_h - current_height) > height_limit:
+						continue
 				if !border.has(check_cell) and !select_cells.has(check_cell) and !new_border.has(check_cell):
 					new_border.append(check_cell)
 		border = new_border
@@ -505,7 +514,8 @@ func make_unboun_skill(skill : Skill_base):
 			damage_zone.position = Vector3(damage_cell.x * cell_size, 0, damage_cell.y * cell_size)
 		select_zones[selected_cell + damage_cell] = damage_zone
 	
-	var range_cells := get_flow_cells(selected_cell, skill.max_dist)
+	var range_cells := get_flow_cells(selected_char.map_pos, skill.max_dist,
+	 true, true, skill.max_height_difference, true, false)
 	
 	i = 0
 	

@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://cqerhl6ublq57" path="res://3d_map/UI/turn_menu.tscn" id="6_qlg74"]
 [ext_resource type="PackedScene" uid="uid://qu82b3iiw4hr" path="res://3d_map/UI/spell_select_menu.tscn" id="7_e57h2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e57h2"]
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [node name="Map_UI" type="CanvasLayer" unique_id=1270663533]
 script = ExtResource("1_cy5bf")
 
@@ -105,6 +112,44 @@ offset_top = 50.0
 offset_right = -336.0
 offset_bottom = 114.0
 grow_horizontal = 0
+
+[node name="Height_box" type="MarginContainer" parent="." unique_id=1075179522]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -351.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 258.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Height_box" unique_id=1399631647]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e57h2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Height_box" unique_id=851199008]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Height_box/MarginContainer" unique_id=1426277356]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Height_box/MarginContainer/VBoxContainer" unique_id=1724987522]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Height :"
+
+[node name="Height_lb" type="Label" parent="Height_box/MarginContainer/VBoxContainer" unique_id=1588033547]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 74
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Character_select_menu/Character_list/Close_spawn" to="." method="close_spawn_menu"]
 [connection signal="attack" from="Char_action_menu" to="." method="_on_char_action_menu_attack"]

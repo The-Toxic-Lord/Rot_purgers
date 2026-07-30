@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_k8p0y"]
 [ext_resource type="Resource" uid="uid://bkwt1lvhkpr71" path="res://data/Enemy_data/Crawler.tres" id="3_6uk1n"]
 [ext_resource type="Resource" uid="uid://bw766n42tsyfr" path="res://data/Enemy_data/Crystal.tres" id="4_yu7lw"]
-[ext_resource type="TileSet" uid="uid://du6rk7f2ok1f" path="res://terrain_tileset.tres" id="5_wq8e7"]
+[ext_resource type="TileSet" uid="uid://du6rk7f2ok1f" path="res://Map_editor/terrain_tileset.tres" id="5_wq8e7"]
 [ext_resource type="PackedScene" uid="uid://bifqkeg558atm" path="res://Map_editor/map_editor_ui.tscn" id="6_rucau"]
 [ext_resource type="Texture2D" uid="uid://dxcwyjm0qcf8n" path="res://aseprite_stuff/Enemy_sprite_sheet.png" id="8_ssq50"]
 [ext_resource type="Texture2D" uid="uid://cv7kk78gntqh5" path="res://aseprite_stuff/object_zones.png" id="8_yu7lw"]

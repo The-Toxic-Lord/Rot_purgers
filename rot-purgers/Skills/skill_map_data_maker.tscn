@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://deixxh30w22nj" path="res://Skills/skill_map_data_maker.gd" id="1_1tdyk"]
 [ext_resource type="Texture2D" uid="uid://b6jm4arw4swlc" path="res://aseprite_stuff/Skill_colors_2.png" id="1_e5281"]
-[ext_resource type="Script" uid="uid://dx7gtvivqkl2s" path="res://skill_map_data.gd" id="3_uk1rf"]
+[ext_resource type="Script" uid="uid://dx7gtvivqkl2s" path="res://Skills/skill_map_data.gd" id="3_uk1rf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk1rf"]
 texture = ExtResource("1_e5281")
