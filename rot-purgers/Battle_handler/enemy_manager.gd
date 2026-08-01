@@ -174,6 +174,7 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> b
 	if !skill_possibilities.is_empty():
 		# ADD difficulty paths
 		# on hight difficulties enemies must evade damage cells in already issued orders
+		# ADD maybe randomness to chosen skill among best, but this add time to calculation
 		var max_targets := 0
 		var frienly_targets := 0
 		var chosen_possibility : Skill_able_data
@@ -183,7 +184,7 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> b
 				max_targets = skill_possible.enemy_targets.size()
 				frienly_targets = skill_possible.targets.size() - max_targets
 			elif max_targets == skill_possible.enemy_targets.size() and\
-			 frienly_targets < skill_possible.targets.size() - max_targets:
+			 frienly_targets > skill_possible.targets.size() - skill_possible.enemy_targets.size():
 				chosen_possibility = skill_possible
 				max_targets = skill_possible.enemy_targets.size()
 				frienly_targets = skill_possible.targets.size() - max_targets
@@ -245,7 +246,8 @@ position_cell : Vector2i) -> Array[Skill_able_data]:
 			skills_able_data.append_array(can_use_bound_skill_in_position(skill, position_cell))
 		else:
 			var char_height : int = map_gen.terrain_map[position_cell].height
-			skills_able_data.append_array(can_use_unbound_skill_in_position(skill, position_cell, char_height))
+			skills_able_data.append_array(can_use_unbound_skill_in_position(skill, 
+			position_cell, char_height, char_node.map_pos))
 	return skills_able_data
 
 func can_use_bound_skill_in_position(skill : Skill_base, 
@@ -312,7 +314,8 @@ cell_pos : Vector2i, dir : Map_generator.directions) -> Array[Vector2i]:
 		rotated_cells.append(new_cell)
 	return rotated_cells
 
-func can_use_unbound_skill_in_position(skill : Skill_base, map_pos : Vector2i, char_height : int) -> Array[Skill_able_data]:
+func can_use_unbound_skill_in_position(skill : Skill_base, 
+map_pos : Vector2i, char_height : int, char_current_pos : Vector2i) -> Array[Skill_able_data]:
 	var range_cells : Array[Vector2i] = map_gen.get_flow_cells(
 		map_pos, skill.max_dist, true, true, skill.max_height_difference, true, false
 	)
@@ -346,10 +349,14 @@ func can_use_unbound_skill_in_position(skill : Skill_base, map_pos : Vector2i, c
 				skill_able_data_arr.append(skill_able_data)
 				for cell in damage_cells:
 					if map_gen.char_positions.has(cell):
+						if cell == char_current_pos and map_pos != char_current_pos:
+							continue
 						skill_able_data.targets.append(cell)
 						var char_node : Character_node = map_gen.char_positions[cell]
 						if BattleHandler.allies.has(char_node):
 							skill_able_data.enemy_targets.append(cell)
+					if cell == map_pos and !skill_able_data.targets.has(cell):
+						skill_able_data.targets.append(cell)
 	return skill_able_data_arr
 
 

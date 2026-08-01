@@ -1,5 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://csy2c538e1174"]
 
+[ext_resource type="Material" uid="uid://oi1l0yyh56ca" path="res://flash.tres" id="1_og1s7"]
+
 [resource]
+next_pass = ExtResource("1_og1s7")
 transparency = 1
 albedo_color = Color(0, 0.5137255, 0.09019608, 0)

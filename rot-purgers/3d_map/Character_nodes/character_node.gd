@@ -5,6 +5,9 @@ class_name Character_node
 @export var stats : Character_stats
 @export var material : StandardMaterial3D
 @export var char_animation : AnimationPlayer
+@export var char_model_node : Node3D
+@export var skeleton : Skeleton3D
+@export var attack_trail : Weapon_trail
 
 var can_move := true
 var can_attack := true
@@ -36,7 +39,6 @@ var dir_to_angle : Dictionary[Map_generator.directions, float] = {
 	Map_generator.directions.S : PI
 }
 signal direction_changed
-
 signal move_finished
 signal attack_finished
 signal animation_ended
@@ -50,6 +52,14 @@ var rot_stage : Dictionary[int, float] = {
 func set_rot(stage : int):
 	var rot : StandardMaterial3D = material.next_pass
 	rot.albedo_color.a = rot_stage[stage]
+
+func _ready() -> void:
+	if char_animation.has_animation("Idle"):
+		char_animation.play("Idle")
+	if skeleton != null:
+		for child in skeleton.get_children():
+			if child is MeshInstance3D:
+				child.set_surface_override_material(0, material)
 
 func new_round():
 	can_move = true
@@ -73,11 +83,14 @@ func damage(value : float):
 func display_damage():
 	%Damage_numbers.show()
 	SoundHandler.play_damage()
+	if $AnimationPlayer.has_animation("Damage"):
+		$AnimationPlayer.play("Damage")
 	if char_animation.has_animation("Damage"):
 		char_animation.play("Damage")
 		await char_animation.animation_finished
+		char_animation.play("Idle")
 	else:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 	%Damage_numbers.hide()
 	animation_ended.emit()
 	if stats.health == 0:
@@ -241,24 +254,75 @@ func heal(value : float):
 	%Damage_numbers.modulate = Color("39ad00ff")
 	display_damage()
 
-func _ready() -> void:
-	if char_animation.has_animation("Idle"):
-		char_animation.play("Idle")
-
 func attack(target_cell : Vector2i):
 	turn_to_target(target_cell)
 	await self.direction_changed
-	if char_animation.has_animation("Attack_1"):
+	if char_animation.has_animation("Attack_1_windup"):
+		char_animation.play("Attack_1_windup")
+		await char_animation.animation_finished
+		attack_trail.turn_on()
 		char_animation.play("Attack_1")
 		await char_animation.animation_finished
+		attack_trail.turn_off()
 		if char_animation.has_animation("Attack_1_back"):
 			char_animation.play("Attack_1_back")
 	attack_finished.emit()
 
-func skill(target_cell : Vector2i):
+func skill(target_cell : Vector2i, skill_is_jump := false):
 	await get_tree().process_frame
 	turn_to_target(target_cell)
 	await self.direction_changed
+	if skill_is_jump:
+		animate_skill_jump(target_cell)
+	else:
+		attack_finished.emit()
+
+func animate_skill_jump(target_cell):
+	if char_animation.has_animation("Spell_jump_up"):
+		char_animation.play("Spell_jump_up")
+		await char_animation.animation_finished
+		
+		var ap : AnimationPlayer = $AnimationPlayer
+		var anim := ap.get_animation("Spell_jump_up")
+		anim.track_set_key_value(0, 0, position)
+		anim.track_set_key_value(0, 1, position + Vector3(0, 10, 0))
+		ap.play("Spell_jump_up")
+		await ap.animation_finished
+		
+		char_animation.play("Spell_jump_attack_windup")
+		await char_animation.animation_finished
+		attack_trail.turn_on()
+		char_animation.play("Spell_jump_attack")
+		await char_animation.animation_finished
+		attack_trail.turn_off()
+		
+		send_projectile(target_cell)
+		
+		anim = ap.get_animation("Spell_jump_back")
+		anim.track_set_key_value(0, 0, position)
+		anim.track_set_key_value(0, 1, position - Vector3(0, 10, 0))
+		ap.play("Spell_jump_back")
+		char_animation.play("Spell_jump_attack_back")
+		await char_animation.animation_finished
+		char_animation.play("Spell_jump_back")
+		await char_animation.animation_finished
+		char_animation.play("Spell_jump_back_land")
+	else:
+		attack_finished.emit()
+
+func send_projectile(target_cell):
+	var projectile : Node3D = %Flying_slash.duplicate()
+	BattleHandler.map_gen.add_child(projectile)
+	projectile.global_position = %Flying_slash.global_position
+	projectile.global_rotation = %Flying_slash.global_rotation
+	projectile.show()
+	var tween := create_tween()
+	tween.tween_property(projectile, "position", 
+	BattleHandler.map_gen.map_cells[target_cell].position, 1.0)
+	tween.tween_callback(remove_projectile.bind(projectile))
+
+func remove_projectile(projectile : Node3D):
+	projectile.queue_free()
 	attack_finished.emit()
 
 var dir_to_vector : Dictionary[Map_generator.directions, Vector2i] = {

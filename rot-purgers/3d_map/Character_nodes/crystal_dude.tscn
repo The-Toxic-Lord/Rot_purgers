@@ -6,66 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://rmf4p254h6px" path="res://blender_models/Crystal_dude2_normals_Crystal_dude_texture-export.png" id="4_gtxpa"]
 [ext_resource type="Material" uid="uid://csy2c538e1174" path="res://blender_models/new_materials/rot_material.tres" id="4_h1wbr"]
 
-[sub_resource type="Animation" id="Animation_pnqru"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_pgqjc"]
-resource_name = "move_jump"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_boujc"]
-resource_name = "move_step"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqru"]
-_data = {
-&"RESET": SubResource("Animation_pnqru"),
-&"move_jump": SubResource("Animation_pgqjc"),
-&"move_step": SubResource("Animation_boujc")
-}
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyq3i"]
 resource_name = "Material.001"
 next_pass = ExtResource("4_h1wbr")
 cull_mode = 2
 albedo_texture = ExtResource("4_gtxpa")
 roughness = 0.5
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.05
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_foorj"]
@@ -284,13 +232,98 @@ _data = {
 &"walk": SubResource("Animation_wvt0s")
 }
 
-[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation")]
+[sub_resource type="Animation" id="Animation_2jqbt"]
+resource_name = "Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:char_model_node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:emission_enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.39968038),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_xwkw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:emission_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_61r11"]
+resource_name = "empty"
+
+[sub_resource type="Animation" id="Animation_hljk3"]
+resource_name = "move_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_boujc"]
+resource_name = "move_step"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1wbr"]
+_data = {
+&"Damage": SubResource("Animation_2jqbt"),
+&"RESET": SubResource("Animation_xwkw5"),
+&"empty": SubResource("Animation_61r11"),
+&"move_jump": SubResource("Animation_hljk3"),
+&"move_step": SubResource("Animation_boujc")
+}
+
+[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
 script = ExtResource("1_inksj")
 material = ExtResource("2_lqk4t")
 char_animation = NodePath("Crystal_dude2_normals/temp_anim")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
-libraries/ = SubResource("AnimationLibrary_pnqru")
+char_model_node = NodePath("Crystal_dude2_normals")
+skeleton = NodePath("Crystal_dude2_normals/Armature/Skeleton3D")
 
 [node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
 unique_name_in_owner = true
@@ -404,3 +437,6 @@ skeleton = NodePath("..")
 [node name="temp_anim" type="AnimationPlayer" parent="Crystal_dude2_normals" unique_id=1587138797]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_iuijr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=631640234]
+libraries/ = SubResource("AnimationLibrary_h1wbr")

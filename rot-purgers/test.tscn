@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dxga5yn432vdm" path="res://import/first_map_export.gd" id="1_g14j6"]
 [ext_resource type="PackedScene" uid="uid://b57jse1cfeshi" path="res://3d_map/map_cell.tscn" id="2_a3se8"]
 [ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="3_uty7l"]
-[ext_resource type="Texture2D" uid="uid://6hivfhvf3lxd" path="res://blender_models/Elliot_Elliot.png" id="4_g14j6"]
 [ext_resource type="Texture2D" uid="uid://cab70jac2jm0k" path="res://blender_models/Aven8_Aven_texture.png" id="5_vbegm"]
 [ext_resource type="Animation" uid="uid://iw7cdgwbihk5" path="res://blender_models/animations/alastor.tres" id="6_ehkex"]
 
@@ -1024,7 +1023,6 @@ _surfaces = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfe2b"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("4_g14j6")
 roughness = 0.5
 metadata/_gltf_primary_texture_coord = 0
 

@@ -11,7 +11,7 @@
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="5_01uvt"]
 [ext_resource type="Texture2D" path="res://aseprite_stuff/terrain_cave.png" id="6_bwvuj"]
 
-[sub_resource type="Resource" id="Resource_to1fk"]
+[sub_resource type="Resource" id="Resource_r8prx"]
 script = ExtResource("1_qbyd3")
 name = "Crystal"
 char_class = "Granulocyte"
@@ -33,6 +33,42 @@ name = "spawn_zone"
 node_UID = "uid://b77u0ogcrnmlx"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
+[sub_resource type="Resource" id="Resource_xuijx"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_u7ypl"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ahyom"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_20agm"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_alebe"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("6_bwvuj")
@@ -52,6 +88,42 @@ wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_j7tpd"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_idsk3"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_8rl3u"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_l5vmc"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_cx7s4"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("6_bwvuj")
 atlas_coord = Vector2i(1, 0)
@@ -195,6 +267,42 @@ floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_oyqpw"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_8dwos"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_qhyuh"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_k28vi"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("6_bwvuj")
+atlas_coord = Vector2i(1, 0)
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_o70wc"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("6_bwvuj")
@@ -226,9 +334,17 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 script = ExtResource("3_01uvt")
 map_size = Vector2i(30, 30)
 terrain_map_data = Dictionary[Vector2i, ExtResource("4_bwvuj")]({
+Vector2i(13, 8): SubResource("Resource_xuijx"),
+Vector2i(13, 9): SubResource("Resource_u7ypl"),
+Vector2i(13, 10): SubResource("Resource_ahyom"),
+Vector2i(13, 11): SubResource("Resource_20agm"),
 Vector2i(13, 12): SubResource("Resource_alebe"),
 Vector2i(13, 13): SubResource("Resource_2qeye"),
 Vector2i(13, 14): SubResource("Resource_j7tpd"),
+Vector2i(14, 8): SubResource("Resource_idsk3"),
+Vector2i(14, 9): SubResource("Resource_8rl3u"),
+Vector2i(14, 10): SubResource("Resource_l5vmc"),
+Vector2i(14, 11): SubResource("Resource_cx7s4"),
 Vector2i(14, 12): SubResource("Resource_ead5j"),
 Vector2i(14, 13): SubResource("Resource_g2qwr"),
 Vector2i(14, 14): SubResource("Resource_3mwm5"),
@@ -244,6 +360,10 @@ Vector2i(14, 23): SubResource("Resource_rm0aw"),
 Vector2i(14, 24): SubResource("Resource_5f6kb"),
 Vector2i(14, 25): SubResource("Resource_34nle"),
 Vector2i(14, 26): SubResource("Resource_f05un"),
+Vector2i(15, 8): SubResource("Resource_oyqpw"),
+Vector2i(15, 9): SubResource("Resource_8dwos"),
+Vector2i(15, 10): SubResource("Resource_qhyuh"),
+Vector2i(15, 11): SubResource("Resource_k28vi"),
 Vector2i(15, 12): SubResource("Resource_o70wc"),
 Vector2i(15, 13): SubResource("Resource_jcw8x"),
 Vector2i(15, 14): SubResource("Resource_kqyk2")
@@ -252,5 +372,5 @@ object_map_data = Dictionary[Vector2i, ExtResource("2_qg40w")]({
 Vector2i(14, 13): SubResource("Resource_ys7s5")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_qbyd3")]({
-Vector2i(14, 12): SubResource("Resource_to1fk")
+Vector2i(14, 11): SubResource("Resource_r8prx")
 })

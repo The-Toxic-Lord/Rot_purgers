@@ -5,14 +5,14 @@
 + healing
 +- defence
 + enemy AI
-+ at turn end await until all enemies are dead (they can attack until animation is over)
 + undo
 + tutorial
-+ исправить баг со спавном зон дальности скилла
 + добавить показатель высоты и ассоциированные вещи
-+ исправить для скиллов поиск клеток на от высоты скилла
 
 critical:
+	- fix defence unde (the lack of it)
+	- terrain mod skills
+	- move with bound skill selected
 	- damage sounds
 	- music
 	+- game over
@@ -24,8 +24,8 @@ critical:
 	+- level transition
 	- level textures
 	+- dialogue system
-	- ramps
 
+- ramps
 - background image
 - move selector and camera with keyboard
 - movement when using skill

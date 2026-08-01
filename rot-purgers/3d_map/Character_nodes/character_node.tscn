@@ -4,6 +4,26 @@
 [ext_resource type="AnimationLibrary" uid="uid://d2h3hhb87d2x5" path="res://3d_map/Character_nodes/animations/char.res" id="2_pgqjc"]
 [ext_resource type="Texture2D" uid="uid://cab70jac2jm0k" path="res://blender_models/Aven8_Aven_texture.png" id="2_pnqru"]
 
+[sub_resource type="Animation" id="Animation_pgqjc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aven8:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cj0di"]
+_data = {
+&"RESET": SubResource("Animation_pgqjc")
+}
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75s5a"]
 resource_name = "Material"
 cull_mode = 2
@@ -434,11 +454,13 @@ _data = {
 &"Idle": SubResource("Animation_7ax6w")
 }
 
-[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation")]
+[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node")]
 script = ExtResource("1_boujc")
 char_animation = NodePath("Aven8/temp_anim")
+char_model_node = NodePath("Aven8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
+libraries/ = SubResource("AnimationLibrary_cj0di")
 libraries/char = ExtResource("2_pgqjc")
 
 [node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]

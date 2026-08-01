@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bafcn1tsb1bsh"]
+
+[ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="1_uwpb2"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_uwpb2")
+roughness = 0.5
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.2
+metadata/_gltf_primary_texture_coord = 0

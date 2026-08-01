@@ -6,6 +6,5 @@
 script = ExtResource("1_neo6o")
 name = "heal"
 magic_cost = 20
-"Is Attack" = false
-"Is Heal" = true
-"Heal value" = 0.5
+is_heal = true
+heal_value = 0.5

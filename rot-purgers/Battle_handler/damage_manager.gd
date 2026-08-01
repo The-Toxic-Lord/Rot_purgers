@@ -42,7 +42,7 @@ func skill_mass(order : Order_skill_data):
 	else:
 		attacker.magic_cost(int(order.skill.magic_cost))
 	map_gen.set_selector(attacker.map_pos)
-	attacker.skill(order.selected_cell)
+	attacker.skill(order.selected_cell, order.skill.animation_jump)
 	await attacker.attack_finished
 	var target_damage : Dictionary[Character_node, float] = {}
 	for cell in order.damage_cells:
@@ -68,14 +68,15 @@ func skill_oneshot(order : Order_skill_data):
 	else:
 		attacker.magic_cost(int(order.skill.magic_cost))
 	map_gen.set_selector(attacker.map_pos)
-	attacker.skill(order.selected_cell)
+	attacker.skill(order.selected_cell, order.skill.animation_jump)
 	await attacker.attack_finished
 	var target_damage : Dictionary[Character_node, float] = {}
 	for target in targets:
 		target_damage[target] = skill_damage(target, attacker, order.skill)
 	for target in targets:
 		target.damage(target_damage[target])
-	await targets[0].animation_ended
+	if !targets.is_empty():
+		await targets[0].animation_ended
 	
 	order_ended.emit()
 

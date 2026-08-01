@@ -74,6 +74,14 @@ func _on_credit_back_pressed() -> void:
 
 
 
+#func _notification(what: int) -> void:
+	##ADD to me
+	##get_tree().set_auto_accept_quit(false)
+	#if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		#print("lol")
+	#if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+		#print(1)
+
 
 
 

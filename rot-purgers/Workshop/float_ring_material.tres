@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bhqwv2urq1a3n"]
+
+[ext_resource type="Shader" uid="uid://bb7fvs7qyomly" path="res://Workshop/float_ring.tres" id="1_n2wxu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_n2wxu")
+shader_parameter/Rotation = 0.0

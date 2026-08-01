@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://oi1l0yyh56ca"]
+
+[ext_resource type="Shader" uid="uid://duuxl61ikgqr6" path="res://3d_map/Character_nodes/Elliot.gdshader" id="1_y7dro"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_y7dro")
+shader_parameter/flash = 0.0
+shader_parameter/custom_color = Color(1, 1, 1, 1)

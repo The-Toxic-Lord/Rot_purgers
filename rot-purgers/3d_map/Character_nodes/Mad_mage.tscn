@@ -360,9 +360,10 @@ _data = {
 &"Idle": ExtResource("3_seph8")
 }
 
-[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation")]
+[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node")]
 script = ExtResource("1_5ua5d")
 char_animation = NodePath("Mad_mage/temp_anim")
+char_model_node = NodePath("Mad_mage")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
 libraries/ = SubResource("AnimationLibrary_pnqru")

@@ -15,6 +15,9 @@ func bake():
 	for cell in used_cells:
 		var atlas : Vector2i = get_cell_atlas_coords(cell)
 		match atlas:
+			Vector2i(0, 1):
+				data.damage_cells.append(cell)
+				data.animation_target = cell
 			Vector2i(0, 0):
 				data.damage_cells.append(cell)
 			Vector2i(4, 0):
