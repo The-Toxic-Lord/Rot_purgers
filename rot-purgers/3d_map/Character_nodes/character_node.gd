@@ -223,7 +223,7 @@ func play_jump_down():
 
 func defend():
 	can_attack = false
-	can_move = false
+	has_order = true
 	is_defending = true
 
 func turn(new_dir : Map_generator.directions, skip_animation := false):

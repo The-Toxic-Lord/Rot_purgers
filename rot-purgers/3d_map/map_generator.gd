@@ -145,7 +145,8 @@ func move_selector(map_cell : Map_cell):
 		%Map_UI.hide_mini_stats()
 	if state == states.SKILL:
 		if showing_move_zone:
-			move_char_skill()
+			if move_zones.has(selected_cell):
+				move_char_skill()
 		else:
 			turn_to_selection()
 			if !selected_skill.skill_map.bound_to_char:
@@ -201,12 +202,13 @@ var showing_move_zone := false
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("show_skill_move_zone") and state == states.SKILL and !showing_move_zone:
 		if selected_skill.skill_map.bound_to_char and selected_char.can_move:
-			spawn_select_zone(selected_char, states.MOVE)
+			spawn_move_skill_cells()
 			showing_move_zone = true
 			char_skill_move_cell = selected_char.map_pos
 	if event.is_action_released("show_skill_move_zone") and showing_move_zone:
 		clear_select_zone()
 		showing_move_zone = false
+		pause_skill_move()
 	if DialogueBalloon.dialogue_in_progress:
 		return
 	if BattleHandler.state != Battle_handler.states.PLAYER:
@@ -226,6 +228,7 @@ func _input(event: InputEvent) -> void:
 			if char_node.is_defending:
 				char_node.can_attack = true
 				char_node.is_defending = false
+				char_node.has_order = false
 				return
 			if char_node.can_undo_move:
 				if char_positions.has(char_node.previous_map_pos):
@@ -523,6 +526,8 @@ func make_bound_skill(skill : Skill_base):
 	
 	if selected_char.current_direction != Map_generator.directions.N:
 		rotate_skill(directions.N)
+	if selected_char.can_move:
+		start_skill_move_position = selected_char.map_pos
 
 func make_unboun_skill(skill : Skill_base):
 	var i := 0
@@ -664,6 +669,9 @@ func add_skill_order():
 	%Map_UI.flush_skill_menu()
 	selected_char.can_attack = false
 	selected_char.has_order = true
+	if selected_skill.skill_map.bound_to_char:
+		if selected_char.map_pos != start_skill_move_position:
+			finalize_skill_move()
 	state = states.SELECT
 
 func check_unbound_skill_height() -> bool:
@@ -711,8 +719,25 @@ func load_chars(game_save : Game_save):
 		else:
 			BattleHandler.allies.append(char_node)
 
+func spawn_move_skill_cells():
+	var move_cells : Array[Vector2i] = []
+	move_cells = get_flow_cells(start_skill_move_position, 
+	selected_char.stats.move_speed, false, false, selected_char.stats.jump_height)
+	
+	for ally in BattleHandler.allies:
+		if ally == selected_char:
+			continue
+		move_cells.erase(ally.map_pos)
+	
+	for cell in move_cells:
+		var move_zone : Node3D = load(state_to_zone[states.MOVE]).instantiate()
+		add_child(move_zone)
+		move_zone.position = map_cells[cell].position
+		move_zones[cell] = move_zone
+
 var char_skill_move_cell : Vector2i
 var prev_cell : Vector2i
+var start_skill_move_position : Vector2i
 func move_char_skill():
 	camera.follow_target = selected_char
 	prev_cell = char_skill_move_cell
@@ -722,17 +747,15 @@ func move_char_skill():
 	camera.follow_target = null
 	move_skill(char_skill_move_cell, prev_cell)
 
-func finalize_skill_move():
-	selected_char.previous_map_pos = selected_char.map_pos
-	char_positions.erase(selected_char.map_pos)
+func pause_skill_move():
 	selected_char.map_pos = char_skill_move_cell
+
+func finalize_skill_move():
+	selected_char.previous_map_pos = start_skill_move_position
+	char_positions.erase(start_skill_move_position)
 	char_positions[char_skill_move_cell] = selected_char
-	clear_select_zone()
 	selected_char.can_move = false
 	selected_char.can_undo_move = true
-	camera.move_target = map_cells[char_skill_move_cell].position
-	showing_move_zone = false
-	
 
 
 

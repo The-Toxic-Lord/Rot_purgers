@@ -1,4 +1,5 @@
 
+MONITOR:
 +- battle system
 +- character animated movement
 +- skills
@@ -8,11 +9,12 @@
 + undo
 + tutorial
 + добавить показатель высоты и ассоциированные вещи
++- move with bound skill selected
++- fix defence undo (the lack of it)
+
 
 critical:
-	- fix defence unde (the lack of it)
 	- terrain mod skills
-	- move with bound skill selected
 	- damage sounds
 	- music
 	+- game over
