@@ -3,7 +3,7 @@ extends Node3D
 class_name Character_node
 
 @export var stats : Character_stats
-@export var material : StandardMaterial3D
+@export var material : Material
 @export var char_animation : AnimationPlayer
 @export var char_model_node : Node3D
 @export var skeleton : Skeleton3D
@@ -49,9 +49,17 @@ var rot_stage : Dictionary[int, float] = {
 	2 : 0.62,
 	3 : 0.77
 }
+var rot_colors : Dictionary[int, Color] = {
+	0 : Color("39bc0000"),
+	1 : Color("39bc0063"),
+	2 : Color("0083179e"),
+	3 : Color("008317c4")
+}
 func set_rot(stage : int):
-	var rot : StandardMaterial3D = material.next_pass
-	rot.albedo_color.a = rot_stage[stage]
+	if material is ShaderMaterial:
+		material.set_shader_parameter("rot", rot_colors[stage])
+	else:
+		push_error("wrong material")
 
 func _ready() -> void:
 	if char_animation.has_animation("Idle"):
@@ -60,6 +68,8 @@ func _ready() -> void:
 		for child in skeleton.get_children():
 			if child is MeshInstance3D:
 				child.set_surface_override_material(0, material)
+	#if material is ShaderMaterial:
+		#material.set_shader_parameter("dissolve", -0.1)
 
 func new_round():
 	can_move = true
@@ -92,6 +102,8 @@ func display_damage():
 	else:
 		await get_tree().create_timer(0.5).timeout
 	%Damage_numbers.hide()
+	$AnimationPlayer.play("Death")
+	await $AnimationPlayer.animation_finished
 	animation_ended.emit()
 	if stats.health == 0:
 		BattleHandler.char_dies(self)

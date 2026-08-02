@@ -8,6 +8,5 @@ script = ExtResource("1_bkwwl")
 name = "Blade wave"
 magic_cost = 10
 skill_map = ExtResource("2_bkwwl")
-is_attack = true
 damage = 1.0
 animation_jump = true

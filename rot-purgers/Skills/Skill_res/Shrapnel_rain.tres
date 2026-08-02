@@ -8,7 +8,6 @@ script = ExtResource("1_8c4m3")
 name = "Shrapnel rain"
 magic_cost = 30
 skill_map = ExtResource("2_6b5aj")
-is_attack = true
 damage = 1.5
 max_dist = 5
 accuracy_modifier = 0.2

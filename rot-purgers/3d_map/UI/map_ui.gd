@@ -168,10 +168,10 @@ func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
 	%Height_box.show()
 	%Focused_char_stats.hide()
 	map_generator.freze_selector = false
-	if skill.is_attack:
+	if skill.skill_type == Skill_base.skill_types.ATTACK:
 		map_generator.display_skill(skill)
 		map_generator.state = Map_generator.states.SKILL
-	if skill.is_heal:
+	if skill.skill_type == Skill_base.skill_types.HEAL:
 		map_generator.state_select()
 		BattleHandler.add_heal(selected_char, skill)
 		selected_char.can_attack = false

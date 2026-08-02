@@ -1,14 +1,15 @@
 [gd_scene format=4 uid="uid://c7bbx7glxoob8"]
 
 [ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_inksj"]
-[ext_resource type="Material" uid="uid://bebo5w3dyhelw" path="res://blender_models/new_materials/crystal_dude_material.tres" id="2_lqk4t"]
+[ext_resource type="Material" uid="uid://buo2wphiukwbc" path="res://Workshop/crystal_cude_rot_dissolve.tres" id="2_gtxpa"]
 [ext_resource type="Animation" uid="uid://c4v4gr25mnamw" path="res://blender_models/animations/crystal_dude_Idle.tres" id="3_gtxpa"]
 [ext_resource type="Texture2D" uid="uid://rmf4p254h6px" path="res://blender_models/Crystal_dude2_normals_Crystal_dude_texture-export.png" id="4_gtxpa"]
-[ext_resource type="Material" uid="uid://csy2c538e1174" path="res://blender_models/new_materials/rot_material.tres" id="4_h1wbr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyq3i"]
 resource_name = "Material.001"
-next_pass = ExtResource("4_h1wbr")
+transparency = 2
+alpha_scissor_threshold = 0.507
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("4_gtxpa")
 roughness = 0.5
@@ -250,14 +251,29 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:emission_enabled")
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.39968038),
+"times": PackedFloat32Array(0, 0.050177757, 0.10035551, 0.149773, 0.20071103, 0.24936825, 0.29878575, 0.34972376, 0.4006618),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true, false, true, false, true, false]
+"update": 0,
+"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7s3t3"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_xwkw5"]
@@ -265,14 +281,69 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:emission_enabled")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3s0yo"]
+resource_name = "Spell_jump_back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uiu5v"]
+resource_name = "Spell_jump_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_61r11"]
@@ -287,7 +358,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 0.96666664),
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
@@ -309,10 +380,13 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1wbr"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtxpa"]
 _data = {
 &"Damage": SubResource("Animation_2jqbt"),
+&"Death": SubResource("Animation_7s3t3"),
 &"RESET": SubResource("Animation_xwkw5"),
+&"Spell_jump_back": SubResource("Animation_3s0yo"),
+&"Spell_jump_up": SubResource("Animation_uiu5v"),
 &"empty": SubResource("Animation_61r11"),
 &"move_jump": SubResource("Animation_hljk3"),
 &"move_step": SubResource("Animation_boujc")
@@ -320,7 +394,7 @@ _data = {
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
 script = ExtResource("1_inksj")
-material = ExtResource("2_lqk4t")
+material = ExtResource("2_gtxpa")
 char_animation = NodePath("Crystal_dude2_normals/temp_anim")
 char_model_node = NodePath("Crystal_dude2_normals")
 skeleton = NodePath("Crystal_dude2_normals/Armature/Skeleton3D")
@@ -438,5 +512,5 @@ skeleton = NodePath("..")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_iuijr")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=631640234]
-libraries/ = SubResource("AnimationLibrary_h1wbr")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1382011828]
+libraries/ = SubResource("AnimationLibrary_gtxpa")

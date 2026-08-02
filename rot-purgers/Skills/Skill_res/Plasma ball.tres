@@ -8,6 +8,5 @@ script = ExtResource("1_kpt6o")
 name = "Plasma ball"
 magic_cost = 50
 skill_map = ExtResource("2_egmsf")
-is_attack = true
 damage = 2.0
 accuracy_modifier = 0.3

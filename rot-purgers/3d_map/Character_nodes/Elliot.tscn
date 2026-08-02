@@ -1,10 +1,39 @@
 [gd_scene format=4 uid="uid://dk1kcb3icintd"]
 
 [ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_hljk3"]
-[ext_resource type="Material" uid="uid://bafcn1tsb1bsh" path="res://3d_map/Character_nodes/char_materials/Elliot_material.tres" id="2_61r11"]
+[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://Workshop/dissolve_base_material.gdshader" id="2_xwkw5"]
 [ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="3_61r11"]
 [ext_resource type="PackedScene" uid="uid://btguubnakfyy8" path="res://Workshop/sword_trail.tscn" id="4_2jqbt"]
 [ext_resource type="PackedScene" uid="uid://bnnjcttj2n2pd" path="res://Workshop/flying_slash.tscn" id="5_xwkw5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g8kef"]
+frequency = 0.1016
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l2wnj"]
+noise = SubResource("FastNoiseLite_g8kef")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uiu5v"]
+resource_local_to_scene = true
+resource_name = "Material.001"
+render_priority = 0
+shader = ExtResource("2_xwkw5")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_61r11")
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.5
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_l2wnj")
+shader_parameter/dissolve = 0.0
+shader_parameter/rot = Color(0.22352941, 0.7372549, 0, 0)
+shader_parameter/emission = Color(1, 1, 1, 1)
+shader_parameter/emission_energy = 0.0
 
 [sub_resource type="Animation" id="Animation_2jqbt"]
 resource_name = "Damage"
@@ -24,14 +53,30 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:emission_enabled")
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.39968038),
+"times": PackedFloat32Array(0, 0.050177757, 0.10035551, 0.149773, 0.20071103, 0.24936825, 0.29878575, 0.34972376, 0.4006618),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true, false, true, false, true, false]
+"update": 0,
+"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7s3t3"]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_xwkw5"]
@@ -39,26 +84,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:emission_enabled")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_3s0yo"]
@@ -129,6 +186,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqru"]
 _data = {
 &"Damage": SubResource("Animation_2jqbt"),
+&"Death": SubResource("Animation_7s3t3"),
 &"RESET": SubResource("Animation_xwkw5"),
 &"Spell_jump_back": SubResource("Animation_3s0yo"),
 &"Spell_jump_up": SubResource("Animation_uiu5v"),
@@ -4974,7 +5032,7 @@ _data = {
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton", "attack_trail")]
 script = ExtResource("1_hljk3")
-material = ExtResource("2_61r11")
+material = SubResource("ShaderMaterial_uiu5v")
 char_animation = NodePath("Ellio1/AnimationPlayer")
 char_model_node = NodePath("Ellio1")
 skeleton = NodePath("Ellio1/Armature/Skeleton3D")

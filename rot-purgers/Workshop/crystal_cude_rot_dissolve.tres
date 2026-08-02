@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://buo2wphiukwbc"]
+
+[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://Workshop/dissolve_base_material.gdshader" id="2_x87ga"]
+[ext_resource type="Texture2D" uid="uid://rcxlv58nhran" path="res://blender_models/Crystal_dude2_Crystal_dude_texture-export.png" id="3_g5qtl"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g8kef"]
+frequency = 0.1016
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l2wnj"]
+noise = SubResource("FastNoiseLite_g8kef")
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Material.001"
+render_priority = 0
+shader = ExtResource("2_x87ga")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_g5qtl")
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.5
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_l2wnj")
+shader_parameter/dissolve = -0.1
+shader_parameter/dissolve_color = Color(9.62615e-07, 0.7667897, 0.96305496, 1)
+shader_parameter/rot = Color(0.22352941, 0.7372549, 0, 0)
+shader_parameter/emission = Color(1, 1, 1, 1)
+shader_parameter/emission_energy = 0.0
