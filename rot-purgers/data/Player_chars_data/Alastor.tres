@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://327ythhichbq" path="res://Skills/Skill_res/Shrapnel_rain.tres" id="5_3bdwe"]
 [ext_resource type="Resource" uid="uid://d3enrcnktuvq4" path="res://Skills/Skill_res/Plasma ball.tres" id="6_2ulin"]
 [ext_resource type="Texture2D" uid="uid://blrb3oenhm7o" path="res://dialogue/char_sprites/Alastor.png" id="7_2ulin"]
+[ext_resource type="Resource" uid="uid://cue18iythuit2" path="res://Skills/Skill_res/Modify_terrain.tres" id="7_hngfa"]
 
 [resource]
 script = ExtResource("1_miulx")
@@ -27,5 +28,5 @@ jump_height = 30
 attack_distance = 3
 attack_height = 40
 node_UID = "uid://cpgsmi4r45bbx"
-skills = Array[ExtResource("2_vo2ee")]([ExtResource("3_6rxxe"), ExtResource("4_hn48a"), ExtResource("5_3bdwe"), ExtResource("6_2ulin")])
+skills = Array[ExtResource("2_vo2ee")]([ExtResource("3_6rxxe"), ExtResource("4_hn48a"), ExtResource("5_3bdwe"), ExtResource("6_2ulin"), ExtResource("7_hngfa")])
 metadata/_custom_type_script = "uid://by1rq468n504l"

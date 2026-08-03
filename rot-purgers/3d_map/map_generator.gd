@@ -9,7 +9,7 @@ var neighbors_sides : Array[Vector2i] = [
 	Vector2i.LEFT,
 ]
 
-enum states { SELECT, MOVE, ATTACK, MENU, SKILL }
+enum states { SELECT, MOVE, ATTACK, MENU, SKILL, SKILL_TERRAIN }
 var state : states = states.SELECT
 var state_to_zone : Dictionary[states, String] = {
 	states.MOVE : "uid://bfinhl1dtgkyo",
@@ -47,6 +47,7 @@ signal map_loaded
 
 func load_map(map : Map_data):
 	await get_tree().process_frame
+	BattleHandler.map_gen = self
 	terrain_map = map.terrain_map_data
 	object_map = map.object_map_data
 	map_data = map
@@ -56,7 +57,6 @@ func load_map(map : Map_data):
 	await spawn_objects()
 	await %Map_UI.populate_spawn_list()
 	
-	BattleHandler.map_gen = self
 	await BattleHandler.new_battle_start()
 	await spawn_enemies(map.enemy_map_data)
 	map_loaded.emit()
@@ -70,13 +70,13 @@ func start(_terrain_map : Dictionary[Vector2i, Terrain_data],
 _object_map : Dictionary[Vector2i, Map_object], enemy_map : Dictionary[Vector2i, Character_stats]):
 	terrain_map = _terrain_map
 	object_map = _object_map
+	BattleHandler.map_gen = self
 	await spawn_cells()
 	await calculate_boundary()
 	await move_selector_to_spawn()
 	await spawn_objects()
 	await %Map_UI.populate_spawn_list()
 	
-	BattleHandler.map_gen = self
 	await BattleHandler.new_battle_start()
 	await spawn_enemies(enemy_map)
 
@@ -123,7 +123,7 @@ func move_selector_to_spawn():
 func get_position_height(pos : Vector3) -> float:
 	var cell : Vector2i = Vector2(round(pos.x), round(pos.z)) / 2
 	if map_cells.has(cell):
-		return terrain_map[cell].height * 0.1
+		return map_cells[cell].position.y
 	return 0.0
 
 func move_selector(map_cell : Map_cell):
@@ -133,6 +133,11 @@ func move_selector(map_cell : Map_cell):
 		if !selected_skill.skill_map.bound_to_char:
 			if !unbound_spell_range.has(map_cell_to_data_cell[map_cell]):
 				return
+	if state == states.SKILL_TERRAIN:
+		var mouse_pos : Vector2 = get_viewport().get_mouse_position()
+		var dead_zone : Rect2 = %Map_UI.dead_zone
+		if dead_zone.has_point(mouse_pos):
+			return
 	%Selector.position = map_cell.position
 	var prev_selector_cell := selected_cell
 	selected_map_cell = map_cell
@@ -292,6 +297,16 @@ func _input(event: InputEvent) -> void:
 								finalize_skill_move()
 							else:
 								add_skill_order()
+						states.SKILL_TERRAIN:
+							if selected_skill.terrain_mod == Skill_base.terrain_mods.HEIGHT:
+								var _mouse_pos : Vector2 = event.position
+								var dead_zone : Rect2 = %Map_UI.dead_zone
+								if dead_zone.has_point(_mouse_pos):
+									return
+								if terrain_mod_selected_cells.has(selected_cell):
+									remove_cell_from_terrain_modification(selected_cell)
+								else:
+									add_cell_for_terrain_modification(selected_cell)
 
 func spawn_ally(ch : Character_stats):
 	var char_node : Character_node = load(ch.node_UID).instantiate()
@@ -446,8 +461,8 @@ func attack_character():
 func state_select():
 	state = states.SELECT
 
-func move_camera(ch_node : Character_node):
-	%Camera_position.move_target = ch_node.position
+#func move_camera(ch_node : Character_node):
+	#%Camera_position.move_target = ch_node.position
 
 func set_camera_target(char_node : Character_node = null):
 	camera.follow_target = char_node
@@ -560,6 +575,7 @@ func make_unboun_skill(skill : Skill_base):
 			move_zone.position = map_cells[cell].position
 		else:
 			move_zone.position = Vector3(cell.x * cell_size, 0, cell.y * cell_size)
+		i += 1
 	
 	for cell in select_zones:
 		if unbound_spell_range.has(cell):
@@ -578,6 +594,12 @@ var dir_to_vector : Dictionary[directions, Vector2i] = {
 	directions.S : Vector2i(0, 1),
 	directions.E : Vector2i(1, 0),
 	directions.W : Vector2i(-1, 0)
+}
+var vector_to_dir : Dictionary[Vector2i, directions] = {
+	Vector2i.UP : directions.N,
+	Vector2i.RIGHT : directions.E,
+	Vector2i.DOWN : directions.S,
+	Vector2i.LEFT : directions.W
 }
 
 func rotate_skill(prev_dir : directions):
@@ -687,7 +709,7 @@ func check_unbound_skill_height() -> bool:
 func load_save():
 	var game_save : Game_save = Game_save.new()
 	game_save = ResourceLoader.load("user://save.tres")
-	
+	BattleHandler.map_gen = self
 	get_parent().current_map_id = game_save.current_map_id
 	terrain_map = game_save.terrain_map
 	object_map = game_save.object_map
@@ -700,7 +722,6 @@ func load_save():
 	GlobalData.ally_team = game_save.ally_team
 	await %Map_UI.populate_spawn_list()
 	
-	BattleHandler.map_gen = self
 	await BattleHandler.new_battle_start()
 	BattleHandler.order_array = game_save.orders
 	await load_chars(game_save)
@@ -757,8 +778,80 @@ func finalize_skill_move():
 	selected_char.can_move = false
 	selected_char.can_undo_move = true
 
+var terrain_mod_selected_cells : Array[Vector2i] = []
+var terrain_mod_data : Dictionary[Vector2i, Terrain_data] = {}
+func terrain_skill_selected(skill : Skill_base):
+	selected_skill = skill
+	terrain_mod_selected_cells.clear()
+	terrain_mod_data.clear()
+	if skill.terrain_mod == Skill_base.terrain_mods.HEIGHT:
+		var range_cells : Array[Vector2i] = get_flow_cells(selected_char.map_pos, skill.max_dist)
+		var i := 0
+		select_zones.clear()
+		for cell in range_cells:
+			var zone : Node3D = load("uid://crfwn05yop7k6").instantiate()
+			add_child(zone)
+			zone.name = "move_zone_" + str(i)
+			if map_cells.has(cell):
+				zone.position = map_cells[cell].position
+			else:
+				zone.position = Vector3(cell.x * cell_size, 0, cell.y * cell_size)
+			i += 1
+			select_zones[cell] = zone
 
+func add_cell_for_terrain_modification(cell : Vector2i):
+	if terrain_mod_selected_cells.has(cell) or !select_zones.has(cell):
+		return
+	terrain_mod_selected_cells.append(cell)
+	select_zones[cell].queue_free()
+	var zone : Node3D = load("uid://bnwwdeckahhsa").instantiate()
+	add_zone(zone, cell)
+	var terr_data := terrain_map[cell].duplicate(true)
+	terrain_mod_data[cell] =terr_data
 
+func remove_cell_from_terrain_modification(cell : Vector2i):
+	if !terrain_mod_selected_cells.has(cell):
+		return
+	terrain_mod_data.erase(cell)
+	terrain_mod_selected_cells.erase(cell)
+	select_zones[cell].queue_free()
+	var zone : Node3D = load("uid://crfwn05yop7k6").instantiate()
+	add_zone(zone, cell)
+
+func add_zone(zone : Node3D, cell : Vector2i):
+	add_child(zone)
+	if map_cells.has(cell):
+		zone.position = map_cells[cell].position
+	else:
+		zone.position = Vector3(cell.x * cell_size, 0, cell.y * cell_size)
+	select_zones[cell] = zone
+	rename_zones()
+	%Map_UI.update_terrain_cells(terrain_mod_selected_cells.size())
+
+func rename_zones():
+	for i in terrain_mod_selected_cells.size():
+		var cell : Vector2i = terrain_mod_selected_cells[i]
+		select_zones[cell].name = "Cell " + str(i + 1)
+
+func move_camera_to_cell(id : int):
+	var cell : Vector2i = terrain_mod_selected_cells[id]
+	camera.move_target = map_cells[cell].position
+	move_selector(map_cells[cell])
+
+func move_map_cell_height(id : int):
+	var map_cell : Map_cell = map_cells[terrain_mod_selected_cells[id]]
+	var height : int = terrain_mod_data[map_cell.cell_position].height
+	map_cell.update_height(height, select_zones[map_cell_to_data_cell[map_cell]])
+	# modify neib walls
+
+func cast_terrain_mod():
+	for cell in terrain_mod_data:
+		terrain_map[cell] = terrain_mod_data[cell]
+	for cell in select_zones:
+		select_zones[cell].queue_free()
+	select_zones.clear()
+	selected_char.can_attack = false
+	state = states.SELECT
 
 
 

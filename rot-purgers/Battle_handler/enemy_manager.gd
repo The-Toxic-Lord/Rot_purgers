@@ -157,6 +157,9 @@ func handle_charger_AI(enemy : Character_node):
 			cell = path[enemy.stats.move_speed]
 		else:
 			cell = path.back()
+		for p_c in path:
+			if !move_cells.has(p_c):
+				return
 		await move_charger(cell, enemy, move_cells)
 	
 	for neib in neib_side:

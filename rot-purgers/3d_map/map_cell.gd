@@ -31,7 +31,8 @@ var neib_reverse : Dictionary[Vector2i, bool] = {
 var neib_to_wall : Dictionary[Vector2i, MeshInstance3D] = {}
 signal mouse_entered
 
-var walls : Array[MeshInstance3D] = []
+var walls : Dictionary[Map_generator.directions, MeshInstance3D] = {}
+var wall_is_limited : Dictionary[MeshInstance3D, bool] = {}
 
 func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector2i):
 	cell_position = cell
@@ -54,20 +55,25 @@ func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector
 		if terrain_map[cell].depth != 0:
 			depth = terrain_map[cell].depth * 0.1
 		
-		await make_wall(neib, depth)
+		var wall := make_wall(neib, depth)
+		if terrain_map[cell].depth != 0:
+			wall_is_limited[wall] = true
+		else:
+			wall_is_limited[wall] = false
 	load_materials(terrain_map[cell])
 
 func load_materials(terrain_data : Terrain_data):
 	%Floor.set_surface_override_material(0, terrain_data.floor_material)
-	for wall in walls:
+	for wall in walls.values():
 		wall.set_surface_override_material(0, terrain_data.wall_material)
 
-func make_wall(neib : Vector2i, depth : float):
+func make_wall(neib : Vector2i, depth : float) -> MeshInstance3D:
 	var wall := MeshInstance3D.new()
 	add_child(wall)
-	walls.append(wall)
+	walls[BattleHandler.map_gen.vector_to_dir[neib]] = wall
 	wall.mesh = make_wall_mesh(neib_to_side[neib], depth, neib_reverse[neib])
 	neib_to_wall[neib] = wall
+	return wall
 
 func make_wall_mesh(_wall_border : Array[int], depth : float, reverse := true) -> ArrayMesh:
 	var array_mesh := ArrayMesh.new()
@@ -262,6 +268,125 @@ curve : Curve = null, zone_center : Vector3 = Vector3.ZERO, zone_length := 0.0) 
 
 func _on_mouse_detector_mouse_entered() -> void:
 	mouse_entered.emit()
+
+var move_tween : Tween
+var tween_progress := 0.0:
+	set(value):
+		tween_progress = value
+		if check_walls():
+			update_walls()
+var target_height : int
+func update_height(value : int, zone : Node3D):
+	target_height = value
+	if move_tween != null:
+		if move_tween.is_running():
+			move_tween.kill()
+	move_tween = create_tween()
+	move_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	move_tween.set_parallel()
+	tween_progress = 0.0
+	move_tween.tween_property(self, "position", position + Vector3(0, value * 0.1 - position.y, 0), 1.0)
+	move_tween.tween_property(zone, "position", position + Vector3(0, value * 0.1 - position.y, 0), 1.0)
+	move_tween.tween_property(self, "tween_progress", 1.0, 1.0)
+	if BattleHandler.map_gen.char_positions.has(cell_position):
+		var char_node : Character_node = BattleHandler.map_gen.char_positions[cell_position]
+		move_tween.tween_property(char_node, "position", char_node.position + Vector3(0, value * 0.1 - position.y, 0), 1.0)
+
+func update_walls():
+	for dir in walls:
+		var wall : MeshInstance3D = walls[dir]
+		if !wall_is_limited[wall]:
+			wall.mesh = update_wall_mesh(wall.mesh, dir)
+
+func update_wall_mesh(mesh : ArrayMesh, dir : Map_generator.directions):
+	var mdt := MeshDataTool.new()
+	mdt.create_from_surface(mesh, 0)
+	
+	var depth : float = position.y
+	var neib : Vector2i = BattleHandler.map_gen.dir_to_vector[dir]
+	if BattleHandler.map_gen.map_cells.has(cell_position + neib):
+		depth -= BattleHandler.map_gen.map_cells[cell_position + neib].position.y
+
+	@warning_ignore("narrowing_conversion")
+	var res : int = sqrt(mdt.get_vertex_count())
+	
+	for ii in mdt.get_vertex_count():
+		var vertex : Vector3 = mdt.get_vertex(ii)
+		@warning_ignore("integer_division")
+		var z : int = ii / res
+		vertex.y = - depth * (res - z - 1) / (res - 1)
+		mdt.set_vertex(ii, vertex)
+	
+	mesh.clear_surfaces()
+	mdt.commit_to_surface(mesh)
+	return mesh
+
+func check_walls() -> bool:
+	for neib in neighbors_sides:
+		if BattleHandler.map_gen.map_cells.has(cell_position + neib):
+			var map_cell : Map_cell = BattleHandler.map_gen.map_cells[cell_position + neib]
+			map_cell.check_walls_neib(-neib)
+	for neib in neighbors_sides:
+		check_walls_self(neib)
+	
+	return true
+
+func check_walls_self(neib : Vector2i) -> bool:
+	var cell := neib + cell_position
+	if !BattleHandler.map_gen.map_cells.has(cell):
+		return true
+	var height_diff : float = position.y
+	var depth : int = BattleHandler.map_gen.terrain_mod_data[cell_position].depth
+	height_diff -= BattleHandler.map_gen.map_cells[cell].position.y
+	var dir : Map_generator.directions = BattleHandler.map_gen.vector_to_dir[neib]
+	if walls.has(dir) and height_diff <= 0.0:
+		walls[dir].queue_free()
+		walls.erase(dir)
+		return false
+	if height_diff > 0.0 and !walls.has(dir):
+		var wall : MeshInstance3D
+		if depth == 0:
+			wall = make_wall(neib, height_diff * 10)
+		else:
+			wall = make_wall(neib, depth * 0.1)
+		if depth != 0:
+			wall_is_limited[wall] = true
+		else:
+			wall_is_limited[wall] = false
+		wall.set_surface_override_material(0, 
+		BattleHandler.map_gen.terrain_map[cell_position].wall_material)
+		return false
+	return true
+
+func check_walls_neib(neib : Vector2i):
+	var cell := neib + cell_position
+	var height_diff : float = position.y
+	height_diff -= BattleHandler.map_gen.map_cells[cell].position.y
+	var dir : Map_generator.directions = BattleHandler.map_gen.vector_to_dir[neib]
+	if walls.has(dir) and height_diff <= 0.0:
+		walls[dir].queue_free()
+		walls.erase(dir)
+		return
+	if height_diff > 0.0 and !walls.has(dir):
+		var depth : int = BattleHandler.map_gen.terrain_map[cell_position].depth
+		@warning_ignore("confusable_local_declaration")
+		var wall : MeshInstance3D
+		if depth == 0:
+			wall = make_wall(neib, height_diff * 10)
+		else:
+			wall = make_wall(neib, depth * 0.1)
+		if depth != 0:
+			wall_is_limited[wall] = true
+		else:
+			wall_is_limited[wall] = false
+		wall.set_surface_override_material(0, 
+		BattleHandler.map_gen.terrain_map[cell_position].wall_material)
+		return
+	if walls.has(dir):
+		var wall : MeshInstance3D = walls[dir]
+		update_wall_mesh(wall.mesh, dir)
+
+
 
 
 

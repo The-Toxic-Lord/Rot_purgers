@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c6unaq27q63vc" path="res://3d_map/UI/char_action_menu.tscn" id="5_fyh1b"]
 [ext_resource type="PackedScene" uid="uid://cqerhl6ublq57" path="res://3d_map/UI/turn_menu.tscn" id="6_qlg74"]
 [ext_resource type="PackedScene" uid="uid://qu82b3iiw4hr" path="res://3d_map/UI/spell_select_menu.tscn" id="7_e57h2"]
+[ext_resource type="StyleBox" uid="uid://c867nr0bsb6xs" path="res://new_style_box_flat.tres" id="8_cpof1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e57h2"]
 bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
@@ -151,6 +152,123 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Terrain_mod" type="MarginContainer" parent="." unique_id=526090381]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -499.0
+offset_top = -556.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Terrain_mod" unique_id=1942972276]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e57h2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Terrain_mod" unique_id=1944707603]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Terrain_mod/MarginContainer" unique_id=463342143]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=215824093]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Selected cell :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cell_select" type="OptionButton" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=2054436563]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+
+[node name="current_heilght_lb" type="Label" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=1149907951]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Current height : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mod_heilght_lb" type="Label" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=430624204]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Modified height : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=798994831]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="terr_bt_01" type="Button" parent="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer" unique_id=325776662]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("8_cpof1")
+text = "-10"
+
+[node name="terr_bt_02" type="Button" parent="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer" unique_id=778004633]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("8_cpof1")
+text = "-5"
+
+[node name="terr_bt_03" type="Button" parent="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer" unique_id=719917018]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("8_cpof1")
+text = "-1"
+
+[node name="terr_bt_04" type="Button" parent="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2075482941]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("8_cpof1")
+text = "+1"
+
+[node name="terr_bt_05" type="Button" parent="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1282170656]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("8_cpof1")
+text = "+5"
+
+[node name="terr_bt_06" type="Button" parent="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer" unique_id=96172272]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("8_cpof1")
+text = "+10"
+
+[node name="Label3" type="Label" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=537736024]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Magic cost : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Terrain_mod_button" type="Button" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=2035606506]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Cast"
+
 [connection signal="pressed" from="Character_select_menu/Character_list/Close_spawn" to="." method="close_spawn_menu"]
 [connection signal="attack" from="Char_action_menu" to="." method="_on_char_action_menu_attack"]
 [connection signal="defend" from="Char_action_menu" to="." method="_on_char_action_menu_defend"]
@@ -162,3 +280,11 @@ vertical_alignment = 1
 [connection signal="exit" from="Turn_menu" to="." method="_on_turn_menu_exit"]
 [connection signal="exit" from="Spell_select_menu" to="." method="_on_spell_select_menu_exit"]
 [connection signal="skill_selected" from="Spell_select_menu" to="." method="_on_spell_select_menu_skill_selected"]
+[connection signal="item_selected" from="Terrain_mod/MarginContainer/VBoxContainer/Cell_select" to="." method="_on_cell_select_item_selected"]
+[connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_01" to="." method="_on_terr_bt_pressed" flags=18]
+[connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_02" to="." method="_on_terr_bt_pressed" flags=18]
+[connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_03" to="." method="_on_terr_bt_pressed" flags=18]
+[connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_04" to="." method="_on_terr_bt_pressed" flags=18]
+[connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_05" to="." method="_on_terr_bt_pressed" flags=18]
+[connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_06" to="." method="_on_terr_bt_pressed" flags=18]
+[connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/Terrain_mod_button" to="." method="_on_terrain_mod_button_pressed"]

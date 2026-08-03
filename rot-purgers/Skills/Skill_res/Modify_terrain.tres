@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://cue18iythuit2"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_5pvof"]
+
+[resource]
+script = ExtResource("1_5pvof")
+name = "Modify terrain"
+magic_cost = 1
+skill_type = 2
+max_dist = 6
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

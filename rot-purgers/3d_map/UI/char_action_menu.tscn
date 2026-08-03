@@ -32,30 +32,35 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+action_mode = 0
 text = "Move"
 
 [node name="Attack" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1069164114]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+action_mode = 0
 text = "Attack"
 
 [node name="Spell" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1357512705]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+action_mode = 0
 text = "Spell"
 
 [node name="Defend" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1725337120]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+action_mode = 0
 text = "Defend"
 
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1807635558]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+action_mode = 0
 text = "Exit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Move" to="." method="_on_action_button_pressed" flags=18]

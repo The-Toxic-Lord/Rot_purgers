@@ -168,14 +168,19 @@ func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
 	%Height_box.show()
 	%Focused_char_stats.hide()
 	map_generator.freze_selector = false
-	if skill.skill_type == Skill_base.skill_types.ATTACK:
-		map_generator.display_skill(skill)
-		map_generator.state = Map_generator.states.SKILL
-	if skill.skill_type == Skill_base.skill_types.HEAL:
-		map_generator.state_select()
-		BattleHandler.add_heal(selected_char, skill)
-		selected_char.can_attack = false
-		selected_char.has_order = true
+	match skill.skill_type:
+		Skill_base.skill_types.ATTACK:
+			map_generator.display_skill(skill)
+			map_generator.state = Map_generator.states.SKILL
+		Skill_base.skill_types.HEAL:
+			map_generator.state_select()
+			BattleHandler.add_heal(selected_char, skill)
+			selected_char.can_attack = false
+			selected_char.has_order = true
+		Skill_base.skill_types.TERRAIN:
+			map_generator.terrain_skill_selected(skill)
+			map_generator.state = Map_generator.states.SKILL_TERRAIN
+			%Terrain_mod.show()
 
 func _on_spell_select_menu_exit() -> void:
 	%Spell_select_menu.clear_skills()
@@ -203,6 +208,48 @@ func make_save():
 
 func update_height(value : int):
 	%Height_lb.text = str(value)
+
+@onready var dead_zone : Rect2 = Rect2(%Terrain_mod.position, %Terrain_mod.size)
+func update_terrain_cells(value : int):
+	var cell_select : OptionButton = %Cell_select
+	if value > cell_select.item_count:
+		var check : bool = false
+		if cell_select.item_count == 0:
+			check = true
+		cell_select.add_item("Cell " + str(value))
+		if check:
+			cell_select.select(0)
+			await get_tree().process_frame
+			_on_cell_select_item_selected(0)
+	elif value < cell_select.item_count:
+		cell_select.remove_item(cell_select.item_count - 1)
+
+var selected_index : int
+func _on_cell_select_item_selected(index: int) -> void:
+	map_generator.move_camera_to_cell(index)
+	selected_index = index
+	var cell : Vector2i = map_generator.terrain_mod_selected_cells[index]
+	%current_heilght_lb.text = "Current height : " + str(map_generator.terrain_map[cell].height)
+	%mod_heilght_lb.text = "Modified height : " + str(map_generator.terrain_mod_data[cell].height)
+
+@onready var terrain_mod_buttons : Dictionary[BaseButton, int] = {
+	%terr_bt_01 : int(%terr_bt_01.text),
+	%terr_bt_02 : int(%terr_bt_02.text),
+	%terr_bt_03 : int(%terr_bt_03.text),
+	%terr_bt_04 : int(%terr_bt_04.text),
+	%terr_bt_05 : int(%terr_bt_05.text),
+	%terr_bt_06 : int(%terr_bt_06.text),
+}
+func _on_terr_bt_pressed(source: BaseButton) -> void:
+	var cell : Vector2i = map_generator.terrain_mod_selected_cells[selected_index]
+	map_generator.terrain_mod_data[cell].height += terrain_mod_buttons[source]
+	%mod_heilght_lb.text = "Modified height : " + str(map_generator.terrain_mod_data[cell].height)
+	map_generator.move_map_cell_height(selected_index)
+
+func _on_terrain_mod_button_pressed() -> void:
+	map_generator.cast_terrain_mod()
+	%Terrain_mod.hide()
+
 
 
 

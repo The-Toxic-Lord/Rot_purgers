@@ -30,12 +30,15 @@ enum terrain_mods { MOVE, HEIGHT }
 @export var terrain_mod : terrain_mods = terrain_mods.HEIGHT
 
 func _validate_property(property: Dictionary) -> void:
-	if property.name in ["damage", "max_height_difference", "max_dist",
+	if property.name in ["damage", "max_height_difference",
 	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump"]:
 		if skill_type != skill_types.ATTACK:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["heal_value"]:
 		if skill_type != skill_types.HEAL:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "max_dist":
+		if skill_type != skill_types.ATTACK and skill_type != skill_types.TERRAIN:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["terrain_mod"]:
 		if skill_type != skill_types.TERRAIN:
