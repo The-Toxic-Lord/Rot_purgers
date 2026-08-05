@@ -10,6 +10,7 @@ class_name Global_data
 
 @export var map_data_path : Array[String] = []
 
+@export var map_magic_cost_adjustment : float
 
 func _ready() -> void:
 	for ch in ally_team:

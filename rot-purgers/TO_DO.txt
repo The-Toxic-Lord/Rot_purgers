@@ -12,9 +12,8 @@ MONITOR:
 +- move with bound skill selected
 +- fix defence undo (the lack of it)
 
-
 critical:
-	- terrain mod skills
+	+- terrain mod skills
 	- damage sounds
 	- music
 	+- game over
@@ -32,4 +31,3 @@ critical:
 - move selector and camera with keyboard
 - movement when using skill
 - stats rearange
-- animations

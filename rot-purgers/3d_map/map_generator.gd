@@ -51,6 +51,7 @@ func load_map(map : Map_data):
 	terrain_map = map.terrain_map_data
 	object_map = map.object_map_data
 	map_data = map
+	GlobalData.map_magic_cost_adjustment = map_data.magic_cost_adjustment
 	await spawn_cells()
 	await calculate_boundary()
 	await move_selector_to_spawn()
@@ -75,6 +76,7 @@ _object_map : Dictionary[Vector2i, Map_object], enemy_map : Dictionary[Vector2i,
 	await calculate_boundary()
 	await move_selector_to_spawn()
 	await spawn_objects()
+	GlobalData.map_magic_cost_adjustment = 1.0
 	await %Map_UI.populate_spawn_list()
 	
 	await BattleHandler.new_battle_start()
@@ -313,7 +315,8 @@ func spawn_ally(ch : Character_stats):
 	add_child(char_node)
 	var cell : Vector2i = selected_cell
 	char_node.position = spawn_zones[cell].position
-	char_node.stats = ch
+	char_node.set_stats(ch)
+	char_node.stats.stats_adjust()
 	char_node.name = ch.name
 	char_node.is_enemy = false
 	char_positions[cell] = char_node

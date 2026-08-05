@@ -11,7 +11,7 @@ func set_skill(_skill : Skill_base, magic_left : int):
 	%Skill_name.text = skill.name
 	var skill_cost : int
 	if BattleHandler.map_gen.map_data != null:
-		skill_cost= int(BattleHandler.map_gen.map_data.magic_cost_adjustment * skill.magic_cost)
+		skill_cost = int(GlobalData.magic_cost_adjustment * skill.magic_cost)
 	else:
 		skill_cost = int(skill.magic_cost)
 	%Skill_cost.text = str(skill_cost)

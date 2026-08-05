@@ -3,6 +3,7 @@ extends Node3D
 class_name Character_node
 
 @export var stats : Character_stats
+@export var base_stats : Character_stats
 @export var material : Material
 @export var char_animation : AnimationPlayer
 @export var char_model_node : Node3D
@@ -23,6 +24,7 @@ var map_pos : Vector2i
 var previous_map_pos : Vector2i
 var can_undo_move := false
 var is_enemy := true
+var car_rearange := true
 
 var previous_direction : Map_generator.directions = Map_generator.directions.N
 var current_direction : Map_generator.directions = Map_generator.directions.N
@@ -61,6 +63,10 @@ func set_rot(stage : int):
 	else:
 		push_error("wrong material")
 
+func set_stats(char_stat : Character_stats):
+	stats = char_stat.duplicate()
+	base_stats = char_stat.duplicate()
+
 func _ready() -> void:
 	if char_animation.has_animation("Idle"):
 		char_animation.play("Idle")
@@ -76,6 +82,7 @@ func new_round():
 	can_attack = true
 	is_defending = false
 	can_undo_move = false
+	car_rearange = true
 	previous_map_pos = Vector2i(-1, -1)
 	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.2), 0, stats.max_magic)
 
@@ -102,11 +109,14 @@ func display_damage():
 	else:
 		await get_tree().create_timer(0.5).timeout
 	%Damage_numbers.hide()
-	$AnimationPlayer.play("Death")
-	await $AnimationPlayer.animation_finished
 	animation_ended.emit()
 	if stats.health == 0:
+		$AnimationPlayer.play("Death")
+		await $AnimationPlayer.animation_finished
+		animation_ended.emit()
 		BattleHandler.char_dies(self)
+	else:
+		animation_ended.emit()
 
 func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
 select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Vector2i, Map_cell]):

@@ -49,8 +49,8 @@ func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector
 				if depth_n > 0:
 					depth_n *= 0.1
 					depth = depth_n
-				else:
-					continue
+				#else:
+					#continue
 		
 		if terrain_map[cell].depth != 0:
 			depth = terrain_map[cell].depth * 0.1
@@ -305,7 +305,10 @@ func update_wall_mesh(mesh : ArrayMesh, dir : Map_generator.directions):
 	var depth : float = position.y
 	var neib : Vector2i = BattleHandler.map_gen.dir_to_vector[dir]
 	if BattleHandler.map_gen.map_cells.has(cell_position + neib):
-		depth -= BattleHandler.map_gen.map_cells[cell_position + neib].position.y
+		if BattleHandler.map_gen.terrain_map[cell_position + neib].depth == 0:
+			depth -= BattleHandler.map_gen.map_cells[cell_position + neib].position.y
+		else:
+			depth = position.y
 
 	@warning_ignore("narrowing_conversion")
 	var res : int = sqrt(mdt.get_vertex_count())
@@ -337,7 +340,10 @@ func check_walls_self(neib : Vector2i) -> bool:
 		return true
 	var height_diff : float = position.y
 	var depth : int = BattleHandler.map_gen.terrain_mod_data[cell_position].depth
-	height_diff -= BattleHandler.map_gen.map_cells[cell].position.y
+	if BattleHandler.map_gen.terrain_map[cell].depth != 0:
+		height_diff = position.y
+	else:
+		height_diff -= BattleHandler.map_gen.map_cells[cell].position.y
 	var dir : Map_generator.directions = BattleHandler.map_gen.vector_to_dir[neib]
 	if walls.has(dir) and height_diff <= 0.0:
 		walls[dir].queue_free()
@@ -359,10 +365,14 @@ func check_walls_self(neib : Vector2i) -> bool:
 	return true
 
 func check_walls_neib(neib : Vector2i):
+	if BattleHandler.map_gen.terrain_map[cell_position].depth != 0:
+		return
 	var cell := neib + cell_position
 	var height_diff : float = position.y
 	height_diff -= BattleHandler.map_gen.map_cells[cell].position.y
 	var dir : Map_generator.directions = BattleHandler.map_gen.vector_to_dir[neib]
+	if BattleHandler.map_gen.terrain_map[cell].depth != 0:
+			return
 	if walls.has(dir) and height_diff <= 0.0:
 		walls[dir].queue_free()
 		walls.erase(dir)

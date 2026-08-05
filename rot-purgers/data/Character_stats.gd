@@ -23,6 +23,12 @@ enum stats { max_health, health, max_magic, magic, strength, defence, magic_stre
 @export var attack_stat : stats = stats.strength
 @export var defender_stat : stats = stats.defence
 
+func get_stat(stat : stats) -> int:
+	return get(stats.keys()[stat])
+
+func set_stat(stat : stats, value : int):
+	set(stats.keys()[stat], value)
+
 func get_attack_stat_used() -> int:
 	return get(stats.keys()[attack_stat])
 
@@ -48,10 +54,21 @@ func new() -> void:
 	health = max_health
 	magic = max_magic
 
+enum adjust_stats { max_health, strength, defence, accuracy, speed }
 
+func stats_adjust():
+	var magic_mod : float
+	var map_magic_mod : float = GlobalData.map_magic_cost_adjustment
+	if map_magic_mod <= 2.0:
+		magic_mod = 1.2 - (map_magic_mod - 1.0) * 0.2
+	else:
+		magic_mod = 1.0 - (map_magic_mod - 2.0) * 0.2
+	for st in adjust_stats:
+		set(st, int(get(st) * magic_mod))
+	health = max_health
+	magic = max_magic
 
-
-
+var readjust_points : int = 0
 
 
 

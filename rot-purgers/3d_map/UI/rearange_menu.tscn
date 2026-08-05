@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://dw6n725evmlpp"]
+
+[ext_resource type="Texture2D" uid="uid://csjmnwhuue5va" path="res://import/Grabber.png" id="1_slwx8"]
+[ext_resource type="Script" uid="uid://f6rtqv82m2vk" path="res://3d_map/UI/rearange_menu.gd" id="1_yrinl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpof1"]
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[node name="Rearange_menu" type="MarginContainer" unique_id=1136149641]
+offset_right = 551.0
+offset_bottom = 560.0
+script = ExtResource("1_yrinl")
+
+[node name="Panel" type="Panel" parent="." unique_id=1933539227]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cpof1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1592655691]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=955580006]
+layout_mode = 2
+
+[node name="Readjust_points" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2104755694]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Readjust points : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health_lb" type="Label" parent="MarginContainer/VBoxContainer" unique_id=477342593]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Maximum health : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health_slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1096549705]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_slwx8")
+theme_override_icons/grabber_highlight = ExtResource("1_slwx8")
+
+[node name="Strength_lb2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=686458596]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Strength : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Strength_slider2" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1300999093]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_slwx8")
+theme_override_icons/grabber_highlight = ExtResource("1_slwx8")
+
+[node name="Defence_lb3" type="Label" parent="MarginContainer/VBoxContainer" unique_id=602475218]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Defence : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Defence_slider3" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1379616712]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_slwx8")
+theme_override_icons/grabber_highlight = ExtResource("1_slwx8")
+
+[node name="Accuracy_lb4" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2143369417]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Accuracy : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Accuracy_slider4" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1555573182]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_slwx8")
+theme_override_icons/grabber_highlight = ExtResource("1_slwx8")
+
+[node name="Speed_lb5" type="Label" parent="MarginContainer/VBoxContainer" unique_id=640334312]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Speed : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Speed_slider5" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=514994855]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_slwx8")
+theme_override_icons/grabber_highlight = ExtResource("1_slwx8")
+
+[node name="Confirm_bt" type="Button" parent="MarginContainer/VBoxContainer" unique_id=213664144]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Confirm"
+
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Health_slider" to="." method="_on_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Health_slider" to="." method="_on_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Strength_slider2" to="." method="_on_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Strength_slider2" to="." method="_on_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Defence_slider3" to="." method="_on_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Defence_slider3" to="." method="_on_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Accuracy_slider4" to="." method="_on_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Accuracy_slider4" to="." method="_on_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Speed_slider5" to="." method="_on_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Speed_slider5" to="." method="_on_slider_value_changed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Confirm_bt" to="." method="_on_confirm_bt_pressed"]

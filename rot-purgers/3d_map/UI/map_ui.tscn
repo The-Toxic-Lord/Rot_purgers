@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cqerhl6ublq57" path="res://3d_map/UI/turn_menu.tscn" id="6_qlg74"]
 [ext_resource type="PackedScene" uid="uid://qu82b3iiw4hr" path="res://3d_map/UI/spell_select_menu.tscn" id="7_e57h2"]
 [ext_resource type="StyleBox" uid="uid://c867nr0bsb6xs" path="res://new_style_box_flat.tres" id="8_cpof1"]
+[ext_resource type="PackedScene" uid="uid://dw6n725evmlpp" path="res://3d_map/UI/rearange_menu.tscn" id="9_bj6fb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e57h2"]
 bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
@@ -15,6 +16,9 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+
+[sub_resource type="Theme" id="Theme_cpof1"]
+PopupMenu/font_sizes/font_size = 34
 
 [node name="Map_UI" type="CanvasLayer" unique_id=1270663533]
 script = ExtResource("1_cy5bf")
@@ -160,8 +164,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -499.0
-offset_top = -556.0
+offset_left = -537.0
+offset_top = -572.0
 offset_right = -50.0
 offset_bottom = -50.0
 grow_horizontal = 0
@@ -192,7 +196,9 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
+theme = SubResource("Theme_cpof1")
 theme_override_font_sizes/font_size = 34
+alignment = 1
 
 [node name="current_heilght_lb" type="Label" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=1149907951]
 unique_name_in_owner = true
@@ -269,11 +275,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Cast"
 
+[node name="Rearange_menu" parent="." unique_id=1136149641 instance=ExtResource("9_bj6fb")]
+unique_name_in_owner = true
+visible = false
+offset_left = 997.0
+offset_top = 50.0
+offset_right = 1548.0
+offset_bottom = 610.0
+
 [connection signal="pressed" from="Character_select_menu/Character_list/Close_spawn" to="." method="close_spawn_menu"]
 [connection signal="attack" from="Char_action_menu" to="." method="_on_char_action_menu_attack"]
 [connection signal="defend" from="Char_action_menu" to="." method="_on_char_action_menu_defend"]
 [connection signal="exit" from="Char_action_menu" to="." method="_on_char_action_menu_exit"]
 [connection signal="move" from="Char_action_menu" to="." method="_on_char_action_menu_move"]
+[connection signal="rearange" from="Char_action_menu" to="." method="_on_char_action_menu_rearange"]
 [connection signal="spell" from="Char_action_menu" to="." method="_on_char_action_menu_spell"]
 [connection signal="end_turn" from="Turn_menu" to="." method="_on_turn_menu_end_turn"]
 [connection signal="execute" from="Turn_menu" to="." method="_on_turn_menu_execute"]
@@ -288,3 +303,4 @@ text = "Cast"
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_05" to="." method="_on_terr_bt_pressed" flags=18]
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_06" to="." method="_on_terr_bt_pressed" flags=18]
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/Terrain_mod_button" to="." method="_on_terrain_mod_button_pressed"]
+[connection signal="confirm" from="Rearange_menu" to="." method="_on_rearange_menu_confirm"]

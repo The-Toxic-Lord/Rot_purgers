@@ -7,7 +7,7 @@ var map_gen : Map_generator
 signal order_ended
 
 func hit_check(target : Character_node, attacker : Character_node, acc_mod : float = 0.0) -> bool:
-	var chance = pow(float(attacker.stats.accuracy)/float(target.stats.speed),2) + acc_mod
+	var chance = float(attacker.stats.accuracy)/float(target.stats.speed) + acc_mod
 	if randf_range(0, 1) < chance:
 		return true
 	else:
@@ -38,7 +38,7 @@ func skill_mass(order : Order_skill_data):
 	await get_tree().process_frame
 	var attacker : Character_node = get_node(order.attacker)
 	if map_gen.map_data != null:
-		attacker.magic_cost(int(order.skill.magic_cost * map_gen.map_data.magic_cost_adjustment))
+		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.magic_cost_adjustment))
 	else:
 		attacker.magic_cost(int(order.skill.magic_cost))
 	map_gen.set_selector(attacker.map_pos)
@@ -64,7 +64,7 @@ func skill_oneshot(order : Order_skill_data):
 			targets.append(map_gen.char_positions[cell])
 	var attacker : Character_node = get_node(order.attacker)
 	if map_gen.map_data != null:
-		attacker.magic_cost(int(order.skill.magic_cost * map_gen.map_data.magic_cost_adjustment))
+		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.magic_cost_adjustment))
 	else:
 		attacker.magic_cost(int(order.skill.magic_cost))
 	map_gen.set_selector(attacker.map_pos)
@@ -98,7 +98,7 @@ func skill_damage(target : Character_node, attacker : Character_node, skill : Sk
 func heal(order : Order_heal):
 	await get_tree().process_frame
 	var attacker : Character_node = get_node(order.attacker)
-	attacker.magic_cost(int(order.skill.magic_cost * map_gen.map_data.magic_cost_adjustment))
+	attacker.magic_cost(int(order.skill.magic_cost * GlobalData.magic_cost_adjustment))
 	attacker.heal(order.skill.heal_value)
 	await attacker.animation_ended
 	order_ended.emit()
