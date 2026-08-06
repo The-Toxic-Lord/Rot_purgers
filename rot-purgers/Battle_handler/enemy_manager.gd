@@ -157,17 +157,20 @@ func handle_charger_AI(enemy : Character_node):
 			cell = path[enemy.stats.move_speed]
 		else:
 			cell = path.back()
+		path.remove_at(0)
 		for p_c in path:
+			if p_c == cell:
+				break
 			if !move_cells.has(p_c):
 				return
 		await move_charger(cell, enemy, move_cells)
 	
-	for neib in neib_side:
-		if map_gen.char_positions.has(neib + enemy.map_pos):
-			if BattleHandler.allies.has(map_gen.char_positions[neib + enemy.map_pos]):
-				var height : int = map_gen.terrain_map[neib + enemy.map_pos].height
-				if abs(height - map_gen.terrain_map[enemy.map_pos].height) < enemy.stats.attack_height:
-					BattleHandler.add_attack(enemy, map_gen.char_positions[neib + enemy.map_pos])
+	#for neib in neib_side:
+		#if map_gen.char_positions.has(neib + enemy.map_pos):
+			#if BattleHandler.allies.has(map_gen.char_positions[neib + enemy.map_pos]):
+				#var height : int = map_gen.terrain_map[neib + enemy.map_pos].height
+				#if abs(height - map_gen.terrain_map[enemy.map_pos].height) < enemy.stats.attack_height:
+					#BattleHandler.add_attack(enemy, map_gen.char_positions[neib + enemy.map_pos])
 
 func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> bool:
 	var skill_possibilities : Array[Skill_able_data] = []

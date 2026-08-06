@@ -2,7 +2,8 @@ extends Resource
 
 class_name Character_stats
 
-enum stats { max_health, health, max_magic, magic, strength, defence, magic_strenght, accuracy, speed }
+enum stats { max_health, health, max_magic, magic, strength, 
+defence, magic_strenght, accuracy, speed, jump_height, move_speed }
 
 @export_group("visual")
 @export var name := "rename me"

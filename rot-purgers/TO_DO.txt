@@ -11,6 +11,7 @@ MONITOR:
 + добавить показатель высоты и ассоциированные вещи
 +- move with bound skill selected
 +- fix defence undo (the lack of it)
++ stats rearange
 
 critical:
 	+- terrain mod skills
@@ -30,4 +31,3 @@ critical:
 - background image
 - move selector and camera with keyboard
 - movement when using skill
-- stats rearange

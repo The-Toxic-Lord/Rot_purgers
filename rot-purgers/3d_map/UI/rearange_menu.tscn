@@ -112,6 +112,36 @@ layout_mode = 2
 theme_override_icons/grabber = ExtResource("1_slwx8")
 theme_override_icons/grabber_highlight = ExtResource("1_slwx8")
 
+[node name="Jump_lb6" type="Label" parent="MarginContainer/VBoxContainer" unique_id=123051557]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Jump height : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Jump_height_slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1171861749]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_slwx8")
+theme_override_icons/grabber_highlight = ExtResource("1_slwx8")
+
+[node name="Move_lb7" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1564717819]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Move speed : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Move_speed _slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=261636481]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("1_slwx8")
+theme_override_icons/grabber_highlight = ExtResource("1_slwx8")
+
 [node name="Confirm_bt" type="Button" parent="MarginContainer/VBoxContainer" unique_id=213664144]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
@@ -127,4 +157,8 @@ text = "Confirm"
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Accuracy_slider4" to="." method="_on_slider_value_changed" flags=18]
 [connection signal="drag_ended" from="MarginContainer/VBoxContainer/Speed_slider5" to="." method="_on_slider_drag_ended" flags=18]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Speed_slider5" to="." method="_on_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Jump_height_slider" to="." method="_on_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Jump_height_slider" to="." method="_on_slider_value_changed" flags=18]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Move_speed _slider" to="." method="_on_slider_drag_ended" flags=18]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Move_speed _slider" to="." method="_on_slider_value_changed" flags=18]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Confirm_bt" to="." method="_on_confirm_bt_pressed"]
