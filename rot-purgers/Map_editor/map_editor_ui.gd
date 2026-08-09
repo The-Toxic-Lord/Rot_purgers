@@ -157,11 +157,18 @@ func _on_mode_button_pressed(index : int) -> void:
 	%Mode.selected = index
 	map_editor.paint_mode = mode_buttons[index]
 
+var save_location : String
 func _on_save_pressed() -> void:
-	map_editor.save_map_data()
+	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_SAVE_FILE
+	%FileDialog.popup()
+	await %FileDialog.file_selected
+	map_editor.save_map_data(%FileDialog.current_path)
 
 func _on_load_pressed() -> void:
-	map_editor.load_map_data()
+	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
+	%FileDialog.popup()
+	await %FileDialog.file_selected
+	map_editor.load_map_data(%FileDialog.current_path)
 
 func load_data(map_size : Vector2i):
 	%map_x.text = str(map_size.x)

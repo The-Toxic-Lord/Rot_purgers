@@ -16,6 +16,7 @@ enum skill_types { ATTACK, HEAL, TERRAIN }
 		notify_property_list_changed()
 
 @export var damage : float
+@export var is_one_shot := true
 @export var max_height_difference : int = 10
 @export var max_dist : int = 1
 @export var accuracy_modifier : float = 0.0
@@ -30,7 +31,7 @@ enum terrain_mods { MOVE, HEIGHT }
 @export var terrain_mod : terrain_mods = terrain_mods.HEIGHT
 
 func _validate_property(property: Dictionary) -> void:
-	if property.name in ["damage", "max_height_difference",
+	if property.name in ["damage", "max_height_difference", "is_one_shot",
 	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump"]:
 		if skill_type != skill_types.ATTACK:
 			property.usage = PROPERTY_USAGE_NO_EDITOR

@@ -3,6 +3,8 @@ extends CanvasLayer
 class_name Map_UI
 
 @onready var map_generator : Map_generator = get_parent()
+@onready var mini_char_stats: Mini_char_stats = %Mini_char_stats
+
 signal map_spawn_character
 
 var selected_char : Character_node
@@ -44,7 +46,6 @@ func show_focus_char_stats(ch : Character_stats):
 
 func close_spawn_menu():
 	map_generator.freze_selector = false
-	map_generator.state_select()
 	$Focused_char_stats.hide()
 	%Character_select_menu.hide()
 	%Height_box.show()

@@ -25,6 +25,7 @@ var previous_map_pos : Vector2i
 var can_undo_move := false
 var is_enemy := true
 var car_rearange := true
+var is_dead := false
 
 var previous_direction : Map_generator.directions = Map_generator.directions.N
 var current_direction : Map_generator.directions = Map_generator.directions.N
@@ -44,6 +45,8 @@ signal direction_changed
 signal move_finished
 signal attack_finished
 signal animation_ended
+
+var mini_char_stats : Mini_char_stats
 
 var rot_stage : Dictionary[int, float] = {
 	0 : 0,
@@ -84,9 +87,9 @@ func new_round():
 	can_undo_move = false
 	car_rearange = true
 	previous_map_pos = Vector2i(-1, -1)
-	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.2), 0, stats.max_magic)
+	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.05), 0, stats.max_magic)
 
-func damage(value : float):
+func damage(value : float, display_mini := false):
 	await get_tree().process_frame
 	if value == -1:
 		%Damage_numbers.text = "miss"
@@ -95,9 +98,11 @@ func damage(value : float):
 		stats.health = clampi(stats.health - int(value), 0, stats.max_health)
 		%Damage_numbers.text = str(int(value))
 		%Damage_numbers.modulate = Color("e80029")
-	display_damage()
+		if display_mini:
+			mini_char_stats.display_damage(stats.health)
+	display_damage(display_mini)
 
-func display_damage():
+func display_damage(display_mini := false):
 	%Damage_numbers.show()
 	SoundHandler.play_damage()
 	if $AnimationPlayer.has_animation("Damage"):
@@ -109,8 +114,11 @@ func display_damage():
 	else:
 		await get_tree().create_timer(0.5).timeout
 	%Damage_numbers.hide()
-	animation_ended.emit()
+	#animation_ended.emit()
 	if stats.health == 0:
+		is_dead = true
+		if display_mini:
+			mini_char_stats.play_dead()
 		$AnimationPlayer.play("Death")
 		await $AnimationPlayer.animation_finished
 		animation_ended.emit()
@@ -339,8 +347,12 @@ func send_projectile(target_cell):
 	projectile.global_rotation = %Flying_slash.global_rotation
 	projectile.show()
 	var tween := create_tween()
-	tween.tween_property(projectile, "position", 
-	BattleHandler.map_gen.map_cells[target_cell].position, 1.0)
+	var pos : Vector3
+	if BattleHandler.map_gen.map_cells.has(target_cell):
+		pos = BattleHandler.map_gen.map_cells[target_cell].position
+	else:
+		pos = Vector3(target_cell.x * 2.0, 0, target_cell.y * 2.0)
+	tween.tween_property(projectile, "position", pos, 1.0)
 	tween.tween_callback(remove_projectile.bind(projectile))
 
 func remove_projectile(projectile : Node3D):

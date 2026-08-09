@@ -6,7 +6,6 @@ func update_stats(ch : Character_stats):
 	%Char_name.text = ch.name
 	%Move_speed.text = "Mv : " + str(ch.move_speed)
 	%Jump_height.text = "Jm : " + str(ch.jump_height)
-	%Health.text = str(int(ch.health))
 	%Magic.text = str(int(ch.magic))
 	
 	%Health_bar.max_value = ch.max_health
@@ -17,3 +16,31 @@ func update_stats(ch : Character_stats):
 	
 	if ch.sprite != null:
 		%Sprite.texture = ch.sprite
+
+var damage_tween : Tween
+
+func display_damage(new_value : int):
+	if damage_tween != null:
+		if damage_tween.is_running():
+			damage_tween.kill()
+	damage_tween = create_tween()
+	damage_tween.tween_property(%Health_bar, "value", new_value, 0.5)
+
+func _on_health_bar_value_changed(value: float) -> void:
+	%Health.text = str(int(value))
+
+func play_dead():
+	if damage_tween != null:
+		if damage_tween.is_running():
+			damage_tween.kill()
+	damage_tween = create_tween()
+	damage_tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.9)
+	damage_tween.tween_callback(dead_cleanup)
+
+func dead_cleanup():
+	modulate = Color(1.0, 1.0, 1.0, 1.0)
+	hide()
+
+
+
+#

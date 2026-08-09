@@ -479,6 +479,7 @@ bones/5/rotation = Quaternion(1.4040482e-06, 1.7359837e-07, 0.9763958, -0.215989
 bones/5/scale = Vector3(0.99999994, 0.9999999, 1)
 
 [node name="Cube" type="MeshInstance3D" parent="Crystal_dude2_normals/Armature/Skeleton3D" unique_id=1409514353]
+material_override = ExtResource("2_gtxpa")
 mesh = SubResource("ArrayMesh_foorj")
 skin = SubResource("Skin_pfdph")
 skeleton = NodePath("..")

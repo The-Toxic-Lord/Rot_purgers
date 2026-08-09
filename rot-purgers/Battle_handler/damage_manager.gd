@@ -16,6 +16,10 @@ func hit_check(target : Character_node, attacker : Character_node, acc_mod : flo
 func attack_damage(target : Character_node, attacker : Character_node):
 	attacker.attack(target.map_pos)
 	await attacker.attack_finished
+	target.mini_char_stats = map_gen.map_ui.mini_char_stats
+	map_gen.set_camera_target(target)
+	map_gen.set_selector(target.map_pos)
+	await get_tree().process_frame
 	if hit_check(target, attacker):
 		var damage : float = attacker.stats.get_attack_stat_used()
 		if target.is_defending:
@@ -24,11 +28,9 @@ func attack_damage(target : Character_node, attacker : Character_node):
 			damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
 		if damage < 0:
 			damage = 0
-		await target.damage(damage)
+		await target.damage(damage, true)
 	else:
 		await target.damage(-1)
-	map_gen.set_camera_target(target)
-	map_gen.set_selector(target.map_pos)
 	await target.animation_ended
 		# ADD miss
 	await get_tree().process_frame
@@ -50,9 +52,22 @@ func skill_mass(order : Order_skill_data):
 			target_damage[map_gen.char_positions[cell]] = \
 			skill_damage(map_gen.char_positions[cell], attacker, order.skill)
 	if !target_damage.is_empty():
-		for target in target_damage.keys():
-			target.damage(target_damage[target])
-		await target_damage.keys()[0].animation_ended
+		for target : Character_node in target_damage.keys():
+			target.mini_char_stats = map_gen.map_ui.mini_char_stats
+			map_gen.set_camera_target(target)
+			map_gen.set_selector(target.map_pos)
+			target.damage(target_damage[target], true)
+			await target.animation_ended
+		#await target_damage.keys()[0].animation_ended
+		await get_tree().process_frame
+		while true:
+			var dead_check := true
+			for target in target_damage.keys():
+				if target != null:
+					if target.is_dead:
+						dead_check = false
+			if dead_check:
+				break
 	
 	order_ended.emit()
 
@@ -77,6 +92,16 @@ func skill_oneshot(order : Order_skill_data):
 		target.damage(target_damage[target])
 	if !targets.is_empty():
 		await targets[0].animation_ended
+		await get_tree().process_frame
+		while true:
+			var dead_check := true
+			for target in targets:
+				if target != null:
+					if target.is_dead:
+						dead_check = false
+			if dead_check:
+				break
+	
 	
 	order_ended.emit()
 

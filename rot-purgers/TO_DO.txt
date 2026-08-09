@@ -4,17 +4,17 @@ MONITOR:
 +- character animated movement
 +- skills
 + healing
-+- defence
++ defence
 + enemy AI
 + undo
 + tutorial
 + добавить показатель высоты и ассоциированные вещи
-+- move with bound skill selected
-+- fix defence undo (the lack of it)
++ move with bound skill selected
 + stats rearange
++ terrain mod skills
++ movement when using skill
 
 critical:
-	+- terrain mod skills
 	- damage sounds
 	- music
 	+- game over
@@ -29,5 +29,4 @@ critical:
 
 - ramps
 - background image
-- move selector and camera with keyboard
-- movement when using skill
+- move selector and camera with controller

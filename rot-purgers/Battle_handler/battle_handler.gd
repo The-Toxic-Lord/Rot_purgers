@@ -128,7 +128,7 @@ func handle_skill(order : Order_skill_data):
 			if map_gen.char_positions.has(cell):
 				order_handled.emit()
 				return
-		if order.skill.skill_map.bound_to_char:
+		if order.skill.is_one_shot:
 			dmg_mng.skill_oneshot(order)
 		else:
 			dmg_mng.skill_mass(order)

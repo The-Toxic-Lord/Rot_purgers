@@ -278,20 +278,27 @@ func show_height():
 	for le : LineEdit in cell_to_depth_line.values():
 		le.show()
 
-func save_map_data():
+func save_map_data(file_path : String):
 	var save_data := Map_data.new()
 	save_data.terrain_map_data = terrain_map_data
 	save_data.object_map_data = object_map_data
 	save_data.enemy_map_data = enemy_map_data
 	save_data.map_size = map_size
-	ResourceSaver.save(save_data, "res://map_data_res/saved_map.tres")
+	ResourceSaver.save(save_data, file_path)
 
-func load_map_data():
+func load_map_data(file_path : String):
 	%Terrain_map.clear()
 	%Object_map.clear()
 	%Enemy_map.clear()
 	
-	var save_data : Map_data = ResourceLoader.load("res://map_data_res/saved_map.tres")
+	for cell in cell_to_height_line:
+		cell_to_height_line[cell].queue_free()
+	cell_to_height_line.clear()
+	for cell in cell_to_depth_line:
+		cell_to_depth_line[cell].queue_free()
+	cell_to_depth_line.clear()
+	
+	var save_data : Map_data = ResourceLoader.load(file_path)
 	terrain_map_data = save_data.terrain_map_data
 	object_map_data = save_data.object_map_data
 	enemy_map_data = save_data.enemy_map_data

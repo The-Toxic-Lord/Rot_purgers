@@ -17,6 +17,7 @@ var state_to_zone : Dictionary[states, String] = {
 }
 
 @onready var camera : Camera_controller = %Camera_position
+@onready var map_ui: Map_UI = %Map_UI
 
 @export var cell_size := 2.0
 var map_cells : Dictionary[Vector2i, Map_cell] = {}
