@@ -1,0 +1,21 @@
+~ start
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
+
+
+~ test
+Alastor : Oh! Good afternoon, High Chancellor. Were you perhaps waiting for me?
+Elliot : Quite so. It would seem that our investigations have led us to the same place.
+Alastor : Have you already been down there?
+Elliot : No. I sensed your presence approaching and decided to wait.
+Alastor : Thank you! It is always a pleasure to see a master at work!
+Elliot : Hmm. As time goes by, your attitude still doesn't change. Follow me.
+=> END

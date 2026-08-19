@@ -1,7 +1,12 @@
 extends Node3D
 
 func start_cutscene(text_data : Text_data):
-	DialogueBalloon.show_text(text_data)
-	await DialogueBalloon.text_read
+	
+	CutsceneBalloon.start(load("uid://bhj75sl17uhsm"), "test")
+	await DialogueManager.dialogue_ended
+	#DialogueManager._start_balloon(CutsceneBalloon, load("uid://bhj75sl17uhsm"), "test", [])
+	
+	#DialogueBalloon.show_text(text_data)
+	#await DialogueBalloon.text_read
 	var main : Main_node = get_parent()
 	main.load_map()

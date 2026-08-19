@@ -1,8 +1,10 @@
 [gd_scene format=4 uid="uid://c2hd250kce25a"]
 
 [ext_resource type="Script" uid="uid://dxga5yn432vdm" path="res://import/first_map_export.gd" id="1_0vjjw"]
+[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://Workshop/dissolve_base_material.gdshader" id="3_8fycp"]
 [ext_resource type="PackedScene" uid="uid://cpgsmi4r45bbx" path="res://3d_map/Character_nodes/Alastor.tscn" id="3_ln5k1"]
 [ext_resource type="PackedScene" uid="uid://dk1kcb3icintd" path="res://3d_map/Character_nodes/Elliot.tscn" id="4_bhoiu"]
+[ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="4_r8xqd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lykj6"]
 sky_top_color = Color(0.3841999, 0.44939798, 0.57756805, 1)
@@ -123,6 +125,36 @@ size = Vector3(600, 1, 600)
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g8kef"]
+frequency = 0.1016
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l2wnj"]
+noise = SubResource("FastNoiseLite_g8kef")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fycp"]
+resource_local_to_scene = true
+resource_name = "Material.001"
+render_priority = 0
+shader = ExtResource("3_8fycp")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4_r8xqd")
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.5
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_l2wnj")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_color = Color(0, 0, 0, 1)
+shader_parameter/rot = Color(0.22352941, 0.7372549, 0, 0)
+shader_parameter/emission = Color(1, 1, 1, 1)
+shader_parameter/emission_energy = 0.0
+
 [node name="First_map" type="Node3D" unique_id=964775134]
 script = ExtResource("1_0vjjw")
 
@@ -157,7 +189,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rvatu")
 transform = Transform3D(0.7040145, -0.3224173, 0.6327802, 0, 0.8910067, 0.45399016, -0.71018565, -0.31961566, 0.6272816, 0.7521057, 2.4287872, 4.4781494)
 
 [node name="Character_node" parent="." unique_id=741036927 instance=ExtResource("4_bhoiu")]
-transform = Transform3D(-0.7396298, 0, 0.6730139, 0, 1, 0, -0.6730139, 0, -0.7396298, 0.094753385, 3.5762787e-07, 2.0521977)
+transform = Transform3D(-0.7396298, 0, 0.6730139, 0, 1, 0, -0.6730139, 0, -0.7396298, 0, 0, 0)
+material = SubResource("ShaderMaterial_8fycp")
 
 [node name="Character_node2" parent="." unique_id=443867150 instance=ExtResource("3_ln5k1")]
 transform = Transform3D(0.5941783, 0, -0.8043333, 0, 1, 0, 0.8043333, 0, 0.5941783, -1.8288414, -7.1525574e-07, 3.8460915)

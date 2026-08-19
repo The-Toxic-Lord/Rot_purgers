@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://cj8f8s4ud3c4x"]
+
+[ext_resource type="Texture2D" uid="uid://c5s61egmf67ek" path="res://aseprite_stuff/MagicUI_Menu.png" id="1_amlv4"]
+[ext_resource type="FontFile" uid="uid://b8pau7rxamhnn" path="res://Fonts/False Earthdream.ttf" id="1_i7eh4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ravco"]
+texture = ExtResource("1_amlv4")
+region_rect = Rect2(0, 64, 32, 16)
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_i7eh4")
+Button/styles/normal = SubResource("StyleBoxTexture_ravco")

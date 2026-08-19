@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d36vfk32xklka" path="res://3d_map/UI/main_menu.gd" id="1_qy1io"]
 [ext_resource type="PackedScene" uid="uid://cw74744wjquox" path="res://import/settings.tscn" id="2_bctjb"]
+[ext_resource type="Theme" uid="uid://cj8f8s4ud3c4x" path="res://new_theme.tres" id="2_lduah"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bctjb"]
 bg_color = Color(0.14117648, 0.14117648, 0.14117648, 0.7176471)
@@ -37,51 +38,52 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=1502884895]
 layout_mode = 2
+theme = ExtResource("2_lduah")
 theme_override_constants/separation = 10
 
 [node name="New_game" type="Button" parent="Menu/VBoxContainer" unique_id=623741292]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme = ExtResource("2_lduah")
 text = "New game"
 
 [node name="Load" type="Button" parent="Menu/VBoxContainer" unique_id=953377436]
 unique_name_in_owner = true
-visible = false
+custom_minimum_size = Vector2(219, 63)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "Load"
 
 [node name="Tutorial" type="Button" parent="Menu/VBoxContainer" unique_id=1702764992]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "Tutorial"
 
 [node name="Map_editor" type="Button" parent="Menu/VBoxContainer" unique_id=1790007543]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "Map Editor
 "
 
 [node name="Settings_button" type="Button" parent="Menu/VBoxContainer" unique_id=2088237208]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "Settings
 "
 
 [node name="Credits" type="Button" parent="Menu/VBoxContainer" unique_id=1599609011]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "Credits"
 
 [node name="Exit" type="Button" parent="Menu/VBoxContainer" unique_id=964471579]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 text = "Exit"
 
 [node name="Settings" parent="." unique_id=1104411629 instance=ExtResource("2_bctjb")]

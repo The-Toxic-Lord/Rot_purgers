@@ -15,6 +15,7 @@ MONITOR:
 + movement when using skill
 
 critical:
+	- parry\defend
 	- damage sounds
 	- music
 	+- game over
