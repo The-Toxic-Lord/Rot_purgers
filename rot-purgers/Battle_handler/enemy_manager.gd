@@ -82,8 +82,8 @@ func handle_charger_AI(enemy : Character_node):
 	for en in BattleHandler.enemies:
 		move_cells.erase(en.map_pos)
 	
-	if await AI_can_use_skill(move_cells, enemy):
-		return
+	#if await AI_can_use_skill(move_cells, enemy):
+		#return
 	
 	if await AI_can_attack(move_cells, enemy):
 		return

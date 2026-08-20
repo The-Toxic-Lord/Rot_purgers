@@ -9,7 +9,7 @@ class_name Skill_base
 
 @export var skill_map : Skill_map_data
 
-enum skill_types { ATTACK, HEAL, TERRAIN }
+enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT }
 @export var skill_type : skill_types = skill_types.ATTACK:
 	set(value):
 		skill_type = value
@@ -25,13 +25,15 @@ enum skill_types { ATTACK, HEAL, TERRAIN }
 @export var defence_stat : Character_stats.stats = Character_stats.stats.magic_strenght
 @export var animation_jump : bool = false
 
+@export var deflect_times : int = 1
+
 @export var heal_value : float
 
 enum terrain_mods { MOVE, HEIGHT }
 @export var terrain_mod : terrain_mods = terrain_mods.HEIGHT
 
 func _validate_property(property: Dictionary) -> void:
-	if property.name in ["damage", "max_height_difference", "is_one_shot",
+	if property.name in ["damage", "is_one_shot",
 	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump"]:
 		if skill_type != skill_types.ATTACK:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
@@ -39,10 +41,16 @@ func _validate_property(property: Dictionary) -> void:
 		if skill_type != skill_types.HEAL:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name == "max_dist":
-		if skill_type != skill_types.ATTACK and skill_type != skill_types.TERRAIN:
+		if skill_type == skill_types.HEAL:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "max_height_difference":
+		if skill_type != skill_types.ATTACK and skill_type != skill_types.PROTECT:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["terrain_mod"]:
 		if skill_type != skill_types.TERRAIN:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "deflect_times":
+		if skill_type != skill_types.PROTECT:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func get_attack_stat_used(st : Character_stats) -> int:

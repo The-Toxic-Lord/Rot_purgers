@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dfefbrwmuckxc" path="res://Skills/Skill_res/heal.tres" id="4_1grv0"]
 [ext_resource type="Resource" uid="uid://q32sww7y2ms6" path="res://Skills/Skill_res/Blade wave.tres" id="5_eurt7"]
 [ext_resource type="Texture2D" uid="uid://d1ht125wx8k8d" path="res://dialogue/char_sprites/Elliot.png" id="6_gkyuj"]
+[ext_resource type="Resource" uid="uid://bl2ebc2cdsawt" path="res://Skills/Skill_res/Defend.tres" id="6_xc611"]
 
 [resource]
 script = ExtResource("1_dnv0a")
@@ -22,5 +23,5 @@ speed = 30
 move_speed = 3
 counter = 3
 node_UID = "uid://dk1kcb3icintd"
-skills = Array[ExtResource("2_gkyuj")]([ExtResource("3_xc611"), ExtResource("5_eurt7"), ExtResource("4_1grv0")])
+skills = Array[ExtResource("2_gkyuj")]([ExtResource("3_xc611"), ExtResource("5_eurt7"), ExtResource("4_1grv0"), ExtResource("6_xc611")])
 metadata/_custom_type_script = "uid://by1rq468n504l"

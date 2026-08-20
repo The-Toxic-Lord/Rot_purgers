@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://bl2ebc2cdsawt"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_6ryro"]
+
+[resource]
+script = ExtResource("1_6ryro")
+name = "Defend"
+skill_type = 3
+max_height_difference = 40
+max_dist = 2
+deflect_times = 2
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

@@ -1,6 +1,7 @@
 extends Node3D
 
 func start_cutscene(text_data : Text_data):
+	await get_tree().process_frame
 	
 	CutsceneBalloon.start(load("uid://bhj75sl17uhsm"), "test")
 	await DialogueManager.dialogue_ended

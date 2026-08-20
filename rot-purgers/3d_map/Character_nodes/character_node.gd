@@ -26,6 +26,7 @@ var can_undo_move := false
 var is_enemy := true
 var car_rearange := true
 var is_dead := false
+var deflects_left : int = 0
 
 var previous_direction : Map_generator.directions = Map_generator.directions.N
 var current_direction : Map_generator.directions = Map_generator.directions.N
@@ -77,8 +78,8 @@ func _ready() -> void:
 		for child in skeleton.get_children():
 			if child is MeshInstance3D:
 				child.set_surface_override_material(0, material)
-	#if material is ShaderMaterial:
-		#material.set_shader_parameter("dissolve", -0.1)
+	if material is ShaderMaterial:
+		material.set_shader_parameter("dissolve", -0.1)
 
 func new_round():
 	can_move = true

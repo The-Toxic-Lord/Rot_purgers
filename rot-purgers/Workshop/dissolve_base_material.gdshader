@@ -22,7 +22,7 @@ uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
 uniform sampler2D noise_texture;
-uniform float dissolve;
+uniform float dissolve = -0.1;
 uniform vec4 dissolve_color : source_color;
 uniform vec4 rot : source_color;
 

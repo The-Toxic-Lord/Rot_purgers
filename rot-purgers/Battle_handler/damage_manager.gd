@@ -13,9 +13,38 @@ func hit_check(target : Character_node, attacker : Character_node, acc_mod : flo
 	else:
 		return false
 
+func deflect_check(target : Character_node, attacker : Character_node) -> bool:
+	var points : Array[Vector2i] = Geometry2D.bresenham_line(attacker.map_pos, target.map_pos)
+	var closest_char : Character_node
+	var closest_cell : Vector2i
+	for char_node in BattleHandler.protected_cells:
+		var cells : Array[Vector2i] = BattleHandler.protected_cells[char_node]
+		for v in points:
+			if !cells.has(v):
+				continue
+			@warning_ignore("unassigned_variable")
+			if closest_char == null:
+				closest_cell = v
+				closest_char = char_node
+				continue
+			if (v - attacker.map_pos).length_squared() <\
+			 (closest_cell - attacker.map_pos).length_squared():
+				closest_cell = v
+				closest_char = char_node
+	if closest_char != null:
+		closest_char.deflects_left -= 1
+		if closest_char.deflects_left == 0:
+			BattleHandler.protected_cells.erase(closest_char)
+		return true
+	return false
+
 func attack_damage(target : Character_node, attacker : Character_node):
 	attacker.attack(target.map_pos)
 	await attacker.attack_finished
+	#if (target.map_pos - attacker.map_pos).length() > 1:
+	if deflect_check(target, attacker):
+		order_ended.emit()
+		return
 	target.mini_char_stats = map_gen.map_ui.mini_char_stats
 	map_gen.set_camera_target(target)
 	map_gen.set_selector(target.map_pos)

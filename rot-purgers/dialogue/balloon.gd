@@ -45,10 +45,7 @@ var dialogue_line: DialogueLine:
 			apply_dialogue_line()
 		else:
 			# The dialogue has finished so close the balloon
-			if owner == null:
-				queue_free()
-			else:
-				hide()
+			hide()
 	get:
 		return dialogue_line
 

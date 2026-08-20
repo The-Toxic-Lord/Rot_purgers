@@ -16,7 +16,6 @@ magic_strenght = 90
 attack_stat = 6
 defender_stat = 6
 move_speed = 3
-attack_distance = 6
 attack_height = 40
 node_UID = "uid://mcx4phaimhpc"
 skills = Array[ExtResource("2_uuhbo")]([ExtResource("3_i27qx"), ExtResource("3_l4prs")])

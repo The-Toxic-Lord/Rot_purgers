@@ -11,6 +11,8 @@ var map_gen : Map_generator
 var allies : Array[Character_node] = []
 var enemies : Array[Character_node] = []
 
+var protected_cells : Dictionary[Character_node, Array] = {}
+
 @onready var dmg_mng : Damage_manager = $Damage_manager
 var order_array : Array[Order_data] = []
 
@@ -67,6 +69,8 @@ func execute_orders():
 			handle_skill(order_data)
 		elif order_data is Order_heal:
 			handle_heal(order_data)
+		elif order_data is Order_protect:
+			handle_protect(order_data)
 		else:
 			handle_attack(order_data)
 		await order_handled
@@ -90,6 +94,10 @@ func end_player_turn():
 	start_player_turn()
 
 func start_player_turn():
+	for char_node in allies:
+		if protected_cells.has(char_node):
+			protected_cells.erase(char_node)
+		char_node.deflects_left = 0
 	if map_gen == null:
 		return
 	map_gen.set_camera_target()
@@ -167,6 +175,27 @@ func end_battle():
 
 func game_over():
 	main_node.game_over()
+
+func add_protect(attacker : Character_node, skill : Skill_base):
+	var order := Order_protect.new()
+	order.make_order(attacker, skill)
+	order_array.append(order)
+
+func handle_protect(order : Order_protect):
+	await get_tree().process_frame
+	if has_node(order.attacker):
+		var attacker : Character_node = get_node(order.attacker)
+		attacker.can_move = false
+		attacker.has_order = false
+		attacker.deflects_left = order.skill.deflect_times
+		var pr_cells : Array[Vector2i] = map_gen.get_flow_cells(attacker.map_pos,
+		order.skill.max_dist, false, false, order.skill.max_height_difference, true, false)
+		protected_cells[attacker] = pr_cells
+	order_handled.emit()
+
+
+
+
 
 
 
