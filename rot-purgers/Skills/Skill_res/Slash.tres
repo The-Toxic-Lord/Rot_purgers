@@ -12,3 +12,4 @@ damage = 1.5
 accuracy_modifier = 0.1
 stat_used = 4
 defence_stat = 5
+move_mode = 2

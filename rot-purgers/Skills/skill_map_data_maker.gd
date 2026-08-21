@@ -3,9 +3,7 @@ extends TileMapLayer
 
 class_name Skill_map_data_maker
 
-@export var bake_data := false:
-	set(value):
-		bake()
+@export_tool_button("Bake data") var bt = bake
 
 @export var data : Skill_map_data
 
@@ -22,5 +20,8 @@ func bake():
 				data.damage_cells.append(cell)
 			Vector2i(4, 0):
 				data.move_cells.append(cell)
+			Vector2i(4,1):
+				data.move_cells.append(cell)
+				data.move_target = cell
 			Vector2i(7, 1):
 				data.bound_to_char = true

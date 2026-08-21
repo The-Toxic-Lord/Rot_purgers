@@ -857,6 +857,17 @@ func cast_terrain_mod():
 	selected_char.can_attack = false
 	state = states.SELECT
 
+func teleport_char(char_node : Character_node, new_cell : Vector2i):
+	char_positions.erase(char_node.map_pos)
+	char_node.position = map_cells[new_cell].position
+	char_node.map_pos = new_cell
+	char_positions[new_cell] = char_node
+
+
+
+
+
+
 
 
 
