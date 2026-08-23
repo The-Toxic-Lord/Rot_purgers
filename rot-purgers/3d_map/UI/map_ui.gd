@@ -127,6 +127,9 @@ func close_all():
 		%Spell_select_menu.clear_skills()
 		%Char_action_menu.focus(2)
 		return
+	if %Rearange_menu.visible:
+		%Rearange_menu.hide()
+		%Rearange_menu.remove_changes()
 	for menu in menues:
 		menu.hide()
 	map_generator.freze_selector = false

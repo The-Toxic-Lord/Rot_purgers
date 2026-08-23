@@ -25,9 +25,11 @@ var stats : Array[Character_stats.stats] = [
 signal confirm
 
 var char_stats : Character_stats
+var old_stats : Character_stats
 func load_char(char_node : Character_node):
 	var char_stats_base : Character_stats = char_node.base_stats
 	char_stats = char_node.stats
+	old_stats = char_stats.duplicate(true)
 	%Readjust_points.text = "Readjust points : " + str(char_stats.readjust_points)
 	for i in stats.size():
 		var slider : HSlider = sliders[i]
@@ -128,7 +130,10 @@ func _on_confirm_bt_pressed() -> void:
 	hide()
 	confirm.emit()
 
-
+func remove_changes():
+	for id in stats.size():
+		char_stats.set_stat(stats[id], old_stats.get_stat(stats[id]))
+	char_stats.set_stat(Character_stats.stats.health, old_stats.get_stat(Character_stats.stats.health))
 
 
 

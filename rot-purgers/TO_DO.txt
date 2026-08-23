@@ -13,6 +13,7 @@ MONITOR:
 + stats rearange
 + terrain mod skills
 + movement when using skill
++ skill move
 
 critical:
 	+- parry\defend
