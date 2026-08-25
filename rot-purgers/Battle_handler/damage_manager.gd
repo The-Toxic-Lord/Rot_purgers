@@ -68,7 +68,7 @@ func skill_mass(order : Order_skill_data):
 	await get_tree().process_frame
 	var attacker : Character_node = get_node(order.attacker)
 	if map_gen.map_data != null:
-		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.magic_cost_adjustment))
+		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.map_magic_cost_adjustment))
 	else:
 		attacker.magic_cost(int(order.skill.magic_cost))
 	map_gen.set_selector(attacker.map_pos)
@@ -106,7 +106,7 @@ func skill_oneshot(order : Order_skill_data):
 			targets.append(map_gen.char_positions[cell])
 	var attacker : Character_node = get_node(order.attacker)
 	if map_gen.map_data != null:
-		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.magic_cost_adjustment))
+		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.map_magic_cost_adjustment))
 	else:
 		attacker.magic_cost(int(order.skill.magic_cost))
 	map_gen.set_selector(attacker.map_pos)

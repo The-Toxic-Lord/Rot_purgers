@@ -49,6 +49,7 @@ signal map_loaded
 func load_map(map : Map_data):
 	await get_tree().process_frame
 	BattleHandler.map_gen = self
+	ObjectLink.map_gen = self
 	terrain_map = map.terrain_map_data
 	object_map = map.object_map_data
 	map_data = map
@@ -528,7 +529,8 @@ func make_bound_skill(skill : Skill_base):
 		if map_cells.has(selected_char.map_pos + damage_cell):
 			damage_zone.position = map_cells[selected_char.map_pos + damage_cell].position
 		else:
-			damage_zone.position = Vector3(damage_cell.x * cell_size, 0, damage_cell.y * cell_size)
+			damage_zone.position = Vector3((selected_char.map_pos.x + damage_cell.x) * cell_size, 0, 
+			(selected_char.map_pos.y + damage_cell.y) * cell_size)
 		select_zones[selected_char.map_pos + damage_cell] = damage_zone
 	
 	i = 0
@@ -541,7 +543,8 @@ func make_bound_skill(skill : Skill_base):
 		if map_cells.has(selected_char.map_pos + move_cell):
 			move_zone.position = map_cells[selected_char.map_pos + move_cell].position
 		else:
-			move_zone.position = Vector3(move_cell.x * cell_size, 0, move_cell.y * cell_size)
+			move_zone.position = Vector3((selected_char.map_pos.x + move_cell.x) * cell_size, 0, 
+			(selected_char.map_pos.y + move_cell.y) * cell_size)
 		select_zones[selected_char.map_pos + move_cell] = move_zone
 	
 	if selected_char.current_direction != Map_generator.directions.N:
@@ -563,7 +566,8 @@ func make_unboun_skill(skill : Skill_base):
 		if map_cells.has(selected_cell + damage_cell):
 			damage_zone.position = map_cells[selected_cell + damage_cell].position
 		else:
-			damage_zone.position = Vector3(damage_cell.x * cell_size, 0, damage_cell.y * cell_size)
+			damage_zone.position = Vector3((selected_char.map_pos.x + damage_cell.x) * cell_size, 0, 
+			(selected_char.map_pos.y + damage_cell.y) * cell_size)
 		select_zones[selected_cell + damage_cell] = damage_zone
 	
 	var range_cells := get_flow_cells(selected_char.map_pos, skill.max_dist,

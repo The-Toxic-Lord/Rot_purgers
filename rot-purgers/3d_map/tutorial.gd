@@ -4,6 +4,8 @@ class_name Tutorial
 
 func load_map(map : Map_data):
 	await get_tree().process_frame
+	BattleHandler.map_gen = self
+	ObjectLink.map_gen = self
 	terrain_map = map.terrain_map_data
 	object_map = map.object_map_data
 	map_data = map
@@ -12,6 +14,7 @@ func load_map(map : Map_data):
 	await move_selector_to_spawn()
 	await spawn_objects()
 	
+	GlobalData.map_magic_cost_adjustment = 1.0
 	GlobalData.ally_team.clear()
 	GlobalData.ally_team.append(load("uid://c8uo7wqbb15qk"))
 	GlobalData.ally_team[0].new()
@@ -23,81 +26,81 @@ func load_map(map : Map_data):
 	map_loaded.emit()
 	if map_data.text_data != null:
 		freze_selector = true
-		DialogueBalloon.show_text(map_data.text_data)
-		await DialogueBalloon.text_read
+		DialogueBalloon.start(map_data.text_data, "t1")
+		await DialogueManager.dialogue_ended
 		freze_selector = false
 	tutorial_sequence()
 
 func tutorial_sequence():
+	await get_tree().process_frame
+	DialogueBalloon.start(map_data.text_data, "t2")
 	while true:
 		if %Camera_position.movement_bools[0]:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t3")
 	while true:
 		if %Camera_position.movement_bools[1]:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t4")
 	while true:
 		if %Camera_position.movement_bools[2]:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t5")
 	while true:
 		if ally_spawn_check:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t6")
 	while true:
 		if spawn_move_check:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t7")
 	while true:
 		if move_check:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t8")
 	while true:
 		if spawn_attack_check:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t9")
 	while true:
 		if bound_skill_check:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t10")
 	while true:
 		if unbound_skill_check:
 			break
-		await get_tree().create_timer(10.).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+		await get_tree().create_timer(0.1).timeout
+	DialogueBalloon.start(map_data.text_data, "t11")
 	while true:
 		if skill_order_check:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t12")
 	while true:
 		if %Map_UI.execution_check:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+	DialogueBalloon.start(map_data.text_data, "t13")
 	while true:
 		if end_turn_check:
 			break
-		await get_tree().create_timer(10.).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
+		await get_tree().create_timer(0.1).timeout
+	DialogueBalloon.start(map_data.text_data, "t14")
 	while true:
 		if undo_check:
 			break
 		await get_tree().create_timer(0.1).timeout
-	DialogueBalloon.show_text(map_data.text_data, DialogueBalloon.pause_index + 1)
-	await DialogueBalloon.text_read
+	DialogueBalloon.start(map_data.text_data, "t15")
+	await DialogueManager.dialogue_ended
 	%Map_UI._on_turn_menu_exit()
-
-
 
 var ally_spawn_check := false
 func spawn_ally(ch : Character_stats):
@@ -168,6 +171,8 @@ var bound_skill_check := false
 func make_bound_skill(skill : Skill_base):
 	var i := 0
 	
+	skill_animation_target_cell = skill.skill_map.animation_target + selected_char.map_pos
+	
 	for damage_cell in skill.skill_map.damage_cells:
 		var damage_zone : Node3D = load("uid://bnwwdeckahhsa").instantiate()
 		add_child(damage_zone)
@@ -176,7 +181,8 @@ func make_bound_skill(skill : Skill_base):
 		if map_cells.has(selected_char.map_pos + damage_cell):
 			damage_zone.position = map_cells[selected_char.map_pos + damage_cell].position
 		else:
-			damage_zone.position = Vector3(damage_cell.x * cell_size, 0, damage_cell.y * cell_size)
+			damage_zone.position = Vector3((selected_char.map_pos.x + damage_cell.x) * cell_size, 0, 
+			(selected_char.map_pos.y + damage_cell.y) * cell_size)
 		select_zones[selected_char.map_pos + damage_cell] = damage_zone
 	
 	i = 0
@@ -189,17 +195,21 @@ func make_bound_skill(skill : Skill_base):
 		if map_cells.has(selected_char.map_pos + move_cell):
 			move_zone.position = map_cells[selected_char.map_pos + move_cell].position
 		else:
-			move_zone.position = Vector3(move_cell.x * cell_size, 0, move_cell.y * cell_size)
+			move_zone.position = Vector3((selected_char.map_pos.x + move_cell.x) * cell_size, 0, 
+			(selected_char.map_pos.y + move_cell.y) * cell_size)
 		select_zones[selected_char.map_pos + move_cell] = move_zone
 	
 	if selected_char.current_direction != Map_generator.directions.N:
 		rotate_skill(directions.N)
+	if selected_char.can_move:
+		start_skill_move_position = selected_char.map_pos
 	bound_skill_check = true
 
 var unbound_skill_check := false
 func make_unboun_skill(skill : Skill_base):
 	var i := 0
 	
+	skill_animation_target_cell = skill.skill_map.animation_target + selected_char.map_pos
 	unbound_spell_center = selected_cell
 	
 	for damage_cell in skill.skill_map.damage_cells:
@@ -210,15 +220,17 @@ func make_unboun_skill(skill : Skill_base):
 		if map_cells.has(selected_cell + damage_cell):
 			damage_zone.position = map_cells[selected_cell + damage_cell].position
 		else:
-			damage_zone.position = Vector3(damage_cell.x * cell_size, 0, damage_cell.y * cell_size)
+			damage_zone.position = Vector3((selected_char.map_pos.x + damage_cell.x) * cell_size, 0, 
+			(selected_char.map_pos.y + damage_cell.y) * cell_size)
 		select_zones[selected_cell + damage_cell] = damage_zone
 	
-	var range_cells := get_flow_cells(selected_cell, skill.max_dist)
+	var range_cells := get_flow_cells(selected_char.map_pos, skill.max_dist,
+	 true, true, skill.max_height_difference, true, false)
 	
 	i = 0
 	
 	for cell in range_cells:
-		var move_zone : Node3D = load("uid://bfinhl1dtgkyo").instantiate()
+		var move_zone : Node3D = load("uid://crfwn05yop7k6").instantiate()
 		add_child(move_zone)
 		move_zone.name = "move_zone_" + str(i)
 		unbound_spell_range[cell] = move_zone
@@ -226,6 +238,7 @@ func make_unboun_skill(skill : Skill_base):
 			move_zone.position = map_cells[cell].position
 		else:
 			move_zone.position = Vector3(cell.x * cell_size, 0, cell.y * cell_size)
+		i += 1
 	
 	for cell in select_zones:
 		if unbound_spell_range.has(cell):
@@ -236,7 +249,7 @@ var end_turn_check := false
 
 var undo_check := false
 func _input(event: InputEvent) -> void:
-	if DialogueBalloon.dialogue_in_progress:
+	if DialogueBalloon.is_working:
 		return
 	if BattleHandler.state != Battle_handler.states.PLAYER:
 		return

@@ -1,0 +1,73 @@
+~ start
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
+
+~ t1
+YO! LUNACY!
+Let us get through this quick. I have to finish this game after all.
+=> END
+
+~ t2
+You can move the camera with WASD buttons.
+=> END
+
+~ t3
+You can rotate it with Q and R buttons or by holding the middle mouse button.
+=> END
+
+~ t4
+Try zooming with the mouse wheel.
+=> END
+
+~ t5
+The green zone is the entrance to the map. Click it, then select the character that you want to enter.
+=> END
+
+~ t6
+Click on character to open his action menu. Then click on the move button.
+=> END
+
+~ t7
+Blue zones represent where this character can go. Select one near an enemy.
+=> END
+
+~ t8
+Now select character again and choose attack.
+=> END
+
+~ t9
+Red zones under enemies show who you can target with a basic attack. Press ESC to cancel the attack, open the skill menu, and choose Slash.
+=> END
+
+~ t10
+This skill is bound to character and will rotate with him. Cancel it and choose Blast.
+=> END
+
+~ t11
+This one is unbound. Blue zones show where it can be cast. You can rotate unbound spells by pressing R. Now choose where to cast it.
+=> END
+
+~ t12
+Now press ESC to open the turn menu and press the execute button.
+=> END
+
+~ t13
+With this, every action you chose is sealed. Open the turn menu and end the turn.
+=> END
+
+~ t14
+If you made a wrong move or want to cancel an attack or skill before execution, move the selector over character and press Z.
+=> END
+
+~ t15
+Some maps require to kill all enemies. Some to reach a certain zone.
+With this tutorial is concluded. Good luck!
+=> END

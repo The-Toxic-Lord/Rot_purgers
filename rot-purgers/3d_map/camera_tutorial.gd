@@ -15,7 +15,7 @@ var prev_zoom : float = 0.0
 func handle_movement():
 	if follow_target != null:
 		move_target = follow_target.position
-	elif DialogueBalloon.dialogue_in_progress:
+	elif DialogueBalloon.is_working:
 		return
 	elif BattleHandler.state == Battle_handler.states.PLAYER:
 		var input_vector := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
