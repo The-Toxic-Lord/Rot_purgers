@@ -1,0 +1,20 @@
+~ start
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
+
+~ cutscene
+Alastor : Ambient magic seems more powerful here. 
+Elliot : Too powerful.
+Alastor : I fail to see the harm.
+Elliot : The deeper we descend, the more uncontrollable spells become. At best they collapse. At worst, they amplify. I was with a team here long before. We had to retreat after one fool smashed his head on the ceiling, trying to fly.
+Alastor : I begin to see how this place can be the source of the Rot.
+Elliot : We will find our answer deeper.
+=> END

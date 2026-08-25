@@ -27,7 +27,7 @@ func _ready() -> void:
 	zoom_target = camera.position.z
 
 func _input(event: InputEvent) -> void:
-	if DialogueBalloon.dialogue_in_progress:
+	if DialogueBalloon.is_working:
 		return
 	if BattleHandler.state != Battle_handler.states.PLAYER:
 		return
@@ -39,7 +39,7 @@ func _input(event: InputEvent) -> void:
 		zoom_target = clamp(zoom_target, zoom_min, zoom_max)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if DialogueBalloon.dialogue_in_progress:
+	if DialogueBalloon.is_working:
 		return
 	if BattleHandler.state == Battle_handler.states.PLAYER:
 		if event is InputEventMouseMotion and Input.is_action_pressed("rotate"):
@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 func handle_movement():
 	if follow_target != null:
 		move_target = follow_target.position
-	elif DialogueBalloon.dialogue_in_progress:
+	elif DialogueBalloon.is_working:
 		return
 	elif BattleHandler.state == Battle_handler.states.PLAYER:
 		var input_vector := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -75,7 +75,7 @@ func handle_height():
 	move_target.y =	map_generator.get_position_height(position)
 
 func handle_rotation():
-	if DialogueBalloon.dialogue_in_progress:
+	if DialogueBalloon.is_working:
 		return
 	if BattleHandler.state == Battle_handler.states.PLAYER:
 		var rotation_dir := Input.get_axis("rotate_left", "rotate_right")

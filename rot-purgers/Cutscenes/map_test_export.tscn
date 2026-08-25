@@ -1,8 +1,11 @@
 [gd_scene format=4 uid="uid://wjt5k3krqruv"]
 
-[ext_resource type="Script" uid="uid://dxga5yn432vdm" path="res://import/first_map_export.gd" id="1_g4w0j"]
+[ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://Cutscenes/Cutscene.gd" id="1_gxf7a"]
+[ext_resource type="Resource" uid="uid://wpbpmt268edo" path="res://dialogue/texts/test2.dialogue" id="2_5rggv"]
 [ext_resource type="PackedScene" uid="uid://d2vin440kgbfe" path="res://import/sphere_mesh.tscn" id="2_w1o7y"]
+[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://Workshop/dissolve_base_material.gdshader" id="4_5rggv"]
 [ext_resource type="PackedScene" uid="uid://dk1kcb3icintd" path="res://3d_map/Character_nodes/Elliot.tscn" id="5_fny85"]
+[ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="5_g6qvc"]
 [ext_resource type="PackedScene" uid="uid://cpgsmi4r45bbx" path="res://3d_map/Character_nodes/Alastor.tscn" id="6_quv0c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ahdu0"]
@@ -44,8 +47,39 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAgwAAAAAAAAAAAAAAgwAAAAADNzMy9AAAAwAAAwD/NzMy9AAAAwAAAwD/NzMy9AAAgwAAAAADNzMy9AAAAQAAAwD/NzMy9AAAAwAAAwD/NzMy9AAAAwAAAwD8AAAAAAAAgwAAAAAAAAAAAAAAgwAAAAADNzMy9AAAgwAAAAAAAAAAAAAAgQAAAAAAAAAAAAAAAQAAAwD8AAAAAAAAgwAAAAAAAAAAAAAAAwAAAwD8AAAAAAAAAwAAAwD8AAAAAAAAAwAAAwD/NzMy9AACAvwAAIEDNzMy9AAAAAAAAQEDNzMy9AACAvwAAIEDNzMy9AAAAwAAAwD/NzMy9AACAvwAAIEAAAAAAAACAvwAAIEDNzMy9AAAAAAAAQEDNzMy9AACAvwAAIEDNzMy9AACAvwAAIEAAAAAAAAAAwAAAwD8AAAAAAAAAAAAAQEDNzMy9AAAAAAAAQEAAAAAAAACAvwAAIEAAAAAAAAAAwAAAwD8AAAAAAACAvwAAIEAAAAAAAAAAAAAAQEAAAAAAAAAgwAAAAADNzMy9AAAgQAAAAADNzMy9AAAAQAAAwD/NzMy9AAAgQAAAAAAAAAAAAAAgQAAAAADNzMy9AAAgwAAAAADNzMy9AAAAQAAAwD8AAAAAAAAAQAAAwD/NzMy9AAAgQAAAAADNzMy9AAAAQAAAwD8AAAAAAAAgQAAAAAAAAAAAAAAgwAAAAAAAAAAAAAAgQAAAAADNzMy9AAAgQAAAAAAAAAAAAAAAQAAAwD8AAAAAAAAAQAAAwD/NzMy9AAAAAAAAQEDNzMy9AAAAwAAAwD/NzMy9AAAAQAAAwD/NzMy9AACAPwAAIEDNzMy9AAAAAAAAQEDNzMy9AAAAAAAAQEAAAAAAAAAAAAAAQEDNzMy9AACAPwAAIEDNzMy9AACAPwAAIEAAAAAAAACAPwAAIEDNzMy9AAAAQAAAwD/NzMy9AAAAwAAAwD8AAAAAAAAAAAAAQEAAAAAAAAAAQAAAwD8AAAAAAACAPwAAIEDNzMy9AACAPwAAIEAAAAAAAAAAAAAAQEAAAAAAAAAAAAAAQEAAAAAAAACAPwAAIEAAAAAAAAAAQAAAwD8AAAAAAAAAQAAAwD/NzMy9AAAAQAAAwD8AAAAAAACAPwAAIEAAAAAA/x//n///////H/+f//////8f/5///////////wAA/7//////AAD/v/////8AAP+//x//n///////H/+f//////8f/5///////38AAP//////fwAA//////9/AAD//////3//f////7//f/9/////v/9//3////+//z//v///////P/+///////8//7///////////wAA/7//////AAD/v/////8AAP+/VFVU1f////9UVVTV/////1RVVNX//////z//v///////P/+///////8//7//////VFVU1f////9UVVTV/////1RVVNX//////3//f////7//f/9//v//v/9//3////+//////wAA/7//////AAD/v/////8AAP+//38AAP//////fwAA//////9/AAD//////9//n///////3/+f///////f/5///////3//f////7//f/9/////v/9//3////+//9//n///////3/+f///////f/5///////////wAA/7//////AAD/v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/qqpU1f////+qqlTV/////6qqVNX//////7//v///////v/+///////+//7///////3//f////7//f/9/////v/9//3////+/qqpU1f////+qqlTV/////6qqVNX//////3//f////7//f/9//v//v/9//3////+//7//v///////v/+///////+//7//////")
 }]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g8kef"]
+frequency = 0.1016
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l2wnj"]
+noise = SubResource("FastNoiseLite_g8kef")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6qvc"]
+resource_local_to_scene = true
+resource_name = "Material.001"
+render_priority = 0
+shader = ExtResource("4_5rggv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_g6qvc")
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.5
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_l2wnj")
+shader_parameter/dissolve = 0.0
+shader_parameter/dissolve_color = Color(0, 0, 0, 1)
+shader_parameter/rot = Color(0.22352941, 0.7372549, 0, 0)
+shader_parameter/emission = Color(1, 1, 1, 1)
+shader_parameter/emission_energy = 0.0
+
 [node name="Mat_test" type="Node3D" unique_id=130696408]
-script = ExtResource("1_g4w0j")
+script = ExtResource("1_gxf7a")
+text_data = ExtResource("2_5rggv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=859351150]
 environment = SubResource("Environment_i1nft")
@@ -71,6 +105,7 @@ transform = Transform3D(-0.65934885, 0.26887548, -0.7021147, 0, 0.9338654, 0.357
 
 [node name="Character_node" parent="." unique_id=741036927 instance=ExtResource("5_fny85")]
 transform = Transform3D(-0.7396298, 0, 0.6730139, 0, 1, 0, -0.6730139, 0, -0.7396298, 0.094753385, 0.1, 2.0521977)
+material = SubResource("ShaderMaterial_g6qvc")
 
 [node name="Character_node2" parent="." unique_id=892761576 instance=ExtResource("6_quv0c")]
 transform = Transform3D(0.5941783, 0, -0.8043333, 0, 1, 0, 0.8043333, 0, 0.5941783, -1.8288414, 0.1, 3.8460915)

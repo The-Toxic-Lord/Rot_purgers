@@ -44,6 +44,7 @@ var dialogue_line: DialogueLine:
 			dialogue_line = value
 			apply_dialogue_line()
 		else:
+			is_working = false
 			# The dialogue has finished so close the balloon
 			hide()
 	get:
@@ -67,6 +68,7 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
+var is_working := false
 
 func _ready() -> void:
 	balloon.hide()
@@ -111,6 +113,7 @@ func _notification(what: int) -> void:
 func start(with_dialogue_resource: DialogueResource = null, cue: String = "", extra_game_states: Array = []) -> void:
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
+	is_working = true
 	if is_instance_valid(with_dialogue_resource):
 		dialogue_resource = with_dialogue_resource
 	if not cue.is_empty():

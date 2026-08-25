@@ -64,8 +64,8 @@ func load_map(map : Map_data):
 	map_loaded.emit()
 	if map_data.text_data != null:
 		freze_selector = true
-		DialogueBalloon.show_text(map_data.text_data)
-		await DialogueBalloon.text_read
+		DialogueBalloon.start(map_data.text_data, "map_dialogue")
+		await DialogueManager.dialogue_ended
 		freze_selector = false
 
 func start(_terrain_map : Dictionary[Vector2i, Terrain_data], 
@@ -73,6 +73,7 @@ _object_map : Dictionary[Vector2i, Map_object], enemy_map : Dictionary[Vector2i,
 	terrain_map = _terrain_map
 	object_map = _object_map
 	BattleHandler.map_gen = self
+	ObjectLink.map_gen = self
 	await spawn_cells()
 	await calculate_boundary()
 	await move_selector_to_spawn()
@@ -217,7 +218,7 @@ func _input(event: InputEvent) -> void:
 		clear_select_zone()
 		showing_move_zone = false
 		pause_skill_move()
-	if DialogueBalloon.dialogue_in_progress:
+	if DialogueBalloon.is_working:
 		return
 	if BattleHandler.state != Battle_handler.states.PLAYER:
 		return

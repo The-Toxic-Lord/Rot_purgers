@@ -32,4 +32,4 @@ terrain_data_holder = Array[ExtResource("2_bnln1")]([ExtResource("3_u4igo"), Ext
 map_objects = Array[ExtResource("5_dwjne")]([SubResource("Resource_66j8o"), SubResource("Resource_dwjne")])
 ally_team = Array[ExtResource("6_lbxat")]([ExtResource("9_idmur"), ExtResource("8_rdq6i"), ExtResource("9_17ap7")])
 enemy_data = Array[ExtResource("6_lbxat")]([ExtResource("8_lbxat"), ExtResource("13_idmur")])
-map_data_path = Array[String](["res://dialogue/01.tres", "res://dialogue/02.tres", "res://map_data_res/battle_01.tres", "res://map_data_res/battle_02.tres", "res://map_data_res/battle_03.tres", "res://dialogue/06.tres"])
+map_data_path = Array[String](["uid://c2hd250kce25a", "uid://wjt5k3krqruv", "res://map_data_res/battle_01.tres", "res://map_data_res/battle_02.tres", "res://map_data_res/battle_03.tres", "res://dialogue/06.tres"])

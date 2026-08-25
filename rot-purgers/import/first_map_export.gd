@@ -1,5 +1,7 @@
 extends Node3D
 
+
+
 func start_cutscene(text_data : Text_data):
 	await get_tree().process_frame
 	

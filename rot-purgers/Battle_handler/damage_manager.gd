@@ -45,7 +45,6 @@ func attack_damage(target : Character_node, attacker : Character_node):
 	if deflect_check(target, attacker):
 		order_ended.emit()
 		return
-	target.mini_char_stats = map_gen.map_ui.mini_char_stats
 	map_gen.set_camera_target(target)
 	map_gen.set_selector(target.map_pos)
 	await get_tree().process_frame
@@ -82,7 +81,6 @@ func skill_mass(order : Order_skill_data):
 			skill_damage(map_gen.char_positions[cell], attacker, order.skill)
 	if !target_damage.is_empty():
 		for target : Character_node in target_damage.keys():
-			target.mini_char_stats = map_gen.map_ui.mini_char_stats
 			map_gen.set_camera_target(target)
 			map_gen.set_selector(target.map_pos)
 			target.damage(target_damage[target], true)

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Text_data" format=3 uid="uid://5xt31o4d05r0"]
 
 [ext_resource type="Script" uid="uid://dlik2dowo2312" path="res://dialogue/Line_data.gd" id="1_4r1gm"]
-[ext_resource type="PackedScene" uid="uid://c2hd250kce25a" path="res://import/first_map_export.tscn" id="1_p11pi"]
+[ext_resource type="PackedScene" uid="uid://c2hd250kce25a" path="res://Cutscenes/first_map_export.tscn" id="1_p11pi"]
 [ext_resource type="Script" uid="uid://w5upts0exhjv" path="res://dialogue/text_data.gd" id="2_p11pi"]
 [ext_resource type="AudioStream" uid="uid://dsn7qxqwnbl63" path="res://sound/Into Oblivion OGG.ogg" id="3_mqldu"]
 

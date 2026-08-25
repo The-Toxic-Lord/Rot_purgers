@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_pxxso"]
 [ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="7_hrdc2"]
 [ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="8_dds0y"]
-[ext_resource type="Resource" uid="uid://dqccj25tmkwmi" path="res://dialogue/03.tres" id="9_x43mk"]
+[ext_resource type="Resource" uid="uid://dckl53pt7ylx" path="res://dialogue/texts/test3.dialogue" id="10_h0gql"]
 
 [sub_resource type="Resource" id="Resource_vr4gf"]
 script = ExtResource("1_x43mk")
@@ -1202,4 +1202,4 @@ Vector2i(16, 8): SubResource("Resource_6a4h0"),
 Vector2i(17, 9): SubResource("Resource_wwvyb")
 })
 music = ExtResource("4_h0gql")
-text_data = ExtResource("9_x43mk")
+text_data = ExtResource("10_h0gql")

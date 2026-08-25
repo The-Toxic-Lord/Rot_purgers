@@ -84,9 +84,11 @@ func _on_slider_drag_ended(value_changed: bool, source: Slider) -> void:
 			5:
 				@warning_ignore("narrowing_conversion")
 				stat_value += readjust_points as float * 5 / 2
-			_:
+			6:
 				@warning_ignore("narrowing_conversion")
 				stat_value += readjust_points as float / 5
+			_:
+				stat_value += readjust_points
 		readjust_points = 0
 		source.value = stat_value
 	
@@ -129,6 +131,7 @@ func _on_slider_value_changed(value: float, source: Range) -> void:
 func _on_confirm_bt_pressed() -> void:
 	hide()
 	confirm.emit()
+	ObjectLink.focused_char_stats.update_stats(char_stats)
 
 func remove_changes():
 	for id in stats.size():

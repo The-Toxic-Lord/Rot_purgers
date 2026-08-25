@@ -264,6 +264,8 @@ func _on_terrain_mod_button_pressed() -> void:
 func _ready() -> void:
 	var pop : PopupMenu = %Cell_select.get_popup()
 	pop.max_size = Vector2(9999, 500)
+	ObjectLink.focused_char_stats = %Focused_char_stats
+	ObjectLink.mini_char_stats = %Mini_char_stats
 
 func _on_char_action_menu_rearange() -> void:
 	%Rearange_menu.show()

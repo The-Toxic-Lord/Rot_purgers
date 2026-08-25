@@ -47,8 +47,6 @@ signal move_finished
 signal attack_finished
 signal animation_ended
 
-var mini_char_stats : Mini_char_stats
-
 var rot_stage : Dictionary[int, float] = {
 	0 : 0,
 	1 : 0.39,
@@ -78,8 +76,8 @@ func _ready() -> void:
 		for child in skeleton.get_children():
 			if child is MeshInstance3D:
 				child.set_surface_override_material(0, material)
-	if material is ShaderMaterial:
-		material.set_shader_parameter("dissolve", -0.1)
+	#if material is ShaderMaterial:
+		#material.set_shader_parameter("dissolve", -0.1)
 
 func new_round():
 	can_move = true
@@ -100,7 +98,7 @@ func damage(value : float, display_mini := false):
 		%Damage_numbers.text = str(int(value))
 		%Damage_numbers.modulate = Color("e80029")
 		if display_mini:
-			mini_char_stats.display_damage(stats.health)
+			ObjectLink.mini_char_stats.display_damage(stats.health)
 	display_damage(display_mini)
 
 func display_damage(display_mini := false):
@@ -119,7 +117,7 @@ func display_damage(display_mini := false):
 	if stats.health == 0:
 		is_dead = true
 		if display_mini:
-			mini_char_stats.play_dead()
+			ObjectLink.mini_char_stats.play_dead()
 		$AnimationPlayer.play("Death")
 		await $AnimationPlayer.animation_finished
 		animation_ended.emit()

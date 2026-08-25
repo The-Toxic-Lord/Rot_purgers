@@ -57,17 +57,17 @@ func load_map(id : int = -1):
 		map_generator.show()
 		if map_data.music != null:
 			SoundHandler.play_music(map_data.music)
-	elif map_data is Text_data:
-		var new_cutscene : Node3D = map_data.cutscene.instantiate()
+	elif map_data is PackedScene:
+		var new_cutscene : Cutscene = map_data.instantiate()
 		add_child(new_cutscene)
 		if map_generator != null:
 			map_generator.queue_free()
 		if cutscene != null:
 			cutscene.queue_free()
 		cutscene = new_cutscene
-		cutscene.start_cutscene(map_data)
-		if map_data.music != null:
-			SoundHandler.play_music(map_data.music)
+		cutscene.start_cutscene()
+		#if map_data.music != null:
+			#SoundHandler.play_music(map_data.music)
 
 func load_background():
 	background = load("uid://cc2fywiyu0mah").instantiate()

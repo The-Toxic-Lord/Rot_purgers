@@ -1,0 +1,23 @@
+~ start
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
+
+~ map_dialogue
+Alastor : What are those? I have not seen such creatures in my life.
+Elliot : Remnants of the ancient war.
+Alastor : ?
+Alastor : No! That cannot be! You, of all mages, believe in those myths?
+Elliot : When you get as old as me, you will be able to believe even the most outrageous claims. Especially when the one saying them is the Archchancellor.
+Alastor : …
+Elliot : Also, this is a perfect place for them to hide. The place that no fool would be able to leave to tell the tale and no wise men would enter.
+Alastor : Heh. Good thing that we are neither. 
+Elliot : Hm. Let's wipe them out.
+=> END
