@@ -50,6 +50,7 @@ func load_map(map : Map_data):
 	await get_tree().process_frame
 	BattleHandler.map_gen = self
 	ObjectLink.map_gen = self
+	ObjectLink.map_camera = %Camera_position
 	terrain_map = map.terrain_map_data
 	object_map = map.object_map_data
 	map_data = map

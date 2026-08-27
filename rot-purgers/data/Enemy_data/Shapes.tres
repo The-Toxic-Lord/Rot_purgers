@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://ggqhl80errbm"]
+
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_nkgmf"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_56hyt"]
+[ext_resource type="Texture2D" uid="uid://ba5njglj1gpcp" path="res://aseprite_stuff/Shapes.png" id="3_56hyt"]
+
+[resource]
+script = ExtResource("1_nkgmf")
+name = "Shapes"
+sprite = ExtResource("3_56hyt")
+node_UID = "uid://c7bbx7glxoob8"
+AI_type = 4
+spawn_node_UUID = "uid://dunq80ub3v1jk"
+metadata/_custom_type_script = "uid://by1rq468n504l"

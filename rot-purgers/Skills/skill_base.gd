@@ -9,7 +9,7 @@ class_name Skill_base
 
 @export var skill_map : Skill_map_data
 
-enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT }
+enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN }
 @export var skill_type : skill_types = skill_types.ATTACK:
 	set(value):
 		skill_type = value
@@ -36,6 +36,8 @@ enum move { NONE, SELF, TARGET }
 enum terrain_mods { MOVE, HEIGHT }
 @export var terrain_mod : terrain_mods = terrain_mods.HEIGHT
 
+@export var spawn_node_UUID : String
+
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["damage", "is_one_shot", "move_mode",
 	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump"]:
@@ -55,6 +57,9 @@ func _validate_property(property: Dictionary) -> void:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name == "deflect_times":
 		if skill_type != skill_types.PROTECT:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "spawn_node_UUID":
+		if skill_type != skill_types.SPAWN:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func get_attack_stat_used(st : Character_stats) -> int:

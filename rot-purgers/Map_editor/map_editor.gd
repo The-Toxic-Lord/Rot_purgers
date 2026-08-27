@@ -41,15 +41,13 @@ var selected_object : Map_object
 var object_map_data : Dictionary[Vector2i, Map_object] = {}
 
 var enemy_map_data : Dictionary[Vector2i, Character_stats] = {}
-@export var enemy_to_atlas : Dictionary[Character_stats, Vector2i]
+var cell_to_enemy_node : Dictionary[Vector2i, Node2D] = {}
 
 func _ready() -> void:
 	set_process(false)
 	await update_map_size()
 	map_node_size = map_size * 64
 	await limit_camera()
-	for enemy in enemy_to_atlas:
-		enemy.atlas_coords = enemy_to_atlas[enemy]
 
 func update_map_size():
 	map_rect = Rect2i(0, 0, map_size.x, map_size.y)
@@ -291,6 +289,9 @@ func load_map_data(file_path : String):
 	%Object_map.clear()
 	%Enemy_map.clear()
 	
+	for cell in cell_to_enemy_node:
+		cell_to_enemy_node[cell].queue_free()
+	cell_to_enemy_node.clear()
 	for cell in cell_to_height_line:
 		cell_to_height_line[cell].queue_free()
 	cell_to_height_line.clear()
@@ -359,17 +360,26 @@ func change_enemy(cell : Vector2i):
 		%Map_Editor_UI.load_enemy_data(enemy_map_data[cell])
 	else:
 		var selected_enemy : Character_stats = %Map_Editor_UI.selected_enemy_data
-		%Enemy_map.set_cell(cell, 0, selected_enemy.atlas_coords)
 		enemy_map_data[cell] = selected_enemy.duplicate(true)
+		var enemy_node : Enemy_node = load("uid://crpsmfv7vh63b").instantiate()
+		add_child(enemy_node)
+		enemy_node.position = 64 * cell + Vector2i(32, 32)
+		enemy_node.update_sprite(selected_enemy.sprite)
+		cell_to_enemy_node[cell] = enemy_node
 
 func remove_enemy(cell : Vector2i):
 	if !enemy_map_data.has(cell):
 		return
 	enemy_map_data.erase(cell)
-	%Enemy_map.erase_cell(cell)
+	cell_to_enemy_node[cell].queue_free()
+	cell_to_enemy_node.erase(cell)
 
 func load_enemy(cell : Vector2i, enemy_data : Character_stats):
-	%Enemy_map.set_cell(cell, 0, enemy_data.atlas_coords)
+	var enemy_node : Enemy_node = load("uid://crpsmfv7vh63b").instantiate()
+	add_child(enemy_node)
+	enemy_node.position = 64 * cell + Vector2i(32, 32)
+	enemy_node.update_sprite(enemy_data.sprite)
+	cell_to_enemy_node[cell] = enemy_node
 
 
 

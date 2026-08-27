@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://cx7jdespo6tsb"]
 
 [ext_resource type="Script" uid="uid://50dud4wj53y3" path="res://Map_editor/map_editor.gd" id="1_k8p0y"]
-[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_k8p0y"]
-[ext_resource type="Resource" uid="uid://bkwt1lvhkpr71" path="res://data/Enemy_data/Crawler.tres" id="3_6uk1n"]
-[ext_resource type="Resource" uid="uid://bw766n42tsyfr" path="res://data/Enemy_data/Crystal.tres" id="4_yu7lw"]
 [ext_resource type="TileSet" uid="uid://du6rk7f2ok1f" path="res://Map_editor/terrain_tileset.tres" id="5_wq8e7"]
 [ext_resource type="PackedScene" uid="uid://bifqkeg558atm" path="res://Map_editor/map_editor_ui.tscn" id="6_rucau"]
 [ext_resource type="Texture2D" uid="uid://dxcwyjm0qcf8n" path="res://aseprite_stuff/Enemy_sprite_sheet.png" id="8_ssq50"]
@@ -31,10 +28,6 @@ sources/0 = SubResource("TileSetAtlasSource_wq8e7")
 
 [node name="Map_editor" type="Node2D" unique_id=982508508]
 script = ExtResource("1_k8p0y")
-enemy_to_atlas = Dictionary[ExtResource("2_k8p0y"), Vector2i]({
-ExtResource("3_6uk1n"): Vector2i(0, 0),
-ExtResource("4_yu7lw"): Vector2i(1, 0)
-})
 
 [node name="Map_editor_camera" type="Camera2D" parent="." unique_id=846113549]
 unique_name_in_owner = true

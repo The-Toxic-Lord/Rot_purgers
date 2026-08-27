@@ -27,6 +27,7 @@ ObjectLink="*uid://vwt0sbqumcjc"
 [dialogue_manager]
 
 runtime/balloon_path="res://dialogue/Dialogue_balloon.tscn"
+editor/wrap_long_lines=true
 
 [display]
 

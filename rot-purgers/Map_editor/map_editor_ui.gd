@@ -193,7 +193,8 @@ var id_to_AI_type : Dictionary[int, Character_stats.AI_types] = {
 	0 : Character_stats.AI_types.TURRET,
 	1 : Character_stats.AI_types.NORMAL,
 	2 : Character_stats.AI_types.CHARGER,
-	3 : Character_stats.AI_types.MEATWALL
+	3 : Character_stats.AI_types.MEATWALL,
+	4 : Character_stats.AI_types.SPAWNER
 }
 
 func _on_ai_type_item_selected(index: int) -> void:

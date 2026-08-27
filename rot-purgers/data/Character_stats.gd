@@ -1,4 +1,4 @@
-extends Resource
+@tool extends Resource
 
 class_name Character_stats
 
@@ -45,11 +45,16 @@ func get_defence_stat(st : stats):
 @export var node_UID : String
 @export var start_dir : Map_generator.directions
 
-enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL }
-@export var AI_type : AI_types = AI_types.NORMAL
+enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER }
+@export var AI_type : AI_types = AI_types.NORMAL:
+	set(value):
+		AI_type = value
+		notify_property_list_changed()
 
 @export var skills : Array[Skill_base]
 @export_storage var atlas_coords : Vector2i
+
+@export var spawn_node_UUID : String
 
 func new() -> void:
 	health = max_health
@@ -71,7 +76,10 @@ func stats_adjust():
 
 var readjust_points : int = 0
 
-
+func _validate_property(property: Dictionary) -> void:
+	if property.name in ["spawn_node_UUID"]:
+		if AI_type != AI_types.SPAWNER:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 
 

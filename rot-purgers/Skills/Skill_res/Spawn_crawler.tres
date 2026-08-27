@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://b6nay7dmnhc8n"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_knrhg"]
+
+[resource]
+script = ExtResource("1_knrhg")
+name = "Spawn crawler"
+skill_type = 4
+spawn_node_UUID = "uid://dunq80ub3v1jk"
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

@@ -8,3 +8,5 @@ var mini_char_stats : Mini_char_stats
 
 var cutscene_chars : Dictionary[String, Node3D]
 var cutscene_player : AnimationPlayer
+
+var map_camera : Camera_controller

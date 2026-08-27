@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://b213luqwl2tnl"]
 
-[ext_resource type="Script" uid="uid://dxga5yn432vdm" path="res://import/first_map_export.gd" id="1_g14j6"]
-[ext_resource type="PackedScene" uid="uid://b57jse1cfeshi" path="res://3d_map/map_cell.tscn" id="2_a3se8"]
-[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="3_uty7l"]
-[ext_resource type="Texture2D" uid="uid://cab70jac2jm0k" path="res://blender_models/Aven8_Aven_texture.png" id="5_vbegm"]
-[ext_resource type="Animation" uid="uid://iw7cdgwbihk5" path="res://blender_models/animations/alastor.tres" id="6_ehkex"]
+[ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://Cutscenes/Cutscene.gd" id="1_3h5vp"]
+[ext_resource type="PackedScene" uid="uid://b57jse1cfeshi" path="res://3d_map/map_cell.tscn" id="2_iiwgc"]
+[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="3_73xbr"]
+[ext_resource type="Texture2D" uid="uid://cab70jac2jm0k" path="res://blender_models/Aven8_Aven_texture.png" id="4_olu27"]
+[ext_resource type="Animation" uid="uid://iw7cdgwbihk5" path="res://blender_models/animations/alastor.tres" id="5_8w2tj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_38kli"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -1486,7 +1486,7 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75s5a"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("5_vbegm")
+albedo_texture = ExtResource("4_olu27")
 roughness = 0.5
 metadata/_gltf_primary_texture_coord = 0
 
@@ -1779,11 +1779,11 @@ blend_shape_mode = 0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dmouw"]
 _data = {
-&"Idle": ExtResource("6_ehkex")
+&"Idle": ExtResource("5_8w2tj")
 }
 
 [node name="Map_generator" type="Node3D" unique_id=230936383]
-script = ExtResource("1_g14j6")
+script = ExtResource("1_3h5vp")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2141279964]
 environment = SubResource("Environment_ti2bc")
@@ -1791,497 +1791,497 @@ environment = SubResource("Environment_ti2bc")
 [node name="Map_cell_holder" type="Node3D" parent="." unique_id=1096133750]
 unique_name_in_owner = true
 
-[node name="(4, 4)" parent="Map_cell_holder" unique_id=215314247 instance=ExtResource("2_a3se8")]
+[node name="(4, 4)" parent="Map_cell_holder" unique_id=215314247 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 8)
 cell_position = Vector2i(4, 4)
 
 [node name="_MeshInstance3D_103" type="MeshInstance3D" parent="Map_cell_holder/(4, 4)" unique_id=788100451]
 mesh = SubResource("ArrayMesh_rrpoi")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_104" type="MeshInstance3D" parent="Map_cell_holder/(4, 4)" unique_id=123796889]
 mesh = SubResource("ArrayMesh_34fux")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(4, 5)" parent="Map_cell_holder" unique_id=440931518 instance=ExtResource("2_a3se8")]
+[node name="(4, 5)" parent="Map_cell_holder" unique_id=440931518 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 10)
 cell_position = Vector2i(4, 5)
 
 [node name="_MeshInstance3D_105" type="MeshInstance3D" parent="Map_cell_holder/(4, 5)" unique_id=1554794274]
 mesh = SubResource("ArrayMesh_ppv7d")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_106" type="MeshInstance3D" parent="Map_cell_holder/(4, 5)" unique_id=413877802]
 mesh = SubResource("ArrayMesh_naet1")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(4, 6)" parent="Map_cell_holder" unique_id=830072908 instance=ExtResource("2_a3se8")]
+[node name="(4, 6)" parent="Map_cell_holder" unique_id=830072908 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 12)
 cell_position = Vector2i(4, 6)
 
 [node name="_MeshInstance3D_107" type="MeshInstance3D" parent="Map_cell_holder/(4, 6)" unique_id=791785793]
 mesh = SubResource("ArrayMesh_6qlrc")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_108" type="MeshInstance3D" parent="Map_cell_holder/(4, 6)" unique_id=343609832]
 mesh = SubResource("ArrayMesh_shobf")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(4, 7)" parent="Map_cell_holder" unique_id=757863664 instance=ExtResource("2_a3se8")]
+[node name="(4, 7)" parent="Map_cell_holder" unique_id=757863664 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 14)
 cell_position = Vector2i(4, 7)
 
 [node name="_MeshInstance3D_109" type="MeshInstance3D" parent="Map_cell_holder/(4, 7)" unique_id=65570590]
 mesh = SubResource("ArrayMesh_lb1cv")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_110" type="MeshInstance3D" parent="Map_cell_holder/(4, 7)" unique_id=225092304]
 mesh = SubResource("ArrayMesh_2h37t")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(4, 8)" parent="Map_cell_holder" unique_id=582817787 instance=ExtResource("2_a3se8")]
+[node name="(4, 8)" parent="Map_cell_holder" unique_id=582817787 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 16)
 cell_position = Vector2i(4, 8)
 
 [node name="_MeshInstance3D_111" type="MeshInstance3D" parent="Map_cell_holder/(4, 8)" unique_id=1872877097]
 mesh = SubResource("ArrayMesh_adp8l")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_112" type="MeshInstance3D" parent="Map_cell_holder/(4, 8)" unique_id=566012813]
 mesh = SubResource("ArrayMesh_dvnpp")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(4, 9)" parent="Map_cell_holder" unique_id=795244959 instance=ExtResource("2_a3se8")]
+[node name="(4, 9)" parent="Map_cell_holder" unique_id=795244959 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 18)
 cell_position = Vector2i(4, 9)
 
 [node name="_MeshInstance3D_113" type="MeshInstance3D" parent="Map_cell_holder/(4, 9)" unique_id=1711897838]
 mesh = SubResource("ArrayMesh_ffwl0")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_114" type="MeshInstance3D" parent="Map_cell_holder/(4, 9)" unique_id=1874617002]
 mesh = SubResource("ArrayMesh_yg34o")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(4, 10)" parent="Map_cell_holder" unique_id=615985359 instance=ExtResource("2_a3se8")]
+[node name="(4, 10)" parent="Map_cell_holder" unique_id=615985359 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 20)
 cell_position = Vector2i(4, 10)
 
 [node name="_MeshInstance3D_115" type="MeshInstance3D" parent="Map_cell_holder/(4, 10)" unique_id=1902495958]
 mesh = SubResource("ArrayMesh_21gct")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_116" type="MeshInstance3D" parent="Map_cell_holder/(4, 10)" unique_id=920433238]
 mesh = SubResource("ArrayMesh_svjfs")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(5, 4)" parent="Map_cell_holder" unique_id=371781075 instance=ExtResource("2_a3se8")]
+[node name="(5, 4)" parent="Map_cell_holder" unique_id=371781075 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 8)
 cell_position = Vector2i(5, 4)
 
 [node name="_MeshInstance3D_117" type="MeshInstance3D" parent="Map_cell_holder/(5, 4)" unique_id=1214840285]
 mesh = SubResource("ArrayMesh_1f472")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_118" type="MeshInstance3D" parent="Map_cell_holder/(5, 4)" unique_id=1581420284]
 mesh = SubResource("ArrayMesh_2kuyq")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(5, 7)" parent="Map_cell_holder" unique_id=1673631391 instance=ExtResource("2_a3se8")]
+[node name="(5, 7)" parent="Map_cell_holder" unique_id=1673631391 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.5, 14)
 cell_position = Vector2i(5, 7)
 
 [node name="_MeshInstance3D_119" type="MeshInstance3D" parent="Map_cell_holder/(5, 7)" unique_id=1867010453]
 mesh = SubResource("ArrayMesh_rlt3e")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_120" type="MeshInstance3D" parent="Map_cell_holder/(5, 7)" unique_id=624691349]
 mesh = SubResource("ArrayMesh_wxlvt")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_121" type="MeshInstance3D" parent="Map_cell_holder/(5, 7)" unique_id=1088528323]
 mesh = SubResource("ArrayMesh_wy5de")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(5, 10)" parent="Map_cell_holder" unique_id=1558946483 instance=ExtResource("2_a3se8")]
+[node name="(5, 10)" parent="Map_cell_holder" unique_id=1558946483 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 20)
 cell_position = Vector2i(5, 10)
 
 [node name="_MeshInstance3D_122" type="MeshInstance3D" parent="Map_cell_holder/(5, 10)" unique_id=326025047]
 mesh = SubResource("ArrayMesh_xbr6t")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_123" type="MeshInstance3D" parent="Map_cell_holder/(5, 10)" unique_id=2118857673]
 mesh = SubResource("ArrayMesh_lmr7q")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(6, 4)" parent="Map_cell_holder" unique_id=1233129617 instance=ExtResource("2_a3se8")]
+[node name="(6, 4)" parent="Map_cell_holder" unique_id=1233129617 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3, 8)
 cell_position = Vector2i(6, 4)
 
 [node name="_MeshInstance3D_124" type="MeshInstance3D" parent="Map_cell_holder/(6, 4)" unique_id=1488758579]
 mesh = SubResource("ArrayMesh_kvqi2")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_125" type="MeshInstance3D" parent="Map_cell_holder/(6, 4)" unique_id=755201205]
 mesh = SubResource("ArrayMesh_cjup8")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(6, 6)" parent="Map_cell_holder" unique_id=1734131509 instance=ExtResource("2_a3se8")]
+[node name="(6, 6)" parent="Map_cell_holder" unique_id=1734131509 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 12)
 cell_position = Vector2i(6, 6)
 
 [node name="_MeshInstance3D_126" type="MeshInstance3D" parent="Map_cell_holder/(6, 6)" unique_id=829523808]
 mesh = SubResource("ArrayMesh_vki1i")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_127" type="MeshInstance3D" parent="Map_cell_holder/(6, 6)" unique_id=80183405]
 mesh = SubResource("ArrayMesh_qegr7")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(6, 7)" parent="Map_cell_holder" unique_id=323159027 instance=ExtResource("2_a3se8")]
+[node name="(6, 7)" parent="Map_cell_holder" unique_id=323159027 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 14)
 cell_position = Vector2i(6, 7)
 
-[node name="(6, 8)" parent="Map_cell_holder" unique_id=2125400015 instance=ExtResource("2_a3se8")]
+[node name="(6, 8)" parent="Map_cell_holder" unique_id=2125400015 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 16)
 cell_position = Vector2i(6, 8)
 
 [node name="_MeshInstance3D_128" type="MeshInstance3D" parent="Map_cell_holder/(6, 8)" unique_id=349979992]
 mesh = SubResource("ArrayMesh_t77du")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_129" type="MeshInstance3D" parent="Map_cell_holder/(6, 8)" unique_id=213305172]
 mesh = SubResource("ArrayMesh_lw7xf")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(6, 10)" parent="Map_cell_holder" unique_id=553367054 instance=ExtResource("2_a3se8")]
+[node name="(6, 10)" parent="Map_cell_holder" unique_id=553367054 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3, 20)
 cell_position = Vector2i(6, 10)
 
 [node name="_MeshInstance3D_130" type="MeshInstance3D" parent="Map_cell_holder/(6, 10)" unique_id=1579673515]
 mesh = SubResource("ArrayMesh_033th")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(6, 11)" parent="Map_cell_holder" unique_id=1667231548 instance=ExtResource("2_a3se8")]
+[node name="(6, 11)" parent="Map_cell_holder" unique_id=1667231548 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.5, 22)
 cell_position = Vector2i(6, 11)
 
 [node name="_MeshInstance3D_131" type="MeshInstance3D" parent="Map_cell_holder/(6, 11)" unique_id=2095335872]
 mesh = SubResource("ArrayMesh_ej757")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_132" type="MeshInstance3D" parent="Map_cell_holder/(6, 11)" unique_id=899685424]
 mesh = SubResource("ArrayMesh_3ihbh")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(6, 12)" parent="Map_cell_holder" unique_id=229447353 instance=ExtResource("2_a3se8")]
+[node name="(6, 12)" parent="Map_cell_holder" unique_id=229447353 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.5, 24)
 cell_position = Vector2i(6, 12)
 
 [node name="_MeshInstance3D_133" type="MeshInstance3D" parent="Map_cell_holder/(6, 12)" unique_id=1427162413]
 mesh = SubResource("ArrayMesh_vefa6")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(6, 13)" parent="Map_cell_holder" unique_id=996941276 instance=ExtResource("2_a3se8")]
+[node name="(6, 13)" parent="Map_cell_holder" unique_id=996941276 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.5, 26)
 cell_position = Vector2i(6, 13)
 
 [node name="_MeshInstance3D_134" type="MeshInstance3D" parent="Map_cell_holder/(6, 13)" unique_id=998424383]
 mesh = SubResource("ArrayMesh_4rsio")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_135" type="MeshInstance3D" parent="Map_cell_holder/(6, 13)" unique_id=1605213070]
 mesh = SubResource("ArrayMesh_fsvon")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(7, 4)" parent="Map_cell_holder" unique_id=1762912352 instance=ExtResource("2_a3se8")]
+[node name="(7, 4)" parent="Map_cell_holder" unique_id=1762912352 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, 8)
 cell_position = Vector2i(7, 4)
 
 [node name="_MeshInstance3D_136" type="MeshInstance3D" parent="Map_cell_holder/(7, 4)" unique_id=1896239951]
 mesh = SubResource("ArrayMesh_tgt5t")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_137" type="MeshInstance3D" parent="Map_cell_holder/(7, 4)" unique_id=99596711]
 mesh = SubResource("ArrayMesh_avhts")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(7, 5)" parent="Map_cell_holder" unique_id=485903556 instance=ExtResource("2_a3se8")]
+[node name="(7, 5)" parent="Map_cell_holder" unique_id=485903556 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.5, 10)
 cell_position = Vector2i(7, 5)
 
 [node name="_MeshInstance3D_138" type="MeshInstance3D" parent="Map_cell_holder/(7, 5)" unique_id=1702385593]
 mesh = SubResource("ArrayMesh_2325l")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_139" type="MeshInstance3D" parent="Map_cell_holder/(7, 5)" unique_id=880023017]
 mesh = SubResource("ArrayMesh_6i44o")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_140" type="MeshInstance3D" parent="Map_cell_holder/(7, 5)" unique_id=580597877]
 mesh = SubResource("ArrayMesh_tr02u")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(7, 6)" parent="Map_cell_holder" unique_id=2057472329 instance=ExtResource("2_a3se8")]
+[node name="(7, 6)" parent="Map_cell_holder" unique_id=2057472329 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, 12)
 cell_position = Vector2i(7, 6)
 
-[node name="(7, 7)" parent="Map_cell_holder" unique_id=1400686330 instance=ExtResource("2_a3se8")]
+[node name="(7, 7)" parent="Map_cell_holder" unique_id=1400686330 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, 14)
 cell_position = Vector2i(7, 7)
 
-[node name="(7, 8)" parent="Map_cell_holder" unique_id=1829308294 instance=ExtResource("2_a3se8")]
+[node name="(7, 8)" parent="Map_cell_holder" unique_id=1829308294 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, 16)
 cell_position = Vector2i(7, 8)
 
-[node name="(7, 9)" parent="Map_cell_holder" unique_id=722241535 instance=ExtResource("2_a3se8")]
+[node name="(7, 9)" parent="Map_cell_holder" unique_id=722241535 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.5, 18)
 cell_position = Vector2i(7, 9)
 
 [node name="_MeshInstance3D_141" type="MeshInstance3D" parent="Map_cell_holder/(7, 9)" unique_id=81936479]
 mesh = SubResource("ArrayMesh_a3ny2")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_142" type="MeshInstance3D" parent="Map_cell_holder/(7, 9)" unique_id=109651688]
 mesh = SubResource("ArrayMesh_i8phf")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_143" type="MeshInstance3D" parent="Map_cell_holder/(7, 9)" unique_id=287892067]
 mesh = SubResource("ArrayMesh_ojh8f")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(7, 10)" parent="Map_cell_holder" unique_id=1475832156 instance=ExtResource("2_a3se8")]
+[node name="(7, 10)" parent="Map_cell_holder" unique_id=1475832156 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, 20)
 cell_position = Vector2i(7, 10)
 
 [node name="_MeshInstance3D_144" type="MeshInstance3D" parent="Map_cell_holder/(7, 10)" unique_id=59463976]
 mesh = SubResource("ArrayMesh_gojgw")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(7, 11)" parent="Map_cell_holder" unique_id=2062542067 instance=ExtResource("2_a3se8")]
+[node name="(7, 11)" parent="Map_cell_holder" unique_id=2062542067 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.5, 22)
 cell_position = Vector2i(7, 11)
 
 [node name="_MeshInstance3D_145" type="MeshInstance3D" parent="Map_cell_holder/(7, 11)" unique_id=714326109]
 mesh = SubResource("ArrayMesh_yfnvw")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(7, 12)" parent="Map_cell_holder" unique_id=887494383 instance=ExtResource("2_a3se8")]
+[node name="(7, 12)" parent="Map_cell_holder" unique_id=887494383 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.5, 24)
 cell_position = Vector2i(7, 12)
 
-[node name="(7, 13)" parent="Map_cell_holder" unique_id=1425909013 instance=ExtResource("2_a3se8")]
+[node name="(7, 13)" parent="Map_cell_holder" unique_id=1425909013 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.5, 26)
 cell_position = Vector2i(7, 13)
 
 [node name="_MeshInstance3D_146" type="MeshInstance3D" parent="Map_cell_holder/(7, 13)" unique_id=1994914719]
 mesh = SubResource("ArrayMesh_k13tm")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(8, 4)" parent="Map_cell_holder" unique_id=1147763218 instance=ExtResource("2_a3se8")]
+[node name="(8, 4)" parent="Map_cell_holder" unique_id=1147763218 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, 8)
 cell_position = Vector2i(8, 4)
 
 [node name="_MeshInstance3D_147" type="MeshInstance3D" parent="Map_cell_holder/(8, 4)" unique_id=1491277434]
 mesh = SubResource("ArrayMesh_t8wer")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_148" type="MeshInstance3D" parent="Map_cell_holder/(8, 4)" unique_id=703951073]
 mesh = SubResource("ArrayMesh_yjwvy")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(8, 6)" parent="Map_cell_holder" unique_id=1760998495 instance=ExtResource("2_a3se8")]
+[node name="(8, 6)" parent="Map_cell_holder" unique_id=1760998495 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2, 12)
 cell_position = Vector2i(8, 6)
 
 [node name="_MeshInstance3D_149" type="MeshInstance3D" parent="Map_cell_holder/(8, 6)" unique_id=1237342075]
 mesh = SubResource("ArrayMesh_yj1vf")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_150" type="MeshInstance3D" parent="Map_cell_holder/(8, 6)" unique_id=1605695268]
 mesh = SubResource("ArrayMesh_rk3hb")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(8, 7)" parent="Map_cell_holder" unique_id=2092864730 instance=ExtResource("2_a3se8")]
+[node name="(8, 7)" parent="Map_cell_holder" unique_id=2092864730 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2, 14)
 cell_position = Vector2i(8, 7)
 
-[node name="(8, 8)" parent="Map_cell_holder" unique_id=93690963 instance=ExtResource("2_a3se8")]
+[node name="(8, 8)" parent="Map_cell_holder" unique_id=93690963 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2, 16)
 cell_position = Vector2i(8, 8)
 
 [node name="_MeshInstance3D_151" type="MeshInstance3D" parent="Map_cell_holder/(8, 8)" unique_id=516888711]
 mesh = SubResource("ArrayMesh_akds4")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_152" type="MeshInstance3D" parent="Map_cell_holder/(8, 8)" unique_id=1820248007]
 mesh = SubResource("ArrayMesh_18ypg")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(8, 10)" parent="Map_cell_holder" unique_id=632374257 instance=ExtResource("2_a3se8")]
+[node name="(8, 10)" parent="Map_cell_holder" unique_id=632374257 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, 20)
 cell_position = Vector2i(8, 10)
 
 [node name="_MeshInstance3D_153" type="MeshInstance3D" parent="Map_cell_holder/(8, 10)" unique_id=1092026935]
 mesh = SubResource("ArrayMesh_aqqs7")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(8, 11)" parent="Map_cell_holder" unique_id=1309893357 instance=ExtResource("2_a3se8")]
+[node name="(8, 11)" parent="Map_cell_holder" unique_id=1309893357 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.5, 22)
 cell_position = Vector2i(8, 11)
 
 [node name="_MeshInstance3D_154" type="MeshInstance3D" parent="Map_cell_holder/(8, 11)" unique_id=1943224773]
 mesh = SubResource("ArrayMesh_6k88s")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_155" type="MeshInstance3D" parent="Map_cell_holder/(8, 11)" unique_id=1439545524]
 mesh = SubResource("ArrayMesh_fxayx")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(8, 12)" parent="Map_cell_holder" unique_id=1316808907 instance=ExtResource("2_a3se8")]
+[node name="(8, 12)" parent="Map_cell_holder" unique_id=1316808907 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.5, 24)
 cell_position = Vector2i(8, 12)
 
 [node name="_MeshInstance3D_156" type="MeshInstance3D" parent="Map_cell_holder/(8, 12)" unique_id=500187843]
 mesh = SubResource("ArrayMesh_0ydj0")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(8, 13)" parent="Map_cell_holder" unique_id=895785706 instance=ExtResource("2_a3se8")]
+[node name="(8, 13)" parent="Map_cell_holder" unique_id=895785706 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.5, 26)
 cell_position = Vector2i(8, 13)
 
 [node name="_MeshInstance3D_157" type="MeshInstance3D" parent="Map_cell_holder/(8, 13)" unique_id=1206991606]
 mesh = SubResource("ArrayMesh_jikdi")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_158" type="MeshInstance3D" parent="Map_cell_holder/(8, 13)" unique_id=1476177853]
 mesh = SubResource("ArrayMesh_qosur")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(9, 4)" parent="Map_cell_holder" unique_id=1639212124 instance=ExtResource("2_a3se8")]
+[node name="(9, 4)" parent="Map_cell_holder" unique_id=1639212124 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3, 8)
 cell_position = Vector2i(9, 4)
 
 [node name="_MeshInstance3D_159" type="MeshInstance3D" parent="Map_cell_holder/(9, 4)" unique_id=872139932]
 mesh = SubResource("ArrayMesh_6605e")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_160" type="MeshInstance3D" parent="Map_cell_holder/(9, 4)" unique_id=573232847]
 mesh = SubResource("ArrayMesh_cw7rx")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(9, 7)" parent="Map_cell_holder" unique_id=1911253606 instance=ExtResource("2_a3se8")]
+[node name="(9, 7)" parent="Map_cell_holder" unique_id=1911253606 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.5, 14)
 cell_position = Vector2i(9, 7)
 
 [node name="_MeshInstance3D_161" type="MeshInstance3D" parent="Map_cell_holder/(9, 7)" unique_id=1306900744]
 mesh = SubResource("ArrayMesh_7b81v")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_162" type="MeshInstance3D" parent="Map_cell_holder/(9, 7)" unique_id=2011799613]
 mesh = SubResource("ArrayMesh_5hv5n")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_163" type="MeshInstance3D" parent="Map_cell_holder/(9, 7)" unique_id=1620955885]
 mesh = SubResource("ArrayMesh_notgg")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(9, 10)" parent="Map_cell_holder" unique_id=66244372 instance=ExtResource("2_a3se8")]
+[node name="(9, 10)" parent="Map_cell_holder" unique_id=66244372 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3, 20)
 cell_position = Vector2i(9, 10)
 
 [node name="_MeshInstance3D_164" type="MeshInstance3D" parent="Map_cell_holder/(9, 10)" unique_id=2132054468]
 mesh = SubResource("ArrayMesh_1qipx")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_165" type="MeshInstance3D" parent="Map_cell_holder/(9, 10)" unique_id=1822113796]
 mesh = SubResource("ArrayMesh_hwxnc")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(10, 4)" parent="Map_cell_holder" unique_id=659979952 instance=ExtResource("2_a3se8")]
+[node name="(10, 4)" parent="Map_cell_holder" unique_id=659979952 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 8)
 cell_position = Vector2i(10, 4)
 
 [node name="_MeshInstance3D_166" type="MeshInstance3D" parent="Map_cell_holder/(10, 4)" unique_id=540798959]
 mesh = SubResource("ArrayMesh_rrafa")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_167" type="MeshInstance3D" parent="Map_cell_holder/(10, 4)" unique_id=21010598]
 mesh = SubResource("ArrayMesh_ulucg")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(10, 5)" parent="Map_cell_holder" unique_id=706624321 instance=ExtResource("2_a3se8")]
+[node name="(10, 5)" parent="Map_cell_holder" unique_id=706624321 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 10)
 cell_position = Vector2i(10, 5)
 
 [node name="_MeshInstance3D_168" type="MeshInstance3D" parent="Map_cell_holder/(10, 5)" unique_id=307791755]
 mesh = SubResource("ArrayMesh_4kxis")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_169" type="MeshInstance3D" parent="Map_cell_holder/(10, 5)" unique_id=925926765]
 mesh = SubResource("ArrayMesh_d4utf")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(10, 6)" parent="Map_cell_holder" unique_id=9678913 instance=ExtResource("2_a3se8")]
+[node name="(10, 6)" parent="Map_cell_holder" unique_id=9678913 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 12)
 cell_position = Vector2i(10, 6)
 
 [node name="_MeshInstance3D_170" type="MeshInstance3D" parent="Map_cell_holder/(10, 6)" unique_id=529565723]
 mesh = SubResource("ArrayMesh_kavhl")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_171" type="MeshInstance3D" parent="Map_cell_holder/(10, 6)" unique_id=847858538]
 mesh = SubResource("ArrayMesh_rvnie")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(10, 7)" parent="Map_cell_holder" unique_id=59477825 instance=ExtResource("2_a3se8")]
+[node name="(10, 7)" parent="Map_cell_holder" unique_id=59477825 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 14)
 cell_position = Vector2i(10, 7)
 
 [node name="_MeshInstance3D_172" type="MeshInstance3D" parent="Map_cell_holder/(10, 7)" unique_id=136889124]
 mesh = SubResource("ArrayMesh_j7cx0")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_173" type="MeshInstance3D" parent="Map_cell_holder/(10, 7)" unique_id=971803524]
 mesh = SubResource("ArrayMesh_4j4o6")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(10, 8)" parent="Map_cell_holder" unique_id=831400096 instance=ExtResource("2_a3se8")]
+[node name="(10, 8)" parent="Map_cell_holder" unique_id=831400096 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 16)
 cell_position = Vector2i(10, 8)
 
 [node name="_MeshInstance3D_174" type="MeshInstance3D" parent="Map_cell_holder/(10, 8)" unique_id=681611878]
 mesh = SubResource("ArrayMesh_f7eno")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_175" type="MeshInstance3D" parent="Map_cell_holder/(10, 8)" unique_id=1850707260]
 mesh = SubResource("ArrayMesh_1ngy1")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(10, 9)" parent="Map_cell_holder" unique_id=639099828 instance=ExtResource("2_a3se8")]
+[node name="(10, 9)" parent="Map_cell_holder" unique_id=639099828 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 18)
 cell_position = Vector2i(10, 9)
 
 [node name="_MeshInstance3D_176" type="MeshInstance3D" parent="Map_cell_holder/(10, 9)" unique_id=943281808]
 mesh = SubResource("ArrayMesh_22vpl")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_177" type="MeshInstance3D" parent="Map_cell_holder/(10, 9)" unique_id=1435455042]
 mesh = SubResource("ArrayMesh_uuv0e")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
-[node name="(10, 10)" parent="Map_cell_holder" unique_id=1472699604 instance=ExtResource("2_a3se8")]
+[node name="(10, 10)" parent="Map_cell_holder" unique_id=1472699604 instance=ExtResource("2_iiwgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 20)
 cell_position = Vector2i(10, 10)
 
 [node name="_MeshInstance3D_178" type="MeshInstance3D" parent="Map_cell_holder/(10, 10)" unique_id=743610021]
 mesh = SubResource("ArrayMesh_ili6y")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="_MeshInstance3D_179" type="MeshInstance3D" parent="Map_cell_holder/(10, 10)" unique_id=716995727]
 mesh = SubResource("ArrayMesh_v6g6m")
-surface_material_override/0 = ExtResource("3_uty7l")
+surface_material_override/0 = ExtResource("3_73xbr")
 
 [node name="Elliot" type="Node3D" parent="." unique_id=1184113465]
 transform = Transform3D(0.69928426, 0, -0.7148437, 0, 1, 0, 0.7148437, 0, 0.69928426, 15.415, 2, 13.103)

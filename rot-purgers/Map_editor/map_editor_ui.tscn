@@ -423,7 +423,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
-item_count = 4
+item_count = 5
 popup/item_0/text = "Turret"
 popup/item_0/id = 1
 popup/item_1/text = "Normal"
@@ -432,6 +432,8 @@ popup/item_2/text = "Charger"
 popup/item_2/id = 2
 popup/item_3/text = "Meatwall"
 popup/item_3/id = 3
+popup/item_4/text = "Spawner"
+popup/item_4/id = 4
 
 [node name="Label13" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1298965090]
 layout_mode = 2
