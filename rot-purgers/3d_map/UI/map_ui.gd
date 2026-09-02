@@ -46,6 +46,7 @@ func show_focus_char_stats(ch : Character_stats):
 
 func close_spawn_menu():
 	map_generator.freze_selector = false
+	map_generator.state = Map_generator.states.SELECT
 	$Focused_char_stats.hide()
 	%Character_select_menu.hide()
 	%Height_box.show()
@@ -56,7 +57,8 @@ func spawn_character(ch : Character_stats):
 	spawn_list[ch].queue_free()
 	spawn_list.erase(ch)
 	GlobalData.ally_team.erase(ch)
-	close_spawn_menu()
+	#close_spawn_menu()
+	%Character_select_menu.hide()
 
 func show_mini_stats(ch : Character_stats):
 	%Mini_char_stats.update_stats(ch)
@@ -149,6 +151,7 @@ func _on_turn_menu_execute() -> void:
 func _on_turn_menu_end_turn() -> void:
 	BattleHandler.end_player_turn()
 	%Turn_menu.hide()
+	%Height_box.show()
 	map_generator.state_select()
 
 func _on_char_action_menu_defend() -> void:
@@ -260,12 +263,14 @@ func _on_terr_bt_pressed(source: BaseButton) -> void:
 func _on_terrain_mod_button_pressed() -> void:
 	map_generator.cast_terrain_mod()
 	%Terrain_mod.hide()
+	%Cell_select.clear()
 
 func _ready() -> void:
 	var pop : PopupMenu = %Cell_select.get_popup()
 	pop.max_size = Vector2(9999, 500)
 	ObjectLink.focused_char_stats = %Focused_char_stats
 	ObjectLink.mini_char_stats = %Mini_char_stats
+	ObjectLink.map_ui = self
 
 func _on_char_action_menu_rearange() -> void:
 	%Rearange_menu.show()
@@ -274,7 +279,6 @@ func _on_char_action_menu_rearange() -> void:
 func _on_rearange_menu_confirm() -> void:
 	selected_char.car_rearange = false
 	%Char_action_menu.update_disabled(selected_char)
-
 
 
 

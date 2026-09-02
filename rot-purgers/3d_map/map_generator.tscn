@@ -39,4 +39,6 @@ move_speed = 0.2
 [node name="Map_UI" parent="." unique_id=1270663533 instance=ExtResource("4_seipr")]
 unique_name_in_owner = true
 
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=656040897]
+
 [connection signal="map_spawn_character" from="Map_UI" to="." method="spawn_ally"]

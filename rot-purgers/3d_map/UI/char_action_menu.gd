@@ -27,12 +27,14 @@ func update_disabled(ch_node : Character_node):
 		%Attack.disabled = true
 		%Spell.disabled = true
 		%Defend.disabled = true
+		%Stats.disabled = true
 		return
 	if ch_node.has_order:
 		%Move.disabled = true
 		%Attack.disabled = true
 		%Spell.disabled = true
 		%Defend.disabled = true
+		%Stats.disabled = true
 		return
 	if ch_node.can_move:
 		%Move.disabled = false

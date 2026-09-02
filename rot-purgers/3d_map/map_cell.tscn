@@ -27,6 +27,10 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_vwy4y"]
 size = Vector3(1.8, 0.1, 1.8)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m8u4e"]
+resource_local_to_scene = true
+size = Vector3(2, 1, 2)
+
 [node name="Map_cell" type="Node3D" unique_id=215314247]
 script = ExtResource("1_2f0j5")
 temp_terr_data = SubResource("Resource_s44dr")
@@ -42,4 +46,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse_detector" unique_id=895631400]
 shape = SubResource("BoxShape3D_vwy4y")
 
-[connection signal="mouse_entered" from="Mouse_detector" to="." method="_on_mouse_detector_mouse_entered"]
+[node name="Terrain_check" type="Area3D" parent="." unique_id=1521817104]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
+
+[node name="Terrain_collision" type="CollisionShape3D" parent="Terrain_check" unique_id=1548410646]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_m8u4e")
+
+[connection signal="body_entered" from="Mouse_detector" to="." method="_on_mouse_detector_body_entered"]

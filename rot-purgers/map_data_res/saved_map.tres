@@ -24,22 +24,6 @@ skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_2qeye"), ExtResource("4_2
 atlas_coords = Vector2i(1, 0)
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_r8prx"]
-script = ExtResource("1_qbyd3")
-name = "Crystal"
-char_class = "Granulocyte"
-age = 468
-sprite = ExtResource("3_alebe")
-move_speed = 2
-attack_distance = 5
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
-start_dir = 2
-AI_type = 2
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_2qeye"), ExtResource("4_2qeye")])
-atlas_coords = Vector2i(1, 0)
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
 [sub_resource type="Resource" id="Resource_to1fk"]
 script = ExtResource("1_qbyd3")
 name = "Crystal"
@@ -69,15 +53,6 @@ wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_u7ypl"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-atlas_coord = Vector2i(1, 0)
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_ahyom"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("6_bwvuj")
 atlas_coord = Vector2i(1, 0)
@@ -133,15 +108,6 @@ wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_8rl3u"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-atlas_coord = Vector2i(1, 0)
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_l5vmc"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("6_bwvuj")
 atlas_coord = Vector2i(1, 0)
@@ -312,15 +278,6 @@ floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_qhyuh"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-atlas_coord = Vector2i(1, 0)
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
 [sub_resource type="Resource" id="Resource_k28vi"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("6_bwvuj")
@@ -363,14 +320,12 @@ map_size = Vector2i(30, 30)
 terrain_map_data = Dictionary[Vector2i, ExtResource("4_bwvuj")]({
 Vector2i(13, 8): SubResource("Resource_xuijx"),
 Vector2i(13, 9): SubResource("Resource_u7ypl"),
-Vector2i(13, 10): SubResource("Resource_ahyom"),
 Vector2i(13, 11): SubResource("Resource_20agm"),
 Vector2i(13, 12): SubResource("Resource_alebe"),
 Vector2i(13, 13): SubResource("Resource_2qeye"),
 Vector2i(13, 14): SubResource("Resource_j7tpd"),
 Vector2i(14, 8): SubResource("Resource_idsk3"),
 Vector2i(14, 9): SubResource("Resource_8rl3u"),
-Vector2i(14, 10): SubResource("Resource_l5vmc"),
 Vector2i(14, 11): SubResource("Resource_cx7s4"),
 Vector2i(14, 12): SubResource("Resource_ead5j"),
 Vector2i(14, 13): SubResource("Resource_g2qwr"),
@@ -389,7 +344,6 @@ Vector2i(14, 25): SubResource("Resource_34nle"),
 Vector2i(14, 26): SubResource("Resource_f05un"),
 Vector2i(15, 8): SubResource("Resource_oyqpw"),
 Vector2i(15, 9): SubResource("Resource_8dwos"),
-Vector2i(15, 10): SubResource("Resource_qhyuh"),
 Vector2i(15, 11): SubResource("Resource_k28vi"),
 Vector2i(15, 12): SubResource("Resource_o70wc"),
 Vector2i(15, 13): SubResource("Resource_jcw8x"),
@@ -400,6 +354,5 @@ Vector2i(14, 13): SubResource("Resource_ys7s5")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_qbyd3")]({
 Vector2i(13, 8): SubResource("Resource_kqj3p"),
-Vector2i(14, 11): SubResource("Resource_r8prx"),
 Vector2i(15, 8): SubResource("Resource_to1fk")
 })

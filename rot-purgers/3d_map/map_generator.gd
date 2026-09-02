@@ -55,8 +55,9 @@ func load_map(map : Map_data):
 	object_map = map.object_map_data
 	map_data = map
 	GlobalData.map_magic_cost_adjustment = map_data.magic_cost_adjustment
-	await spawn_cells()
 	await calculate_boundary()
+	await spawn_cells()
+	%Camera_position.cell_boundary = selector_boundary
 	await move_selector_to_spawn()
 	await spawn_objects()
 	await %Map_UI.populate_spawn_list()
@@ -76,8 +77,9 @@ _object_map : Dictionary[Vector2i, Map_object], enemy_map : Dictionary[Vector2i,
 	object_map = _object_map
 	BattleHandler.map_gen = self
 	ObjectLink.map_gen = self
-	await spawn_cells()
 	await calculate_boundary()
+	await spawn_cells()
+	%Camera_position.cell_boundary = selector_boundary
 	await move_selector_to_spawn()
 	await spawn_objects()
 	GlobalData.map_magic_cost_adjustment = 1.0
@@ -94,13 +96,13 @@ func spawn_cells():
 		map_cells[cell] = map_cell
 		map_cell_to_data_cell[map_cell] = cell
 		map_cell.name = str(cell)
-		map_cell.mouse_entered.connect(move_selector.bind(map_cell))
+		map_cell.camera_entered.connect(move_selector.bind(map_cell, false))
 		map_cell.position = Vector3(cell.x * cell_size, terr_data.height * 0.1 , cell.y * cell_size)
 		map_cell.make_meshes(terrain_map, cell)
 
 func calculate_boundary():
-	var corners : Array[Vector2i] = [map_cells.keys()[0], map_cells.keys()[0]]
-	for cell in map_cells:
+	var corners : Array[Vector2i] = [terrain_map.keys()[0], terrain_map.keys()[0]]
+	for cell in terrain_map:
 		if corners[0].x > cell.x:
 			corners[0].x = cell.x
 		if corners[0].y > cell.y:
@@ -125,6 +127,7 @@ func move_selector_to_spawn():
 	%Map_UI.update_height(terrain_map[selected_cell].height)
 	%Camera_position.position = %Selector.position
 	%Camera_position.move_target = %Selector.position
+	%Camera_position.camera_cell = selected_cell
 
 func get_position_height(pos : Vector3) -> float:
 	var cell : Vector2i = Vector2(round(pos.x), round(pos.z)) / 2
@@ -132,7 +135,7 @@ func get_position_height(pos : Vector3) -> float:
 		return map_cells[cell].position.y
 	return 0.0
 
-func move_selector(map_cell : Map_cell):
+func move_selector(map_cell : Map_cell, mouse_move := true):
 	if freze_selector or BattleHandler.state != Battle_handler.states.PLAYER:
 		return
 	if state == states.SKILL:
@@ -144,10 +147,14 @@ func move_selector(map_cell : Map_cell):
 		var dead_zone : Rect2 = %Map_UI.dead_zone
 		if dead_zone.has_point(mouse_pos):
 			return
+	if mouse_move and %Camera_position.moving:
+		return
 	%Selector.position = map_cell.position
 	var prev_selector_cell := selected_cell
 	selected_map_cell = map_cell
 	selected_cell = map_cell_to_data_cell[selected_map_cell]
+	if !mouse_move:
+		%Camera_position.camera_cell = selected_cell
 	%Map_UI.update_height(terrain_map[selected_cell].height)
 	
 	if char_positions.has(selected_cell):
@@ -165,8 +172,11 @@ func move_selector(map_cell : Map_cell):
 
 func set_selector(cell : Vector2i):
 	selected_cell = cell
-	%Selector.position = map_cells[cell].position
-	%Map_UI.update_height(terrain_map[selected_cell].height)
+	if map_cells.has(cell):
+		%Selector.position = map_cells[cell].position
+		%Map_UI.update_height(terrain_map[selected_cell].height)
+	else:
+		%Selector.position = Vector3(cell.x * 2.0, 0.0, cell.y * 2.0)
 	if char_positions.has(selected_cell):
 		%Map_UI.show_mini_stats(char_positions[selected_cell].stats)
 
@@ -210,6 +220,21 @@ func spawn_objects():
 
 var showing_move_zone := false
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		var cam : Camera3D = %Camera_position.camera
+		var origin := cam.project_ray_origin(event.position)
+		var end := origin + cam.project_ray_normal(event.position) * 1000
+		var query := PhysicsRayQueryParameters3D.create(origin, end)
+		query.collide_with_areas = true
+		
+		var space_state = get_world_3d().direct_space_state
+		var result = space_state.intersect_ray(query)
+		if result.has("collider"):
+			if result["collider"].get_parent() is Map_cell:
+				if !%Camera_position.moving:
+					move_selector(result["collider"].get_parent())
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("show_skill_move_zone") and state == states.SKILL and !showing_move_zone:
 		if selected_skill.skill_map.bound_to_char and selected_char.can_move:
@@ -228,7 +253,7 @@ func _input(event: InputEvent) -> void:
 		if !selected_skill.skill_map.bound_to_char:
 			rotate_unbound_skill()
 		return
-	if event.is_action_pressed("undo"):
+	if event.is_action_pressed("undo") and state == states.SELECT:
 		if char_positions.has(selected_cell):
 			var char_node : Character_node = char_positions[selected_cell]
 			if char_node.has_order:
@@ -248,7 +273,11 @@ func _input(event: InputEvent) -> void:
 				char_positions.erase(char_node.map_pos)
 				await char_node.undo_move(map_cells)
 				char_positions[char_node.map_pos] = char_node
+				camera.move_target = char_node.position
 		return
+	if event.is_action_pressed("game_menu") and state == states.SELECT:
+		state = states.MENU
+		%Map_UI.open_turn_menu()
 	if event.is_action_pressed("menu_back"):
 		match state:
 			states.MOVE, states.ATTACK:
@@ -256,6 +285,8 @@ func _input(event: InputEvent) -> void:
 				clear_select_zone()
 				%Map_UI.open_char_action_menu(selected_char, 1)
 			states.SELECT:
+				if event.device == 0:
+					return
 				state = states.MENU
 				%Map_UI.open_turn_menu()
 			states.MENU:
@@ -265,54 +296,55 @@ func _input(event: InputEvent) -> void:
 				clear_select_zone()
 				%Map_UI.back_to_skill_selection()
 		return
-	if event is InputEventMouseButton:
-		match event.button_index:
-			MOUSE_BUTTON_LEFT:
-				if event.is_pressed():
-					match state:
-						states.SELECT:
-							if freze_selector:
-								return
-							if char_positions.has(selected_cell):
-								state = states.MENU
-								selected_char = char_positions[selected_cell]
-								%Map_UI.open_char_action_menu(char_positions[selected_cell])
-								return
-							if spawn_zones.has(selected_cell):
-								state = states.MENU
-								$Map_UI.open_spawn_menu()
-								return
-						states.MOVE:
-							if move_zones.has(selected_cell):
-								move_character()
-							else:
-								pass
-								# ADD error sound
-						states.ATTACK:
-							if select_zones.has(selected_cell) and char_positions.has(selected_cell):
-								attack_character()
-								return
-							else:
-								pass
-								# ADD error sound
-						states.SKILL:
-							if !selected_skill.skill_map.bound_to_char:
-								if !check_unbound_skill_height():
-									return
-							if showing_move_zone:
-								finalize_skill_move()
-							else:
-								add_skill_order()
-						states.SKILL_TERRAIN:
-							if selected_skill.terrain_mod == Skill_base.terrain_mods.HEIGHT:
-								var _mouse_pos : Vector2 = event.position
-								var dead_zone : Rect2 = %Map_UI.dead_zone
-								if dead_zone.has_point(_mouse_pos):
-									return
-								if terrain_mod_selected_cells.has(selected_cell):
-									remove_cell_from_terrain_modification(selected_cell)
-								else:
-									add_cell_for_terrain_modification(selected_cell)
+	if event is InputEventMouseButton or event.is_action_pressed("ui_accept"):
+		if event is InputEventMouseButton:
+			if event.button_index != MOUSE_BUTTON_LEFT:
+				return
+		if event.is_pressed():
+			match state:
+				states.SELECT:
+					if freze_selector:
+						return
+					if char_positions.has(selected_cell):
+						state = states.MENU
+						selected_char = char_positions[selected_cell]
+						%Map_UI.open_char_action_menu(char_positions[selected_cell])
+						return
+					if spawn_zones.has(selected_cell):
+						state = states.MENU
+						$Map_UI.open_spawn_menu()
+						return
+				states.MOVE:
+					if move_zones.has(selected_cell):
+						move_character()
+					else:
+						pass
+						# ADD error sound
+				states.ATTACK:
+					if select_zones.has(selected_cell) and char_positions.has(selected_cell):
+						attack_character()
+						return
+					else:
+						pass
+						# ADD error sound
+				states.SKILL:
+					if !selected_skill.skill_map.bound_to_char:
+						if !check_unbound_skill_height():
+							return
+					if showing_move_zone:
+						finalize_skill_move()
+					else:
+						add_skill_order()
+				states.SKILL_TERRAIN:
+					if selected_skill.terrain_mod == Skill_base.terrain_mods.HEIGHT:
+						var _mouse_pos : Vector2 = event.position
+						var dead_zone : Rect2 = %Map_UI.dead_zone
+						if dead_zone.has_point(_mouse_pos):
+							return
+						if terrain_mod_selected_cells.has(selected_cell):
+							remove_cell_from_terrain_modification(selected_cell)
+						else:
+							add_cell_for_terrain_modification(selected_cell)
 
 func spawn_ally(ch : Character_stats):
 	var char_node : Character_node = load(ch.node_UID).instantiate()
@@ -362,7 +394,8 @@ func spawn_select_zone(ch_node : Character_node, st : states):
 			select_zones[cell] = move_zone
 
 func get_flow_cells(start_cell : Vector2i, dist : int = 1, ignore_chars := true, ignore_enemies := true,
-height_limit : int = 9999, ignore_player := true, height_limit_between_neib := true) -> Array[Vector2i]:
+height_limit : int = 9999, ignore_player := true, height_limit_between_neib := true,
+ignore_all := false) -> Array[Vector2i]:
 	var select_cells : Array[Vector2i] = []
 	var border : Array[Vector2i] = [start_cell]
 	dist += 1
@@ -372,28 +405,29 @@ height_limit : int = 9999, ignore_player := true, height_limit_between_neib := t
 			select_cells.append(cell)
 			for neib in neighbors_sides:
 				var check_cell : Vector2i = cell + neib
-				if !terrain_map.has(check_cell):
-					continue
-				if !terrain_map[check_cell].passable:
-					continue
-				if object_map.has(check_cell):
-					if !object_map[check_cell].passable:
+				if !ignore_all:
+					if !terrain_map.has(check_cell):
 						continue
-				if char_positions.has(check_cell) and !ignore_chars:
-					if BattleHandler.enemies.has(char_positions[check_cell]) and !ignore_enemies:
+					if !terrain_map[check_cell].passable:
 						continue
-					if BattleHandler.allies.has(char_positions[check_cell]) and !ignore_player:
-						continue
-				if height_limit_between_neib:
-					var current_height : int = terrain_map[cell].height
-					var ch_c_h : int = terrain_map[check_cell].height
-					if ch_c_h - current_height > height_limit:
-						continue
-				else:
-					var current_height : int = terrain_map[start_cell].height
-					var ch_c_h : int = terrain_map[check_cell].height
-					if abs(ch_c_h - current_height) > height_limit:
-						continue
+					if object_map.has(check_cell):
+						if !object_map[check_cell].passable:
+							continue
+					if char_positions.has(check_cell) and !ignore_chars:
+						if BattleHandler.enemies.has(char_positions[check_cell]) and !ignore_enemies:
+							continue
+						if BattleHandler.allies.has(char_positions[check_cell]) and !ignore_player:
+							continue
+					if height_limit_between_neib:
+						var current_height : int = terrain_map[cell].height
+						var ch_c_h : int = terrain_map[check_cell].height
+						if ch_c_h - current_height > height_limit:
+							continue
+					else:
+						var current_height : int = terrain_map[start_cell].height
+						var ch_c_h : int = terrain_map[check_cell].height
+						if abs(ch_c_h - current_height) > height_limit:
+							continue
 				if !border.has(check_cell) and !select_cells.has(check_cell) and !new_border.has(check_cell):
 					new_border.append(check_cell)
 		border = new_border

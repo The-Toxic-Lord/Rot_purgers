@@ -7,6 +7,7 @@ class_name Main_menu_UI
 func _ready() -> void:
 	if !ResourceLoader.exists("user://save.tres"):
 		%Load.disabled = true
+	%New_game.grab_focus()
 
 func _on_map_editor_pressed() -> void:
 	%Menu.hide()

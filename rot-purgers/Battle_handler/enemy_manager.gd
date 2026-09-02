@@ -7,6 +7,9 @@ signal enemies_turn_ended
 var map_gen : Map_generator
 @export var temp : Array[Skill_able_data]
 
+func _ready() -> void:
+	ObjectLink.enemy_manager = self
+
 func start_enemy_turn():
 	await get_tree().process_frame
 	for enemy in BattleHandler.enemies:
@@ -82,8 +85,8 @@ func handle_charger_AI(enemy : Character_node):
 	for en in BattleHandler.enemies:
 		move_cells.erase(en.map_pos)
 	
-	#if await AI_can_use_skill(move_cells, enemy):
-		#return
+	if await AI_can_use_skill(move_cells, enemy):
+		return
 	
 	if await AI_can_attack(move_cells, enemy):
 		return
@@ -196,6 +199,8 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> b
 				frienly_targets = skill_possible.targets.size() - max_targets
 		var zero_array : Array[Vector2i] = []
 		await move_charger(chosen_possibility.used_position, enemy, move_cells)
+		enemy.turn(chosen_possibility.dir)
+		await enemy.direction_changed
 		BattleHandler.add_skill(enemy, chosen_possibility.skill, 
 		chosen_possibility.damage_cells, zero_array, chosen_possibility.target_cell)
 		return true
@@ -205,7 +210,8 @@ func AI_can_attack(move_cells : Array[Vector2i], enemy : Character_node) -> bool
 	var attack_possibilities : Dictionary[Vector2i, Array] = {}
 	for cell in move_cells:
 		@warning_ignore("confusable_local_declaration")
-		var targets : Array[Vector2i] = can_attack_fom_position(enemy.stats.attack_distance, cell, enemy.stats.attack_height)
+		var targets : Array[Vector2i] = can_attack_fom_position(
+			enemy.stats.attack_distance, cell, enemy.stats.attack_height, enemy.position)
 		if !targets.is_empty():
 			attack_possibilities[cell] = targets
 	
@@ -228,18 +234,22 @@ func move_charger(cell : Vector2i, enemy : Character_node, move_cells : Array[Ve
 	await map_gen.update_char_position(enemy, enemy.map_pos)
 
 func can_attack_fom_position(attack_distance : int, position_cell : Vector2i,
-char_attack_height : int) -> Array[Vector2i]:
-	var range_cells : Array[Vector2i] = map_gen.get_flow_cells(position_cell, attack_distance)
+char_attack_height : int, attacker_pos : Vector3) -> Array[Vector2i]:
+	var range_cells : Array[Vector2i] = map_gen.get_flow_cells(position_cell, attack_distance,
+	true, true, 9999, true, true, true)
 	var targers : Array[Vector2i] = []
 	var char_height : int = map_gen.terrain_map[position_cell].height
 	for cell in range_cells:
+		if !map_gen.char_positions.has(cell):
+			continue
+		var char_node : Character_node = map_gen.char_positions[cell]
+		if !BattleHandler.allies.has(char_node):
+			continue
 		var cell_height : int = map_gen.terrain_map[cell].height
 		if abs(cell_height - char_height) > char_attack_height:
 			continue
-		if map_gen.char_positions.has(cell):
-			var char_node : Character_node = map_gen.char_positions[cell]
-			if BattleHandler.allies.has(char_node):
-				targers.append(cell)
+		if pretend_fire(attacker_pos, char_node.position):
+			targers.append(cell)
 	return targers
 
 func can_use_skills_in_position(char_node : Character_node, 
@@ -289,6 +299,8 @@ char_map_pos : Vector2i) -> Array[Skill_able_data]:
 					move_cells = rotare_skill_cells_around_position(move_cells, char_map_pos, dir)
 				for cell in move_cells:
 					if map_gen.char_positions.has(cell):
+						dir_able[dir] = false
+					if !map_gen.map_cells.has(cell):
 						dir_able[dir] = false
 		if dir_able[dir]:
 			var skill_able_data := Skill_able_data.new()
@@ -365,7 +377,16 @@ map_pos : Vector2i, char_height : int, char_current_pos : Vector2i) -> Array[Ski
 						skill_able_data.targets.append(cell)
 	return skill_able_data_arr
 
-
+func pretend_fire(attacker : Vector3, target : Vector3) -> bool:
+	var query := PhysicsRayQueryParameters3D.create(attacker + Vector3(0, 1.5, 0), target + Vector3(0, 1.5, 0))
+	query.collide_with_areas = true
+	query.collision_mask = 0x0002
+	var space_state = ObjectLink.map_gen.get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(query)
+	
+	if result.has("collider"):
+		return false
+	return true
 
 
 

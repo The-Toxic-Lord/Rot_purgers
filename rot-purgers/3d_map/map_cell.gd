@@ -29,7 +29,8 @@ var neib_reverse : Dictionary[Vector2i, bool] = {
 	Vector2i.LEFT : false
 }
 var neib_to_wall : Dictionary[Vector2i, MeshInstance3D] = {}
-signal mouse_entered
+
+signal camera_entered
 
 var walls : Dictionary[Map_generator.directions, MeshInstance3D] = {}
 var wall_is_limited : Dictionary[MeshInstance3D, bool] = {}
@@ -61,6 +62,15 @@ func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector
 		else:
 			wall_is_limited[wall] = false
 	load_materials(terrain_map[cell])
+	change_terrain_check()
+
+func change_terrain_check():
+	if position.y >= 0:
+		if ObjectLink.map_gen.terrain_map[cell_position].depth == 0:
+			%Terrain_collision.shape.size.y = position.y
+		else:
+			%Terrain_collision.shape.size.y = ObjectLink.map_gen.terrain_map[cell_position].depth * 0.1
+		%Terrain_check.position.y = -%Terrain_collision.shape.size.y / 2
 
 func load_materials(terrain_data : Terrain_data):
 	%Floor.set_surface_override_material(0, terrain_data.floor_material)
@@ -266,15 +276,13 @@ curve : Curve = null, zone_center : Vector3 = Vector3.ZERO, zone_length := 0.0) 
 	mesh = normalize(mdt, mesh)
 	return mesh
 
-func _on_mouse_detector_mouse_entered() -> void:
-	mouse_entered.emit()
-
 var move_tween : Tween
 var tween_progress := 0.0:
 	set(value):
 		tween_progress = value
 		if check_walls():
 			update_walls()
+			change_terrain_check()
 var target_height : int
 func update_height(value : int, zone : Node3D):
 	target_height = value
@@ -396,9 +404,9 @@ func check_walls_neib(neib : Vector2i):
 		var wall : MeshInstance3D = walls[dir]
 		update_wall_mesh(wall.mesh, dir)
 
-
-
-
+func _on_mouse_detector_body_entered(body: Node3D) -> void:
+	if body.get_parent() is Camera_controller:
+		camera_entered.emit()
 
 
 

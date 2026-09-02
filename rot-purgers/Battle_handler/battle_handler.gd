@@ -106,6 +106,7 @@ func start_player_turn():
 	state = states.PLAYER
 	map_gen.freze_selector = false
 	map_gen.set_selector(map_gen.selected_cell)
+	
 	if map_gen is Tutorial:
 		map_gen.end_turn_check = true
 
