@@ -70,7 +70,10 @@ func stats_adjust():
 	else:
 		magic_mod = 1.0 - (map_magic_mod - 2.0) * 0.2
 	for st in adjust_stats:
-		set(st, int(get(st) * magic_mod))
+		if st in ["accuracy", "speed", "max_health"]:
+			set(st, snapped(int(get(st) * magic_mod), 5))
+		else:
+			set(st, int(get(st) * magic_mod))
 	health = max_health
 	magic = max_magic
 

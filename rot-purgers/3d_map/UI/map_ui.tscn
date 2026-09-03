@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://qu82b3iiw4hr" path="res://3d_map/UI/spell_select_menu.tscn" id="7_e57h2"]
 [ext_resource type="StyleBox" uid="uid://c867nr0bsb6xs" path="res://new_style_box_flat.tres" id="8_cpof1"]
 [ext_resource type="PackedScene" uid="uid://dw6n725evmlpp" path="res://3d_map/UI/rearange_menu.tscn" id="9_bj6fb"]
+[ext_resource type="PackedScene" uid="uid://ds322ud3awtgo" path="res://3d_map/UI/accuracy_box.tscn" id="10_o7cn7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e57h2"]
 bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
@@ -282,6 +283,10 @@ offset_left = 997.0
 offset_top = 50.0
 offset_right = 1548.0
 offset_bottom = 610.0
+
+[node name="Accuracy_box" parent="." unique_id=56733385 instance=ExtResource("10_o7cn7")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="pressed" from="Character_select_menu/Character_list/Close_spawn" to="." method="close_spawn_menu"]
 [connection signal="attack" from="Char_action_menu" to="." method="_on_char_action_menu_attack"]

@@ -21,6 +21,8 @@ func start_enemy_turn():
 				await handle_normal_AI(enemy)
 			Character_stats.AI_types.CHARGER:
 				await handle_charger_AI(enemy)
+			Character_stats.AI_types.SPAWNER:
+				await handle_spawner_AI(enemy)
 	if !BattleHandler.order_array.is_empty():
 		BattleHandler.execute_orders()
 		await BattleHandler.orders_executed
@@ -174,6 +176,40 @@ func handle_charger_AI(enemy : Character_node):
 				#var height : int = map_gen.terrain_map[neib + enemy.map_pos].height
 				#if abs(height - map_gen.terrain_map[enemy.map_pos].height) < enemy.stats.attack_height:
 					#BattleHandler.add_attack(enemy, map_gen.char_positions[neib + enemy.map_pos])
+
+func handle_spawner_AI(enemy : Character_node):
+	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
+	false, true, enemy.stats.jump_height, false)
+	
+	for en in BattleHandler.enemies:
+		move_cells.erase(en.map_pos)
+	move_cells.insert(0, enemy.map_pos)
+	
+	if !await AI_can_spawn(move_cells, enemy):
+		#ADD
+		pass
+
+func AI_can_spawn(move_cells : Array[Vector2i], enemy : Character_node) -> bool:
+	move_cells.shuffle()
+	for cell in move_cells:
+		for n_c in neib_side:
+			var new_cell : Vector2i = cell + n_c
+			if !map_gen.map_cells.has(new_cell):
+				continue
+			if map_gen.char_positions.has(new_cell):
+				continue
+			var enemy_stats : Character_stats = ResourceLoader.load(enemy.stats.spawn_node_UUID)
+			var dir : Map_generator.directions = map_gen.vector_to_dir[n_c]
+			if cell != enemy.map_pos:
+				enemy.move(cell, map_gen.terrain_map, move_cells, 
+				map_gen.selector_boundary, map_gen.map_cells)
+				await enemy.move_finished
+			if enemy.current_direction != dir:
+				enemy.turn(dir)
+				await enemy.direction_changed
+			await map_gen.spawn_enemy(enemy_stats, new_cell, dir)
+			return true
+	return false
 
 func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> bool:
 	var skill_possibilities : Array[Skill_able_data] = []

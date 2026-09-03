@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d0nk5hmontt30"]
+
+[ext_resource type="Script" uid="uid://b01t8cks4j1lf" path="res://3d_map/UI/char_hit_chance.gd" id="1_dyghk"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=874117601]
+theme_override_constants/separation = 20
+script = ExtResource("1_dyghk")
+
+[node name="Char_name" type="Label" parent="." unique_id=1362289902]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Char_name :"
+
+[node name="Chance" type="Label" parent="." unique_id=561379812]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "100%"

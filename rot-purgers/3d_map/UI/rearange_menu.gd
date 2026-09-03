@@ -36,8 +36,10 @@ func load_char(char_node : Character_node):
 		slider.max_value = char_stats_base.get_stat(stats[i]) * 1.5
 		slider.min_value = char_stats_base.get_stat(stats[i]) * 0.5
 		match i:
-			0:
+			0, 3, 4:
 				slider.step = 5.0
+				slider.max_value = snapped(char_stats_base.get_stat(stats[i]) * 1.5, 5)
+				slider.min_value = snapped(char_stats_base.get_stat(stats[i]) * 0.5, 5)
 			5:
 				slider.step = 5.0
 				slider.min_value = char_stats_base.get_stat(stats[i]) - 20
@@ -66,7 +68,7 @@ func _on_slider_drag_ended(value_changed: bool, source: Slider) -> void:
 	
 	var diff : int = int(value) - stat_value
 	match id:
-		0:
+		0, 3, 4:
 			@warning_ignore("narrowing_conversion")
 			diff *= 0.2
 		5:
@@ -79,7 +81,7 @@ func _on_slider_drag_ended(value_changed: bool, source: Slider) -> void:
 	stat_value = int(value)
 	if readjust_points < 0:
 		match id:
-			0:
+			0, 3, 4:
 				stat_value += readjust_points * 5
 			5:
 				@warning_ignore("narrowing_conversion")
@@ -117,7 +119,7 @@ func _on_slider_value_changed(value: float, source: Range) -> void:
 	var stat_value : int = char_stats.get_stat(stats[id])
 	var diff : int = int(value) - stat_value
 	match id:
-		0:
+		0, 3, 4:
 			@warning_ignore("narrowing_conversion")
 			diff *= 0.2
 		5:

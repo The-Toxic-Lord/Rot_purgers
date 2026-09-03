@@ -10,5 +10,5 @@ name = "Shapes"
 sprite = ExtResource("3_56hyt")
 node_UID = "uid://c7bbx7glxoob8"
 AI_type = 4
-spawn_node_UUID = "uid://dunq80ub3v1jk"
+spawn_node_UUID = "uid://bkwt1lvhkpr71"
 metadata/_custom_type_script = "uid://by1rq468n504l"

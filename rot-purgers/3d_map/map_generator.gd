@@ -149,6 +149,8 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 			return
 	if mouse_move and %Camera_position.moving:
 		return
+	if selected_cell == map_cell_to_data_cell[map_cell]:
+		return
 	%Selector.position = map_cell.position
 	var prev_selector_cell := selected_cell
 	selected_map_cell = map_cell
@@ -166,9 +168,28 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 			if move_zones.has(selected_cell):
 				move_char_skill()
 		else:
-			turn_to_selection()
+			await turn_to_selection()
 			if !selected_skill.skill_map.bound_to_char:
-				move_skill(selected_cell, prev_selector_cell)
+				await move_skill(selected_cell, prev_selector_cell)
+	check_accuracy_ui()
+
+func check_accuracy_ui():
+	if state == states.ATTACK:
+		if char_positions.has(selected_cell) and select_zones.has(selected_cell):
+			if char_positions[selected_cell] != selected_char:
+				var targets : Array[Character_stats] = [char_positions[selected_cell].stats]
+				%Map_UI.show_accuracy(targets)
+		else:
+			%Map_UI.hide_accuracy()
+	if state == states.SKILL:
+		var targets : Array[Character_stats] = []
+		for cell in select_zones.keys():
+			if char_positions.has(cell):
+				targets.append(char_positions[cell].stats)
+		if !targets.is_empty():
+			%Map_UI.show_accuracy(targets, selected_skill)
+		else:
+			%Map_UI.hide_accuracy()
 
 func set_selector(cell : Vector2i):
 	selected_cell = cell
@@ -205,7 +226,7 @@ func turn_to_selection():
 	selected_char.turn(new_dir, true)
 	await selected_char.direction_changed
 	if selected_skill.skill_map.bound_to_char:
-		rotate_skill(selected_char.previous_direction)
+		await rotate_skill(selected_char.previous_direction)
 
 func spawn_objects():
 	for cell in object_map:
@@ -251,7 +272,8 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("rotate_skill"):
 		if !selected_skill.skill_map.bound_to_char:
-			rotate_unbound_skill()
+			await rotate_unbound_skill()
+			check_accuracy_ui()
 		return
 	if event.is_action_pressed("undo") and state == states.SELECT:
 		if char_positions.has(selected_cell):
@@ -284,6 +306,7 @@ func _input(event: InputEvent) -> void:
 				state = states.MENU
 				clear_select_zone()
 				%Map_UI.open_char_action_menu(selected_char, 1)
+				%Map_UI.hide_accuracy()
 			states.SELECT:
 				if event.device == 0:
 					return
@@ -295,6 +318,7 @@ func _input(event: InputEvent) -> void:
 				state = states.MENU
 				clear_select_zone()
 				%Map_UI.back_to_skill_selection()
+				%Map_UI.hide_accuracy()
 		return
 	if event is InputEventMouseButton or event.is_action_pressed("ui_accept"):
 		if event is InputEventMouseButton:
@@ -498,6 +522,7 @@ func attack_character():
 	selected_char.can_attack = false
 	selected_char.has_order = true
 	state = states.SELECT
+	%Map_UI.hide_accuracy()
 
 func state_select():
 	state = states.SELECT
@@ -538,6 +563,18 @@ func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 		char_node.turn(enemy_map[cell].start_dir, true)
 		BattleHandler.enemies.append(char_node)
 		char_positions[cell] = char_node
+
+func spawn_enemy(enemy_stats : Character_stats, cell : Vector2i, dir : directions):
+	var char_node : Character_node = load(enemy_stats.node_UID).duplicate(true).instantiate()
+	add_child(char_node)
+	char_node.position = map_cells[cell].position
+	char_node.stats = enemy_stats
+	char_node.stats.new()
+	char_node.name = enemy_stats.name
+	char_node.map_pos = cell
+	char_node.turn(dir, true)
+	BattleHandler.enemies.append(char_node)
+	char_positions[cell] = char_node
 
 func remove_enemy(ch_node : Character_node):
 	char_positions.erase(ch_node.map_pos)
@@ -739,6 +776,7 @@ func add_skill_order():
 		if selected_char.map_pos != start_skill_move_position:
 			finalize_skill_move()
 	state = states.SELECT
+	%Map_UI.hide_accuracy()
 
 func check_unbound_skill_height() -> bool:
 	for cell in select_zones:

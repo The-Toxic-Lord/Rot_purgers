@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ds322ud3awtgo"]
+
+[ext_resource type="Script" uid="uid://dgfv2nc1ky6r4" path="res://3d_map/UI/accuracy_box.gd" id="1_h417q"]
+[ext_resource type="PackedScene" uid="uid://d0nk5hmontt30" path="res://3d_map/UI/Char_hit_chance.tscn" id="1_k68ph"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e57h2"]
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Accuracy_box" type="MarginContainer" unique_id=56733385]
+offset_left = 73.0
+offset_top = 55.0
+offset_right = 113.0
+offset_bottom = 95.0
+script = ExtResource("1_h417q")
+
+[node name="Panel" type="Panel" parent="." unique_id=354698479]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e57h2")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1870902346]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Box" type="VBoxContainer" parent="MarginContainer" unique_id=1130726994]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Box" unique_id=1312665843]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Accuracy"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" parent="MarginContainer/Box" unique_id=874117601 instance=ExtResource("1_k68ph")]
+layout_mode = 2

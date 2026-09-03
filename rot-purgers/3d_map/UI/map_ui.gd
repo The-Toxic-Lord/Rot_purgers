@@ -85,10 +85,10 @@ func _on_char_action_menu_exit() -> void:
 	$Focused_char_stats.hide()
 	map_generator.freze_selector = false
 	map_generator.state_select()
-	%Spell_select_menu.clear_skills()
-	%Spell_select_menu.hide()
+	_on_spell_select_menu_exit()
 
 func _on_char_action_menu_move() -> void:
+	_on_spell_select_menu_exit()
 	map_generator.spawn_select_zone(selected_char, Map_generator.states.MOVE)
 	map_generator.freze_selector = false
 	map_generator.state = Map_generator.states.MOVE
@@ -96,9 +96,9 @@ func _on_char_action_menu_move() -> void:
 	%Height_box.show()
 	$Focused_char_stats.hide()
 	%Spell_select_menu.clear_skills()
-	%Spell_select_menu.hide()
 
 func _on_char_action_menu_attack() -> void:
+	_on_spell_select_menu_exit()
 	map_generator.spawn_select_zone(selected_char, Map_generator.states.ATTACK)
 	map_generator.freze_selector = false
 	map_generator.state = Map_generator.states.ATTACK
@@ -155,6 +155,7 @@ func _on_turn_menu_end_turn() -> void:
 	map_generator.state_select()
 
 func _on_char_action_menu_defend() -> void:
+	_on_spell_select_menu_exit()
 	selected_char.defend()
 	
 	show_mini_stats(selected_char.stats)
@@ -273,12 +274,20 @@ func _ready() -> void:
 	ObjectLink.map_ui = self
 
 func _on_char_action_menu_rearange() -> void:
+	_on_spell_select_menu_exit()
 	%Rearange_menu.show()
 	%Rearange_menu.load_char(selected_char)
 
 func _on_rearange_menu_confirm() -> void:
 	selected_char.car_rearange = false
 	%Char_action_menu.update_disabled(selected_char)
+
+func show_accuracy(targets : Array[Character_stats], skill : Skill_base = null):
+	%Accuracy_box.update_data(selected_char.stats, targets, skill)
+	%Accuracy_box.show()
+
+func hide_accuracy():
+	%Accuracy_box.hide()
 
 
 

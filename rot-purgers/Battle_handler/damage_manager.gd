@@ -105,6 +105,11 @@ func skill_oneshot(order : Order_skill_data):
 		if map_gen.char_positions.has(cell):
 			targets.append(map_gen.char_positions[cell])
 	var attacker : Character_node = get_node(order.attacker)
+	if order.skill.can_be_deflected:
+		for target in targets:
+			if deflect_check(target, attacker):
+				order_ended.emit()
+				return
 	if map_gen.map_data != null:
 		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.map_magic_cost_adjustment))
 	else:
