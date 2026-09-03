@@ -31,6 +31,13 @@ modulate_color = Color(0.62152386, 0.62152386, 0.6215238, 1)
 texture = ExtResource("2_kbdvy")
 texture_margin_right = 64.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbdvy"]
+bg_color = Color(0.35906905, 0.35906908, 0.35906902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [node name="Map_Editor_UI" type="CanvasLayer" unique_id=1101434913]
 script = ExtResource("1_kbdvy")
 
@@ -249,211 +256,10 @@ alignment = 1
 expand_icon = true
 fit_to_longest_item = false
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Object_menu/VBoxContainer" unique_id=1491816935]
-custom_minimum_size = Vector2(0, 400)
-custom_maximum_size = Vector2(-1, 400)
+[node name="Open_maker" type="Button" parent="Object_menu/VBoxContainer" unique_id=1139727413]
 layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Object_menu/VBoxContainer/ScrollContainer" unique_id=2012464967]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=352414193]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Health :"
-horizontal_alignment = 1
-
-[node name="Health_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1690207101]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label2" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1112317388]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Magic :"
-horizontal_alignment = 1
-
-[node name="Magic_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=855890628]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label3" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1232493817]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Strength :"
-horizontal_alignment = 1
-
-[node name="Strength_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1951954741]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label4" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=540796858]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Defence :"
-horizontal_alignment = 1
-
-[node name="Defence_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2060448124]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label5" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=584360128]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Magic_strenght :"
-horizontal_alignment = 1
-
-[node name="Magic_strenght_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1485173661]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label6" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1143697822]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Accuracy :"
-horizontal_alignment = 1
-
-[node name="Accuracy_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=355072168]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label7" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1738798701]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Speed :"
-horizontal_alignment = 1
-
-[node name="Speed_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1104978409]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label8" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=28327764]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Move_speed :"
-horizontal_alignment = 1
-
-[node name="Move_speed_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1592040886]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label9" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2068516157]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Jump_height :"
-horizontal_alignment = 1
-
-[node name="Jump_height_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1742012909]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label10" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=806572573]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Attack_distance :"
-horizontal_alignment = 1
-
-[node name="Attack_distance_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1765013472]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label11" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1016005055]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Counter :"
-horizontal_alignment = 1
-
-[node name="Counter_le" type="LineEdit" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=386403542]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-alignment = 1
-context_menu_enabled = false
-emoji_menu_enabled = false
-
-[node name="Label12" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1149816674]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "AI type:"
-horizontal_alignment = 1
-
-[node name="AI_type" type="OptionButton" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1182860783]
-unique_name_in_owner = true
-layout_mode = 2
-selected = 0
-item_count = 5
-popup/item_0/text = "Turret"
-popup/item_0/id = 1
-popup/item_1/text = "Normal"
-popup/item_1/id = 0
-popup/item_2/text = "Charger"
-popup/item_2/id = 2
-popup/item_3/text = "Meatwall"
-popup/item_3/id = 3
-popup/item_4/text = "Spawner"
-popup/item_4/id = 4
-
-[node name="Label13" type="Label" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1298965090]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Start direction"
-horizontal_alignment = 1
-
-[node name="start_dir" type="OptionButton" parent="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2053016352]
-unique_name_in_owner = true
-layout_mode = 2
-selected = 0
-item_count = 4
-popup/item_0/text = "N"
-popup/item_0/id = 0
-popup/item_1/text = "E"
-popup/item_1/id = 1
-popup/item_2/text = "S"
-popup/item_2/id = 2
-popup/item_3/text = "W"
-popup/item_3/id = 3
+theme_override_font_sizes/font_size = 32
+text = "Show stats"
 
 [node name="Mode_selector" type="MarginContainer" parent="." unique_id=763848706]
 anchors_preset = 1
@@ -536,6 +342,259 @@ size = Vector2i(1280, 720)
 root_subfolder = "map_data_res"
 filters = PackedStringArray("*.tres")
 
+[node name="Enemy_maker" type="MarginContainer" parent="." unique_id=412137284]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -722.0
+offset_top = -270.0
+offset_right = -300.0
+offset_bottom = 270.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Enemy_maker" unique_id=1835002523]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kbdvy")
+
+[node name="MarginContainer" type="MarginContainer" parent="Enemy_maker" unique_id=254061554]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Enemy_maker/MarginContainer" unique_id=23230522]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Enemy_maker/MarginContainer/HBoxContainer" unique_id=521880594]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=352414193]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Health :"
+horizontal_alignment = 1
+
+[node name="Health_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1690207101]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label2" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1112317388]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Magic :"
+horizontal_alignment = 1
+
+[node name="Magic_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=855890628]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label3" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1232493817]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Strength :"
+horizontal_alignment = 1
+
+[node name="Strength_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1951954741]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label4" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=540796858]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Defence :"
+horizontal_alignment = 1
+
+[node name="Defence_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2060448124]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label5" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=584360128]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Magic_strenght :"
+horizontal_alignment = 1
+
+[node name="Magic_strenght_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1485173661]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label6" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1143697822]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Accuracy :"
+horizontal_alignment = 1
+
+[node name="Accuracy_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=355072168]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label7" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1738798701]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Speed :"
+horizontal_alignment = 1
+
+[node name="Speed_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1104978409]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Enemy_maker/MarginContainer/HBoxContainer" unique_id=497379267]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=28327764]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Move_speed :"
+horizontal_alignment = 1
+
+[node name="Move_speed_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1592040886]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label9" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=2068516157]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Jump_height :"
+horizontal_alignment = 1
+
+[node name="Jump_height_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1742012909]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label10" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=806572573]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Attack_distance :"
+horizontal_alignment = 1
+
+[node name="Attack_distance_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1765013472]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label11" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1016005055]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Counter :"
+horizontal_alignment = 1
+
+[node name="Counter_le" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=386403542]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label12" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1149816674]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "AI type:"
+horizontal_alignment = 1
+
+[node name="AI_type" type="OptionButton" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1182860783]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "Turret"
+popup/item_0/id = 1
+popup/item_1/text = "Normal"
+popup/item_1/id = 0
+popup/item_2/text = "Charger"
+popup/item_2/id = 2
+popup/item_3/text = "Meatwall"
+popup/item_3/id = 3
+popup/item_4/text = "Spawner"
+popup/item_4/id = 4
+
+[node name="Label13" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1298965090]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Start direction"
+horizontal_alignment = 1
+
+[node name="start_dir" type="OptionButton" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=2053016352]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "N"
+popup/item_0/id = 0
+popup/item_1/text = "E"
+popup/item_1/id = 1
+popup/item_2/text = "S"
+popup/item_2/id = 2
+popup/item_3/text = "W"
+popup/item_3/id = 3
+
+[node name="Confirm_stats" type="Button" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1434961458]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 20)
+theme_override_font_sizes/font_size = 32
+text = "Confirm"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Enemy_maker/MarginContainer/HBoxContainer" unique_id=222703555]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=671433334]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Skills:"
+horizontal_alignment = 1
+
+[node name="Skill_box" type="VBoxContainer" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=783359065]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_x" to="." method="_on_map_size_text_submitted" flags=18]
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_y" to="." method="_on_map_size_text_submitted" flags=18]
 [connection signal="text_changed" from="Map_size_menu/VBoxContainer/Height" to="." method="_on_height_text_changed"]
@@ -547,20 +606,22 @@ filters = PackedStringArray("*.tres")
 [connection signal="pressed" from="Object_menu/VBoxContainer/GridContainer/Spawn_zone" to="." method="_on_object_button_pressed" flags=18]
 [connection signal="pressed" from="Object_menu/VBoxContainer/GridContainer/Exit_zone" to="." method="_on_object_button_pressed" flags=18]
 [connection signal="item_selected" from="Object_menu/VBoxContainer/Enemy_selector" to="." method="_on_enemy_selector_item_selected"]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Health_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Magic_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Strength_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Defence_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Magic_strenght_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Accuracy_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Speed_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Move_speed_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Jump_height_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Attack_distance_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="text_changed" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/Counter_le" to="." method="_on_stat_text_changed" flags=18]
-[connection signal="item_selected" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/AI_type" to="." method="_on_ai_type_item_selected"]
-[connection signal="item_selected" from="Object_menu/VBoxContainer/ScrollContainer/VBoxContainer/start_dir" to="." method="_on_start_dir_item_selected"]
+[connection signal="pressed" from="Object_menu/VBoxContainer/Open_maker" to="." method="_on_open_maker_pressed"]
 [connection signal="item_selected" from="Mode_selector/VBoxContainer/CenterContainer/Mode" to="." method="_on_mode_button_pressed"]
 [connection signal="pressed" from="Control_menu/VBoxContainer/generate" to="." method="_on_generate_pressed"]
 [connection signal="pressed" from="Control_menu/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Control_menu/VBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer/Health_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer/Magic_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer/Strength_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer/Defence_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer/Magic_strenght_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer/Accuracy_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer/Speed_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Move_speed_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Jump_height_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Attack_distance_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Counter_le" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="item_selected" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/AI_type" to="." method="_on_ai_type_item_selected"]
+[connection signal="item_selected" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/start_dir" to="." method="_on_start_dir_item_selected"]
+[connection signal="pressed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Confirm_stats" to="." method="_on_confirm_stats_pressed"]

@@ -15,5 +15,5 @@ sprite = ExtResource("3_po2kh")
 attack_distance = 5
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
-skills = Array[ExtResource("2_klvyd")]([ExtResource("3_klvyd"), ExtResource("4_po2kh")])
+potential_skills = Array[ExtResource("2_klvyd")]([ExtResource("3_klvyd"), ExtResource("4_po2kh")])
 metadata/_custom_type_script = "uid://by1rq468n504l"

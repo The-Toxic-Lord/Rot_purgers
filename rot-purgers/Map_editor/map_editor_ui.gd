@@ -175,9 +175,7 @@ func load_data(map_size : Vector2i):
 	%map_y.text = str(map_size.y)
 
 func _on_enemy_selector_item_selected(index: int) -> void:
-	selected_enemy_data = enemy_data[index]
-	for i in stats_le.size():
-		stats_le[i].text = str(enemy_data[index].get(id_to_stat[i]))
+	load_enemy_data(enemy_data[index].duplicate(true), false)
 
 func _on_stat_text_changed(new_text: String, source: LineEdit) -> void:
 	var id : int = stats_le.find(source)
@@ -205,15 +203,44 @@ Map_generator.directions.S, Map_generator.directions.W]
 func _on_start_dir_item_selected(index: int) -> void:
 	selected_enemy_data.start_dir = dir_arr[index]
 
-func load_enemy_data(enemy : Character_stats):
+func load_enemy_data(enemy : Character_stats, reset_selector := true):
 	selected_enemy_data = enemy
 	for i in stats_le.size():
 		stats_le[i].text = str(enemy.get(id_to_stat[i]))
 	%AI_type.selected = enemy.AI_type
 	%start_dir.selected = dir_arr.find(enemy.start_dir)
+	if reset_selector:
+		%Enemy_selector.selected = -1
+	await load_skills()
+	%Enemy_maker.show()
 
+func _on_open_maker_pressed() -> void:
+	%Enemy_maker.show()
 
+func _on_confirm_stats_pressed() -> void:
+	%Enemy_maker.hide()
 
+func load_skills():
+	var ch : Array[Node] = %Skill_box.get_children()
+	for i in ch.size():
+		ch[i].queue_free()
+	for skill in selected_enemy_data.potential_skills:
+		var slot : Map_editor_skill_slot = load("uid://dli2qqtdecn8p").instantiate()
+		%Skill_box.add_child(slot)
+		var enabled := false
+		if selected_enemy_data.skills.has(skill):
+			enabled = true
+		slot.set_data(skill.name, enabled)
+		slot.skill_enabled.connect(enable_skill.bind(skill))
+		slot.skill_disabled.connect(enable_skill.bind(skill))
+
+func enable_skill(skill : Skill_base):
+	if !selected_enemy_data.skills.has(skill):
+		selected_enemy_data.skills.append(skill)
+
+func disable_skill(skill : Skill_base):
+	if selected_enemy_data.skills.has(skill):
+		selected_enemy_data.skills.erase(skill)
 
 
 

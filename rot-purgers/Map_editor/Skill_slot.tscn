@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dli2qqtdecn8p"]
+
+[ext_resource type="Script" uid="uid://bm2vyh2l5pho1" path="res://Map_editor/skill_slot.gd" id="1_d7l8f"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=1284661173]
+offset_right = 151.0
+offset_bottom = 28.0
+script = ExtResource("1_d7l8f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2001552448]
+layout_mode = 2
+
+[node name="Skill_name" type="Label" parent="HBoxContainer" unique_id=1705551576]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Skill_name"
+horizontal_alignment = 1
+
+[node name="bt" type="CheckButton" parent="HBoxContainer" unique_id=855644150]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+
+[connection signal="toggled" from="HBoxContainer/bt" to="." method="_on_bt_toggled"]

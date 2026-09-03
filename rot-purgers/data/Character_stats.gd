@@ -52,6 +52,7 @@ enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER }
 		notify_property_list_changed()
 
 @export var skills : Array[Skill_base]
+@export var potential_skills : Array[Skill_base]
 @export_storage var atlas_coords : Vector2i
 
 @export var spawn_node_UUID : String

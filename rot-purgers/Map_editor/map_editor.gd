@@ -121,6 +121,7 @@ func _input(event: InputEvent) -> void:
 					painting = true
 					set_process(true)
 				if event.is_released():
+					prev_cell = Vector2i(-1, -1)
 					painting = false
 					set_process(false)
 			MOUSE_BUTTON_RIGHT:
@@ -145,6 +146,7 @@ func what_action_is_event(event) -> String:
 			return action
 	return ""
 
+var prev_cell : Vector2i = Vector2i(-1, -1)
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if dragging:
@@ -167,8 +169,9 @@ func _process(delta: float) -> void:
 					change_object(cell)
 			modes.ENEMY:
 				var cell : Vector2i = %Enemy_map.local_to_map(%Enemy_map.get_global_mouse_position())
-				if map_rect.has_point(cell):
+				if map_rect.has_point(cell) and prev_cell != cell:
 					change_enemy(cell)
+					prev_cell = cell
 	if erasing:
 		match paint_mode:
 			modes.TERRAIN:
