@@ -204,7 +204,7 @@ func change_terrain(cell : Vector2i):
 		terrain_map_data[cell] = selected_terrain_data.duplicate(true)
 		terrain_map_data[cell].height = selected_height
 		terrain_map_data[cell].depth = selected_depth
-	elif terrain_map_data[cell].atlas_coord != selected_terrain_data.atlas_coord:
+	elif terrain_map_data[cell].sprite != selected_terrain_data.sprite:
 		terrain_map_data[cell] = selected_terrain_data.duplicate(true)
 		terrain_map_data[cell].height = selected_height
 		terrain_map_data[cell].depth = selected_depth

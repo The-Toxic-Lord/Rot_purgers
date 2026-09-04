@@ -3,7 +3,6 @@ extends Node3D
 
 class_name Map_cell
 
-@export var temp_terr_data : Terrain_data
 @export var start : bool = false:
 	set(value):
 		make_floor_mesh()
@@ -76,7 +75,11 @@ func load_materials(terrain_data : Terrain_data):
 	%Floor.set_surface_override_material(0, terrain_data.floor_material.duplicate(true))
 	for wall in walls.values():
 		var wall_material : StandardMaterial3D = terrain_data.wall_material.duplicate(true)
-		wall_material.uv1_scale.y = position.y / 2.0
+		if terrain_data.depth == 0:
+			wall_material.uv1_scale.y = position.y / 2.0
+		else:
+			wall_material.uv1_scale.y = terrain_data.depth * 0.1 / 2.0
+		
 		wall.set_surface_override_material(0, wall_material)
 
 func make_wall(neib : Vector2i, depth : float) -> MeshInstance3D:

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c27l174y6lnwi"]
+
+[ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="1_bvju8"]
+
+[resource]
+albedo_texture = ExtResource("1_bvju8")

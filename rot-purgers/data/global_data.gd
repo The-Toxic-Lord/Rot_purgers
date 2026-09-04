@@ -2,8 +2,6 @@ extends Node
 
 class_name Global_data
 
-@export var terrain_data_holder : Array[Terrain_data] = []
-
 @export var ally_team : Array[Character_stats] = []
 @export var enemy_data : Array[Character_stats]
 

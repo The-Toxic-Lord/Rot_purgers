@@ -869,7 +869,17 @@ func terrain_skill_selected(skill : Skill_base):
 	terrain_mod_selected_cells.clear()
 	terrain_mod_data.clear()
 	if skill.terrain_mod == Skill_base.terrain_mods.HEIGHT:
-		var range_cells : Array[Vector2i] = get_flow_cells(selected_char.map_pos, skill.max_dist)
+		var range_cells : Array[Vector2i] = get_flow_cells(selected_char.map_pos, skill.max_dist,
+		true, true, 9999, true, true, true)
+		var delete : Array[Vector2i] = []
+		for cell in range_cells:
+			if !terrain_map.has(cell):
+				delete.append(cell)
+				continue
+			if !terrain_map[cell].can_be_modified:
+				delete.append(cell)
+		for cell in delete:
+			range_cells.erase(cell)
 		var i := 0
 		select_zones.clear()
 		for cell in range_cells:

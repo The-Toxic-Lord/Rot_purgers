@@ -127,27 +127,31 @@ func display_damage(display_mini := false):
 
 func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
 select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Vector2i, Map_cell]):
-	previous_map_pos = map_pos
-	var a_star := AStarGrid2D.new()
-	a_star.region = map_boundary
-	a_star.cell_size = Vector2i(1,1)
-	a_star.default_compute_heuristic = AStarGrid2D.HEURISTIC_CHEBYSHEV
-	a_star.default_estimate_heuristic = AStarGrid2D.HEURISTIC_CHEBYSHEV
-	a_star.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	a_star.update()
+	var path := find_flow_path(target_cell, select_zones, terrain_map)
 	
-	a_star.fill_solid_region(a_star.region)
-	for cell in select_zones:
-		a_star.set_point_solid(cell, false)
-	if BattleHandler.allies.has(self):
-		for ally in BattleHandler.allies:
-			a_star.set_point_solid(ally.map_pos, false)
-	else:
-		for enemy in BattleHandler.enemies:
-			a_star.set_point_solid(enemy.map_pos, false)
-	a_star.update()
+	if path == []:
+		previous_map_pos = map_pos
+		var a_star := AStarGrid2D.new()
+		a_star.region = map_boundary
+		a_star.cell_size = Vector2i(1,1)
+		a_star.default_compute_heuristic = AStarGrid2D.HEURISTIC_CHEBYSHEV
+		a_star.default_estimate_heuristic = AStarGrid2D.HEURISTIC_CHEBYSHEV
+		a_star.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+		a_star.update()
+		
+		a_star.fill_solid_region(a_star.region)
+		for cell in select_zones:
+			a_star.set_point_solid(cell, false)
+		if BattleHandler.allies.has(self):
+			for ally in BattleHandler.allies:
+				a_star.set_point_solid(ally.map_pos, false)
+		else:
+			for enemy in BattleHandler.enemies:
+				a_star.set_point_solid(enemy.map_pos, false)
+		a_star.update()
+		
+		path = a_star.get_id_path(map_pos, target_cell)
 	
-	var path : Array[Vector2i] = a_star.get_id_path(map_pos, target_cell)
 	var prev_pos : Vector2i = map_pos
 	
 	path.remove_at(0)
@@ -160,6 +164,45 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 	can_undo_move = true
 	char_animation.play("Idle")
 	move_finished.emit()
+
+var neighbors_sides : Array[Vector2i] = [
+	Vector2i.UP,
+	Vector2i.RIGHT,
+	Vector2i.DOWN,
+	Vector2i.LEFT,
+]
+
+func find_flow_path(target_cell : Vector2i, select_zones : Array[Vector2i], 
+terrain_map : Dictionary[Vector2i, Terrain_data]) -> Array:
+	var paths : Array[Array] = [[map_pos]]
+	var path : Array
+	var iter := stats.move_speed
+	var border : Array[Vector2i] = [map_pos]
+	while true and iter >= 0:
+		var new_paths : Array[Array] = []
+		for old_path : Array[Vector2i] in paths:
+			for n_c in neighbors_sides:
+				var new_cell : Vector2i = n_c + old_path.back()
+				if !select_zones.has(new_cell):
+					continue
+				if border.has(new_cell):
+					continue
+				var h1 : int = terrain_map[new_cell].height
+				var h2 : int = terrain_map[old_path.back()].height
+				if h1 - h2 > stats.jump_height:
+					continue
+				var new_path : Array = old_path.duplicate(true)
+				new_path.append(new_cell)
+				new_paths.append(new_path)
+		paths = new_paths
+		for check_path in paths:
+			if !border.has(check_path.back()):
+				border.append(check_path.back())
+			if check_path.back() == target_cell:
+				path = check_path
+				break
+		iter -= 1
+	return path
 
 func move_next(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
 map_cells : Dictionary[Vector2i, Map_cell]):

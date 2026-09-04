@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Terrain_data" format=3 uid="uid://5lh6ubdoddb5"]
+
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="1_ptyyd"]
+[ext_resource type="Material" uid="uid://5ner15wpnixr" path="res://3d_map/map_cell_materials/lava_floor.tres" id="1_rku05"]
+[ext_resource type="Texture2D" uid="uid://bm02bsmgrkna4" path="res://3d_map/map_cell_materials/material_textures/Elements_09-128x128.png" id="2_bawlh"]
+[ext_resource type="Material" uid="uid://ba3kvye5egdh1" path="res://3d_map/map_cell_materials/lava_wall.tres" id="4_dks30"]
+
+[resource]
+script = ExtResource("1_ptyyd")
+sprite = ExtResource("2_bawlh")
+passable = false
+floor_material = ExtResource("1_rku05")
+wall_material = ExtResource("4_dks30")
+can_be_modified = false
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"

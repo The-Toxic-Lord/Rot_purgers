@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Terrain_data" format=3 uid="uid://bhqmf5mfjou4a"]
+
+[ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="1_g4hw1"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="1_txtyp"]
+[ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="2_ksdsn"]
+[ext_resource type="Material" uid="uid://dkma81f54rlrp" path="res://3d_map/map_cell_materials/tile_wall.tres" id="4_br5sf"]
+
+[resource]
+script = ExtResource("1_txtyp")
+sprite = ExtResource("2_ksdsn")
+floor_material = ExtResource("1_g4hw1")
+wall_material = ExtResource("4_br5sf")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
