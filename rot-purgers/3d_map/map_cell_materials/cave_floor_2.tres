@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://co6ojt5md8bdi"]
+
+[ext_resource type="Texture2D" uid="uid://cmb2kme6vv828" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="1_rtydh"]
+
+[resource]
+albedo_texture = ExtResource("1_rtydh")

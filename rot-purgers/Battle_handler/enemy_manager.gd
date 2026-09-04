@@ -233,12 +233,12 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> b
 				chosen_possibility = skill_possible
 				max_targets = skill_possible.enemy_targets.size()
 				frienly_targets = skill_possible.targets.size() - max_targets
-		var zero_array : Array[Vector2i] = []
+		
 		await move_charger(chosen_possibility.used_position, enemy, move_cells)
 		enemy.turn(chosen_possibility.dir)
 		await enemy.direction_changed
 		BattleHandler.add_skill(enemy, chosen_possibility.skill, 
-		chosen_possibility.damage_cells, zero_array, chosen_possibility.target_cell)
+		chosen_possibility.damage_cells, chosen_possibility.move_cells, chosen_possibility.target_cell)
 		return true
 	return false
 
@@ -326,18 +326,17 @@ char_map_pos : Vector2i) -> Array[Skill_able_data]:
 				var char_node : Character_node = map_gen.char_positions[cell]
 				if BattleHandler.allies.has(char_node):
 					dir_able[dir] = true
-		if dir_able[dir]:
-			var move_cells : Array[Vector2i] = skill.skill_map.move_cells.duplicate(true)
-			if !move_cells.is_empty():
-				for i in move_cells.size():
-					move_cells[i] += char_map_pos
-				if dir != Map_generator.directions.N:
-					move_cells = rotare_skill_cells_around_position(move_cells, char_map_pos, dir)
-				for cell in move_cells:
-					if map_gen.char_positions.has(cell):
-						dir_able[dir] = false
-					if !map_gen.map_cells.has(cell):
-						dir_able[dir] = false
+		var move_cells : Array[Vector2i] = skill.skill_map.move_cells.duplicate(true)
+		if dir_able[dir] and !move_cells.is_empty():
+			for i in move_cells.size():
+				move_cells[i] += char_map_pos
+			if dir != Map_generator.directions.N:
+				move_cells = rotare_skill_cells_around_position(move_cells, char_map_pos, dir)
+			for cell in move_cells:
+				if map_gen.char_positions.has(cell):
+					dir_able[dir] = false
+				if !map_gen.map_cells.has(cell):
+					dir_able[dir] = false
 		if dir_able[dir]:
 			var skill_able_data := Skill_able_data.new()
 			skill_able_data.skill = skill
@@ -345,6 +344,7 @@ char_map_pos : Vector2i) -> Array[Skill_able_data]:
 			skill_able_data.damage_cells = damage_cells
 			skill_able_data.used_position = char_map_pos
 			skill_able_data.target_cell = map_gen.dir_to_vector[dir] + char_map_pos
+			skill_able_data.move_cells = move_cells
 			skill_able_data_arr.append(skill_able_data)
 			for cell in damage_cells:
 				if map_gen.char_positions.has(cell):

@@ -29,6 +29,8 @@ critical:
 	+- level transition
 	- level textures
 	+- dialogue system
+	- сложность меняет ход врагов с одновременного на пошаговый
+	- if order failed on enemy turn try salvage
 
 - ramps
 - background image

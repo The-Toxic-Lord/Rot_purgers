@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://daygwp60xitvb"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_phxyp"]
+[ext_resource type="Resource" uid="uid://xespvymln3vv" path="res://Skills/skill_map_data_res/Charge.tres" id="2_ip1hy"]
+
+[resource]
+script = ExtResource("1_phxyp")
+name = "Charge"
+skill_map = ExtResource("2_ip1hy")
+damage = 1.2
+stat_used = 4
+defence_stat = 5
+move_mode = 1
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_its35"]
 [ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="2_i40j3"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="2_meykt"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_tyeus"]
 
 [resource]
@@ -18,4 +19,5 @@ move_speed = 5
 jump_height = 10
 counter = 0
 node_UID = "uid://dunq80ub3v1jk"
+potential_skills = Array[ExtResource("2_tyeus")]([ExtResource("2_meykt")])
 metadata/_custom_type_script = "uid://by1rq468n504l"

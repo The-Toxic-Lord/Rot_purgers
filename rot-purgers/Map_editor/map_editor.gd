@@ -35,10 +35,12 @@ var selected_depth := 0
 var cell_to_height_line : Dictionary[Vector2i, LineEdit] = {}
 var cell_to_depth_line : Dictionary[Vector2i, LineEdit] = {}
 var terrain_map_data : Dictionary[Vector2i, Terrain_data] = {}
+var cell_to_terrain_node : Dictionary[Vector2i, Node2D] = {}
 
 @onready var main_node : Main_node = get_parent()
 var selected_object : Map_object
 var object_map_data : Dictionary[Vector2i, Map_object] = {}
+var cell_to_object_node : Dictionary[Vector2i, Node2D] = {}
 
 var enemy_map_data : Dictionary[Vector2i, Character_stats] = {}
 var cell_to_enemy_node : Dictionary[Vector2i, Node2D] = {}
@@ -188,7 +190,12 @@ func _process(delta: float) -> void:
 					remove_enemy(cell)
 
 func change_terrain(cell : Vector2i):
-	%Terrain_map.set_cell(cell, 0, selected_terrain_data.atlas_coord)
+	#%Terrain_map.set_cell(cell, 0, selected_terrain_data.atlas_coord)
+	if !cell_to_terrain_node.has(cell):
+		spawn_texture_node(selected_terrain_data.sprite, cell, 1)
+	else:
+		cell_to_terrain_node[cell].queue_free()
+		spawn_texture_node(selected_terrain_data.sprite, cell, 1)
 	if !cell_to_height_line.has(cell):
 		make_cell_height(cell)
 	elif !cell_to_height_line[cell].has_focus():
@@ -217,14 +224,21 @@ func change_terrain(cell : Vector2i):
 func change_object(cell : Vector2i):
 	if !terrain_map_data.has(cell):
 		return
-	%Object_map.set_cell(cell, 0, selected_object.atlas_coord)
+	#%Object_map.set_cell(cell, 0, selected_object.atlas_coord)
+	if !cell_to_object_node.has(cell):
+		spawn_texture_node(selected_object.sprite, cell, 2)
+	else:
+		cell_to_object_node[cell].queue_free()
+		spawn_texture_node(selected_object.sprite, cell, 2)
 	object_map_data[cell] = selected_object.duplicate(true)
 
 func remove_object(cell : Vector2i):
 	if !object_map_data.has(cell):
 		return
 	object_map_data.erase(cell)
-	%Object_map.erase_cell(cell)
+	#%Object_map.erase_cell(cell)
+	cell_to_object_node[cell].queue_free()
+	cell_to_object_node.erase(cell)
 
 func remove_cell(cell : Vector2i):
 	if !cell_to_height_line.has(cell):
@@ -232,7 +246,9 @@ func remove_cell(cell : Vector2i):
 	cell_to_height_line[cell].queue_free()
 	cell_to_height_line.erase(cell)
 	terrain_map_data.erase(cell)
-	%Terrain_map.set_cell(cell, 0, Vector2i.ZERO)
+	#%Terrain_map.set_cell(cell, 0, Vector2i.ZERO)
+	cell_to_terrain_node[cell].queue_free()
+	cell_to_terrain_node.erase(cell)
 	if cell_to_depth_line.has(cell):
 		cell_to_depth_line[cell].queue_free()
 		cell_to_depth_line.erase(cell)
@@ -318,7 +334,8 @@ func load_map_data(file_path : String):
 		load_enemy(cell, enemy_map_data[cell])
 
 func load_terrain(cell : Vector2i, terr_data : Terrain_data):
-	%Terrain_map.set_cell(cell, 0, terr_data.atlas_coord)
+	#%Terrain_map.set_cell(cell, 0, terr_data.atlas_coord)
+	spawn_texture_node(terr_data.sprite, cell, 1)
 	if !cell_to_height_line.has(cell):
 		make_cell_height(cell, terr_data.height)
 	elif !cell_to_height_line[cell].has_focus():
@@ -334,7 +351,7 @@ func load_terrain(cell : Vector2i, terr_data : Terrain_data):
 			cell_to_depth_line[cell].text = str(terr_data.depth)
 
 func load_objects(cell : Vector2i, map_obj : Map_object):
-	%Object_map.set_cell(cell, 0, map_obj.atlas_coord)
+	spawn_texture_node(map_obj.sprite, cell, 2)
 
 func change_data_height(new_text : String, cell : Vector2i):
 	cell_to_height_line[cell].release_focus()
@@ -364,11 +381,20 @@ func change_enemy(cell : Vector2i):
 	else:
 		var selected_enemy : Character_stats = %Map_Editor_UI.selected_enemy_data
 		enemy_map_data[cell] = selected_enemy.duplicate(true)
-		var enemy_node : Enemy_node = load("uid://crpsmfv7vh63b").instantiate()
-		add_child(enemy_node)
-		enemy_node.position = 64 * cell + Vector2i(32, 32)
-		enemy_node.update_sprite(selected_enemy.sprite)
-		cell_to_enemy_node[cell] = enemy_node
+		spawn_texture_node(selected_enemy.sprite, cell, 0)
+
+func spawn_texture_node(sprite : Texture2D, cell : Vector2i, id : int):
+	var enemy_node : Enemy_node = load("uid://crpsmfv7vh63b").instantiate()
+	add_child(enemy_node)
+	enemy_node.position = 64 * cell + Vector2i(32, 32)
+	enemy_node.update_sprite(sprite)
+	match id:
+		0:
+			cell_to_enemy_node[cell] = enemy_node
+		1:
+			cell_to_terrain_node[cell] = enemy_node
+		2:
+			cell_to_object_node[cell] = enemy_node
 
 func remove_enemy(cell : Vector2i):
 	if !enemy_map_data.has(cell):

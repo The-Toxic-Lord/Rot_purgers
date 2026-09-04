@@ -8,5 +8,6 @@ class_name Skill_able_data
 @export var damage_cells : Array[Vector2i]
 @export var targets : Array[Vector2i] = []
 @export var enemy_targets : Array[Vector2i] = []
+@export var move_cells : Array[Vector2i] = []
 
 @export var target_cell : Vector2i

@@ -6,12 +6,24 @@ var map_gen : Map_generator
 
 signal order_ended
 
-func hit_check(target : Character_node, attacker : Character_node, acc_mod : float = 0.0) -> bool:
+enum hit_types { MISS, NORMAL, NICK, BULLSEYE }
+
+func calc_hit_chance(target : Character_node, attacker : Character_node, acc_mod : float = 0.0) -> float:
 	var chance = float(attacker.stats.accuracy)/float(target.stats.speed) + acc_mod
-	if randf_range(0, 1) < chance:
-		return true
+	return chance
+
+func calc_hit_type(chance : float) -> hit_types:
+	if chance >= 1.0:
+		if randf() < chance - 1.0:
+			return hit_types.BULLSEYE
+		else:
+			return hit_types.NORMAL
+	elif randf() < chance:
+		return hit_types.NORMAL
+	elif randf() < chance:
+		return hit_types.NICK
 	else:
-		return false
+		return hit_types.MISS
 
 func deflect_check(target : Character_node, attacker : Character_node) -> bool:
 	var points : Array[Vector2i] = Geometry2D.bresenham_line(attacker.map_pos, target.map_pos)
@@ -48,19 +60,28 @@ func attack_damage(target : Character_node, attacker : Character_node):
 	map_gen.set_camera_target(target)
 	map_gen.set_selector(target.map_pos)
 	await get_tree().process_frame
-	if hit_check(target, attacker):
-		var damage : float = attacker.stats.get_attack_stat_used()
-		if target.is_defending:
-			damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
-		else:
-			damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
-		if damage < 0:
-			damage = 0
-		await target.damage(damage, true)
-	else:
-		await target.damage(-1)
+	var hit_chance : float = calc_hit_chance(target, attacker)
+	var hit_type : hit_types = calc_hit_type(hit_chance)
+	match hit_type:
+		hit_types.MISS:
+			await target.damage(-1)
+		_:
+			var damage : float = attacker.stats.get_attack_stat_used()
+			if target.is_defending:
+				damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
+			else:
+				damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
+			match hit_type:
+				hit_types.NICK:
+					print("nick")
+					damage *= 0.5
+				hit_types.BULLSEYE:
+					print("bullseye")
+					damage *= 1.5
+			if damage < 0:
+				damage = 0
+			await target.damage(damage, true)
 	await target.animation_ended
-		# ADD miss
 	await get_tree().process_frame
 	order_ended.emit()
 
@@ -139,19 +160,19 @@ func skill_oneshot(order : Order_skill_data):
 	order_ended.emit()
 
 func skill_damage(target : Character_node, attacker : Character_node, skill : Skill_base) -> float:
-	if hit_check(target, attacker, skill.accuracy_modifier):
-		var damage := skill.damage
-		#print(float(skill.get_attack_stat_used(attacker.stats)) -\
-			#(float(skill.get_defence_stat_used(target.stats))/2))
-		#print(float(skill.get_attack_stat_used(attacker.stats)))
-		#print(skill.get_defence_stat_used(target.stats))
-		damage *= float(skill.get_attack_stat_used(attacker.stats))
-		damage -= float(skill.get_defence_stat_used(target.stats)) / 2
-		if damage < 0.0:
-			damage = 0.0
-		return damage
-	else:
-		return -1
+	var hit_chance : float = calc_hit_chance(target, attacker)
+	var hit_type : hit_types = calc_hit_type(hit_chance)
+	match hit_type:
+		hit_types.MISS:
+			return -1
+		_:
+			var damage := 0.0
+			damage += float(skill.get_attack_stat_used(attacker.stats))
+			damage -= float(skill.get_defence_stat_used(target.stats)) / 2
+			damage *= skill.damage
+			if damage < 0.0:
+				damage = 0.0
+			return damage
 
 func heal(order : Order_heal):
 	await get_tree().process_frame
