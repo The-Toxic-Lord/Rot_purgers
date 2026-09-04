@@ -72,14 +72,27 @@ func change_terrain_check():
 		%Terrain_check.position.y = -%Terrain_collision.shape.size.y / 2
 
 func load_materials(terrain_data : Terrain_data):
-	%Floor.set_surface_override_material(0, terrain_data.floor_material.duplicate(true))
-	for wall in walls.values():
-		var wall_material : StandardMaterial3D = terrain_data.wall_material.duplicate(true)
-		if terrain_data.depth == 0:
-			wall_material.uv1_scale.y = position.y / 2.0
-		else:
-			wall_material.uv1_scale.y = terrain_data.depth * 0.1 / 2.0
-		
+	var floor_mat : Material = terrain_data.floor_material.duplicate(true)
+	if floor_mat is ShaderMaterial:
+		floor_mat.set_shader_parameter("Direction", -GlobalData.dir_to_vect[terrain_data.shader_dir])
+	%Floor.set_surface_override_material(0, floor_mat)
+	for dir in walls.keys():
+		var wall : MeshInstance3D = walls[dir]
+		var wall_material : Material = terrain_data.wall_material.duplicate(true)
+		if wall_material is StandardMaterial3D:
+			if terrain_data.depth == 0:
+				wall_material.uv1_scale.y = position.y / 2.0
+			else:
+				wall_material.uv1_scale.y = terrain_data.depth * 0.1 / 2.0
+		elif wall_material is ShaderMaterial:
+			if terrain_data.depth == 0:
+				wall_material.set_shader_parameter("uv1_scale", Vector3(1, position.y / 2.0, 1))
+			else:
+				wall_material.set_shader_parameter("uv1_scale", Vector3(1,  terrain_data.depth * 0.1 / 2.0, 1))
+			if GlobalData.oposing_dir[dir] == terrain_data.shader_dir:
+				wall_material.set_shader_parameter("Direction", Vector2i(0, 1))
+			else:
+				wall_material.set_shader_parameter("Direction", Vector2i(0, -1))
 		wall.set_surface_override_material(0, wall_material)
 
 func make_wall(neib : Vector2i, depth : float) -> MeshInstance3D:

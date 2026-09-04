@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cq3hrppxee3p4"]
+
+[ext_resource type="Shader" uid="uid://bfq0ugiwkjic" path="res://Workshop/lava.gdshader" id="1_v7p8d"]
+[ext_resource type="Texture2D" uid="uid://bkcdno4f2osny" path="res://3d_map/map_cell_materials/material_textures/Elements_10-128x128.png" id="2_e1pvi"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_v7p8d")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_e1pvi")
+shader_parameter/albedo_texture_size = Vector2i(128, 128)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.2

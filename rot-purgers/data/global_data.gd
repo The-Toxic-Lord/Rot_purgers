@@ -22,8 +22,18 @@ func reset_data():
 
 
 
-
-
+var dir_to_vect : Dictionary[Map_generator.directions, Vector2i] = {
+	Map_generator.directions.N : Vector2i(0, -1),
+	Map_generator.directions.S : Vector2i(0, 1),
+	Map_generator.directions.E : Vector2i(1, 0),
+	Map_generator.directions.W : Vector2i(-1, 0)
+}
+var oposing_dir : Dictionary[Map_generator.directions, Map_generator.directions] = {
+	Map_generator.directions.N : Map_generator.directions.S,
+	Map_generator.directions.S : Map_generator.directions.N,
+	Map_generator.directions.E : Map_generator.directions.W,
+	Map_generator.directions.W : Map_generator.directions.E
+}
 
 
 

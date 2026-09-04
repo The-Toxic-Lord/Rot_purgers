@@ -111,6 +111,17 @@ func _on_depth_text_submitted(new_text: String) -> void:
 		return
 	%Depth.text = str(map_editor.selected_depth)
 
+func _on_shader_dir_item_selected(index: int) -> void:
+	match index:
+		0:
+			map_editor.selected_dir = Map_generator.directions.N
+		1:
+			map_editor.selected_dir = Map_generator.directions.E
+		2:
+			map_editor.selected_dir = Map_generator.directions.S
+		3:
+			map_editor.selected_dir = Map_generator.directions.W
+
 #endregion
 
 func _on_generate_pressed() -> void:

@@ -32,6 +32,7 @@ var selected_terrain_data : Terrain_data
 var map_rect : Rect2i
 var selected_height := 60
 var selected_depth := 0
+var selected_dir := Map_generator.directions.N
 var cell_to_height_line : Dictionary[Vector2i, LineEdit] = {}
 var cell_to_depth_line : Dictionary[Vector2i, LineEdit] = {}
 var terrain_map_data : Dictionary[Vector2i, Terrain_data] = {}
@@ -204,13 +205,16 @@ func change_terrain(cell : Vector2i):
 		terrain_map_data[cell] = selected_terrain_data.duplicate(true)
 		terrain_map_data[cell].height = selected_height
 		terrain_map_data[cell].depth = selected_depth
+		terrain_map_data[cell].shader_dir = selected_dir
 	elif terrain_map_data[cell].sprite != selected_terrain_data.sprite:
 		terrain_map_data[cell] = selected_terrain_data.duplicate(true)
 		terrain_map_data[cell].height = selected_height
 		terrain_map_data[cell].depth = selected_depth
+		terrain_map_data[cell].shader_dir = selected_dir
 	elif !cell_to_height_line[cell].has_focus():
 		terrain_map_data[cell].height = selected_height
 		terrain_map_data[cell].depth = selected_depth
+		terrain_map_data[cell].shader_dir = selected_dir
 	if !cell_to_depth_line.has(cell) and selected_depth != 0:
 		make_cell_depth(cell)
 	elif cell_to_depth_line.has(cell):

@@ -41,5 +41,6 @@ mesh = ExtResource("4_g7fq2")
 surface_material_override/0 = SubResource("ShaderMaterial_h0aqh")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=609736763]
+visible = false
 mesh = ExtResource("4_g7fq2")
 surface_material_override/0 = SubResource("ShaderMaterial_qsvqa")
