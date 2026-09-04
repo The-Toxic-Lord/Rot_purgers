@@ -50,8 +50,8 @@ func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector
 				if depth_n > 0:
 					depth_n *= 0.1
 					depth = depth_n
-				#else:
-					#continue
+				else:
+					continue
 		
 		if terrain_map[cell].depth != 0:
 			depth = terrain_map[cell].depth * 0.1
@@ -73,9 +73,11 @@ func change_terrain_check():
 		%Terrain_check.position.y = -%Terrain_collision.shape.size.y / 2
 
 func load_materials(terrain_data : Terrain_data):
-	%Floor.set_surface_override_material(0, terrain_data.floor_material)
+	%Floor.set_surface_override_material(0, terrain_data.floor_material.duplicate(true))
 	for wall in walls.values():
-		wall.set_surface_override_material(0, terrain_data.wall_material)
+		var wall_material : StandardMaterial3D = terrain_data.wall_material.duplicate(true)
+		wall_material.uv1_scale.y = position.y / 2.0
+		wall.set_surface_override_material(0, wall_material)
 
 func make_wall(neib : Vector2i, depth : float) -> MeshInstance3D:
 	var wall := MeshInstance3D.new()
@@ -305,6 +307,9 @@ func update_walls():
 		var wall : MeshInstance3D = walls[dir]
 		if !wall_is_limited[wall]:
 			wall.mesh = update_wall_mesh(wall.mesh, dir)
+			var wall_material : StandardMaterial3D = wall.get_surface_override_material(0)
+			wall_material.uv1_scale.y = position.y / 2.0
+			wall.set_surface_override_material(0, wall_material)
 
 func update_wall_mesh(mesh : ArrayMesh, dir : Map_generator.directions):
 	var mdt := MeshDataTool.new()
@@ -367,8 +372,10 @@ func check_walls_self(neib : Vector2i) -> bool:
 			wall_is_limited[wall] = true
 		else:
 			wall_is_limited[wall] = false
-		wall.set_surface_override_material(0, 
-		BattleHandler.map_gen.terrain_map[cell_position].wall_material)
+		var wall_material : StandardMaterial3D =\
+		ObjectLink.map_gen.terrain_map[cell_position].wall_material.duplicate(true)
+		wall_material.uv1_scale.y = position.y / 2.0
+		wall.set_surface_override_material(0, wall_material)
 		return false
 	return true
 
@@ -397,8 +404,10 @@ func check_walls_neib(neib : Vector2i):
 			wall_is_limited[wall] = true
 		else:
 			wall_is_limited[wall] = false
-		wall.set_surface_override_material(0, 
-		BattleHandler.map_gen.terrain_map[cell_position].wall_material)
+		var wall_material : StandardMaterial3D =\
+		ObjectLink.map_gen.terrain_map[cell_position].wall_material.duplicate(true)
+		wall_material.uv1_scale.y = position.y / 2.0
+		wall.set_surface_override_material(0, wall_material)
 		return
 	if walls.has(dir):
 		var wall : MeshInstance3D = walls[dir]

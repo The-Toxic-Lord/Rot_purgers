@@ -3,4 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bkmk8yygomo86" path="res://3d_map/map_cell_materials/material_textures/Stone_12-128x128.png" id="1_4d525"]
 
 [resource]
+resource_local_to_scene = true
 albedo_texture = ExtResource("1_4d525")
