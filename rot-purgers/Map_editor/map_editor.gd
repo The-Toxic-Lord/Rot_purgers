@@ -317,6 +317,12 @@ func load_map_data(file_path : String):
 	for cell in cell_to_depth_line:
 		cell_to_depth_line[cell].queue_free()
 	cell_to_depth_line.clear()
+	for cell in cell_to_object_node:
+		cell_to_object_node[cell].queue_free()
+	cell_to_object_node.clear()
+	for cell in cell_to_terrain_node:
+		cell_to_terrain_node[cell].queue_free()
+	cell_to_terrain_node.clear()
 	
 	var save_data : Map_data = ResourceLoader.load(file_path)
 	terrain_map_data = save_data.terrain_map_data

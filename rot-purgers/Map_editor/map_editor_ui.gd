@@ -19,11 +19,6 @@ class_name Map_editor_UI
 
 signal generate_map
 
-@onready var object_buttons : Dictionary[BaseButton, Map_object] = {
-	%Spawn_zone : GlobalData.map_objects[0],
-	%Exit_zone : GlobalData.map_objects[1]
-}
-
 @onready var mode_buttons : Dictionary[int, Map_editor.modes] = {
 	0 : Map_editor.modes.TERRAIN,
 	1 : Map_editor.modes.OBJECTS,
@@ -53,8 +48,11 @@ var enemy_data : Array[Character_stats]
 var selected_enemy_data : Character_stats
 
 func _ready() -> void:
-	for terr_data in GlobalData.terrain_data_holder:
-		terrain_button_to_terrait_type[make_terrain_button(terr_data)] = terr_data
+	load_object_data()
+	load_terrain()
+	await get_tree().process_frame
+	var pop : PopupMenu = %Terrain_selector.get_popup()
+	pop.add_theme_constant_override("icon_max_width", 32)
 	for i in GlobalData.enemy_data.size():
 		var en_sel : OptionButton = %Enemy_selector
 		var en_data : Character_stats = GlobalData.enemy_data[i]
@@ -64,20 +62,7 @@ func _ready() -> void:
 		stats_le[i].text = str(enemy_data[0].get(id_to_stat[i]))
 	selected_enemy_data = enemy_data[0]
 
-func make_terrain_button(terr_data : Terrain_data) -> BaseButton:
-	var bt := Button.new()
-	bt.custom_minimum_size = Vector2i(64, 64)
-	var style_box : StyleBoxTexture = load("uid://8pv7eye5uwl5").duplicate(true)
-	style_box.texture = terr_data.sprite
-	bt.add_theme_stylebox_override("normal", style_box)
-	bt.add_theme_stylebox_override("hover", style_box)
-	style_box = load("uid://5wxiklgne4b7").duplicate(true)
-	style_box.texture = terr_data.sprite
-	bt.add_theme_stylebox_override("pressed", style_box)
-	bt.toggle_mode = true
-	%Terrain_grid.add_child(bt)
-	bt.pressed.connect(terrain_button_pressed.bind(bt))
-	return bt
+#region TERRAIN
 
 @warning_ignore("unused_parameter")
 func _on_map_size_text_submitted(new_text: String, source: LineEdit) -> void:
@@ -98,15 +83,6 @@ func _on_map_size_text_submitted(new_text: String, source: LineEdit) -> void:
 	else:
 		%map_y.text = str(map_editor.map_size.y)
 
-func terrain_button_pressed(source : BaseButton):
-	_on_mode_button_pressed(0)
-	untoggle_terrain_buttons(source)
-	untoggle_object_buttons()
-	if source.button_pressed:
-		map_editor.selected_terrain_data = terrain_button_to_terrait_type[source]
-	else:
-		map_editor.selected_terrain_data = null
-
 func untoggle_terrain_buttons(source = null):
 	for bt in terrain_button_to_terrait_type:
 		if bt != source:
@@ -125,9 +101,6 @@ func _on_height_increment_pressed(source: BaseButton) -> void:
 	%Height.text = str(%Height.text.to_int() + height_increment_buttons[source])
 	_on_height_text_changed(%Height.text)
 
-func _on_generate_pressed() -> void:
-	generate_map.emit()
-
 func _on_depth_text_submitted(new_text: String) -> void:
 	if new_text.is_empty():
 		map_editor.selected_depth = 0
@@ -138,24 +111,10 @@ func _on_depth_text_submitted(new_text: String) -> void:
 		return
 	%Depth.text = str(map_editor.selected_depth)
 
-func _on_object_button_pressed(source: BaseButton) -> void:
-	_on_mode_button_pressed(1)
-	untoggle_object_buttons(source)
-	untoggle_terrain_buttons()
-	if source.button_pressed:
-		map_editor.selected_object = object_buttons[source]
-	else:
-		map_editor.selected_object = null
+#endregion
 
-func untoggle_object_buttons(source = null):
-	for bt in object_buttons:
-		if bt == source:
-			continue
-		bt.button_pressed = false
-
-func _on_mode_button_pressed(index : int) -> void:
-	%Mode.selected = index
-	map_editor.paint_mode = mode_buttons[index]
+func _on_generate_pressed() -> void:
+	generate_map.emit()
 
 var save_location : String
 func _on_save_pressed() -> void:
@@ -176,6 +135,7 @@ func load_data(map_size : Vector2i):
 
 func _on_enemy_selector_item_selected(index: int) -> void:
 	load_enemy_data(enemy_data[index].duplicate(true), false)
+	map_editor.paint_mode = mode_buttons[2]
 
 func _on_stat_text_changed(new_text: String, source: LineEdit) -> void:
 	var id : int = stats_le.find(source)
@@ -241,6 +201,39 @@ func enable_skill(skill : Skill_base):
 func disable_skill(skill : Skill_base):
 	if selected_enemy_data.skills.has(skill):
 		selected_enemy_data.skills.erase(skill)
+
+@export var map_objects_file_path : String
+var map_objects : Array[Map_object] = []
+func load_object_data():
+	var dir_acc := DirAccess.open(map_objects_file_path)
+	var files := dir_acc.get_files()
+	for i in files.size():
+		var obj_res : Map_object = ResourceLoader.load(map_objects_file_path + files[i])
+		map_objects.append(obj_res)
+		%Object_selector.add_icon_item(obj_res.sprite, obj_res.name)
+
+func _on_object_selector_item_selected(index: int) -> void:
+	map_editor.selected_object = map_objects[index]
+	map_editor.paint_mode = mode_buttons[1]
+
+func _on_terrain_selector_item_selected(index: int) -> void:
+	map_editor.paint_mode = mode_buttons[0]
+	map_editor.selected_terrain_data = map_terrain[index]
+
+@export var map_terrain_file_path : String
+var map_terrain : Array[Terrain_data] = []
+func load_terrain():
+	var dir_acc := DirAccess.open(map_terrain_file_path)
+	var files := dir_acc.get_files()
+	for i in files.size():
+		var obj_res : Terrain_data = ResourceLoader.load(map_terrain_file_path + files[i])
+		map_terrain.append(obj_res)
+		%Terrain_selector.add_icon_item(obj_res.sprite, files[i])
+	map_editor.selected_terrain_data = map_terrain[0]
+
+
+
+
 
 
 

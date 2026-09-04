@@ -9,3 +9,4 @@ class_name Terrain_data
 @export var depth := 0
 @export var floor_material : Material
 @export var wall_material : Material
+@export var can_be_modified : bool = true

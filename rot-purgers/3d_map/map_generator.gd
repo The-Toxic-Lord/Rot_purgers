@@ -360,6 +360,8 @@ func _input(event: InputEvent) -> void:
 					else:
 						add_skill_order()
 				states.SKILL_TERRAIN:
+					if !terrain_map[selected_cell].can_be_modified:
+						return
 					if selected_skill.terrain_mod == Skill_base.terrain_mods.HEIGHT:
 						var _mouse_pos : Vector2 = event.position
 						var dead_zone : Rect2 = %Map_UI.dead_zone

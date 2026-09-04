@@ -1,35 +1,8 @@
 [gd_scene format=3 uid="uid://bifqkeg558atm"]
 
 [ext_resource type="Script" uid="uid://druh5f1b3yi4v" path="res://Map_editor/map_editor_ui.gd" id="1_kbdvy"]
-[ext_resource type="Texture2D" uid="uid://cv7kk78gntqh5" path="res://aseprite_stuff/object_zones.png" id="2_kbdvy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwy4y"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_don2f"]
-texture = ExtResource("2_kbdvy")
-texture_margin_left = 64.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_25b76"]
-texture = ExtResource("2_kbdvy")
-texture_margin_left = 64.0
-modulate_color = Color(0.62152386, 0.62152386, 0.6215238, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o2byx"]
-texture = ExtResource("2_kbdvy")
-texture_margin_left = 64.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kbdvy"]
-texture = ExtResource("2_kbdvy")
-texture_margin_right = 64.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_km0qk"]
-texture = ExtResource("2_kbdvy")
-texture_margin_right = 64.0
-modulate_color = Color(0.62152386, 0.62152386, 0.6215238, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_07f17"]
-texture = ExtResource("2_kbdvy")
-texture_margin_right = 64.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbdvy"]
 bg_color = Color(0.35906905, 0.35906908, 0.35906902, 1)
@@ -40,6 +13,8 @@ border_width_bottom = 2
 
 [node name="Map_Editor_UI" type="CanvasLayer" unique_id=1101434913]
 script = ExtResource("1_kbdvy")
+map_objects_file_path = "res://data/Object_data/"
+map_terrain_file_path = "res://data/Terrain_data_res/"
 
 [node name="UI_panel_1" type="Panel" parent="." unique_id=1471110016]
 unique_name_in_owner = true
@@ -65,27 +40,6 @@ offset_bottom = 540.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vwy4y")
-
-[node name="Terrain_menu" type="MarginContainer" parent="." unique_id=547886473]
-unique_name_in_owner = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 262.0
-grow_vertical = 0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Terrain_grid" type="GridContainer" parent="Terrain_menu" unique_id=706500246]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(212, 0)
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 10
-columns = 3
 
 [node name="Map_size_menu" type="MarginContainer" parent="." unique_id=937522812]
 offset_right = 262.0
@@ -220,31 +174,25 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="Object_menu" unique_id=1739162540]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Object_menu/VBoxContainer" unique_id=395190981]
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 10
-columns = 3
-
-[node name="Spawn_zone" type="Button" parent="Object_menu/VBoxContainer/GridContainer" unique_id=1780801046]
+[node name="Terrain_selector" type="OptionButton" parent="Object_menu/VBoxContainer" unique_id=1486359140]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
-custom_maximum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(0, 80)
+custom_maximum_size = Vector2(-1, 80)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_don2f")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_25b76")
-theme_override_styles/hover = SubResource("StyleBoxTexture_o2byx")
-toggle_mode = true
+theme_override_font_sizes/font_size = 24
+alignment = 1
+expand_icon = true
+fit_to_longest_item = false
 
-[node name="Exit_zone" type="Button" parent="Object_menu/VBoxContainer/GridContainer" unique_id=1285154413]
+[node name="Object_selector" type="OptionButton" parent="Object_menu/VBoxContainer" unique_id=810748085]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
-custom_maximum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(0, 80)
+custom_maximum_size = Vector2(-1, 80)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_kbdvy")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_km0qk")
-theme_override_styles/hover = SubResource("StyleBoxTexture_07f17")
-toggle_mode = true
+theme_override_font_sizes/font_size = 24
+alignment = 1
+expand_icon = true
+fit_to_longest_item = false
 
 [node name="Enemy_selector" type="OptionButton" parent="Object_menu/VBoxContainer" unique_id=988542741]
 unique_name_in_owner = true
@@ -603,8 +551,8 @@ theme_override_constants/separation = 10
 [connection signal="pressed" from="Map_size_menu/VBoxContainer/HBoxContainer2/p5" to="." method="_on_height_increment_pressed" flags=18]
 [connection signal="pressed" from="Map_size_menu/VBoxContainer/HBoxContainer2/p10" to="." method="_on_height_increment_pressed" flags=18]
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/Depth" to="." method="_on_depth_text_submitted"]
-[connection signal="pressed" from="Object_menu/VBoxContainer/GridContainer/Spawn_zone" to="." method="_on_object_button_pressed" flags=18]
-[connection signal="pressed" from="Object_menu/VBoxContainer/GridContainer/Exit_zone" to="." method="_on_object_button_pressed" flags=18]
+[connection signal="item_selected" from="Object_menu/VBoxContainer/Terrain_selector" to="." method="_on_terrain_selector_item_selected"]
+[connection signal="item_selected" from="Object_menu/VBoxContainer/Object_selector" to="." method="_on_object_selector_item_selected"]
 [connection signal="item_selected" from="Object_menu/VBoxContainer/Enemy_selector" to="." method="_on_enemy_selector_item_selected"]
 [connection signal="pressed" from="Object_menu/VBoxContainer/Open_maker" to="." method="_on_open_maker_pressed"]
 [connection signal="item_selected" from="Mode_selector/VBoxContainer/CenterContainer/Mode" to="." method="_on_mode_button_pressed"]
