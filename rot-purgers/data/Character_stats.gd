@@ -36,12 +36,13 @@ func get_attack_stat_used() -> int:
 func get_defence_stat(st : stats):
 	return get(stats.keys()[st])
 
-@export_group("", "")
+@export_group("randstats")
 @export var move_speed : int = 4
 @export var jump_height : int = 20
 @export var attack_distance : int = 1
 @export var attack_height : int = 10
 @export var counter : int = 1
+@export_group("", "")
 @export var node_UID : String
 @export var start_dir : Map_generator.directions
 

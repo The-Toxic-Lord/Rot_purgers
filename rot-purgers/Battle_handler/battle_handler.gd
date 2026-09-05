@@ -71,6 +71,8 @@ func execute_orders():
 			handle_heal(order_data)
 		elif order_data is Order_protect:
 			handle_protect(order_data)
+		elif order_data is Order_spawn:
+			handle_spawn(order_data)
 		else:
 			handle_attack(order_data)
 		await order_handled
@@ -102,6 +104,8 @@ func start_player_turn():
 		return
 	map_gen.set_camera_target()
 	for ch in allies:
+		ch.new_round()
+	for ch in enemies:
 		ch.new_round()
 	state = states.PLAYER
 	map_gen.freze_selector = false
@@ -194,9 +198,16 @@ func handle_protect(order : Order_protect):
 		protected_cells[attacker] = pr_cells
 	order_handled.emit()
 
+func add_spawn(stats : Character_stats, cell : Vector2i, 
+dir : Map_generator.directions, attacker : Character_node):
+	var spawn_order := Order_spawn.new()
+	spawn_order.make_spawn_data(stats, cell, dir, attacker)
+	order_array.append(spawn_order)
 
-
-
+func handle_spawn(order : Order_spawn):
+	await get_tree().process_frame
+	await map_gen.spawn_enemy(order.stats, order.target_cell, order.dir)
+	order_handled.emit()
 
 
 

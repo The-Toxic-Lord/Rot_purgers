@@ -67,10 +67,6 @@ func attack_damage(target : Character_node, attacker : Character_node):
 			await target.damage(-1)
 		_:
 			var damage : float = attacker.stats.get_attack_stat_used()
-			if target.is_defending:
-				damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
-			else:
-				damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
 			match hit_type:
 				hit_types.NICK:
 					print("nick")
@@ -78,6 +74,10 @@ func attack_damage(target : Character_node, attacker : Character_node):
 				hit_types.BULLSEYE:
 					print("bullseye")
 					damage *= 1.5
+			if target.is_defending:
+				damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
+			else:
+				damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
 			if damage < 0:
 				damage = 0
 			await target.damage(damage, true)

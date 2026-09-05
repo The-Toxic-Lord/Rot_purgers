@@ -170,6 +170,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 alignment = 1
+selected = 0
 item_count = 4
 popup/item_0/text = "North"
 popup/item_0/id = 0
@@ -179,6 +180,31 @@ popup/item_2/text = "South"
 popup/item_2/id = 2
 popup/item_3/text = "West"
 popup/item_3/id = 3
+
+[node name="Label5" type="Label" parent="Map_size_menu/VBoxContainer" unique_id=10873291]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Object direction"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Object_dir" type="OptionButton" parent="Map_size_menu/VBoxContainer" unique_id=1573053123]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+alignment = 1
+selected = 0
+item_count = 5
+popup/item_0/text = "North"
+popup/item_0/id = 0
+popup/item_1/text = "East"
+popup/item_1/id = 1
+popup/item_2/text = "South"
+popup/item_2/id = 2
+popup/item_3/text = "West"
+popup/item_3/id = 3
+popup/item_4/text = "Random"
+popup/item_4/id = 4
 
 [node name="Object_menu" type="MarginContainer" parent="." unique_id=993832679]
 anchors_preset = 1
@@ -574,11 +600,12 @@ theme_override_constants/separation = 10
 [connection signal="pressed" from="Map_size_menu/VBoxContainer/HBoxContainer2/p10" to="." method="_on_height_increment_pressed" flags=18]
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/Depth" to="." method="_on_depth_text_submitted"]
 [connection signal="item_selected" from="Map_size_menu/VBoxContainer/Shader_dir" to="." method="_on_shader_dir_item_selected"]
+[connection signal="item_selected" from="Map_size_menu/VBoxContainer/Object_dir" to="." method="_on_object_dir_item_selected"]
 [connection signal="item_selected" from="Object_menu/VBoxContainer/Terrain_selector" to="." method="_on_terrain_selector_item_selected"]
 [connection signal="item_selected" from="Object_menu/VBoxContainer/Object_selector" to="." method="_on_object_selector_item_selected"]
 [connection signal="item_selected" from="Object_menu/VBoxContainer/Enemy_selector" to="." method="_on_enemy_selector_item_selected"]
 [connection signal="pressed" from="Object_menu/VBoxContainer/Open_maker" to="." method="_on_open_maker_pressed"]
-[connection signal="item_selected" from="Mode_selector/VBoxContainer/CenterContainer/Mode" to="." method="_on_mode_button_pressed"]
+[connection signal="item_selected" from="Mode_selector/VBoxContainer/CenterContainer/Mode" to="." method="_on_mode_item_selected"]
 [connection signal="pressed" from="Control_menu/VBoxContainer/generate" to="." method="_on_generate_pressed"]
 [connection signal="pressed" from="Control_menu/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Control_menu/VBoxContainer/Save" to="." method="_on_save_pressed"]

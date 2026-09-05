@@ -40,6 +40,7 @@ var cell_to_terrain_node : Dictionary[Vector2i, Node2D] = {}
 
 @onready var main_node : Main_node = get_parent()
 var selected_object : Map_object
+var object_dir := Map_generator.directions.N
 var object_map_data : Dictionary[Vector2i, Map_object] = {}
 var cell_to_object_node : Dictionary[Vector2i, Node2D] = {}
 
@@ -235,6 +236,10 @@ func change_object(cell : Vector2i):
 		cell_to_object_node[cell].queue_free()
 		spawn_texture_node(selected_object.sprite, cell, 2)
 	object_map_data[cell] = selected_object.duplicate(true)
+	if object_dir != -1:
+		object_map_data[cell].direction = object_dir
+	else:
+		object_map_data[cell].direction = Map_generator.directions.values().pick_random()
 
 func remove_object(cell : Vector2i):
 	if !object_map_data.has(cell):

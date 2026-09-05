@@ -1,15 +1,7 @@
 [gd_scene format=4 uid="uid://b57jse1cfeshi"]
 
 [ext_resource type="Script" uid="uid://dom3a03xunylw" path="res://3d_map/map_cell.gd" id="1_2f0j5"]
-[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="2_i3qa4"]
-[ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="3_qphp4"]
 [ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="4_qphp4"]
-
-[sub_resource type="Resource" id="Resource_s44dr"]
-script = ExtResource("2_i3qa4")
-sprite = ExtResource("3_qphp4")
-height = 50
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qphp4"]
 _surfaces = [{
@@ -33,7 +25,6 @@ size = Vector3(2, 1, 2)
 
 [node name="Map_cell" type="Node3D" unique_id=215314247]
 script = ExtResource("1_2f0j5")
-temp_terr_data = SubResource("Resource_s44dr")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=137455504]
 unique_name_in_owner = true

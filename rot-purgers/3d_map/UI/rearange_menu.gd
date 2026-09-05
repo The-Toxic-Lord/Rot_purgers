@@ -42,8 +42,8 @@ func load_char(char_node : Character_node):
 				slider.min_value = snapped(char_stats_base.get_stat(stats[i]) * 0.5, 5)
 			5:
 				slider.step = 5.0
-				slider.min_value = char_stats_base.get_stat(stats[i]) - 20
-				slider.max_value = char_stats_base.get_stat(stats[i]) + 20
+				slider.min_value = 10
+				slider.max_value = 50
 			6:
 				slider.min_value = char_stats_base.get_stat(stats[i]) - 3
 				slider.max_value = char_stats_base.get_stat(stats[i]) + 3

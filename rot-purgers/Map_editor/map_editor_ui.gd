@@ -147,6 +147,7 @@ func load_data(map_size : Vector2i):
 func _on_enemy_selector_item_selected(index: int) -> void:
 	load_enemy_data(enemy_data[index].duplicate(true), false)
 	map_editor.paint_mode = mode_buttons[2]
+	%Mode.selected = 2
 
 func _on_stat_text_changed(new_text: String, source: LineEdit) -> void:
 	var id : int = stats_le.find(source)
@@ -184,12 +185,15 @@ func load_enemy_data(enemy : Character_stats, reset_selector := true):
 		%Enemy_selector.selected = -1
 	await load_skills()
 	%Enemy_maker.show()
+	if mouse_dead_zone.size() == 2:
+		mouse_dead_zone.append(Rect2(%Enemy_maker.position, %Enemy_maker.size))
 
 func _on_open_maker_pressed() -> void:
 	%Enemy_maker.show()
 
 func _on_confirm_stats_pressed() -> void:
 	%Enemy_maker.hide()
+	mouse_dead_zone.remove_at(2)
 
 func load_skills():
 	var ch : Array[Node] = %Skill_box.get_children()
@@ -226,10 +230,12 @@ func load_object_data():
 func _on_object_selector_item_selected(index: int) -> void:
 	map_editor.selected_object = map_objects[index]
 	map_editor.paint_mode = mode_buttons[1]
+	%Mode.selected = 1
 
 func _on_terrain_selector_item_selected(index: int) -> void:
 	map_editor.paint_mode = mode_buttons[0]
 	map_editor.selected_terrain_data = map_terrain[index]
+	%Mode.selected = 0
 
 @export var map_terrain_file_path : String
 var map_terrain : Array[Terrain_data] = []
@@ -242,7 +248,22 @@ func load_terrain():
 		%Terrain_selector.add_icon_item(obj_res.sprite, files[i])
 	map_editor.selected_terrain_data = map_terrain[0]
 
+func _on_mode_item_selected(index: int) -> void:
+	map_editor.paint_mode = mode_buttons[index]
 
+func _on_object_dir_item_selected(index: int) -> void:
+	match index:
+		0:
+			map_editor.object_dir = Map_generator.directions.N
+		1:
+			map_editor.object_dir = Map_generator.directions.E
+		2:
+			map_editor.object_dir = Map_generator.directions.S
+		3:
+			map_editor.object_dir = Map_generator.directions.W
+		4:
+			@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
+			map_editor.object_dir = -1
 
 
 

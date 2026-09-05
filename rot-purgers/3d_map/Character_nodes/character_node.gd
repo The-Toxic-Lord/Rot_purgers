@@ -99,6 +99,9 @@ func damage(value : float, display_mini := false):
 		%Damage_numbers.modulate = Color("e80029")
 		if display_mini:
 			ObjectLink.mini_char_stats.display_damage(stats.health)
+	if BattleHandler.enemies.has(self):
+		if stats.AI_type == Character_stats.AI_types.NORMAL:
+			stats.AI_type = Character_stats.AI_types.CHARGER
 	display_damage(display_mini)
 
 func display_damage(display_mini := false):
@@ -125,12 +128,21 @@ func display_damage(display_mini := false):
 	else:
 		animation_ended.emit()
 
-func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
+@warning_ignore("unused_parameter")
+func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data], 
 select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Vector2i, Map_cell]):
-	var path := find_flow_path(target_cell, select_zones, terrain_map)
-	
+	var move_zones : Array[Vector2i]
+	if BattleHandler.enemies.has(self):
+		move_zones = ObjectLink.map_gen.get_flow_cells(
+			map_pos, stats.move_speed, false, true, stats.jump_height, false
+		)
+	else:
+		move_zones = ObjectLink.map_gen.get_flow_cells(
+			map_pos, stats.move_speed, false, false, stats.jump_height
+		)
+	var path := find_flow_path(target_cell, move_zones, terrain_map)
+	previous_map_pos = map_pos
 	if path == []:
-		previous_map_pos = map_pos
 		var a_star := AStarGrid2D.new()
 		a_star.region = map_boundary
 		a_star.cell_size = Vector2i(1,1)
@@ -140,7 +152,7 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 		a_star.update()
 		
 		a_star.fill_solid_region(a_star.region)
-		for cell in select_zones:
+		for cell in move_zones:
 			a_star.set_point_solid(cell, false)
 		if BattleHandler.allies.has(self):
 			for ally in BattleHandler.allies:
@@ -154,16 +166,34 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 	
 	var prev_pos : Vector2i = map_pos
 	
+	#if path == []:
+		#print(map_pos)
+		#print(self)
+		#print(target_cell)
+		#print(move_zones)
+	
 	path.remove_at(0)
 	for cell in path:
 		previous_direction = current_direction
 		turn(move_to_direction[cell - prev_pos], true)
+		await self.direction_changed
 		current_direction = move_to_direction[cell - prev_pos]
 		await move_next(cell, terrain_map, map_cells)
 		prev_pos = map_pos
 	can_undo_move = true
 	char_animation.play("Idle")
 	move_finished.emit()
+
+var making_move := false
+func make_planned_move(move_data : Planned_move_data):
+	making_move = true
+	var map_gen : Map_generator = ObjectLink.map_gen
+	move(move_data.target_cell, map_gen.terrain_map, move_data.select_zones,
+	map_gen.selector_boundary, map_gen.map_cells)
+	await self.move_finished
+	turn(move_data.dir)
+	await self.direction_changed
+	making_move = false
 
 var neighbors_sides : Array[Vector2i] = [
 	Vector2i.UP,
@@ -299,8 +329,8 @@ func defend():
 	is_defending = true
 
 func turn(new_dir : Map_generator.directions, skip_animation := false):
+	await get_tree().process_frame
 	if new_dir == current_direction:
-		await get_tree().process_frame
 		turn_finished()
 		return
 	previous_direction = current_direction
@@ -309,7 +339,6 @@ func turn(new_dir : Map_generator.directions, skip_animation := false):
 	var q := Quaternion(Vector3.UP, dir_to_angle[new_dir])
 	if skip_animation:
 		quaternion = q
-		await get_tree().process_frame
 		turn_finished()
 	else:
 		var tween := create_tween()
