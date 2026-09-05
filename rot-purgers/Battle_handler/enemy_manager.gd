@@ -293,8 +293,17 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> b
 				max_targets = skill_possible.enemy_targets.size()
 				frienly_targets = skill_possible.targets.size() - max_targets
 		
-		var move := Planned_move_data.new(chosen_possibility.used_position, 
+		#enemy.magic_cost(chosen_possibility.skill.magic_cost)
+		
+		var move : Planned_move_data
+		
+		if chosen_possibility.skill.skill_map.bound_to_char:
+			move = Planned_move_data.new(chosen_possibility.used_position, 
 		move_cells, chosen_possibility.dir)
+		else:
+			move = Planned_move_data.new(chosen_possibility.used_position, 
+		move_cells, get_new_dir(chosen_possibility.used_position, chosen_possibility.target_cell))
+		
 		char_planned_moves[enemy] = move
 		occupied_cells.erase(enemy.map_pos)
 		occupied_cells.append(chosen_possibility.used_position)
@@ -320,8 +329,10 @@ func AI_can_attack(move_cells : Array[Vector2i], enemy : Character_node) -> bool
 		var chosen_possibility : Vector2i = attack_possibilities.keys().pick_random()
 		var target : Vector2i = attack_possibilities[chosen_possibility].pick_random()
 		
+		var dir : Map_generator.directions = get_new_dir(chosen_possibility, target)
+		
 		var move := Planned_move_data.new(chosen_possibility, 
-		move_cells, map_gen.vector_to_dir[target - chosen_possibility])
+		move_cells, dir)
 		char_planned_moves[enemy] = move
 		occupied_cells.erase(enemy.map_pos)
 		occupied_cells.append(chosen_possibility)
@@ -330,6 +341,18 @@ func AI_can_attack(move_cells : Array[Vector2i], enemy : Character_node) -> bool
 		BattleHandler.add_attack(enemy, map_gen.char_positions[target])
 		return true
 	return false
+
+func get_new_dir(cell : Vector2i, target_cell : Vector2i) -> Map_generator.directions:
+	var diff : Vector2i = target_cell - cell
+	var angle : float = rad_to_deg(Vector2(0, -1).angle_to(diff))
+	if angle <= 45 and angle >= -45:
+		return Map_generator.directions.N
+	elif angle > 45 and angle <= 135:
+		return Map_generator.directions.E
+	elif angle < -45 and angle >= -135:
+		return Map_generator.directions.W
+	else:
+		return Map_generator.directions.S
 
 var neib_side : Array[Vector2i] = [
 	Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT

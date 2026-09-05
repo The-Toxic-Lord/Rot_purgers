@@ -190,7 +190,6 @@ attacker : Character_node, target : Character_node):
 			map_gen.teleport_char(attacker, order.move_target)
 		Skill_base.move.TARGET:
 			map_gen.teleport_char(target, order.move_target)
-	
 
 
 

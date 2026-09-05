@@ -209,6 +209,10 @@ func handle_spawn(order : Order_spawn):
 	await map_gen.spawn_enemy(order.stats, order.target_cell, order.dir)
 	order_handled.emit()
 
+func _ready() -> void:
+	%Enemy_manager.get_new_dir(Vector2i(10,10), Vector2i(12, 12))
+
+
 
 
 

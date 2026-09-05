@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://bq3s1qjaw05vw"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_bg2wj"]
+[ext_resource type="Resource" uid="uid://bfduh2thntgq1" path="res://Skills/skill_map_data_res/single_tile_damage.tres" id="2_lamvd"]
+
+[resource]
+script = ExtResource("1_bg2wj")
+name = "Power shot"
+magic_cost = 20
+skill_map = ExtResource("2_lamvd")
+damage = 1.5
+max_height_difference = 20
+max_dist = 5
+stat_used = 4
+defence_stat = 5
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

@@ -1,18 +1,36 @@
-[gd_resource type="Resource" script_class="Map_data" format=3]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://s3ef1hw0t5r6"]
 
-[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_qbyd3"]
-[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_qg40w"]
-[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_ys7s5"]
-[ext_resource type="Script" path="res://map_data.gd" id="3_01uvt"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Charge.tres" id="3_kqyk2"]
-[ext_resource type="Script" path="res://data/terrain_data.gd" id="4_bwvuj"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler.png" id="4_jcw8x"]
-[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="5_01uvt"]
-[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="6_2qeye"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/terrain_cave.png" id="6_bwvuj"]
-[ext_resource type="Material" path="res://3d_map/map_cell_materials/lava_floor_test.tres" id="14_ead5j"]
-[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Elements_09-128x128.png" id="15_g2qwr"]
-[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="17_g2qwr"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_qbyd3"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="2_qg40w"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_ys7s5"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="3_01uvt"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="3_kqyk2"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="4_bwvuj"]
+[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="4_jcw8x"]
+[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="5_01uvt"]
+[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_2qeye"]
+[ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="6_bwvuj"]
+[ext_resource type="Material" uid="uid://cq3hrppxee3p4" path="res://3d_map/map_cell_materials/lava_floor_test.tres" id="14_ead5j"]
+[ext_resource type="Texture2D" uid="uid://bm02bsmgrkna4" path="res://3d_map/map_cell_materials/material_textures/Elements_09-128x128.png" id="15_g2qwr"]
+[ext_resource type="Texture2D" uid="uid://c6oqat6ko8geo" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="17_g2qwr"]
+
+[sub_resource type="Resource" id="Resource_4i3of"]
+script = ExtResource("1_qbyd3")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("4_jcw8x")
+strength = 2
+defence = 1
+magic_strenght = 1
+accuracy = 3
+move_speed = 5
+jump_height = 10
+counter = 0
+node_UID = "uid://dunq80ub3v1jk"
+skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
+potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_ead5j"]
 script = ExtResource("1_qbyd3")
@@ -33,97 +51,7 @@ skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
 potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_4i3of"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_jcw8x")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
 [sub_resource type="Resource" id="Resource_vr422"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_jcw8x")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_2i625"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_jcw8x")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_sjhb4"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_jcw8x")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_brvf0"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_jcw8x")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_t3mh4"]
 script = ExtResource("1_qbyd3")
 name = "Crawler"
 char_class = "Servant"
@@ -529,11 +457,7 @@ object_map_data = Dictionary[Vector2i, ExtResource("2_qg40w")]({
 Vector2i(14, 13): SubResource("Resource_l5vmc")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_qbyd3")]({
-Vector2i(13, 10): SubResource("Resource_t3mh4"),
 Vector2i(13, 11): SubResource("Resource_4i3of"),
 Vector2i(14, 1): SubResource("Resource_ead5j"),
-Vector2i(14, 10): SubResource("Resource_brvf0"),
-Vector2i(14, 11): SubResource("Resource_vr422"),
-Vector2i(15, 10): SubResource("Resource_sjhb4"),
-Vector2i(15, 11): SubResource("Resource_2i625")
+Vector2i(15, 11): SubResource("Resource_vr422")
 })

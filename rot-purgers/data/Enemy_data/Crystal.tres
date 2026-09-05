@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_1t5y0"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_klvyd"]
-[ext_resource type="Resource" uid="uid://dhhs70r647yrx" path="res://Skills/Skill_res/Slash.tres" id="3_klvyd"]
+[ext_resource type="Resource" uid="uid://bq3s1qjaw05vw" path="res://Skills/Skill_res/Power_shot.tres" id="2_po2kh"]
 [ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="3_po2kh"]
-[ext_resource type="Resource" uid="uid://q32sww7y2ms6" path="res://Skills/Skill_res/Blade wave.tres" id="4_po2kh"]
 
 [resource]
 script = ExtResource("1_1t5y0")
@@ -15,5 +14,5 @@ sprite = ExtResource("3_po2kh")
 attack_distance = 5
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
-potential_skills = Array[ExtResource("2_klvyd")]([ExtResource("3_klvyd"), ExtResource("4_po2kh")])
+potential_skills = Array[ExtResource("2_klvyd")]([ExtResource("2_po2kh")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
