@@ -1,165 +1,113 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://s3ef1hw0t5r6"]
+[gd_resource type="Resource" script_class="Map_data" format=3]
 
-[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_qbyd3"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="2_qg40w"]
-[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_ys7s5"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="3_01uvt"]
-[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="3_kqyk2"]
-[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="4_bwvuj"]
-[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="4_jcw8x"]
-[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="5_01uvt"]
-[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_2qeye"]
-[ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="6_bwvuj"]
-[ext_resource type="Material" uid="uid://cq3hrppxee3p4" path="res://3d_map/map_cell_materials/lava_floor_test.tres" id="14_ead5j"]
-[ext_resource type="Texture2D" uid="uid://bm02bsmgrkna4" path="res://3d_map/map_cell_materials/material_textures/Elements_09-128x128.png" id="15_g2qwr"]
-[ext_resource type="Texture2D" uid="uid://c6oqat6ko8geo" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="17_g2qwr"]
+[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_qbyd3"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_2qeye"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_qg40w"]
+[ext_resource type="Script" path="res://map_data.gd" id="3_01uvt"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="3_j7tpd"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="4_3mwm5"]
+[ext_resource type="Script" path="res://data/terrain_data.gd" id="4_bwvuj"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="5_01uvt"]
+[ext_resource type="Texture2D" path="res://import/Eye.png" id="5_j7tpd"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="6_2qeye"]
+[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="17_g2qwr"]
 
-[sub_resource type="Resource" id="Resource_4i3of"]
+[sub_resource type="Resource" id="Resource_cj7eg"]
 script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_jcw8x")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
+name = "Crystal"
+char_class = "Granulocyte"
+age = 468
+sprite = ExtResource("4_3mwm5")
+attack_distance = 5
+attack_height = 30
+trigger_distance = 50
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_2qeye")]([ExtResource("3_j7tpd")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_ead5j"]
+[sub_resource type="Resource" id="Resource_2qeye"]
 script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_jcw8x")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 2
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-AI_type = 2
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
+name = "Crystal"
+char_class = "Granulocyte"
+age = 468
+sprite = ExtResource("4_3mwm5")
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_2qeye")]([ExtResource("3_j7tpd")])
+number_of_pc = 0
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_vr422"]
+[sub_resource type="Resource" id="Resource_3mwm5"]
 script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_jcw8x")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
-potential_skills = Array[ExtResource("2_ys7s5")]([ExtResource("3_kqyk2")])
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("5_j7tpd")
+node_UID = "uid://ckmkqe73jj58e"
+number_of_pc = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_l5vmc"]
+[sub_resource type="Resource" id="Resource_alebe"]
 script = ExtResource("2_qg40w")
 name = "spawn_zone"
 sprite = ExtResource("6_2qeye")
 node_UID = "uid://b77u0ogcrnmlx"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
-[sub_resource type="Resource" id="Resource_o70wc"]
+[sub_resource type="Resource" id="Resource_5f6kb"]
 script = ExtResource("4_bwvuj")
-sprite = ExtResource("15_g2qwr")
-passable = false
+sprite = ExtResource("17_g2qwr")
 height = 10
-floor_material = ExtResource("14_ead5j")
-wall_material = ExtResource("14_ead5j")
-can_be_modified = false
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_e7og5"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_kqyk2"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
 shader_dir = 3
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_xuijx"]
+[sub_resource type="Resource" id="Resource_jcw8x"]
 script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_o70wc"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_8rl3u"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
 height = 10
 floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_u7ypl"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_kqj3p"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_20agm"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_dno6c"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("17_g2qwr")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_cbq0g"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("17_g2qwr")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_j7tpd"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_cmmeo"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("17_g2qwr")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_ni5hn"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("17_g2qwr")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_xvbjr"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("17_g2qwr")
 height = 10
@@ -175,7 +123,39 @@ floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_l5vmc"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_qhyuh"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_k28vi"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_cx7s4"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_20agm"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("17_g2qwr")
 height = 10
@@ -191,25 +171,9 @@ floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_to1fk"]
+[sub_resource type="Resource" id="Resource_mjo53"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("17_g2qwr")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_idsk3"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_8rl3u"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
 height = 10
 floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
@@ -217,173 +181,29 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_r8prx"]
 script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_cx7s4"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_46x75"]
-script = ExtResource("4_bwvuj")
 sprite = ExtResource("17_g2qwr")
 height = 10
 floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_g2qwr"]
+[sub_resource type="Resource" id="Resource_kqj3p"]
 script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
+sprite = ExtResource("17_g2qwr")
 height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_3mwm5"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_aq4wr"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_01uvt"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_bwvuj"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_fftg7"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_8vpye"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_cj7eg"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_e7og5"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_jyd4h"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_rm0aw"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_5f6kb"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_34nle"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
 floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_f05un"]
 script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 30
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_oyqpw"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
+sprite = ExtResource("17_g2qwr")
 height = 10
 floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_8dwos"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_mjo53"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_k28vi"]
-script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
-height = 10
-floor_material = ExtResource("5_01uvt")
-wall_material = ExtResource("5_01uvt")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_04wev"]
+[sub_resource type="Resource" id="Resource_jyd4h"]
 script = ExtResource("4_bwvuj")
 sprite = ExtResource("17_g2qwr")
 height = 10
@@ -391,73 +211,113 @@ floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_jcw8x"]
+[sub_resource type="Resource" id="Resource_fftg7"]
 script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_g2qwr"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ead5j"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_34nle"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
 height = 10
 floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_kqyk2"]
+[sub_resource type="Resource" id="Resource_rm0aw"]
 script = ExtResource("4_bwvuj")
-sprite = ExtResource("6_bwvuj")
+sprite = ExtResource("17_g2qwr")
 height = 10
 floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_to1fk"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_aq4wr"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_8vpye"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("17_g2qwr")
+height = 10
+floor_material = ExtResource("5_01uvt")
+wall_material = ExtResource("5_01uvt")
+shader_dir = 3
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [resource]
 script = ExtResource("3_01uvt")
 map_size = Vector2i(30, 30)
 terrain_map_data = Dictionary[Vector2i, ExtResource("4_bwvuj")]({
-Vector2i(12, 12): SubResource("Resource_o70wc"),
-Vector2i(13, 8): SubResource("Resource_xuijx"),
-Vector2i(13, 9): SubResource("Resource_u7ypl"),
-Vector2i(13, 10): SubResource("Resource_kqj3p"),
-Vector2i(13, 11): SubResource("Resource_20agm"),
-Vector2i(13, 12): SubResource("Resource_dno6c"),
-Vector2i(13, 13): SubResource("Resource_cbq0g"),
-Vector2i(13, 14): SubResource("Resource_j7tpd"),
-Vector2i(14, 1): SubResource("Resource_cmmeo"),
-Vector2i(14, 2): SubResource("Resource_ni5hn"),
-Vector2i(14, 3): SubResource("Resource_xvbjr"),
-Vector2i(14, 4): SubResource("Resource_ahyom"),
-Vector2i(14, 5): SubResource("Resource_qhyuh"),
-Vector2i(14, 6): SubResource("Resource_provp"),
-Vector2i(14, 7): SubResource("Resource_to1fk"),
-Vector2i(14, 8): SubResource("Resource_idsk3"),
-Vector2i(14, 9): SubResource("Resource_8rl3u"),
-Vector2i(14, 10): SubResource("Resource_r8prx"),
-Vector2i(14, 11): SubResource("Resource_cx7s4"),
-Vector2i(14, 12): SubResource("Resource_46x75"),
-Vector2i(14, 13): SubResource("Resource_g2qwr"),
-Vector2i(14, 14): SubResource("Resource_3mwm5"),
+Vector2i(12, 12): SubResource("Resource_5f6kb"),
+Vector2i(12, 13): SubResource("Resource_e7og5"),
+Vector2i(12, 14): SubResource("Resource_kqyk2"),
+Vector2i(12, 15): SubResource("Resource_jcw8x"),
+Vector2i(12, 16): SubResource("Resource_o70wc"),
+Vector2i(13, 0): SubResource("Resource_8rl3u"),
+Vector2i(13, 1): SubResource("Resource_u7ypl"),
+Vector2i(13, 2): SubResource("Resource_ahyom"),
+Vector2i(13, 3): SubResource("Resource_l5vmc"),
+Vector2i(13, 4): SubResource("Resource_qhyuh"),
+Vector2i(13, 5): SubResource("Resource_k28vi"),
+Vector2i(13, 6): SubResource("Resource_cx7s4"),
+Vector2i(13, 7): SubResource("Resource_20agm"),
+Vector2i(13, 8): SubResource("Resource_provp"),
+Vector2i(13, 9): SubResource("Resource_mjo53"),
+Vector2i(13, 10): SubResource("Resource_r8prx"),
+Vector2i(13, 11): SubResource("Resource_kqj3p"),
+Vector2i(13, 12): SubResource("Resource_f05un"),
+Vector2i(13, 13): SubResource("Resource_jyd4h"),
+Vector2i(13, 14): SubResource("Resource_fftg7"),
+Vector2i(13, 15): SubResource("Resource_g2qwr"),
+Vector2i(13, 16): SubResource("Resource_ead5j"),
+Vector2i(14, 12): SubResource("Resource_34nle"),
+Vector2i(14, 13): SubResource("Resource_rm0aw"),
+Vector2i(14, 14): SubResource("Resource_to1fk"),
 Vector2i(14, 15): SubResource("Resource_aq4wr"),
-Vector2i(14, 16): SubResource("Resource_01uvt"),
-Vector2i(14, 17): SubResource("Resource_bwvuj"),
-Vector2i(14, 18): SubResource("Resource_fftg7"),
-Vector2i(14, 19): SubResource("Resource_8vpye"),
-Vector2i(14, 20): SubResource("Resource_cj7eg"),
-Vector2i(14, 21): SubResource("Resource_e7og5"),
-Vector2i(14, 22): SubResource("Resource_jyd4h"),
-Vector2i(14, 23): SubResource("Resource_rm0aw"),
-Vector2i(14, 24): SubResource("Resource_5f6kb"),
-Vector2i(14, 25): SubResource("Resource_34nle"),
-Vector2i(14, 26): SubResource("Resource_f05un"),
-Vector2i(15, 8): SubResource("Resource_oyqpw"),
-Vector2i(15, 9): SubResource("Resource_8dwos"),
-Vector2i(15, 10): SubResource("Resource_mjo53"),
-Vector2i(15, 11): SubResource("Resource_k28vi"),
-Vector2i(15, 12): SubResource("Resource_04wev"),
-Vector2i(15, 13): SubResource("Resource_jcw8x"),
-Vector2i(15, 14): SubResource("Resource_kqyk2")
+Vector2i(14, 16): SubResource("Resource_8vpye")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("2_qg40w")]({
-Vector2i(14, 13): SubResource("Resource_l5vmc")
+Vector2i(13, 15): SubResource("Resource_alebe")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_qbyd3")]({
-Vector2i(13, 11): SubResource("Resource_4i3of"),
-Vector2i(14, 1): SubResource("Resource_ead5j"),
-Vector2i(15, 11): SubResource("Resource_vr422")
+Vector2i(12, 12): SubResource("Resource_3mwm5"),
+Vector2i(13, 0): SubResource("Resource_cj7eg"),
+Vector2i(14, 12): SubResource("Resource_2qeye")
 })

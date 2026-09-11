@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://cocxooxgdh4c"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_3hncg"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_ae2jc"]
+[ext_resource type="Texture2D" uid="uid://c5f5mptu5chck" path="res://import/Eye.png" id="3_ae2jc"]
+
+[resource]
+script = ExtResource("2_ae2jc")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("3_ae2jc")
+node_UID = "uid://ckmkqe73jj58e"
+metadata/_custom_type_script = "uid://by1rq468n504l"

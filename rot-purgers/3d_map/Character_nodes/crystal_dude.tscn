@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://c7bbx7glxoob8"]
 
 [ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_inksj"]
-[ext_resource type="Material" uid="uid://buo2wphiukwbc" path="res://Workshop/crystal_cude_rot_dissolve.tres" id="2_gtxpa"]
+[ext_resource type="Texture2D" uid="uid://rcxlv58nhran" path="res://blender_models/Crystal_dude2_Crystal_dude_texture-export.png" id="2_h1wbr"]
 [ext_resource type="Animation" uid="uid://c4v4gr25mnamw" path="res://blender_models/animations/crystal_dude_Idle.tres" id="3_gtxpa"]
 [ext_resource type="Texture2D" uid="uid://rmf4p254h6px" path="res://blender_models/Crystal_dude2_normals_Crystal_dude_texture-export.png" id="4_gtxpa"]
 
@@ -276,9 +276,6 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_xwkw5"]
-length = 0.001
-
 [sub_resource type="Animation" id="Animation_3s0yo"]
 resource_name = "Spell_jump_back"
 tracks/0/type = "value"
@@ -348,7 +345,6 @@ tracks/0/keys = {
 _data = {
 &"Damage": SubResource("Animation_2jqbt"),
 &"Death": SubResource("Animation_7s3t3"),
-&"RESET": SubResource("Animation_xwkw5"),
 &"Spell_jump_back": SubResource("Animation_3s0yo"),
 &"Spell_jump_up": SubResource("Animation_uiu5v"),
 &"empty": SubResource("Animation_61r11"),
@@ -358,7 +354,7 @@ _data = {
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
 script = ExtResource("1_inksj")
-material = ExtResource("2_gtxpa")
+texture = ExtResource("2_h1wbr")
 char_animation = NodePath("Crystal_dude2_normals/temp_anim")
 char_model_node = NodePath("Crystal_dude2_normals")
 skeleton = NodePath("Crystal_dude2_normals/Armature/Skeleton3D")
@@ -443,7 +439,6 @@ bones/5/rotation = Quaternion(1.4040482e-06, 1.7359837e-07, 0.9763958, -0.215989
 bones/5/scale = Vector3(0.99999994, 0.9999999, 1)
 
 [node name="Cube" type="MeshInstance3D" parent="Crystal_dude2_normals/Armature/Skeleton3D" unique_id=1409514353]
-material_override = ExtResource("2_gtxpa")
 mesh = SubResource("ArrayMesh_foorj")
 skin = SubResource("Skin_pfdph")
 skeleton = NodePath("..")

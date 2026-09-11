@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://2f3i6lg4epdq"]
+
+[ext_resource type="ArrayMesh" uid="uid://dyothhl71cr5v" path="res://import/eye_cube.tres" id="1_5d6ao"]
+[ext_resource type="Script" uid="uid://b8dhlp104lwd1" path="res://3d_map/Character_nodes/observer_model.gd" id="1_kykh1"]
+[ext_resource type="SphereMesh" uid="uid://qab2cfu0420f" path="res://import/eye.tres" id="2_nd5d7"]
+[ext_resource type="Material" uid="uid://b3i5h8qjxhfla" path="res://3d_map/Character_nodes/char_materials/Eye_material.tres" id="3_byv1l"]
+
+[node name="Observer_model" type="Node3D" unique_id=1256760475]
+script = ExtResource("1_kykh1")
+
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=453949365]
+mesh = ExtResource("1_5d6ao")
+
+[node name="Eye_top" type="MeshInstance3D" parent="." unique_id=1526386945]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.8, 0)
+mesh = ExtResource("2_nd5d7")
+surface_material_override/0 = ExtResource("3_byv1l")
+
+[node name="Eye_forward" type="MeshInstance3D" parent="." unique_id=1334771534]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+mesh = ExtResource("2_nd5d7")
+surface_material_override/0 = ExtResource("3_byv1l")
+
+[node name="Eye_back" type="MeshInstance3D" parent="." unique_id=1232954542]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.8)
+mesh = ExtResource("2_nd5d7")
+surface_material_override/0 = ExtResource("3_byv1l")
+
+[node name="Eye_left" type="MeshInstance3D" parent="." unique_id=293099092]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.8, 0, 0)
+mesh = ExtResource("2_nd5d7")
+surface_material_override/0 = ExtResource("3_byv1l")
+
+[node name="Eye_right" type="MeshInstance3D" parent="." unique_id=1951934296]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.8, 0, 0)
+mesh = ExtResource("2_nd5d7")
+surface_material_override/0 = ExtResource("3_byv1l")

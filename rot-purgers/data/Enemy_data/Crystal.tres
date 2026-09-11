@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_1t5y0")
 name = "Crystal"
-char_class = "Granulocyte"
+char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("3_po2kh")
 attack_distance = 5

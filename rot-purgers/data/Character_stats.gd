@@ -42,6 +42,7 @@ func get_defence_stat(st : stats):
 @export var attack_distance : int = 1
 @export var attack_height : int = 10
 @export var counter : int = 1
+@export var trigger_distance : int = 0
 @export_group("", "")
 @export var node_UID : String
 @export var start_dir : Map_generator.directions
@@ -57,6 +58,7 @@ enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER }
 @export_storage var atlas_coords : Vector2i
 
 @export var spawn_node_UUID : String
+@export_storage var number_of_pc : int = 0
 
 func new() -> void:
 	health = max_health

@@ -47,6 +47,8 @@ var cell_to_object_node : Dictionary[Vector2i, Node2D] = {}
 var enemy_map_data : Dictionary[Vector2i, Character_stats] = {}
 var cell_to_enemy_node : Dictionary[Vector2i, Node2D] = {}
 
+var grid_lines : Array[Node2D] = []
+
 func _ready() -> void:
 	set_process(false)
 	await update_map_size()
@@ -68,6 +70,25 @@ func update_map_size():
 			if used_cells.has(cell):
 				continue
 			%Terrain_map.set_cell(cell, 0, Vector2i.ZERO)
+	for line in grid_lines:
+		line.queue_free()
+	grid_lines.clear()
+	for y in map_size.y:
+		if y == 0:
+			continue
+		if y % 9 == 0:
+			var line_h : Node2D = preload("uid://d2untjc3sn8ki").instantiate()
+			add_child(line_h)
+			grid_lines.append(line_h)
+			line_h.position = Vector2(0, y * 64)
+	for x in map_size.x:
+		if x == 0:
+			continue
+		if x % 9 == 0:
+			var line_h : Node2D = preload("uid://mtbs4k10yx0n").instantiate()
+			add_child(line_h)
+			grid_lines.append(line_h)
+			line_h.position = Vector2(x * 64, 0)
 
 func limit_camera():
 	var camera_size : Vector2 = Vector2(1920, 1080) / camera.zoom.x
@@ -192,6 +213,14 @@ func _process(delta: float) -> void:
 					remove_enemy(cell)
 
 func change_terrain(cell : Vector2i):
+	if get_viewport().gui_get_focus_owner() != null:
+		var obj = get_viewport().gui_get_focus_owner()
+		for le : LineEdit in cell_to_height_line.values():
+			if le == obj:
+				return
+		for le : LineEdit in cell_to_depth_line.values():
+			if le == obj:
+				return
 	#%Terrain_map.set_cell(cell, 0, selected_terrain_data.atlas_coord)
 	if !cell_to_terrain_node.has(cell):
 		spawn_texture_node(selected_terrain_data.sprite, cell, 1)
@@ -400,7 +429,7 @@ func change_enemy(cell : Vector2i):
 
 func spawn_texture_node(sprite : Texture2D, cell : Vector2i, id : int):
 	var enemy_node : Enemy_node = load("uid://crpsmfv7vh63b").instantiate()
-	add_child(enemy_node)
+	%Texture_holder.add_child(enemy_node)
 	enemy_node.position = 64 * cell + Vector2i(32, 32)
 	enemy_node.update_sprite(sprite)
 	match id:

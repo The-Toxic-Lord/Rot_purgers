@@ -553,6 +553,8 @@ func try_mouse_raycast():
 
 func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 	for cell in enemy_map:
+		if enemy_map[cell].number_of_pc > GlobalData.ally_team.size():
+			continue
 		var char_node : Character_node = load(enemy_map[cell].node_UID).duplicate(true).instantiate()
 		add_child(char_node)
 		char_node.position = map_cells[cell].position

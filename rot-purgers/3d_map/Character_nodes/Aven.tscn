@@ -376,10 +376,12 @@ _data = {
 &"Idle": ExtResource("3_87fr6")
 }
 
-[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node")]
+[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
 script = ExtResource("1_jo33x")
+texture = ExtResource("2_lxm4k")
 char_animation = NodePath("True_Aven/temp_anim")
 char_model_node = NodePath("True_Aven")
+skeleton = NodePath("True_Aven/Armature/Skeleton3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
 libraries/ = SubResource("AnimationLibrary_pnqru")

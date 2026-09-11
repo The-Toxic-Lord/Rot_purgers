@@ -168,8 +168,11 @@ func skill_damage(target : Character_node, attacker : Character_node, skill : Sk
 		_:
 			var damage := 0.0
 			damage += float(skill.get_attack_stat_used(attacker.stats))
-			damage -= float(skill.get_defence_stat_used(target.stats)) / 2
 			damage *= skill.damage
+			if target.is_defending:
+				damage -= float(skill.get_defence_stat_used(target.stats))
+			else:
+				damage -= float(skill.get_defence_stat_used(target.stats)) / 2
 			if damage < 0.0:
 				damage = 0.0
 			return damage
@@ -177,7 +180,10 @@ func skill_damage(target : Character_node, attacker : Character_node, skill : Sk
 func heal(order : Order_heal):
 	await get_tree().process_frame
 	var attacker : Character_node = get_node(order.attacker)
-	attacker.magic_cost(int(order.skill.magic_cost * GlobalData.magic_cost_adjustment))
+	if map_gen.map_data != null:
+		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.map_magic_cost_adjustment))
+	else:
+		attacker.magic_cost(int(order.skill.magic_cost))
 	attacker.heal(order.skill.heal_value)
 	await attacker.animation_ended
 	order_ended.emit()

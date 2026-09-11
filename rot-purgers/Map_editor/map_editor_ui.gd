@@ -27,7 +27,8 @@ signal generate_map
 
 @onready var stats_le : Array[LineEdit] = [
 	%Health_le, %Magic_le, %Strength_le, %Defence_le, %Magic_strenght_le,\
-	 %Accuracy_le, %Speed_le, %Move_speed_le, %Jump_height_le, %Attack_distance_le, %Counter_le
+	 %Accuracy_le, %Speed_le, %Move_speed_le, %Jump_height_le, %Attack_distance_le, 
+	%Counter_le, %trigger_dist, %number_of_pc
 ]
 
 var id_to_stat : Dictionary = {
@@ -42,6 +43,8 @@ var id_to_stat : Dictionary = {
 	8 : "jump_height",
 	9 : "attack_distance",
 	10 : "counter",
+	11 : "trigger_distance",
+	12 : "number_of_pc"
 }
 
 var enemy_data : Array[Character_stats]
@@ -61,6 +64,7 @@ func _ready() -> void:
 	for i in stats_le.size():
 		stats_le[i].text = str(enemy_data[0].get(id_to_stat[i]))
 	selected_enemy_data = enemy_data[0]
+	%Enemy_selector.get_popup().add_theme_constant_override("icon_max_width", 64)
 
 #region TERRAIN
 
@@ -129,12 +133,14 @@ func _on_generate_pressed() -> void:
 
 var save_location : String
 func _on_save_pressed() -> void:
+	%Save.release_focus()
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_SAVE_FILE
 	%FileDialog.popup()
 	await %FileDialog.file_selected
 	map_editor.save_map_data(%FileDialog.current_path)
 
 func _on_load_pressed() -> void:
+	%Load.release_focus()
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
 	%FileDialog.popup()
 	await %FileDialog.file_selected
@@ -193,7 +199,8 @@ func _on_open_maker_pressed() -> void:
 
 func _on_confirm_stats_pressed() -> void:
 	%Enemy_maker.hide()
-	mouse_dead_zone.remove_at(2)
+	if mouse_dead_zone.size() > 2:
+		mouse_dead_zone.remove_at(2)
 
 func load_skills():
 	var ch : Array[Node] = %Skill_box.get_children()

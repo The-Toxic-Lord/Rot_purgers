@@ -4,7 +4,8 @@ class_name Character_node
 
 @export var stats : Character_stats
 @export var base_stats : Character_stats
-@export var material : Material
+var material : Material
+@export var texture : Texture2D
 @export var char_animation : AnimationPlayer
 @export var char_model_node : Node3D
 @export var skeleton : Skeleton3D
@@ -70,6 +71,8 @@ func set_stats(char_stat : Character_stats):
 	base_stats = char_stat.duplicate()
 
 func _ready() -> void:
+	material = load("uid://djueu0s6ee3mk").duplicate(true)
+	material.set_shader_parameter("texture_albedo", texture)
 	if char_animation.has_animation("Idle"):
 		char_animation.play("Idle")
 	if skeleton != null:
@@ -86,6 +89,7 @@ func new_round():
 	can_undo_move = false
 	car_rearange = true
 	previous_map_pos = Vector2i(-1, -1)
+	
 	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.05), 0, stats.max_magic)
 
 func damage(value : float, display_mini := false):

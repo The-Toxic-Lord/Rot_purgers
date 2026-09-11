@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_phxyp")
 name = "Charge"
+magic_cost = 20
 skill_map = ExtResource("2_ip1hy")
 damage = 1.2
 stat_used = 4

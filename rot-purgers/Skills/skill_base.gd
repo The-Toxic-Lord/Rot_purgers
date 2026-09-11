@@ -25,6 +25,7 @@ enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN }
 @export var defence_stat : Character_stats.stats = Character_stats.stats.magic_strenght
 @export var animation_jump : bool = false
 @export var can_be_deflected : bool = false
+@export var line_of_sight_check := false
 #ADD @export var animation_name : String
 
 enum move { NONE, SELF, TARGET }
@@ -41,7 +42,8 @@ enum terrain_mods { MOVE, HEIGHT }
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["damage", "is_one_shot", "move_mode", "can_be_deflected",
-	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump"]:
+	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump",
+	"line_of_sight_check"]:
 		if skill_type != skill_types.ATTACK:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["heal_value"]:

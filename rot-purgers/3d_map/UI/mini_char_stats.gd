@@ -10,9 +10,11 @@ func update_stats(ch : Character_stats):
 	
 	%Health_bar.max_value = ch.max_health
 	%Health_bar.value = ch.health
+	%Health.text = str(ch.health)
 	
 	%Magic_bar.max_value = ch.max_magic
 	%Magic_bar.value = ch.magic
+	%Magic.text = str(ch.magic)
 	
 	if ch.sprite != null:
 		%Sprite.texture = ch.sprite

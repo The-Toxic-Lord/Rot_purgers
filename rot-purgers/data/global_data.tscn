@@ -5,12 +5,14 @@
 [ext_resource type="Resource" uid="uid://bkwt1lvhkpr71" path="res://data/Enemy_data/Crawler.tres" id="8_lbxat"]
 [ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="8_rdq6i"]
 [ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="9_17ap7"]
+[ext_resource type="Resource" uid="uid://d1esnga1gwa48" path="res://data/Enemy_data/Crawler_captain.tres" id="9_et4q3"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="9_idmur"]
+[ext_resource type="Resource" uid="uid://cocxooxgdh4c" path="res://data/Enemy_data/Observer.tres" id="10_7c7dr"]
 [ext_resource type="Resource" uid="uid://ggqhl80errbm" path="res://data/Enemy_data/Shapes.tres" id="12_rdq6i"]
 [ext_resource type="Resource" uid="uid://bw766n42tsyfr" path="res://data/Enemy_data/Crystal.tres" id="13_idmur"]
 
 [node name="Global_data" type="Node" unique_id=1876976633]
 script = ExtResource("1_215bx")
 ally_team = Array[ExtResource("6_lbxat")]([ExtResource("9_idmur"), ExtResource("8_rdq6i"), ExtResource("9_17ap7")])
-enemy_data = Array[ExtResource("6_lbxat")]([ExtResource("8_lbxat"), ExtResource("13_idmur"), ExtResource("12_rdq6i")])
+enemy_data = Array[ExtResource("6_lbxat")]([ExtResource("8_lbxat"), ExtResource("13_idmur"), ExtResource("12_rdq6i"), ExtResource("9_et4q3"), ExtResource("10_7c7dr")])
 map_data_path = Array[String](["uid://c2hd250kce25a", "uid://wjt5k3krqruv", "res://map_data_res/battle_01.tres", "res://map_data_res/battle_02.tres", "res://map_data_res/battle_03.tres", "res://dialogue/06.tres"])

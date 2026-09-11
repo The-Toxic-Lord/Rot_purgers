@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://d1esnga1gwa48"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_0je10"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="2_awt4t"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_s251k"]
+[ext_resource type="Resource" uid="uid://bdy6yy4aten05" path="res://Skills/Skill_res/Push.tres" id="3_awt4t"]
+[ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="4_s251k"]
+
+[resource]
+script = ExtResource("2_s251k")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("4_s251k")
+node_UID = "uid://b6n303wyg5i5g"
+potential_skills = Array[ExtResource("1_0je10")]([ExtResource("2_awt4t"), ExtResource("3_awt4t")])
+metadata/_custom_type_script = "uid://by1rq468n504l"

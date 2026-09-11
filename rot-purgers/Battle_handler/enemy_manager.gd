@@ -48,25 +48,29 @@ func end_enemy_turn():
 	enemies_turn_ended.emit()
 
 func handle_turret_AI(enemy : Character_node):
-	var a_star := AStarGrid2D.new()
-	a_star.region = map_gen.selector_boundary
-	a_star.cell_size = Vector2i(1,1)
-	a_star.default_compute_heuristic = AStarGrid2D.HEURISTIC_CHEBYSHEV
-	a_star.default_estimate_heuristic = AStarGrid2D.HEURISTIC_CHEBYSHEV
-	a_star.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	a_star.update()
 	
-	a_star.fill_solid_region(a_star.region, false)
-	a_star.update()
+	if AI_can_attack([enemy.map_pos], enemy):
+		return
 	
-	for ally in BattleHandler.allies:
-		var path : Array[Vector2i] = a_star.get_id_path(enemy.map_pos, ally.map_pos)
-		if path.size() <= enemy.stats.attack_distance + 1 + enemy.stats.move_speed:
-			if path.size() <= enemy.stats.attack_distance + 1:
-				var height : int = map_gen.terrain_map[ally.map_pos].height
-				if abs(height - map_gen.terrain_map[enemy.map_pos].height) < enemy.stats.attack_height:
-					BattleHandler.add_attack(enemy, ally)
-					return
+	#var a_star := AStarGrid2D.new()
+	#a_star.region = map_gen.selector_boundary
+	#a_star.cell_size = Vector2i(1,1)
+	#a_star.default_compute_heuristic = AStarGrid2D.HEURISTIC_CHEBYSHEV
+	#a_star.default_estimate_heuristic = AStarGrid2D.HEURISTIC_CHEBYSHEV
+	#a_star.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	#a_star.update()
+	#
+	#a_star.fill_solid_region(a_star.region, false)
+	#a_star.update()
+	#
+	#for ally in BattleHandler.allies:
+		#var path : Array[Vector2i] = a_star.get_id_path(enemy.map_pos, ally.map_pos)
+		#if path.size() <= enemy.stats.attack_distance + 1 + enemy.stats.move_speed:
+			#if path.size() <= enemy.stats.attack_distance + 1:
+				#var height : int = map_gen.terrain_map[ally.map_pos].height
+				#if abs(height - map_gen.terrain_map[enemy.map_pos].height) < enemy.stats.attack_height:
+					#BattleHandler.add_attack(enemy, ally)
+					#return
 	
 	#var target_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.attack_distance,
 	#true, true, enemy.stats.attack_height)
@@ -84,6 +88,11 @@ func handle_turret_AI(enemy : Character_node):
 func handle_normal_AI(enemy : Character_node):
 	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
 	false, true, enemy.stats.jump_height, false)
+	
+	if check_trigger(enemy):
+		enemy.stats.AI_type = Character_stats.AI_types.CHARGER
+		await handle_charger_AI(enemy)
+		return
 	
 	for cell in occupied_cells:
 		move_cells.erase(cell)
@@ -279,6 +288,7 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> b
 		# ADD difficulty paths
 		# on hight difficulties enemies must evade damage cells in already issued orders
 		# ADD maybe randomness to chosen skill among best, but this add time to calculation
+		# ADD dificulty priority to target weak targets
 		var max_targets := 0
 		var frienly_targets := 0
 		var chosen_possibility : Skill_able_data
@@ -433,6 +443,18 @@ char_map_pos : Vector2i) -> Array[Skill_able_data]:
 					dir_able[dir] = false
 				if !map_gen.map_cells.has(cell):
 					dir_able[dir] = false
+		if skill.line_of_sight_check:
+			var check := false
+			var attacker_pos : Vector3 = map_gen.map_cells[char_map_pos].position
+			for cell in damage_cells:
+				if map_gen.char_positions.has(cell):
+					if BattleHandler.allies.has(map_gen.char_positions[cell]):
+						var target_pos : Vector3 = map_gen.map_cells[cell].position
+						if pretend_fire(attacker_pos, target_pos):
+							check = true
+			if !check:
+				dir_able[dir] = false
+			pass
 		if dir_able[dir]:
 			var skill_able_data := Skill_able_data.new()
 			skill_able_data.skill = skill
@@ -556,6 +578,17 @@ func get_flow_distance(cell : Vector2i, target_cell : Vector2i) -> int:
 		if check:
 			break
 	return iter
+
+func check_trigger(enemy : Character_node) -> bool:
+	var trigger_cell := map_gen.get_flow_cells(enemy.map_pos, enemy.stats.trigger_distance)
+	for cell in trigger_cell:
+		if !map_gen.char_positions.has(cell):
+			continue
+		var char_node : Character_node = map_gen.char_positions[cell]
+		if BattleHandler.allies.has(char_node):
+			return true
+	return false
+
 
 
 

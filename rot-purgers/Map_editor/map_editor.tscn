@@ -38,6 +38,9 @@ zoom = Vector2(0.25, 0.25)
 unique_name_in_owner = true
 tile_set = ExtResource("5_wq8e7")
 
+[node name="Texture_holder" type="Node2D" parent="." unique_id=20628270]
+unique_name_in_owner = true
+
 [node name="Height_holder" type="Node" parent="." unique_id=1421234003]
 unique_name_in_owner = true
 

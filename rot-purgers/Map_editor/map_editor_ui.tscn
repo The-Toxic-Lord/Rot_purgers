@@ -322,11 +322,13 @@ theme_override_font_sizes/font_size = 50
 text = "Generate"
 
 [node name="Load" type="Button" parent="Control_menu/VBoxContainer" unique_id=1247232548]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Load"
 
 [node name="Save" type="Button" parent="Control_menu/VBoxContainer" unique_id=1103219209]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Save"
@@ -550,6 +552,20 @@ popup/item_3/id = 3
 popup/item_4/text = "Spawner"
 popup/item_4/id = 4
 
+[node name="Label14" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=733814698]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "AI trigger dist :"
+horizontal_alignment = 1
+
+[node name="trigger_dist" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1768558748]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
 [node name="Label13" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1298965090]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -572,7 +588,6 @@ popup/item_3/id = 3
 
 [node name="Confirm_stats" type="Button" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1434961458]
 layout_mode = 2
-offset_transform_enabled = true
 offset_transform_position = Vector2(0, 20)
 theme_override_font_sizes/font_size = 32
 text = "Confirm"
@@ -590,6 +605,20 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="Label9" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=2073472732]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Number of pc:"
+horizontal_alignment = 1
+
+[node name="number_of_pc" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=669204842]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
 
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_x" to="." method="_on_map_size_text_submitted" flags=18]
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_y" to="." method="_on_map_size_text_submitted" flags=18]
@@ -621,5 +650,7 @@ theme_override_constants/separation = 10
 [connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Attack_distance_le" to="." method="_on_stat_text_changed" flags=18]
 [connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Counter_le" to="." method="_on_stat_text_changed" flags=18]
 [connection signal="item_selected" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/AI_type" to="." method="_on_ai_type_item_selected"]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/trigger_dist" to="." method="_on_stat_text_changed" flags=18]
 [connection signal="item_selected" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/start_dir" to="." method="_on_start_dir_item_selected"]
 [connection signal="pressed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Confirm_stats" to="." method="_on_confirm_stats_pressed"]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3/number_of_pc" to="." method="_on_stat_text_changed" flags=18]
