@@ -3,60 +3,7 @@
 [ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_jvi4a"]
 [ext_resource type="Texture2D" uid="uid://3jetmtf7qtoe" path="res://blender_models/better_crawler2_Crawler_texture.png" id="2_6aou4"]
 [ext_resource type="Material" uid="uid://dk4wswuwcmvf" path="res://blender_models/new_materials/crawler_material.tres" id="2_jvi4a"]
-
-[sub_resource type="Animation" id="Animation_pnqru"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_pgqjc"]
-resource_name = "move_jump"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_boujc"]
-resource_name = "move_step"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqru"]
-_data = {
-&"RESET": SubResource("Animation_pnqru"),
-&"move_jump": SubResource("Animation_pgqjc"),
-&"move_step": SubResource("Animation_boujc")
-}
+[ext_resource type="PackedScene" uid="uid://d04mjgt04f7wr" path="res://3d_map/Character_nodes/Suka_playa.tscn" id="4_md6jv"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vjs3y"]
 resource_name = "better_crawler2_Roundcube"
@@ -383,14 +330,12 @@ _data = {
 &"Idle": SubResource("Animation_hk0vv")
 }
 
-[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node")]
+[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
 script = ExtResource("1_jvi4a")
 texture = ExtResource("2_6aou4")
 char_animation = NodePath("better_crawler2/temp_anim")
 char_model_node = NodePath("better_crawler2")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
-libraries/ = SubResource("AnimationLibrary_pnqru")
+skeleton = NodePath("better_crawler2/Armature/Skeleton3D")
 
 [node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
 unique_name_in_owner = true
@@ -574,3 +519,5 @@ skeleton = NodePath("..")
 [node name="temp_anim" type="AnimationPlayer" parent="better_crawler2" unique_id=95160462]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_83vke")
+
+[node name="AnimationPlayer" parent="." unique_id=825518852 instance=ExtResource("4_md6jv")]

@@ -4,7 +4,7 @@ class_name Character_node
 
 @export var stats : Character_stats
 @export var base_stats : Character_stats
-var material : Material
+@export var material : Material
 @export var texture : Texture2D
 @export var char_animation : AnimationPlayer
 @export var char_model_node : Node3D
@@ -491,7 +491,13 @@ func load_state(save_char_data : Save_char_data):
 func magic_cost(value : int):
 	stats.magic -= value
 
-
+func move_flyer(target_pos : Vector3):
+	var tween := create_tween()
+	tween.tween_property(self, "position", target_pos, 2.0)
+	tween.tween_callback(func() -> void:
+		can_undo_move = true
+		move_finished.emit()
+		)
 
 
 

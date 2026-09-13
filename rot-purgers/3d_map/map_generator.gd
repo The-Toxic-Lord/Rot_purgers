@@ -46,6 +46,11 @@ var spawn_zones : Dictionary[Vector2i, Node3D] = {}
 var exit_zones : Dictionary[Vector2i, Node3D] = {}
 signal map_loaded
 
+var void_cells : Dictionary[Vector2i, Map_cell] = {}
+var cell_to_multi_inst : Dictionary[Vector2i, MultiMeshInstance3D] = {}
+@onready var multi_mesh_instance_holder: Node3D = %MultiMeshInstance_holder
+
+
 func load_map(map : Map_data):
 	await get_tree().process_frame
 	BattleHandler.map_gen = self
@@ -60,48 +65,87 @@ func load_map(map : Map_data):
 	%Camera_position.cell_boundary = selector_boundary
 	await move_selector_to_spawn()
 	await spawn_objects()
-	await %Map_UI.populate_spawn_list()
+	await map_ui.populate_spawn_list()
 	
 	await BattleHandler.new_battle_start()
 	await spawn_enemies(map.enemy_map_data)
+	await make_multi_meshes()
 	map_loaded.emit()
 	if map_data.text_data != null:
 		freze_selector = true
 		DialogueBalloon.start(map_data.text_data, "map_dialogue")
 		await DialogueManager.dialogue_ended
 		freze_selector = false
+	%Camera_position.set_process(true)
 
-func start(_terrain_map : Dictionary[Vector2i, Terrain_data], 
-_object_map : Dictionary[Vector2i, Map_object], enemy_map : Dictionary[Vector2i, Character_stats]):
-	terrain_map = _terrain_map
-	object_map = _object_map
-	BattleHandler.map_gen = self
-	ObjectLink.map_gen = self
-	await calculate_boundary()
-	await spawn_cells()
-	%Camera_position.cell_boundary = selector_boundary
-	await move_selector_to_spawn()
-	await spawn_objects()
-	GlobalData.map_magic_cost_adjustment = 1.0
-	await %Map_UI.populate_spawn_list()
-	
-	await BattleHandler.new_battle_start()
-	await spawn_enemies(enemy_map)
-
-func spawn_cells():
+func make_multi_meshes():
+	var mat_to_multi : Dictionary[StandardMaterial3D, MultiMeshInstance3D] = {}
+	var mat_to_cells : Dictionary[StandardMaterial3D, Array] = {}
 	for cell in terrain_map:
 		var terr_data : Terrain_data = terrain_map[cell]
-		var map_cell : Map_cell = load("uid://b57jse1cfeshi").instantiate()
-		%Map_cell_holder.add_child(map_cell)
-		map_cells[cell] = map_cell
-		map_cell_to_data_cell[map_cell] = cell
-		map_cell.name = str(cell)
-		map_cell.camera_entered.connect(move_selector.bind(map_cell, false))
-		map_cell.position = Vector3(cell.x * cell_size, terr_data.height * 0.1 , cell.y * cell_size)
-		map_cell.make_meshes(terrain_map, cell)
+		var mat : StandardMaterial3D = terr_data.floor_material
+		if mat is not StandardMaterial3D:
+			continue
+		if !mat_to_multi.has(mat):
+			var multi_inst := MultiMeshInstance3D.new()
+			multi_inst.multimesh = MultiMesh.new()
+			var multi := multi_inst.multimesh
+			multi.transform_format = MultiMesh.TRANSFORM_3D
+			multi.mesh = load("uid://yobxpbt374w4")
+			multi_inst.material_override = mat
+			mat_to_multi[mat] = multi_inst
+			multi.instance_count = 1
+			multi_mesh_instance_holder.add_child(multi_inst)
+		else:
+			mat_to_multi[mat].multimesh.instance_count += 1
+		if mat_to_cells.has(mat):
+			mat_to_cells[mat].append(cell)
+		else:
+			mat_to_cells[mat] = [cell]
+		cell_to_multi_inst[cell] = mat_to_multi[mat]
+	
+	for multi_inst : MultiMeshInstance3D in mat_to_multi.values():
+		multi_inst.multimesh.visible_instance_count = multi_inst.multimesh.instance_count
+	
+	for mat in mat_to_multi:
+		var id := 0
+		for cell : Vector2i in mat_to_cells[mat]:
+			var multi : MultiMesh = cell_to_multi_inst[cell].multimesh
+			multi.set_instance_transform(id, Transform3D(Basis(), map_cells[cell].position))
+			map_cells[cell].multimesh_id = id
+			id += 1
+
+func hide_multi(cell : Vector2i, id : int):
+	var multi : MultiMesh = cell_to_multi_inst[cell].multimesh
+	multi.set_instance_transform(id, Transform3D(Basis(), Vector3(0,9999,0)))
+
+func spawn_cells():
+	void_cells = {}
+	for x in map_data.map_size.x:
+		for y in map_data.map_size.y:
+			var cell := Vector2i(x, y)
+			if terrain_map.has(cell):
+				var terr_data : Terrain_data = terrain_map[cell]
+				var map_cell : Map_cell = get_map_cell(cell)
+				map_cells[cell] = map_cell
+				map_cell.position = Vector3(cell.x * cell_size, terr_data.height * 0.1 , cell.y * cell_size)
+				map_cell.make_meshes(terrain_map, cell)
+			else:
+				var map_cell : Map_cell = get_map_cell(cell)
+				void_cells[cell] = map_cell
+				map_cell.make_void()
+				map_cell.position = Vector3(cell.x * cell_size, 0 , cell.y * cell_size)
+
+func get_map_cell(cell : Vector2i) -> Map_cell:
+	var map_cell : Map_cell = load("uid://b57jse1cfeshi").instantiate()
+	%Map_cell_holder.add_child(map_cell)
+	map_cell.name = str(cell)
+	map_cell.camera_entered.connect(move_selector.bind(map_cell, false))
+	map_cell_to_data_cell[map_cell] = cell
+	return map_cell
 
 func calculate_boundary():
-	var corners : Array[Vector2i] = [terrain_map.keys()[0], terrain_map.keys()[0]]
+	var corners : Array[Vector2i] = [Vector2i.ZERO, map_data.map_size]
 	for cell in terrain_map:
 		if corners[0].x > cell.x:
 			corners[0].x = cell.x
@@ -124,7 +168,7 @@ func move_selector_to_spawn():
 			break
 	%Selector.position = map_cells[focus_cell].position
 	selected_cell = focus_cell
-	%Map_UI.update_height(terrain_map[selected_cell].height)
+	map_ui.update_height(terrain_map[selected_cell].height)
 	%Camera_position.position = %Selector.position
 	%Camera_position.move_target = %Selector.position
 	%Camera_position.camera_cell = selected_cell
@@ -144,7 +188,7 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 				return
 	if state == states.SKILL_TERRAIN:
 		var mouse_pos : Vector2 = get_viewport().get_mouse_position()
-		var dead_zone : Rect2 = %Map_UI.dead_zone
+		var dead_zone : Rect2 = map_ui.dead_zone
 		if dead_zone.has_point(mouse_pos):
 			return
 	if mouse_move and %Camera_position.moving:
@@ -157,12 +201,14 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 	selected_cell = map_cell_to_data_cell[selected_map_cell]
 	if !mouse_move:
 		%Camera_position.camera_cell = selected_cell
-	%Map_UI.update_height(terrain_map[selected_cell].height)
-	
-	if char_positions.has(selected_cell):
-		%Map_UI.show_mini_stats(char_positions[selected_cell].stats)
+	if terrain_map.has(selected_cell):
+		map_ui.update_height(terrain_map[selected_cell].height)
 	else:
-		%Map_UI.hide_mini_stats()
+		map_ui.update_height(0)
+	if char_positions.has(selected_cell):
+		map_ui.show_mini_stats(char_positions[selected_cell].stats)
+	else:
+		map_ui.hide_mini_stats()
 	if state == states.SKILL:
 		if showing_move_zone:
 			if move_zones.has(selected_cell):
@@ -178,28 +224,28 @@ func check_accuracy_ui():
 		if char_positions.has(selected_cell) and select_zones.has(selected_cell):
 			if char_positions[selected_cell] != selected_char:
 				var targets : Array[Character_stats] = [char_positions[selected_cell].stats]
-				%Map_UI.show_accuracy(targets)
+				map_ui.show_accuracy(targets)
 		else:
-			%Map_UI.hide_accuracy()
+			map_ui.hide_accuracy()
 	if state == states.SKILL:
 		var targets : Array[Character_stats] = []
 		for cell in select_zones.keys():
 			if char_positions.has(cell):
 				targets.append(char_positions[cell].stats)
 		if !targets.is_empty():
-			%Map_UI.show_accuracy(targets, selected_skill)
+			map_ui.show_accuracy(targets, selected_skill)
 		else:
-			%Map_UI.hide_accuracy()
+			map_ui.hide_accuracy()
 
 func set_selector(cell : Vector2i):
 	selected_cell = cell
 	if map_cells.has(cell):
 		%Selector.position = map_cells[cell].position
-		%Map_UI.update_height(terrain_map[selected_cell].height)
+		map_ui.update_height(terrain_map[selected_cell].height)
 	else:
 		%Selector.position = Vector3(cell.x * 2.0, 0.0, cell.y * 2.0)
 	if char_positions.has(selected_cell):
-		%Map_UI.show_mini_stats(char_positions[selected_cell].stats)
+		map_ui.show_mini_stats(char_positions[selected_cell].stats)
 
 func turn_to_selection():
 	var angle : float
@@ -299,26 +345,26 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("game_menu") and state == states.SELECT:
 		state = states.MENU
-		%Map_UI.open_turn_menu()
+		map_ui.open_turn_menu()
 	if event.is_action_pressed("menu_back"):
 		match state:
 			states.MOVE, states.ATTACK:
 				state = states.MENU
 				clear_select_zone()
-				%Map_UI.open_char_action_menu(selected_char, 1)
-				%Map_UI.hide_accuracy()
+				map_ui.open_char_action_menu(selected_char, 1)
+				map_ui.hide_accuracy()
 			states.SELECT:
 				if event.device == 0:
 					return
 				state = states.MENU
-				%Map_UI.open_turn_menu()
+				map_ui.open_turn_menu()
 			states.MENU:
-				%Map_UI.close_all()
+				map_ui.close_all()
 			states.SKILL:
 				state = states.MENU
 				clear_select_zone()
-				%Map_UI.back_to_skill_selection()
-				%Map_UI.hide_accuracy()
+				map_ui.back_to_skill_selection()
+				map_ui.hide_accuracy()
 		return
 	if event is InputEventMouseButton or event.is_action_pressed("ui_accept"):
 		if event is InputEventMouseButton:
@@ -332,7 +378,7 @@ func _input(event: InputEvent) -> void:
 					if char_positions.has(selected_cell):
 						state = states.MENU
 						selected_char = char_positions[selected_cell]
-						%Map_UI.open_char_action_menu(char_positions[selected_cell])
+						map_ui.open_char_action_menu(char_positions[selected_cell])
 						return
 					if spawn_zones.has(selected_cell):
 						state = states.MENU
@@ -360,11 +406,13 @@ func _input(event: InputEvent) -> void:
 					else:
 						add_skill_order()
 				states.SKILL_TERRAIN:
+					if !terrain_map.has(selected_cell):
+						return
 					if !terrain_map[selected_cell].can_be_modified:
 						return
 					if selected_skill.terrain_mod == Skill_base.terrain_mods.HEIGHT:
 						var _mouse_pos : Vector2 = event.position
-						var dead_zone : Rect2 = %Map_UI.dead_zone
+						var dead_zone : Rect2 = map_ui.dead_zone
 						if dead_zone.has_point(_mouse_pos):
 							return
 						if terrain_mod_selected_cells.has(selected_cell):
@@ -383,10 +431,10 @@ func spawn_ally(ch : Character_stats):
 	char_node.is_enemy = false
 	char_positions[cell] = char_node
 	char_node.map_pos = selected_cell
-	%Map_UI.show_mini_stats(char_positions[selected_cell].stats)
+	map_ui.show_mini_stats(char_positions[selected_cell].stats)
 	BattleHandler.allies.append(char_node)
 	selected_char = char_node
-	%Map_UI.open_char_action_menu(char_node)
+	map_ui.open_char_action_menu(char_node)
 
 func spawn_select_zone(ch_node : Character_node, st : states):
 	var move_cells : Array[Vector2i] = []
@@ -510,7 +558,7 @@ func move_character():
 		return
 	if selected_char.can_attack:
 		state = states.MENU
-		%Map_UI.open_char_action_menu(selected_char)
+		map_ui.open_char_action_menu(selected_char)
 		return
 	state = states.SELECT
 
@@ -524,13 +572,10 @@ func attack_character():
 	selected_char.can_attack = false
 	selected_char.has_order = true
 	state = states.SELECT
-	%Map_UI.hide_accuracy()
+	map_ui.hide_accuracy()
 
 func state_select():
 	state = states.SELECT
-
-#func move_camera(ch_node : Character_node):
-	#%Camera_position.move_target = ch_node.position
 
 func set_camera_target(char_node : Character_node = null):
 	camera.follow_target = char_node
@@ -557,7 +602,10 @@ func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 			continue
 		var char_node : Character_node = load(enemy_map[cell].node_UID).duplicate(true).instantiate()
 		add_child(char_node)
-		char_node.position = map_cells[cell].position
+		if map_cells.has(cell):
+			char_node.position = map_cells[cell].position
+		else:
+			char_node.position = Vector3(cell.x * 2.0, enemy_map[cell].start_height * 0.1, cell.y * 2.0)
 		char_node.stats = enemy_map[cell]
 		char_node.stats.new()
 		char_node.name = enemy_map[cell].name
@@ -773,14 +821,14 @@ func add_skill_order():
 			move_cells.append(cell)
 	BattleHandler.add_skill(selected_char, selected_skill, damage_cells, move_cells, skill_animation_target_cell)
 	clear_select_zone()
-	%Map_UI.flush_skill_menu()
+	map_ui.flush_skill_menu()
 	selected_char.can_attack = false
 	selected_char.has_order = true
 	if selected_skill.skill_map.bound_to_char:
 		if selected_char.map_pos != start_skill_move_position:
 			finalize_skill_move()
 	state = states.SELECT
-	%Map_UI.hide_accuracy()
+	map_ui.hide_accuracy()
 
 func check_unbound_skill_height() -> bool:
 	for cell in select_zones:
@@ -806,7 +854,7 @@ func load_save():
 	await spawn_objects()
 	
 	GlobalData.ally_team = game_save.ally_team
-	await %Map_UI.populate_spawn_list()
+	await map_ui.populate_spawn_list()
 	
 	await BattleHandler.new_battle_start()
 	BattleHandler.order_array = game_save.orders
@@ -922,7 +970,7 @@ func add_zone(zone : Node3D, cell : Vector2i):
 		zone.position = Vector3(cell.x * cell_size, 0, cell.y * cell_size)
 	select_zones[cell] = zone
 	rename_zones()
-	%Map_UI.update_terrain_cells(terrain_mod_selected_cells.size())
+	map_ui.update_terrain_cells(terrain_mod_selected_cells.size())
 
 func rename_zones():
 	for i in terrain_mod_selected_cells.size():
@@ -939,6 +987,8 @@ func move_map_cell_height(id : int):
 	var height : int = terrain_mod_data[map_cell.cell_position].height
 	map_cell.update_height(height, select_zones[map_cell_to_data_cell[map_cell]])
 	# modify neib walls
+	hide_multi(map_cell.cell_position, map_cell.multimesh_id)
+	map_cell.show_floor()
 
 func cast_terrain_mod():
 	for cell in terrain_mod_data:
@@ -955,7 +1005,9 @@ func teleport_char(char_node : Character_node, new_cell : Vector2i):
 	char_node.map_pos = new_cell
 	char_positions[new_cell] = char_node
 
-
+func update_map_cells(dirs : Array[directions]):
+	for map_cell in map_cells.values():
+		map_cell.check_dirs(dirs)
 
 
 

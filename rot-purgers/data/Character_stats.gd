@@ -47,7 +47,7 @@ func get_defence_stat(st : stats):
 @export var node_UID : String
 @export var start_dir : Map_generator.directions
 
-enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER }
+enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER, FLYER }
 @export var AI_type : AI_types = AI_types.NORMAL:
 	set(value):
 		AI_type = value
@@ -59,6 +59,7 @@ enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER }
 
 @export var spawn_node_UUID : String
 @export_storage var number_of_pc : int = 0
+var start_height : int = 20
 
 func new() -> void:
 	health = max_health

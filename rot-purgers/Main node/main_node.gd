@@ -13,12 +13,11 @@ func _on_map_editor_pressed() -> void:
 	background.queue_free()
 	add_child(map_editor)
 
-func generate_map(terrain_map_data : Dictionary[Vector2i, Terrain_data],
- object_map_data : Dictionary[Vector2i, Map_object], enemy_map_data : Dictionary[Vector2i, Character_stats]):
+func generate_map(map_data : Map_data):
 	map_generator = load("uid://buyr0671du0pe").instantiate()
 	add_child(map_generator)
 	map_editor.queue_free()
-	map_generator.start(terrain_map_data, object_map_data, enemy_map_data)
+	map_generator.load_map(map_data)
 
 func _on_load_pressed() -> void:
 	if ResourceLoader.exists("user://save.tres"):

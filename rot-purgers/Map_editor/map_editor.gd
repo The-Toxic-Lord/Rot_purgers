@@ -319,7 +319,13 @@ func make_cell_depth(cell : Vector2i, _depth : int = selected_depth):
 	cell_to_height_line[cell].position -= Vector2(0, 16)
 
 func _on_map_editor_ui_generate_map() -> void:
-	main_node.generate_map(terrain_map_data, object_map_data, enemy_map_data)
+	var map_data := Map_data.new()
+	map_data.terrain_map_data = terrain_map_data
+	map_data.object_map_data = object_map_data
+	map_data.enemy_map_data = enemy_map_data
+	map_data.map_size = map_size
+	
+	main_node.generate_map(map_data)
 
 func hide_height():
 	for le : LineEdit in cell_to_height_line.values():
@@ -418,8 +424,8 @@ func change_data_depth(new_text : String, cell : Vector2i):
 		return
 
 func change_enemy(cell : Vector2i):
-	if !terrain_map_data.has(cell):
-		return
+	#if !terrain_map_data.has(cell):
+		#return
 	if enemy_map_data.has(cell):
 		%Map_Editor_UI.load_enemy_data(enemy_map_data[cell])
 	else:

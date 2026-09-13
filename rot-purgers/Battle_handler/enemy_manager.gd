@@ -27,9 +27,18 @@ func start_enemy_turn():
 				await handle_charger_AI(enemy)
 			Character_stats.AI_types.SPAWNER:
 				await handle_spawner_AI(enemy)
+			Character_stats.AI_types.FLYER:
+				await handle_Flyer_IA(enemy)
 	for enemy in char_planned_moves:
-		enemy.make_planned_move(char_planned_moves[enemy])
-		map_gen.update_char_position(enemy, char_planned_moves[enemy].target_cell)
+		match enemy.stats.AI_type:
+			Character_stats.AI_types.FLYER:
+				enemy.move_flyer(char_planned_moves[enemy].target_pos)
+				var pos : Vector3 = char_planned_moves[enemy].target_pos
+				var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
+				map_gen.update_char_position(enemy, cell)
+			_:
+				enemy.make_planned_move(char_planned_moves[enemy])
+				map_gen.update_char_position(enemy, char_planned_moves[enemy].target_cell)
 	await get_tree().process_frame
 	while true:
 		await get_tree().create_timer(0.1).timeout
@@ -163,7 +172,8 @@ func handle_charger_AI(enemy : Character_node):
 			move_cell = cell
 	
 	if move_cell != enemy.map_pos:
-		var move := Planned_move_data.new(move_cell, move_cells, Map_generator.directions.S)
+		var move := Planned_move_data.new()
+		move.set_target(move_cell, move_cells, Map_generator.directions.S)
 		char_planned_moves[enemy] = move
 		
 		occupied_cells.erase(enemy.map_pos)
@@ -246,6 +256,117 @@ func handle_spawner_AI(enemy : Character_node):
 		#ADD
 		pass
 
+func handle_Flyer_IA(enemy : Character_node):
+	var pos_pos : Array[Vector3] = get_possible_flyer_possition(enemy)
+	var desired_height : float = find_flyer_desired_height(enemy)
+	
+	if await flyer_can_attack(enemy, pos_pos, desired_height):
+		return
+	
+	await move_closest_position(pos_pos, enemy)
+
+func move_closest_position(pos_pos : Array[Vector3], enemy : Character_node):
+	var min_dist : float = 999999.0
+	var selected_pos := Vector3.ZERO
+	for pos in pos_pos:
+		for ally in BattleHandler.allies:
+			var dist : float = (pos - ally.position).length()
+			if dist < min_dist:
+				min_dist = dist
+				selected_pos = pos
+	if min_dist != 999999.0:
+		await move_flyer(selected_pos, enemy)
+
+func flyer_can_attack(enemy : Character_node, pos_pos : Array[Vector3], desired_height : float) -> bool:
+	var possible_pos : Dictionary[Vector3, Array] = {}
+	for pos in pos_pos:
+		for ally in BattleHandler.allies:
+			if (ally.position - pos).length() > enemy.stats.attack_distance:
+				continue
+			if pretend_fire(pos, ally.position):
+				if possible_pos.has(pos):
+					possible_pos[pos].append(ally)
+				else:
+					possible_pos[pos] = [ally]
+				continue
+	
+	if !possible_pos.is_empty():
+		for pos in possible_pos:
+			if pos.y == desired_height:
+				await move_flyer(pos, enemy)
+				BattleHandler.add_attack(enemy, possible_pos[pos].pick_random())
+				return true
+		var pos = possible_pos.keys().pick_random()
+		await move_flyer(pos, enemy)
+		BattleHandler.add_attack(enemy, possible_pos[pos].pick_random())
+		return true
+	
+	return false
+
+func move_flyer(pos : Vector3, enemy : Character_node):
+	var pl_pos := Planned_move_data.new()
+	pl_pos.set_3d(pos)
+	char_planned_moves[enemy] = pl_pos
+	
+	occupied_cells.erase(enemy.map_pos)
+	var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
+	occupied_cells.append(cell)
+
+func find_flyer_desired_height(enemy : Character_node) -> float:
+	var desired_height : float
+	var cells := map_gen.get_flow_cells(
+		enemy.map_pos, enemy.stats.move_speed, true, true,
+		9999, true, true, true
+	)
+	var h_d : Dictionary[float, int] = {}
+	for cell in cells:
+		if !map_gen.map_cells.has(cell):
+			continue
+		if h_d.has(map_gen.map_cells[cell].position.y):
+			h_d[map_gen.map_cells[cell].position.y] += 1
+		else:
+			h_d[map_gen.map_cells[cell].position.y] = 1
+	var d_h_num := 0
+	for height : float in h_d.keys():
+		if d_h_num < h_d[height]:
+			desired_height = height
+			d_h_num = h_d[height]
+	return desired_height
+
+var neib_3d : Array[Vector3] = [
+	Vector3i.UP, Vector3i.DOWN, Vector3i.FORWARD * 2.0, 
+	Vector3i.BACK * 2.0, Vector3i.RIGHT * 2.0, Vector3i.LEFT * 2.0
+]
+func get_possible_flyer_possition(enemy : Character_node) -> Array[Vector3]:
+	var distance : int = enemy.stats.move_speed * enemy.stats.jump_height
+	var border : Array[Vector3] = [enemy.position]
+	var checked_pos : Array[Vector3] = []
+	while distance > 0:
+		var new_border : Array[Vector3] = []
+		for pos in border:
+			checked_pos.append(pos)
+			for neib in neib_3d:
+				var new_pos : Vector3 = pos + neib
+				if checked_pos.has(new_pos):
+					continue
+				if new_border.has(new_pos):
+					continue
+				new_border.append(new_pos)
+		border = new_border
+		distance -= 10
+	checked_pos.append_array(border)
+	var delete_3d : Array[Vector3] = []
+	for pos in checked_pos:
+		var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
+		if !map_gen.map_cells.has(cell):
+			continue
+		if pos.y < map_gen.map_cells[cell].position.y or occupied_cells.has(cell):
+			delete_3d.append(pos)
+	for pos in delete_3d:
+		checked_pos.erase(pos)
+	
+	return checked_pos
+
 func AI_can_spawn(move_cells : Array[Vector2i], enemy : Character_node) -> bool:
 	move_cells.shuffle()
 	for cell in move_cells:
@@ -260,7 +381,8 @@ func AI_can_spawn(move_cells : Array[Vector2i], enemy : Character_node) -> bool:
 			occupied_cells.append(new_cell)
 			var enemy_stats : Character_stats = ResourceLoader.load(enemy.stats.spawn_node_UUID)
 			var dir : Map_generator.directions = map_gen.vector_to_dir[n_c]
-			var move := Planned_move_data.new(cell, move_cells, dir)
+			var move := Planned_move_data.new()
+			move.set_target(cell, move_cells, dir)
 			char_planned_moves[enemy] = move
 			BattleHandler.add_spawn(enemy_stats, new_cell, dir, enemy)
 			
@@ -308,10 +430,12 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> b
 		var move : Planned_move_data
 		
 		if chosen_possibility.skill.skill_map.bound_to_char:
-			move = Planned_move_data.new(chosen_possibility.used_position, 
+			move = Planned_move_data.new()
+			move.set_target(chosen_possibility.used_position, 
 		move_cells, chosen_possibility.dir)
 		else:
-			move = Planned_move_data.new(chosen_possibility.used_position, 
+			move = Planned_move_data.new()
+			move.set_target(chosen_possibility.used_position, 
 		move_cells, get_new_dir(chosen_possibility.used_position, chosen_possibility.target_cell))
 		
 		char_planned_moves[enemy] = move
@@ -341,7 +465,8 @@ func AI_can_attack(move_cells : Array[Vector2i], enemy : Character_node) -> bool
 		
 		var dir : Map_generator.directions = get_new_dir(chosen_possibility, target)
 		
-		var move := Planned_move_data.new(chosen_possibility, 
+		var move := Planned_move_data.new()
+		move.set_target(chosen_possibility, 
 		move_cells, dir)
 		char_planned_moves[enemy] = move
 		occupied_cells.erase(enemy.map_pos)

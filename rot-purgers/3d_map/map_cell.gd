@@ -27,12 +27,14 @@ var neib_reverse : Dictionary[Vector2i, bool] = {
 	Vector2i.DOWN : false,
 	Vector2i.LEFT : false
 }
-var neib_to_wall : Dictionary[Vector2i, MeshInstance3D] = {}
+
+var multimesh_id : int
 
 signal camera_entered
 
 var walls : Dictionary[Map_generator.directions, MeshInstance3D] = {}
 var wall_is_limited : Dictionary[MeshInstance3D, bool] = {}
+var walls_lod : Dictionary[Map_generator.directions, MeshInstance3D] = {}
 
 func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector2i):
 	cell_position = cell
@@ -72,10 +74,11 @@ func change_terrain_check():
 		%Terrain_check.position.y = -%Terrain_collision.shape.size.y / 2
 
 func load_materials(terrain_data : Terrain_data):
-	var floor_mat : Material = terrain_data.floor_material.duplicate(true)
+	var floor_mat : Material = terrain_data.floor_material
 	if floor_mat is ShaderMaterial:
 		floor_mat.set_shader_parameter("Direction", -GlobalData.dir_to_vect[terrain_data.shader_dir])
 	%Floor.set_surface_override_material(0, floor_mat)
+	#%Floor_lod.set_surface_override_material(0, floor_mat)
 	for dir in walls.keys():
 		var wall : MeshInstance3D = walls[dir]
 		var wall_material : Material = terrain_data.wall_material.duplicate(true)
@@ -94,14 +97,49 @@ func load_materials(terrain_data : Terrain_data):
 			else:
 				wall_material.set_shader_parameter("Direction", Vector2i(0, -1))
 		wall.set_surface_override_material(0, wall_material)
+		#wall = walls_lod[dir]
+		#wall.set_surface_override_material(0, wall_material)
 
 func make_wall(neib : Vector2i, depth : float) -> MeshInstance3D:
 	var wall := MeshInstance3D.new()
+	wall.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(wall)
-	walls[BattleHandler.map_gen.vector_to_dir[neib]] = wall
+	walls[ObjectLink.map_gen.vector_to_dir[neib]] = wall
 	wall.mesh = make_wall_mesh(neib_to_side[neib], depth, neib_reverse[neib])
-	neib_to_wall[neib] = wall
+	#wall.hide()
+	#
+	#var wall_lod := MeshInstance3D.new()
+	#wall_lod.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	#add_child(wall_lod)
+	#walls_lod[ObjectLink.map_gen.vector_to_dir[neib]] = wall_lod
+	#wall_lod.mesh = make_wall_mesh_lod(wall.mesh)
 	return wall
+
+func make_wall_mesh_lod(wall_mesh : ArrayMesh):
+	var array_mesh := ArrayMesh.new()
+	var surface_array := []
+	surface_array.resize(Mesh.ARRAY_MAX)
+	surface_array[Mesh.ARRAY_VERTEX] = PackedVector3Array()
+	surface_array[Mesh.ARRAY_INDEX] = PackedInt32Array()
+	surface_array[Mesh.ARRAY_TEX_UV] = PackedVector2Array()
+	
+	var temp_vert := get_mesh_vertex(wall_mesh)
+	vertex_array = surface_array[Mesh.ARRAY_VERTEX]
+	index_array = surface_array[Mesh.ARRAY_INDEX]
+	texture_uv_array = surface_array[Mesh.ARRAY_TEX_UV]
+	
+	vertex_array.append(temp_vert[0])
+	vertex_array.append(temp_vert[8])
+	vertex_array.append(temp_vert[72])
+	vertex_array.append(temp_vert[80])
+	index_array.append_array([0,1,2,1,3,2])
+	texture_uv_array.append_array([Vector2(1,1), Vector2(0,1), Vector2(1,0), Vector2(0,0)])
+	
+	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface_array)
+	var mdt := MeshDataTool.new()
+	mdt.create_from_surface(array_mesh, 0)
+	array_mesh = normalize(mdt, array_mesh)
+	return array_mesh
 
 func make_wall_mesh(_wall_border : Array[int], depth : float, reverse := true) -> ArrayMesh:
 	var array_mesh := ArrayMesh.new()
@@ -162,7 +200,7 @@ func add_noise(length : int,resolution : int):
 				i += 1
 				continue
 			var vertex : Vector3 = vertex_array[i]
-			var d : Vector2 = noise.get_noise_3dv(vertex) * normal * 0.1
+			var d : Vector2 = noise.get_noise_3dv(vertex) * normal * 0.2
 			vertex.x += d.x
 			vertex.z += d.y
 			vertex_array[i] = vertex
@@ -228,13 +266,17 @@ func make_floor_mesh():
 			index_array.append_array(index)
 			i += 1
 	
+	
+	var lod : Dictionary[float, PackedInt32Array] = {}
+	var lod_vert_id : PackedInt32Array = [0, resolution*2, roundi(pow(resolution*2+1,2)-1) - resolution*2, roundi(pow(resolution*2+1,2)-1)]
+	lod[1.0] = lod_vert_id
+	
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface_array)
 	var mdt := MeshDataTool.new()
 	mdt.create_from_surface(array_mesh, 0)
 	array_mesh = normalize(mdt, array_mesh)
 	
 	array_mesh = change_floor_elevation(array_mesh, FastNoiseLite.new(), 0.2, Vector3.ZERO)
-	
 	%Floor.mesh = array_mesh
 
 func normalize(mdt : MeshDataTool, mesh : ArrayMesh) -> ArrayMesh:
@@ -433,11 +475,21 @@ func _on_mouse_detector_body_entered(body: Node3D) -> void:
 	if body.get_parent() is Camera_controller:
 		camera_entered.emit()
 
+func check_dirs(dirs : Array[Map_generator.directions]):
+	if ObjectLink.map_gen.terrain_map[cell_position].depth == 0:
+		return
+	for dir in walls.keys():
+		if dirs.has(dir):
+			walls[dir].show()
+		else:
+			walls[dir].hide()
 
+func make_void():
+	%Floor.queue_free()
+	%Terrain_check.queue_free()
 
-
-
-
+func show_floor():
+	%Floor.show()
 
 
 #

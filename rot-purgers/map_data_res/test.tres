@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Map_data" format=3]
+
+[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_bwagn"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_w0uhg"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="3_af471"]
+[ext_resource type="Script" path="res://map_data.gd" id="4_sdqp0"]
+[ext_resource type="Script" path="res://data/terrain_data.gd" id="5_yv46m"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_floor.tres" id="6_o8xut"]
+[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="7_tcgx4"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_vcwp5"]
+
+[sub_resource type="Resource" id="Resource_7lsq0"]
+script = ExtResource("2_w0uhg")
+name = "spawn_zone"
+sprite = ExtResource("3_af471")
+node_UID = "uid://b77u0ogcrnmlx"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_le6x1"]
+script = ExtResource("5_yv46m")
+sprite = ExtResource("7_tcgx4")
+height = 60
+floor_material = ExtResource("6_o8xut")
+wall_material = ExtResource("8_vcwp5")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[resource]
+script = ExtResource("4_sdqp0")
+map_size = Vector2i(30, 30)
+terrain_map_data = Dictionary[Vector2i, ExtResource("5_yv46m")]({
+Vector2i(14, 15): SubResource("Resource_le6x1")
+})
+object_map_data = Dictionary[Vector2i, ExtResource("2_w0uhg")]({
+Vector2i(14, 15): SubResource("Resource_7lsq0")
+})

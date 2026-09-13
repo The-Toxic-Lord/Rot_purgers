@@ -34,6 +34,7 @@ var cell_boundary : Rect2i
 var zoom := 0
 
 func _ready() -> void:
+	set_process(false)
 	move_target = position
 	#rotation_target = rotation_degrees.y
 	zoom_target = camera.position.z
@@ -112,6 +113,7 @@ func _process(delta: float) -> void:
 	handle_movement()
 	handle_height()
 	handle_rotation()
+	handle_dir()
 	handle_zoom(delta)
 	camera.position.z = lerp(camera.position.z, zoom_target, 0.1)
 
@@ -171,6 +173,28 @@ func handle_zoom(delta : float):
 		-1:
 			zoom_target += zoom_speed * delta * 10
 	zoom_target = clamp(zoom_target, zoom_min, zoom_max)
+
+
+var dirs : Array[Map_generator.directions] = []
+func handle_dir():
+	var new_dirs : Array[Map_generator.directions] = []
+	var angle : float = rad_to_deg(rotation.y)
+	if angle > -90 and angle < 90:
+		new_dirs.append(Map_generator.directions.S)
+	if angle < 0 and angle > -180:
+		new_dirs.append(Map_generator.directions.W)
+	if angle < 180 and angle > 0:
+		new_dirs.append(Map_generator.directions.E)
+	if angle > 90 or angle < -90:
+		new_dirs.append(Map_generator.directions.N)
+	if dirs != new_dirs:
+		dirs = new_dirs
+		ObjectLink.map_gen.update_map_cells(dirs)
+
+
+
+
+
 
 
 

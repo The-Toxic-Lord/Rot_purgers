@@ -540,7 +540,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
-item_count = 5
+item_count = 6
 popup/item_0/text = "Turret"
 popup/item_0/id = 1
 popup/item_1/text = "Normal"
@@ -551,6 +551,8 @@ popup/item_3/text = "Meatwall"
 popup/item_3/id = 3
 popup/item_4/text = "Spawner"
 popup/item_4/id = 4
+popup/item_5/text = "Flyer"
+popup/item_5/id = 5
 
 [node name="Label14" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=733814698]
 layout_mode = 2
@@ -613,6 +615,20 @@ text = "Number of pc:"
 horizontal_alignment = 1
 
 [node name="number_of_pc" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=669204842]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="Label10" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=608077664]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Start height:"
+horizontal_alignment = 1
+
+[node name="Start_height" type="LineEdit" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=1663623143]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20

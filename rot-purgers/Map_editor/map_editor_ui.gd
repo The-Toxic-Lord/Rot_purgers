@@ -28,7 +28,7 @@ signal generate_map
 @onready var stats_le : Array[LineEdit] = [
 	%Health_le, %Magic_le, %Strength_le, %Defence_le, %Magic_strenght_le,\
 	 %Accuracy_le, %Speed_le, %Move_speed_le, %Jump_height_le, %Attack_distance_le, 
-	%Counter_le, %trigger_dist, %number_of_pc
+	%Counter_le, %trigger_dist, %number_of_pc, %Start_height
 ]
 
 var id_to_stat : Dictionary = {
@@ -44,7 +44,8 @@ var id_to_stat : Dictionary = {
 	9 : "attack_distance",
 	10 : "counter",
 	11 : "trigger_distance",
-	12 : "number_of_pc"
+	12 : "number_of_pc",
+	13 : "start_height"
 }
 
 var enemy_data : Array[Character_stats]
@@ -165,16 +166,9 @@ func _on_stat_text_changed(new_text: String, source: LineEdit) -> void:
 		return
 	source.text = str(selected_enemy_data.get(id_to_stat[id]))
 
-var id_to_AI_type : Dictionary[int, Character_stats.AI_types] = {
-	0 : Character_stats.AI_types.TURRET,
-	1 : Character_stats.AI_types.NORMAL,
-	2 : Character_stats.AI_types.CHARGER,
-	3 : Character_stats.AI_types.MEATWALL,
-	4 : Character_stats.AI_types.SPAWNER
-}
-
 func _on_ai_type_item_selected(index: int) -> void:
-	selected_enemy_data.AI_type = id_to_AI_type[index]
+	@warning_ignore("int_as_enum_without_cast")
+	selected_enemy_data.AI_type = index
 
 var dir_arr : Array[Map_generator.directions] = [Map_generator.directions.N, Map_generator.directions.E, 
 Map_generator.directions.S, Map_generator.directions.W]

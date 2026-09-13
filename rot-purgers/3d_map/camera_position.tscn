@@ -14,7 +14,7 @@ unique_name_in_owner = true
 
 [node name="Camera_zoom_pivot" type="Node3D" parent="Camera_rotation_x" unique_id=870659548]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 10, 10)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_rotation_x/Camera_zoom_pivot" unique_id=1752413763]
 unique_name_in_owner = true
