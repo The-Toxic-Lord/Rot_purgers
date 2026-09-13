@@ -8,7 +8,7 @@ class_name Character_node
 @export var texture : Texture2D
 @export var char_animation : AnimationPlayer
 @export var char_model_node : Node3D
-@export var skeleton : Skeleton3D
+@export var skeleton : Node3D
 @export var attack_trail : Weapon_trail
 
 var can_move := true
@@ -373,10 +373,22 @@ func attack(target_cell : Vector2i):
 			char_animation.play("Attack_1_back")
 	attack_finished.emit()
 
-func skill(target_cell : Vector2i, skill_is_jump := false):
+func skill(target_cell : Vector2i, skill_data : Skill_base, skill_is_jump := false):
 	await get_tree().process_frame
 	turn_to_target(target_cell)
 	await self.direction_changed
+	
+	if skill_data.animation_node_UID != "":
+		var skill_node = load(skill_data.animation_node_UID).instantiate()
+		add_child(skill_node)
+		var pos : Vector3
+		if ObjectLink.map_gen.map_cells.has(target_cell):
+			pos = ObjectLink.map_gen.map_cells[target_cell].position
+		else:
+			pos = Vector3(target_cell.x * 2.0, 0, target_cell.y * 2.0)
+		skill_node.start(pos)
+		await skill_node.animation_finished
+	
 	if skill_is_jump:
 		animate_skill_jump(target_cell)
 	else:

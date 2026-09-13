@@ -71,7 +71,7 @@ func get_attack_stat_used(st : Character_stats) -> int:
 func get_defence_stat_used(st : Character_stats) -> int:
 	return st.get(Character_stats.stats.keys()[defence_stat])
 
-
+@export var animation_node_UID : String
 
 
 

@@ -361,6 +361,7 @@ func _input(event: InputEvent) -> void:
 			states.MENU:
 				map_ui.close_all()
 			states.SKILL:
+				move_char_skill_back()
 				state = states.MENU
 				clear_select_zone()
 				map_ui.back_to_skill_selection()
@@ -563,6 +564,7 @@ func move_character():
 	state = states.SELECT
 
 func update_char_position(char_node : Character_node, new_pos : Vector2i):
+	char_positions.erase(char_node.map_pos)
 	char_positions[new_pos] = char_node
 	char_node.map_pos = new_pos
 
@@ -601,13 +603,16 @@ func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 		if enemy_map[cell].number_of_pc > GlobalData.ally_team.size():
 			continue
 		var char_node : Character_node = load(enemy_map[cell].node_UID).duplicate(true).instantiate()
+		char_node.stats = enemy_map[cell]
+		char_node.stats.new()
 		add_child(char_node)
 		if map_cells.has(cell):
 			char_node.position = map_cells[cell].position
+			if char_node.stats.AI_type == Character_stats.AI_types.FLYER or\
+			char_node.stats.AI_type == Character_stats.AI_types.FLYER_CHARGE:
+				char_node.position.y = char_node.stats.start_height * 0.1
 		else:
 			char_node.position = Vector3(cell.x * 2.0, enemy_map[cell].start_height * 0.1, cell.y * 2.0)
-		char_node.stats = enemy_map[cell]
-		char_node.stats.new()
 		char_node.name = enemy_map[cell].name
 		char_node.map_pos = cell
 		if map_data != null:
@@ -673,8 +678,7 @@ func make_bound_skill(skill : Skill_base):
 	
 	if selected_char.current_direction != Map_generator.directions.N:
 		rotate_skill(directions.N)
-	if selected_char.can_move:
-		start_skill_move_position = selected_char.map_pos
+	start_skill_move_position = selected_char.map_pos
 
 func make_unboun_skill(skill : Skill_base):
 	var i := 0
@@ -764,18 +768,22 @@ func move_skill(new_pos : Vector2i, old_pos : Vector2i):
 		if unbound_spell_range.has(cell):
 			unbound_spell_range[cell].show()
 	
+	var temp_cell : Vector2i
 	for cell in select_zones:
 		var new_pos_cell := cell + dir
 		if cell == skill_animation_target_cell:
-			skill_animation_target_cell = new_pos_cell
+			temp_cell = new_pos_cell
 		if map_cells.has(new_pos_cell):
 			select_zones[cell].position = map_cells[new_pos_cell].position
 			new_select_zones[new_pos_cell] = select_zones[cell]
 		else:
 			select_zones[cell].position = Vector3(new_pos_cell.x * cell_size, 0, new_pos_cell.y * cell_size)
 			new_select_zones[new_pos_cell] = select_zones[cell]
+	
+	skill_animation_target_cell = temp_cell
 	select_zones.clear()
 	select_zones = new_select_zones
+	
 	
 	
 	for cell in select_zones:
@@ -903,6 +911,7 @@ func move_char_skill():
 	move_skill(char_skill_move_cell, prev_cell)
 
 func pause_skill_move():
+	selected_char.previous_map_pos = selected_char.map_pos
 	selected_char.map_pos = char_skill_move_cell
 
 func finalize_skill_move():
@@ -1009,7 +1018,9 @@ func update_map_cells(dirs : Array[directions]):
 	for map_cell in map_cells.values():
 		map_cell.check_dirs(dirs)
 
-
+func move_char_skill_back():
+	selected_char.position = map_cells[selected_char.previous_map_pos].position
+	selected_char.map_pos = selected_char.previous_map_pos
 
 
 

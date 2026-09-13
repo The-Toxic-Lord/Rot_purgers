@@ -27,11 +27,11 @@ func start_enemy_turn():
 				await handle_charger_AI(enemy)
 			Character_stats.AI_types.SPAWNER:
 				await handle_spawner_AI(enemy)
-			Character_stats.AI_types.FLYER:
+			Character_stats.AI_types.FLYER, Character_stats.AI_types.FLYER_CHARGE:
 				await handle_Flyer_IA(enemy)
 	for enemy in char_planned_moves:
 		match enemy.stats.AI_type:
-			Character_stats.AI_types.FLYER:
+			Character_stats.AI_types.FLYER, Character_stats.AI_types.FLYER_CHARGE:
 				enemy.move_flyer(char_planned_moves[enemy].target_pos)
 				var pos : Vector3 = char_planned_moves[enemy].target_pos
 				var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
@@ -261,9 +261,11 @@ func handle_Flyer_IA(enemy : Character_node):
 	var desired_height : float = find_flyer_desired_height(enemy)
 	
 	if await flyer_can_attack(enemy, pos_pos, desired_height):
+		enemy.stats.AI_type = Character_stats.AI_types.FLYER_CHARGE
 		return
 	
-	await move_closest_position(pos_pos, enemy)
+	if enemy.stats.AI_type == Character_stats.AI_types.FLYER_CHARGE:
+		await move_closest_position(pos_pos, enemy)
 
 func move_closest_position(pos_pos : Array[Vector3], enemy : Character_node):
 	var min_dist : float = 999999.0
@@ -360,7 +362,7 @@ func get_possible_flyer_possition(enemy : Character_node) -> Array[Vector3]:
 		var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
 		if !map_gen.map_cells.has(cell):
 			continue
-		if pos.y < map_gen.map_cells[cell].position.y or occupied_cells.has(cell):
+		if pos.y <= map_gen.map_cells[cell].position.y or occupied_cells.has(cell):
 			delete_3d.append(pos)
 	for pos in delete_3d:
 		checked_pos.erase(pos)

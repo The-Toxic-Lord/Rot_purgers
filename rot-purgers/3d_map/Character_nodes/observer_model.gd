@@ -33,7 +33,8 @@ func rotate_eye(eye : MeshInstance3D):
 	tween.tween_property(eye, "quaternion", target_quat[eye], rot_time)
 	tween.tween_callback(rotate_eye.bind(eye))
 
-
+func stop_eye(eye : MeshInstance3D):
+	eye_tweens[eye].kill()
 
 
 

@@ -6,3 +6,4 @@
 script = ExtResource("1_up0o8")
 bound_to_char = true
 damage_cells = Array[Vector2i]([Vector2i(0, -3), Vector2i(-1, -3), Vector2i(0, -4), Vector2i(0, -2), Vector2i(1, -3)])
+animation_target = Vector2i(0, -3)

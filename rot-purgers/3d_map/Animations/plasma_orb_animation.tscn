@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bp5vhlmtq38ue"]
+
+[ext_resource type="Script" uid="uid://dqcf2nat2f3fg" path="res://3d_map/Animations/plasma_orb_animation.gd" id="1_yef86"]
+[ext_resource type="PackedScene" uid="uid://cap5tsq8op7y4" path="res://addons/BinbunVFX/GodotVFX/effects/magic_orb_flash/magic_orb_flash_vfx_03.tscn" id="2_1bknl"]
+[ext_resource type="PackedScene" uid="uid://mavlxucraahk" path="res://assets/BinbunVFX_Vol2/ExplosionFX/effects/ground/test_explosion.tscn" id="3_1bknl"]
+
+[node name="Plasma_orb_animation" type="Node3D" unique_id=438958283]
+script = ExtResource("1_yef86")
+
+[node name="Player" type="AnimationPlayer" parent="." unique_id=400945965]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+
+[node name="Plasma_orb" parent="." unique_id=129640407 instance=ExtResource("2_1bknl")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Explosion" parent="." unique_id=1912371438 instance=ExtResource("3_1bknl")]
+unique_name_in_owner = true
+one_shot = true
+autoplay = false
+
+[connection signal="animation_finished" from="." to="." method="kill"]

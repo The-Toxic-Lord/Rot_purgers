@@ -476,8 +476,8 @@ func _on_mouse_detector_body_entered(body: Node3D) -> void:
 		camera_entered.emit()
 
 func check_dirs(dirs : Array[Map_generator.directions]):
-	if ObjectLink.map_gen.terrain_map[cell_position].depth == 0:
-		return
+	#if ObjectLink.map_gen.terrain_map[cell_position].depth == 0:
+		#return
 	for dir in walls.keys():
 		if dirs.has(dir):
 			walls[dir].show()
@@ -490,6 +490,11 @@ func make_void():
 
 func show_floor():
 	%Floor.show()
+
+
+
+
+
 
 
 #
