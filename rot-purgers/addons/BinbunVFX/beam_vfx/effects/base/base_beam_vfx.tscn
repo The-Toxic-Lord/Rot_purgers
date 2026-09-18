@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://btcogoplyr4iq"]
 
 [ext_resource type="Script" uid="uid://01ha0mhq1306" path="res://addons/BinbunVFX/beam_vfx/src/script/vfx_beam_controller.gd" id="1_q6okr"]
+[ext_resource type="AudioStream" uid="uid://xv6sxkj8v3w1" path="res://sound/SFX/Laser.ogg" id="2_1c8qg"]
 [ext_resource type="Shader" uid="uid://dn5pkcobqe27n" path="res://addons/BinbunVFX/beam_vfx/src/shader/beam_ball.gdshader" id="2_v1dkf"]
 [ext_resource type="Shader" uid="uid://bg85j65p5k5up" path="res://addons/BinbunVFX/beam_vfx/src/shader/beam_core.gdshader" id="3_5cohp"]
 [ext_resource type="Shader" uid="uid://cxeffrqr4ks4o" path="res://addons/BinbunVFX/beam_vfx/src/shader/beam_outer.gdshader" id="4_fhrsq"]
@@ -17,8 +18,8 @@ shader_parameter/flash_amount = 0.0
 shader_parameter/flash_emission = 5.999999865888
 
 [sub_resource type="SphereMesh" id="SphereMesh_8nl8c"]
-radius = 0.1
-height = 0.2
+radius = 0.3
+height = 0.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a55gb"]
 render_priority = 0
@@ -33,8 +34,8 @@ shader_parameter/open_amount = 1.0
 shader_parameter/speed_scale = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_16tsm"]
-top_radius = 0.1
-bottom_radius = 0.1
+top_radius = 0.2
+bottom_radius = 0.2
 height = 1.0
 radial_segments = 32
 rings = 64
@@ -62,8 +63,8 @@ shader_parameter/speed_scale = 1.0
 shader_parameter/edge_softness = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2virs"]
-top_radius = 0.15
-bottom_radius = 0.15
+top_radius = 0.25
+bottom_radius = 0.25
 height = 1.0
 radial_segments = 32
 rings = 64
@@ -86,8 +87,8 @@ shader_parameter/speed_scale = 1.0
 shader_parameter/edge_softness = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vqjau"]
-top_radius = 0.1
-bottom_radius = 0.12
+top_radius = 0.3
+bottom_radius = 0.36
 height = 2.1
 cap_bottom = false
 
@@ -107,15 +108,15 @@ shader_parameter/speed_scale = 1.0
 shader_parameter/edge_softness = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_svpl7"]
-top_radius = 0.1
-bottom_radius = 0.17
+top_radius = 0.3
+bottom_radius = 0.51
 height = 1.1
 cap_bottom = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_af72l"]
 render_priority = 0
 shader = ExtResource("6_gut48")
-shader_parameter/tertiary_color = Color(0.89537853, 2.4065375e-07, 0.43292478, 1)
+shader_parameter/tertiary_color = Color(0, 0, 0, 1)
 shader_parameter/emission = 3.0
 
 [sub_resource type="Curve" id="Curve_xbck7"]
@@ -143,7 +144,7 @@ curve = SubResource("Curve_mlro7")
 particle_flag_align_y = true
 emission_shape_scale = Vector3(1, 1, 0)
 emission_shape = 2
-emission_sphere_radius = 0.2
+emission_sphere_radius = 0.3
 angle_min = -720.0
 angle_max = 720.0
 direction = Vector3(0, 0, -1)
@@ -165,15 +166,15 @@ height = 0.2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pe1wu"]
 render_priority = 0
 shader = ExtResource("2_v1dkf")
-shader_parameter/primary_color = Color(0.2537858, 0.267273, 1, 1)
-shader_parameter/tertiary_color = Color(0.89537853, 2.4065375e-07, 0.43292478, 1)
+shader_parameter/primary_color = Color(0, 0, 0, 1)
+shader_parameter/tertiary_color = Color(0, 0, 0, 1)
 shader_parameter/emission = 3.0
 shader_parameter/flash_amount = 0.999999977648
 shader_parameter/flash_emission = 3.999999910592
 
 [sub_resource type="SphereMesh" id="SphereMesh_tds3u"]
-radius = 0.3
-height = 0.6
+radius = 0.4
+height = 0.8
 
 [sub_resource type="Curve" id="Curve_1o7w0"]
 _data = [Vector2(0, 1), 0.0, -1.0023087, 0, 0, Vector2(1, 0), -1.212547, 0.0, 0, 0]
@@ -204,8 +205,13 @@ alpha_curve = SubResource("CurveTexture_2segj")
 [sub_resource type="SphereMesh" id="SphereMesh_vxkl2"]
 radius = 0.1
 
-[node name="BaseBeamVFX" type="Node3D" unique_id=335639217]
+[node name="BaseBeamVFX" type="Node3D" unique_id=335639217 node_paths=PackedStringArray("audio_start", "audio_mid", "audio_end")]
 script = ExtResource("1_q6okr")
+audio_start = NodePath("AudioStart")
+audio_mid = NodePath("BeamPivot/BeamScalor/AudioMid")
+audio_end = NodePath("BeamEndPivot/AudioEnd")
+audio_start_stream = ExtResource("2_1c8qg")
+audio_bus = &"Sfx"
 
 [node name="BeamStart" type="MeshInstance3D" parent="." unique_id=1923619505]
 unique_name_in_owner = true
@@ -215,6 +221,8 @@ mesh = SubResource("SphereMesh_8nl8c")
 
 [node name="AudioStart" type="AudioStreamPlayer3D" parent="." unique_id=2145091727]
 unique_name_in_owner = true
+stream = ExtResource("2_1c8qg")
+bus = &"Sfx"
 
 [node name="BeamPivot" type="Node3D" parent="." unique_id=1485116725]
 unique_name_in_owner = true
@@ -240,6 +248,7 @@ mesh = SubResource("CylinderMesh_2virs")
 [node name="AudioMid" type="AudioStreamPlayer3D" parent="BeamPivot/BeamScalor" unique_id=209415801]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, -3.7252916e-09, 6.938894e-18, 1, 1.8626458e-09, 7.4505807e-10, -3.7252904e-10, 0.20000008, 0, 0, -0.5)
+bus = &"Sfx"
 
 [node name="BeamFlare1" type="MeshInstance3D" parent="BeamPivot" unique_id=72157017]
 unique_name_in_owner = true
@@ -279,6 +288,7 @@ mesh = SubResource("SphereMesh_tds3u")
 [node name="AudioEnd" type="AudioStreamPlayer3D" parent="BeamEndPivot" unique_id=49957222]
 unique_name_in_owner = true
 transform = Transform3D(1.0000536, 0, 0, 0, 1.0000768, 0, 0, 0, 1.0000516, 0, 0, 0)
+bus = &"Sfx"
 
 [node name="BeamEndParticles" type="GPUParticles3D" parent="BeamEndPivot" unique_id=166699825]
 unique_name_in_owner = true

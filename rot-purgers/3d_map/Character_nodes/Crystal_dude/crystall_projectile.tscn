@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dpujirha88ifa"]
+
+[ext_resource type="Script" uid="uid://bhleiw8wmu72m" path="res://3d_map/Character_nodes/Crystal_dude/crystall_projectile.gd" id="1_7q3nc"]
+[ext_resource type="Material" uid="uid://bbvxtfd7c244j" path="res://3d_map/Character_nodes/Crystal_dude/projectile_material_crystal.tres" id="1_i0reo"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m8u4e"]
+material = ExtResource("1_i0reo")
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.5
+radial_segments = 8
+rings = 0
+
+[node name="Crystall_projectile" type="Node3D" unique_id=1564361899]
+script = ExtResource("1_7q3nc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2061984291]
+transform = Transform3D(0.99999976, 0, 0, 0, -4.3711378e-08, 0.9999999, 0, -0.99999976, -4.3711385e-08, 0, 0, -0.27174398)
+mesh = SubResource("CylinderMesh_m8u4e")

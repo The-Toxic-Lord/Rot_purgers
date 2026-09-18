@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://c7bbx7glxoob8"]
 
-[ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_inksj"]
-[ext_resource type="Texture2D" uid="uid://rcxlv58nhran" path="res://blender_models/Crystal_dude2_Crystal_dude_texture-export.png" id="2_h1wbr"]
-[ext_resource type="Animation" uid="uid://c4v4gr25mnamw" path="res://blender_models/animations/crystal_dude_Idle.tres" id="3_gtxpa"]
-[ext_resource type="Texture2D" uid="uid://rmf4p254h6px" path="res://blender_models/Crystal_dude2_normals_Crystal_dude_texture-export.png" id="4_gtxpa"]
-[ext_resource type="PackedScene" uid="uid://d04mjgt04f7wr" path="res://3d_map/Character_nodes/Suka_playa.tscn" id="5_h1wbr"]
+[ext_resource type="Script" uid="uid://dl4ey56p41v6l" path="res://3d_map/Character_nodes/Crystal_dude/Crystal_dude.gd" id="1_8fvnt"]
+[ext_resource type="Texture2D" uid="uid://rcxlv58nhran" path="res://blender_models/Crystal_dude2_Crystal_dude_texture-export.png" id="2_8r1gc"]
+[ext_resource type="Texture2D" uid="uid://rmf4p254h6px" path="res://blender_models/Crystal_dude2_normals_Crystal_dude_texture-export.png" id="3_csuef"]
+[ext_resource type="Animation" uid="uid://c4v4gr25mnamw" path="res://blender_models/animations/crystal_dude_Idle.tres" id="4_6audh"]
+[ext_resource type="PackedScene" uid="uid://d04mjgt04f7wr" path="res://3d_map/Character_nodes/Suka_playa.tscn" id="5_xl5jn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyq3i"]
 resource_name = "Material.001"
@@ -12,7 +12,7 @@ transparency = 2
 alpha_scissor_threshold = 0.507
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("4_gtxpa")
+albedo_texture = ExtResource("3_csuef")
 roughness = 0.5
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.05
@@ -230,13 +230,13 @@ tracks/9/keys = PackedFloat32Array(0, 1, -1.4040482e-06, -1.7359835e-07, -0.9763
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iuijr"]
 _data = {
-&"Idle": ExtResource("3_gtxpa"),
+&"Idle": ExtResource("4_6audh"),
 &"walk": SubResource("Animation_wvt0s")
 }
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
-script = ExtResource("1_inksj")
-texture = ExtResource("2_h1wbr")
+script = ExtResource("1_8fvnt")
+texture = ExtResource("2_8r1gc")
 char_animation = NodePath("Crystal_dude2_normals/temp_anim")
 char_model_node = NodePath("Crystal_dude2_normals")
 skeleton = NodePath("Crystal_dude2_normals/Armature/Skeleton3D")
@@ -350,8 +350,17 @@ mesh = SubResource("ArrayMesh_c716e")
 skin = SubResource("Skin_pfdph")
 skeleton = NodePath("..")
 
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Crystal_dude2_normals/Armature/Skeleton3D" unique_id=655753740]
+transform = Transform3D(-0.99599373, 0.08942362, 1.4971773e-06, -0.0894236, -0.995994, -4.7240135e-08, 1.4869548e-06, -1.809339e-07, 1, 0.6303079, 0.45841202, -7.27672e-08)
+bone_name = "Bone.002"
+bone_idx = 1
+
+[node name="Projectile_spawner" type="Node3D" parent="Crystal_dude2_normals/Armature/Skeleton3D/BoneAttachment3D" unique_id=1571262134]
+unique_name_in_owner = true
+transform = Transform3D(0.9999998, 1.4900864e-08, 0, 7.4502835e-09, 0.9999998, 4.2632564e-14, 1.1368684e-13, 0, 1, -0.023635864, 0.7216649, 1.7341898e-07)
+
 [node name="temp_anim" type="AnimationPlayer" parent="Crystal_dude2_normals" unique_id=1587138797]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_iuijr")
 
-[node name="AnimationPlayer" parent="." unique_id=825518852 instance=ExtResource("5_h1wbr")]
+[node name="AnimationPlayer" parent="." unique_id=825518852 instance=ExtResource("5_xl5jn")]

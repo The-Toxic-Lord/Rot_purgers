@@ -1,0 +1,846 @@
+[gd_resource type="Resource" script_class="Map_data" format=3]
+
+[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_7owhy"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_7rlnu"]
+[ext_resource type="Texture2D" path="res://import/Eye.png" id="3_fglaj"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="4_dexmr"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="4_u7tnb"]
+[ext_resource type="Texture2D" path="res://import/check_button.png" id="5_u7tnb"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="5_xw8wd"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="6_7rlnu"]
+[ext_resource type="Script" path="res://map_data.gd" id="6_xw8wd"]
+[ext_resource type="Script" path="res://data/terrain_data.gd" id="7_bkgsn"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_floor.tres" id="8_3usr4"]
+[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="9_fnpjt"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="10_vjpvs"]
+
+[sub_resource type="Resource" id="Resource_c1rjv"]
+script = ExtResource("1_7owhy")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("3_fglaj")
+max_health = 500
+max_magic = 20
+strength = 60
+defence = 60
+magic_strenght = 0
+accuracy = 80
+speed = 30
+move_speed = 5
+jump_height = 10
+attack_distance = 4
+trigger_distance = 50
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 30
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_433xo"]
+script = ExtResource("1_7owhy")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("3_fglaj")
+max_health = 500
+max_magic = 20
+strength = 60
+defence = 60
+magic_strenght = 0
+accuracy = 80
+speed = 30
+move_speed = 5
+jump_height = 10
+attack_distance = 4
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 40
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_7rlnu"]
+script = ExtResource("1_7owhy")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("3_fglaj")
+max_health = 500
+max_magic = 20
+strength = 60
+defence = 60
+magic_strenght = 0
+accuracy = 80
+speed = 30
+move_speed = 5
+jump_height = 10
+attack_distance = 4
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+number_of_pc = 4
+start_height = 50
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_d0qoo"]
+script = ExtResource("1_7owhy")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("3_fglaj")
+max_health = 500
+max_magic = 20
+strength = 60
+defence = 60
+magic_strenght = 0
+accuracy = 80
+speed = 30
+move_speed = 5
+jump_height = 10
+attack_distance = 4
+trigger_distance = 50
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 30
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_7r72f"]
+script = ExtResource("1_7owhy")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("3_fglaj")
+max_health = 500
+max_magic = 20
+strength = 60
+defence = 60
+magic_strenght = 0
+accuracy = 80
+speed = 30
+move_speed = 5
+jump_height = 10
+attack_distance = 4
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 40
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_xaa03"]
+script = ExtResource("1_7owhy")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("5_xw8wd")
+max_health = 200
+strength = 50
+defence = 80
+magic_strenght = 0
+accuracy = 50
+speed = 10
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+AI_type = 0
+potential_skills = Array[ExtResource("2_7rlnu")]([ExtResource("4_u7tnb")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_jnipg"]
+script = ExtResource("4_dexmr")
+name = "exit_zone"
+sprite = ExtResource("5_u7tnb")
+atlas_coord = Vector2i(1, 0)
+node_UID = "uid://bcjtmasx0q6dh"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_fglaj"]
+script = ExtResource("4_dexmr")
+name = "spawn_zone"
+sprite = ExtResource("6_7rlnu")
+node_UID = "uid://b77u0ogcrnmlx"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_mn1tr"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_y18nu"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_6nmpf"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_f3fxu"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_2doti"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ofgen"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_d5ixt"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_e458x"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_nepxn"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_wl3sn"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_dgy7n"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_gwo2u"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ck1vr"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_44uwb"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_mprew"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_da4gm"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_m5ds0"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_7q6jp"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_xhnxu"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_sujtc"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_puee1"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_m0er4"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_jpidu"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_a2n88"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_dexmr"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_u7tnb"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_xw8wd"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_5nrh1"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_sauuu"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_bttb2"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_k75lj"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_no01m"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_5snxe"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_wn8hx"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_u5bs5"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_a7pp0"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ouknk"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_46jl5"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_s83bt"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_bkgsn"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_qb3mm"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ilygu"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_7kwsu"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_gd64w"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_jvvfp"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_xitym"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_0jeof"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_tkqwi"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_kflsl"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_or0nx"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_vjpvs"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_fnpjt"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_3usr4"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_8otvq"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_hnacd"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_dfr8p"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_y6ccx"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_k4o0s"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_mmh8g"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_p0t05"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_sprxj"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_jygt6"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_41f43"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_04lr6"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_14w7a"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_2a6tj"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_yx7my"]
+script = ExtResource("7_bkgsn")
+sprite = ExtResource("9_fnpjt")
+height = 20
+depth = 20
+floor_material = ExtResource("8_3usr4")
+wall_material = ExtResource("10_vjpvs")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[resource]
+script = ExtResource("6_xw8wd")
+map_size = Vector2i(30, 30)
+terrain_map_data = Dictionary[Vector2i, ExtResource("7_bkgsn")]({
+Vector2i(4, 8): SubResource("Resource_mn1tr"),
+Vector2i(4, 9): SubResource("Resource_y18nu"),
+Vector2i(4, 10): SubResource("Resource_6nmpf"),
+Vector2i(4, 11): SubResource("Resource_f3fxu"),
+Vector2i(4, 12): SubResource("Resource_2doti"),
+Vector2i(4, 13): SubResource("Resource_ofgen"),
+Vector2i(5, 7): SubResource("Resource_d5ixt"),
+Vector2i(5, 8): SubResource("Resource_e458x"),
+Vector2i(5, 9): SubResource("Resource_nepxn"),
+Vector2i(5, 10): SubResource("Resource_wl3sn"),
+Vector2i(5, 11): SubResource("Resource_dgy7n"),
+Vector2i(5, 12): SubResource("Resource_gwo2u"),
+Vector2i(5, 13): SubResource("Resource_ck1vr"),
+Vector2i(5, 14): SubResource("Resource_44uwb"),
+Vector2i(6, 4): SubResource("Resource_mprew"),
+Vector2i(6, 5): SubResource("Resource_da4gm"),
+Vector2i(6, 6): SubResource("Resource_m5ds0"),
+Vector2i(6, 7): SubResource("Resource_7q6jp"),
+Vector2i(6, 8): SubResource("Resource_xhnxu"),
+Vector2i(6, 13): SubResource("Resource_sujtc"),
+Vector2i(6, 14): SubResource("Resource_puee1"),
+Vector2i(6, 15): SubResource("Resource_m0er4"),
+Vector2i(6, 16): SubResource("Resource_jpidu"),
+Vector2i(6, 17): SubResource("Resource_a2n88"),
+Vector2i(6, 18): SubResource("Resource_dexmr"),
+Vector2i(6, 19): SubResource("Resource_u7tnb"),
+Vector2i(6, 20): SubResource("Resource_xw8wd"),
+Vector2i(7, 4): SubResource("Resource_5nrh1"),
+Vector2i(7, 5): SubResource("Resource_sauuu"),
+Vector2i(7, 6): SubResource("Resource_bttb2"),
+Vector2i(7, 7): SubResource("Resource_k75lj"),
+Vector2i(7, 8): SubResource("Resource_no01m"),
+Vector2i(7, 13): SubResource("Resource_5snxe"),
+Vector2i(7, 14): SubResource("Resource_wn8hx"),
+Vector2i(7, 15): SubResource("Resource_u5bs5"),
+Vector2i(7, 16): SubResource("Resource_a7pp0"),
+Vector2i(7, 17): SubResource("Resource_ouknk"),
+Vector2i(7, 18): SubResource("Resource_46jl5"),
+Vector2i(7, 19): SubResource("Resource_s83bt"),
+Vector2i(7, 20): SubResource("Resource_bkgsn"),
+Vector2i(8, 4): SubResource("Resource_qb3mm"),
+Vector2i(8, 5): SubResource("Resource_ilygu"),
+Vector2i(8, 6): SubResource("Resource_7kwsu"),
+Vector2i(8, 7): SubResource("Resource_gd64w"),
+Vector2i(8, 8): SubResource("Resource_jvvfp"),
+Vector2i(8, 13): SubResource("Resource_xitym"),
+Vector2i(8, 14): SubResource("Resource_0jeof"),
+Vector2i(8, 15): SubResource("Resource_tkqwi"),
+Vector2i(8, 16): SubResource("Resource_kflsl"),
+Vector2i(8, 17): SubResource("Resource_or0nx"),
+Vector2i(8, 18): SubResource("Resource_vjpvs"),
+Vector2i(8, 19): SubResource("Resource_fnpjt"),
+Vector2i(8, 20): SubResource("Resource_3usr4"),
+Vector2i(9, 7): SubResource("Resource_8otvq"),
+Vector2i(9, 8): SubResource("Resource_hnacd"),
+Vector2i(9, 9): SubResource("Resource_dfr8p"),
+Vector2i(9, 10): SubResource("Resource_y6ccx"),
+Vector2i(9, 11): SubResource("Resource_k4o0s"),
+Vector2i(9, 12): SubResource("Resource_mmh8g"),
+Vector2i(9, 13): SubResource("Resource_p0t05"),
+Vector2i(9, 14): SubResource("Resource_sprxj"),
+Vector2i(10, 8): SubResource("Resource_jygt6"),
+Vector2i(10, 9): SubResource("Resource_41f43"),
+Vector2i(10, 10): SubResource("Resource_04lr6"),
+Vector2i(10, 11): SubResource("Resource_14w7a"),
+Vector2i(10, 12): SubResource("Resource_2a6tj"),
+Vector2i(10, 13): SubResource("Resource_yx7my")
+})
+object_map_data = Dictionary[Vector2i, ExtResource("4_dexmr")]({
+Vector2i(7, 5): SubResource("Resource_jnipg"),
+Vector2i(7, 19): SubResource("Resource_fglaj")
+})
+enemy_map_data = Dictionary[Vector2i, ExtResource("1_7owhy")]({
+Vector2i(3, 6): SubResource("Resource_c1rjv"),
+Vector2i(3, 15): SubResource("Resource_433xo"),
+Vector2i(7, 5): SubResource("Resource_xaa03"),
+Vector2i(7, 10): SubResource("Resource_7rlnu"),
+Vector2i(11, 6): SubResource("Resource_d0qoo"),
+Vector2i(11, 15): SubResource("Resource_7r72f")
+})

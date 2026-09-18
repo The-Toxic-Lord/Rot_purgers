@@ -670,3 +670,4 @@ emoji_menu_enabled = false
 [connection signal="item_selected" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/start_dir" to="." method="_on_start_dir_item_selected"]
 [connection signal="pressed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Confirm_stats" to="." method="_on_confirm_stats_pressed"]
 [connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3/number_of_pc" to="." method="_on_stat_text_changed" flags=18]
+[connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3/Start_height" to="." method="_on_stat_text_changed" flags=18]

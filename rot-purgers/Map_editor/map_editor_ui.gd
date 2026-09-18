@@ -190,6 +190,8 @@ func load_enemy_data(enemy : Character_stats, reset_selector := true):
 
 func _on_open_maker_pressed() -> void:
 	%Enemy_maker.show()
+	if mouse_dead_zone.size() == 2:
+		mouse_dead_zone.append(Rect2(%Enemy_maker.position, %Enemy_maker.size))
 
 func _on_confirm_stats_pressed() -> void:
 	%Enemy_maker.hide()

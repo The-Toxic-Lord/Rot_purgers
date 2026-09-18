@@ -29,10 +29,11 @@ func attack(target_cell : Vector2i):
 	
 	beam_vfx.beam_length = (target_pos - eye_forward.global_position).length()
 	beam_vfx.show()
-	
+	beam_vfx.audio_playing = true
 	attack_finished.emit()
 	
 	await get_tree().create_timer(0.5).timeout
+	beam_vfx.audio_playing = false
 	beam_vfx.hide()
 
 

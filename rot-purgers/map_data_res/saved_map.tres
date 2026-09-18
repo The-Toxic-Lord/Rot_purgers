@@ -4,11 +4,10 @@
 [ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_2qeye"]
 [ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_qg40w"]
 [ext_resource type="Script" path="res://map_data.gd" id="3_01uvt"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="3_kqyk2"]
 [ext_resource type="Script" path="res://data/terrain_data.gd" id="4_bwvuj"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Charge.tres" id="4_jcw8x"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="4_jcw8x"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="5_01uvt"]
-[ext_resource type="Texture2D" path="res://import/Eye.png" id="5_j7tpd"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler.png" id="5_o70wc"]
 [ext_resource type="Texture2D" path="res://import/check_button_2.png" id="6_2qeye"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor_2.tres" id="10_3mwm5"]
 [ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="11_kqyk2"]
@@ -17,82 +16,15 @@
 
 [sub_resource type="Resource" id="Resource_lj058"]
 script = ExtResource("1_qbyd3")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("5_j7tpd")
-move_speed = 3
-jump_height = 10
-attack_distance = 8
-node_UID = "uid://ckmkqe73jj58e"
-AI_type = 6
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_obrpj"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("5_o70wc")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-potential_skills = Array[ExtResource("2_2qeye")]([ExtResource("4_jcw8x")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_55ftl"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("5_o70wc")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-potential_skills = Array[ExtResource("2_2qeye")]([ExtResource("4_jcw8x")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_rmrwd"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("5_o70wc")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-potential_skills = Array[ExtResource("2_2qeye")]([ExtResource("4_jcw8x")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_2x66h"]
-script = ExtResource("1_qbyd3")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("5_o70wc")
-strength = 2
-defence = 1
-magic_strenght = 1
-accuracy = 3
-move_speed = 5
-jump_height = 10
-counter = 0
-node_UID = "uid://dunq80ub3v1jk"
-potential_skills = Array[ExtResource("2_2qeye")]([ExtResource("4_jcw8x")])
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_jcw8x")
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+skills = Array[ExtResource("2_2qeye")]([ExtResource("3_kqyk2")])
+potential_skills = Array[ExtResource("2_2qeye")]([ExtResource("3_kqyk2")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_alebe"]
@@ -633,9 +565,5 @@ object_map_data = Dictionary[Vector2i, ExtResource("2_qg40w")]({
 Vector2i(13, 15): SubResource("Resource_alebe")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_qbyd3")]({
-Vector2i(15, 13): SubResource("Resource_lj058"),
-Vector2i(15, 15): SubResource("Resource_rmrwd"),
-Vector2i(16, 14): SubResource("Resource_55ftl"),
-Vector2i(16, 15): SubResource("Resource_obrpj"),
-Vector2i(16, 16): SubResource("Resource_2x66h")
+Vector2i(16, 12): SubResource("Resource_lj058")
 })

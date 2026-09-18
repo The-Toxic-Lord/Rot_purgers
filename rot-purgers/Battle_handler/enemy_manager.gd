@@ -260,6 +260,9 @@ func handle_Flyer_IA(enemy : Character_node):
 	var pos_pos : Array[Vector3] = get_possible_flyer_possition(enemy)
 	var desired_height : float = find_flyer_desired_height(enemy)
 	
+	if check_trigger(enemy):
+		enemy.stats.AI_type = Character_stats.AI_types.FLYER_CHARGE
+	
 	if await flyer_can_attack(enemy, pos_pos, desired_height):
 		enemy.stats.AI_type = Character_stats.AI_types.FLYER_CHARGE
 		return
@@ -707,7 +710,8 @@ func get_flow_distance(cell : Vector2i, target_cell : Vector2i) -> int:
 	return iter
 
 func check_trigger(enemy : Character_node) -> bool:
-	var trigger_cell := map_gen.get_flow_cells(enemy.map_pos, enemy.stats.trigger_distance)
+	var trigger_cell := map_gen.get_flow_cells(enemy.map_pos, enemy.stats.trigger_distance,
+	true, true, 9999, true, false, true)
 	for cell in trigger_cell:
 		if !map_gen.char_positions.has(cell):
 			continue
@@ -715,6 +719,9 @@ func check_trigger(enemy : Character_node) -> bool:
 		if BattleHandler.allies.has(char_node):
 			return true
 	return false
+
+
+
 
 
 

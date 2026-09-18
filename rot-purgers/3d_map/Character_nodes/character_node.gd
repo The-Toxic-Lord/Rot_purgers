@@ -86,6 +86,7 @@ func new_round():
 	can_move = true
 	can_attack = true
 	is_defending = false
+	has_order = false
 	can_undo_move = false
 	car_rearange = true
 	previous_map_pos = Vector2i(-1, -1)
@@ -195,8 +196,8 @@ func make_planned_move(move_data : Planned_move_data):
 	move(move_data.target_cell, map_gen.terrain_map, move_data.select_zones,
 	map_gen.selector_boundary, map_gen.map_cells)
 	await self.move_finished
-	turn(move_data.dir)
-	await self.direction_changed
+	#turn(move_data.dir)
+	#await self.direction_changed
 	making_move = false
 
 var neighbors_sides : Array[Vector2i] = [
@@ -256,7 +257,8 @@ func move_normal(pos : Vector3):
 	var tween := create_tween()
 	tween.tween_property(self, "position", pos, 0.5)
 	if char_animation.has_animation("Walk"):
-		char_animation.play("Walk")
+		if char_animation.current_animation != "Walk":
+			char_animation.play("Walk")
 	await tween.finished
 
 func move_step(pos : Vector3):

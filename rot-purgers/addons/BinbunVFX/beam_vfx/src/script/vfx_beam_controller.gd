@@ -14,33 +14,9 @@ class_name Beam_vfx
 @onready var beam_end: MeshInstance3D = %BeamEnd
 
 
-var audio_start : AudioStreamPlayer3D:
-	get():
-		if !Engine.is_editor_hint():
-			if !audio_start:
-				var result = $AudioStart
-				audio_start = result
-			return audio_start
-		else:
-			return $AudioStart
-var audio_mid : AudioStreamPlayer3D:
-	get():
-		if !Engine.is_editor_hint():
-			if !audio_mid:
-				var result = $BeamPivot/BeamScalor/AudioMid
-				audio_mid = result
-			return audio_mid
-		else:
-			return $BeamPivot/BeamScalor/AudioMid
-var audio_end : AudioStreamPlayer3D:
-	get():
-		if !Engine.is_editor_hint():
-			if !audio_end:
-				var result = $BeamEndPivot/AudioEnd
-				audio_end = result
-			return audio_end
-		else:
-			return $BeamEndPivot/AudioEnd
+@export var audio_start : AudioStreamPlayer3D
+@export var audio_mid : AudioStreamPlayer3D
+@export var audio_end : AudioStreamPlayer3D
 
 var beam_particles : GPUParticles3D
 var beam_end_particles : GPUParticles3D
@@ -217,6 +193,9 @@ var length : float = 4.0
 @export var audio_start_stream : AudioStream:
 	set(v):
 		audio_start_stream = v
+		if not is_inside_tree():
+			await ready
+		
 		if audio_start:
 			audio_start.stream = audio_start_stream
 @export var audio_mid_stream : AudioStream:
@@ -290,8 +269,8 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	_setup_effect()
-	for prop in get_property_list():
-		set(prop["name"], get(prop["name"]))
+	#for prop in get_property_list():
+		#set(prop["name"], get(prop["name"]))
 	if !start_emitting:
 		start_emitting = true
 		await get_tree().process_frame

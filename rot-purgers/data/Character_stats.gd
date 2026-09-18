@@ -59,7 +59,7 @@ enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER, FLYER, FLYER_CHARGE 
 
 @export var spawn_node_UUID : String
 @export_storage var number_of_pc : int = 0
-var start_height : int = 20
+@export_storage var start_height : int = 20
 
 func new() -> void:
 	health = max_health
