@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_hljk3"]
 [ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="3_61r11"]
-[ext_resource type="PackedScene" uid="uid://btguubnakfyy8" path="res://Workshop/sword_trail.tscn" id="4_2jqbt"]
-[ext_resource type="PackedScene" uid="uid://bnnjcttj2n2pd" path="res://Workshop/flying_slash.tscn" id="5_xwkw5"]
+[ext_resource type="PackedScene" uid="uid://btguubnakfyy8" path="res://3d_map/Character_nodes/Elliot/sword_trail.tscn" id="4_2jqbt"]
+[ext_resource type="PackedScene" uid="uid://bnnjcttj2n2pd" path="res://3d_map/Character_nodes/Elliot/flying_slash.tscn" id="5_xwkw5"]
 
 [sub_resource type="Animation" id="Animation_2jqbt"]
 resource_name = "Damage"

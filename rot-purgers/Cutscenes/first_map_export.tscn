@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://Cutscenes/Cutscene.gd" id="1_8fycp"]
 [ext_resource type="Resource" uid="uid://bhj75sl17uhsm" path="res://dialogue/texts/test.dialogue" id="2_r8xqd"]
-[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://Workshop/dissolve_base_material.gdshader" id="3_8fycp"]
+[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://3d_map/Character_nodes/char_materials/dissolve_base_material.gdshader" id="3_8fycp"]
 [ext_resource type="PackedScene" uid="uid://cpgsmi4r45bbx" path="res://3d_map/Character_nodes/Alastor.tscn" id="3_ln5k1"]
-[ext_resource type="PackedScene" uid="uid://dk1kcb3icintd" path="res://3d_map/Character_nodes/Elliot.tscn" id="4_bhoiu"]
+[ext_resource type="PackedScene" uid="uid://dk1kcb3icintd" path="res://3d_map/Character_nodes/Elliot/Elliot.tscn" id="4_bhoiu"]
 [ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="4_r8xqd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lykj6"]

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bnnjcttj2n2pd"]
+
+[ext_resource type="ArrayMesh" uid="uid://bl8842qq711ej" path="res://Workshop/Slash.obj" id="1_sx1g5"]
+[ext_resource type="Shader" uid="uid://d13qhs7wlseh1" path="res://3d_map/Character_nodes/Elliot/flying_slash_mesh.tres" id="2_0txi0"]
+[ext_resource type="Texture2D" uid="uid://b3yy6jfib3wjj" path="res://Workshop/Slash_gradient.png" id="3_ywp3b"]
+[ext_resource type="ArrayMesh" uid="uid://caxmfiuoh8msj" path="res://Workshop/Slash_trail.obj" id="4_y0gh7"]
+[ext_resource type="Texture2D" uid="uid://nfn2h36eqggy" path="res://addons/GODOT VFX - Slash Effect Tutorial/Gradient02.png" id="5_jmo4y"]
+[ext_resource type="Shader" uid="uid://dpwu7je4b82om" path="res://3d_map/Character_nodes/Elliot/flying_slash_mesh_trail_scroll.tres" id="6_q8x71"]
+[ext_resource type="Texture2D" uid="uid://ul4j3isjy4du" path="res://addons/GODOT VFX - Slash Effect Tutorial/Noise01.png" id="7_cqtd0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8u4e"]
+render_priority = 0
+shader = ExtResource("2_0txi0")
+shader_parameter/ColorParameter = Color(0.453, 1.124, 1.572, 1)
+shader_parameter/Texture2DParameter = ExtResource("3_ywp3b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0aqh"]
+render_priority = 0
+shader = ExtResource("2_0txi0")
+shader_parameter/ColorParameter = Color(0, 0.925, 1.385, 1)
+shader_parameter/Texture2DParameter = ExtResource("5_jmo4y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsvqa"]
+render_priority = 0
+shader = ExtResource("6_q8x71")
+shader_parameter/ColorParameter = Color(0.453, 1.124, 1.572, 1)
+shader_parameter/TextureTiling01 = Vector2(1, 1)
+shader_parameter/TextureSpeed = Vector2(0, -3)
+shader_parameter/MainText = ExtResource("7_cqtd0")
+shader_parameter/GradientText = ExtResource("5_jmo4y")
+
+[node name="Flying_slash" type="Node3D" unique_id=200425217]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=443263806]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_sx1g5")
+surface_material_override/0 = SubResource("ShaderMaterial_m8u4e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1356063342]
+mesh = ExtResource("4_y0gh7")
+surface_material_override/0 = SubResource("ShaderMaterial_h0aqh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=609736763]
+visible = false
+mesh = ExtResource("4_y0gh7")
+surface_material_override/0 = SubResource("ShaderMaterial_qsvqa")

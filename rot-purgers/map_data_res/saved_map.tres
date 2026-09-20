@@ -12,6 +12,9 @@
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor_2.tres" id="10_3mwm5"]
 [ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="11_kqyk2"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_wall_2.tres" id="12_jcw8x"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_floor.tres" id="14_ead5j"]
+[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="15_g2qwr"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="16_aq4wr"]
 [ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="17_g2qwr"]
 
 [sub_resource type="Resource" id="Resource_lj058"]
@@ -499,10 +502,30 @@ floor_material = ExtResource("5_01uvt")
 wall_material = ExtResource("5_01uvt")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_obrpj"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("15_g2qwr")
+height = 20
+depth = 10
+floor_material = ExtResource("14_ead5j")
+wall_material = ExtResource("16_aq4wr")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_55ftl"]
+script = ExtResource("4_bwvuj")
+sprite = ExtResource("15_g2qwr")
+height = 20
+depth = 10
+floor_material = ExtResource("14_ead5j")
+wall_material = ExtResource("16_aq4wr")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [resource]
 script = ExtResource("3_01uvt")
 map_size = Vector2i(30, 30)
 terrain_map_data = Dictionary[Vector2i, ExtResource("4_bwvuj")]({
+Vector2i(10, 15): SubResource("Resource_obrpj"),
+Vector2i(10, 16): SubResource("Resource_55ftl"),
 Vector2i(12, 12): SubResource("Resource_5f6kb"),
 Vector2i(12, 13): SubResource("Resource_e7og5"),
 Vector2i(12, 14): SubResource("Resource_kqyk2"),

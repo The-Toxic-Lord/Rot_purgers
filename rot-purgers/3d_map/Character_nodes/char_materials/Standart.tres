@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://djueu0s6ee3mk"]
 
-[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://Workshop/dissolve_base_material.gdshader" id="1_pwwt5"]
+[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://3d_map/Character_nodes/char_materials/dissolve_base_material.gdshader" id="1_r3vy3"]
 [ext_resource type="Texture2D" uid="uid://3jetmtf7qtoe" path="res://blender_models/better_crawler2_Crawler_texture.png" id="2_r3vy3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g8kef"]
@@ -13,7 +13,7 @@ noise = SubResource("FastNoiseLite_g8kef")
 resource_local_to_scene = true
 resource_name = "Material.001"
 render_priority = 0
-shader = ExtResource("1_pwwt5")
+shader = ExtResource("1_r3vy3")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_r3vy3")
 shader_parameter/albedo_texture_size = Vector2i(1024, 1024)

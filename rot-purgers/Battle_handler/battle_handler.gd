@@ -206,6 +206,9 @@ dir : Map_generator.directions, attacker : Character_node):
 
 func handle_spawn(order : Order_spawn):
 	await get_tree().process_frame
+	var attacker : Character_node = get_node(order.attacker)
+	attacker.turn_to_target(order.target_cell)
+	await attacker.direction_changed
 	await map_gen.spawn_enemy(order.stats, order.target_cell, order.dir)
 	order_handled.emit()
 

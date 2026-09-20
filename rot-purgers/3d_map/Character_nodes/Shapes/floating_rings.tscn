@@ -1,7 +1,8 @@
 [gd_scene format=4 uid="uid://cy7a4tpva4ie3"]
 
+[ext_resource type="Script" uid="uid://dwxlhg8bm8q14" path="res://3d_map/Character_nodes/Shapes/floating_rings.gd" id="1_16hpu"]
 [ext_resource type="Texture2D" uid="uid://ctalsoa1dmw36" path="res://Workshop/Shapes4_Float_ring.png" id="1_x75db"]
-[ext_resource type="Material" uid="uid://bhqwv2urq1a3n" path="res://Workshop/float_ring_material.tres" id="2_20lo4"]
+[ext_resource type="Material" uid="uid://bhqwv2urq1a3n" path="res://3d_map/Character_nodes/Shapes/float_ring_material.tres" id="2_20lo4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3x80"]
 resource_name = "Float_ring"
@@ -170,21 +171,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tyn2m")
 
-[sub_resource type="Animation" id="Animation_4vt37"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cylinder_001:surface_material_override/0:shader_parameter/Rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="Animation" id="Animation_2kbsk"]
 resource_name = "ring_rotation"
 loop_mode = 1
@@ -203,11 +189,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0wyn3"]
 _data = {
-&"RESET": SubResource("Animation_4vt37"),
 &"ring_rotation": SubResource("Animation_2kbsk")
 }
 
 [node name="Shapes4" type="Node3D" unique_id=712519450]
+script = ExtResource("1_16hpu")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="." unique_id=1999245456]
 transform = Transform3D(0.0398801, -0.09770199, -0.028001979, 0.083098285, 0.048663937, -0.051446147, 0.0585189, -0.002520974, 0.092137896, 0, 0.15341985, 0.13331783)
@@ -235,4 +221,6 @@ mesh = SubResource("ArrayMesh_jj8p0")
 surface_material_override/0 = ExtResource("2_20lo4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=150151492]
+unique_name_in_owner = true
+reset_on_save = false
 libraries/ = SubResource("AnimationLibrary_0wyn3")

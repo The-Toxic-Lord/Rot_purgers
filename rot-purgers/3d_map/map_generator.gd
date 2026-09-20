@@ -83,9 +83,9 @@ func make_multi_meshes():
 	var mat_to_cells : Dictionary[StandardMaterial3D, Array] = {}
 	for cell in terrain_map:
 		var terr_data : Terrain_data = terrain_map[cell]
-		var mat : StandardMaterial3D = terr_data.floor_material
-		if mat is not StandardMaterial3D:
+		if terr_data.floor_material is not StandardMaterial3D:
 			continue
+		var mat : StandardMaterial3D = terr_data.floor_material
 		if !mat_to_multi.has(mat):
 			var multi_inst := MultiMeshInstance3D.new()
 			multi_inst.multimesh = MultiMesh.new()

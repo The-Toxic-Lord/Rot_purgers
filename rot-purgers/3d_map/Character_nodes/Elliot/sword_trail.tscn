@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://btguubnakfyy8"]
 
 [ext_resource type="Shader" uid="uid://i7pj0qt6pqjh" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="1_tgxm5"]
-[ext_resource type="Script" uid="uid://clth8rmp34mpx" path="res://Workshop/sword_trail.gd" id="1_u5rmu"]
+[ext_resource type="Script" uid="uid://clth8rmp34mpx" path="res://3d_map/Character_nodes/Elliot/sword_trail.gd" id="1_u5rmu"]
 [ext_resource type="Shader" uid="uid://yx7kpxux4ls3" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="2_lm1vx"]
 [ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/GPUTrail-main/defaults/texture.tres" id="3_lm1vx"]
 [ext_resource type="Script" uid="uid://dvgdb7v4b8ypk" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="3_u5rmu"]

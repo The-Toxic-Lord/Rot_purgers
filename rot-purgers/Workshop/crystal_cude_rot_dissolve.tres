@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://buo2wphiukwbc"]
 
-[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://Workshop/dissolve_base_material.gdshader" id="2_x87ga"]
+[ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://3d_map/Character_nodes/char_materials/dissolve_base_material.gdshader" id="2_x87ga"]
 [ext_resource type="Texture2D" uid="uid://rcxlv58nhran" path="res://blender_models/Crystal_dude2_Crystal_dude_texture-export.png" id="3_g5qtl"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g8kef"]

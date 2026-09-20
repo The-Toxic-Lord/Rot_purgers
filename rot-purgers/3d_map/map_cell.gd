@@ -29,14 +29,16 @@ var neib_reverse : Dictionary[Vector2i, bool] = {
 }
 
 var multimesh_id : int
+var map_cell_depth : float
 
 signal camera_entered
 
 var walls : Dictionary[Map_generator.directions, MeshInstance3D] = {}
 var wall_is_limited : Dictionary[MeshInstance3D, bool] = {}
-var walls_lod : Dictionary[Map_generator.directions, MeshInstance3D] = {}
+#var walls_lod : Dictionary[Map_generator.directions, MeshInstance3D] = {}
 
 func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector2i):
+	map_cell_depth = terrain_map[cell].depth * 0.1
 	cell_position = cell
 	make_floor_mesh()
 	for neib in neighbors_sides:
@@ -64,6 +66,21 @@ func make_meshes(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector
 			wall_is_limited[wall] = false
 	load_materials(terrain_map[cell])
 	change_terrain_check()
+	if terrain_map[cell].depth != 0:
+		check_neib_height_depth_walls(terrain_map, cell)
+
+func check_neib_height_depth_walls(terrain_map : Dictionary[Vector2i, Terrain_data], cell : Vector2i):
+	var depth : float = terrain_map[cell].depth * 0.1
+	var height : float = position.y
+	for neib in neib_to_side:
+		var neib_cell := cell + neib
+		if !terrain_map.has(neib_cell):
+			continue
+		var neib_depth : float = terrain_map[neib_cell].depth * 0.1
+		var neib_height : float = terrain_map[neib_cell].height * 0.1
+		if neib_height == height and neib_depth == depth:
+			var dir : Map_generator.directions = ObjectLink.map_gen.vector_to_dir[neib]
+			walls[dir].hide()
 
 func change_terrain_check():
 	if position.y >= 0:
@@ -77,6 +94,7 @@ func load_materials(terrain_data : Terrain_data):
 	var floor_mat : Material = terrain_data.floor_material
 	if floor_mat is ShaderMaterial:
 		floor_mat.set_shader_parameter("Direction", -GlobalData.dir_to_vect[terrain_data.shader_dir])
+		%Floor.show()
 	%Floor.set_surface_override_material(0, floor_mat)
 	#%Floor_lod.set_surface_override_material(0, floor_mat)
 	for dir in walls.keys():
@@ -368,6 +386,19 @@ func update_walls():
 			var wall_material : StandardMaterial3D = wall.get_surface_override_material(0)
 			wall_material.uv1_scale.y = position.y / 2.0
 			wall.set_surface_override_material(0, wall_material)
+		else:
+			var neib_cell : Vector2i = cell_position + ObjectLink.map_gen.dir_to_vector[dir]
+			if !ObjectLink.map_gen.map_cells.has(neib_cell):
+				continue
+			var neib_depth : float = ObjectLink.map_gen.map_cells[neib_cell].map_cell_depth
+			if neib_depth == 0:
+				continue
+			var neib_height : float = ObjectLink.map_gen.map_cells[neib_cell].position.y
+			if neib_height != position.y or map_cell_depth != neib_depth:
+				wall.show()
+				continue
+			if neib_height == position.y and map_cell_depth == neib_depth:
+				wall.hide()
 
 func update_wall_mesh(mesh : ArrayMesh, dir : Map_generator.directions):
 	var mdt := MeshDataTool.new()
@@ -439,7 +470,19 @@ func check_walls_self(neib : Vector2i) -> bool:
 
 func check_walls_neib(neib : Vector2i):
 	if BattleHandler.map_gen.terrain_map[cell_position].depth != 0:
-		return
+		var neib_cell : Vector2i = cell_position + neib
+		if !ObjectLink.map_gen.map_cells.has(neib_cell):
+			return
+		var neib_depth : float = ObjectLink.map_gen.map_cells[neib_cell].map_cell_depth
+		if neib_depth == 0:
+			return
+		var neib_height : float = ObjectLink.map_gen.map_cells[neib_cell].position.y
+		var wall : MeshInstance3D = walls[ObjectLink.map_gen.vector_to_dir[neib]]
+		if neib_height != position.y or map_cell_depth != neib_depth:
+			wall.show()
+			return
+		if neib_height == position.y and map_cell_depth == neib_depth:
+			wall.hide()
 	var cell := neib + cell_position
 	var height_diff : float = position.y
 	height_diff -= BattleHandler.map_gen.map_cells[cell].position.y

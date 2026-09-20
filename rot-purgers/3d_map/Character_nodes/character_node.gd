@@ -109,17 +109,22 @@ func damage(value : float, display_mini := false):
 			stats.AI_type = Character_stats.AI_types.CHARGER
 	display_damage(display_mini)
 
-func display_damage(display_mini := false):
+func display_damage(display_mini := false, is_heal := false):
 	%Damage_numbers.show()
-	SoundHandler.play_damage()
-	if $AnimationPlayer.has_animation("Damage"):
-		$AnimationPlayer.play("Damage")
-	if char_animation.has_animation("Damage"):
-		char_animation.play("Damage")
-		await char_animation.animation_finished
-		char_animation.play("Idle")
-	else:
+	if is_heal and display_mini:
+		ObjectLink.mini_char_stats.display_damage(stats.health)
+	if is_heal:
 		await get_tree().create_timer(0.5).timeout
+	else:
+		SoundHandler.play_damage()
+		if $AnimationPlayer.has_animation("Damage"):
+			$AnimationPlayer.play("Damage")
+		if char_animation.has_animation("Damage"):
+			char_animation.play("Damage")
+			await char_animation.animation_finished
+			char_animation.play("Idle")
+		else:
+			await get_tree().create_timer(0.5).timeout
 	%Damage_numbers.hide()
 	#animation_ended.emit()
 	if stats.health == 0:
@@ -359,7 +364,7 @@ func heal(value : float):
 	stats.health = clampi(heal_val + stats.health, 0, stats.max_health)
 	%Damage_numbers.text = str(heal_val)
 	%Damage_numbers.modulate = Color("39ad00ff")
-	display_damage()
+	display_damage(true, true)
 
 func attack(target_cell : Vector2i):
 	turn_to_target(target_cell)

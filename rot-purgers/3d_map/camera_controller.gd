@@ -113,7 +113,7 @@ func _process(delta: float) -> void:
 	handle_movement()
 	handle_height()
 	handle_rotation()
-	handle_dir()
+	#handle_dir()
 	handle_zoom(delta)
 	camera.position.z = lerp(camera.position.z, zoom_target, 0.1)
 
@@ -189,7 +189,7 @@ func handle_dir():
 		new_dirs.append(Map_generator.directions.N)
 	if dirs != new_dirs:
 		dirs = new_dirs
-		ObjectLink.map_gen.update_map_cells(dirs)
+		#ObjectLink.map_gen.update_map_cells(dirs)
 
 
 

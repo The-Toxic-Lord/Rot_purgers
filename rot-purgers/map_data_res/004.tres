@@ -1,15 +1,31 @@
 [gd_resource type="Resource" script_class="Map_data" format=3]
 
 [ext_resource type="Script" path="res://data/Character_stats.gd" id="1_fqnh8"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_574v3"]
 [ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_peabw"]
 [ext_resource type="Script" path="res://map_data.gd" id="3_m0xds"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Shapes.png" id="3_yu7on"]
 [ext_resource type="Script" path="res://data/terrain_data.gd" id="4_1gyjt"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="5_pew05"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="5_pxani"]
 [ext_resource type="Texture2D" path="res://aseprite_stuff/terrain_cave.png" id="6_574v3"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/lava_floor_test.tres" id="7_m0xds"]
+[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Elements_09-128x128.png" id="8_1gyjt"]
 
-[sub_resource type="Resource" id="Resource_dj3w0"]
+[sub_resource type="Resource" id="Resource_xit38"]
+script = ExtResource("1_fqnh8")
+name = "Shapes"
+char_class = "Basophil"
+sprite = ExtResource("3_yu7on")
+node_UID = "uid://cuxixch36l8i3"
+AI_type = 4
+spawn_node_UUID = "uid://bkwt1lvhkpr71"
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_ijutv"]
 script = ExtResource("2_peabw")
 name = "spawn_zone"
+sprite = ExtResource("5_pew05")
 node_UID = "uid://b77u0ogcrnmlx"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
@@ -85,12 +101,14 @@ floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_0hd5d"]
+[sub_resource type="Resource" id="Resource_pxani"]
 script = ExtResource("4_1gyjt")
-sprite = ExtResource("6_574v3")
+sprite = ExtResource("8_1gyjt")
+passable = false
 height = 20
-floor_material = ExtResource("5_pxani")
-wall_material = ExtResource("5_pxani")
+floor_material = ExtResource("7_m0xds")
+wall_material = ExtResource("7_m0xds")
+can_be_modified = false
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_p2feq"]
@@ -117,12 +135,14 @@ floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_qkudu"]
+[sub_resource type="Resource" id="Resource_574v3"]
 script = ExtResource("4_1gyjt")
-sprite = ExtResource("6_574v3")
+sprite = ExtResource("8_1gyjt")
+passable = false
 height = 20
-floor_material = ExtResource("5_pxani")
-wall_material = ExtResource("5_pxani")
+floor_material = ExtResource("7_m0xds")
+wall_material = ExtResource("7_m0xds")
+can_be_modified = false
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_anddt"]
@@ -509,12 +529,14 @@ floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_po5s2"]
+[sub_resource type="Resource" id="Resource_yu7on"]
 script = ExtResource("4_1gyjt")
-sprite = ExtResource("6_574v3")
+sprite = ExtResource("8_1gyjt")
+passable = false
 height = 20
-floor_material = ExtResource("5_pxani")
-wall_material = ExtResource("5_pxani")
+floor_material = ExtResource("7_m0xds")
+wall_material = ExtResource("7_m0xds")
+can_be_modified = false
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_eq7qm"]
@@ -541,12 +563,14 @@ floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
-[sub_resource type="Resource" id="Resource_g3hck"]
+[sub_resource type="Resource" id="Resource_pew05"]
 script = ExtResource("4_1gyjt")
-sprite = ExtResource("6_574v3")
+sprite = ExtResource("8_1gyjt")
+passable = false
 height = 20
-floor_material = ExtResource("5_pxani")
-wall_material = ExtResource("5_pxani")
+floor_material = ExtResource("7_m0xds")
+wall_material = ExtResource("7_m0xds")
+can_be_modified = false
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_cqkur"]
@@ -634,11 +658,11 @@ Vector2i(11, 17): SubResource("Resource_a8gf7"),
 Vector2i(12, 15): SubResource("Resource_1gft7"),
 Vector2i(12, 16): SubResource("Resource_v8rp7"),
 Vector2i(12, 17): SubResource("Resource_ftkvr"),
-Vector2i(13, 14): SubResource("Resource_0hd5d"),
+Vector2i(13, 14): SubResource("Resource_pxani"),
 Vector2i(13, 15): SubResource("Resource_p2feq"),
 Vector2i(13, 16): SubResource("Resource_r2cxt"),
 Vector2i(13, 17): SubResource("Resource_sepqc"),
-Vector2i(13, 18): SubResource("Resource_qkudu"),
+Vector2i(13, 18): SubResource("Resource_574v3"),
 Vector2i(14, 11): SubResource("Resource_anddt"),
 Vector2i(14, 12): SubResource("Resource_d85nn"),
 Vector2i(14, 13): SubResource("Resource_o35wx"),
@@ -687,11 +711,11 @@ Vector2i(16, 23): SubResource("Resource_ah7na"),
 Vector2i(16, 24): SubResource("Resource_mwf21"),
 Vector2i(16, 25): SubResource("Resource_eeylo"),
 Vector2i(16, 26): SubResource("Resource_xyevi"),
-Vector2i(17, 14): SubResource("Resource_po5s2"),
+Vector2i(17, 14): SubResource("Resource_yu7on"),
 Vector2i(17, 15): SubResource("Resource_eq7qm"),
 Vector2i(17, 16): SubResource("Resource_si7e4"),
 Vector2i(17, 17): SubResource("Resource_4jxs6"),
-Vector2i(17, 18): SubResource("Resource_g3hck"),
+Vector2i(17, 18): SubResource("Resource_pew05"),
 Vector2i(18, 15): SubResource("Resource_cqkur"),
 Vector2i(18, 16): SubResource("Resource_ypgtu"),
 Vector2i(18, 17): SubResource("Resource_v31t1"),
@@ -703,5 +727,8 @@ Vector2i(20, 16): SubResource("Resource_y8omk"),
 Vector2i(20, 17): SubResource("Resource_ialo7")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("2_peabw")]({
-Vector2i(15, 25): SubResource("Resource_dj3w0")
+Vector2i(15, 25): SubResource("Resource_ijutv")
+})
+enemy_map_data = Dictionary[Vector2i, ExtResource("1_fqnh8")]({
+Vector2i(15, 16): SubResource("Resource_xit38")
 })
