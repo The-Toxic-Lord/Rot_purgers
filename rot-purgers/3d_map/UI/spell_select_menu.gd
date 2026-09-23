@@ -15,6 +15,8 @@ func load_skills(ch_node : Character_node):
 		skill_slot.skill_selected.connect(skill_selected.emit.bind(skill))
 		skill_slots.append(skill_slot)
 	%Skill_box.move_child(%Exit, %Skill_box.get_children().size() - 1)
+	%Exit.focus_neighbor_bottom = skill_slots[0].get_button().get_path()
+	skill_slots[0].get_button().focus_neighbor_top = %Exit.get_path()
 
 func clear_skills():
 	for skill_slot in skill_slots:

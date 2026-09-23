@@ -64,6 +64,8 @@ func _input(event: InputEvent) -> void:
 			zoom_target = clamp(zoom_target, zoom_min, zoom_max)
 	if map_generator.state in [Map_generator.states.MENU]:
 		return
+	if map_generator.terrain_mod_menu_active:
+		return
 	for key in controller_input:
 		if event.is_action(key):
 			if event.is_pressed():
@@ -123,6 +125,8 @@ func handle_movement():
 	elif DialogueBalloon.is_working:
 		return
 	elif BattleHandler.state == Battle_handler.states.PLAYER:
+		if map_generator.terrain_mod_menu_active:
+			return
 		if map_generator.state in [Map_generator.states.MENU]:
 			return
 		if move_one_dir == Vector2i.ZERO:

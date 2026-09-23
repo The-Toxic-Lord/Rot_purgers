@@ -437,7 +437,7 @@ func check_walls_self(neib : Vector2i) -> bool:
 	if !BattleHandler.map_gen.map_cells.has(cell):
 		return true
 	var height_diff : float = position.y
-	var depth : int = BattleHandler.map_gen.terrain_mod_data[cell_position].depth
+	var depth : int = BattleHandler.map_gen.terrain_map[cell_position].depth
 	if BattleHandler.map_gen.terrain_map[cell].depth != 0:
 		height_diff = position.y
 	else:

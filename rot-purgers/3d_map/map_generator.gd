@@ -50,6 +50,7 @@ var void_cells : Dictionary[Vector2i, Map_cell] = {}
 var cell_to_multi_inst : Dictionary[Vector2i, MultiMeshInstance3D] = {}
 @onready var multi_mesh_instance_holder: Node3D = %MultiMeshInstance_holder
 
+var terrain_mod_menu_active : bool = false
 
 func load_map(map : Map_data):
 	await get_tree().process_frame
@@ -321,11 +322,18 @@ func _input(event: InputEvent) -> void:
 		return
 	if BattleHandler.state != Battle_handler.states.PLAYER:
 		return
-	if event.is_action_pressed("rotate_skill"):
+	if event.is_action_pressed("rotate_skill") and state == states.SKILL:
 		if !selected_skill.skill_map.bound_to_char:
 			await rotate_unbound_skill()
 			check_accuracy_ui()
 		return
+	if event.is_action_pressed("rotate_skill") and state == states.SKILL_TERRAIN:
+		if terrain_mod_menu_active:
+			get_viewport().gui_release_focus()
+			terrain_mod_menu_active = false
+		else:
+			map_ui.switch_to_height_mod()
+			terrain_mod_menu_active = true
 	if event.is_action_pressed("undo") and state == states.SELECT:
 		if char_positions.has(selected_cell):
 			var char_node : Character_node = char_positions[selected_cell]
@@ -372,6 +380,8 @@ func _input(event: InputEvent) -> void:
 				map_ui.back_to_skill_selection()
 				map_ui.hide_accuracy()
 		return
+	if terrain_mod_menu_active:
+		return
 	if event is InputEventMouseButton or event.is_action_pressed("ui_accept"):
 		if event is InputEventMouseButton:
 			if event.button_index != MOUSE_BUTTON_LEFT:
@@ -417,10 +427,11 @@ func _input(event: InputEvent) -> void:
 					if !terrain_map[selected_cell].can_be_modified:
 						return
 					if selected_skill.terrain_mod == Skill_base.terrain_mods.HEIGHT:
-						var _mouse_pos : Vector2 = event.position
-						var dead_zone : Rect2 = map_ui.dead_zone
-						if dead_zone.has_point(_mouse_pos):
-							return
+						if event is InputEventMouseButton:
+							var _mouse_pos : Vector2 = event.position
+							var dead_zone : Rect2 = map_ui.dead_zone
+							if dead_zone.has_point(_mouse_pos):
+								return
 						if terrain_mod_selected_cells.has(selected_cell):
 							remove_cell_from_terrain_modification(selected_cell)
 						else:
@@ -441,6 +452,7 @@ func spawn_ally(ch : Character_stats):
 	BattleHandler.allies.append(char_node)
 	selected_char = char_node
 	map_ui.open_char_action_menu(char_node)
+	char_node.new_round()
 
 func spawn_select_zone(ch_node : Character_node, st : states):
 	var move_cells : Array[Vector2i] = []
@@ -974,7 +986,13 @@ func remove_cell_from_terrain_modification(cell : Vector2i):
 	terrain_mod_selected_cells.erase(cell)
 	select_zones[cell].queue_free()
 	var zone : Node3D = load("uid://crfwn05yop7k6").instantiate()
-	add_zone(zone, cell)
+	await add_zone(zone, cell)
+	map_cells[cell].update_height(terrain_map[cell].height, select_zones[map_cell_to_data_cell[map_cells[cell]]])
+
+func reset_map_cells_height():
+	terrain_mod_menu_active = false
+	for cell : Vector2i in terrain_mod_data.keys():
+		map_cells[cell].update_height(terrain_map[cell].height, select_zones[map_cell_to_data_cell[map_cells[cell]]])
 
 func add_zone(zone : Node3D, cell : Vector2i):
 	add_child(zone)
@@ -1012,6 +1030,7 @@ func cast_terrain_mod():
 	select_zones.clear()
 	selected_char.can_attack = false
 	state = states.SELECT
+	terrain_mod_menu_active = false
 
 func teleport_char(char_node : Character_node, new_cell : Vector2i):
 	char_positions.erase(char_node.map_pos)
@@ -1024,8 +1043,21 @@ func update_map_cells(dirs : Array[directions]):
 		map_cell.check_dirs(dirs)
 
 func move_char_skill_back():
-	selected_char.position = map_cells[selected_char.previous_map_pos].position
-	selected_char.map_pos = selected_char.previous_map_pos
+	if selected_char.previous_map_pos != Vector2i(-1, -1):
+		selected_char.position = map_cells[selected_char.previous_map_pos].position
+		selected_char.map_pos = selected_char.previous_map_pos
+		selected_char.previous_map_pos = Vector2i(-1, -1)
+
+@warning_ignore("unused_parameter")
+func _physics_process(delta: float) -> void:
+	if state != states.SKILL_TERRAIN:
+		return
+	if map_cells.has(selected_cell):
+		%Selector.position = map_cells[selected_cell].position
+
+
+
+
 
 
 

@@ -238,6 +238,7 @@ func update_terrain_cells(value : int):
 			_on_cell_select_item_selected(0)
 	elif value < cell_select.item_count:
 		cell_select.remove_item(cell_select.item_count - 1)
+	%Terrain_cost.text = "Magic cost : " + str(calculate_terrain_cost())
 
 var selected_index : int
 func _on_cell_select_item_selected(index: int) -> void:
@@ -263,16 +264,25 @@ func _on_terr_bt_pressed(source: BaseButton) -> void:
 	%Terrain_cost.text = "Magic cost : " + str(calculate_terrain_cost())
 
 func _on_terrain_mod_button_pressed() -> void:
+	clear_terrain_stuff()
 	selected_char.magic_cost(calculate_terrain_cost())
 	map_generator.cast_terrain_mod()
 	%Terrain_mod.hide()
 	%Cell_select.clear()
 
 func _on_terrain_mod_back_pressed() -> void:
+	map_generator.reset_map_cells_height()
 	%Terrain_mod.hide()
 	back_to_skill_selection()
+	clear_terrain_stuff()
 	map_generator.clear_select_zone()
 	map_generator.state = Map_generator.states.MENU
+
+func clear_terrain_stuff():
+	var cell_select : OptionButton = %Cell_select
+	cell_select.clear()
+	selected_index = 0
+	%Terrain_cost.text = "Magic cost : " + str(0)
 
 func calculate_terrain_cost() -> int:
 	var cost : int = 0
@@ -285,6 +295,9 @@ func calculate_terrain_cost() -> int:
 	@warning_ignore("narrowing_conversion")
 	cost *= GlobalData.map_magic_cost_adjustment
 	return cost
+
+func switch_to_height_mod():
+	%Cell_select.grab_focus()
 
 func _ready() -> void:
 	var pop : PopupMenu = %Cell_select.get_popup()

@@ -24,3 +24,6 @@ func focus():
 
 func _on_skill_button_pressed() -> void:
 	skill_selected.emit()
+
+func get_button():
+	return %Skill_button
