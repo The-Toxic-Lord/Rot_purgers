@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cy7a4tpva4ie3"]
 
 [ext_resource type="Script" uid="uid://dwxlhg8bm8q14" path="res://3d_map/Character_nodes/Shapes/floating_rings.gd" id="1_16hpu"]
-[ext_resource type="Texture2D" uid="uid://ctalsoa1dmw36" path="res://Workshop/Shapes4_Float_ring.png" id="1_x75db"]
+[ext_resource type="Texture2D" uid="uid://ctalsoa1dmw36" path="res://3d_map/Character_nodes/Shapes/Shapes4_Float_ring.png" id="1_x75db"]
 [ext_resource type="Material" uid="uid://bhqwv2urq1a3n" path="res://3d_map/Character_nodes/Shapes/float_ring_material.tres" id="2_20lo4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3x80"]

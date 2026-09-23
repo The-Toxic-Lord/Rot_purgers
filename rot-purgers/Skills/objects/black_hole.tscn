@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dy4l8inqadexy"]
 
-[ext_resource type="Shader" uid="uid://c872gb4p0iwt1" path="res://black_hole.gdshader" id="1_5r2vm"]
+[ext_resource type="Shader" uid="uid://c872gb4p0iwt1" path="res://3d_map/Animations/Black_hole/black_hole.gdshader" id="1_5r2vm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8u4e"]
 render_priority = 0

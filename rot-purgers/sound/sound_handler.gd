@@ -2,16 +2,23 @@ extends Node
 
 class_name Sound_handler
 
+@onready var damage_player: AudioStreamPlayer = %Damage
+@onready var music_player: AudioStreamPlayer = %Music
+@onready var sfx_player: AudioStreamPlayer = %Sfx
 
 
 func play_damage():
-	%Damage.play()
+	damage_player.play()
 
 func play_music(music : AudioStream):
-	if %Music.stream == music:
+	if music_player.stream == music:
 		return
-	%Music.stream = music
-	%Music.play()
+	music_player.stream = music
+	music_player.play()
+
+func play_sfx(sfx : AudioStream):
+	sfx_player.stream = sfx
+	sfx_player.play()
 
 @export var menu_music : AudioStream
 @export var tutor_music : AudioStream

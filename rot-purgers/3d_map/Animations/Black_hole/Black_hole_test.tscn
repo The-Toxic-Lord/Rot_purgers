@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bu5uskywbk7o8"]
+
+[ext_resource type="Script" uid="uid://bqt8lj0gn7e6v" path="res://3d_map/Animations/Black_hole/black_hole_test.gd" id="1_lbtym"]
+[ext_resource type="AudioStream" uid="uid://b4qqmix8yinwl" path="res://sound/SFX/SUB_DROP_DEEP.wav" id="2_3tenr"]
+[ext_resource type="Shader" uid="uid://c872gb4p0iwt1" path="res://3d_map/Animations/Black_hole/black_hole.gdshader" id="2_q8knl"]
+
+[sub_resource type="Animation" id="Animation_uttqd"]
+resource_name = "Main"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:material_override:shader_parameter/scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.0, 1.0, 0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1uq4c"]
+_data = {
+&"Main": SubResource("Animation_uttqd")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0aqh"]
+render_priority = 0
+shader = ExtResource("2_q8knl")
+shader_parameter/scale = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_m8u4e"]
+radius = 3.0
+height = 6.0
+
+[node name="Black_hole" type="Node3D" unique_id=1336508811]
+script = ExtResource("1_lbtym")
+sfx = ExtResource("2_3tenr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1242665518]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_1uq4c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2274094]
+material_override = SubResource("ShaderMaterial_h0aqh")
+mesh = SubResource("SphereMesh_m8u4e")

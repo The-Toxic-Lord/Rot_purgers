@@ -18,3 +18,7 @@ bus = &"Sfx"
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1423049762]
 unique_name_in_owner = true
 bus = &"Music"
+
+[node name="Sfx" type="AudioStreamPlayer" parent="." unique_id=1670465385]
+unique_name_in_owner = true
+bus = &"Sfx"

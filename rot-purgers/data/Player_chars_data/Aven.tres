@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_uuhbo"]
 [ext_resource type="Resource" uid="uid://dhhs70r647yrx" path="res://Skills/Skill_res/Slash.tres" id="3_i27qx"]
 [ext_resource type="Resource" uid="uid://d0lnxgg3anglw" path="res://Skills/Skill_res/Blast.tres" id="3_l4prs"]
+[ext_resource type="Resource" uid="uid://c5ughog08rjix" path="res://Skills/Skill_res/gravity_bend.tres" id="5_qo432"]
 
 [resource]
 script = ExtResource("1_qo432")
@@ -21,5 +22,5 @@ move_speed = 3
 jump_height = 30
 attack_height = 40
 node_UID = "uid://mcx4phaimhpc"
-skills = Array[ExtResource("2_uuhbo")]([ExtResource("3_i27qx"), ExtResource("3_l4prs")])
+skills = Array[ExtResource("2_uuhbo")]([ExtResource("3_i27qx"), ExtResource("3_l4prs"), ExtResource("5_qo432")])
 metadata/_custom_type_script = "uid://by1rq468n504l"

@@ -1,13 +1,10 @@
-extends Node3D
+extends Skill_animation_3d
 
 class_name Plasma_orb_animation
 
 @onready var player: AnimationPlayer = %Player
 @onready var plasma_orb: Magic_orb_VFX = %Plasma_orb
 @onready var explosion: VFXExplosionBB = %Explosion
-
-
-signal animation_finished
 
 func start(target : Vector3):
 	plasma_orb.scale = Vector3.ZERO
@@ -28,6 +25,3 @@ func explode():
 	explosion.play()
 	await explosion.finished
 	animation_finished.emit()
-
-func kill():
-	queue_free()
