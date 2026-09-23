@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dklyqy22aiis0"]
+
+[ext_resource type="Script" uid="uid://dvvbcyj6iblqn" path="res://3d_map/Animations/Shrapnel_rain/shrapnel_rain.gd" id="1_ggjgi"]
+[ext_resource type="AudioStream" uid="uid://bpyqg2ohp6nro" path="res://sound/SFX/Rock Meteor Swarm 2.ogg" id="2_7ej3x"]
+[ext_resource type="PackedScene" uid="uid://l3mk56ty44tw" path="res://addons/BinbunVFX/magic_projectiles/effects/mprojectile_javelin/mprojectile_javelin_vfx_01.tscn" id="2_ingpw"]
+
+[node name="Shrapnel_rain" type="Node3D" unique_id=1202824332]
+script = ExtResource("1_ggjgi")
+sfx = ExtResource("2_7ej3x")
+
+[node name="MProjectileJavelinVFX_01" parent="." unique_id=1349041467 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06579393, 0, -0.5082881)
+
+[node name="MProjectileJavelinVFX_02" parent="." unique_id=1640405767 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.039474726, 0, -0.38212296)
+
+[node name="MProjectileJavelinVFX_03" parent="." unique_id=1589293717 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07342842, 0, -0.6229497)
+
+[node name="MProjectileJavelinVFX_04" parent="." unique_id=825507583 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54782546, 0, -0.01513204)
+
+[node name="MProjectileJavelinVFX_05" parent="." unique_id=593180176 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6530941, 0, 0.11103308)
+
+[node name="MProjectileJavelinVFX_06" parent="." unique_id=1674390796 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68704784, 0, -0.1297937)
+
+[node name="MProjectileJavelinVFX_07" parent="." unique_id=1650687453 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06579393, 0, -0.053108692)
+
+[node name="MProjectileJavelinVFX_08" parent="." unique_id=2137696301 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.039474726, 0, 0.07305643)
+
+[node name="MProjectileJavelinVFX_09" parent="." unique_id=473529491 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07342842, 0, -0.16777033)
+
+[node name="MProjectileJavelinVFX_10" parent="." unique_id=208504300 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08556853, 0, 0.47143805)
+
+[node name="MProjectileJavelinVFX_11" parent="." unique_id=172508314 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019700125, 0, 0.5976032)
+
+[node name="MProjectileJavelinVFX_12" parent="." unique_id=1103997637 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05365382, 0, 0.35677642)
+
+[node name="MProjectileJavelinVFX_13" parent="." unique_id=227123159 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6809632, 0, -0.019386232)
+
+[node name="MProjectileJavelinVFX_14" parent="." unique_id=1335604466 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57569456, 0, 0.10677889)
+
+[node name="MProjectileJavelinVFX_15" parent="." unique_id=252249121 instance=ExtResource("2_ingpw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5417409, 0, -0.13404787)

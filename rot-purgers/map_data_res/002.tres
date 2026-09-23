@@ -1,19 +1,19 @@
-[gd_resource type="Resource" script_class="Map_data" format=3]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://b7wf7e6leod2w"]
 
-[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_ap3vr"]
-[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_ll1pu"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Charge.tres" id="3_ptsor"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Push.tres" id="4_ll1pu"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler_cap.png" id="4_muv6a"]
-[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="5_0qsh5"]
-[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="6_4p1ir"]
-[ext_resource type="Script" path="res://map_data.gd" id="7_1ux0t"]
-[ext_resource type="Script" path="res://data/terrain_data.gd" id="8_7gi64"]
-[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor_2.tres" id="9_1tyru"]
-[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="10_32qd8"]
-[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_wall_2.tres" id="11_l4jbj"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_ap3vr"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_ll1pu"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="3_ptsor"]
+[ext_resource type="Resource" uid="uid://bdy6yy4aten05" path="res://Skills/Skill_res/Push.tres" id="4_ll1pu"]
+[ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="4_muv6a"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="5_0qsh5"]
+[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_4p1ir"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="7_1ux0t"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="8_7gi64"]
+[ext_resource type="Material" uid="uid://co6ojt5md8bdi" path="res://3d_map/map_cell_materials/cave_floor_2.tres" id="9_1tyru"]
+[ext_resource type="Texture2D" uid="uid://cmb2kme6vv828" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="10_32qd8"]
+[ext_resource type="Material" uid="uid://b7sno5fgweyh6" path="res://3d_map/map_cell_materials/cave_wall_2.tres" id="11_l4jbj"]
 
-[sub_resource type="Resource" id="Resource_ll1pu"]
+[sub_resource type="Resource" id="Resource_muv6a"]
 script = ExtResource("1_ap3vr")
 name = "Crawler"
 char_class = "Captain"
@@ -35,7 +35,7 @@ skills = Array[ExtResource("2_ll1pu")]([ExtResource("4_ll1pu")])
 potential_skills = Array[ExtResource("2_ll1pu")]([ExtResource("3_ptsor"), ExtResource("4_ll1pu")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_muv6a"]
+[sub_resource type="Resource" id="Resource_ll1pu"]
 script = ExtResource("1_ap3vr")
 name = "Crawler"
 char_class = "Captain"

@@ -237,7 +237,6 @@ metadata/_custom_type_script = "uid://by1rq468n504l"
 [sub_resource type="Resource" id="Resource_xiy1m"]
 script = ExtResource("4_6sd0p")
 name = "exit_zone"
-removed_after_start = false
 atlas_coord = Vector2i(1, 0)
 node_UID = "uid://bcjtmasx0q6dh"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
@@ -251,7 +250,6 @@ metadata/_custom_type_script = "uid://m48jo33kjka0"
 [sub_resource type="Resource" id="Resource_r531d"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -260,7 +258,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_lj61p"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -269,7 +266,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_0mcae"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -278,7 +274,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_bpbwp"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -287,7 +282,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_7vw2l"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -296,7 +290,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_qdnu8"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -305,7 +298,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_cakeg"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -314,7 +306,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_5vumk"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -323,7 +314,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_7j6tm"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -332,7 +322,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_j14xn"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -341,7 +330,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_8bqgu"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 30
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -350,7 +338,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_crr6y"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 45
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -359,7 +346,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_57dej"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -368,7 +354,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_s8cjb"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -377,7 +362,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ijdsm"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -386,7 +370,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_5nxpk"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -395,7 +378,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_0g16g"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -404,7 +386,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_5kjdn"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -413,7 +394,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_egwpl"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -422,7 +402,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_l12j4"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -431,7 +410,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_d5hbw"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -440,7 +418,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_mvi5i"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -449,7 +426,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_l5vmc"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -458,7 +434,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ahyom"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -467,7 +442,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_u7ypl"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 50
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -476,7 +450,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_mhdlf"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -485,7 +458,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_qhyuh"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 45
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -494,7 +466,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_j7tpd"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 45
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -503,7 +474,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_2qeye"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 45
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -512,7 +482,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_mm6ha"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -521,7 +490,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_alebe"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 40
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -530,7 +498,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ys7s5"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 40
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -539,7 +506,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_bwvuj"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 40
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -548,7 +514,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_c1rlt"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -557,7 +522,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_xrcp1"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -566,7 +530,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_1r1u5"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -575,7 +538,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_2x66h"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -584,7 +546,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_obrpj"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 25
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -593,7 +554,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_atw41"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 30
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -602,7 +562,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_mjo53"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -611,7 +570,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_r8prx"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -620,7 +578,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_34nle"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -629,7 +586,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_jyd4h"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 30
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -638,7 +594,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_e7og5"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 25
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -647,7 +602,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_fftg7"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -656,7 +610,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_kqyk2"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -665,7 +618,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_3mwm5"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -674,7 +626,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_hxig4"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -683,7 +634,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ut7on"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -692,7 +642,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ijxxj"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -701,7 +650,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_eq3vi"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -710,7 +658,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_55ftl"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 25
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -719,7 +666,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_04624"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 30
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -728,7 +674,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_provp"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -737,7 +682,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_k28vi"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -746,7 +690,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_f05un"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -755,7 +698,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_rm0aw"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 30
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -764,7 +706,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_8vpye"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 25
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -773,7 +714,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_to1fk"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -782,7 +722,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_jcw8x"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -791,7 +730,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_o70wc"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -800,7 +738,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_e74qe"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -809,7 +746,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_iw8j3"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -818,7 +754,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ba3oo"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 15
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -827,7 +762,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_lknyn"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -836,7 +770,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_rmrwd"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 25
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -845,7 +778,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_lj058"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 30
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -854,7 +786,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_20agm"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -863,7 +794,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_cx7s4"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -872,7 +802,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_kqj3p"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 35
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -881,7 +810,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_5f6kb"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 30
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -890,7 +818,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_cj7eg"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 25
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -899,7 +826,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_aq4wr"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -908,7 +834,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_g2qwr"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -917,7 +842,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ead5j"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 20
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -926,7 +850,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_8rl3u"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 65
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -935,7 +858,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_8dwos"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 65
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -944,7 +866,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_oyqpw"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 65
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -953,7 +874,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_idsk3"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -962,7 +882,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_xuijx"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -971,7 +890,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_dno6c"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -980,7 +898,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_46x75"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -989,7 +906,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_vr422"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -998,7 +914,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_2i625"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1007,7 +922,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_04wev"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1016,7 +930,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_4i3of"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1025,7 +938,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_sjhb4"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1034,7 +946,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_xvbjr"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1043,7 +954,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_cmmeo"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1052,7 +962,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_brvf0"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1061,7 +970,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ni5hn"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1070,7 +978,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_cbq0g"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")
@@ -1079,7 +986,6 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_t3mh4"]
 script = ExtResource("6_pxxso")
 sprite = ExtResource("8_dds0y")
-atlas_coord = Vector2i(1, 0)
 height = 75
 floor_material = ExtResource("7_hrdc2")
 wall_material = ExtResource("7_hrdc2")

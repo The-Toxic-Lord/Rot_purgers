@@ -20,6 +20,9 @@ func play_sfx(sfx : AudioStream):
 	sfx_player.stream = sfx
 	sfx_player.play()
 
+func stop_sfx():
+	sfx_player.stop()
+
 @export var menu_music : AudioStream
 @export var tutor_music : AudioStream
 

@@ -34,6 +34,14 @@ var oposing_dir : Dictionary[Map_generator.directions, Map_generator.directions]
 	Map_generator.directions.E : Map_generator.directions.W,
 	Map_generator.directions.W : Map_generator.directions.E
 }
+var neighbors_sides : Array[Vector2i] = [
+	Vector2i.UP,
+	Vector2i.RIGHT,
+	Vector2i.DOWN,
+	Vector2i.LEFT,
+]
+
+
 
 
 
