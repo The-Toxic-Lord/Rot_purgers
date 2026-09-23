@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bac5gsdaio4wk"]
+
+[ext_resource type="Script" uid="uid://cruhkonptr3jv" path="res://Workshop/random_height_generator.gd" id="1_hamcj"]
+
+[node name="random_height_generator" type="Node" unique_id=2083371485]
+script = ExtResource("1_hamcj")
+terrain_size = Vector2i(5, 15)
+min_height = 20
+max_height = 150
+step = 5

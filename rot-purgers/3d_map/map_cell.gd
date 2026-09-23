@@ -101,15 +101,11 @@ func load_materials(terrain_data : Terrain_data):
 		var wall : MeshInstance3D = walls[dir]
 		var wall_material : Material = terrain_data.wall_material.duplicate(true)
 		if wall_material is StandardMaterial3D:
-			if terrain_data.depth == 0:
-				wall_material.uv1_scale.y = position.y / 2.0
-			else:
-				wall_material.uv1_scale.y = terrain_data.depth * 0.1 / 2.0
+			var height : float = wall.mesh.get_aabb().size.y
+			wall_material.uv1_scale.y = height / 2.0
 		elif wall_material is ShaderMaterial:
-			if terrain_data.depth == 0:
-				wall_material.set_shader_parameter("uv1_scale", Vector3(1, position.y / 2.0, 1))
-			else:
-				wall_material.set_shader_parameter("uv1_scale", Vector3(1,  terrain_data.depth * 0.1 / 2.0, 1))
+			var height : float = wall.mesh.get_aabb().size.y
+			wall_material.set_shader_parameter("uv1_scale", Vector3(1, height / 2.0, 1))
 			if GlobalData.oposing_dir[dir] == terrain_data.shader_dir:
 				wall_material.set_shader_parameter("Direction", Vector2i(0, 1))
 			else:

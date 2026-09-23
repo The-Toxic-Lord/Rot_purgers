@@ -217,6 +217,7 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 			await turn_to_selection()
 			if !selected_skill.skill_map.bound_to_char:
 				await move_skill(selected_cell, prev_selector_cell)
+	await get_tree().process_frame
 	check_accuracy_ui()
 
 func check_accuracy_ui():
@@ -231,7 +232,11 @@ func check_accuracy_ui():
 		var targets : Array[Character_stats] = []
 		for cell in select_zones.keys():
 			if char_positions.has(cell):
-				targets.append(char_positions[cell].stats)
+				if char_positions[cell] == selected_char:
+					continue
+				var height : float = char_positions[cell].position.y
+				if abs(height - selected_char.position.y) <= selected_char.stats.attack_height * 0.1:
+					targets.append(char_positions[cell].stats)
 		if !targets.is_empty():
 			map_ui.show_accuracy(targets, selected_skill)
 		else:
@@ -526,8 +531,8 @@ func get_targets(char_node : Character_node) -> Array[Character_node]:
 	for enemy in BattleHandler.enemies:
 		var path : Array[Vector2i] = a_star.get_id_path(char_node.map_pos, enemy.map_pos)
 		if path.size() <= char_node.stats.attack_distance + 1:
-			var height : int = terrain_map[enemy.map_pos].height
-			if height - terrain_map[char_node.map_pos].height <= char_node.stats.attack_height:
+			var height : float = enemy.position.y
+			if abs(height - char_node.position.y) <= char_node.stats.attack_height * 0.1:
 				targets.append(enemy)
 	return targets
 
@@ -606,7 +611,7 @@ func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 		char_node.stats = enemy_map[cell]
 		char_node.stats.new()
 		add_child(char_node)
-		if map_cells.has(cell):
+		if map_cells.has(cell) and enemy_map[cell].AI_type != Character_stats.AI_types.FLYER:
 			char_node.position = map_cells[cell].position
 			if char_node.stats.AI_type == Character_stats.AI_types.FLYER or\
 			char_node.stats.AI_type == Character_stats.AI_types.FLYER_CHARGE:
@@ -641,6 +646,7 @@ func display_skill(skill : Skill_base):
 	selected_skill = skill
 	
 	if skill.skill_map.bound_to_char:
+		selected_char.previous_map_pos = selected_char.map_pos
 		make_bound_skill(skill)
 	else:
 		make_unboun_skill(skill)
@@ -911,7 +917,6 @@ func move_char_skill():
 	move_skill(char_skill_move_cell, prev_cell)
 
 func pause_skill_move():
-	selected_char.previous_map_pos = selected_char.map_pos
 	selected_char.map_pos = char_skill_move_cell
 
 func finalize_skill_move():

@@ -98,8 +98,10 @@ func skill_mass(order : Order_skill_data):
 	var target_damage : Dictionary[Character_node, float] = {}
 	for cell in order.damage_cells:
 		if map_gen.char_positions.has(cell):
-			target_damage[map_gen.char_positions[cell]] = \
-			skill_damage(map_gen.char_positions[cell], attacker, order.skill)
+			var height : float = map_gen.char_positions[cell].position.y
+			if abs(height - attacker.position.y) <= attacker.stats.attack_height * 0.1:
+				target_damage[map_gen.char_positions[cell]] = \
+				skill_damage(map_gen.char_positions[cell], attacker, order.skill)
 	if !target_damage.is_empty():
 		for target : Character_node in target_damage.keys():
 			map_gen.set_camera_target(target)
@@ -122,10 +124,12 @@ func skill_mass(order : Order_skill_data):
 func skill_oneshot(order : Order_skill_data):
 	await get_tree().process_frame
 	var targets : Array[Character_node] = []
+	var attacker : Character_node = get_node(order.attacker)
 	for cell in order.damage_cells:
 		if map_gen.char_positions.has(cell):
-			targets.append(map_gen.char_positions[cell])
-	var attacker : Character_node = get_node(order.attacker)
+			var height : float = map_gen.char_positions[cell].position.y
+			if abs(height - attacker.position.y) <= attacker.stats.attack_height * 0.1:
+				targets.append(map_gen.char_positions[cell])
 	if order.skill.can_be_deflected:
 		for target in targets:
 			if deflect_check(target, attacker):
