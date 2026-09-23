@@ -166,7 +166,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -537.0
-offset_top = -572.0
+offset_top = -533.0
 offset_right = -50.0
 offset_bottom = -50.0
 grow_horizontal = 0
@@ -264,7 +264,8 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("8_cpof1")
 text = "+10"
 
-[node name="Label3" type="Label" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=537736024]
+[node name="Terrain_cost" type="Label" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=537736024]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "Magic cost : "
@@ -275,6 +276,11 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Cast"
+
+[node name="Terrain_mod_back" type="Button" parent="Terrain_mod/MarginContainer/VBoxContainer" unique_id=286459179]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
 
 [node name="Rearange_menu" parent="." unique_id=1136149641 instance=ExtResource("9_bj6fb")]
 unique_name_in_owner = true
@@ -308,4 +314,5 @@ visible = false
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_05" to="." method="_on_terr_bt_pressed" flags=18]
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_06" to="." method="_on_terr_bt_pressed" flags=18]
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/Terrain_mod_button" to="." method="_on_terrain_mod_button_pressed"]
+[connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/Terrain_mod_back" to="." method="_on_terrain_mod_back_pressed"]
 [connection signal="confirm" from="Rearange_menu" to="." method="_on_rearange_menu_confirm"]

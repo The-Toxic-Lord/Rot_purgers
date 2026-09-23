@@ -260,11 +260,31 @@ func _on_terr_bt_pressed(source: BaseButton) -> void:
 	map_generator.terrain_mod_data[cell].height += terrain_mod_buttons[source]
 	%mod_heilght_lb.text = "Modified height : " + str(map_generator.terrain_mod_data[cell].height)
 	map_generator.move_map_cell_height(selected_index)
+	%Terrain_cost.text = "Magic cost : " + str(calculate_terrain_cost())
 
 func _on_terrain_mod_button_pressed() -> void:
+	selected_char.magic_cost(calculate_terrain_cost())
 	map_generator.cast_terrain_mod()
 	%Terrain_mod.hide()
 	%Cell_select.clear()
+
+func _on_terrain_mod_back_pressed() -> void:
+	%Terrain_mod.hide()
+	back_to_skill_selection()
+	map_generator.clear_select_zone()
+	map_generator.state = Map_generator.states.MENU
+
+func calculate_terrain_cost() -> int:
+	var cost : int = 0
+	for terr_cell : Vector2i in map_generator.terrain_mod_data.keys():
+		var base_height : int = map_generator.terrain_map[terr_cell].height
+		var new_height : int = map_generator.terrain_mod_data[terr_cell].height
+		cost += abs(base_height - new_height)
+	@warning_ignore("narrowing_conversion")
+	cost *= 0.1
+	@warning_ignore("narrowing_conversion")
+	cost *= GlobalData.map_magic_cost_adjustment
+	return cost
 
 func _ready() -> void:
 	var pop : PopupMenu = %Cell_select.get_popup()

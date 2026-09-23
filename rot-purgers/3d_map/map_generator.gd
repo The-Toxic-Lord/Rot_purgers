@@ -965,7 +965,7 @@ func add_cell_for_terrain_modification(cell : Vector2i):
 	var zone : Node3D = load("uid://bnwwdeckahhsa").instantiate()
 	add_zone(zone, cell)
 	var terr_data := terrain_map[cell].duplicate(true)
-	terrain_mod_data[cell] =terr_data
+	terrain_mod_data[cell] = terr_data
 
 func remove_cell_from_terrain_modification(cell : Vector2i):
 	if !terrain_mod_selected_cells.has(cell):
