@@ -43,6 +43,7 @@ func get_defence_stat(st : stats):
 @export var attack_height : int = 10
 @export var counter : int = 1
 @export var trigger_distance : int = 0
+@export_range(0, 3) var rot_stage : int = 0
 @export_group("", "")
 @export var node_UID : String
 @export var start_dir : Map_generator.directions

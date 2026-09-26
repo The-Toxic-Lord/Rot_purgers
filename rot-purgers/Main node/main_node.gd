@@ -68,6 +68,32 @@ func load_map(id : int = -1):
 		#if map_data.music != null:
 			#SoundHandler.play_music(map_data.music)
 
+func load_scene_path(path : String):
+	var map_data = ResourceLoader.load(path)
+	if map_data is Map_data:
+		var new_map_gen : Map_generator = load("uid://buyr0671du0pe").instantiate()
+		new_map_gen.hide()
+		add_child(new_map_gen)
+		new_map_gen.load_map(map_data)
+		await new_map_gen.map_loaded
+		if map_generator != null:
+			map_generator.queue_free()
+		if cutscene != null:
+			cutscene.queue_free()
+		map_generator = new_map_gen
+		map_generator.show()
+		if map_data.music != null:
+			SoundHandler.play_music(map_data.music)
+	elif map_data is PackedScene:
+		var new_cutscene : Cutscene = map_data.instantiate()
+		add_child(new_cutscene)
+		if map_generator != null:
+			map_generator.queue_free()
+		if cutscene != null:
+			cutscene.queue_free()
+		cutscene = new_cutscene
+		cutscene.start_cutscene()
+
 func load_background():
 	background = load("uid://cc2fywiyu0mah").instantiate()
 	add_child(background)
@@ -77,6 +103,7 @@ func show_menu():
 	%Main_menu.show_menu()
 
 func _ready() -> void:
+	ObjectLink.main = self
 	BattleHandler.main_node = self
 	load_background()
 

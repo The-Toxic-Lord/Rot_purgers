@@ -285,10 +285,10 @@ func spawn_objects():
 		var zone : Node3D = load(object_map[cell].node_UID).instantiate()
 		add_child(zone)
 		zone.position = map_cells[cell].position
-		match object_map[cell].name: 
-			"spawn_zone":
+		match object_map[cell].object_type: 
+			Map_object.types.SPAWN:
 				spawn_zones[cell] = zone
-			"exit_zone":
+			Map_object.types.EXIT:
 				exit_zones[cell] = zone
 
 var showing_move_zone := false
@@ -572,7 +572,7 @@ func move_character():
 	selected_char.can_move = false
 	update_char_position(selected_char, selected_cell)
 	if exit_zones.has(selected_cell):
-		BattleHandler.end_battle()
+		BattleHandler.end_battle(map_data.object_map_data[selected_cell])
 		return
 	if selected_char.can_attack:
 		state = states.MENU
@@ -632,8 +632,7 @@ func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 			char_node.position = Vector3(cell.x * 2.0, enemy_map[cell].start_height * 0.1, cell.y * 2.0)
 		char_node.name = enemy_map[cell].name
 		char_node.map_pos = cell
-		if map_data != null:
-			char_node.set_rot(map_data.rot_stage)
+		char_node.set_rot(enemy_map[cell].rot_stage)
 		char_node.turn(enemy_map[cell].start_dir, true)
 		BattleHandler.enemies.append(char_node)
 		char_positions[cell] = char_node

@@ -170,13 +170,18 @@ func remove_order(char_node : Character_node):
 			order_array.erase(order)
 			return
 
-func end_battle():
+func end_battle(object_data : Map_object = null):
 	var ally_data_array : Array[Character_stats] = []
 	for ally in allies:
 		ally.stats.new()
 		ally_data_array.append(ally.stats)
 	GlobalData.ally_team.append_array(ally_data_array)
-	map_gen.get_parent().load_map()
+	if object_data != null:
+		if object_data.extra_data != "":
+			ObjectLink.main.load_scene_path(object_data.extra_data)
+			return
+	else:
+		ObjectLink.main.load_scene_path(map_gen.map_data.next_map_path)
 
 func game_over():
 	main_node.game_over()

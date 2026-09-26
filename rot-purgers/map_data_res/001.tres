@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://brt8evamdi22g"]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://cmsiic6c4suro"]
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_fepub"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_s1j2q"]

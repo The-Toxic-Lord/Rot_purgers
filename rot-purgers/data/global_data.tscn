@@ -15,4 +15,4 @@
 script = ExtResource("1_215bx")
 ally_team = Array[ExtResource("6_lbxat")]([ExtResource("9_idmur"), ExtResource("8_rdq6i"), ExtResource("9_17ap7")])
 enemy_data = Array[ExtResource("6_lbxat")]([ExtResource("8_lbxat"), ExtResource("13_idmur"), ExtResource("12_rdq6i"), ExtResource("9_et4q3"), ExtResource("10_7c7dr")])
-map_data_path = Array[String](["uid://c2hd250kce25a", "uid://wjt5k3krqruv", "res://map_data_res/battle_01.tres", "res://map_data_res/battle_02.tres", "res://map_data_res/battle_03.tres", "res://dialogue/06.tres"])
+map_data_path = Array[String](["res://map_data_res/saved_map.tres", "uid://c2hd250kce25a", "uid://wjt5k3krqruv", "res://map_data_res/battle_01.tres", "res://map_data_res/battle_02.tres", "res://map_data_res/battle_03.tres", "res://dialogue/06.tres"])

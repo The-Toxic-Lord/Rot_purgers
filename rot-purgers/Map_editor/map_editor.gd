@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Map_editor
 
+@onready var map_editor_ui: Map_editor_UI = %Map_Editor_UI
+
 @export var map_size := Vector2i(30, 30):
 	set(value):
 		map_size = value
@@ -187,8 +189,6 @@ func _process(delta: float) -> void:
 				if map_rect.has_point(cell):
 					change_terrain(cell)
 			modes.OBJECTS:
-				if selected_object == null:
-					return
 				var cell : Vector2i = %Object_map.local_to_map(%Object_map.get_global_mouse_position())
 				if map_rect.has_point(cell):
 					change_object(cell)
@@ -258,17 +258,14 @@ func change_terrain(cell : Vector2i):
 func change_object(cell : Vector2i):
 	if !terrain_map_data.has(cell):
 		return
-	#%Object_map.set_cell(cell, 0, selected_object.atlas_coord)
 	if !cell_to_object_node.has(cell):
+		if selected_object == null:
+			return
+		object_map_data[cell] = selected_object.duplicate(true)
 		spawn_texture_node(selected_object.sprite, cell, 2)
 	else:
-		cell_to_object_node[cell].queue_free()
-		spawn_texture_node(selected_object.sprite, cell, 2)
-	object_map_data[cell] = selected_object.duplicate(true)
-	if object_dir != -1:
-		object_map_data[cell].direction = object_dir
-	else:
-		object_map_data[cell].direction = Map_generator.directions.values().pick_random()
+		selected_object = object_map_data[cell]
+		%Map_Editor_UI.load_seleced_object()
 
 func remove_object(cell : Vector2i):
 	if !object_map_data.has(cell):
@@ -324,6 +321,8 @@ func _on_map_editor_ui_generate_map() -> void:
 	map_data.object_map_data = object_map_data
 	map_data.enemy_map_data = enemy_map_data
 	map_data.map_size = map_size
+	map_data.magic_cost_adjustment = map_editor_ui.magic_cost
+	map_data.next_map_path = map_editor_ui.next_map_path
 	
 	main_node.generate_map(map_data)
 
@@ -345,6 +344,8 @@ func save_map_data(file_path : String):
 	save_data.object_map_data = object_map_data
 	save_data.enemy_map_data = enemy_map_data
 	save_data.map_size = map_size
+	save_data.magic_cost_adjustment = map_editor_ui.magic_cost
+	save_data.next_map_path = map_editor_ui.next_map_path
 	ResourceSaver.save(save_data, file_path)
 
 func load_map_data(file_path : String):
@@ -374,7 +375,7 @@ func load_map_data(file_path : String):
 	enemy_map_data = save_data.enemy_map_data
 	map_size = save_data.map_size
 	await update_map_size()
-	%Map_Editor_UI.load_data(map_size)
+	%Map_Editor_UI.load_data(save_data)
 	
 	for cell in terrain_map_data:
 		load_terrain(cell, terrain_map_data[cell])
@@ -424,8 +425,6 @@ func change_data_depth(new_text : String, cell : Vector2i):
 		return
 
 func change_enemy(cell : Vector2i):
-	#if !terrain_map_data.has(cell):
-		#return
 	if enemy_map_data.has(cell):
 		%Map_Editor_UI.load_enemy_data(enemy_map_data[cell])
 	else:

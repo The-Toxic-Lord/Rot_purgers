@@ -66,6 +66,8 @@ func _ready() -> void:
 		stats_le[i].text = str(enemy_data[0].get(id_to_stat[i]))
 	selected_enemy_data = enemy_data[0]
 	%Enemy_selector.get_popup().add_theme_constant_override("icon_max_width", 64)
+	for type in Map_object.types.keys():
+		%Object_type.add_item(type)
 
 #region TERRAIN
 
@@ -132,24 +134,29 @@ func _on_shader_dir_item_selected(index: int) -> void:
 func _on_generate_pressed() -> void:
 	generate_map.emit()
 
+enum file_states { SAVE, LOAD, OBJECT_DATA, NEXT }
 var save_location : String
+var file_state : file_states 
 func _on_save_pressed() -> void:
+	file_state = file_states.SAVE
 	%Save.release_focus()
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_SAVE_FILE
 	%FileDialog.popup()
-	await %FileDialog.file_selected
-	map_editor.save_map_data(%FileDialog.current_path)
 
 func _on_load_pressed() -> void:
+	file_state = file_states.LOAD
 	%Load.release_focus()
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
 	%FileDialog.popup()
-	await %FileDialog.file_selected
-	map_editor.load_map_data(%FileDialog.current_path)
 
-func load_data(map_size : Vector2i):
-	%map_x.text = str(map_size.x)
-	%map_y.text = str(map_size.y)
+func load_data(map_data : Map_data):
+	%map_x.text = str(map_data.map_size.x)
+	%map_y.text = str(map_data.map_size.y)
+	%Magic_cost.text = str(map_data.magic_cost_adjustment)
+	magic_cost = map_data.magic_cost_adjustment
+	next_map_selected(map_data.next_map_path)
+	%Mode.selected = 0
+	_on_mode_item_selected(0)
 
 func _on_enemy_selector_item_selected(index: int) -> void:
 	load_enemy_data(enemy_data[index].duplicate(true), false)
@@ -185,6 +192,7 @@ func load_enemy_data(enemy : Character_stats, reset_selector := true):
 		%Enemy_selector.selected = -1
 	await load_skills()
 	%Enemy_maker.show()
+	%rot_stage.selected = enemy.rot_stage
 	if mouse_dead_zone.size() == 2:
 		mouse_dead_zone.append(Rect2(%Enemy_maker.position, %Enemy_maker.size))
 
@@ -229,6 +237,7 @@ func load_object_data():
 		var obj_res : Map_object = ResourceLoader.load(map_objects_file_path + files[i])
 		map_objects.append(obj_res)
 		%Object_selector.add_icon_item(obj_res.sprite, obj_res.name)
+	map_editor.selected_object = map_objects[0]
 
 func _on_object_selector_item_selected(index: int) -> void:
 	map_editor.selected_object = map_objects[index]
@@ -252,22 +261,97 @@ func load_terrain():
 	map_editor.selected_terrain_data = map_terrain[0]
 
 func _on_mode_item_selected(index: int) -> void:
+	while mouse_dead_zone.size() > 2:
+		mouse_dead_zone.remove_at(2)
 	map_editor.paint_mode = mode_buttons[index]
+	if index == 1:
+		%Object_maker.show()
+		var rect := Rect2(%Object_maker.position, %Object_maker.size)
+		mouse_dead_zone.append(rect)
+	else:
+		%Object_maker.hide()
 
-func _on_object_dir_item_selected(index: int) -> void:
+func _on_object_dir_select_item_selected(index: int) -> void:
 	match index:
 		0:
-			map_editor.object_dir = Map_generator.directions.N
+			map_editor.selected_object.direction = Map_generator.directions.N
 		1:
-			map_editor.object_dir = Map_generator.directions.E
+			map_editor.selected_object.direction = Map_generator.directions.E
 		2:
-			map_editor.object_dir = Map_generator.directions.S
+			map_editor.selected_object.direction = Map_generator.directions.S
 		3:
-			map_editor.object_dir = Map_generator.directions.W
-		4:
-			@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
-			map_editor.object_dir = -1
+			map_editor.selected_object.direction = Map_generator.directions.W
 
+func load_seleced_object():
+	%Object_dir_select.selected = map_editor.selected_object.direction
+	%Object_type.selected = map_editor.selected_object.object_type
+	_on_object_type_item_selected(%Object_type.selected)
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	match file_state:
+		file_states.SAVE:
+			map_editor.save_map_data(path)
+		file_states.LOAD:
+			map_editor.load_map_data(path)
+		file_states.OBJECT_DATA:
+			object_data_selected(path)
+		file_states.NEXT:
+			next_map_selected(path)
+
+@onready var exit_controlls : Array[Control] = [
+	%Label15, %Data_name, %Select_data_bt
+]
+
+func _on_object_type_item_selected(index: int) -> void:
+	@warning_ignore("int_as_enum_without_cast")
+	map_editor.selected_object.object_type = index
+	if index == Map_object.types.EXIT:
+		for cont in exit_controlls:
+			cont.show()
+		object_data_selected(map_editor.selected_object.extra_data)
+	else:
+		for cont in exit_controlls:
+			cont.hide()
+
+func _on_select_data_bt_pressed() -> void:
+	file_state = file_states.OBJECT_DATA
+	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
+	%FileDialog.popup()
+
+func object_data_selected(path : String):
+	if path == "":
+		return
+	map_editor.selected_object.extra_data = path
+	%Data_name.text = get_path_file_name(path)
+
+func get_path_file_name(path : String) -> String:
+	var id : int = path.find(".tres")
+	while path[id] != "/":
+		id -= 1
+	var st : String = path.substr(id+1, -1)
+	st = st.erase(st.find("."), 9999)
+	return st.substr(0, st.find("."))
+
+var magic_cost : float
+func _on_magic_cost_text_changed(new_text: String) -> void:
+	if new_text.is_valid_float():
+		magic_cost = new_text.to_float()
+		return
+
+func _on_next_map_bt_pressed() -> void:
+	file_state = file_states.NEXT
+	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
+	%FileDialog.popup()
+
+var next_map_path : String
+func next_map_selected(path : String):
+	if path == "":
+		return
+	next_map_path = path
+	%next_map_lb.text = get_path_file_name(path)
+
+func _on_rot_stage_item_selected(index: int) -> void:
+	selected_enemy_data.rot_stage = index
 
 
 
