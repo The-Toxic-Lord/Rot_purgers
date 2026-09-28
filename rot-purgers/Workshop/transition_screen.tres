@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://q7wigyaxawla"]
+
+[ext_resource type="Shader" uid="uid://dds5sflv65eea" path="res://addons/BinbunVFX/transition.gdshader" id="1_pdbjl"]
+[ext_resource type="Texture2D" uid="uid://cjrhocno81nnx" path="res://addons/BinbunVFX/shared/texture/gradient/line/line_x_01.tres" id="2_pdbjl"]
+[ext_resource type="Texture2D" uid="uid://bdtu3rkuh2pud" path="res://addons/BinbunVFX/shared/texture/gradient/circle/circle_02.tres" id="3_pdbjl"]
+
+[resource]
+shader = ExtResource("1_pdbjl")
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/node_resolution = Vector2(1920, 1080)
+shader_parameter/factor = 0.0
+shader_parameter/width = 0.4
+shader_parameter/gradient_texture = ExtResource("2_pdbjl")
+shader_parameter/gradient_fixed = false
+shader_parameter/shape_texture = ExtResource("3_pdbjl")
+shader_parameter/shape_tiling = 32.0
+shader_parameter/shape_rotation = 0.0
+shader_parameter/shape_scroll = Vector2(0, 0)
+shader_parameter/shape_feathering = 0.0999999977648
+shader_parameter/shape_treshold = 1.0

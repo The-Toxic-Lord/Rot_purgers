@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b5tl4miftxq85"]
+
+[ext_resource type="Script" uid="uid://mjc7g47q73fn" path="res://3d_map/Animations/Blast/blast.gd" id="1_s2obs"]
+[ext_resource type="AudioStream" uid="uid://n2kvkop547v7" path="res://sound/SFX/Spell Impact 1.ogg" id="2_3k8tu"]
+[ext_resource type="PackedScene" uid="uid://c2g8hg2ilujf8" path="res://assets/BinbunVFX_Vol2/StylizedHitFX/effects/impact/vfx_impact_02.tscn" id="2_e4oil"]
+
+[node name="Blast" type="Node3D" unique_id=938534420]
+script = ExtResource("1_s2obs")
+sfx = ExtResource("2_3k8tu")
+
+[node name="VFXImpactSmall_02" parent="." unique_id=2055211828 instance=ExtResource("2_e4oil")]
+unique_name_in_owner = true
+
+[node name="VFXImpactSmall_03" parent="." unique_id=1352660017 instance=ExtResource("2_e4oil")]
+unique_name_in_owner = true
+
+[node name="VFXImpactSmall_04" parent="." unique_id=1234183874 instance=ExtResource("2_e4oil")]
+unique_name_in_owner = true

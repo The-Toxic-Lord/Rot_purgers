@@ -10,4 +10,5 @@ name = "Observer"
 char_class = "Eosinophil"
 sprite = ExtResource("3_ae2jc")
 node_UID = "uid://ckmkqe73jj58e"
+AI_type = 5
 metadata/_custom_type_script = "uid://by1rq468n504l"

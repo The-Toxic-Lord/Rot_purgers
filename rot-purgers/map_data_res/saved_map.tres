@@ -20,7 +20,6 @@ name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("4_kqyk2")
-max_health = 10
 max_magic = 0
 strength = 30
 defence = 30
@@ -54,6 +53,7 @@ char_class = "Eosinophil"
 sprite = ExtResource("6_jcw8x")
 rot_stage = 1
 node_UID = "uid://ckmkqe73jj58e"
+AI_type = 5
 start_height = 80
 metadata/_custom_type_script = "uid://by1rq468n504l"
 

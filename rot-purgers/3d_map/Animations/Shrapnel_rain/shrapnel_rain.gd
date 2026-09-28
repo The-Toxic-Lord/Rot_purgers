@@ -19,7 +19,7 @@ extends Skill_animation_3d
 
 @export var sfx : AudioStream
 
-func start(target : Vector3) -> void:
+func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
 	SoundHandler.play_sfx(sfx)
 	position.y = 5.0
 	await get_tree().process_frame

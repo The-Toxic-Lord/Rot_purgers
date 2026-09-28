@@ -7,7 +7,7 @@ signal animation_finished
 func _ready() -> void:
 	animation_finished.connect(kill)
 
-func start(target : Vector3) -> void:
+func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
 	pass
 
 func kill():

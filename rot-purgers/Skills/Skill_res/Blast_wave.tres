@@ -8,5 +8,5 @@ script = ExtResource("1_rccaw")
 name = "Blast wave"
 magic_cost = 30
 skill_map = ExtResource("2_kpnru")
-is_attack = true
+max_dist = 3
 metadata/_custom_type_script = "uid://ceg7shg67rmfw"
