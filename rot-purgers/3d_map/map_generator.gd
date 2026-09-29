@@ -51,12 +51,15 @@ var cell_to_multi_inst : Dictionary[Vector2i, MultiMeshInstance3D] = {}
 @onready var multi_mesh_instance_holder: Node3D = %MultiMeshInstance_holder
 
 var terrain_mod_menu_active : bool = false
+var active := false
 
-func load_map(map : Map_data):
-	await get_tree().process_frame
+func _ready() -> void:
 	BattleHandler.map_gen = self
 	ObjectLink.map_gen = self
 	ObjectLink.map_camera = %Camera_position
+
+func load_map(map : Map_data):
+	await get_tree().process_frame
 	terrain_map = map.terrain_map_data
 	object_map = map.object_map_data
 	map_data = map
@@ -78,6 +81,7 @@ func load_map(map : Map_data):
 		await DialogueManager.dialogue_ended
 		freze_selector = false
 	%Camera_position.set_process(true)
+	active = true
 
 func make_multi_meshes():
 	var mat_to_multi : Dictionary[StandardMaterial3D, MultiMeshInstance3D] = {}
@@ -294,6 +298,8 @@ func spawn_objects():
 var showing_move_zone := false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if !active:
+		return
 	if event is InputEventMouse:
 		var cam : Camera3D = %Camera_position.camera
 		var origin := cam.project_ray_origin(event.position)
@@ -871,28 +877,33 @@ func load_save():
 	get_parent().current_map_id = game_save.current_map_id
 	terrain_map = game_save.terrain_map
 	object_map = game_save.object_map
+	map_data = game_save.map_data
+	GlobalData.dead_chars = game_save.dead_chars
 	
 	await spawn_cells()
 	await calculate_boundary()
 	await move_selector_to_spawn()
 	await spawn_objects()
 	
+	await make_multi_meshes()
 	GlobalData.ally_team = game_save.ally_team
-	await map_ui.populate_spawn_list(map_data)
-	
 	await BattleHandler.new_battle_start()
-	BattleHandler.order_array = game_save.orders
 	await load_chars(game_save)
+	await map_ui.populate_spawn_list(map_data, true)
+	
+	BattleHandler.order_array = game_save.orders
+	%Camera_position.set_process(true)
+	active = true
 
 func load_chars(game_save : Game_save):
-	for save_char_data in game_save.char_data:
+	for save_char_data : Save_char_data in game_save.char_data:
 		var char_node : Character_node = load(save_char_data.stats.node_UID).instantiate()
 		add_child(char_node)
 		await char_node.load_state(save_char_data)
 		char_node.name = save_char_data.name
 		char_node.position = map_cells[char_node.map_pos].position
 		char_positions[char_node.map_pos] = char_node
-		char_node.turn(char_node.current_direction)
+		char_node.turn(save_char_data.current_direction, true)
 		if char_node.is_enemy:
 			BattleHandler.enemies.append(char_node)
 		else:

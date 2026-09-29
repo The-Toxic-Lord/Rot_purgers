@@ -1,170 +1,202 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://qnsqd1226vg1"]
+[gd_resource type="Resource" script_class="Map_data" format=3]
 
-[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_4ig5i"]
-[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_6i6nm"]
-[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="3_xyfd7"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="4_ay0ur"]
-[ext_resource type="AudioStream" uid="uid://oci6v1hpv8g5" path="res://sound/Inside The Tomb OGG.ogg" id="4_ykjof"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="5_05g0c"]
-[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_mkndj"]
-[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="7_r7ff0"]
-[ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="8_5sisp"]
+[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_4ig5i"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_6i6nm"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler.png" id="3_xyfd7"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="4_ay0ur"]
+[ext_resource type="Script" path="res://map_data.gd" id="5_05g0c"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="5_31nio"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="5_gkkw3"]
+[ext_resource type="Script" path="res://data/terrain_data.gd" id="6_mkndj"]
+[ext_resource type="Texture2D" path="res://import/check_button.png" id="6_obhn5"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="6_r78wh"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="7_r7ff0"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/terrain_cave.png" id="8_5sisp"]
 
-[sub_resource type="Resource" id="Resource_ahyom"]
+[sub_resource type="Resource" id="Resource_31nio"]
 script = ExtResource("1_4ig5i")
 name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("3_xyfd7")
-strength = 30
-defence = 30
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 30
-speed = 30
+accuracy = 40
+speed = 55
 move_speed = 5
 counter = 0
+rot_stage = 1
 node_UID = "uid://dunq80ub3v1jk"
 start_dir = 2
 AI_type = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_u7ypl"]
+[sub_resource type="Resource" id="Resource_jlnjk"]
 script = ExtResource("1_4ig5i")
 name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("3_xyfd7")
-strength = 30
-defence = 30
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 30
-speed = 30
+accuracy = 40
+speed = 55
 move_speed = 5
 counter = 0
+rot_stage = 1
 node_UID = "uid://dunq80ub3v1jk"
 start_dir = 2
 AI_type = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_8dwos"]
+[sub_resource type="Resource" id="Resource_r78wh"]
 script = ExtResource("1_4ig5i")
 name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("3_xyfd7")
-strength = 30
-defence = 30
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 30
-speed = 30
+accuracy = 40
+speed = 55
 move_speed = 5
 counter = 0
+rot_stage = 1
 node_UID = "uid://dunq80ub3v1jk"
 start_dir = 2
 AI_type = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_8rl3u"]
+[sub_resource type="Resource" id="Resource_nrqk1"]
 script = ExtResource("1_4ig5i")
 name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("3_xyfd7")
-strength = 30
-defence = 30
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 30
-speed = 30
+accuracy = 40
+speed = 55
 move_speed = 5
 counter = 0
+rot_stage = 1
 node_UID = "uid://dunq80ub3v1jk"
 start_dir = 2
 AI_type = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_lj058"]
+[sub_resource type="Resource" id="Resource_e7lrh"]
 script = ExtResource("1_4ig5i")
 name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("3_xyfd7")
-strength = 30
-defence = 30
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 30
-speed = 30
+accuracy = 40
+speed = 55
 move_speed = 5
-jump_height = 50
 counter = 0
+rot_stage = 1
 node_UID = "uid://dunq80ub3v1jk"
-start_dir = 3
+start_dir = 1
+AI_type = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_obrpj"]
+[sub_resource type="Resource" id="Resource_obhn5"]
 script = ExtResource("1_4ig5i")
 name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("3_xyfd7")
-strength = 30
-defence = 30
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 30
-speed = 30
+accuracy = 40
+speed = 55
 move_speed = 5
-jump_height = 50
 counter = 0
+rot_stage = 1
 node_UID = "uid://dunq80ub3v1jk"
-start_dir = 3
+start_dir = 1
+AI_type = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_04624"]
+[sub_resource type="Resource" id="Resource_sbuay"]
 script = ExtResource("1_4ig5i")
 name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("3_xyfd7")
-strength = 30
-defence = 30
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 30
-speed = 30
+accuracy = 40
+speed = 55
 move_speed = 5
-jump_height = 50
 counter = 0
+rot_stage = 1
 node_UID = "uid://dunq80ub3v1jk"
-start_dir = 3
+start_dir = 1
+AI_type = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_atw41"]
+[sub_resource type="Resource" id="Resource_gkkw3"]
 script = ExtResource("1_4ig5i")
 name = "Crawler"
 char_class = "Servant"
 age = 3
 sprite = ExtResource("3_xyfd7")
-strength = 30
-defence = 30
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 30
-speed = 30
+accuracy = 40
+speed = 55
 move_speed = 5
-jump_height = 50
 counter = 0
+rot_stage = 1
 node_UID = "uid://dunq80ub3v1jk"
-start_dir = 3
+start_dir = 1
+AI_type = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_3mwm5"]
+[sub_resource type="Resource" id="Resource_gxvnn"]
 script = ExtResource("4_ay0ur")
 name = "spawn_zone"
+sprite = ExtResource("5_gkkw3")
 node_UID = "uid://b77u0ogcrnmlx"
+object_type = 1
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
-[sub_resource type="Resource" id="Resource_55ftl"]
+[sub_resource type="Resource" id="Resource_h0yka"]
 script = ExtResource("4_ay0ur")
 name = "exit_zone"
+sprite = ExtResource("6_obhn5")
 atlas_coord = Vector2i(1, 0)
 node_UID = "uid://bcjtmasx0q6dh"
+object_type = 2
+extra_data = "res://map_data_res/pre_03.tres"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_01uvt"]
@@ -677,18 +709,18 @@ Vector2i(13, 9): SubResource("Resource_l12j4"),
 Vector2i(13, 10): SubResource("Resource_bpbwp")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("4_ay0ur")]({
-Vector2i(2, 17): SubResource("Resource_3mwm5"),
-Vector2i(13, 8): SubResource("Resource_55ftl")
+Vector2i(2, 17): SubResource("Resource_gxvnn"),
+Vector2i(13, 8): SubResource("Resource_h0yka")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_4ig5i")]({
-Vector2i(1, 10): SubResource("Resource_ahyom"),
-Vector2i(2, 10): SubResource("Resource_u7ypl"),
-Vector2i(2, 11): SubResource("Resource_8dwos"),
-Vector2i(3, 10): SubResource("Resource_8rl3u"),
-Vector2i(10, 7): SubResource("Resource_lj058"),
-Vector2i(10, 9): SubResource("Resource_obrpj"),
-Vector2i(12, 7): SubResource("Resource_04624"),
-Vector2i(12, 9): SubResource("Resource_atw41")
+Vector2i(1, 10): SubResource("Resource_31nio"),
+Vector2i(2, 10): SubResource("Resource_jlnjk"),
+Vector2i(2, 11): SubResource("Resource_r78wh"),
+Vector2i(3, 10): SubResource("Resource_nrqk1"),
+Vector2i(10, 7): SubResource("Resource_e7lrh"),
+Vector2i(10, 9): SubResource("Resource_obhn5"),
+Vector2i(12, 7): SubResource("Resource_sbuay"),
+Vector2i(12, 9): SubResource("Resource_gkkw3")
 })
-music = ExtResource("4_ykjof")
-rot_stage = 1
+next_map_path = "res://map_data_res/pre_03.tres"
+player_chars = Array[ExtResource("1_4ig5i")]([ExtResource("5_31nio"), ExtResource("6_r78wh")])

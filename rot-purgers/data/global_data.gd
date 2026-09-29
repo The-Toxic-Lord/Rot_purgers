@@ -9,19 +9,6 @@ class_name Global_data
 
 @export var map_magic_cost_adjustment : float
 
-func _ready() -> void:
-	for ch in ally_team:
-		ch.new()
-
-func reset_data():
-	ally_team.clear()
-	ally_team.append(load("uid://d2mat2b43iwxg"))
-	ally_team.append(load("uid://dg6k5myc0u1ir"))
-	for ch in ally_team:
-		ch.new()
-
-
-
 var dir_to_vect : Dictionary[Map_generator.directions, Vector2i] = {
 	Map_generator.directions.N : Vector2i(0, -1),
 	Map_generator.directions.S : Vector2i(0, 1),
@@ -41,8 +28,11 @@ var neighbors_sides : Array[Vector2i] = [
 	Vector2i.LEFT,
 ]
 
+@export var dead_chars : Array[String] = []
 
-
+func clear_data():
+	ally_team.clear()
+	dead_chars.clear()
 
 
 

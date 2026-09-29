@@ -141,6 +141,9 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos : Vector2 = event.position
 		for dead_zone : Rect2 in %Map_Editor_UI.mouse_dead_zone:
 			if dead_zone.has_point(mouse_pos):
+				painting = false
+				erasing = false
+				set_process(false)
 				return
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:

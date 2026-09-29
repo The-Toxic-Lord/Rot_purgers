@@ -362,6 +362,7 @@ _data = {
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node")]
 script = ExtResource("1_5ua5d")
+texture = ExtResource("2_a7v77")
 char_animation = NodePath("Mad_mage/temp_anim")
 char_model_node = NodePath("Mad_mage")
 

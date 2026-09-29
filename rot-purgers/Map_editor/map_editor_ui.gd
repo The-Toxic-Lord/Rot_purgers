@@ -138,14 +138,12 @@ enum file_states { SAVE, LOAD, OBJECT_DATA, NEXT, CHAR }
 var save_location : String
 var file_state : file_states 
 func _on_save_pressed() -> void:
-	%FileDialog.root_subfolder = "map_data_res"
 	file_state = file_states.SAVE
 	%Save.release_focus()
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_SAVE_FILE
 	%FileDialog.popup()
 
 func _on_load_pressed() -> void:
-	%FileDialog.root_subfolder = "map_data_res"
 	file_state = file_states.LOAD
 	%Load.release_focus()
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
@@ -319,7 +317,6 @@ func _on_object_type_item_selected(index: int) -> void:
 			cont.hide()
 
 func _on_select_data_bt_pressed() -> void:
-	%FileDialog.root_subfolder = "map_data_res"
 	file_state = file_states.OBJECT_DATA
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
 	%FileDialog.popup()

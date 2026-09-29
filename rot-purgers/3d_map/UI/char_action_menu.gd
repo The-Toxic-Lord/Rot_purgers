@@ -48,7 +48,7 @@ func update_disabled(ch_node : Character_node):
 		%Attack.disabled = true
 		%Spell.disabled = true
 		%Defend.disabled = true
-	if ch_node.car_rearange:
+	if ch_node.can_rearange:
 		%Stats.disabled = false
 	else:
 		%Stats.disabled = true

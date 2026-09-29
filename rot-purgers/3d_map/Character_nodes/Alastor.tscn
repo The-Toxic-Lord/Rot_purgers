@@ -3,48 +3,6 @@
 [ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_nnxq0"]
 [ext_resource type="Texture2D" uid="uid://cab70jac2jm0k" path="res://blender_models/Aven8_Aven_texture.png" id="2_hd1s2"]
 
-[sub_resource type="Animation" id="Animation_nnxq0"]
-resource_name = "empty"
-
-[sub_resource type="Animation" id="Animation_pgqjc"]
-resource_name = "move_jump"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_boujc"]
-resource_name = "move_step"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqru"]
-_data = {
-&"empty": SubResource("Animation_nnxq0"),
-&"move_jump": SubResource("Animation_pgqjc"),
-&"move_step": SubResource("Animation_boujc")
-}
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75s5a"]
 resource_name = "Material"
 cull_mode = 2
@@ -475,13 +433,130 @@ _data = {
 &"Idle": SubResource("Animation_7ax6w")
 }
 
+[sub_resource type="Animation" id="Animation_2jqbt"]
+resource_name = "Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:char_model_node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.050177757, 0.10035551, 0.149773, 0.20071103, 0.24936825, 0.29878575, 0.34972376, 0.4006618),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7s3t3"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3s0yo"]
+resource_name = "Spell_jump_back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uiu5v"]
+resource_name = "Spell_jump_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_61r11"]
+resource_name = "empty"
+
+[sub_resource type="Animation" id="Animation_hljk3"]
+resource_name = "move_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_boujc"]
+resource_name = "move_step"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnxq0"]
+_data = {
+&"Damage": SubResource("Animation_2jqbt"),
+&"Death": SubResource("Animation_7s3t3"),
+&"Spell_jump_back": SubResource("Animation_3s0yo"),
+&"Spell_jump_up": SubResource("Animation_uiu5v"),
+&"empty": SubResource("Animation_61r11"),
+&"move_jump": SubResource("Animation_hljk3"),
+&"move_step": SubResource("Animation_boujc")
+}
+
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node")]
 script = ExtResource("1_nnxq0")
+texture = ExtResource("2_hd1s2")
 char_animation = NodePath("Aven8/temp_anim")
 char_model_node = NodePath("Aven8")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
-libraries/ = SubResource("AnimationLibrary_pnqru")
 
 [node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
 unique_name_in_owner = true
@@ -773,3 +848,6 @@ modulate = Color(0.5957073, 0.4703809, 1.92523e-07, 1)
 text = "E"
 font_size = 24
 outline_size = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=798619618]
+libraries/ = SubResource("AnimationLibrary_nnxq0")

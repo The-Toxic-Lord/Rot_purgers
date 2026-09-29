@@ -367,6 +367,7 @@ text = "Save"
 unique_name_in_owner = true
 initial_position = 2
 size = Vector2i(1280, 720)
+root_subfolder = "map_data_res/"
 filters = PackedStringArray("*.tres")
 
 [node name="Enemy_maker" type="MarginContainer" parent="." unique_id=412137284]

@@ -15,7 +15,7 @@ func load_map(map : Map_data):
 	await spawn_objects()
 	
 	GlobalData.map_magic_cost_adjustment = 1.0
-	GlobalData.ally_team.clear()
+	GlobalData.clear_data()
 	GlobalData.ally_team.append(load("uid://c8uo7wqbb15qk"))
 	GlobalData.ally_team[0].new()
 	await %Map_UI.populate_spawn_list()

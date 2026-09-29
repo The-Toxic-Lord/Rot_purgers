@@ -123,6 +123,7 @@ func char_dies(char_node : Character_node):
 	else:
 		allies.erase(char_node)
 		map_gen.remove_enemy(char_node)
+		GlobalData.dead_chars.append(char_node.name)
 		if allies.is_empty() and GlobalData.ally_team.is_empty():
 			game_over()
 			# ADD game_over
@@ -171,6 +172,7 @@ func remove_order(char_node : Character_node):
 			return
 
 func end_battle(object_data : Map_object = null):
+	map_gen.active = false
 	var ally_data_array : Array[Character_stats] = []
 	for ally in allies:
 		ally.stats.new()

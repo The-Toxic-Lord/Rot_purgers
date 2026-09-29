@@ -23,22 +23,33 @@ func open_spawn_menu():
 var button_to_char : Dictionary[BaseButton, Character_stats] = {}
 var spawn_list : Dictionary[Character_stats, BaseButton]
 
-func populate_spawn_list(map_data : Map_data):
-	#for ch : Character_stats in GlobalData.ally_team:
+func populate_spawn_list(map_data : Map_data, loading := false):
+	if loading:
+		for i in GlobalData.ally_team.size():
+			var ch : Character_stats = GlobalData.ally_team[i]
+			await make_spawn_button(ch)
+		%Character_list.move_child(%Close_spawn, %Character_list.get_children().size() - 1)
+		return
 	for ch : Character_stats in map_data.player_chars:
+		if GlobalData.dead_chars.has(ch.name):
+			continue
 		var ch_st : Character_stats = ch.duplicate()
-		var bt : Button = load("uid://dk2af1blnp7lq").instantiate().duplicate()
-		%Character_list.add_child(bt)
-		button_to_char[bt] = ch_st
-		spawn_list[ch_st] = bt
-		bt.text = ch_st.name
-		ch_st.stats_adjust()
-		bt.pressed.connect(spawn_character.bind(ch_st))
-		bt.focus_entered.connect(show_focus_char_stats.bind(ch_st))
-		bt.mouse_entered.connect(func() -> void:
-			bt.grab_focus()
-		)
+		await make_spawn_button(ch_st)
+		GlobalData.ally_team.append(ch_st)
 	%Character_list.move_child(%Close_spawn, %Character_list.get_children().size() - 1)
+
+func make_spawn_button(ch : Character_stats):
+	var bt : Button = load("uid://dk2af1blnp7lq").instantiate().duplicate()
+	%Character_list.add_child(bt)
+	button_to_char[bt] = ch
+	spawn_list[ch] = bt
+	bt.text = ch.name
+	ch.stats_adjust()
+	bt.pressed.connect(spawn_character.bind(ch))
+	bt.focus_entered.connect(show_focus_char_stats.bind(ch))
+	bt.mouse_entered.connect(func() -> void:
+		bt.grab_focus()
+	)
 
 func show_focus_char_stats(ch : Character_stats):
 	%Focused_char_stats.update_stats(ch)
@@ -58,7 +69,6 @@ func spawn_character(ch : Character_stats):
 	spawn_list[ch].queue_free()
 	spawn_list.erase(ch)
 	GlobalData.ally_team.erase(ch)
-	#close_spawn_menu()
 	%Character_select_menu.hide()
 
 func show_mini_stats(ch : Character_stats):
@@ -121,7 +131,7 @@ func _on_turn_menu_exit() -> void:
 	main.current_map_id = -1
 	await main.load_background()
 	main.show_menu()
-	GlobalData.reset_data()
+	GlobalData.clear_data()
 	map_generator.queue_free()
 
 func close_all():
@@ -313,7 +323,7 @@ func _on_char_action_menu_rearange() -> void:
 	%Rearange_menu.load_char(selected_char)
 
 func _on_rearange_menu_confirm() -> void:
-	selected_char.car_rearange = false
+	selected_char.can_rearange = false
 	%Char_action_menu.update_disabled(selected_char)
 
 func show_accuracy(targets : Array[Character_stats], skill : Skill_base = null):

@@ -11,19 +11,19 @@ enum difficulyties { EASY, NORMAL, HARD }
 	difficulyties.NORMAL : {
 		"hit_chance" : 1.0,
 		"get_hit_chance" : 1.0,
-		"num_turns_kill" : 5,
+		"num_turns_kill" : 4,
 		"num_turns_dead" : 3
 	},
 	difficulyties.EASY : {
-		"hit_chance" : 0.9,
-		"get_hit_chance" : 1.1,
+		"hit_chance" : 0.8,
+		"get_hit_chance" : 1.2,
 		"num_turns_kill" : 5,
-		"num_turns_dead" : 2
+		"num_turns_dead" : 1
 	},
 	difficulyties.HARD : {
 		"hit_chance" : 1.2,
 		"get_hit_chance" : 0.8,
-		"num_turns_kill" : 5,
+		"num_turns_kill" : 3,
 		"num_turns_dead" : 3
 	}
 }
@@ -38,11 +38,14 @@ var used_stats : Array[String] = [
 ]
 
 @export var health : int
+@export var strength : int
 @export var defence : int:
 	set(value):
 		defence = value
 		recalc_def_hp()
+@export var accuracy : int
 @export var speed : int
+
 
 @export var enemy_stats : Character_stats
 @export var medium_stats : Character_stats
@@ -67,6 +70,8 @@ func calculate_stats():
 	health = enemy_stats.max_health
 	defence = 0
 	speed = enemy_stats.speed
+	strength = enemy_stats.strength
+	accuracy = enemy_stats.accuracy
 
 func calc_hit_chance(target : Character_stats, attacker : Character_stats) -> float:
 	var chance = float(attacker.accuracy)/float(target.speed)
@@ -103,13 +108,14 @@ func recalc_def_hp():
 	var hit_chance : float = float(medium_stats.accuracy)/float(enemy_stats.speed)
 	if hit_chance < 1.0:
 		damage /= hit_chance
-	var damage_skill : float = medium_stats.magic_strenght * 1.5 - defence / 2.0
-	if use_magic_str:
-		health = diff_dicts[difficulty]["num_turns_dead"] * damage_skill
-		enemy_stats.max_health = health
-	else:
-		health = diff_dicts[difficulty]["num_turns_dead"] * damage
-		enemy_stats.max_health = health
+	var damage_skill : float = medium_stats.magic_strenght * 1.3
+	health = diff_dicts[difficulty]["num_turns_dead"] * (damage_skill + damage) / 2.0
+	#if use_magic_str:
+		#health = diff_dicts[difficulty]["num_turns_dead"] * damage_skill
+		#enemy_stats.max_health = health
+	#else:
+		#health = diff_dicts[difficulty]["num_turns_dead"] * damage
+		#enemy_stats.max_health = health
 
 
 

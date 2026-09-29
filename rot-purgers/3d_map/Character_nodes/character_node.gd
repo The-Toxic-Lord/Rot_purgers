@@ -25,7 +25,7 @@ var map_pos : Vector2i
 var previous_map_pos : Vector2i
 var can_undo_move := false
 var is_enemy := true
-var car_rearange := true
+var can_rearange := true
 var is_dead := false
 var deflects_left : int = 0
 
@@ -75,6 +75,10 @@ func _ready() -> void:
 	material.set_shader_parameter("texture_albedo", texture)
 	if char_animation.has_animation("Idle"):
 		char_animation.play("Idle")
+	if skeleton == null:
+		var temp = find_child("Skeleton3D", true)
+		if temp != null:
+			skeleton = temp
 	if skeleton != null:
 		for child in skeleton.get_children():
 			if child is MeshInstance3D:
@@ -88,7 +92,7 @@ func new_round():
 	is_defending = false
 	has_order = false
 	can_undo_move = false
-	car_rearange = true
+	can_rearange = true
 	previous_map_pos = Vector2i(-1, -1)
 	
 	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.05), 0, stats.max_magic)
@@ -201,6 +205,7 @@ func make_planned_move(move_data : Planned_move_data):
 	move(move_data.target_cell, map_gen.terrain_map, move_data.select_zones,
 	map_gen.selector_boundary, map_gen.map_cells)
 	await self.move_finished
+	
 	#turn(move_data.dir)
 	#await self.direction_changed
 	making_move = false

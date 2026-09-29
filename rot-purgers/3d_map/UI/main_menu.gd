@@ -41,7 +41,7 @@ func hide_menu():
 	%Menu.hide()
 
 func on_game_over():
-	GlobalData.reset_data()
+	GlobalData.clear_data()
 	%Game_over_screen.show()
 	await get_tree().create_timer(3).timeout
 	main.close_map()
@@ -50,7 +50,7 @@ func on_game_over():
 	%Game_over_screen.hide()
 
 func on_victory():
-	GlobalData.reset_data()
+	GlobalData.clear_data()
 	%Demo_victory.show()
 
 func _on_tutorial_pressed() -> void:

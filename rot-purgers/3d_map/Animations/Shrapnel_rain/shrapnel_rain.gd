@@ -24,20 +24,16 @@ func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
 	position.y = 5.0
 	await get_tree().process_frame
 	var volleys : Array = [valley_01, valley_02, valley_03, valley_04, valley_05]
-	var cell_t : Array[Vector2i] = [Vector2i(int(target.x / 2.0), int(target.z / 2.0))]
-	for neib in GlobalData.neighbors_sides:
-		var cell : Vector2i = neib + cell_t[0]
-		cell_t.append(cell)
 	var tween := create_tween()
 	tween.set_parallel(true)
-	for i in cell_t.size():
+	for i in cells.size():
 		var targ_pos : Vector3
-		if ObjectLink.map_gen.map_cells.has(cell_t[i]):
-			targ_pos = ObjectLink.map_gen.map_cells[cell_t[i]].position
-		elif ObjectLink.map_gen.void_cells.has(cell_t[i]):
-			targ_pos = ObjectLink.map_gen.void_cells[cell_t[i]].position
+		if ObjectLink.map_gen.map_cells.has(cells[i]):
+			targ_pos = ObjectLink.map_gen.map_cells[cells[i]].position
+		elif ObjectLink.map_gen.void_cells.has(cells[i]):
+			targ_pos = ObjectLink.map_gen.void_cells[cells[i]].position
 		else:
-			targ_pos = Vector3(cell_t[i].x * 2.0, 0.0, cell_t[i].y * 2.0)
+			targ_pos = Vector3(cells[i].x * 2.0, 0.0, cells[i].y * 2.0)
 		for proj : Node3D in volleys[i]:
 			var proj_targ : Vector3 = targ_pos + Vector3(randf_range(-1, 1), 0.0 , randf_range(-1, 1))
 			proj.look_at(proj_targ, Vector3.UP, true)
