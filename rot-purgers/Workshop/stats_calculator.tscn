@@ -2,42 +2,34 @@
 
 [ext_resource type="Script" uid="uid://bbmrwo0rulo28" path="res://Workshop/stats_calculator.gd" id="1_kr400"]
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_61klf"]
-[ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="3_k3ljm"]
 [ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="4_k5dsr"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="5_r5c45"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="6_k3ljm"]
 
+[sub_resource type="Resource" id="Resource_61klf"]
+script = ExtResource("2_61klf")
+max_health = 84
+strength = 54
+defence = 0
+accuracy = 36
+speed = 50
+
 [sub_resource type="Resource" id="Resource_k3ljm"]
 script = ExtResource("2_61klf")
-max_health = 106
-strength = 49
-defence = 0
-accuracy = 37
-speed = 60
-
-[sub_resource type="Resource" id="Resource_k5dsr"]
-script = ExtResource("2_61klf")
 name = "enemy"
-max_health = 126
-max_magic = 126
-strength = 35
-defence = 35
-magic_strenght = 71
-accuracy = 60
-speed = 46
+max_health = 150
+max_magic = 90
+strength = 42
+defence = 42
+magic_strenght = 62
+accuracy = 55
+speed = 40
 
 [node name="Stats_calculator" type="Node" unique_id=1113991462]
 script = ExtResource("1_kr400")
-allies = Array[ExtResource("2_61klf")]([ExtResource("3_k3ljm"), ExtResource("4_k5dsr"), ExtResource("5_r5c45")])
-diff_dicts = Dictionary[int, Dictionary]({
-1: {
-"get_hit_chance": 1.0,
-"hit_chance": 0.8,
-"num_turns_dead": 1,
-"num_turns_kill": 5
-}
-})
-use_magic_str = true
-health = 106
-enemy_stats = SubResource("Resource_k3ljm")
-medium_stats = SubResource("Resource_k5dsr")
+allies = Array[ExtResource("2_61klf")]([ExtResource("4_k5dsr"), ExtResource("5_r5c45")])
+difficulty = 0
+health = 84
+speed = 50
+enemy_stats = SubResource("Resource_61klf")
+medium_stats = SubResource("Resource_k3ljm")

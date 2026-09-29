@@ -128,7 +128,7 @@ func skill_oneshot(order : Order_skill_data):
 	for cell in order.damage_cells:
 		if map_gen.char_positions.has(cell):
 			var height : float = map_gen.char_positions[cell].position.y
-			if abs(height - attacker.position.y) <= attacker.stats.attack_height * 0.1:
+			if abs(height - attacker.position.y) <= order.skill.max_height_difference * 0.1:
 				targets.append(map_gen.char_positions[cell])
 	if order.skill.can_be_deflected:
 		for target in targets:

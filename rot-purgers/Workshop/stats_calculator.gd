@@ -9,10 +9,22 @@ enum difficulyties { EASY, NORMAL, HARD }
 
 @export var diff_dicts : Dictionary[difficulyties, Dictionary] = {
 	difficulyties.NORMAL : {
-		"hit_chance" : 0.8,
+		"hit_chance" : 1.0,
 		"get_hit_chance" : 1.0,
 		"num_turns_kill" : 5,
+		"num_turns_dead" : 3
+	},
+	difficulyties.EASY : {
+		"hit_chance" : 0.9,
+		"get_hit_chance" : 1.1,
+		"num_turns_kill" : 5,
 		"num_turns_dead" : 2
+	},
+	difficulyties.HARD : {
+		"hit_chance" : 1.2,
+		"get_hit_chance" : 0.8,
+		"num_turns_kill" : 5,
+		"num_turns_dead" : 3
 	}
 }
 
@@ -30,7 +42,7 @@ var used_stats : Array[String] = [
 	set(value):
 		defence = value
 		recalc_def_hp()
-
+@export var speed : int
 
 @export var enemy_stats : Character_stats
 @export var medium_stats : Character_stats
@@ -54,6 +66,7 @@ func calculate_stats():
 	enemy_stats.defence = 0
 	health = enemy_stats.max_health
 	defence = 0
+	speed = enemy_stats.speed
 
 func calc_hit_chance(target : Character_stats, attacker : Character_stats) -> float:
 	var chance = float(attacker.accuracy)/float(target.speed)
@@ -87,6 +100,9 @@ func get_def(med_st : Character_stats, hit_chance : float, num_of_turns : int) -
 func recalc_def_hp():
 	enemy_stats.defence = defence
 	var damage : float = medium_stats.strength - defence / 2.0
+	var hit_chance : float = float(medium_stats.accuracy)/float(enemy_stats.speed)
+	if hit_chance < 1.0:
+		damage /= hit_chance
 	var damage_skill : float = medium_stats.magic_strenght * 1.5 - defence / 2.0
 	if use_magic_str:
 		health = diff_dicts[difficulty]["num_turns_dead"] * damage_skill
@@ -94,6 +110,13 @@ func recalc_def_hp():
 	else:
 		health = diff_dicts[difficulty]["num_turns_dead"] * damage
 		enemy_stats.max_health = health
+
+
+
+
+
+
+
 
 
 

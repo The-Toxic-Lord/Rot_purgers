@@ -3,37 +3,15 @@
 [ext_resource type="Script" path="res://data/Character_stats.gd" id="1_bwvuj"]
 [ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_j7tpd"]
 [ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_ys7s5"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Charge.tres" id="3_3mwm5"]
 [ext_resource type="Texture2D" path="res://import/check_button_2.png" id="3_alebe"]
 [ext_resource type="Script" path="res://map_data.gd" id="4_2qeye"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler.png" id="4_kqyk2"]
 [ext_resource type="Texture2D" path="res://import/check_button.png" id="4_ys7s5"]
 [ext_resource type="Script" path="res://data/terrain_data.gd" id="5_j7tpd"]
 [ext_resource type="Texture2D" path="res://aseprite_stuff/Shapes.png" id="5_kqyk2"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="6_3mwm5"]
 [ext_resource type="Texture2D" path="res://import/Eye.png" id="6_jcw8x"]
 [ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="7_kqyk2"]
-
-[sub_resource type="Resource" id="Resource_kqj3p"]
-script = ExtResource("1_bwvuj")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("4_kqyk2")
-max_magic = 0
-strength = 30
-defence = 30
-magic_strenght = 0
-accuracy = 50
-speed = 40
-move_speed = 5
-jump_height = 10
-counter = 0
-trigger_distance = 10
-rot_stage = 3
-node_UID = "uid://dunq80ub3v1jk"
-potential_skills = Array[ExtResource("2_j7tpd")]([ExtResource("3_3mwm5")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
+[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="8_kqyk2"]
 
 [sub_resource type="Resource" id="Resource_rmrwd"]
 script = ExtResource("1_bwvuj")
@@ -625,9 +603,9 @@ Vector2i(13, 11): SubResource("Resource_ys7s5"),
 Vector2i(13, 14): SubResource("Resource_jcw8x")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_bwvuj")]({
-Vector2i(13, 13): SubResource("Resource_kqj3p"),
 Vector2i(15, 12): SubResource("Resource_rmrwd"),
 Vector2i(18, 12): SubResource("Resource_2x66h")
 })
-magic_cost_adjustment = 2.0
+magic_cost_adjustment = 1.8
 next_map_path = "res://map_data_res/pre_01.tres"
+player_chars = Array[ExtResource("1_bwvuj")]([ExtResource("8_kqyk2")])

@@ -323,7 +323,7 @@ func _on_map_editor_ui_generate_map() -> void:
 	map_data.map_size = map_size
 	map_data.magic_cost_adjustment = map_editor_ui.magic_cost
 	map_data.next_map_path = map_editor_ui.next_map_path
-	
+	map_data.player_chars = map_editor_ui.char_add_to_char.values()
 	main_node.generate_map(map_data)
 
 func hide_height():
@@ -346,6 +346,7 @@ func save_map_data(file_path : String):
 	save_data.map_size = map_size
 	save_data.magic_cost_adjustment = map_editor_ui.magic_cost
 	save_data.next_map_path = map_editor_ui.next_map_path
+	save_data.player_chars = map_editor_ui.char_add_to_char.values()
 	ResourceSaver.save(save_data, file_path)
 
 func load_map_data(file_path : String):
@@ -374,6 +375,7 @@ func load_map_data(file_path : String):
 	object_map_data = save_data.object_map_data
 	enemy_map_data = save_data.enemy_map_data
 	map_size = save_data.map_size
+	
 	await update_map_size()
 	%Map_Editor_UI.load_data(save_data)
 	

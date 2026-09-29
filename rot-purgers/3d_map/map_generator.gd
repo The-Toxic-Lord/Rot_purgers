@@ -66,7 +66,7 @@ func load_map(map : Map_data):
 	%Camera_position.cell_boundary = selector_boundary
 	await move_selector_to_spawn()
 	await spawn_objects()
-	await map_ui.populate_spawn_list()
+	await map_ui.populate_spawn_list(map_data)
 	
 	await BattleHandler.new_battle_start()
 	await spawn_enemies(map.enemy_map_data)
@@ -443,7 +443,6 @@ func spawn_ally(ch : Character_stats):
 	var cell : Vector2i = selected_cell
 	char_node.position = spawn_zones[cell].position
 	char_node.set_stats(ch)
-	char_node.stats.stats_adjust()
 	char_node.name = ch.name
 	char_node.is_enemy = false
 	char_positions[cell] = char_node
@@ -879,7 +878,7 @@ func load_save():
 	await spawn_objects()
 	
 	GlobalData.ally_team = game_save.ally_team
-	await map_ui.populate_spawn_list()
+	await map_ui.populate_spawn_list(map_data)
 	
 	await BattleHandler.new_battle_start()
 	BattleHandler.order_array = game_save.orders

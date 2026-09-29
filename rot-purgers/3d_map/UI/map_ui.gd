@@ -23,16 +23,17 @@ func open_spawn_menu():
 var button_to_char : Dictionary[BaseButton, Character_stats] = {}
 var spawn_list : Dictionary[Character_stats, BaseButton]
 
-func populate_spawn_list():
-	for ch : Character_stats in GlobalData.ally_team:
+func populate_spawn_list(map_data : Map_data):
+	#for ch : Character_stats in GlobalData.ally_team:
+	for ch : Character_stats in map_data.player_chars:
+		var ch_st : Character_stats = ch.duplicate()
 		var bt : Button = load("uid://dk2af1blnp7lq").instantiate().duplicate()
 		%Character_list.add_child(bt)
-		button_to_char[bt] = ch
-		spawn_list[ch] = bt
-		bt.text = ch.name
-		bt.pressed.connect(spawn_character.bind(ch))
-		var ch_st : Character_stats = ch.duplicate()
+		button_to_char[bt] = ch_st
+		spawn_list[ch_st] = bt
+		bt.text = ch_st.name
 		ch_st.stats_adjust()
+		bt.pressed.connect(spawn_character.bind(ch_st))
 		bt.focus_entered.connect(show_focus_char_stats.bind(ch_st))
 		bt.mouse_entered.connect(func() -> void:
 			bt.grab_focus()

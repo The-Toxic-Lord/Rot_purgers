@@ -7,6 +7,7 @@ signal animation_finished
 func _ready() -> void:
 	animation_finished.connect(kill)
 
+@warning_ignore("unused_parameter")
 func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
 	pass
 

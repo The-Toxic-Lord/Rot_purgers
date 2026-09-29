@@ -18,3 +18,4 @@ enum map_end_conditions { ENEMY, DOOR }
 @export_range(0, 3) var rot_stage : int = 0
 @export var text_data : DialogueResource
 @export var next_map_path : String
+@export var player_chars : Array[Character_stats] = []

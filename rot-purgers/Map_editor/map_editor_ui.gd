@@ -134,16 +134,18 @@ func _on_shader_dir_item_selected(index: int) -> void:
 func _on_generate_pressed() -> void:
 	generate_map.emit()
 
-enum file_states { SAVE, LOAD, OBJECT_DATA, NEXT }
+enum file_states { SAVE, LOAD, OBJECT_DATA, NEXT, CHAR }
 var save_location : String
 var file_state : file_states 
 func _on_save_pressed() -> void:
+	%FileDialog.root_subfolder = "map_data_res"
 	file_state = file_states.SAVE
 	%Save.release_focus()
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_SAVE_FILE
 	%FileDialog.popup()
 
 func _on_load_pressed() -> void:
+	%FileDialog.root_subfolder = "map_data_res"
 	file_state = file_states.LOAD
 	%Load.release_focus()
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
@@ -157,6 +159,7 @@ func load_data(map_data : Map_data):
 	next_map_selected(map_data.next_map_path)
 	%Mode.selected = 0
 	_on_mode_item_selected(0)
+	load_chars(map_data.player_chars)
 
 func _on_enemy_selector_item_selected(index: int) -> void:
 	load_enemy_data(enemy_data[index].duplicate(true), false)
@@ -297,6 +300,8 @@ func _on_file_dialog_file_selected(path: String) -> void:
 			object_data_selected(path)
 		file_states.NEXT:
 			next_map_selected(path)
+		file_states.CHAR:
+			char_path_selected(path)
 
 @onready var exit_controlls : Array[Control] = [
 	%Label15, %Data_name, %Select_data_bt
@@ -314,6 +319,7 @@ func _on_object_type_item_selected(index: int) -> void:
 			cont.hide()
 
 func _on_select_data_bt_pressed() -> void:
+	%FileDialog.root_subfolder = "map_data_res"
 	file_state = file_states.OBJECT_DATA
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
 	%FileDialog.popup()
@@ -339,6 +345,7 @@ func _on_magic_cost_text_changed(new_text: String) -> void:
 		return
 
 func _on_next_map_bt_pressed() -> void:
+	%FileDialog.root_subfolder = "map_data_res"
 	file_state = file_states.NEXT
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
 	%FileDialog.popup()
@@ -352,6 +359,39 @@ func next_map_selected(path : String):
 
 func _on_rot_stage_item_selected(index: int) -> void:
 	selected_enemy_data.rot_stage = index
+
+func _on_next_map_bt_2_pressed() -> void:
+	file_state = file_states.CHAR
+	%FileDialog2.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
+	%FileDialog2.popup()
+
+var char_add_to_char : Dictionary[Char_map_editor, Character_stats] = {}
+
+func char_path_selected(path : String):
+	var char_data : Character_stats = ResourceLoader.load(path)
+	make_char_add(char_data)
+
+func make_char_add(char_data : Character_stats):
+	var char_add: Char_map_editor = load("uid://b5q48p3lnswv4").instantiate()
+	%Char_box.add_child(char_add)
+	char_add.set_data(char_data)
+	char_add_to_char[char_add] = char_data
+	char_add.remove_character.connect(remove_char.bind(char_add))
+
+func remove_char(char_add : Char_map_editor):
+	char_add_to_char.erase(char_add)
+	char_add.queue_free()
+
+func _on_file_dialog_2_file_selected(path: String) -> void:
+	char_path_selected(path)
+
+func load_chars(char_list : Array[Character_stats]):
+	for child in %Char_box.get_children():
+		child.queue_free()
+	char_add_to_char.clear()
+	for char_data in char_list:
+		make_char_add(char_data)
+
 
 
 

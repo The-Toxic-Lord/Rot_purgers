@@ -215,6 +215,27 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Select next map"
 
+[node name="Label7" type="Label" parent="Map_size_menu/VBoxContainer" unique_id=514526294]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Char list:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Map_size_menu/VBoxContainer" unique_id=562876016]
+custom_minimum_size = Vector2(0, 100)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+
+[node name="Char_box" type="VBoxContainer" parent="Map_size_menu/VBoxContainer/ScrollContainer" unique_id=1340587730]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="next_map_bt2" type="Button" parent="Map_size_menu/VBoxContainer" unique_id=1477251071]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Add character"
+
 [node name="Object_menu" type="MarginContainer" parent="." unique_id=993832679]
 anchors_preset = 1
 anchor_left = 1.0
@@ -346,7 +367,6 @@ text = "Save"
 unique_name_in_owner = true
 initial_position = 2
 size = Vector2i(1280, 720)
-root_subfolder = "map_data_res"
 filters = PackedStringArray("*.tres")
 
 [node name="Enemy_maker" type="MarginContainer" parent="." unique_id=412137284]
@@ -751,6 +771,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Select data"
 
+[node name="FileDialog2" type="FileDialog" parent="." unique_id=553400258]
+unique_name_in_owner = true
+initial_position = 2
+size = Vector2i(1280, 720)
+root_subfolder = "data/Player_chars_data/"
+filters = PackedStringArray("*.tres")
+
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_x" to="." method="_on_map_size_text_submitted" flags=18]
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_y" to="." method="_on_map_size_text_submitted" flags=18]
 [connection signal="text_changed" from="Map_size_menu/VBoxContainer/Height" to="." method="_on_height_text_changed"]
@@ -762,6 +789,7 @@ text = "Select data"
 [connection signal="item_selected" from="Map_size_menu/VBoxContainer/Shader_dir" to="." method="_on_shader_dir_item_selected"]
 [connection signal="text_changed" from="Map_size_menu/VBoxContainer/Magic_cost" to="." method="_on_magic_cost_text_changed"]
 [connection signal="pressed" from="Map_size_menu/VBoxContainer/next_map_bt" to="." method="_on_next_map_bt_pressed"]
+[connection signal="pressed" from="Map_size_menu/VBoxContainer/next_map_bt2" to="." method="_on_next_map_bt_2_pressed"]
 [connection signal="item_selected" from="Object_menu/VBoxContainer/Terrain_selector" to="." method="_on_terrain_selector_item_selected"]
 [connection signal="item_selected" from="Object_menu/VBoxContainer/Object_selector" to="." method="_on_object_selector_item_selected"]
 [connection signal="item_selected" from="Object_menu/VBoxContainer/Enemy_selector" to="." method="_on_enemy_selector_item_selected"]
@@ -792,3 +820,4 @@ text = "Select data"
 [connection signal="item_selected" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_dir_select" to="." method="_on_object_dir_select_item_selected"]
 [connection signal="item_selected" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_type" to="." method="_on_object_type_item_selected"]
 [connection signal="pressed" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Select_data_bt" to="." method="_on_select_data_bt_pressed"]
+[connection signal="file_selected" from="FileDialog2" to="." method="_on_file_dialog_2_file_selected"]

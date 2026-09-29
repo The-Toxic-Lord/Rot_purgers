@@ -90,6 +90,12 @@ func _validate_property(property: Dictionary) -> void:
 		if AI_type != AI_types.SPAWNER:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
+func reset_stats():
+	pass
+
+
+
+
 
 
 

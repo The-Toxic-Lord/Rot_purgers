@@ -180,8 +180,7 @@ func end_battle(object_data : Map_object = null):
 		if object_data.extra_data != "":
 			ObjectLink.main.load_scene_path(object_data.extra_data)
 			return
-	else:
-		ObjectLink.main.load_scene_path(map_gen.map_data.next_map_path)
+	ObjectLink.main.load_scene_path(map_gen.map_data.next_map_path)
 
 func game_over():
 	main_node.game_over()
