@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("1_f0bxu")
 name = "Gravity bend"
-magic_cost = 40
+magic_cost = 50
 skill_map = ExtResource("2_h58qe")
+damage = 1.2
 max_height_difference = 50
 max_dist = 5
 animation_node_UID = "uid://bu5uskywbk7o8"

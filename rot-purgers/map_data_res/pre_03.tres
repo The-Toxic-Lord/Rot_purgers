@@ -1,39 +1,48 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://y07jjwjhujfs"]
+[gd_resource type="Resource" script_class="Map_data" format=3]
 
-[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_d1v7g"]
-[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_7teap"]
-[ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="3_346bi"]
-[ext_resource type="AudioStream" uid="uid://disxvjp2bh0p5" path="res://sound/Of Far Different Nature - Windfish (CC-BY 4.0).ogg" id="4_7teap"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="4_kmpbo"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="5_ishe6"]
-[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_nesw8"]
-[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="7_3pt6j"]
-[ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="8_kbp82"]
+[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_d1v7g"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_7teap"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="3_7oyti"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="3_346bi"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="4_kmpbo"]
+[ext_resource type="Script" path="res://map_data.gd" id="5_ishe6"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="6_1fplb"]
+[ext_resource type="Script" path="res://data/terrain_data.gd" id="6_nesw8"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="7_3pt6j"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="7_rukkg"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="8_hfnye"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/terrain_cave.png" id="8_kbp82"]
 
-[sub_resource type="Resource" id="Resource_ys7s5"]
+[sub_resource type="Resource" id="Resource_1fplb"]
 script = ExtResource("1_d1v7g")
 name = "Crystal"
-char_class = "Mineral"
+char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("3_346bi")
-max_health = 400
-strength = 50
-defence = 50
-magic_strenght = 50
+max_health = 250
+max_magic = 40
+strength = 60
+defence = 60
+magic_strenght = 0
 accuracy = 50
-speed = 10
-move_speed = 1
-attack_distance = 4
+speed = 70
+move_speed = 3
+attack_distance = 5
 attack_height = 30
+trigger_distance = 1
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
-atlas_coords = Vector2i(1, 0)
+AI_type = 2
+skills = Array[ExtResource("2_7teap")]([ExtResource("3_7oyti")])
+potential_skills = Array[ExtResource("2_7teap")]([ExtResource("3_7oyti")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_3mwm5"]
+[sub_resource type="Resource" id="Resource_2f2fo"]
 script = ExtResource("4_kmpbo")
 name = "spawn_zone"
+sprite = ExtResource("6_1fplb")
 node_UID = "uid://b77u0ogcrnmlx"
+object_type = 1
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_u7ypl"]
@@ -456,9 +465,11 @@ Vector2i(10, 9): SubResource("Resource_f05un"),
 Vector2i(10, 10): SubResource("Resource_34nle")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("4_kmpbo")]({
-Vector2i(7, 12): SubResource("Resource_3mwm5")
+Vector2i(7, 12): SubResource("Resource_2f2fo")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_d1v7g")]({
-Vector2i(7, 7): SubResource("Resource_ys7s5")
+Vector2i(7, 7): SubResource("Resource_1fplb")
 })
-music = ExtResource("4_7teap")
+magic_cost_adjustment = 1.2
+next_map_path = "res://map_data_res/pre_03.tres"
+player_chars = Array[ExtResource("1_d1v7g")]([ExtResource("7_rukkg"), ExtResource("8_hfnye")])

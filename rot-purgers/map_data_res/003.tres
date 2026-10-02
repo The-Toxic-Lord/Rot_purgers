@@ -1,58 +1,67 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://cn0lbufchmrb7"]
+[gd_resource type="Resource" script_class="Map_data" format=3]
 
-[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_71xa6"]
-[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_1cujh"]
-[ext_resource type="Resource" uid="uid://bq3s1qjaw05vw" path="res://Skills/Skill_res/Power_shot.tres" id="3_imnmn"]
-[ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="4_ukldb"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="5_e4n2n"]
-[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_wm0hp"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="7_eeog0"]
-[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="8_fyjf2"]
-[ext_resource type="Material" uid="uid://co6ojt5md8bdi" path="res://3d_map/map_cell_materials/cave_floor_2.tres" id="9_827vp"]
-[ext_resource type="Texture2D" uid="uid://cmb2kme6vv828" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="10_cgyoq"]
-[ext_resource type="Material" uid="uid://b7sno5fgweyh6" path="res://3d_map/map_cell_materials/cave_wall_2.tres" id="11_v7l6h"]
+[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_71xa6"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_1cujh"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="3_imnmn"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="4_ukldb"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="5_e4n2n"]
+[ext_resource type="Texture2D" path="res://import/check_button.png" id="6_eeog0"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="6_wm0hp"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="7_e4n2n"]
+[ext_resource type="Script" path="res://map_data.gd" id="7_eeog0"]
+[ext_resource type="Script" path="res://data/terrain_data.gd" id="8_fyjf2"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Aven.tres" id="8_wm0hp"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor_2.tres" id="9_827vp"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="9_eeog0"]
+[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="10_cgyoq"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Zaar.tres" id="10_fyjf2"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_wall_2.tres" id="11_v7l6h"]
 
-[sub_resource type="Resource" id="Resource_ll1pu"]
+[sub_resource type="Resource" id="Resource_t1o4w"]
 script = ExtResource("1_71xa6")
 name = "Crystal"
 char_class = "Granulocyte"
 age = 468
 sprite = ExtResource("4_ukldb")
-max_magic = 40
-strength = 40
+max_health = 150
+max_magic = 0
+strength = 50
 defence = 40
 magic_strenght = 0
 accuracy = 50
-speed = 40
+speed = 55
 move_speed = 2
 jump_height = 10
 attack_distance = 4
 attack_height = 30
+rot_stage = 1
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
-skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
+AI_type = 2
 potential_skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_ptsor"]
+[sub_resource type="Resource" id="Resource_dvwg2"]
 script = ExtResource("1_71xa6")
 name = "Crystal"
 char_class = "Granulocyte"
 age = 468
 sprite = ExtResource("4_ukldb")
-max_magic = 40
-strength = 40
+max_health = 150
+max_magic = 0
+strength = 50
 defence = 40
 magic_strenght = 0
 accuracy = 50
-speed = 40
+speed = 55
 move_speed = 2
 jump_height = 10
 attack_distance = 4
 attack_height = 30
+rot_stage = 1
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
-skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
+AI_type = 2
 potential_skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
@@ -62,72 +71,88 @@ name = "Crystal"
 char_class = "Granulocyte"
 age = 468
 sprite = ExtResource("4_ukldb")
-max_health = 200
+max_health = 300
 max_magic = 80
+strength = 60
+defence = 60
+magic_strenght = 0
+accuracy = 60
+speed = 40
+move_speed = 2
+jump_height = 10
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+AI_type = 0
+skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
+potential_skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_60t6d"]
+script = ExtResource("1_71xa6")
+name = "Crystal"
+char_class = "Granulocyte"
+age = 468
+sprite = ExtResource("4_ukldb")
+max_health = 150
+max_magic = 0
 strength = 50
-defence = 50
+defence = 40
 magic_strenght = 0
 accuracy = 50
-speed = 40
+speed = 55
 move_speed = 2
 jump_height = 10
 attack_distance = 4
 attack_height = 30
+rot_stage = 1
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
-skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
+AI_type = 2
 potential_skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_muv6a"]
+[sub_resource type="Resource" id="Resource_panik"]
 script = ExtResource("1_71xa6")
 name = "Crystal"
 char_class = "Granulocyte"
 age = 468
 sprite = ExtResource("4_ukldb")
-max_magic = 40
-strength = 40
+max_health = 150
+max_magic = 0
+strength = 50
 defence = 40
 magic_strenght = 0
 accuracy = 50
-speed = 40
+speed = 55
 move_speed = 2
 jump_height = 10
 attack_distance = 4
 attack_height = 30
+rot_stage = 1
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
-skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
+AI_type = 2
 potential_skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_1cujh"]
-script = ExtResource("1_71xa6")
-name = "Crystal"
-char_class = "Granulocyte"
-age = 468
-sprite = ExtResource("4_ukldb")
-max_magic = 40
-strength = 40
-defence = 40
-magic_strenght = 0
-accuracy = 50
-speed = 40
-move_speed = 2
-jump_height = 10
-attack_distance = 4
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
-start_dir = 2
-skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
-potential_skills = Array[ExtResource("2_1cujh")]([ExtResource("3_imnmn")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
+[sub_resource type="Resource" id="Resource_f2x6v"]
+script = ExtResource("5_e4n2n")
+name = "exit_zone"
+sprite = ExtResource("6_eeog0")
+atlas_coord = Vector2i(1, 0)
+node_UID = "uid://bcjtmasx0q6dh"
+object_type = 2
+extra_data = "res://map_data_res/004.tres"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
 
-[sub_resource type="Resource" id="Resource_4p1ir"]
+[sub_resource type="Resource" id="Resource_ffh1f"]
 script = ExtResource("5_e4n2n")
 name = "spawn_zone"
 sprite = ExtResource("6_wm0hp")
 node_UID = "uid://b77u0ogcrnmlx"
+object_type = 1
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_uurq1"]
@@ -194,6 +219,30 @@ floor_material = ExtResource("9_827vp")
 wall_material = ExtResource("11_v7l6h")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_wm0hp"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_e4n2n"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_cgyoq"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_qc8dm"]
 script = ExtResource("8_fyjf2")
 sprite = ExtResource("10_cgyoq")
@@ -227,6 +276,14 @@ wall_material = ExtResource("11_v7l6h")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_37fqb"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_827vp"]
 script = ExtResource("8_fyjf2")
 sprite = ExtResource("10_cgyoq")
 height = 20
@@ -298,6 +355,14 @@ floor_material = ExtResource("9_827vp")
 wall_material = ExtResource("11_v7l6h")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_v7l6h"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_3q0t7"]
 script = ExtResource("8_fyjf2")
 sprite = ExtResource("10_cgyoq")
@@ -331,6 +396,14 @@ wall_material = ExtResource("11_v7l6h")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_xmwt5"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_eeog0"]
 script = ExtResource("8_fyjf2")
 sprite = ExtResource("10_cgyoq")
 height = 20
@@ -386,6 +459,30 @@ floor_material = ExtResource("9_827vp")
 wall_material = ExtResource("11_v7l6h")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_imnmn"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ukldb"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_fyjf2"]
+script = ExtResource("8_fyjf2")
+sprite = ExtResource("10_cgyoq")
+height = 20
+floor_material = ExtResource("9_827vp")
+wall_material = ExtResource("11_v7l6h")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_wuudc"]
 script = ExtResource("8_fyjf2")
 sprite = ExtResource("10_cgyoq")
@@ -414,11 +511,15 @@ Vector2i(12, 11): SubResource("Resource_t13s6"),
 Vector2i(12, 12): SubResource("Resource_tq3a0"),
 Vector2i(12, 13): SubResource("Resource_ww4s3"),
 Vector2i(12, 14): SubResource("Resource_1i4ib"),
+Vector2i(12, 15): SubResource("Resource_wm0hp"),
+Vector2i(12, 16): SubResource("Resource_e4n2n"),
+Vector2i(12, 17): SubResource("Resource_cgyoq"),
 Vector2i(13, 10): SubResource("Resource_qc8dm"),
 Vector2i(13, 11): SubResource("Resource_4y5p5"),
 Vector2i(13, 12): SubResource("Resource_l4jbj"),
 Vector2i(13, 13): SubResource("Resource_32qd8"),
 Vector2i(13, 14): SubResource("Resource_37fqb"),
+Vector2i(13, 17): SubResource("Resource_827vp"),
 Vector2i(14, 10): SubResource("Resource_u3e8u"),
 Vector2i(14, 11): SubResource("Resource_1ux0t"),
 Vector2i(14, 12): SubResource("Resource_7gi64"),
@@ -427,27 +528,36 @@ Vector2i(14, 14): SubResource("Resource_gd86g"),
 Vector2i(14, 15): SubResource("Resource_a0ibw"),
 Vector2i(14, 16): SubResource("Resource_63bxl"),
 Vector2i(14, 17): SubResource("Resource_l53fw"),
+Vector2i(14, 18): SubResource("Resource_v7l6h"),
 Vector2i(15, 10): SubResource("Resource_3q0t7"),
 Vector2i(15, 11): SubResource("Resource_d4yd5"),
 Vector2i(15, 12): SubResource("Resource_gdl8j"),
 Vector2i(15, 13): SubResource("Resource_pcap8"),
 Vector2i(15, 14): SubResource("Resource_xmwt5"),
+Vector2i(15, 17): SubResource("Resource_eeog0"),
 Vector2i(16, 9): SubResource("Resource_0p5cr"),
 Vector2i(16, 10): SubResource("Resource_2k8ix"),
 Vector2i(16, 11): SubResource("Resource_kbb6k"),
 Vector2i(16, 12): SubResource("Resource_el5go"),
 Vector2i(16, 13): SubResource("Resource_fk76d"),
 Vector2i(16, 14): SubResource("Resource_jqtmg"),
+Vector2i(16, 15): SubResource("Resource_imnmn"),
+Vector2i(16, 16): SubResource("Resource_ukldb"),
+Vector2i(16, 17): SubResource("Resource_fyjf2"),
 Vector2i(17, 9): SubResource("Resource_wuudc"),
 Vector2i(17, 10): SubResource("Resource_dmv16")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("5_e4n2n")]({
-Vector2i(14, 17): SubResource("Resource_4p1ir")
+Vector2i(14, 12): SubResource("Resource_f2x6v"),
+Vector2i(14, 17): SubResource("Resource_ffh1f")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_71xa6")]({
-Vector2i(11, 10): SubResource("Resource_ll1pu"),
-Vector2i(12, 9): SubResource("Resource_ptsor"),
+Vector2i(11, 10): SubResource("Resource_t1o4w"),
+Vector2i(12, 9): SubResource("Resource_dvwg2"),
 Vector2i(14, 12): SubResource("Resource_71xa6"),
-Vector2i(16, 9): SubResource("Resource_muv6a"),
-Vector2i(17, 10): SubResource("Resource_1cujh")
+Vector2i(16, 9): SubResource("Resource_60t6d"),
+Vector2i(17, 10): SubResource("Resource_panik")
 })
+magic_cost_adjustment = 1.4
+next_map_path = "res://map_data_res/004.tres"
+player_chars = Array[ExtResource("1_71xa6")]([ExtResource("7_e4n2n"), ExtResource("8_wm0hp"), ExtResource("9_eeog0"), ExtResource("10_fyjf2")])

@@ -17,6 +17,10 @@
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_eohbu"]
 [ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler_cap.png" id="8_t1blu"]
 [ext_resource type="Texture2D" path="res://import/Eye.png" id="9_xdwra"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="13_3fr55"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Aven.tres" id="14_n8wmh"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="15_6rlev"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Zaar.tres" id="16_mbn7s"]
 
 [sub_resource type="Resource" id="Resource_qkbvv"]
 script = ExtResource("1_cm0e1")
@@ -77,6 +81,32 @@ start_dir = 2
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
+[sub_resource type="Resource" id="Resource_60nqp"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_mudf7"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
 [sub_resource type="Resource" id="Resource_rxxl0"]
 script = ExtResource("1_cm0e1")
 name = "Shapes"
@@ -125,6 +155,19 @@ start_dir = 2
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
+[sub_resource type="Resource" id="Resource_ueq27"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
 [sub_resource type="Resource" id="Resource_hkj5i"]
 script = ExtResource("1_cm0e1")
 name = "Shapes"
@@ -171,6 +214,45 @@ sprite = ExtResource("8_t1blu")
 node_UID = "uid://b6n303wyg5i5g"
 start_dir = 2
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_wdf3x"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_ajook"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_ds5v3"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_hrkju"]
@@ -280,97 +362,22 @@ start_dir = 2
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_ds5v3"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_mudf7"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_ajook"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_60nqp"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_ueq27"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_wdf3x"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_t1kgc"]
+[sub_resource type="Resource" id="Resource_cysc3"]
 script = ExtResource("2_t2mfm")
 name = "exit_zone"
 sprite = ExtResource("4_t2mfm")
 atlas_coord = Vector2i(1, 0)
 node_UID = "uid://bcjtmasx0q6dh"
+object_type = 2
+extra_data = "res://map_data_res/tower.tres"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
-[sub_resource type="Resource" id="Resource_811r2"]
+[sub_resource type="Resource" id="Resource_d644f"]
 script = ExtResource("2_t2mfm")
 name = "spawn_zone"
 sprite = ExtResource("3_t1kgc")
 node_UID = "uid://b77u0ogcrnmlx"
+object_type = 2
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_tmmsk"]
@@ -3289,8 +3296,8 @@ Vector2i(16, 42): SubResource("Resource_a3qef"),
 Vector2i(16, 43): SubResource("Resource_t2gex")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("2_t2mfm")]({
-Vector2i(9, 2): SubResource("Resource_t1kgc"),
-Vector2i(9, 45): SubResource("Resource_811r2")
+Vector2i(9, 2): SubResource("Resource_cysc3"),
+Vector2i(9, 45): SubResource("Resource_d644f")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_cm0e1")]({
 Vector2i(2, 37): SubResource("Resource_qkbvv"),
@@ -3322,3 +3329,6 @@ Vector2i(14, 37): SubResource("Resource_2kxbe"),
 Vector2i(15, 39): SubResource("Resource_20v4v"),
 Vector2i(16, 37): SubResource("Resource_jbfmr")
 })
+magic_cost_adjustment = 2.0
+next_map_path = "res://map_data_res/tower.tres"
+player_chars = Array[ExtResource("1_cm0e1")]([ExtResource("13_3fr55"), ExtResource("14_n8wmh"), ExtResource("15_6rlev"), ExtResource("16_mbn7s")])

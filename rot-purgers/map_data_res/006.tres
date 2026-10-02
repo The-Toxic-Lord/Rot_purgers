@@ -11,8 +11,12 @@
 [ext_resource type="Script" path="res://map_data.gd" id="6_xw8wd"]
 [ext_resource type="Script" path="res://data/terrain_data.gd" id="7_bkgsn"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_floor.tres" id="8_3usr4"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="9_3usr4"]
 [ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="9_fnpjt"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Aven.tres" id="10_fnpjt"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="10_vjpvs"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="11_vjpvs"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Zaar.tres" id="12_d0qoo"]
 
 [sub_resource type="Resource" id="Resource_c1rjv"]
 script = ExtResource("1_7owhy")
@@ -55,6 +59,26 @@ node_UID = "uid://ckmkqe73jj58e"
 start_dir = 2
 AI_type = 5
 start_height = 40
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_xaa03"]
+script = ExtResource("1_7owhy")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("5_xw8wd")
+max_health = 200
+strength = 50
+defence = 80
+magic_strenght = 0
+accuracy = 50
+speed = 10
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+AI_type = 0
+potential_skills = Array[ExtResource("2_7rlnu")]([ExtResource("4_u7tnb")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_7rlnu"]
@@ -122,39 +146,22 @@ AI_type = 5
 start_height = 40
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_xaa03"]
-script = ExtResource("1_7owhy")
-name = "Crystal"
-char_class = "Neutrophil"
-age = 468
-sprite = ExtResource("5_xw8wd")
-max_health = 200
-strength = 50
-defence = 80
-magic_strenght = 0
-accuracy = 50
-speed = 10
-attack_distance = 5
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
-start_dir = 2
-AI_type = 0
-potential_skills = Array[ExtResource("2_7rlnu")]([ExtResource("4_u7tnb")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
 [sub_resource type="Resource" id="Resource_jnipg"]
+script = ExtResource("4_dexmr")
+name = "spawn_zone"
+sprite = ExtResource("6_7rlnu")
+node_UID = "uid://b77u0ogcrnmlx"
+object_type = 1
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_lc3k6"]
 script = ExtResource("4_dexmr")
 name = "exit_zone"
 sprite = ExtResource("5_u7tnb")
 atlas_coord = Vector2i(1, 0)
 node_UID = "uid://bcjtmasx0q6dh"
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_fglaj"]
-script = ExtResource("4_dexmr")
-name = "spawn_zone"
-sprite = ExtResource("6_7rlnu")
-node_UID = "uid://b77u0ogcrnmlx"
+object_type = 2
+extra_data = "res://map_data_res/007.tres"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_mn1tr"]
@@ -833,8 +840,8 @@ Vector2i(10, 12): SubResource("Resource_2a6tj"),
 Vector2i(10, 13): SubResource("Resource_yx7my")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("4_dexmr")]({
-Vector2i(7, 5): SubResource("Resource_jnipg"),
-Vector2i(7, 19): SubResource("Resource_fglaj")
+Vector2i(7, 5): SubResource("Resource_lc3k6"),
+Vector2i(7, 19): SubResource("Resource_jnipg")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_7owhy")]({
 Vector2i(3, 6): SubResource("Resource_c1rjv"),
@@ -844,3 +851,6 @@ Vector2i(7, 10): SubResource("Resource_7rlnu"),
 Vector2i(11, 6): SubResource("Resource_d0qoo"),
 Vector2i(11, 15): SubResource("Resource_7r72f")
 })
+magic_cost_adjustment = 1.8
+next_map_path = "res://map_data_res/007.tres"
+player_chars = Array[ExtResource("1_7owhy")]([ExtResource("9_3usr4"), ExtResource("10_fnpjt"), ExtResource("11_vjpvs"), ExtResource("12_d0qoo")])

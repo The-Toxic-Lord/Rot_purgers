@@ -219,7 +219,7 @@ func load_skills():
 			enabled = true
 		slot.set_data(skill.name, enabled)
 		slot.skill_enabled.connect(enable_skill.bind(skill))
-		slot.skill_disabled.connect(enable_skill.bind(skill))
+		slot.skill_disabled.connect(disable_skill.bind(skill))
 
 func enable_skill(skill : Skill_base):
 	if !selected_enemy_data.skills.has(skill):
@@ -291,8 +291,10 @@ func load_seleced_object():
 func _on_file_dialog_file_selected(path: String) -> void:
 	match file_state:
 		file_states.SAVE:
+			set_map_name(path)
 			map_editor.save_map_data(path)
 		file_states.LOAD:
+			set_map_name(path)
 			map_editor.load_map_data(path)
 		file_states.OBJECT_DATA:
 			object_data_selected(path)
@@ -328,7 +330,7 @@ func object_data_selected(path : String):
 	%Data_name.text = get_path_file_name(path)
 
 func get_path_file_name(path : String) -> String:
-	var id : int = path.find(".tres")
+	var id : int = path.find(".")
 	while path[id] != "/":
 		id -= 1
 	var st : String = path.substr(id+1, -1)
@@ -342,7 +344,6 @@ func _on_magic_cost_text_changed(new_text: String) -> void:
 		return
 
 func _on_next_map_bt_pressed() -> void:
-	%FileDialog.root_subfolder = "map_data_res"
 	file_state = file_states.NEXT
 	%FileDialog.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
 	%FileDialog.popup()
@@ -359,7 +360,6 @@ func _on_rot_stage_item_selected(index: int) -> void:
 
 func _on_next_map_bt_2_pressed() -> void:
 	file_state = file_states.CHAR
-	%FileDialog2.file_mode = FileDialog.FileMode.FILE_MODE_OPEN_FILE
 	%FileDialog2.popup()
 
 var char_add_to_char : Dictionary[Char_map_editor, Character_stats] = {}
@@ -388,6 +388,24 @@ func load_chars(char_list : Array[Character_stats]):
 	char_add_to_char.clear()
 	for char_data in char_list:
 		make_char_add(char_data)
+
+func _on_file_dialog_2_files_selected(paths: PackedStringArray) -> void:
+	for path in paths:
+		char_path_selected(path)
+
+func set_map_name(path : String):
+	%Map_name.text = get_path_file_name(path)
+
+func _on_confirm_stats_2_pressed() -> void:
+	%FileDialog3.popup()
+
+func _on_file_dialog_3_file_selected(path: String) -> void:
+	selected_enemy_data.spawn_node_UUID = path
+
+
+
+
+
 
 
 

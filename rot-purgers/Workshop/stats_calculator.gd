@@ -12,7 +12,7 @@ enum difficulyties { EASY, NORMAL, HARD }
 		"hit_chance" : 1.0,
 		"get_hit_chance" : 1.0,
 		"num_turns_kill" : 4,
-		"num_turns_dead" : 3
+		"num_turns_dead" : 2
 	},
 	difficulyties.EASY : {
 		"hit_chance" : 0.8,
@@ -67,6 +67,7 @@ func calculate_stats():
 	enemy_stats.speed = get_speed(medium_stats, diff_dict["get_hit_chance"])
 	enemy_stats.strength = get_str(medium_stats, diff_dict["hit_chance"], diff_dict["num_turns_kill"])
 	enemy_stats.defence = 0
+	enemy_stats.magic_strenght = 0
 	health = enemy_stats.max_health
 	defence = 0
 	speed = enemy_stats.speed
@@ -108,15 +109,15 @@ func recalc_def_hp():
 	var hit_chance : float = float(medium_stats.accuracy)/float(enemy_stats.speed)
 	if hit_chance < 1.0:
 		damage /= hit_chance
-	var damage_skill : float = medium_stats.magic_strenght * 1.3
+	var damage_skill : float = medium_stats.magic_strenght * 1.5
 	health = diff_dicts[difficulty]["num_turns_dead"] * (damage_skill + damage) / 2.0
+	enemy_stats.max_health = health
 	#if use_magic_str:
 		#health = diff_dicts[difficulty]["num_turns_dead"] * damage_skill
 		#enemy_stats.max_health = health
 	#else:
 		#health = diff_dicts[difficulty]["num_turns_dead"] * damage
 		#enemy_stats.max_health = health
-
 
 
 

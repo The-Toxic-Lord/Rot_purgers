@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://qggvqmnv22by"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_mitmi"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_jwytr"]
+[ext_resource type="Resource" uid="uid://bdy6yy4aten05" path="res://Skills/Skill_res/Push.tres" id="3_hvo68"]
+[ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="3_jwytr"]
+
+[resource]
+script = ExtResource("2_jwytr")
+name = "Crawler"
+char_class = "Captain"
+age = 0
+sprite = ExtResource("3_jwytr")
+max_health = 160
+max_magic = 10
+strength = 60
+defence = 60
+magic_strenght = 0
+accuracy = 60
+speed = 70
+node_UID = "uid://b6n303wyg5i5g"
+skills = Array[ExtResource("1_mitmi")]([ExtResource("3_hvo68")])

@@ -53,6 +53,20 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 alignment = 1
 
+[node name="Label8" type="Label" parent="Map_size_menu/VBoxContainer" unique_id=2111107595]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Map name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Map_name" type="Label" parent="Map_size_menu/VBoxContainer" unique_id=598131299]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="Map_size_menu/VBoxContainer" unique_id=2121528709]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
@@ -368,7 +382,6 @@ unique_name_in_owner = true
 initial_position = 2
 size = Vector2i(1280, 720)
 root_subfolder = "map_data_res/"
-filters = PackedStringArray("*.tres")
 
 [node name="Enemy_maker" type="MarginContainer" parent="." unique_id=412137284]
 unique_name_in_owner = true
@@ -584,6 +597,12 @@ popup/item_4/id = 4
 popup/item_5/text = "Flyer"
 popup/item_5/id = 5
 
+[node name="Confirm_stats2" type="Button" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=475411831]
+layout_mode = 2
+offset_transform_position = Vector2(0, 20)
+theme_override_font_sizes/font_size = 24
+text = "Add spawn data"
+
 [node name="Label14" type="Label" parent="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=733814698]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -774,10 +793,20 @@ text = "Select data"
 
 [node name="FileDialog2" type="FileDialog" parent="." unique_id=553400258]
 unique_name_in_owner = true
+title = "Open File(s)"
 initial_position = 2
 size = Vector2i(1280, 720)
+file_mode = 1
 root_subfolder = "data/Player_chars_data/"
 filters = PackedStringArray("*.tres")
+
+[node name="FileDialog3" type="FileDialog" parent="." unique_id=2045371356]
+unique_name_in_owner = true
+title = "Open a File"
+initial_position = 2
+size = Vector2i(1280, 720)
+file_mode = 0
+root_subfolder = "data/Enemy_data/"
 
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_x" to="." method="_on_map_size_text_submitted" flags=18]
 [connection signal="text_submitted" from="Map_size_menu/VBoxContainer/HBoxContainer/map_y" to="." method="_on_map_size_text_submitted" flags=18]
@@ -812,6 +841,7 @@ filters = PackedStringArray("*.tres")
 [connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Attack_distance_le" to="." method="_on_stat_text_changed" flags=18]
 [connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Counter_le" to="." method="_on_stat_text_changed" flags=18]
 [connection signal="item_selected" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/AI_type" to="." method="_on_ai_type_item_selected"]
+[connection signal="pressed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Confirm_stats2" to="." method="_on_confirm_stats_2_pressed"]
 [connection signal="text_changed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/trigger_dist" to="." method="_on_stat_text_changed" flags=18]
 [connection signal="item_selected" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/start_dir" to="." method="_on_start_dir_item_selected"]
 [connection signal="pressed" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer2/Confirm_stats" to="." method="_on_confirm_stats_pressed"]
@@ -822,3 +852,5 @@ filters = PackedStringArray("*.tres")
 [connection signal="item_selected" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_type" to="." method="_on_object_type_item_selected"]
 [connection signal="pressed" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Select_data_bt" to="." method="_on_select_data_bt_pressed"]
 [connection signal="file_selected" from="FileDialog2" to="." method="_on_file_dialog_2_file_selected"]
+[connection signal="files_selected" from="FileDialog2" to="." method="_on_file_dialog_2_files_selected"]
+[connection signal="file_selected" from="FileDialog3" to="." method="_on_file_dialog_3_file_selected"]

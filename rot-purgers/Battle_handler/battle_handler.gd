@@ -76,6 +76,7 @@ func execute_orders():
 		else:
 			handle_attack(order_data)
 		await order_handled
+		print("order handled")
 	order_array.clear()
 	state = prev_state
 	if map_gen != null:
@@ -148,6 +149,7 @@ func handle_skill(order : Order_skill_data):
 			dmg_mng.skill_mass(order)
 		await dmg_mng.order_ended
 	free_char_from_order(order)
+	print("skill handled")
 	order_handled.emit()
 
 func handle_heal(order : Order_heal):

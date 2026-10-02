@@ -722,5 +722,6 @@ Vector2i(10, 9): SubResource("Resource_obhn5"),
 Vector2i(12, 7): SubResource("Resource_sbuay"),
 Vector2i(12, 9): SubResource("Resource_gkkw3")
 })
+magic_cost_adjustment = 1.2
 next_map_path = "res://map_data_res/pre_03.tres"
 player_chars = Array[ExtResource("1_4ig5i")]([ExtResource("5_31nio"), ExtResource("6_r78wh")])

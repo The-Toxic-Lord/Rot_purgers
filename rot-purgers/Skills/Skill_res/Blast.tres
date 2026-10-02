@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_iycuc")
 name = "Blast"
-magic_cost = 10
+magic_cost = 5
 skill_map = ExtResource("2_8fhyb")
-damage = 1.2
+damage = 1.0
 max_height_difference = 20
 max_dist = 5
 animation_node_UID = "uid://b5tl4miftxq85"

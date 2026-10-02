@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_ojq38")
 name = "Push"
-magic_cost = 20
+magic_cost = 5
 skill_map = ExtResource("2_uq675")
 damage = 1.2
 stat_used = 4

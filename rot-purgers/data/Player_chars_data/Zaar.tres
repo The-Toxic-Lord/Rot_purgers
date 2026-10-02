@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://c5xtfota7ng1v"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_bf23l"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_2rqge"]
+[ext_resource type="Resource" uid="uid://dfefbrwmuckxc" path="res://Skills/Skill_res/heal.tres" id="3_2rqge"]
+
+[resource]
+script = ExtResource("2_2rqge")
+name = "Zaar"
+char_class = "Chancellor"
+max_health = 150
+max_magic = 70
+strength = 45
+defence = 35
+magic_strenght = 60
+accuracy = 40
+speed = 60
+move_speed = 5
+jump_height = 25
+counter = 2
+node_UID = "uid://dht0dfxp5uj66"
+skills = Array[ExtResource("1_bf23l")]([ExtResource("3_2rqge")])
+self_path = "uid://c5xtfota7ng1v"
+metadata/_custom_type_script = "uid://by1rq468n504l"

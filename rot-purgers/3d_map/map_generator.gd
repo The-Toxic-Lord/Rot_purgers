@@ -74,7 +74,6 @@ func load_map(map : Map_data):
 	await BattleHandler.new_battle_start()
 	await spawn_enemies(map.enemy_map_data)
 	await make_multi_meshes()
-	map_loaded.emit()
 	if map_data.text_data != null:
 		freze_selector = true
 		DialogueBalloon.start(map_data.text_data, "map_dialogue")
@@ -82,6 +81,7 @@ func load_map(map : Map_data):
 		freze_selector = false
 	%Camera_position.set_process(true)
 	active = true
+	map_loaded.emit()
 
 func make_multi_meshes():
 	var mat_to_multi : Dictionary[StandardMaterial3D, MultiMeshInstance3D] = {}

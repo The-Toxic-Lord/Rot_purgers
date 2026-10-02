@@ -1,8 +1,8 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://q7wigyaxawla"]
 
 [ext_resource type="Shader" uid="uid://dds5sflv65eea" path="res://addons/BinbunVFX/transition.gdshader" id="1_pdbjl"]
-[ext_resource type="Texture2D" uid="uid://cjrhocno81nnx" path="res://addons/BinbunVFX/shared/texture/gradient/line/line_x_01.tres" id="2_pdbjl"]
-[ext_resource type="Texture2D" uid="uid://bdtu3rkuh2pud" path="res://addons/BinbunVFX/shared/texture/gradient/circle/circle_02.tres" id="3_pdbjl"]
+[ext_resource type="Texture2D" uid="uid://b6duoipl318pu" path="res://assets/gradients/Vertical_2-128x128.png" id="2_pdbjl"]
+[ext_resource type="Texture2D" uid="uid://ctmg72tthank7" path="res://assets/gradients/Square_1-128x128.png" id="3_pdbjl"]
 
 [resource]
 shader = ExtResource("1_pdbjl")

@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_8c4m3")
 name = "Shrapnel rain"
-magic_cost = 30
+magic_cost = 15
 skill_map = ExtResource("2_6b5aj")
-damage = 2.0
-is_one_shot = false
+damage = 1.5
+max_height_difference = 20
 max_dist = 5
 accuracy_modifier = 0.2
 animation_node_UID = "uid://dklyqy22aiis0"

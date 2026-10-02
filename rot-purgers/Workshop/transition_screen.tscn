@@ -1,14 +1,87 @@
 [gd_scene format=3 uid="uid://dvjb1ucqsqk4t"]
 
+[ext_resource type="Script" uid="uid://bdvry5r6mysgg" path="res://Workshop/transition_screen.gd" id="1_0xd76"]
 [ext_resource type="Material" uid="uid://q7wigyaxawla" path="res://Workshop/transition_screen.tres" id="1_6nda8"]
+[ext_resource type="Shader" uid="uid://dds5sflv65eea" path="res://addons/BinbunVFX/transition.gdshader" id="3_j3w57"]
+[ext_resource type="Texture2D" uid="uid://cr81pq5mc6a" path="res://assets/gradients/Vertical_1-128x128.png" id="4_w08s3"]
+[ext_resource type="Texture2D" uid="uid://ctmg72tthank7" path="res://assets/gradients/Square_1-128x128.png" id="5_mklii"]
+
+[sub_resource type="Animation" id="Animation_1ar20"]
+resource_name = "turn_off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel2:material:shader_parameter/factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0xd76"]
+resource_name = "turn_on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.999999977648]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwx2n"]
+_data = {
+&"turn_off": SubResource("Animation_1ar20"),
+&"turn_on": SubResource("Animation_0xd76")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjj3e"]
+shader = ExtResource("3_j3w57")
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/node_resolution = Vector2(1920, 1080)
+shader_parameter/factor = 1.0
+shader_parameter/width = 0.4
+shader_parameter/gradient_texture = ExtResource("4_w08s3")
+shader_parameter/gradient_fixed = false
+shader_parameter/shape_texture = ExtResource("5_mklii")
+shader_parameter/shape_tiling = 32.0
+shader_parameter/shape_rotation = 0.0
+shader_parameter/shape_scroll = Vector2(0, 0)
+shader_parameter/shape_feathering = 0.0999999977648
+shader_parameter/shape_treshold = 1.0
 
 [node name="Transition_screen" type="CanvasLayer" unique_id=179787703]
-layer = 10000
+layer = 1000
+script = ExtResource("1_0xd76")
 
 [node name="Panel" type="Panel" parent="." unique_id=1304450348]
+unique_name_in_owner = true
+visible = false
 material = ExtResource("1_6nda8")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1567574631]
+libraries/ = SubResource("AnimationLibrary_rwx2n")
+
+[node name="Panel2" type="Panel" parent="." unique_id=33847390]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_vjj3e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

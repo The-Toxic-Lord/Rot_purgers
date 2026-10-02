@@ -61,6 +61,7 @@ enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER, FLYER, FLYER_CHARGE 
 @export var spawn_node_UUID : String
 @export_storage var number_of_pc : int = 0
 @export_storage var start_height : int = 20
+@export var self_path : String
 
 func new() -> void:
 	health = max_health
@@ -91,7 +92,9 @@ func _validate_property(property: Dictionary) -> void:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func reset_stats():
-	pass
+	var normal_stats : Character_stats = ResourceLoader.load(self_path).duplicate(true)
+	for prop in get_property_list():
+		set(prop["name"], normal_stats.get(prop["name"]))
 
 
 

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b213luqwl2tnl"]
 
-[ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://Cutscenes/Cutscene.gd" id="1_3h5vp"]
+[ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_3h5vp"]
 [ext_resource type="PackedScene" uid="uid://b57jse1cfeshi" path="res://3d_map/map_cell.tscn" id="2_iiwgc"]
 [ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="3_73xbr"]
 [ext_resource type="Texture2D" uid="uid://cab70jac2jm0k" path="res://blender_models/Aven8_Aven_texture.png" id="4_olu27"]

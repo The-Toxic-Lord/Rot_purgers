@@ -1,6 +1,4 @@
-extends Node3D
-
-class_name Skill_animation_3d
+class_name Skill_animation_3d extends Node3D
 
 signal animation_finished
 
@@ -9,7 +7,7 @@ func _ready() -> void:
 
 @warning_ignore("unused_parameter")
 func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
-	pass
+	animation_finished.emit()
 
 func kill():
 	queue_free()

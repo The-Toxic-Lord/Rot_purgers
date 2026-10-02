@@ -23,6 +23,7 @@ SoundHandler="*uid://b2tvljyop82p8"
 DialogueManager="*uid://c3rodes2l3gxb"
 DialogueBalloon="*uid://c3bivus2b5x53"
 ObjectLink="*uid://vwt0sbqumcjc"
+TransitionScreen="*uid://dvjb1ucqsqk4t"
 
 [dialogue_manager]
 

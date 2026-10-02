@@ -32,6 +32,7 @@ func remove_background():
 
 var current_map_id : int = -1
 func load_map(id : int = -1):
+	await transition_start()
 	if id == 0:
 		remove_background()
 	if current_map_id + 1 == GlobalData.map_data_path.size():
@@ -56,6 +57,7 @@ func load_map(id : int = -1):
 		map_generator.show()
 		if map_data.music != null:
 			SoundHandler.play_music(map_data.music)
+		await transition_end()
 	elif map_data is PackedScene:
 		var new_cutscene : Cutscene = map_data.instantiate()
 		add_child(new_cutscene)
@@ -65,10 +67,12 @@ func load_map(id : int = -1):
 			cutscene.queue_free()
 		cutscene = new_cutscene
 		cutscene.start_cutscene()
+		await transition_end()
 		#if map_data.music != null:
 			#SoundHandler.play_music(map_data.music)
 
 func load_scene_path(path : String):
+	await transition_start()
 	var map_data = ResourceLoader.load(path)
 	if map_data is Map_data:
 		var new_map_gen : Map_generator = load("uid://buyr0671du0pe").instantiate()
@@ -82,10 +86,12 @@ func load_scene_path(path : String):
 			cutscene.queue_free()
 		map_generator = new_map_gen
 		map_generator.show()
+		await transition_end()
 		if map_data.music != null:
 			SoundHandler.play_music(map_data.music)
 	elif map_data is PackedScene:
 		var new_cutscene : Cutscene = map_data.instantiate()
+		new_cutscene.hide()
 		add_child(new_cutscene)
 		if map_generator != null:
 			map_generator.queue_free()
@@ -93,6 +99,9 @@ func load_scene_path(path : String):
 			cutscene.queue_free()
 		cutscene = new_cutscene
 		cutscene.start_cutscene()
+		await cutscene.load_finished
+		cutscene.show()
+		await transition_end()
 
 func load_background():
 	background = load("uid://cc2fywiyu0mah").instantiate()
@@ -130,6 +139,16 @@ func load_tutorial():
 	map_generator = new_map_gen
 	map_generator.show()
 	SoundHandler.play_tutor()
+
+func transition_start():
+	TransitionScreen.on()
+	await TransitionScreen.finished
+
+func transition_end():
+	TransitionScreen.off()
+	await TransitionScreen.finished
+	TransitionScreen.hide()
+
 
 
 
