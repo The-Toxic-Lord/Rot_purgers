@@ -6,6 +6,7 @@ class_name Plasma_orb_animation
 @onready var plasma_orb: Magic_orb_VFX = %Plasma_orb
 @onready var explosion: VFXExplosionBB = %Explosion
 
+@warning_ignore("unused_parameter")
 func start(target : Vector3, cells : Array[Vector2i] = []):
 	plasma_orb.scale = Vector3.ZERO
 	plasma_orb.show()

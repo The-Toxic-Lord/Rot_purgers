@@ -77,11 +77,19 @@ func load_map(map : Map_data):
 	if map_data.text_data != null:
 		freze_selector = true
 		DialogueBalloon.start(map_data.text_data, "map_dialogue")
-		await DialogueManager.dialogue_ended
-		freze_selector = false
+		dialogue_end()
+	else:
+		activate_controlls()
+	map_loaded.emit()
+
+func dialogue_end():
+	await DialogueManager.dialogue_ended
+	activate_controlls()
+
+func activate_controlls():
+	freze_selector = false
 	%Camera_position.set_process(true)
 	active = true
-	map_loaded.emit()
 
 func make_multi_meshes():
 	var mat_to_multi : Dictionary[StandardMaterial3D, MultiMeshInstance3D] = {}
@@ -188,9 +196,10 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 	if freze_selector or BattleHandler.state != Battle_handler.states.PLAYER:
 		return
 	if state == states.SKILL:
-		if !selected_skill.skill_map.bound_to_char:
-			if !unbound_spell_range.has(map_cell_to_data_cell[map_cell]):
-				return
+		if !selected_skill.line_of_sight_check:
+			if !selected_skill.skill_map.bound_to_char:
+				if !unbound_spell_range.has(map_cell_to_data_cell[map_cell]):
+					return
 	if state == states.SKILL_TERRAIN:
 		var mouse_pos : Vector2 = get_viewport().get_mouse_position()
 		var dead_zone : Rect2 = map_ui.dead_zone
@@ -215,37 +224,39 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 	else:
 		map_ui.hide_mini_stats()
 	if state == states.SKILL:
-		if showing_move_zone:
-			if move_zones.has(selected_cell):
-				move_char_skill()
-		else:
-			await turn_to_selection()
-			if !selected_skill.skill_map.bound_to_char:
-				await move_skill(selected_cell, prev_selector_cell)
+		if !selected_skill.line_of_sight_check:
+			if showing_move_zone:
+				if move_zones.has(selected_cell):
+					move_char_skill()
+			else:
+				await turn_to_selection()
+				if !selected_skill.skill_map.bound_to_char:
+					await move_skill(selected_cell, prev_selector_cell)
 	await get_tree().process_frame
 	check_accuracy_ui()
 
 func check_accuracy_ui():
+	var targets : Array[Character_stats]
 	if state == states.ATTACK:
 		if char_positions.has(selected_cell) and select_zones.has(selected_cell):
 			if char_positions[selected_cell] != selected_char:
-				var targets : Array[Character_stats] = [char_positions[selected_cell].stats]
-				map_ui.show_accuracy(targets)
-		else:
-			map_ui.hide_accuracy()
+				targets = [char_positions[selected_cell].stats]
 	if state == states.SKILL:
-		var targets : Array[Character_stats] = []
-		for cell in select_zones.keys():
-			if char_positions.has(cell):
-				if char_positions[cell] == selected_char:
-					continue
-				var height : float = char_positions[cell].position.y
-				if abs(height - selected_char.position.y) <= selected_char.stats.attack_height * 0.1:
-					targets.append(char_positions[cell].stats)
-		if !targets.is_empty():
-			map_ui.show_accuracy(targets, selected_skill)
+		if selected_skill.line_of_sight_check:
+			if select_zones.has(selected_cell):
+				targets = [char_positions[selected_cell].stats]
 		else:
-			map_ui.hide_accuracy()
+			for cell in select_zones.keys():
+				if char_positions.has(cell):
+					if char_positions[cell] == selected_char:
+						continue
+					var height : float = char_positions[cell].position.y
+					if abs(height - selected_char.position.y) <= selected_skill.max_height_difference * 0.1:
+						targets.append(char_positions[cell].stats)
+	if !targets.is_empty():
+		map_ui.show_accuracy(targets, selected_skill)
+	else:
+		map_ui.hide_accuracy()
 
 func set_selector(cell : Vector2i):
 	selected_cell = cell
@@ -420,9 +431,9 @@ func _input(event: InputEvent) -> void:
 						pass
 						# ADD error sound
 				states.SKILL:
-					if !selected_skill.skill_map.bound_to_char:
-						if !check_unbound_skill_height():
-							return
+					#if !selected_skill.skill_map.bound_to_char:
+						#if !check_unbound_skill_height():
+							#return
 					if showing_move_zone:
 						finalize_skill_move()
 					else:
@@ -661,6 +672,10 @@ func remove_enemy(ch_node : Character_node):
 func display_skill(skill : Skill_base):
 	selected_skill = skill
 	
+	if skill.line_of_sight_check:
+		make_projectile_skill(skill)
+		return
+	
 	if skill.skill_map.bound_to_char:
 		selected_char.previous_map_pos = selected_char.map_pos
 		make_bound_skill(skill)
@@ -721,7 +736,7 @@ func make_unboun_skill(skill : Skill_base):
 		select_zones[selected_cell + damage_cell] = damage_zone
 	
 	var range_cells := get_flow_cells(selected_char.map_pos, skill.max_dist,
-	 true, true, skill.max_height_difference, true, false)
+	 true, true, skill.max_height_difference, true, false, true)
 	
 	i = 0
 	
@@ -739,6 +754,32 @@ func make_unboun_skill(skill : Skill_base):
 	for cell in select_zones:
 		if unbound_spell_range.has(cell):
 			unbound_spell_range[cell].hide()
+
+func make_projectile_skill(skill : Skill_base):
+	var range_cells := get_flow_cells(selected_char.map_pos, skill.max_dist,
+	 true, true, skill.max_height_difference, true, false, true)
+	var targets : Array[Character_node] = []
+	for cell in range_cells:
+		if !char_positions.has(cell):
+			continue
+		var char_node : Character_node = char_positions[cell]
+		if BattleHandler.allies.has(char_node):
+			continue
+		if ObjectLink.enemy_manager.pretend_fire(selected_char.position, char_node.position):
+			targets.append(char_node)
+	if targets.is_empty():
+		return
+	for i in targets.size():
+		var damage_zone : Node3D = load("uid://bnwwdeckahhsa").instantiate()
+		add_child(damage_zone)
+		damage_zone.name = "damage_zone_" + str(i)
+		if map_cells.has(targets[i].map_pos):
+			damage_zone.position = map_cells[targets[i].map_pos].position
+		else:
+			damage_zone.position = Vector3(targets[i].position.x, 0, 
+			targets[i].position.z)
+		select_zones[targets[i].map_pos] = damage_zone
+		i += 1
 
 enum directions { N, E, S, W }
 var dir_arr : Array[directions] = [directions.N, directions.E, directions.S, directions.W]
@@ -839,24 +880,32 @@ func rotate_unbound_skill():
 			unbound_spell_range[cell].hide()
 
 func add_skill_order():
-	if !selected_skill.skill_map.bound_to_char:
-		pass
-	var damage_cells : Array[Vector2i] = []
-	var move_cells : Array[Vector2i] = []
-	for cell in select_zones:
-		var zone_name := select_zones[cell].name
-		if zone_name.contains("damage_zone_"):
-			damage_cells.append(cell)
-		else:
-			move_cells.append(cell)
-	BattleHandler.add_skill(selected_char, selected_skill, damage_cells, move_cells, skill_animation_target_cell)
+	if !selected_skill.line_of_sight_check:
+		var damage_cells : Array[Vector2i] = []
+		var move_cells : Array[Vector2i] = []
+		for cell in select_zones:
+			var zone_name := select_zones[cell].name
+			if zone_name.contains("damage_zone_"):
+				damage_cells.append(cell)
+			else:
+				move_cells.append(cell)
+		BattleHandler.add_skill(selected_char, selected_skill, damage_cells, move_cells, skill_animation_target_cell)
+		skill_state_finish()
+	else:
+		if select_zones.has(selected_cell):
+			var temp : Array[Vector2i] = [selected_cell]
+			BattleHandler.add_skill(selected_char, selected_skill, temp, [], selected_cell)
+			skill_state_finish()
+
+func skill_state_finish():
 	clear_select_zone()
 	map_ui.flush_skill_menu()
 	selected_char.can_attack = false
 	selected_char.has_order = true
-	if selected_skill.skill_map.bound_to_char:
-		if selected_char.map_pos != start_skill_move_position:
-			finalize_skill_move()
+	if !selected_skill.line_of_sight_check:
+		if selected_skill.skill_map.bound_to_char:
+			if selected_char.map_pos != start_skill_move_position:
+				finalize_skill_move()
 	state = states.SELECT
 	map_ui.hide_accuracy()
 
@@ -1052,6 +1101,8 @@ func update_map_cells(dirs : Array[directions]):
 		map_cell.check_dirs(dirs)
 
 func move_char_skill_back():
+	if selected_char.can_undo_move:
+		return
 	if selected_char.previous_map_pos != Vector2i(-1, -1):
 		selected_char.position = map_cells[selected_char.previous_map_pos].position
 		selected_char.map_pos = selected_char.previous_map_pos

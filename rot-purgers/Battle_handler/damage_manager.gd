@@ -25,6 +25,16 @@ func calc_hit_type(chance : float) -> hit_types:
 	else:
 		return hit_types.MISS
 
+func cals_hit_acc_dmg_bonus(chance : float):
+	if chance >= 1.0:
+		return 1.0 + (chance - 1.0) / 2.0
+	elif randf() < chance:
+		return 1.0
+	elif randf() < chance:
+		return 0.5
+	else:
+		return 0.0
+
 func deflect_check(target : Character_node, attacker : Character_node) -> bool:
 	var points : Array[Vector2i] = Geometry2D.bresenham_line(attacker.map_pos, target.map_pos)
 	var closest_char : Character_node
@@ -61,26 +71,39 @@ func attack_damage(target : Character_node, attacker : Character_node):
 	map_gen.set_selector(target.map_pos)
 	await get_tree().process_frame
 	var hit_chance : float = calc_hit_chance(target, attacker)
-	var hit_type : hit_types = calc_hit_type(hit_chance)
-	match hit_type:
-		hit_types.MISS:
-			await target.damage(-1)
-		_:
-			var damage : float = attacker.stats.get_attack_stat_used()
-			match hit_type:
-				hit_types.NICK:
-					print("nick")
-					damage *= 0.5
-				hit_types.BULLSEYE:
-					print("bullseye")
-					damage *= 1.5
-			if target.is_defending:
-				damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
-			else:
-				damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
-			if damage < 0:
-				damage = 0
-			await target.damage(damage, true)
+	var acc_dmg_mod : float = cals_hit_acc_dmg_bonus(hit_chance)
+	if acc_dmg_mod == 0.0:
+		await target.damage(-1)
+	else:
+		var damage : float = attacker.stats.get_attack_stat_used()
+		damage *= acc_dmg_mod
+		if target.is_defending:
+			damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
+		else:
+			damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
+		if damage < 0:
+			damage = 0
+		await target.damage(damage, true)
+	#var hit_type : hit_types = calc_hit_type(hit_chance)
+	#match hit_type:
+		#hit_types.MISS:
+			#await target.damage(-1)
+		#_:
+			#var damage : float = attacker.stats.get_attack_stat_used()
+			#match hit_type:
+				#hit_types.NICK:
+					#print("nick")
+					#damage *= 0.5
+				#hit_types.BULLSEYE:
+					#print("bullseye")
+					#damage *= 1.5
+			#if target.is_defending:
+				#damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
+			#else:
+				#damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
+			#if damage < 0:
+				#damage = 0
+			#await target.damage(damage, true)
 	await target.animation_ended
 	await get_tree().process_frame
 	order_ended.emit()

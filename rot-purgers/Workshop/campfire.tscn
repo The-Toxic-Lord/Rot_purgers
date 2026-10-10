@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://db62brkwigfba"]
+
+[ext_resource type="PackedScene" uid="uid://drio38prepo5e" path="res://assets/Campfire.fbx" id="1_jjl08"]
+[ext_resource type="PackedScene" uid="uid://dra0ivq7stx8c" path="res://assets/BinbunVFX_Vol2/FlameFX/effects/fire/vfx_basic_fire_01.tscn" id="2_flc56"]
+
+[node name="Campfire" type="Node3D" unique_id=1718168442]
+
+[node name="Campfire" parent="." unique_id=1342539005 instance=ExtResource("1_jjl08")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.041537046, 0, -0.7626768)
+
+[node name="VFXBasicFire_01" parent="." unique_id=2052583828 instance=ExtResource("2_flc56")]
+transform = Transform3D(-0.40937388, 0, 0.91236687, 0, 1, 0, -0.91236687, 0, -0.40937388, -0.01913184, 0.16541088, 0.017336011)
+flame_scale = Vector2(0.8, 0.8)

@@ -3,7 +3,7 @@ extends Node
 
 class_name Stats_calculator
 
-enum difficulyties { EASY, NORMAL, HARD }
+enum difficulyties { EASY, NORMAL, HARD, IMPOSSIBLE }
 @export var allies : Array[Character_stats]
 @export var difficulty : difficulyties = difficulyties.NORMAL
 
@@ -25,6 +25,12 @@ enum difficulyties { EASY, NORMAL, HARD }
 		"get_hit_chance" : 0.8,
 		"num_turns_kill" : 3,
 		"num_turns_dead" : 3
+	},
+	difficulyties.IMPOSSIBLE : {
+		"hit_chance" : 1.4,
+		"get_hit_chance" : 0.6,
+		"num_turns_kill" : 2,
+		"num_turns_dead" : 4
 	}
 }
 
@@ -87,7 +93,9 @@ func get_speed(med_st : Character_stats, hit_chance : float) -> int:
 func get_str(med_st : Character_stats, hit_chance : float, num_of_turns : int) -> int:
 	var damage : float = med_st.max_health as float / num_of_turns
 	if hit_chance < 1.0:
-		damage /= hit_chance
+		damage *= hit_chance
+	else:
+		damage /= 1.0 + (hit_chance - 1.0) / 2.0
 	damage += med_st.defence / 2.0
 	return roundi(damage)
 

@@ -286,7 +286,7 @@ func flyer_can_attack(enemy : Character_node, pos_pos : Array[Vector3], desired_
 	var possible_pos : Dictionary[Vector3, Array] = {}
 	for pos in pos_pos:
 		for ally in BattleHandler.allies:
-			if (ally.position - pos).length() > enemy.stats.attack_distance:
+			if (ally.position - pos).length() > enemy.stats.attack_distance * 2.0:
 				continue
 			if pretend_fire(pos, ally.position):
 				if possible_pos.has(pos):
@@ -366,6 +366,13 @@ func get_possible_flyer_possition(enemy : Character_node) -> Array[Vector3]:
 		if !map_gen.map_cells.has(cell):
 			continue
 		if pos.y <= map_gen.map_cells[cell].position.y or occupied_cells.has(cell):
+			delete_3d.append(pos)
+	for pos in delete_3d:
+		checked_pos.erase(pos)
+	delete_3d.clear()
+	for pos in checked_pos:
+		var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
+		if occupied_cells.has(cell):
 			delete_3d.append(pos)
 	for pos in delete_3d:
 		checked_pos.erase(pos)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl6uegavo3hjd"]
 
-[ext_resource type="Script" uid="uid://duawm8aygvli2" path="res://dialogue/dialogue_balloon.gd" id="1_md88y"]
+[ext_resource type="Script" uid="uid://duawm8aygvli2" path="res://dialogue/old/dialogue_balloon.gd" id="1_u7a0l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwy4y"]
 bg_color = Color(0, 0, 0, 1)
@@ -17,7 +17,7 @@ corner_radius_bottom_left = 20
 
 [node name="Dialogue_balloon" type="CanvasLayer" unique_id=1839252449]
 layer = 100
-script = ExtResource("1_md88y")
+script = ExtResource("1_u7a0l")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1220694714]
 anchors_preset = 7

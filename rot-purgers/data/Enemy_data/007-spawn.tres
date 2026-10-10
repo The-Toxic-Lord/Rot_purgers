@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://dc7ag4ym5u0nc"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_nurye"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="2_uhx86"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="3_r6o6k"]
+[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="4_t8wd5"]
+
+[resource]
+script = ExtResource("3_r6o6k")
+name = "Crawler"
+char_class = "Servant"
+age = 0
+sprite = ExtResource("4_t8wd5")
+max_health = 120
+max_magic = 10
+strength = 50
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 55
+counter = 0
+trigger_distance = 15
+node_UID = "uid://dunq80ub3v1jk"
+skills = Array[ExtResource("1_nurye")]([ExtResource("2_uhx86")])
+metadata/_custom_type_script = "uid://by1rq468n504l"

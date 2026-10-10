@@ -10,33 +10,32 @@
 
 [sub_resource type="Resource" id="Resource_k5dsr"]
 script = ExtResource("2_61klf")
-max_health = 222
-strength = 62
-defence = 0
+max_health = 190
+strength = 73
+defence = 80
 magic_strenght = 0
-accuracy = 60
-speed = 69
-self_path = null
+accuracy = 70
+speed = 100
 
 [sub_resource type="Resource" id="Resource_r5c45"]
 script = ExtResource("2_61klf")
 name = "enemy"
 max_health = 132
 max_magic = 112
-strength = 37
+strength = 36
 defence = 35
 magic_strenght = 68
-accuracy = 55
+accuracy = 60
 speed = 50
-self_path = null
 
 [node name="Stats_calculator" type="Node" unique_id=1113991462]
 script = ExtResource("1_kr400")
 allies = Array[ExtResource("2_61klf")]([ExtResource("4_k5dsr"), ExtResource("5_r5c45"), ExtResource("5_k5dsr"), ExtResource("6_r5c45")])
-difficulty = 2
-health = 222
-strength = 62
-accuracy = 60
-speed = 69
+difficulty = 3
+health = 190
+strength = 73
+defence = 80
+accuracy = 70
+speed = 100
 enemy_stats = SubResource("Resource_k5dsr")
 medium_stats = SubResource("Resource_r5c45")

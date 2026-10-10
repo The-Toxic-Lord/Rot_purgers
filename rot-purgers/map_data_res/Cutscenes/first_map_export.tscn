@@ -132,7 +132,7 @@ frequency = 0.1016
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l2wnj"]
 noise = SubResource("FastNoiseLite_g8kef")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbvty"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jeb1u"]
 resource_local_to_scene = true
 resource_name = "Material.001"
 render_priority = 0
@@ -193,7 +193,7 @@ transform = Transform3D(0.7040145, -0.3224173, 0.6327802, 0, 0.8910067, 0.453990
 
 [node name="Character_node" parent="." unique_id=741036927 instance=ExtResource("4_bhoiu")]
 transform = Transform3D(-0.7396298, 0, 0.6730139, 0, 1, 0, -0.6730139, 0, -0.7396298, -0.030382574, 0, 1.3093553)
-material = SubResource("ShaderMaterial_lbvty")
+material = SubResource("ShaderMaterial_jeb1u")
 
 [node name="Character_node2" parent="." unique_id=443867150 instance=ExtResource("3_ln5k1")]
 transform = Transform3D(0.6882797, 0, -0.72544545, 0, 1, 0, 0.72544545, 0, 0.6882797, -3.0899625, -7.1525574e-07, 4.307343)
