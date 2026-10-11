@@ -175,11 +175,7 @@ func remove_order(char_node : Character_node):
 
 func end_battle(object_data : Map_object = null):
 	map_gen.active = false
-	var ally_data_array : Array[Character_stats] = []
-	for ally in allies:
-		ally.stats.new()
-		ally_data_array.append(ally.stats)
-	GlobalData.ally_team.append_array(ally_data_array)
+	GlobalData.ally_team.clear()
 	if object_data != null:
 		if object_data.extra_data != "":
 			ObjectLink.main.load_scene_path(object_data.extra_data)

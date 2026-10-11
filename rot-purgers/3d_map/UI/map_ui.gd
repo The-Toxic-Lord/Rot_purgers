@@ -36,6 +36,9 @@ func populate_spawn_list(map_data : Map_data, loading := false):
 		var ch_st : Character_stats = ch.duplicate()
 		await make_spawn_button(ch_st)
 		GlobalData.ally_team.append(ch_st)
+	GlobalData.apply_char_mods()
+	for ch in GlobalData.ally_team:
+		ch.stats_adjust()
 	%Character_list.move_child(%Close_spawn, %Character_list.get_children().size() - 1)
 
 func make_spawn_button(ch : Character_stats):
@@ -44,7 +47,7 @@ func make_spawn_button(ch : Character_stats):
 	button_to_char[bt] = ch
 	spawn_list[ch] = bt
 	bt.text = ch.name
-	ch.stats_adjust()
+	#ch.stats_adjust()
 	bt.pressed.connect(spawn_character.bind(ch))
 	bt.focus_entered.connect(show_focus_char_stats.bind(ch))
 	bt.mouse_entered.connect(func() -> void:

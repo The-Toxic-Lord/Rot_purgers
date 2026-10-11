@@ -62,6 +62,7 @@ enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER, FLYER, FLYER_CHARGE 
 @export_storage var number_of_pc : int = 0
 @export_storage var start_height : int = 20
 @export var self_path : String
+@export var can_rearange_stats := true
 
 func new() -> void:
 	health = max_health

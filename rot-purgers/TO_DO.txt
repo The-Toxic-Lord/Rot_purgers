@@ -31,7 +31,8 @@ critical:
 	+- dialogue system
 	- сложность меняет ход врагов с одновременного на пошаговый
 	- if order failed on enemy turn try salvage
-	- change accuracy damage boost
+	+- change accuracy damage boost
+	- рисовать клетки под защитой
 
 - ramps
 - background image

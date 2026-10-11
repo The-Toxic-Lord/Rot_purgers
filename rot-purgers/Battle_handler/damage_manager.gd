@@ -168,6 +168,8 @@ func skill_oneshot(order : Order_skill_data):
 	attacker.skill(order.selected_cell, order.skill, order.skill.animation_jump, order.damage_cells)
 	await attacker.attack_finished
 	if targets.is_empty():
+		if order.skill.move_mode == Skill_base.move.SELF:
+			await handle_skill_movement(order, attacker)
 		order_ended.emit()
 		return
 	var target_damage : Dictionary[Character_node, float] = {}
@@ -220,13 +222,17 @@ func heal(order : Order_heal):
 	order_ended.emit()
 
 func handle_skill_movement(order : Order_skill_data, 
-attacker : Character_node, target : Character_node):
+attacker : Character_node, target : Character_node = null):
 	#attacker.position = map_gen.map_cells[order.move_cells[0]].position
 	match order.skill.move_mode:
 		Skill_base.move.SELF:
 			map_gen.teleport_char(attacker, order.move_target)
 		Skill_base.move.TARGET:
 			map_gen.teleport_char(target, order.move_target)
+
+
+
+
 
 
 

@@ -92,7 +92,7 @@ func new_round():
 	is_defending = false
 	has_order = false
 	can_undo_move = false
-	can_rearange = true
+	can_rearange = stats.can_rearange_stats
 	previous_map_pos = Vector2i(-1, -1)
 	
 	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.05), 0, stats.max_magic)

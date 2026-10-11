@@ -70,7 +70,6 @@ func load_map(map : Map_data):
 	await move_selector_to_spawn()
 	await spawn_objects()
 	await map_ui.populate_spawn_list(map_data)
-	
 	await BattleHandler.new_battle_start()
 	await spawn_enemies(map.enemy_map_data)
 	await make_multi_meshes()
@@ -467,8 +466,8 @@ func spawn_ally(ch : Character_stats):
 	map_ui.show_mini_stats(char_positions[selected_cell].stats)
 	BattleHandler.allies.append(char_node)
 	selected_char = char_node
-	map_ui.open_char_action_menu(char_node)
 	char_node.new_round()
+	map_ui.open_char_action_menu(char_node)
 
 func spawn_select_zone(ch_node : Character_node, st : states):
 	var move_cells : Array[Vector2i] = []

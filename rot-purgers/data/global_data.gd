@@ -34,11 +34,31 @@ func clear_data():
 	ally_team.clear()
 	dead_chars.clear()
 
+@export var char_mods : Dictionary[String, Char_mods] = {}
 
+func mod_char(char_name : String, add_skill : Skill_base = null, 
+change_property : String = "", property_value = null):
+	if !char_mods.has(char_name):
+		char_mods[char_name] = Char_mods.new()
+	if add_skill != null:
+		char_mods[char_name].add_skills.append(add_skill)
+	if change_property != "":
+		char_mods[char_name].changed_properties[change_property] = property_value
 
-
-
-
+func apply_char_mods():
+	for char_name in char_mods:
+		var char_mod : Char_mods = char_mods[char_name]
+		var char_stats : Character_stats = null
+		for ally in ally_team:
+			if ally.name == char_name:
+				char_stats = ally
+				break
+		if char_stats == null:
+			continue
+		for skill in char_mod.add_skills:
+			char_stats.skills.append(skill)
+		for prop in char_mod.changed_properties.keys():
+			char_stats.set(prop, char_mod.changed_properties[prop])
 
 
 
