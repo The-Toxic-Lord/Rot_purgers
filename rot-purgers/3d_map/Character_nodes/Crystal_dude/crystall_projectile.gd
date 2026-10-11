@@ -13,7 +13,8 @@ func start(_target : Vector3):
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	look_at(target)
+	if (position - target).length_squared() > 0.5:
+		look_at(target)
 
 
 

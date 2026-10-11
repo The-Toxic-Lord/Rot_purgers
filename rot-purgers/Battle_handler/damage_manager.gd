@@ -65,6 +65,8 @@ func attack_damage(target : Character_node, attacker : Character_node):
 	await attacker.attack_finished
 	#if (target.map_pos - attacker.map_pos).length() > 1:
 	if deflect_check(target, attacker):
+		target.deflect()
+		await target.attack_finished
 		order_ended.emit()
 		return
 	map_gen.set_camera_target(target)

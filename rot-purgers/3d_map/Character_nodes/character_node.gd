@@ -372,8 +372,24 @@ func heal(value : float):
 	display_damage(true, true)
 
 func attack(target_cell : Vector2i):
-	turn_to_target(target_cell)
+	turn_for_attack(target_cell)
 	await self.direction_changed
+	var ranged_checK := true
+	for neib in neighbors_sides:
+		var cell := neib + map_pos
+		if target_cell == cell:
+			await melee_attack()
+			ranged_checK = false
+			break
+	if ranged_checK:
+		ranged_attack(target_cell)
+		await projectile_hit
+	else:
+		melee_attack()
+	attack_finished.emit()
+	turn_to_target(target_cell)
+
+func melee_attack():
 	if char_animation.has_animation("Attack_1_windup"):
 		char_animation.play("Attack_1_windup")
 		await char_animation.animation_finished
@@ -383,7 +399,33 @@ func attack(target_cell : Vector2i):
 		attack_trail.turn_off()
 		if char_animation.has_animation("Attack_1_back"):
 			char_animation.play("Attack_1_back")
+
+func deflect():
+	if char_animation.has_animation("Attack_1"):
+		char_animation.play("Attack_1")
+		await char_animation.animation_finished
 	attack_finished.emit()
+	if char_animation.has_animation("Attack_1_back"):
+			char_animation.play("Attack_1_back")
+
+signal projectile_hit
+@warning_ignore("unused_parameter")
+func ranged_attack(target_cell : Vector2i):
+	await get_tree().process_frame
+	projectile_hit.emit()
+	pass
+
+func turn_for_attack(target_cell : Vector2i):
+	var target : Vector3 = Vector3(target_cell.x * 2.0, 0.0, target_cell.y * 2.0)
+	target.y = position.y
+	var quat_0 : Quaternion = quaternion
+	look_at(target)
+	var quat_1 : Quaternion = quaternion
+	quaternion = quat_0
+	
+	var tween := create_tween()
+	tween.tween_property(self, "quaternion", quat_1, 0.5)
+	tween.tween_callback(direction_changed.emit)
 
 func skill(target_cell : Vector2i, skill_data : Skill_base, skill_is_jump := false,
 cells : Array[Vector2i] = []):
