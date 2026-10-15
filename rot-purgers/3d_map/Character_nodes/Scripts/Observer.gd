@@ -10,10 +10,34 @@ class_name Observer
 
 signal eye_rotation_finished
 
-func attack(target_cell : Vector2i):
-	turn_to_target(target_cell)
-	await self.direction_changed
-	
+#func attack(target_cell : Vector2i):
+	#turn_to_target(target_cell)
+	#await self.direction_changed
+	#
+	#var target_pos : Vector3 = ObjectLink.map_gen.map_cells[target_cell].position + Vector3(0, 1.5, 0)
+	#observer_model.stop_eye(eye_forward)
+	#var q := eye_forward.quaternion
+	#eye_forward.look_at(target_pos)
+	#var t := eye_forward.quaternion
+	#eye_forward.quaternion = q
+	#
+	#var tween := create_tween()
+	#tween.tween_property(eye_forward, "quaternion", t, 1.0)
+	#tween.tween_callback(eye_rotation_finished.emit)
+	#
+	#await eye_rotation_finished
+	#
+	#beam_vfx.beam_length = (target_pos - eye_forward.global_position).length()
+	#beam_vfx.show()
+	#beam_vfx.audio_playing = true
+	#attack_finished.emit()
+	#
+	#await get_tree().create_timer(0.5).timeout
+	#beam_vfx.audio_playing = false
+	#beam_vfx.hide()
+
+
+func ranged_attack(target_cell : Vector2i):
 	var target_pos : Vector3 = ObjectLink.map_gen.map_cells[target_cell].position + Vector3(0, 1.5, 0)
 	observer_model.stop_eye(eye_forward)
 	var q := eye_forward.quaternion
@@ -30,14 +54,13 @@ func attack(target_cell : Vector2i):
 	beam_vfx.beam_length = (target_pos - eye_forward.global_position).length()
 	beam_vfx.show()
 	beam_vfx.audio_playing = true
-	attack_finished.emit()
 	
 	await get_tree().create_timer(0.5).timeout
 	beam_vfx.audio_playing = false
 	beam_vfx.hide()
-
-
-
+	
+	projectile_hit.emit()
+	observer_model.rotate_eye(eye_forward)
 
 
 

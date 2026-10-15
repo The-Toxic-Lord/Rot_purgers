@@ -27,7 +27,7 @@ critical:
 	+- main menu
 	- level maps
 	+- level transition
-	- level textures
+	+- level textures
 	+- dialogue system
 	- сложность меняет ход врагов с одновременного на пошаговый
 	- if order failed on enemy turn try salvage

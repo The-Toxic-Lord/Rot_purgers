@@ -3,10 +3,9 @@
 [ext_resource type="Script" path="res://data/Character_stats.gd" id="1_bwvuj"]
 [ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_j7tpd"]
 [ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_ys7s5"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="3_3mwm5"]
+[ext_resource type="Texture2D" path="res://import/Eye.png" id="3_3mwm5"]
 [ext_resource type="Texture2D" path="res://import/check_button_2.png" id="3_alebe"]
 [ext_resource type="Script" path="res://map_data.gd" id="4_2qeye"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="4_kqyk2"]
 [ext_resource type="Texture2D" path="res://import/check_button.png" id="4_ys7s5"]
 [ext_resource type="Script" path="res://data/terrain_data.gd" id="5_j7tpd"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="6_3mwm5"]
@@ -16,14 +15,15 @@
 
 [sub_resource type="Resource" id="Resource_kqj3p"]
 script = ExtResource("1_bwvuj")
-name = "Crystal"
-char_class = "Neutrophil"
-age = 468
-sprite = ExtResource("4_kqyk2")
-attack_distance = 5
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
-potential_skills = Array[ExtResource("2_j7tpd")]([ExtResource("3_3mwm5")])
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("3_3mwm5")
+move_speed = 2
+jump_height = 10
+attack_distance = 4
+node_UID = "uid://ckmkqe73jj58e"
+AI_type = 5
+start_height = 100
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_ys7s5"]

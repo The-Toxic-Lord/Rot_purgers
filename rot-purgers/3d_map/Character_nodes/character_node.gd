@@ -344,13 +344,15 @@ func defend():
 	has_order = true
 	is_defending = true
 
-func turn(new_dir : Map_generator.directions, skip_animation := false):
+func turn(new_dir : Map_generator.directions, skip_animation := false, forse_turn := false):
 	await get_tree().process_frame
 	if new_dir == current_direction:
-		turn_finished()
-		return
-	previous_direction = current_direction
-	current_direction = new_dir
+		if !forse_turn:
+			turn_finished()
+			return
+	else:
+		previous_direction = current_direction
+		current_direction = new_dir
 	
 	var q := Quaternion(Vector3.UP, dir_to_angle[new_dir])
 	if skip_animation:
@@ -387,7 +389,7 @@ func attack(target_cell : Vector2i):
 	else:
 		melee_attack()
 	attack_finished.emit()
-	turn_to_target(target_cell)
+	turn_to_target(target_cell, true)
 
 func melee_attack():
 	if char_animation.has_animation("Attack_1_windup"):
@@ -511,18 +513,18 @@ var dir_arr : Array[Map_generator.directions] = [
 	Map_generator.directions.N, Map_generator.directions.E, 
 	Map_generator.directions.S, Map_generator.directions.W]
 
-func turn_to_target(target_cell : Vector2i):
+func turn_to_target(target_cell : Vector2i, forse_turn := false):
 	var angle : float
 	var dir : Vector2 = (target_cell - map_pos)
 	dir = dir.normalized()
 	angle = dir.angle_to(dir_to_vector[current_direction])
 	angle = rad_to_deg(angle)
-	if angle > -50 and angle < 50:
+	if angle > -50 and angle < 50 and !forse_turn:
 		await get_tree().process_frame
 		turn_finished()
 		return
 	var id : int = dir_arr.find(current_direction)
-	var new_dir : Map_generator.directions
+	var new_dir : Map_generator.directions = current_direction
 	if angle > 50 and angle < 140:
 		if id == 0:
 			id = 4
@@ -535,7 +537,7 @@ func turn_to_target(target_cell : Vector2i):
 		if id >= 2:
 			id -= 4
 		new_dir = dir_arr[id + 2]
-	turn(new_dir)
+	turn(new_dir, false, forse_turn)
 
 func undo_move(map_cells : Dictionary[Vector2i, Map_cell]):
 	position = map_cells[previous_map_pos].position

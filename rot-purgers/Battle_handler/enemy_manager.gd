@@ -259,7 +259,6 @@ func handle_spawner_AI(enemy : Character_node):
 func handle_Flyer_IA(enemy : Character_node):
 	var pos_pos : Array[Vector3] = get_possible_flyer_possition(enemy)
 	var desired_height : float = find_flyer_desired_height(enemy)
-	
 	if check_trigger(enemy):
 		enemy.stats.AI_type = Character_stats.AI_types.FLYER_CHARGE
 	

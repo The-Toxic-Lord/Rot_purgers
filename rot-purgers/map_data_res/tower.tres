@@ -1,14 +1,380 @@
 [gd_resource type="Resource" script_class="Map_data" format=3]
 
 [ext_resource type="Script" path="res://data/Character_stats.gd" id="1_8ufhi"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_gtckg"]
 [ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_v4xvp"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="3_0cxpf"]
 [ext_resource type="Texture2D" path="res://import/check_button.png" id="3_5dkr2"]
 [ext_resource type="Script" path="res://map_data.gd" id="4_c888n"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="4_qq3gq"]
 [ext_resource type="Texture2D" path="res://import/check_button_2.png" id="4_v4xvp"]
 [ext_resource type="Script" path="res://data/terrain_data.gd" id="5_gtckg"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Charge.tres" id="5_qq3gq"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_floor.tres" id="6_0cxpf"]
+[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler.png" id="6_u11de"]
 [ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="7_qq3gq"]
+[ext_resource type="Texture2D" path="res://import/Eye.png" id="7_u11de"]
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_u11de"]
+
+[sub_resource type="Resource" id="Resource_1b4pj"]
+script = ExtResource("1_8ufhi")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_qq3gq")
+max_health = 250
+max_magic = 0
+strength = 100
+defence = 100
+magic_strenght = 0
+accuracy = 100
+speed = 100
+move_speed = 0
+attack_distance = 15
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+AI_type = 0
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("3_0cxpf")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_oes4y"]
+script = ExtResource("1_8ufhi")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_qq3gq")
+max_health = 250
+max_magic = 0
+strength = 100
+defence = 100
+magic_strenght = 0
+accuracy = 100
+speed = 100
+move_speed = 0
+attack_distance = 15
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+AI_type = 0
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("3_0cxpf")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_j1ubq"]
+script = ExtResource("1_8ufhi")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("7_u11de")
+max_health = 160
+max_magic = 0
+strength = 60
+defence = 60
+magic_strenght = 0
+accuracy = 60
+speed = 60
+move_speed = 0
+jump_height = 0
+node_UID = "uid://ckmkqe73jj58e"
+AI_type = 5
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_mejns"]
+script = ExtResource("1_8ufhi")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_qq3gq")
+max_health = 250
+max_magic = 0
+strength = 100
+defence = 100
+magic_strenght = 0
+accuracy = 100
+speed = 100
+move_speed = 0
+attack_distance = 15
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+AI_type = 0
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("3_0cxpf")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_rdtuy"]
+script = ExtResource("1_8ufhi")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_qq3gq")
+max_health = 250
+max_magic = 0
+strength = 100
+defence = 100
+magic_strenght = 0
+accuracy = 100
+speed = 100
+move_speed = 0
+attack_distance = 15
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+AI_type = 0
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("3_0cxpf")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_qwnbx"]
+script = ExtResource("1_8ufhi")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_qq3gq")
+max_magic = 0
+strength = 50
+defence = 50
+magic_strenght = 0
+accuracy = 50
+speed = 50
+move_speed = 0
+attack_distance = 6
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 1
+AI_type = 0
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("3_0cxpf")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_f0bdb"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+start_dir = 1
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_vm7xl"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+start_dir = 1
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_p852k"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+start_dir = 1
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_x53am"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+start_dir = 2
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_qka36"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_odtbd"]
+script = ExtResource("1_8ufhi")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_qq3gq")
+max_magic = 0
+strength = 50
+defence = 50
+magic_strenght = 0
+accuracy = 50
+speed = 50
+move_speed = 0
+attack_distance = 6
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 1
+AI_type = 0
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("3_0cxpf")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_slebq"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+start_dir = 2
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_inury"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_e5yp6"]
+script = ExtResource("1_8ufhi")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_qq3gq")
+max_magic = 0
+strength = 50
+defence = 50
+magic_strenght = 0
+accuracy = 50
+speed = 50
+move_speed = 0
+attack_distance = 6
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 1
+AI_type = 0
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("3_0cxpf")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_bwb13"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+start_dir = 2
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_diakb"]
+script = ExtResource("1_8ufhi")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("6_u11de")
+max_health = 60
+max_magic = 0
+strength = 40
+defence = 40
+magic_strenght = 0
+accuracy = 40
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+potential_skills = Array[ExtResource("2_gtckg")]([ExtResource("5_qq3gq")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_8ufhi"]
 script = ExtResource("2_v4xvp")
@@ -14253,6 +14619,25 @@ object_map_data = Dictionary[Vector2i, ExtResource("2_v4xvp")]({
 Vector2i(31, 31): SubResource("Resource_8ufhi"),
 Vector2i(49, 4): SubResource("Resource_aa6ar"),
 Vector2i(58, 31): SubResource("Resource_gaafg")
+})
+enemy_map_data = Dictionary[Vector2i, ExtResource("1_8ufhi")]({
+Vector2i(29, 29): SubResource("Resource_1b4pj"),
+Vector2i(29, 33): SubResource("Resource_oes4y"),
+Vector2i(31, 13): SubResource("Resource_j1ubq"),
+Vector2i(33, 29): SubResource("Resource_mejns"),
+Vector2i(33, 33): SubResource("Resource_rdtuy"),
+Vector2i(37, 4): SubResource("Resource_qwnbx"),
+Vector2i(38, 3): SubResource("Resource_f0bdb"),
+Vector2i(38, 4): SubResource("Resource_vm7xl"),
+Vector2i(38, 5): SubResource("Resource_p852k"),
+Vector2i(39, 2): SubResource("Resource_x53am"),
+Vector2i(39, 6): SubResource("Resource_qka36"),
+Vector2i(40, 1): SubResource("Resource_odtbd"),
+Vector2i(40, 2): SubResource("Resource_slebq"),
+Vector2i(40, 6): SubResource("Resource_inury"),
+Vector2i(40, 7): SubResource("Resource_e5yp6"),
+Vector2i(41, 2): SubResource("Resource_bwb13"),
+Vector2i(41, 6): SubResource("Resource_diakb")
 })
 magic_cost_adjustment = 2.0
 next_map_path = "res://map_data_res/005.tres"
