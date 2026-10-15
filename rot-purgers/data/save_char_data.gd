@@ -15,6 +15,7 @@ class_name Save_char_data
 @export_storage var name : String
 @export_storage var can_rearange := true
 @export_storage var deflects_left : int = 0
+@export_storage var base_stats : Character_stats
 
 
 func make(char_node : Character_node) -> void:
@@ -31,6 +32,7 @@ func make(char_node : Character_node) -> void:
 	name = char_node.name
 	can_rearange = char_node.can_rearange
 	deflects_left = char_node.deflects_left
+	base_stats = char_node.base_stats
 
 
 

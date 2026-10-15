@@ -926,7 +926,8 @@ func load_save():
 	terrain_map = game_save.terrain_map
 	object_map = game_save.object_map
 	map_data = game_save.map_data
-	GlobalData.dead_chars = game_save.dead_chars
+	
+	GlobalData.load_save(game_save)
 	
 	await spawn_cells()
 	await calculate_boundary()
@@ -934,7 +935,6 @@ func load_save():
 	await spawn_objects()
 	
 	await make_multi_meshes()
-	GlobalData.ally_team = game_save.ally_team
 	await BattleHandler.new_battle_start()
 	await load_chars(game_save)
 	await map_ui.populate_spawn_list(map_data, true)

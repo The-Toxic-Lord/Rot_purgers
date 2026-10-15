@@ -553,6 +553,8 @@ func load_state(save_char_data : Save_char_data):
 	previous_map_pos = save_char_data.previous_map_pos
 	stats = save_char_data.stats
 	is_enemy = save_char_data.is_enemy
+	can_rearange = save_char_data.can_rearange
+	base_stats = save_char_data.base_stats
 	turn(save_char_data.current_direction, true)
 
 func magic_cost(value : int):

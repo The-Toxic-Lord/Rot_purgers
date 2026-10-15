@@ -12,6 +12,8 @@ class_name Game_save
 @export_storage var modified_cells : Dictionary[Vector2i, float] = {}
 @export_storage var dead_chars : Array[String] = []
 
+@export_storage var char_mods : Dictionary[String, Char_mods] = {}
+
 func make_save_char_data():
 	char_data.clear()
 	for char_node in BattleHandler.allies:
@@ -36,6 +38,7 @@ func make_save():
 			modified_cells[cell] = ObjectLink.map_gen.map_cells[cell].position.y
 	
 	dead_chars = GlobalData.dead_chars
+	char_mods = GlobalData.char_mods
 	
 	await make_save_char_data()
 

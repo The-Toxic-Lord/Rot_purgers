@@ -32,7 +32,9 @@ critical:
 	- сложность меняет ход врагов с одновременного на пошаговый
 	- if order failed on enemy turn try salvage
 	+- change accuracy damage boost
+	+- char mod (+- save)
 	- рисовать клетки под защитой
+	- stat boost
 
 - ramps
 - background image

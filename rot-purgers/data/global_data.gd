@@ -60,7 +60,10 @@ func apply_char_mods():
 		for prop in char_mod.changed_properties.keys():
 			char_stats.set(prop, char_mod.changed_properties[prop])
 
-
+func load_save(save : Game_save):
+	ally_team = save.ally_team
+	dead_chars = save.dead_chars
+	map_magic_cost_adjustment = save.map_data.magic_cost_adjustment
 
 
 

@@ -216,3 +216,18 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+var saved_id : String
+func save():
+	saved_id = dialogue_line.id
+	#print(await DialogueManager.get_line(dialogue_resource, "1", []))
+	#print(dialogue_line.id)
+	#print(dialogue_line.next_id)
+	#print(await DialogueManager.get_line(dialogue_resource, dialogue_line.id, []))
+	#next(dialogue_line.next_id)
+	#print(1)
+	#DialogueManager.
+
+func load_str():
+	dialogue_line = await DialogueManager.get_line(dialogue_resource, saved_id, [])
