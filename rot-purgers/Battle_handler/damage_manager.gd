@@ -9,7 +9,8 @@ signal order_ended
 enum hit_types { MISS, NORMAL, NICK, BULLSEYE }
 
 func calc_hit_chance(target : Character_node, attacker : Character_node, acc_mod : float = 0.0) -> float:
-	var chance = float(attacker.stats.accuracy)/float(target.stats.speed) + acc_mod
+	var chance = float(attacker.stats.get_stat_boosted(Character_stats.stats.accuracy))/\
+	float(target.stats.get_stat_boosted(Character_stats.stats.speed)) + acc_mod
 	return chance
 
 func calc_hit_type(chance : float) -> hit_types:
@@ -77,35 +78,15 @@ func attack_damage(target : Character_node, attacker : Character_node):
 	if acc_dmg_mod == 0.0:
 		await target.damage(-1)
 	else:
-		var damage : float = attacker.stats.get_attack_stat_used()
+		var damage : float = attacker.stats.get_stat_boosted(attacker.stats.attack_stat)
 		damage *= acc_dmg_mod
 		if target.is_defending:
-			damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
+			damage -= target.stats.get_stat_boosted(attacker.stats.defender_stat)
 		else:
-			damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
+			damage -= (float(target.stats.get_stat_boosted(attacker.stats.defender_stat)) / 2)
 		if damage < 0:
 			damage = 0
 		await target.damage(damage, true)
-	#var hit_type : hit_types = calc_hit_type(hit_chance)
-	#match hit_type:
-		#hit_types.MISS:
-			#await target.damage(-1)
-		#_:
-			#var damage : float = attacker.stats.get_attack_stat_used()
-			#match hit_type:
-				#hit_types.NICK:
-					#print("nick")
-					#damage *= 0.5
-				#hit_types.BULLSEYE:
-					#print("bullseye")
-					#damage *= 1.5
-			#if target.is_defending:
-				#damage -= target.stats.get_defence_stat(attacker.stats.defender_stat)
-			#else:
-				#damage -= (float(target.stats.get_defence_stat(attacker.stats.defender_stat)) / 2)
-			#if damage < 0:
-				#damage = 0
-			#await target.damage(damage, true)
 	await target.animation_ended
 	await get_tree().process_frame
 	order_ended.emit()

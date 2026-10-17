@@ -8,6 +8,7 @@ signal spell
 signal defend
 signal exit
 signal rearange
+signal boost
 
 @onready var button_to_signal : Dictionary[BaseButton, Signal] = {
 	%Move : move,
@@ -15,7 +16,8 @@ signal rearange
 	%Spell : spell,
 	%Defend : defend,
 	%Exit : exit,
-	%Stats : rearange
+	%Stats : rearange,
+	%Stat_boost : boost
 }
 
 func _on_action_button_pressed(source: BaseButton) -> void:
@@ -56,7 +58,6 @@ func update_disabled(ch_node : Character_node):
 func focus(id : int = 0):
 	var bt_array : Array[BaseButton] = button_to_signal.keys()
 	bt_array[id].grab_focus()
-
 
 
 

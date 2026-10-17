@@ -5,7 +5,13 @@ class_name Mini_char_stats
 func update_stats(ch : Character_stats):
 	%Char_name.text = ch.name
 	%Move_speed.text = "Mv : " + str(ch.move_speed)
+	if ch.boosts.has(Character_stats.stats.move_speed):
+		if ch.boosts[Character_stats.stats.move_speed] != 0:
+			%Move_speed.text += "+" + str(ch.boosts[Character_stats.stats.move_speed])
 	%Jump_height.text = "Jm : " + str(ch.jump_height)
+	if ch.boosts.has(Character_stats.stats.jump_height):
+		if ch.boosts[Character_stats.stats.jump_height] != 0:
+			%Jump_height.text += "+" + str(ch.boosts[Character_stats.stats.jump_height])
 	%Magic.text = str(int(ch.magic))
 	
 	%Health_bar.max_value = ch.max_health

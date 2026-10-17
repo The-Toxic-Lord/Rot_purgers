@@ -27,14 +27,13 @@ defence, magic_strenght, accuracy, speed, jump_height, move_speed }
 func get_stat(stat : stats) -> int:
 	return get(stats.keys()[stat])
 
+func get_stat_boosted(stat : stats) -> int:
+	if boosts.has(stat):
+		return get_stat(stat) + boosts[stat]
+	return get_stat(stat)
+
 func set_stat(stat : stats, value : int):
 	set(stats.keys()[stat], value)
-
-func get_attack_stat_used() -> int:
-	return get(stats.keys()[attack_stat])
-
-func get_defence_stat(st : stats):
-	return get(stats.keys()[st])
 
 @export_group("randstats")
 @export var move_speed : int = 4
@@ -96,6 +95,12 @@ func reset_stats():
 	var normal_stats : Character_stats = ResourceLoader.load(self_path).duplicate(true)
 	for prop in get_property_list():
 		set(prop["name"], normal_stats.get(prop["name"]))
+
+@export_storage var boosts : Dictionary[stats, int] = {}
+
+
+
+
 
 
 

@@ -22,162 +22,6 @@
 [ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="15_6rlev"]
 [ext_resource type="Resource" path="res://data/Player_chars_data/Zaar.tres" id="16_mbn7s"]
 
-[sub_resource type="Resource" id="Resource_60nqp"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_mudf7"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_rx7ey"]
-script = ExtResource("1_cm0e1")
-name = "Crystal"
-char_class = "Neutrophil"
-age = 468
-sprite = ExtResource("5_xdwra")
-max_health = 120
-max_magic = 0
-strength = 60
-defence = 40
-magic_strenght = 0
-accuracy = 60
-speed = 50
-move_speed = 0
-jump_height = 0
-attack_distance = 7
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
-start_dir = 2
-AI_type = 0
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_ueq27"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_wdf3x"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_ajook"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_ds5v3"]
-script = ExtResource("1_cm0e1")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("9_xdwra")
-move_speed = 10
-jump_height = 10
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 150
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_h6l56"]
-script = ExtResource("1_cm0e1")
-name = "Crawler"
-char_class = "Captain"
-age = 10
-sprite = ExtResource("8_t1blu")
-max_health = 120
-strength = 50
-defence = 30
-magic_strenght = 0
-accuracy = 50
-speed = 55
-node_UID = "uid://b6n303wyg5i5g"
-start_dir = 2
-skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_jejqt"]
-script = ExtResource("1_cm0e1")
-name = "Crawler"
-char_class = "Captain"
-age = 10
-sprite = ExtResource("8_t1blu")
-max_health = 120
-strength = 50
-defence = 30
-magic_strenght = 0
-accuracy = 50
-speed = 55
-trigger_distance = 14
-node_UID = "uid://b6n303wyg5i5g"
-start_dir = 2
-skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_rhjoo"]
-script = ExtResource("1_cm0e1")
-name = "Crawler"
-char_class = "Captain"
-age = 10
-sprite = ExtResource("8_t1blu")
-max_health = 120
-strength = 50
-defence = 30
-magic_strenght = 0
-accuracy = 50
-speed = 55
-node_UID = "uid://b6n303wyg5i5g"
-start_dir = 2
-skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
 [sub_resource type="Resource" id="Resource_na86v"]
 script = ExtResource("1_cm0e1")
 name = "Crawler"
@@ -216,6 +60,29 @@ skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
+[sub_resource type="Resource" id="Resource_hkj5i"]
+script = ExtResource("1_cm0e1")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("5_xdwra")
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
+magic_strenght = 0
+accuracy = 60
+speed = 50
+move_speed = 0
+jump_height = 0
+attack_distance = 7
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+AI_type = 0
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
 [sub_resource type="Resource" id="Resource_qkbvv"]
 script = ExtResource("1_cm0e1")
 name = "Crawler"
@@ -235,61 +102,65 @@ skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_20v4v"]
+[sub_resource type="Resource" id="Resource_rxxl0"]
 script = ExtResource("1_cm0e1")
-name = "Crawler"
-char_class = "Captain"
-age = 10
-sprite = ExtResource("8_t1blu")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("5_xdwra")
 max_health = 120
-strength = 50
-defence = 30
+max_magic = 0
+strength = 60
+defence = 40
 magic_strenght = 0
-accuracy = 50
-speed = 55
-trigger_distance = 14
-node_UID = "uid://b6n303wyg5i5g"
+accuracy = 60
+speed = 50
+move_speed = 0
+jump_height = 0
+attack_distance = 7
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
-skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
+AI_type = 0
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_2kxbe"]
+[sub_resource type="Resource" id="Resource_60nqp"]
 script = ExtResource("1_cm0e1")
-name = "Crawler"
-char_class = "Captain"
-age = 10
-sprite = ExtResource("8_t1blu")
-max_health = 120
-strength = 50
-defence = 30
-magic_strenght = 0
-accuracy = 50
-speed = 55
-trigger_distance = 14
-node_UID = "uid://b6n303wyg5i5g"
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
 start_dir = 2
-skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
+AI_type = 5
+start_height = 150
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_jbfmr"]
+[sub_resource type="Resource" id="Resource_mudf7"]
 script = ExtResource("1_cm0e1")
-name = "Crawler"
-char_class = "Captain"
-age = 10
-sprite = ExtResource("8_t1blu")
-max_health = 120
-strength = 50
-defence = 30
-magic_strenght = 0
-accuracy = 50
-speed = 55
-trigger_distance = 14
-node_UID = "uid://b6n303wyg5i5g"
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
 start_dir = 2
-skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_k2e7p"]
+script = ExtResource("1_cm0e1")
+name = "Shapes"
+char_class = "Basophil"
+sprite = ExtResource("3_j48kr")
+trigger_distance = 40
+node_UID = "uid://cuxixch36l8i3"
+start_dir = 2
+AI_type = 4
+spawn_node_UUID = "res://data/Enemy_data/007-spawn.tres"
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_bxogo"]
@@ -313,6 +184,73 @@ node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
 AI_type = 0
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_rx7ey"]
+script = ExtResource("1_cm0e1")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("5_xdwra")
+max_health = 120
+max_magic = 0
+strength = 60
+defence = 40
+magic_strenght = 0
+accuracy = 60
+speed = 50
+move_speed = 0
+jump_height = 0
+attack_distance = 7
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+AI_type = 0
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_jejqt"]
+script = ExtResource("1_cm0e1")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("8_t1blu")
+max_health = 120
+strength = 50
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 55
+trigger_distance = 14
+node_UID = "uid://b6n303wyg5i5g"
+start_dir = 2
+skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_ueq27"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_5wiyn"]
+script = ExtResource("1_cm0e1")
+name = "Shapes"
+char_class = "Basophil"
+sprite = ExtResource("3_j48kr")
+trigger_distance = 40
+node_UID = "uid://cuxixch36l8i3"
+start_dir = 2
+AI_type = 4
+spawn_node_UUID = "res://data/Enemy_data/007-spawn.tres"
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_5esdr"]
@@ -361,27 +299,73 @@ AI_type = 0
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_h2srl"]
+[sub_resource type="Resource" id="Resource_rhjoo"]
 script = ExtResource("1_cm0e1")
-name = "Crystal"
-char_class = "Neutrophil"
-age = 468
-sprite = ExtResource("5_xdwra")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("8_t1blu")
 max_health = 120
-max_magic = 0
-strength = 60
-defence = 40
+strength = 50
+defence = 30
 magic_strenght = 0
-accuracy = 60
-speed = 50
-move_speed = 0
-jump_height = 0
-attack_distance = 7
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
+accuracy = 50
+speed = 55
+node_UID = "uid://b6n303wyg5i5g"
 start_dir = 2
-AI_type = 0
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
+skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_wdf3x"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_ajook"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_ds5v3"]
+script = ExtResource("1_cm0e1")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("9_xdwra")
+move_speed = 10
+jump_height = 10
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 150
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_epvld"]
+script = ExtResource("1_cm0e1")
+name = "Shapes"
+char_class = "Basophil"
+sprite = ExtResource("3_j48kr")
+trigger_distance = 40
+node_UID = "uid://cuxixch36l8i3"
+start_dir = 2
+AI_type = 4
+spawn_node_UUID = "res://data/Enemy_data/007-spawn.tres"
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_12aa4"]
@@ -407,7 +391,7 @@ AI_type = 0
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_hkj5i"]
+[sub_resource type="Resource" id="Resource_h2srl"]
 script = ExtResource("1_cm0e1")
 name = "Crystal"
 char_class = "Neutrophil"
@@ -430,27 +414,22 @@ AI_type = 0
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_rxxl0"]
+[sub_resource type="Resource" id="Resource_h6l56"]
 script = ExtResource("1_cm0e1")
-name = "Crystal"
-char_class = "Neutrophil"
-age = 468
-sprite = ExtResource("5_xdwra")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("8_t1blu")
 max_health = 120
-max_magic = 0
-strength = 60
-defence = 40
+strength = 50
+defence = 30
 magic_strenght = 0
-accuracy = 60
-speed = 50
-move_speed = 0
-jump_height = 0
-attack_distance = 7
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
+accuracy = 50
+speed = 55
+node_UID = "uid://b6n303wyg5i5g"
 start_dir = 2
-AI_type = 0
-potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
+skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_hrkju"]
@@ -499,37 +478,61 @@ AI_type = 0
 potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("4_811r2")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_5wiyn"]
+[sub_resource type="Resource" id="Resource_jbfmr"]
 script = ExtResource("1_cm0e1")
-name = "Shapes"
-char_class = "Basophil"
-sprite = ExtResource("3_j48kr")
-node_UID = "uid://cuxixch36l8i3"
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("8_t1blu")
+max_health = 120
+strength = 50
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 55
+trigger_distance = 14
+node_UID = "uid://b6n303wyg5i5g"
 start_dir = 2
-AI_type = 4
-spawn_node_UUID = "res://data/Enemy_data/007-spawn.tres"
+skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_epvld"]
+[sub_resource type="Resource" id="Resource_2kxbe"]
 script = ExtResource("1_cm0e1")
-name = "Shapes"
-char_class = "Basophil"
-sprite = ExtResource("3_j48kr")
-node_UID = "uid://cuxixch36l8i3"
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("8_t1blu")
+max_health = 120
+strength = 50
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 55
+trigger_distance = 14
+node_UID = "uid://b6n303wyg5i5g"
 start_dir = 2
-AI_type = 4
-spawn_node_UUID = "res://data/Enemy_data/007-spawn.tres"
+skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_k2e7p"]
+[sub_resource type="Resource" id="Resource_20v4v"]
 script = ExtResource("1_cm0e1")
-name = "Shapes"
-char_class = "Basophil"
-sprite = ExtResource("3_j48kr")
-node_UID = "uid://cuxixch36l8i3"
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("8_t1blu")
+max_health = 120
+strength = 50
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 55
+trigger_distance = 14
+node_UID = "uid://b6n303wyg5i5g"
 start_dir = 2
-AI_type = 4
-spawn_node_UUID = "res://data/Enemy_data/007-spawn.tres"
+skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4")])
+potential_skills = Array[ExtResource("2_m6kuo")]([ExtResource("6_xpnf4"), ExtResource("7_8vt1v")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_cysc3"]

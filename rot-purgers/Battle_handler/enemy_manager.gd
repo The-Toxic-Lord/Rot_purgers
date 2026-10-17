@@ -248,6 +248,14 @@ func handle_spawner_AI(enemy : Character_node):
 	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
 	false, true, enemy.stats.jump_height, false)
 	
+	var dist_check := false
+	for ally in BattleHandler.allies:
+		if (ally.position - enemy.position).length() < enemy.stats.trigger_distance * 2.0:
+			dist_check = true
+	
+	if !dist_check:
+		return
+	
 	for cell in occupied_cells:
 		move_cells.erase(cell)
 	move_cells.insert(0, enemy.map_pos)

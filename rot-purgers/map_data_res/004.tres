@@ -87,6 +87,7 @@ script = ExtResource("1_fqnh8")
 name = "Shapes"
 char_class = "Basophil"
 sprite = ExtResource("3_yu7on")
+trigger_distance = 30
 node_UID = "uid://cuxixch36l8i3"
 AI_type = 4
 spawn_node_UUID = "res://data/Enemy_data/004-spawn.tres"
@@ -235,6 +236,17 @@ floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_prkk2"]
+script = ExtResource("4_1gyjt")
+sprite = ExtResource("8_1gyjt")
+passable = false
+height = 20
+floor_material = ExtResource("7_m0xds")
+wall_material = ExtResource("7_m0xds")
+can_be_modified = false
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_p2feq"]
 script = ExtResource("4_1gyjt")
 sprite = ExtResource("6_574v3")
@@ -257,6 +269,17 @@ sprite = ExtResource("6_574v3")
 height = 20
 floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_p2bj8"]
+script = ExtResource("4_1gyjt")
+sprite = ExtResource("8_1gyjt")
+passable = false
+height = 20
+floor_material = ExtResource("7_m0xds")
+wall_material = ExtResource("7_m0xds")
+can_be_modified = false
+shader_dir = 3
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_anddt"]
@@ -643,6 +666,17 @@ floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_hkn5k"]
+script = ExtResource("4_1gyjt")
+sprite = ExtResource("8_1gyjt")
+passable = false
+height = 20
+floor_material = ExtResource("7_m0xds")
+wall_material = ExtResource("7_m0xds")
+can_be_modified = false
+shader_dir = 3
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_eq7qm"]
 script = ExtResource("4_1gyjt")
 sprite = ExtResource("6_574v3")
@@ -665,6 +699,17 @@ sprite = ExtResource("6_574v3")
 height = 20
 floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_80rw1"]
+script = ExtResource("4_1gyjt")
+sprite = ExtResource("8_1gyjt")
+passable = false
+height = 20
+floor_material = ExtResource("7_m0xds")
+wall_material = ExtResource("7_m0xds")
+can_be_modified = false
+shader_dir = 3
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_cqkur"]
@@ -737,50 +782,6 @@ sprite = ExtResource("6_574v3")
 height = 25
 floor_material = ExtResource("5_pxani")
 wall_material = ExtResource("5_pxani")
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_p2bj8"]
-script = ExtResource("4_1gyjt")
-sprite = ExtResource("8_1gyjt")
-passable = false
-height = 20
-floor_material = ExtResource("7_m0xds")
-wall_material = ExtResource("7_m0xds")
-can_be_modified = false
-shader_dir = 3
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_prkk2"]
-script = ExtResource("4_1gyjt")
-sprite = ExtResource("8_1gyjt")
-passable = false
-height = 20
-floor_material = ExtResource("7_m0xds")
-wall_material = ExtResource("7_m0xds")
-can_be_modified = false
-shader_dir = 3
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_hkn5k"]
-script = ExtResource("4_1gyjt")
-sprite = ExtResource("8_1gyjt")
-passable = false
-height = 20
-floor_material = ExtResource("7_m0xds")
-wall_material = ExtResource("7_m0xds")
-can_be_modified = false
-shader_dir = 3
-metadata/_custom_type_script = "uid://cmno6gpgjclkg"
-
-[sub_resource type="Resource" id="Resource_80rw1"]
-script = ExtResource("4_1gyjt")
-sprite = ExtResource("8_1gyjt")
-passable = false
-height = 20
-floor_material = ExtResource("7_m0xds")
-wall_material = ExtResource("7_m0xds")
-can_be_modified = false
-shader_dir = 3
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [resource]

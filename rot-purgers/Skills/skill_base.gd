@@ -66,10 +66,10 @@ func _validate_property(property: Dictionary) -> void:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func get_attack_stat_used(st : Character_stats) -> int:
-	return st.get(Character_stats.stats.keys()[stat_used])
+	return st.get_stat_boosted(stat_used)
 
 func get_defence_stat_used(st : Character_stats) -> int:
-	return st.get(Character_stats.stats.keys()[defence_stat])
+	return st.get_stat_boosted(defence_stat)
 
 @export var animation_node_UID : String
 

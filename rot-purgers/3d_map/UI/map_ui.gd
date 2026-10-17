@@ -328,6 +328,7 @@ func _on_char_action_menu_rearange() -> void:
 func _on_rearange_menu_confirm() -> void:
 	selected_char.can_rearange = false
 	%Char_action_menu.update_disabled(selected_char)
+	%Char_action_menu.focus()
 
 func show_accuracy(targets : Array[Character_stats], skill : Skill_base = null):
 	%Accuracy_box.update_data(selected_char.stats, targets, skill)
@@ -335,6 +336,16 @@ func show_accuracy(targets : Array[Character_stats], skill : Skill_base = null):
 
 func hide_accuracy():
 	%Accuracy_box.hide()
+
+func _on_char_action_menu_boost() -> void:
+	%Stats_boost_menu.load_char(selected_char)
+	%Stats_boost_menu.show()
+
+func _on_stats_boost_menu_confirm() -> void:
+	%Char_action_menu.focus()
+
+
+
 
 
 

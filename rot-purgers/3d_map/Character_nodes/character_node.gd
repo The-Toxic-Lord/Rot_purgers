@@ -386,10 +386,9 @@ func attack(target_cell : Vector2i):
 	if ranged_checK:
 		ranged_attack(target_cell)
 		await projectile_hit
-	else:
-		melee_attack()
 	attack_finished.emit()
-	turn_to_target(target_cell, true)
+	if ranged_checK:
+		turn_to_target(target_cell, true)
 
 func melee_attack():
 	if char_animation.has_animation("Attack_1_windup"):

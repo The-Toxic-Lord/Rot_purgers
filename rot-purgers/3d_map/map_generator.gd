@@ -893,7 +893,8 @@ func add_skill_order():
 	else:
 		if select_zones.has(selected_cell):
 			var temp : Array[Vector2i] = [selected_cell]
-			BattleHandler.add_skill(selected_char, selected_skill, temp, [], selected_cell)
+			var zero_arr : Array[Vector2i] = []
+			BattleHandler.add_skill(selected_char, selected_skill, temp, zero_arr, selected_cell)
 			skill_state_finish()
 
 func skill_state_finish():
