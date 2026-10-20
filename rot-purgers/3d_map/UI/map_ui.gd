@@ -229,11 +229,10 @@ func back_to_skill_selection():
 func flush_skill_menu():
 	%Spell_select_menu.clear_skills()
 
-func make_save():
+func make_save() -> Game_save:
 	var game_save := Game_save.new()
 	await game_save.make_save()
-	@warning_ignore("redundant_await")
-	await ResourceSaver.save(game_save, "user://save.tres")
+	return game_save
 
 func update_height(value : int):
 	%Height_lb.text = str(value)

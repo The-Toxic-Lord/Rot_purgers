@@ -24,3 +24,7 @@ func focus():
 		%Execute.disabled = true
 	else:
 		%Execute.disabled = false
+
+
+func _on_save_pressed() -> void:
+	ObjectLink.save_menu.show()

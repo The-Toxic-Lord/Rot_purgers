@@ -8,9 +8,11 @@ var mini_char_stats : Mini_char_stats
 var enemy_manager : Enemy_manager
 var map_ui : Map_UI
 
+var cutscene : Cutscene
 var cutscene_chars : Dictionary[String, Node3D]
 var cutscene_player : AnimationPlayer
 
 var map_camera : Camera_controller
 
 var main : Main_node
+var save_menu : Save_menu

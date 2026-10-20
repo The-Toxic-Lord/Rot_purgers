@@ -5,9 +5,9 @@ MONITOR:
 +- skills
 + healing
 + defence
-+ enemy AI
++- enemy AI
 + undo
-+ tutorial
++- tutorial
 + добавить показатель высоты и ассоциированные вещи
 + move with bound skill selected
 + stats rearange
@@ -22,19 +22,19 @@ critical:
 	- music
 	+- game over
 	+- player characters models
-	+- in-game save
+	+- in-game save (fix flyig)
 	+- settings
 	+- main menu
 	- level maps
 	+- level transition
 	+- level textures
-	+- dialogue system
+	+ dialogue system
 	- сложность меняет ход врагов с одновременного на пошаговый
 	- if order failed on enemy turn try salvage
 	+- change accuracy damage boost
 	+- char mod (+- save)
 	- рисовать клетки под защитой
-	- stat boost
+	+- stat boost
 
 - ramps
 - background image

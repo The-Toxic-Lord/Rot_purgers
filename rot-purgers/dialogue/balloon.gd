@@ -218,9 +218,12 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 #endregion
 
 
-var saved_id : String
 func save():
-	saved_id = dialogue_line.id
+	#var game_save := Game_save.new()
+	#game_save.make_dialogue_save()
+	ObjectLink.save_menu.show()
+	#ResourceSaver.save(game_save, "user://save.tres")
+	#saved_id = dialogue_line.id
 	#print(await DialogueManager.get_line(dialogue_resource, "1", []))
 	#print(dialogue_line.id)
 	#print(dialogue_line.next_id)
@@ -229,5 +232,5 @@ func save():
 	#print(1)
 	#DialogueManager.
 
-func load_str():
+func load_str(saved_id):
 	dialogue_line = await DialogueManager.get_line(dialogue_resource, saved_id, [])

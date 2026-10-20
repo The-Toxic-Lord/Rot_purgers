@@ -2,6 +2,8 @@ extends Resource
 
 class_name Game_save
 
+enum save_types { BATTLE, DIALOGUE }
+
 @export_storage var map_data : Map_data
 @export_storage var terrain_map : Dictionary[Vector2i, Terrain_data]
 @export_storage var object_map : Dictionary[Vector2i, Map_object]
@@ -41,9 +43,37 @@ func make_save():
 	char_mods = GlobalData.char_mods
 	
 	await make_save_char_data()
+	#await make_screen()
+	save_type = save_types.BATTLE
 
+@export_storage var save_type : save_types
+@export_storage var save_name : String = "Save_000"
+@export_storage var screenshot : Texture2D
 
+func make_screen():
+	if ObjectLink.map_gen != null:
+		ObjectLink.map_gen.hide_map_ui()
+	else:
+		DialogueBalloon.hide()
+	ObjectLink.save_menu.hide()
+	await ObjectLink.get_tree().create_timer(0.1).timeout
+	var image = GlobalData.get_viewport().get_texture().get_image()
+	image.resize(320, 180)
+	screenshot = ImageTexture.create_from_image(image)
+	if ObjectLink.map_gen != null:
+		ObjectLink.map_gen.show_map_ui()
+	else:
+		DialogueBalloon.show()
+	ObjectLink.save_menu.show()
 
+@export_storage var line_id : String
+@export_storage var cutscene_path : String
+
+func make_dialogue_save():
+	line_id = DialogueBalloon.dialogue_line.id
+	cutscene_path = ObjectLink.cutscene.scene_file_path
+	save_type = save_types.DIALOGUE
+	#await make_screen()
 
 
 

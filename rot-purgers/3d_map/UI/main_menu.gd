@@ -3,6 +3,7 @@ extends CanvasLayer
 class_name Main_menu_UI
 
 @onready var main : Main_node = get_parent()
+@onready var save_menu: Save_menu = %Save_menu
 
 func _ready() -> void:
 	if !ResourceLoader.exists("user://save.tres"):
@@ -14,7 +15,8 @@ func _on_map_editor_pressed() -> void:
 	main._on_map_editor_pressed()
 
 func _on_load_pressed() -> void:
-	main._on_load_pressed()
+	save_menu.show()
+	#main._on_load_pressed()
 
 func _on_new_game_pressed() -> void:
 	%Menu.hide()
@@ -57,7 +59,6 @@ func _on_tutorial_pressed() -> void:
 	%Menu.hide()
 	main.load_tutorial()
 
-
 func _on_exit_demo_pressed() -> void:
 	main.close_map()
 	main.load_background()
@@ -83,7 +84,9 @@ func _on_credit_back_pressed() -> void:
 	#if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
 		#print(1)
 
-
+func _on_save_menu_load_save(save: Game_save) -> void:
+	%Save_menu.hide()
+	ObjectLink.main.load_save(save)
 
 
 

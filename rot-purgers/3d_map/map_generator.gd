@@ -65,13 +65,28 @@ func load_map(map : Map_data):
 	map_data = map
 	GlobalData.map_magic_cost_adjustment = map_data.magic_cost_adjustment
 	await calculate_boundary()
+	
+	TransitionScreen.set_lb("spawning cells")
+	await get_tree().process_frame
 	await spawn_cells()
+	TransitionScreen.reset_progress_bar()
+	
 	%Camera_position.cell_boundary = selector_boundary
 	await move_selector_to_spawn()
+	
+	TransitionScreen.set_lb("spawning objects")
+	await get_tree().process_frame
 	await spawn_objects()
+	TransitionScreen.reset_progress_bar()
+	
 	await map_ui.populate_spawn_list(map_data)
 	await BattleHandler.new_battle_start()
+	
+	TransitionScreen.set_lb("spawning enemies")
+	await get_tree().process_frame
 	await spawn_enemies(map.enemy_map_data)
+	TransitionScreen.reset_progress_bar()
+	
 	await make_multi_meshes()
 	if map_data.text_data != null:
 		freze_selector = true
@@ -79,6 +94,7 @@ func load_map(map : Map_data):
 		dialogue_end()
 	else:
 		activate_controlls()
+	
 	map_loaded.emit()
 
 func dialogue_end():
@@ -133,8 +149,16 @@ func hide_multi(cell : Vector2i, id : int):
 
 func spawn_cells():
 	void_cells = {}
+	var cell_num : int = map_data.map_size.x * map_data.map_size.y
+	var tick := Time.get_unix_time_from_system()
+	var i := 0
 	for x in map_data.map_size.x:
 		for y in map_data.map_size.y:
+			i += 1
+			if Time.get_unix_time_from_system() - tick >= 1.0:
+				tick = Time.get_unix_time_from_system()
+				TransitionScreen.update_progress(i as float/cell_num)
+				await get_tree().process_frame
 			var cell := Vector2i(x, y)
 			if terrain_map.has(cell):
 				var terr_data : Terrain_data = terrain_map[cell]
@@ -631,7 +655,16 @@ func try_mouse_raycast():
 			move_selector(collider.get_parent())
 
 func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
+	var size : int = enemy_map.size()
+	var i := 0
+	var tick := Time.get_unix_time_from_system()
 	for cell in enemy_map:
+		i += 1
+		if Time.get_unix_time_from_system() - tick >= 1.0:
+			print(1)
+			tick = Time.get_unix_time_from_system()
+			TransitionScreen.update_progress(i as float/size)
+			await get_tree().process_frame
 		if enemy_map[cell].number_of_pc > GlobalData.ally_team.size():
 			continue
 		var char_node : Character_node = load(enemy_map[cell].node_UID).duplicate(true).instantiate()
@@ -919,9 +952,9 @@ func check_unbound_skill_height() -> bool:
 			return true
 	return false
 
-func load_save():
-	var game_save : Game_save = Game_save.new()
-	game_save = ResourceLoader.load("user://save.tres")
+func load_save(game_save : Game_save):
+	#var game_save : Game_save = Game_save.new()
+	#game_save = ResourceLoader.load("user://save.tres")
 	BattleHandler.map_gen = self
 	get_parent().current_map_id = game_save.current_map_id
 	terrain_map = game_save.terrain_map
@@ -950,7 +983,7 @@ func load_chars(game_save : Game_save):
 		add_child(char_node)
 		await char_node.load_state(save_char_data)
 		char_node.name = save_char_data.name
-		char_node.position = map_cells[char_node.map_pos].position
+		char_node.position = save_char_data.position
 		char_positions[char_node.map_pos] = char_node
 		char_node.turn(save_char_data.current_direction, true)
 		if char_node.is_enemy:
@@ -1115,9 +1148,11 @@ func _physics_process(delta: float) -> void:
 	if map_cells.has(selected_cell):
 		%Selector.position = map_cells[selected_cell].position
 
+func hide_map_ui():
+	%Map_UI.hide()
 
-
-
+func show_map_ui():
+	%Map_UI.show()
 
 
 

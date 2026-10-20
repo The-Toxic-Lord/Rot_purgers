@@ -9,6 +9,9 @@ class_name Cutscene
 
 signal load_finished
 
+func _ready() -> void:
+	ObjectLink.cutscene = self
+
 func start_cutscene():
 	await get_tree().process_frame
 	DialogueBalloon.start(text_data, "cutscene")
@@ -20,3 +23,8 @@ func start_cutscene():
 	await DialogueManager.dialogue_ended
 	var main : Main_node = get_parent()
 	main.load_scene_path(next_map_path)
+
+func load_save(game_save : Game_save):
+	DialogueBalloon.start(text_data, "cutscene")
+	await get_tree().process_frame
+	DialogueBalloon.load_str(game_save.line_id)

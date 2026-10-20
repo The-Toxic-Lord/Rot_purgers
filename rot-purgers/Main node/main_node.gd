@@ -4,7 +4,7 @@ class_name Main_node
 
 var map_editor : Map_editor
 var map_generator : Map_generator
-var cutscene : Node3D
+var cutscene : Cutscene
 
 var background : Node3D
 
@@ -21,11 +21,31 @@ func generate_map(map_data : Map_data):
 
 func _on_load_pressed() -> void:
 	if ResourceLoader.exists("user://save.tres"):
-		map_generator = load("uid://buyr0671du0pe").instantiate()
-		background.queue_free()
-		add_child(map_generator)
-		map_generator.load_save()
+		var game_save : Game_save = ResourceLoader.load("user://save.tres")
+		match game_save.save_type:
+			Game_save.save_types.BATTLE:
+				map_generator = load("uid://buyr0671du0pe").instantiate()
+				add_child(map_generator)
+				map_generator.load_save(game_save)
+			Game_save.save_types.DIALOGUE:
+				cutscene = load(game_save.cutscene_path).instantiate()
+				add_child(cutscene)
+				cutscene.load_save(game_save)
 		%Main_menu.hide_menu()
+		background.queue_free()
+
+func load_save(save : Game_save):
+	match save.save_type:
+		Game_save.save_types.BATTLE:
+			map_generator = load("uid://buyr0671du0pe").instantiate()
+			add_child(map_generator)
+			map_generator.load_save(save)
+		Game_save.save_types.DIALOGUE:
+			cutscene = load(save.cutscene_path).instantiate()
+			add_child(cutscene)
+			cutscene.load_save(save)
+	%Main_menu.hide_menu()
+	background.queue_free()
 
 func remove_background():
 	background.queue_free()

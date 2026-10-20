@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d36vfk32xklka" path="res://3d_map/UI/main_menu.gd" id="1_qy1io"]
 [ext_resource type="PackedScene" uid="uid://cw74744wjquox" path="res://import/settings.tscn" id="2_bctjb"]
 [ext_resource type="Theme" uid="uid://cj8f8s4ud3c4x" path="res://new_theme.tres" id="2_lduah"]
+[ext_resource type="PackedScene" uid="uid://p8xk7obnrcmy" path="res://Main node/Save_menu/save_menu.tscn" id="4_ravco"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bctjb"]
 bg_color = Color(0.14117648, 0.14117648, 0.14117648, 0.7176471)
@@ -216,6 +217,10 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 40
 text = "Back"
 
+[node name="Save_menu" parent="." unique_id=2011810987 instance=ExtResource("4_ravco")]
+unique_name_in_owner = true
+visible = false
+
 [connection signal="pressed" from="Menu/VBoxContainer/New_game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
@@ -225,3 +230,4 @@ text = "Back"
 [connection signal="pressed" from="Menu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Demo_victory/MarginContainer/CenterContainer/VBoxContainer/exit_demo" to="." method="_on_exit_demo_pressed"]
 [connection signal="pressed" from="Credit_box/MarginContainer/CenterContainer/VBoxContainer/credit_back" to="." method="_on_credit_back_pressed"]
+[connection signal="load_save" from="Save_menu" to="." method="_on_save_menu_load_save"]
