@@ -97,8 +97,14 @@ func reset_stats():
 		set(prop["name"], normal_stats.get(prop["name"]))
 
 @export_storage var boosts : Dictionary[stats, int] = {}
+@export_storage var boost_magic_cost : int = 0
 
-
+func apply_boost_magic_cost():
+	if boost_magic_cost > magic:
+		boost_magic_cost = 0
+		boosts.clear()
+	else:
+		magic -= boost_magic_cost
 
 
 

@@ -82,6 +82,7 @@ func _on_confirm_bt_pressed() -> void:
 	hide()
 	confirm.emit()
 	ObjectLink.focused_char_stats.update_stats(char_stats)
+	char_stats.boost_magic_cost = snappedi(magic_cost * GlobalData.map_magic_cost_adjustment, 1)
 
 
 

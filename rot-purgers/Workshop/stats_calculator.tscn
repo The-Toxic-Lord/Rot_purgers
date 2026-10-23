@@ -16,6 +16,7 @@ defence = 60
 magic_strenght = 0
 accuracy = 60
 speed = 75
+boost_magic_cost = null
 
 [sub_resource type="Resource" id="Resource_r5c45"]
 script = ExtResource("2_61klf")
@@ -27,6 +28,7 @@ defence = 35
 magic_strenght = 68
 accuracy = 60
 speed = 50
+boost_magic_cost = null
 
 [node name="Stats_calculator" type="Node" unique_id=1113991462]
 script = ExtResource("1_kr400")

@@ -146,6 +146,12 @@ func close_all():
 	if %Rearange_menu.visible:
 		%Rearange_menu.hide()
 		%Rearange_menu.remove_changes()
+		%Char_action_menu.focus(5)
+		return
+	if %Stats_boost_menu.visible:
+		%Stats_boost_menu.hide()
+		%Char_action_menu.focus(6)
+		return
 	for menu in menues:
 		menu.hide()
 	map_generator.freze_selector = false

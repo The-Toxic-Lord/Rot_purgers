@@ -96,6 +96,7 @@ func new_round():
 	previous_map_pos = Vector2i(-1, -1)
 	
 	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.05), 0, stats.max_magic)
+	stats.apply_boost_magic_cost()
 
 func damage(value : float, display_mini := false):
 	await get_tree().process_frame
