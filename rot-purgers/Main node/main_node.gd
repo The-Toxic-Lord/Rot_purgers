@@ -34,7 +34,9 @@ func _on_load_pressed() -> void:
 		%Main_menu.hide_menu()
 		background.queue_free()
 
-func load_save(save : Game_save):
+var temp_save : Game_save
+func load_save(save_name : String):
+	var save = ResourceLoader.load("user://saves/" + save_name + ".tres")
 	match save.save_type:
 		Game_save.save_types.BATTLE:
 			map_generator = load("uid://buyr0671du0pe").instantiate()
@@ -45,7 +47,8 @@ func load_save(save : Game_save):
 			add_child(cutscene)
 			cutscene.load_save(save)
 	%Main_menu.hide_menu()
-	background.queue_free()
+	if background != null:
+		background.queue_free()
 
 func remove_background():
 	background.queue_free()

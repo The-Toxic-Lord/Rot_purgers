@@ -8,7 +8,7 @@ var saves_path : String = "user://saves/"
 
 var save_name_to_slot : Dictionary[String, Save_slot] = {}
 
-signal load_save(save : Game_save)
+signal load_save(save_name : String)
 
 func _ready() -> void:
 	ObjectLink.save_menu = self
@@ -81,8 +81,6 @@ func overwrite_save(save_name : String):
 	await _on_add_save_bt_pressed(true)
 	name_submited(save_name)
 	saves_box.move_child(save_name_to_slot[save_name], 1)
-
-
 
 
 

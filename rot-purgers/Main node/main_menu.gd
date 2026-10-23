@@ -84,11 +84,13 @@ func _on_credit_back_pressed() -> void:
 	#if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
 		#print(1)
 
-func _on_save_menu_load_save(save: Game_save) -> void:
+#func _on_save_menu_load_save(save_name: String) -> void:
+	#%Save_menu.hide()
+	#ObjectLink.main.load_save(save_name)
+
+func _on_save_menu_load_save(save_name: String) -> void:
 	%Save_menu.hide()
-	ObjectLink.main.load_save(save)
-
-
+	ObjectLink.main.load_save(save_name)
 
 
 #
