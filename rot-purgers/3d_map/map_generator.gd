@@ -9,7 +9,7 @@ var neighbors_sides : Array[Vector2i] = [
 	Vector2i.LEFT,
 ]
 
-enum states { SELECT, MOVE, ATTACK, MENU, SKILL, SKILL_TERRAIN }
+enum states { SELECT, MOVE, ATTACK, MENU, SKILL, SKILL_TERRAIN, SKILL_PROTECT }
 var state : states = states.SELECT
 var state_to_zone : Dictionary[states, String] = {
 	states.MOVE : "uid://bfinhl1dtgkyo",
@@ -419,6 +419,11 @@ func _input(event: InputEvent) -> void:
 				clear_select_zone()
 				map_ui.back_to_skill_selection()
 				map_ui.hide_accuracy()
+			states.SKILL_PROTECT:
+				state = states.MENU
+				clear_select_zone()
+				clear_select_zone()
+				map_ui.back_to_skill_selection()
 		return
 	if terrain_mod_menu_active:
 		return
@@ -476,6 +481,12 @@ func _input(event: InputEvent) -> void:
 							remove_cell_from_terrain_modification(selected_cell)
 						else:
 							add_cell_for_terrain_modification(selected_cell)
+				states.SKILL_PROTECT:
+					selected_char.can_attack = false
+					selected_char.has_order = true
+					BattleHandler.add_protect(selected_char, selected_skill)
+					clear_select_zone()
+					state = states.SELECT
 
 func spawn_ally(ch : Character_stats):
 	var char_node : Character_node = load(ch.node_UID).instantiate()
@@ -1153,6 +1164,32 @@ func hide_map_ui():
 
 func show_map_ui():
 	%Map_UI.show()
+
+func show_defend_zone(skill : Skill_base):
+	selected_skill = skill
+	
+	var cells : Array[Vector2i] = [selected_char.map_pos]
+	var checked_cells : Array[Vector2i] = []
+	for i in skill.max_dist:
+		var add_cells : Array[Vector2i] = []
+		for cell in cells:
+			if checked_cells.has(cell):
+				continue
+			for n_v in neighbors_sides:
+				var ch_cell := n_v + cell
+				if cells.has(ch_cell) or add_cells.has(ch_cell):
+					continue
+				add_cells.append(ch_cell)
+			checked_cells.append(cell)
+		cells.append_array(add_cells)
+	
+	for cell in cells:
+		var zone : Node3D = load("uid://oklfeugj4gp7").instantiate()
+		add_child(zone)
+		select_zones[cell] = zone
+		zone.position = Vector3(cell.x * 2.0, 0, cell.y * 2.0)
+		if map_cells.has(cell):
+			zone.position.y = map_cells[cell].position.y
 
 
 

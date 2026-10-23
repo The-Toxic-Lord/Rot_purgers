@@ -206,10 +206,12 @@ func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
 			map_generator.state = Map_generator.states.SKILL_TERRAIN
 			%Terrain_mod.show()
 		Skill_base.skill_types.PROTECT:
-			map_generator.state_select()
-			selected_char.can_attack = false
-			selected_char.has_order = true
-			BattleHandler.add_protect(selected_char, skill)
+			map_generator.state = Map_generator.states.SKILL_PROTECT
+			map_generator.show_defend_zone(skill)
+			#map_generator.state_select()
+			#selected_char.can_attack = false
+			#selected_char.has_order = true
+			#BattleHandler.add_protect(selected_char, skill)
 
 func _on_spell_select_menu_exit() -> void:
 	%Spell_select_menu.clear_skills()
