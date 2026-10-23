@@ -138,6 +138,8 @@ func _on_turn_menu_exit() -> void:
 	map_generator.queue_free()
 
 func close_all():
+	if ObjectLink.save_menu.visible:
+		return
 	if %Spell_select_menu.visible:
 		%Spell_select_menu.hide()
 		%Spell_select_menu.clear_skills()

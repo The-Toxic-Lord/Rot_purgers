@@ -222,6 +222,7 @@ func save():
 	#var game_save := Game_save.new()
 	#game_save.make_dialogue_save()
 	ObjectLink.save_menu.show()
+	ObjectLink.save_menu.show_new_save()
 	#ResourceSaver.save(game_save, "user://save.tres")
 	#saved_id = dialogue_line.id
 	#print(await DialogueManager.get_line(dialogue_resource, "1", []))

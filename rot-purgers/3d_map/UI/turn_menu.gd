@@ -28,3 +28,4 @@ func focus():
 
 func _on_save_pressed() -> void:
 	ObjectLink.save_menu.show()
+	ObjectLink.save_menu.show_new_save()

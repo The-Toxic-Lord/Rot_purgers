@@ -82,6 +82,19 @@ func overwrite_save(save_name : String):
 	name_submited(save_name)
 	saves_box.move_child(save_name_to_slot[save_name], 1)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("menu_back"):
+		if %Save_name_box.visible:
+			%Save_name_box.hide()
+		else:
+			hide()
+
+func hide_new_save():
+	%Add_save_bt.hide()
+
+func show_new_save():
+	%Add_save_bt.show()
+
 
 
 

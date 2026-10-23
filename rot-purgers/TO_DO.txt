@@ -23,7 +23,7 @@ critical:
 	- music
 	+- game over
 	+- player characters models
-	+- in-game save (fix flyig)
+	+- in-game save
 	+- settings
 	+- main menu
 	- level maps

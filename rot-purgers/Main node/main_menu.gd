@@ -16,6 +16,7 @@ func _on_map_editor_pressed() -> void:
 
 func _on_load_pressed() -> void:
 	save_menu.show()
+	save_menu.hide_new_save()
 	#main._on_load_pressed()
 
 func _on_new_game_pressed() -> void:
@@ -91,6 +92,12 @@ func _on_credit_back_pressed() -> void:
 func _on_save_menu_load_save(save_name: String) -> void:
 	%Save_menu.hide()
 	ObjectLink.main.load_save(save_name)
+
+
+
+
+
+
 
 
 #
