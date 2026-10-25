@@ -289,7 +289,8 @@ func move_closest_position(pos_pos : Array[Vector3], enemy : Character_node):
 	if min_dist != 999999.0:
 		await move_flyer(selected_pos, enemy)
 
-func flyer_can_attack(enemy : Character_node, pos_pos : Array[Vector3], desired_height : float) -> bool:
+func flyer_can_attack(enemy : Character_node, pos_pos : Array[Vector3], desired_height : float,
+order_salvage := false) -> bool:
 	var possible_pos : Dictionary[Vector3, Array] = {}
 	for pos in pos_pos:
 		for ally in BattleHandler.allies:
@@ -309,7 +310,8 @@ func flyer_can_attack(enemy : Character_node, pos_pos : Array[Vector3], desired_
 				BattleHandler.add_attack(enemy, possible_pos[pos].pick_random())
 				return true
 		var pos = possible_pos.keys().pick_random()
-		await move_flyer(pos, enemy)
+		if !order_salvage:
+			await move_flyer(pos, enemy)
 		BattleHandler.add_attack(enemy, possible_pos[pos].pick_random())
 		return true
 	
@@ -420,7 +422,8 @@ func AI_can_spawn(move_cells : Array[Vector2i], enemy : Character_node) -> bool:
 			return true
 	return false
 
-func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> bool:
+func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node,
+ order_salvage := false) -> bool:
 	var skill_possibilities : Array[Skill_able_data] = []
 	for cell in move_cells:
 		skill_possibilities.append_array(can_use_skills_in_position(enemy, cell))
@@ -444,32 +447,29 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node) -> b
 				max_targets = skill_possible.enemy_targets.size()
 				frienly_targets = skill_possible.targets.size() - max_targets
 		
-		#enemy.magic_cost(chosen_possibility.skill.magic_cost)
+		if !order_salvage:
+			var move : Planned_move_data
+			
+			if chosen_possibility.skill.skill_map.bound_to_char:
+				move = Planned_move_data.new()
+				move.set_target(chosen_possibility.used_position, 
+			move_cells, chosen_possibility.dir)
+			else:
+				move = Planned_move_data.new()
+				move.set_target(chosen_possibility.used_position, 
+			move_cells, get_new_dir(chosen_possibility.used_position, chosen_possibility.target_cell))
 		
-		var move : Planned_move_data
+			char_planned_moves[enemy] = move
+			occupied_cells.erase(enemy.map_pos)
+			occupied_cells.append(chosen_possibility.used_position)
 		
-		if chosen_possibility.skill.skill_map.bound_to_char:
-			move = Planned_move_data.new()
-			move.set_target(chosen_possibility.used_position, 
-		move_cells, chosen_possibility.dir)
-		else:
-			move = Planned_move_data.new()
-			move.set_target(chosen_possibility.used_position, 
-		move_cells, get_new_dir(chosen_possibility.used_position, chosen_possibility.target_cell))
-		
-		char_planned_moves[enemy] = move
-		occupied_cells.erase(enemy.map_pos)
-		occupied_cells.append(chosen_possibility.used_position)
-		
-		#await move_charger(chosen_possibility.used_position, enemy, move_cells)
-		#enemy.turn(chosen_possibility.dir)
-		#await enemy.direction_changed
 		BattleHandler.add_skill(enemy, chosen_possibility.skill, 
 		chosen_possibility.damage_cells, chosen_possibility.move_cells, chosen_possibility.target_cell)
 		return true
 	return false
 
-func AI_can_attack(move_cells : Array[Vector2i], enemy : Character_node) -> bool:
+func AI_can_attack(move_cells : Array[Vector2i], enemy : Character_node,
+order_salvage := false) -> bool:
 	var attack_possibilities : Dictionary[Vector2i, Array] = {}
 	for cell in move_cells:
 		@warning_ignore("confusable_local_declaration")
@@ -484,14 +484,14 @@ func AI_can_attack(move_cells : Array[Vector2i], enemy : Character_node) -> bool
 		
 		var dir : Map_generator.directions = get_new_dir(chosen_possibility, target)
 		
-		var move := Planned_move_data.new()
-		move.set_target(chosen_possibility, 
-		move_cells, dir)
-		char_planned_moves[enemy] = move
-		occupied_cells.erase(enemy.map_pos)
-		occupied_cells.append(chosen_possibility)
+		if !order_salvage:
+			var move := Planned_move_data.new()
+			move.set_target(chosen_possibility, 
+			move_cells, dir)
+			char_planned_moves[enemy] = move
+			occupied_cells.erase(enemy.map_pos)
+			occupied_cells.append(chosen_possibility)
 		
-		#await move_charger(chosen_possibility, enemy, move_cells)
 		BattleHandler.add_attack(enemy, map_gen.char_positions[target])
 		return true
 	return false
@@ -734,7 +734,24 @@ func check_trigger(enemy : Character_node) -> bool:
 			return true
 	return false
 
-
+signal order_processed
+func salwage_failed_order(enemy : Character_node) -> bool:
+	
+	if enemy.stats.AI_type not in [Character_stats.AI_types.FLYER_CHARGE, 
+	Character_stats.AI_types.FLYER_CHARGE]:
+		var pos : Array[Vector2i] = [enemy.map_pos]
+		if AI_can_use_skill(pos, enemy, true):
+			return true
+		
+		if AI_can_attack(pos, enemy):
+			return true
+	else:
+		var pos : Array[Vector3] = [enemy.position]
+		if await flyer_can_attack(enemy, pos, enemy.position.y):
+			return true
+	
+	
+	return false
 
 
 

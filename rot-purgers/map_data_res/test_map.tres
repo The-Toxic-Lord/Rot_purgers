@@ -1,0 +1,200 @@
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://bee68uv3tr12d"]
+
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_hln4t"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_tiniu"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="3_xbb78"]
+[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="4_xt3vy"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="5_2egc0"]
+[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_8a7dn"]
+[ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="7_sfqiu"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="8_ebkxi"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="9_pimnx"]
+[ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="10_si3qr"]
+[ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="11_7v3ya"]
+[ext_resource type="Material" uid="uid://dkma81f54rlrp" path="res://3d_map/map_cell_materials/tile_wall.tres" id="12_i3o2p"]
+
+[sub_resource type="Resource" id="Resource_hln4t"]
+script = ExtResource("1_hln4t")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("4_xt3vy")
+strength = 30
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+skills = Array[ExtResource("2_tiniu")]([ExtResource("3_xbb78")])
+potential_skills = Array[ExtResource("2_tiniu")]([ExtResource("3_xbb78")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_dyb32"]
+script = ExtResource("1_hln4t")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("4_xt3vy")
+strength = 30
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+skills = Array[ExtResource("2_tiniu")]([ExtResource("3_xbb78")])
+potential_skills = Array[ExtResource("2_tiniu")]([ExtResource("3_xbb78")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_tiniu"]
+script = ExtResource("1_hln4t")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("4_xt3vy")
+strength = 30
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+skills = Array[ExtResource("2_tiniu")]([ExtResource("3_xbb78")])
+potential_skills = Array[ExtResource("2_tiniu")]([ExtResource("3_xbb78")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_xbb78"]
+script = ExtResource("1_hln4t")
+name = "Crawler"
+char_class = "Servant"
+age = 3
+sprite = ExtResource("4_xt3vy")
+strength = 30
+defence = 30
+magic_strenght = 0
+accuracy = 50
+speed = 40
+move_speed = 5
+jump_height = 10
+counter = 0
+trigger_distance = 10
+node_UID = "uid://dunq80ub3v1jk"
+skills = Array[ExtResource("2_tiniu")]([ExtResource("3_xbb78")])
+potential_skills = Array[ExtResource("2_tiniu")]([ExtResource("3_xbb78")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_d7glv"]
+script = ExtResource("5_2egc0")
+name = "spawn_zone"
+sprite = ExtResource("6_8a7dn")
+node_UID = "uid://b77u0ogcrnmlx"
+object_type = 1
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_idulp"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_efcg8"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_oga2y"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_32mws"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_amljt"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_5pwnd"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_48eiy"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_qnpc8"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ygkcv"]
+script = ExtResource("9_pimnx")
+sprite = ExtResource("11_7v3ya")
+height = 60
+floor_material = ExtResource("10_si3qr")
+wall_material = ExtResource("12_i3o2p")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[resource]
+script = ExtResource("8_ebkxi")
+map_size = Vector2i(30, 30)
+terrain_map_data = Dictionary[Vector2i, ExtResource("9_pimnx")]({
+Vector2i(13, 13): SubResource("Resource_idulp"),
+Vector2i(13, 14): SubResource("Resource_efcg8"),
+Vector2i(13, 15): SubResource("Resource_oga2y"),
+Vector2i(14, 13): SubResource("Resource_32mws"),
+Vector2i(14, 14): SubResource("Resource_amljt"),
+Vector2i(14, 15): SubResource("Resource_5pwnd"),
+Vector2i(15, 13): SubResource("Resource_48eiy"),
+Vector2i(15, 14): SubResource("Resource_qnpc8"),
+Vector2i(15, 15): SubResource("Resource_ygkcv")
+})
+object_map_data = Dictionary[Vector2i, ExtResource("5_2egc0")]({
+Vector2i(14, 14): SubResource("Resource_d7glv")
+})
+enemy_map_data = Dictionary[Vector2i, ExtResource("1_hln4t")]({
+Vector2i(13, 13): SubResource("Resource_hln4t"),
+Vector2i(13, 15): SubResource("Resource_dyb32"),
+Vector2i(15, 13): SubResource("Resource_tiniu"),
+Vector2i(15, 15): SubResource("Resource_xbb78")
+})
+magic_cost_adjustment = 0.0
+player_chars = Array[ExtResource("1_hln4t")]([ExtResource("7_sfqiu")])

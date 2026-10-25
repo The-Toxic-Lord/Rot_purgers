@@ -141,6 +141,9 @@ func handle_skill(order : Order_skill_data):
 	if has_node(order.attacker):
 		for cell in order.move_cells:
 			if map_gen.char_positions.has(cell):
+				print("order failed")
+				var attacker : Character_node = get_node(order.attacker)
+				en_mng.salwage_failed_order(attacker)
 				order_handled.emit()
 				return
 		if order.skill.is_one_shot:

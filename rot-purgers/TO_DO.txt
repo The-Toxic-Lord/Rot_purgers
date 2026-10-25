@@ -19,7 +19,7 @@ MONITOR:
 
 critical:
 	+- parry\defend
-	- damage sounds
+	+- damage sounds
 	- music
 	+- game over
 	+- player characters models
@@ -31,7 +31,7 @@ critical:
 	+- level textures
 	+ dialogue system
 	- сложность меняет ход врагов с одновременного на пошаговый
-	- if order failed on enemy turn try salvage
+	+- if order failed on enemy turn try salvage
 	+- change accuracy damage boost
 	+ char mod (+ save)
 	+ рисовать клетки под защитой
