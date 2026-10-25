@@ -13,7 +13,6 @@ enum save_types { BATTLE, DIALOGUE }
 @export_storage var current_map_id : int = 0
 @export_storage var modified_cells : Dictionary[Vector2i, float] = {}
 @export_storage var dead_chars : Array[String] = []
-
 @export_storage var char_mods : Dictionary[String, Char_mods] = {}
 
 func make_save_char_data():

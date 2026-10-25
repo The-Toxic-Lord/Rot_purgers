@@ -12,7 +12,7 @@ Nathan: For more information see the online documentation.
 
 ~ cutscene
 Alastor : Oh! Good afternoon, High Chancellor. Were you perhaps waiting for me?
-#do GlobalData.mod_char("Elliot", load("uid://daygwp60xitvb"), "defence", 40)
+#do GlobalData.mod_char("Elliot", load("uid://daygwp60xitvb"), "defence", 400)
 Elliot : Quite so. It would seem that our investigations have led us to the same place.
 Alastor : Have you already been down there?
 Elliot : No. I sensed your presence approaching and decided to wait.

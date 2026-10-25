@@ -987,6 +987,7 @@ func load_save(game_save : Game_save):
 	BattleHandler.order_array = game_save.orders
 	%Camera_position.set_process(true)
 	active = true
+	map_loaded.emit()
 
 func load_chars(game_save : Game_save):
 	for save_char_data : Save_char_data in game_save.char_data:

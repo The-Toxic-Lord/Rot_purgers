@@ -36,19 +36,27 @@ func _on_load_pressed() -> void:
 
 var temp_save : Game_save
 func load_save(save_name : String):
+	await transition_start()
+	if background != null:
+		background.queue_free()
+	if map_generator != null:
+		map_generator.queue_free()
+	if cutscene != null:
+		cutscene.queue_free()
+		DialogueBalloon.hide()
 	var save = ResourceLoader.load("user://saves/" + save_name + ".tres")
 	match save.save_type:
 		Game_save.save_types.BATTLE:
 			map_generator = load("uid://buyr0671du0pe").instantiate()
 			add_child(map_generator)
 			map_generator.load_save(save)
+			await map_generator.map_loaded
 		Game_save.save_types.DIALOGUE:
 			cutscene = load(save.cutscene_path).instantiate()
 			add_child(cutscene)
-			cutscene.load_save(save)
+			await cutscene.load_save(save)
 	%Main_menu.hide_menu()
-	if background != null:
-		background.queue_free()
+	await transition_end()
 
 func remove_background():
 	background.queue_free()
