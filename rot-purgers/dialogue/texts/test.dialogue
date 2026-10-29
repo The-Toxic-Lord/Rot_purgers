@@ -18,4 +18,5 @@ Alastor : Have you already been down there?
 Elliot : No. I sensed your presence approaching and decided to wait.
 Alastor : Thank you! It is always a pleasure to see a master at work!
 Elliot : Hmm. As time goes by, your attitude still doesn't change. Follow me.
+do ObjectLink.cutscene.next_scene()
 => END

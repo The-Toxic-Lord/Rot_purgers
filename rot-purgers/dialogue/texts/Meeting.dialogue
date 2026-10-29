@@ -1,0 +1,35 @@
+~ cutscene
+Elliot: We have arrived, Archchancellor, and I see that we have a lot to discuss.
+do ObjectLink.cutscene_player.play("fade")
+=> END
+
+~ part_1
+Elliot: Am I right to assume that this is our new chancellor?
+Zaar: I am. Name is Zaar. I hope you can remember it.
+Alastor: Not only do you speak out of turn, but you show no respect to your betters! Why did chancellor Maverik resign and choose him as his heir?
+Aven: He didn't.
+Alastor: What?
+Aven: Maverik lost his title and his life in a duel with Zaar. It was quite an impressive display of magic.
+Alastor: But that's barbarity!
+Elliot: Hehe. It is an old tradition. Chancellors must not only be wise and crafty; they must also have the power to hold their positions. It would seem that this long era of peace has mellowed down even the council.
+Alastor: But…
+Aven: That's enough on this topic for now. Tell me what your investigation revealed.
+do ObjectLink.cutscene_player.play("fade_2")
+=> END
+
+~ part_2
+Aven: Thank you for the report. This warrants further and immediate investigation. Especially in the light of recent events.
+Elliot: What happened?
+Aven: The presence of rot was spotted in Arland.
+Alastor: Is this correct? How was it able to cross the ocean?
+Aven: High Chancellor Marcus reported it. Current theory is that it traveled along cracks between tectonic plates.
+Zaar: What cracks?
+Alastor: Very deep underground places. Unreachable to us.
+Elliot: So, did you already decide who will go? And when?
+Aven: The four of us. Now.
+Zaar: Huh? What's the rush?
+Aven: Unfortunately, the rot appeared too close to the domain of the Sleeper. High chancellor Marcus and chancellor Virgil will do everything in their power to stifle its spread, but we cannot waste time. Prepare at once. We leave in two hours.
+Zaar: Hahahaha. And I thought that mages were wise and knowledgeable. Yet here you are, believing in ancient myths and legends. First the creatures from ancient myth and now a regional superstition.
+Aven: Then you have nothing to worry about, young prince. If it's as you say, I am sure you will be able to dispatch these old tales with swiftness unmatched by other members of the council.
+do ObjectLink.cutscene.next_scene()
+=> END

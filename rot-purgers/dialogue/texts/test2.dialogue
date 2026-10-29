@@ -5,4 +5,5 @@ Alastor : I fail to see the harm.
 Elliot : The deeper we descend, the more uncontrollable spells become. At best they collapse. At worst, they amplify. I was with a team here long before. We had to retreat after one fool smashed his head on the ceiling, trying to fly.
 Alastor : I begin to see how this place can be the source of the Rot.
 Elliot : We will find our answer deeper.
+do ObjectLink.cutscene.next_scene()
 => END

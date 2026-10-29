@@ -1,0 +1,332 @@
+[gd_scene format=3 uid="uid://dukkiwirhtt4m"]
+
+[ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_2rx8h"]
+[ext_resource type="PackedScene" uid="uid://d2tq25iglcrkk" path="res://blender_models/Meeting.glb" id="1_c4no0"]
+[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor1.glb" id="2_8phr4"]
+[ext_resource type="Resource" uid="uid://bunhk0h4hjmp1" path="res://dialogue/texts/Meeting.dialogue" id="2_kxnjb"]
+[ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="4_8wsra"]
+[ext_resource type="PackedScene" uid="uid://bugdajyv2i82u" path="res://blender_models/Chars/Aven.glb" id="6_7tvuy"]
+[ext_resource type="Material" uid="uid://dxd3w0s4f1bqp" path="res://map_data_res/Cutscenes/fog_shader.tres" id="6_kxnjb"]
+[ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Ellio3.glb" id="7_kr5g3"]
+[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar5.glb" id="9_v0ny2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8phr4"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_r00ey"]
+sky_material = SubResource("ProceduralSkyMaterial_8phr4")
+
+[sub_resource type="Environment" id="Environment_2rx8h"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_r00ey")
+glow_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_kr5g3"]
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0ny2"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwy4y"]
+albedo_color = Color(0.9948203, 0.76034945, 0.4657954, 1)
+emission_enabled = true
+emission = Color(0.99607843, 0.7607843, 0.46666667, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_vwy4y"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_kxnjb"]
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr5g3"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_pxhab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Alastor2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.63621056, 2.3841858e-07, 5.1189528)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ellio4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.64115644, -2.3841858e-07, 3.803782)]
+}
+
+[sub_resource type="Animation" id="Animation_kxnjb"]
+resource_name = "fade"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Fade_out:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [1],
+"method": &"make_camera_current"
+}, {
+"args": ["part_1"],
+"method": &"start_dialogue"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D2/Fade_in:surface_material_override/0:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D2/Fade_in:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_v0ny2"]
+resource_name = "fade_2"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Fade_out:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["part_2"],
+"method": &"start_dialogue"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lbvty"]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["cutscene"],
+"method": &"start_dialogue"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alastor2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.2459333, 0, 9.078668), Vector3(0.63621056, 2.3841858e-07, 5.1189528)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ellio4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.64115644, -2.3841858e-07, 7.758772), Vector3(-0.64115644, -2.3841858e-07, 3.803782)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Alastor2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ellio4")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxnjb"]
+_data = {
+&"RESET": SubResource("Animation_pxhab"),
+&"fade": SubResource("Animation_kxnjb"),
+&"fade_2": SubResource("Animation_v0ny2"),
+&"start": SubResource("Animation_lbvty")
+}
+
+[node name="Meeting" type="Node3D" unique_id=994078193 node_paths=PackedStringArray("player", "cameras")]
+script = ExtResource("1_2rx8h")
+text_data = ExtResource("2_kxnjb")
+player = NodePath("AnimationPlayer")
+cameras = [NodePath("Camera3D2"), NodePath("Camera3D")]
+
+[node name="Meeting" parent="." unique_id=292434145 instance=ExtResource("1_c4no0")]
+
+[node name="Alastor1" parent="." unique_id=792110648 instance=ExtResource("2_8phr4")]
+transform = Transform3D(-4.0133926e-07, 0, 1, 0, 1, 0, -1, 0, -4.0133926e-07, -2.009883, -0.0042700768, -4.087673)
+script = ExtResource("4_8wsra")
+start_anim = "Sit"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1263009132]
+environment = SubResource("Environment_2rx8h")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=883426555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.568573, 0)
+size = Vector3(50, 1, 50)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1046043387]
+transform = Transform3D(0.9222009, -0.103344046, 0.37264654, 0, 0.96363044, 0.2672384, -0.38671106, -0.2464475, 0.88866085, 0.92394185, 1.9149299, -2.831646)
+
+[node name="Fade_out" type="MeshInstance3D" parent="Camera3D" unique_id=1724220901]
+unique_name_in_owner = true
+transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, -2.9802322e-08, 5.9604645e-08, 1, 0.03564155, -0.08756387, -0.1681788)
+mesh = SubResource("QuadMesh_kr5g3")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0ny2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1628312234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059509277, 2.371643, -11.505236)
+size = Vector3(2.2156982, 5.743286, 1)
+material = SubResource("StandardMaterial3D_vwy4y")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=34010479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9778292, -9.182892)
+light_color = Color(0.99607843, 0.7607843, 0.46666667, 1)
+light_energy = 2.0
+omni_range = 81.339
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=1607590788]
+transform = Transform3D(-0.8746208, -0.20871513, 0.43758023, 0, 0.90258527, 0.43051115, -0.48480767, 0.37653401, -0.78941983, 1.6713638, 2.6122441, -1.2617865)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D2" unique_id=1537066643]
+transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, -2.9802322e-08, 5.9604645e-08, 1, 0.03564155, -0.08756387, -0.1681788)
+mesh = SubResource("QuadMesh_vwy4y")
+surface_material_override/0 = ExtResource("6_kxnjb")
+
+[node name="Fade_in" type="MeshInstance3D" parent="Camera3D2" unique_id=1841748929]
+transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, -2.9802322e-08, 5.9604645e-08, 1, 0.03564155, -0.08756387, -0.1681788)
+visible = false
+mesh = SubResource("QuadMesh_kxnjb")
+surface_material_override/0 = SubResource("StandardMaterial3D_kr5g3")
+
+[node name="Aven" parent="." unique_id=2101898650 instance=ExtResource("6_7tvuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.467078)
+script = ExtResource("4_8wsra")
+start_anim = "Sit"
+
+[node name="Ellio3" parent="." unique_id=554260028 instance=ExtResource("7_kr5g3")]
+transform = Transform3D(-0.0035848978, 0, 0.99999356, 0, 1, 0, -0.99999356, 0, -0.0035848978, -2.057972, 0, -6.0208774)
+script = ExtResource("4_8wsra")
+start_anim = "Sit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=964445799]
+libraries/ = SubResource("AnimationLibrary_kxnjb")
+
+[node name="Zaar5" parent="." unique_id=1025274022 instance=ExtResource("9_v0ny2")]
+transform = Transform3D(0.0028360607, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.0028360607, 2.0333529, 0, -6.0373845)
+script = ExtResource("4_8wsra")
+start_anim = "Sit"
+
+[node name="Ellio4" parent="." unique_id=120495327 instance=ExtResource("7_kr5g3")]
+transform = Transform3D(-0.99953514, 0, -0.030488383, 0, 1, 0, 0.030488383, 0, -0.99953514, -0.64115644, -2.3841858e-07, 3.803782)
+script = ExtResource("4_8wsra")
+start_anim = "Walk"
+
+[node name="Alastor2" parent="." unique_id=1637498195 instance=ExtResource("2_8phr4")]
+transform = Transform3D(-0.9990331, 0, -0.043964922, 0, 1, 0, 0.043964922, 0, -0.9990331, 0.63621056, 2.3841858e-07, 5.1189528)
+script = ExtResource("4_8wsra")
+start_anim = "Walk"
+
+[editable path="Alastor1"]
+[editable path="Aven"]
+[editable path="Ellio3"]
+[editable path="Zaar5"]
+[editable path="Alastor2"]

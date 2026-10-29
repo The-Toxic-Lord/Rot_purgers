@@ -734,7 +734,6 @@ func check_trigger(enemy : Character_node) -> bool:
 			return true
 	return false
 
-signal order_processed
 func salwage_failed_order(enemy : Character_node) -> bool:
 	
 	if enemy.stats.AI_type not in [Character_stats.AI_types.FLYER_CHARGE, 

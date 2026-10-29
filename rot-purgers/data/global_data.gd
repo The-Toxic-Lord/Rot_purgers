@@ -66,7 +66,7 @@ func load_save(save : Game_save):
 	map_magic_cost_adjustment = save.map_data.magic_cost_adjustment
 	char_mods = save.char_mods
 
-
+@export var char_pictures : Dictionary[String, Texture2D]
 
 
 

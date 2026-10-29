@@ -133,6 +133,7 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	await load_picture()
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -235,3 +236,31 @@ func save():
 
 func load_str(saved_id):
 	dialogue_line = await DialogueManager.get_line(dialogue_resource, saved_id, [])
+
+var current_char_name : String = ""
+@onready var char_picture: TextureRect = %Char_picture
+
+
+func load_picture():
+	if current_char_name == character_label.text:
+		return
+	current_char_name = character_label.text
+	if GlobalData.char_pictures.has(current_char_name):
+		char_picture.texture = GlobalData.char_pictures[current_char_name]
+		return
+	else:
+		for char_name : String in GlobalData.char_pictures.keys():
+			if char_name.find(current_char_name) == 0:
+				char_picture.texture = GlobalData.char_pictures[char_name]
+				return
+	char_picture.texture = null
+	
+
+
+
+
+
+
+
+
+#

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bunhk0h4hjmp1"
+path="res://.godot/imported/Meeting.dialogue-e72f3963d9b0a92b7f85a11b97d93fec.tres"
+
+[deps]
+
+source_file="res://dialogue/texts/Meeting.dialogue"
+dest_files=["res://.godot/imported/Meeting.dialogue-e72f3963d9b0a92b7f85a11b97d93fec.tres"]
+
+[params]
+
+defaults=true

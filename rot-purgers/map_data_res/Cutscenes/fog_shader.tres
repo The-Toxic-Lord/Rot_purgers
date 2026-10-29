@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dxd3w0s4f1bqp"]
+
+[ext_resource type="Shader" uid="uid://dlkt2dny8sot" path="res://Workshop/meeting.gdshader" id="1_dmc4b"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_dmc4b")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 10.0000004275
+shader_parameter/fog_fade_range = 5.00000019
+shader_parameter/enable_noise = false
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = false
+shader_parameter/color_levels = 32
+shader_parameter/enable_dithering = false
+shader_parameter/dither_strength = 0.3
