@@ -7,14 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://blrb3oenhm7o" path="res://dialogue/char_sprites/Alastor.png" id="9_7c7dr"]
 [ext_resource type="Resource" uid="uid://d1esnga1gwa48" path="res://data/Enemy_data/Crawler_captain.tres" id="9_et4q3"]
 [ext_resource type="Resource" uid="uid://cocxooxgdh4c" path="res://data/Enemy_data/Observer.tres" id="10_7c7dr"]
+[ext_resource type="Texture2D" uid="uid://c8y2tx181sk85" path="res://dialogue/char_sprites/Zaar.png" id="10_17ap7"]
+[ext_resource type="Texture2D" uid="uid://nc443psun6ns" path="res://dialogue/char_sprites/Aven.png" id="11_17ap7"]
 [ext_resource type="Resource" uid="uid://ggqhl80errbm" path="res://data/Enemy_data/Shapes.tres" id="12_rdq6i"]
 [ext_resource type="Resource" uid="uid://bw766n42tsyfr" path="res://data/Enemy_data/Crystal.tres" id="13_idmur"]
 
 [node name="Global_data" type="Node" unique_id=1876976633]
 script = ExtResource("1_215bx")
 enemy_data = Array[ExtResource("6_lbxat")]([ExtResource("8_lbxat"), ExtResource("13_idmur"), ExtResource("12_rdq6i"), ExtResource("9_et4q3"), ExtResource("10_7c7dr")])
-map_data_path = Array[String](["uid://dukkiwirhtt4m", "uid://c2hd250kce25a", "uid://wjt5k3krqruv", "res://map_data_res/battle_01.tres", "res://map_data_res/battle_02.tres", "res://map_data_res/battle_03.tres", "res://dialogue/06.tres", "uid://xuek2728s2v3"])
+map_data_path = Array[String](["uid://c2hd250kce25a", "uid://wjt5k3krqruv", "res://map_data_res/battle_01.tres", "res://map_data_res/battle_02.tres", "res://map_data_res/battle_03.tres", "res://dialogue/06.tres", "uid://xuek2728s2v3", "uid://dukkiwirhtt4m"])
 char_pictures = Dictionary[String, Texture2D]({
 "Alastor": ExtResource("9_7c7dr"),
-"Elliot": ExtResource("8_et4q3")
+"Aven": ExtResource("11_17ap7"),
+"Elliot": ExtResource("8_et4q3"),
+"Zaar": ExtResource("10_17ap7")
 })

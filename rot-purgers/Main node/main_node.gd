@@ -61,49 +61,10 @@ func load_save(save_name : String):
 func remove_background():
 	background.queue_free()
 
-var current_map_id : int = -1
-func load_map(id : int = -1):
-	await transition_start()
-	if id == 0:
-		remove_background()
-	if current_map_id + 1 == GlobalData.map_data_path.size():
-		%Main_menu.on_victory()
-		return
-	if id == -1:
-		current_map_id += 1
-	else:
-		current_map_id = id
-	var map_data = load(GlobalData.map_data_path[current_map_id])
-	if map_data is Map_data:
-		var new_map_gen : Map_generator = load("uid://buyr0671du0pe").instantiate()
-		new_map_gen.hide()
-		add_child(new_map_gen)
-		new_map_gen.load_map(map_data)
-		await new_map_gen.map_loaded
-		if map_generator != null:
-			map_generator.queue_free()
-		if cutscene != null:
-			cutscene.queue_free()
-		map_generator = new_map_gen
-		map_generator.show()
-		if map_data.music != null:
-			SoundHandler.play_music(map_data.music)
-		await transition_end()
-	elif map_data is PackedScene:
-		var new_cutscene : Cutscene = map_data.instantiate()
-		add_child(new_cutscene)
-		if map_generator != null:
-			map_generator.queue_free()
-		if cutscene != null:
-			cutscene.queue_free()
-		cutscene = new_cutscene
-		cutscene.start_cutscene()
-		await transition_end()
-		#if map_data.music != null:
-			#SoundHandler.play_music(map_data.music)
-
 func load_scene_path(path : String):
 	await transition_start()
+	if background != null:
+		background.queue_free()
 	var map_data = ResourceLoader.load(path)
 	if map_data is Map_data:
 		var new_map_gen : Map_generator = load("uid://buyr0671du0pe").instantiate()
@@ -149,7 +110,6 @@ func _ready() -> void:
 
 func game_over():
 	%Main_menu.on_game_over()
-	current_map_id = -1
 
 func close_map():
 	if map_generator != null:

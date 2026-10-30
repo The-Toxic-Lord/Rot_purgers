@@ -21,7 +21,7 @@ func _on_load_pressed() -> void:
 
 func _on_new_game_pressed() -> void:
 	%Menu.hide()
-	await main.load_map(0)
+	main.load_scene_path(GlobalData.map_data_path[0])
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

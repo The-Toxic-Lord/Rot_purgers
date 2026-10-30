@@ -21,6 +21,7 @@ func off():
 	show()
 	%Panel.hide()
 	%Panel2.show()
+	#await get_tree().process_frame
 	animation_player.play("turn_off")
 
 @warning_ignore("unused_parameter")
