@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_f0bxu")
 name = "Gravity bend"
+desctiption = "Warp space and time! "
 magic_cost = 50
 skill_map = ExtResource("2_h58qe")
 damage = 1.2

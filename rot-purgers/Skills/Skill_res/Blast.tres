@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_iycuc")
 name = "Blast"
+desctiption = "Blast away the enemy!"
 magic_cost = 5
 skill_map = ExtResource("2_8fhyb")
 damage = 1.0

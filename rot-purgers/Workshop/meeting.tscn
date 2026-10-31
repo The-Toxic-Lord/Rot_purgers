@@ -246,6 +246,7 @@ _data = {
 script = ExtResource("1_2rx8h")
 text_data = ExtResource("2_kxnjb")
 player = NodePath("AnimationPlayer")
+next_map_path = "uid://dw42ljwe1t1f8"
 cameras = [NodePath("Camera3D2"), NodePath("Camera3D")]
 
 [node name="Meeting" parent="." unique_id=292434145 instance=ExtResource("1_c4no0")]

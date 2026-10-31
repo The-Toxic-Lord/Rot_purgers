@@ -449,15 +449,15 @@ func _input(event: InputEvent) -> void:
 					if move_zones.has(selected_cell):
 						move_character()
 					else:
-						pass
-						# ADD error sound
+						SoundHandler.play_error()
+						return
 				states.ATTACK:
 					if select_zones.has(selected_cell) and char_positions.has(selected_cell):
 						attack_character()
 						return
 					else:
-						pass
-						# ADD error sound
+						SoundHandler.play_error()
+						return
 				states.SKILL:
 					#if !selected_skill.skill_map.bound_to_char:
 						#if !check_unbound_skill_height():
@@ -932,6 +932,14 @@ func add_skill_order():
 				damage_cells.append(cell)
 			else:
 				move_cells.append(cell)
+		for cell in move_cells:
+			if !map_cells.has(cell):
+				SoundHandler.play_error()
+				return
+			if abs(map_cells[cell].position.y - selected_char.position.y) >\
+			selected_skill.max_height_difference * 0.1:
+				SoundHandler.play_error()
+				return
 		BattleHandler.add_skill(selected_char, selected_skill, damage_cells, move_cells, skill_animation_target_cell)
 		skill_state_finish()
 	else:
@@ -1191,6 +1199,10 @@ func show_defend_zone(skill : Skill_base):
 		zone.position = Vector3(cell.x * 2.0, 0, cell.y * 2.0)
 		if map_cells.has(cell):
 			zone.position.y = map_cells[cell].position.y
+
+
+
+
 
 
 

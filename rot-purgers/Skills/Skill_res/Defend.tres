@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_6ryro")
 name = "Defend"
+desctiption = "Secure the area."
 skill_type = 3
 max_height_difference = 40
 max_dist = 2

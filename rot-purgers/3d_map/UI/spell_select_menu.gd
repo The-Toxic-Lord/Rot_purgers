@@ -5,7 +5,12 @@ class_name Skill_select_menu
 signal skill_selected
 signal exit
 
+signal skill_focused
+signal hide_description
+
 var skill_slots : Array[Skill_slot] = []
+
+
 
 func load_skills(ch_node : Character_node):
 	for skill in ch_node.stats.skills:
@@ -14,6 +19,7 @@ func load_skills(ch_node : Character_node):
 		skill_slot.set_skill(skill, ch_node.stats.magic)
 		skill_slot.skill_selected.connect(skill_selected.emit.bind(skill))
 		skill_slots.append(skill_slot)
+		skill_slot.skill_focused.connect(skill_focused.emit)
 	%Skill_box.move_child(%Exit, %Skill_box.get_children().size() - 1)
 	%Exit.focus_neighbor_bottom = skill_slots[0].get_button().get_path()
 	skill_slots[0].get_button().focus_neighbor_top = %Exit.get_path()
@@ -30,9 +36,11 @@ func focus():
 	if !skill_slots.is_empty():
 		skill_slots[0].focus()
 
+func _on_exit_focus_entered() -> void:
+	hide_description.emit()
 
-
-
+func _on_exit_mouse_entered() -> void:
+	%Exit.grab_focus()
 
 
 #

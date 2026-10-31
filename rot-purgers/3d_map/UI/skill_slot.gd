@@ -5,6 +5,9 @@ class_name Skill_slot
 var skill : Skill_base
 
 signal skill_selected
+signal skill_focused
+@onready var skill_button: Button = %Skill_button
+
 
 func set_skill(_skill : Skill_base, magic_left : int):
 	skill = _skill
@@ -18,6 +21,10 @@ func set_skill(_skill : Skill_base, magic_left : int):
 	if skill_cost > magic_left:
 		%Skill_button.disabled = true
 		self.modulate = Color("505050")
+	
+	skill_button.focus_entered.connect(skill_focused.emit.bind(skill.desctiption))
+	#skill_button.mouse_entered.connect(skill_focused.emit.bind(skill.desctiption))
+	skill_button.mouse_entered.connect(skill_button.grab_focus)
 
 func focus():
 	%Skill_button.grab_focus()
@@ -27,3 +34,10 @@ func _on_skill_button_pressed() -> void:
 
 func get_button():
 	return %Skill_button
+
+
+
+
+
+
+#

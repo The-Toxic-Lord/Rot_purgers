@@ -27,7 +27,7 @@ critical:
 	+- settings
 	+- main menu
 	- level maps
-	+- level transition
+	+ level transition
 	+- level textures
 	+ dialogue system
 	- сложность меняет ход врагов с одновременного на пошаговый
@@ -36,6 +36,8 @@ critical:
 	+ char mod (+ save)
 	+ рисовать клетки под защитой
 	+ stat boost
+	+ skills description
+	- silly mode
 
 - ramps
 - background image

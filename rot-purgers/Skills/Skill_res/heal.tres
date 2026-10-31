@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_neo6o")
 name = "heal"
+desctiption = "Return your body to \"normal\" state."
 magic_cost = 15
 skill_type = 1
 heal_value = 0.75

@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_8c4m3")
 name = "Shrapnel rain"
+desctiption = "Helps your enemy to become slimmer by filling them with holes."
 magic_cost = 15
 skill_map = ExtResource("2_6b5aj")
 damage = 1.5

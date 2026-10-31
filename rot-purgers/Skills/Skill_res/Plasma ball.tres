@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_kpt6o")
 name = "Plasma ball"
+desctiption = "Highly volatile."
 magic_cost = 20
 skill_map = ExtResource("2_egmsf")
 damage = 2.0

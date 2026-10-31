@@ -224,6 +224,7 @@ func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
 func _on_spell_select_menu_exit() -> void:
 	%Spell_select_menu.clear_skills()
 	%Spell_select_menu.hide()
+	%Skill_description.hide()
 	%Char_action_menu.focus()
 
 func back_to_skill_selection():
@@ -353,9 +354,12 @@ func _on_char_action_menu_boost() -> void:
 func _on_stats_boost_menu_confirm() -> void:
 	%Char_action_menu.focus()
 
+func update_skill_description(text : String):
+	%Skill_description.show()
+	%Description_lb.text = text
 
-
-
+func _on_spell_select_menu_hide_description() -> void:
+	%Skill_description.hide()
 
 
 

@@ -299,6 +299,40 @@ visible = false
 unique_name_in_owner = true
 visible = false
 
+[node name="Skill_description" type="MarginContainer" parent="." unique_id=923331814]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -893.0
+offset_top = -135.0
+offset_right = 895.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Skill_description" unique_id=1003545307]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e57h2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Skill_description" unique_id=1919484667]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skill_description/MarginContainer" unique_id=889848305]
+layout_mode = 2
+
+[node name="Description_lb" type="Label" parent="Skill_description/MarginContainer/VBoxContainer" unique_id=1329244208]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
 [connection signal="pressed" from="Character_select_menu/Character_list/Close_spawn" to="." method="close_spawn_menu"]
 [connection signal="attack" from="Char_action_menu" to="." method="_on_char_action_menu_attack"]
 [connection signal="boost" from="Char_action_menu" to="." method="_on_char_action_menu_boost"]
@@ -311,6 +345,8 @@ visible = false
 [connection signal="execute" from="Turn_menu" to="." method="_on_turn_menu_execute"]
 [connection signal="exit" from="Turn_menu" to="." method="_on_turn_menu_exit"]
 [connection signal="exit" from="Spell_select_menu" to="." method="_on_spell_select_menu_exit"]
+[connection signal="hide_description" from="Spell_select_menu" to="." method="_on_spell_select_menu_hide_description"]
+[connection signal="skill_focused" from="Spell_select_menu" to="." method="update_skill_description"]
 [connection signal="skill_selected" from="Spell_select_menu" to="." method="_on_spell_select_menu_skill_selected"]
 [connection signal="item_selected" from="Terrain_mod/MarginContainer/VBoxContainer/Cell_select" to="." method="_on_cell_select_item_selected"]
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_01" to="." method="_on_terr_bt_pressed" flags=18]

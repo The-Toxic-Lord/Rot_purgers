@@ -37,6 +37,9 @@ func play_tutor():
 	%Music.play()
 
 
+@export var error_sfx : AudioStream
+func play_error():
+	play_sfx(error_sfx)
 
 
 

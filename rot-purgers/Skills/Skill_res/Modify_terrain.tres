@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_5pvof")
 name = "Modify terrain"
+desctiption = "Change the height of your surroundings."
 magic_cost = 1
 skill_type = 2
 max_dist = 6

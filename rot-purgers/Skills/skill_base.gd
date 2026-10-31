@@ -26,7 +26,6 @@ enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN }
 @export var animation_jump : bool = false
 @export var can_be_deflected : bool = false
 @export var line_of_sight_check := false
-#ADD @export var animation_name : String
 
 enum move { NONE, SELF, TARGET }
 @export var move_mode : move = move.NONE

@@ -4,11 +4,13 @@
 [ext_resource type="AudioStream" uid="uid://cumdvk255psmc" path="res://sound/Hit3.ogg" id="2_bq2ro"]
 [ext_resource type="AudioStream" uid="uid://dki2gptcubi6f" path="res://sound/Dark Procession OGG.ogg" id="2_psjqt"]
 [ext_resource type="AudioStream" uid="uid://dc516g15tuvgw" path="res://sound/Spellbound MP3.mp3" id="3_psjqt"]
+[ext_resource type="AudioStream" uid="uid://b6ic3vpt0q1iy" path="res://sound/SFX/Error Triplet-5.wav" id="4_upq1o"]
 
 [node name="Sound_handler" type="Node" unique_id=1527645248]
 script = ExtResource("1_dbx84")
 menu_music = ExtResource("2_psjqt")
 tutor_music = ExtResource("3_psjqt")
+error_sfx = ExtResource("4_upq1o")
 
 [node name="Damage" type="AudioStreamPlayer" parent="." unique_id=783939045]
 unique_name_in_owner = true
@@ -21,4 +23,5 @@ bus = &"Music"
 
 [node name="Sfx" type="AudioStreamPlayer" parent="." unique_id=1670465385]
 unique_name_in_owner = true
+max_polyphony = 5
 bus = &"Sfx"
