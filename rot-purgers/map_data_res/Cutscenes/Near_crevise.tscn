@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dw42ljwe1t1f8"]
 
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_tdlk6"]
-[ext_resource type="Resource" uid="uid://bhj75sl17uhsm" path="res://dialogue/texts/test.dialogue" id="2_d4brp"]
+[ext_resource type="Resource" uid="uid://bunhk0h4hjmp1" path="res://dialogue/texts/Meeting.dialogue" id="2_d4brp"]
 [ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor1.glb" id="3_tdlk6"]
 [ext_resource type="PackedScene" uid="uid://bugdajyv2i82u" path="res://blender_models/Chars/Aven.glb" id="4_d4brp"]
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="4_ejvkc"]
@@ -139,14 +139,30 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["cutscene"],
+"args": ["crevise"],
 "method": &"start_dialogue"
 }]
 }
 
+[sub_resource type="Animation" id="Animation_d4brp"]
+resource_name = "turn_zaar_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Zaar5:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.0853848, 0), Vector3(0, 0.620126, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mr5n3"]
 _data = {
-&"start": SubResource("Animation_lbvty")
+&"start": SubResource("Animation_lbvty"),
+&"turn_zaar_1": SubResource("Animation_d4brp")
 }
 
 [node name="First_map" type="Node3D" unique_id=964775134 node_paths=PackedStringArray("player")]
@@ -189,12 +205,12 @@ transform = Transform3D(0.7040145, -0.3224173, 0.6327802, 0, 0.8910067, 0.453990
 libraries/ = SubResource("AnimationLibrary_mr5n3")
 
 [node name="Alastor1" parent="." unique_id=1803624731 instance=ExtResource("3_tdlk6")]
-transform = Transform3D(0.34569517, 0, -0.93834686, 0, 1, 0, 0.93834686, 0, 0.34569517, 0.9329678, -2.3841858e-06, 2.347558)
+transform = Transform3D(0.18719359, 0, -0.982323, 0, 1, 0, 0.982323, 0, 0.18719359, 0.575987, -2.3841858e-06, 2.3512921)
 script = ExtResource("4_ejvkc")
 start_anim = "Idle"
 
 [node name="Aven" parent="." unique_id=2101898650 instance=ExtResource("4_d4brp")]
-transform = Transform3D(-0.99935365, 0, 0.035949025, 0, 1, 0, -0.035949025, 0, -0.99935365, -1.2264452, -1.9073486e-06, 4.57644)
+transform = Transform3D(-0.99935365, 0, 0.035949025, 0, 1, 0, -0.035949025, 0, -0.99935365, -1.650944, -1.9073486e-06, 4.1151843)
 script = ExtResource("4_ejvkc")
 start_anim = "Idle"
 

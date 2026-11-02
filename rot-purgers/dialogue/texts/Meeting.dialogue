@@ -33,3 +33,19 @@ Zaar: Hahahaha. And I thought that mages were wise and knowledgeable. Yet here y
 Aven: Then you have nothing to worry about, young prince. If it's as you say, I am sure you will be able to dispatch these old tales with swiftness unmatched by other members of the council.
 do ObjectLink.cutscene.next_scene()
 => END
+
+~ crevise
+Zaar: So this is the place? Just a hole?
+Alastor: Surely you can feel that magic feels different in this place.
+do ObjectLink.cutscene_player.play("turn_zaar_1")
+Zaar: I can. At least that part of your report was accurate.
+Alastor: You don't trust your fellow chancellors?
+Zaar: I only trust what I have experienced. And I especially distrust words of other mages.
+Alastor: Then why did you decide to become a chancellor?
+Zaar: That is none of your concern. Not like I expect you to trust me either.
+Aven: Every member of this team will trust each other with their lives. That is an order.
+Elliot: I second that. We don't have the luxury of bickering amongst us over insignificant issues.
+Alastor: As you wish.
+Zaar: Hmg.
+do ObjectLink.cutscene.next_scene()
+=> END

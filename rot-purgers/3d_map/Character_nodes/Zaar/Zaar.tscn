@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://dht0dfxp5uj66"]
+
+[ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_rcbgn"]
+[ext_resource type="Texture2D" uid="uid://twwwgcrjlyrr" path="res://blender_models/Chars/Zaar5_Zaar_texture.png" id="2_qrojq"]
+[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar5.glb" id="3_2aj4y"]
+[ext_resource type="PackedScene" uid="uid://eullpjn2bmw1" path="res://3d_map/Character_nodes/Zaar/sword_trail_Zaar.tscn" id="4_qrojq"]
+
+[sub_resource type="Animation" id="Animation_2jqbt"]
+resource_name = "Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:char_model_node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.050177757, 0.10035551, 0.149773, 0.20071103, 0.24936825, 0.29878575, 0.34972376, 0.4006618),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7s3t3"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3s0yo"]
+resource_name = "Spell_jump_back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uiu5v"]
+resource_name = "Spell_jump_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_61r11"]
+resource_name = "empty"
+
+[sub_resource type="Animation" id="Animation_hljk3"]
+resource_name = "move_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_boujc"]
+resource_name = "move_step"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnxq0"]
+_data = {
+&"Damage": SubResource("Animation_2jqbt"),
+&"Death": SubResource("Animation_7s3t3"),
+&"Spell_jump_back": SubResource("Animation_3s0yo"),
+&"Spell_jump_up": SubResource("Animation_uiu5v"),
+&"empty": SubResource("Animation_61r11"),
+&"move_jump": SubResource("Animation_hljk3"),
+&"move_step": SubResource("Animation_boujc")
+}
+
+[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton", "attack_trail")]
+script = ExtResource("1_rcbgn")
+texture = ExtResource("2_qrojq")
+char_animation = NodePath("Zaar5/AnimationPlayer")
+char_model_node = NodePath("Zaar5")
+skeleton = NodePath("Zaar5/Armature/Skeleton3D")
+attack_trail = NodePath("Zaar5/Armature/Skeleton3D/BoneAttachment3D/Sword_trail")
+
+[node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0815837, 0)
+visible = false
+pixel_size = 0.0025
+billboard = 1
+fixed_size = true
+alpha_cut = 1
+modulate = Color(0.90814126, 0, 0.15889099, 1)
+text = "9999"
+font_size = 24
+outline_size = 8
+
+[node name="Executed_order" type="Label3D" parent="." unique_id=6196966]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4014068, 0)
+visible = false
+pixel_size = 0.0025
+billboard = 1
+fixed_size = true
+alpha_cut = 1
+modulate = Color(0.5957073, 0.4703809, 1.92523e-07, 1)
+text = "E"
+font_size = 24
+outline_size = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=798619618]
+libraries/ = SubResource("AnimationLibrary_nnxq0")
+
+[node name="Zaar5" parent="." unique_id=2032189682 instance=ExtResource("3_2aj4y")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 704718265) index="11" unique_id=297218186]
+transform = Transform3D(1, 0, -1.1046703e-06, -1.1046703e-06, 0, -1, 0, 1, 0, -1.0744636, 1.3326683, -0.053068116)
+bone_name = "Sword_2"
+bone_idx = 39
+
+[node name="Sword_trail" parent="Zaar5/Armature/Skeleton3D/BoneAttachment3D" unique_id=1366018007 instance=ExtResource("4_qrojq")]
+transform = Transform3D(1, 0, 8.44271e-21, 0, 0.35, 0, -8.44271e-21, 0, 1, 0.0014590025, 0.5134719, -0.012722731)
+
+[editable path="Zaar5"]
+[editable path="Zaar5/Armature/Skeleton3D/BoneAttachment3D/Sword_trail"]
