@@ -1,26 +1,27 @@
-[gd_resource type="Resource" script_class="Map_data" format=3]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://cysm1hdmsd00l"]
 
-[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_cm0e1"]
-[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_m6kuo"]
-[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_t2mfm"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Shapes.png" id="3_j48kr"]
-[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="3_t1kgc"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="4_811r2"]
-[ext_resource type="Script" path="res://map_data.gd" id="4_m6kuo"]
-[ext_resource type="Texture2D" path="res://import/check_button.png" id="4_t2mfm"]
-[ext_resource type="Script" path="res://data/terrain_data.gd" id="5_j48kr"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="5_xdwra"]
-[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_floor.tres" id="6_ao0sn"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Charge.tres" id="6_xpnf4"]
-[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="7_1r3wq"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Push.tres" id="7_8vt1v"]
-[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_eohbu"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler_cap.png" id="8_t1blu"]
-[ext_resource type="Texture2D" path="res://import/Eye.png" id="9_xdwra"]
-[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="13_3fr55"]
-[ext_resource type="Resource" path="res://data/Player_chars_data/Aven.tres" id="14_n8wmh"]
-[ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="15_6rlev"]
-[ext_resource type="Resource" path="res://data/Player_chars_data/Zaar.tres" id="16_mbn7s"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_cm0e1"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_m6kuo"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="2_t2mfm"]
+[ext_resource type="Texture2D" uid="uid://ba5njglj1gpcp" path="res://aseprite_stuff/Shapes.png" id="3_j48kr"]
+[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="3_t1kgc"]
+[ext_resource type="Resource" uid="uid://bq3s1qjaw05vw" path="res://Skills/Skill_res/Power_shot.tres" id="4_811r2"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="4_m6kuo"]
+[ext_resource type="Texture2D" uid="uid://c131pecdedawl" path="res://import/check_button.png" id="4_t2mfm"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="5_j48kr"]
+[ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="5_xdwra"]
+[ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="6_ao0sn"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="6_xpnf4"]
+[ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="7_1r3wq"]
+[ext_resource type="Resource" uid="uid://bdy6yy4aten05" path="res://Skills/Skill_res/Push.tres" id="7_8vt1v"]
+[ext_resource type="Material" uid="uid://dkma81f54rlrp" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_eohbu"]
+[ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="8_t1blu"]
+[ext_resource type="Texture2D" uid="uid://c5f5mptu5chck" path="res://import/Eye.png" id="9_xdwra"]
+[ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="13_3fr55"]
+[ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="14_n8wmh"]
+[ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="15_6rlev"]
+[ext_resource type="Resource" uid="uid://c5xtfota7ng1v" path="res://data/Player_chars_data/Zaar.tres" id="16_mbn7s"]
+[ext_resource type="Resource" uid="uid://bljae404ietm2" path="res://dialogue/texts/map_dialogues.dialogue" id="22_n8wmh"]
 
 [sub_resource type="Resource" id="Resource_na86v"]
 script = ExtResource("1_cm0e1")
@@ -3503,5 +3504,7 @@ Vector2i(15, 38): SubResource("Resource_2kxbe"),
 Vector2i(16, 37): SubResource("Resource_20v4v")
 })
 magic_cost_adjustment = 2.0
+text_data = ExtResource("22_n8wmh")
+text_cue = "map_007"
 next_map_path = "res://map_data_res/tower.tres"
 player_chars = Array[ExtResource("1_cm0e1")]([ExtResource("13_3fr55"), ExtResource("14_n8wmh"), ExtResource("15_6rlev"), ExtResource("16_mbn7s")])

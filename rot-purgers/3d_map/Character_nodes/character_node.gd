@@ -395,10 +395,12 @@ func melee_attack():
 	if char_animation.has_animation("Attack_1_windup"):
 		char_animation.play("Attack_1_windup")
 		await char_animation.animation_finished
-		attack_trail.turn_on()
+		if attack_trail != null:
+			attack_trail.turn_on()
 		char_animation.play("Attack_1")
 		await char_animation.animation_finished
-		attack_trail.turn_off()
+		if attack_trail != null:
+			attack_trail.turn_off()
 		if char_animation.has_animation("Attack_1_back"):
 			char_animation.play("Attack_1_back")
 

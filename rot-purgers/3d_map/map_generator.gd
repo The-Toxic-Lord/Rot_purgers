@@ -90,7 +90,7 @@ func load_map(map : Map_data):
 	await make_multi_meshes()
 	if map_data.text_data != null:
 		freze_selector = true
-		DialogueBalloon.start(map_data.text_data, "map_dialogue")
+		DialogueBalloon.start(map_data.text_data, map_data.text_cue)
 		dialogue_end()
 	else:
 		activate_controlls()
@@ -264,6 +264,7 @@ func check_accuracy_ui():
 		if char_positions.has(selected_cell) and select_zones.has(selected_cell):
 			if char_positions[selected_cell] != selected_char:
 				targets = [char_positions[selected_cell].stats]
+				map_ui.show_accuracy(targets, null)
 	if state == states.SKILL:
 		if selected_skill.line_of_sight_check:
 			if select_zones.has(selected_cell):
@@ -276,9 +277,8 @@ func check_accuracy_ui():
 					var height : float = char_positions[cell].position.y
 					if abs(height - selected_char.position.y) <= selected_skill.max_height_difference * 0.1:
 						targets.append(char_positions[cell].stats)
-	if !targets.is_empty():
-		map_ui.show_accuracy(targets, selected_skill)
-	else:
+			map_ui.show_accuracy(targets, selected_skill)
+	if targets.is_empty():
 		map_ui.hide_accuracy()
 
 func set_selector(cell : Vector2i):
@@ -672,7 +672,6 @@ func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 	for cell in enemy_map:
 		i += 1
 		if Time.get_unix_time_from_system() - tick >= 1.0:
-			print(1)
 			tick = Time.get_unix_time_from_system()
 			TransitionScreen.update_progress(i as float/size)
 			await get_tree().process_frame

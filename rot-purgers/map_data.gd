@@ -17,5 +17,6 @@ enum map_end_conditions { ENEMY, DOOR }
 @export var magic_cost_adjustment : float = 1.0
 @export_range(0, 3) var rot_stage : int = 0
 @export var text_data : DialogueResource
+@export var text_cue : String = "map_dialogue"
 @export var next_map_path : String
 @export var player_chars : Array[Character_stats] = []

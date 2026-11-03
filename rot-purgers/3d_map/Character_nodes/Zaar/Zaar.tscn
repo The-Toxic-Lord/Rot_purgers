@@ -171,6 +171,7 @@ bone_idx = 39
 
 [node name="Sword_trail" parent="Zaar5/Armature/Skeleton3D/BoneAttachment3D" unique_id=1366018007 instance=ExtResource("4_qrojq")]
 transform = Transform3D(1, 0, 8.44271e-21, 0, 0.35, 0, -8.44271e-21, 0, 1, 0.0014590025, 0.5134719, -0.012722731)
+visible = false
 
 [editable path="Zaar5"]
 [editable path="Zaar5/Armature/Skeleton3D/BoneAttachment3D/Sword_trail"]

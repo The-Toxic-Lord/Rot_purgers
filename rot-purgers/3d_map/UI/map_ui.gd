@@ -128,10 +128,9 @@ func open_turn_menu():
 	%Turn_menu.focus()
 
 func _on_turn_menu_exit() -> void:
-	if map_generator is not Tutorial:
-		await make_save()
+	#if map_generator is not Tutorial:
+		#await make_save()
 	var main : Main_node = map_generator.get_parent()
-	main.current_map_id = -1
 	await main.load_background()
 	main.show_menu()
 	GlobalData.clear_data()
