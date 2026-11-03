@@ -133,7 +133,10 @@ func handle_movement():
 			var input_vector := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 			var move_dir := (transform.basis * Vector3(input_vector.x , 0, input_vector.y)).normalized()
 			
-			move_target += move_speed * move_dir
+			if !Input.is_action_pressed("fast_move"):
+				move_target += move_speed * move_dir
+			else:
+				move_target += move_speed * move_dir * 2
 			var flat_v := Vector2(move_target.x, move_target.z)
 			if !move_boundary.has_point(flat_v):
 				move_target.x = clampf(move_target.x, move_boundary.position.x, 
@@ -149,7 +152,10 @@ func handle_movement():
 				else:
 					move_target = Vector3(2.0 * camera_cell.x, 0.0, 2.0 * camera_cell.y)
 					map_generator.set_selector(camera_cell)
-	position = lerp(position, move_target, 0.2)
+	if !Input.is_action_pressed("fast_move"):
+		position = lerp(position, move_target, 0.2)
+	else:
+		position = lerp(position, move_target, 0.5)
 	if (position - move_target).length() < 0.1:
 		moving = false
 	else:
@@ -166,7 +172,11 @@ func handle_rotation():
 			return
 		var rotation_dir := Input.get_axis("rotate_left", "rotate_right")
 		var quat : Quaternion = Quaternion(Vector3.UP, rotation_dir * rotation_speed)
-		quaternion = quat * quaternion
+		if !Input.is_action_pressed("fast_move"):
+			quaternion = quat * quaternion
+		else:
+			quat = Quaternion(Vector3.UP, rotation_dir * rotation_speed * 2)
+			quaternion = quat * quaternion
 
 func handle_zoom(delta : float):
 	match zoom:

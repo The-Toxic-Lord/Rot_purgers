@@ -38,7 +38,7 @@ critical:
 	+ stat boost
 	+ skills description
 	- silly mode
-	- fast camera move button
+	+ fast camera move button
 
 - ramps
 - background image
