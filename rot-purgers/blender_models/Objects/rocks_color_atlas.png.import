@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3b1llxfc5vbe"
-path.s3tc="res://.godot/imported/Alastor1_Aven_texture.png-42eedcd6b05d21bde193b13f5be3518a.s3tc.ctex"
+uid="uid://s8y06ti7m4d"
+path.s3tc="res://.godot/imported/rocks_color_atlas.png-df557750d4930b001f6c11f40b9767f8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "6352222e814b8025a8eacfd0b2af9ca1"
+"md5": "2bb2aaf1d16d6065cfa740b7e506537f"
 }
 
 [deps]
 
-source_file="res://blender_models/Chars/Alastor1_Aven_texture.png"
-dest_files=["res://.godot/imported/Alastor1_Aven_texture.png-42eedcd6b05d21bde193b13f5be3518a.s3tc.ctex"]
+source_file="res://blender_models/Objects/rocks_color_atlas.png"
+dest_files=["res://.godot/imported/rocks_color_atlas.png-df557750d4930b001f6c11f40b9767f8.s3tc.ctex"]
 
 [params]
 

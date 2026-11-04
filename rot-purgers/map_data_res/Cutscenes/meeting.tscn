@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_2rx8h"]
 [ext_resource type="PackedScene" uid="uid://d2tq25iglcrkk" path="res://blender_models/Meeting.glb" id="1_c4no0"]
-[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor1.glb" id="2_8phr4"]
+[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor.glb" id="2_8phr4"]
 [ext_resource type="Resource" uid="uid://bunhk0h4hjmp1" path="res://dialogue/texts/Meeting.dialogue" id="2_kxnjb"]
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="4_8wsra"]
 [ext_resource type="PackedScene" uid="uid://bugdajyv2i82u" path="res://blender_models/Chars/Aven.glb" id="6_7tvuy"]
 [ext_resource type="Material" uid="uid://dxd3w0s4f1bqp" path="res://map_data_res/Cutscenes/fog_shader.tres" id="6_kxnjb"]
-[ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Ellio3.glb" id="7_kr5g3"]
-[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar5.glb" id="9_v0ny2"]
+[ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="7_kr5g3"]
+[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar.glb" id="9_v0ny2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8phr4"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -315,6 +315,9 @@ libraries/ = SubResource("AnimationLibrary_kxnjb")
 transform = Transform3D(0.0028360607, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.0028360607, 2.0333529, 0, -6.0373845)
 script = ExtResource("4_8wsra")
 start_anim = "Sit"
+
+[node name="Sword" parent="Zaar5/Armature/Skeleton3D/Sword_2" parent_id_path=PackedInt32Array(1025274022, 1302582196) index="0" unique_id=533431565]
+visible = false
 
 [node name="Ellio4" parent="." unique_id=120495327 instance=ExtResource("7_kr5g3")]
 transform = Transform3D(-0.99953514, 0, -0.030488383, 0, 1, 0, 0.030488383, 0, -0.99953514, -0.64115644, -2.3841858e-07, 3.803782)

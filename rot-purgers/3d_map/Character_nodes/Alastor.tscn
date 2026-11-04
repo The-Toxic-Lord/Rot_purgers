@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cpgsmi4r45bbx"]
 
 [ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_nnxq0"]
-[ext_resource type="Texture2D" uid="uid://c3b1llxfc5vbe" path="res://blender_models/Chars/Alastor1_Aven_texture.png" id="2_hd1s2"]
-[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor1.glb" id="3_lmefn"]
+[ext_resource type="Texture2D" uid="uid://bxryalgtocu3t" path="res://blender_models/Chars/Alastor_Aven_texture.png" id="2_hd1s2"]
+[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor.glb" id="3_lmefn"]
 
 [sub_resource type="Animation" id="Animation_2jqbt"]
 resource_name = "Damage"

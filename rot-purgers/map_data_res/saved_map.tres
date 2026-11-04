@@ -15,19 +15,7 @@
 [ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="8_kqyk2"]
 [ext_resource type="Resource" path="res://data/Player_chars_data/Zaar.tres" id="9_jcw8x"]
 [ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="9_kqyk2"]
-
-[sub_resource type="Resource" id="Resource_kqj3p"]
-script = ExtResource("1_bwvuj")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("3_3mwm5")
-move_speed = 2
-jump_height = 10
-attack_distance = 4
-node_UID = "uid://ckmkqe73jj58e"
-AI_type = 5
-start_height = 100
-metadata/_custom_type_script = "uid://by1rq468n504l"
+[ext_resource type="Resource" path="res://data/Player_chars_data/Aven.tres" id="12_ead5j"]
 
 [sub_resource type="Resource" id="Resource_rmrwd"]
 script = ExtResource("1_bwvuj")
@@ -47,6 +35,19 @@ counter = 0
 trigger_distance = 10
 node_UID = "uid://dunq80ub3v1jk"
 potential_skills = Array[ExtResource("2_j7tpd")]([ExtResource("4_o70wc")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_kqj3p"]
+script = ExtResource("1_bwvuj")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("3_3mwm5")
+move_speed = 2
+jump_height = 10
+attack_distance = 4
+node_UID = "uid://ckmkqe73jj58e"
+AI_type = 5
+start_height = 100
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_ys7s5"]
@@ -622,4 +623,4 @@ Vector2i(15, 12): SubResource("Resource_kqj3p")
 })
 magic_cost_adjustment = 1.8
 next_map_path = "res://map_data_res/tower.tres"
-player_chars = Array[ExtResource("1_bwvuj")]([ExtResource("8_kqyk2"), ExtResource("9_kqyk2"), ExtResource("9_jcw8x")])
+player_chars = Array[ExtResource("1_bwvuj")]([ExtResource("8_kqyk2"), ExtResource("9_kqyk2"), ExtResource("9_jcw8x"), ExtResource("12_ead5j")])

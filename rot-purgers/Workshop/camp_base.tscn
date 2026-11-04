@@ -1,7 +1,30 @@
 [gd_scene format=4 uid="uid://cn0yh7eofq5xa"]
 
 [ext_resource type="Texture2D" uid="uid://cl8qptvj4vxcr" path="res://3d_map/map_cell_materials/material_textures/Stone_15-128x128.png" id="1_1d8x7"]
+[ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_2k3gs"]
 [ext_resource type="PackedScene" uid="uid://db62brkwigfba" path="res://Workshop/campfire.tscn" id="2_tj6kr"]
+[ext_resource type="PackedScene" uid="uid://dr70ea2o3swse" path="res://blender_models/Objects/rocks.glb" id="4_vkyhc"]
+[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar.glb" id="5_1cf6d"]
+[ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="6_focet"]
+[ext_resource type="PackedScene" uid="uid://bi5tqlawmk7io" path="res://blender_models/Objects/rocks2.glb" id="6_lapgc"]
+[ext_resource type="PackedScene" uid="uid://3fqacgbxafv0" path="res://blender_models/Objects/rocks3.glb" id="7_12qli"]
+[ext_resource type="PackedScene" uid="uid://sy1m1fqofdxj" path="res://blender_models/Objects/rocks1.glb" id="8_bi5g5"]
+[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor.glb" id="9_xkem0"]
+[ext_resource type="PackedScene" uid="uid://bugdajyv2i82u" path="res://blender_models/Chars/Aven.glb" id="10_focet"]
+[ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="11_worwp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_focet"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+energy_multiplier = 0.0
+
+[sub_resource type="Sky" id="Sky_worwp"]
+sky_material = SubResource("ProceduralSkyMaterial_focet")
+
+[sub_resource type="Environment" id="Environment_5u0sb"]
+background_mode = 2
+sky = SubResource("Sky_worwp")
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwy4y"]
 albedo_texture = ExtResource("1_1d8x7")
@@ -59,7 +82,33 @@ size = Vector2(20, 20)
 albedo_texture = ExtResource("1_1d8x7")
 uv1_scale = Vector3(10, 10, 10)
 
+[sub_resource type="Animation" id="Animation_lbvty"]
+resource_name = "start"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["crevise"],
+"method": &"start_dialogue"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2k3gs"]
+_data = {
+&"start": SubResource("Animation_lbvty")
+}
+
 [node name="Camp_base" type="Node3D" unique_id=550347613]
+script = ExtResource("1_2k3gs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1517063395]
+environment = SubResource("Environment_5u0sb")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=229516050]
 mesh = SubResource("ArrayMesh_tj6kr")
@@ -76,10 +125,63 @@ light_energy = 10.0
 [node name="OmniLight3D" parent="Campfire/VFXBasicFire_01" index="2" unique_id=1340843048]
 transform = Transform3D(0.9999999, 0, -5.9604645e-08, 0, 1, 0, 2.9802322e-08, 0, 0.9999999, 0, 0.48184526, 0)
 light_energy = 10.0
+omni_range = 5.8
 vfx_light_energy = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1038794718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5997734, 1.5722702, 0)
+transform = Transform3D(0.78260916, -0.32757527, 0.52935565, 0, 0.85035217, 0.526214, -0.6225134, -0.4118199, 0.6654934, 1.737937, 2.9153528, 2.3395476)
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1037496433]
+libraries/ = SubResource("AnimationLibrary_2k3gs")
+
+[node name="rock_zaar" parent="." unique_id=1794994475 instance=ExtResource("4_vkyhc")]
+transform = Transform3D(-0.49396113, 0, 0.07747512, 0, 0.5, 0, -0.07747512, 0, -0.49396113, 0.214059, 0, -2.037313)
+
+[node name="Zaar5" parent="rock_zaar" unique_id=2032189682 instance=ExtResource("5_1cf6d")]
+transform = Transform3D(-1.9758447, 0, -0.30990052, 0, 2, 0, 0.30990052, 0, -1.9758447, -0.33012474, 0, -0.31367493)
+script = ExtResource("6_focet")
+start_anim = "Sit_rock"
+
+[node name="Sword" parent="rock_zaar/Zaar5/Armature/Skeleton3D/Sword_2" parent_id_path=PackedInt32Array(2032189682, 1466474277) index="0" unique_id=1199680409]
+visible = false
+
+[node name="rock_alastor" parent="." unique_id=1428445695 instance=ExtResource("6_lapgc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.4100022, 0.20292139, 0.089258194)
+
+[node name="Alastor1" parent="rock_alastor" unique_id=1803624731 instance=ExtResource("9_xkem0")]
+transform = Transform3D(0.0051032566, 0, 1.9999934, 0, 2, 0, -1.9999934, 0, 0.0051032566, 1.1260045, -0.40584278, -0.06251639)
+script = ExtResource("6_focet")
+start_anim = "Sit_rock"
+
+[node name="Staff" parent="rock_alastor/Alastor1/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1803624731, 1340817144) index="9" unique_id=877897413]
+visible = false
+
+[node name="rock_aven" parent="." unique_id=1549827777 instance=ExtResource("7_12qli")]
+transform = Transform3D(-0.30425242, 0, -0.39677513, 0, 0.5, 0, 0.39677513, 0, -0.30425242, -0.2721665, 0.2075854, 2.4648595)
+
+[node name="Aven" parent="rock_aven" unique_id=2101898650 instance=ExtResource("10_focet")]
+transform = Transform3D(1.1347711, 0, -1.6469045, 0, 2, 0, 1.6469045, 0, 1.1347711, -0.91089964, -0.31208134, 0.66231704)
+script = ExtResource("6_focet")
+start_anim = "Sit_rock"
+
+[node name="Staff" parent="rock_aven/Aven/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2101898650, 1646796818) index="10" unique_id=529933352]
+visible = false
+
+[node name="rock_elliot" parent="." unique_id=1156241977 instance=ExtResource("8_bi5g5")]
+transform = Transform3D(-0.49930704, 0, 0.026315045, 0, 0.5, 0, -0.026315045, 0, -0.49930704, 1.6088097, 0.07292658, -0.0015012026)
+
+[node name="Ellio3" parent="rock_elliot" unique_id=554260028 instance=ExtResource("11_worwp")]
+transform = Transform3D(-0.13771592, 0, 1.995253, 0, 2, 0, -1.995253, 0, -0.13771592, 0.5136924, -0.14585316, -0.2401485)
+script = ExtResource("6_focet")
+start_anim = "Sit_rock"
+
+[node name="Cube_001" parent="rock_elliot/Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 1754710543) index="3" unique_id=889848206]
+visible = false
 
 [editable path="Campfire"]
 [editable path="Campfire/VFXBasicFire_01"]
+[editable path="rock_zaar/Zaar5"]
+[editable path="rock_alastor/Alastor1"]
+[editable path="rock_aven/Aven"]
+[editable path="rock_elliot/Ellio3"]

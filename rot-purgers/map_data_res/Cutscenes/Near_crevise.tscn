@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_tdlk6"]
 [ext_resource type="Resource" uid="uid://bunhk0h4hjmp1" path="res://dialogue/texts/Meeting.dialogue" id="2_d4brp"]
-[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor1.glb" id="3_tdlk6"]
+[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor.glb" id="3_tdlk6"]
 [ext_resource type="PackedScene" uid="uid://bugdajyv2i82u" path="res://blender_models/Chars/Aven.glb" id="4_d4brp"]
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="4_ejvkc"]
-[ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Ellio3.glb" id="5_ejvkc"]
-[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar5.glb" id="6_2spcw"]
+[ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="5_ejvkc"]
+[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar.glb" id="6_2spcw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lykj6"]
 sky_top_color = Color(0.3841999, 0.44939798, 0.57756805, 1)

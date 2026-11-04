@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dht0dfxp5uj66"]
 
 [ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_rcbgn"]
-[ext_resource type="Texture2D" uid="uid://twwwgcrjlyrr" path="res://blender_models/Chars/Zaar5_Zaar_texture.png" id="2_qrojq"]
-[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar5.glb" id="3_2aj4y"]
+[ext_resource type="Texture2D" uid="uid://cevold0h4s6op" path="res://blender_models/Chars/Zaar_Zaar_texture.png" id="2_qrojq"]
+[ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar.glb" id="3_2aj4y"]
 [ext_resource type="PackedScene" uid="uid://eullpjn2bmw1" path="res://3d_map/Character_nodes/Zaar/sword_trail_Zaar.tscn" id="4_qrojq"]
 
 [sub_resource type="Animation" id="Animation_2jqbt"]
@@ -164,7 +164,7 @@ libraries/ = SubResource("AnimationLibrary_nnxq0")
 [node name="Zaar5" parent="." unique_id=2032189682 instance=ExtResource("3_2aj4y")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 704718265) index="11" unique_id=297218186]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 85984013) index="11" unique_id=297218186]
 transform = Transform3D(1, 0, -1.1046703e-06, -1.1046703e-06, 0, -1, 0, 1, 0, -1.0744636, 1.3326683, -0.053068116)
 bone_name = "Sword_2"
 bone_idx = 39
