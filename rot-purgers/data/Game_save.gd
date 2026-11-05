@@ -10,7 +10,6 @@ enum save_types { BATTLE, DIALOGUE }
 @export_storage var char_data : Array[Save_char_data] = []
 @export_storage var orders : Array[Order_data]
 @export_storage var ally_team : Array[Character_stats]
-@export_storage var current_map_id : int = 0
 @export_storage var modified_cells : Dictionary[Vector2i, float] = {}
 @export_storage var dead_chars : Array[String] = []
 @export_storage var char_mods : Dictionary[String, Char_mods] = {}
@@ -33,7 +32,6 @@ func make_save():
 	object_map = BattleHandler.map_gen.object_map
 	orders = BattleHandler.order_array
 	ally_team = GlobalData.ally_team
-	current_map_id = BattleHandler.map_gen.get_parent().current_map_id
 	
 	for cell in ObjectLink.map_gen.map_cells:
 		if ObjectLink.map_gen.map_cells[cell].position.y != ObjectLink.map_gen.terrain_map[cell].height * 0.1:

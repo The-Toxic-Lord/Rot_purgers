@@ -971,15 +971,15 @@ func check_unbound_skill_height() -> bool:
 	return false
 
 func load_save(game_save : Game_save):
+	await get_tree().process_frame
 	#var game_save : Game_save = Game_save.new()
 	#game_save = ResourceLoader.load("user://save.tres")
 	BattleHandler.map_gen = self
-	get_parent().current_map_id = game_save.current_map_id
 	terrain_map = game_save.terrain_map
 	object_map = game_save.object_map
 	map_data = game_save.map_data
 	
-	GlobalData.load_save(game_save)
+	await GlobalData.load_save(game_save)
 	
 	await spawn_cells()
 	await calculate_boundary()

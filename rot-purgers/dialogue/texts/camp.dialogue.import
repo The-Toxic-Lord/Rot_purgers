@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://34aejkmspc04"
+path="res://.godot/imported/camp.dialogue-5b5bed03dbc7ed62772e225213578cdd.tres"
+
+[deps]
+
+source_file="res://dialogue/texts/camp.dialogue"
+dest_files=["res://.godot/imported/camp.dialogue-5b5bed03dbc7ed62772e225213578cdd.tres"]
+
+[params]
+
+defaults=true

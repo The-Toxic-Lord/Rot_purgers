@@ -61,7 +61,7 @@ func load_save(save_name : String):
 func remove_background():
 	background.queue_free()
 
-func load_scene_path(path : String):
+func load_scene_path(path : String, extra_data = null):
 	await transition_start()
 	if background != null:
 		background.queue_free()
@@ -90,7 +90,7 @@ func load_scene_path(path : String):
 		if cutscene != null:
 			cutscene.queue_free()
 		cutscene = new_cutscene
-		cutscene.start_cutscene()
+		cutscene.start_cutscene(extra_data)
 		await cutscene.load_finished
 		cutscene.show()
 		await transition_end()

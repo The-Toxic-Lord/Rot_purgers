@@ -18,6 +18,9 @@ func play_music(music : AudioStream):
 	music_player.stream = music
 	music_player.play()
 
+func stop_music():
+	%Music.stop()
+
 func play_sfx(sfx : AudioStream, sfx_player_id := 0):
 	sfx_players[sfx_player_id].stream = sfx
 	sfx_players[sfx_player_id].play()

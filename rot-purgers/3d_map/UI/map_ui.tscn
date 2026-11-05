@@ -302,6 +302,7 @@ visible = false
 
 [node name="Skill_description" type="MarginContainer" parent="." unique_id=923331814]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

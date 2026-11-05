@@ -91,7 +91,11 @@ func _on_slider_drag_ended(value_changed: bool, source: Slider) -> void:
 				stat_value += readjust_points as float / 5
 			_:
 				stat_value += readjust_points
-		readjust_points = 0
+		if id != 6:
+			readjust_points = 0
+		else:
+			while readjust_points < 0:
+				readjust_points += 5
 		source.value = stat_value
 	
 	if id == 0:

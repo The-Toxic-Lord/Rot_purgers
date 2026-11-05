@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_j5myk")
-name = "Defend"
+name = "Protection"
 desctiption = "Secure the area."
 skill_type = 3
 max_height_difference = 40

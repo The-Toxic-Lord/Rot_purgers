@@ -86,3 +86,16 @@ Elliot: Then let's poke their eyes out and see if there is anything inside them.
 ~ tower
 => END
 
+~ pre_02
+Alastor : These look strange… 
+Alastor : AH! The Rot is affecting them. Its source must be here after all.
+Elliot : Let's not jump to conclusions, Chancellor. We have yet to witness it. We must go deeper.
+=> END
+
+~ pre_03
+Alastor : Do my eyes deceive me?
+Elliot : I am afraid not. Whatever that thing is, it's not of this world.
+Alastor : What should we do? Kill? Restrain? Study?
+Elliot : Purge it.
+=> END
+

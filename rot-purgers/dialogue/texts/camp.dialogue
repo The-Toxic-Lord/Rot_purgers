@@ -1,11 +1,16 @@
+~ choose
+Who should Zaar take lesson from?
+- Elliot [if !GlobalData.has_dialogue(["lesson_Elliot_1", "lesson_Elliot_2"]) /] => Elliot_choose
+- Alastor [if !GlobalData.has_dialogue(["lesson_Alastor_1", "lesson_Alastor_2"]) /] => Alastor_choose
+- Aven [if GlobalData.has_dialogue(["lesson_Alastor_1", "lesson_Alastor_2", "lesson_Elliot_1", "lesson_Elliot_2"]) /] => Aven_choose
+=> END
+
 ~ camp_choose
 if !GlobalData.read_dialogues.has("camp_1")
 	=> camp_1
-else
-	- Elliot [if !GlobalData.has_dialogue(["lesson_Elliot_1", "lesson_Elliot_2"]) /] => Elliot_choose
-	- Alastor [if !GlobalData.has_dialogue(["lesson_Alastor_1", "lesson_Alastor_2"]) /] => Alastor_choose
-	- Aven [if GlobalData.has_dialogue(["lesson_Alastor_1", "lesson_Alastor_2", "lesson_Elliot_1", "lesson_Elliot_2"]) /] => Aven_choose
-=> END
+if GlobalData.read_dialogues.size() == 3
+	=> the_sleeper
+=> choose
 
 ~ Elliot_choose
 do ObjectLink.cutscene_player._play("lesson_Elliot", true)
@@ -42,7 +47,7 @@ match GlobalData.read_dialogues.size()
 		do ObjectLink.cutscene.next_scene("uid://cysm1hdmsd00l")
 	when 7
 		do ObjectLink.cutscene.next_scene("uid://dhh4e5pxljxay")
-=> END
+=> END!
 
 ~ camp_1
 Elliot: I must say, that was some impressive skill you have shown there.
@@ -273,3 +278,48 @@ Zaar: Why so?
 Aven: We will need everyone's strength in battles to come. You losing your power would be devastating.
 $> GlobalData.read_dialogues.append("lesson_Aven_2")
 => load_next_scene
+
+~ repultion
+Aven: Very interesting.
+
+Alastor: I didn't expect that you would be affected too.
+
+Aven: It was no magic that affected us, but our instincts as living beings.
+
+Elliot: Why weren't we affected this time?
+
+Aven: Probably because of your previous encounter. It has built up your tolerance.
+
+Zaar: These things do not belong in our world. We must get rid of them!
+
+Aven: I concur. We will stop this.
+do ObjectLink.cutscene.next_scene()
+=> END
+
+~ the_sleeper
+Z: Argh! Why are we even here?! Can't we do something about it from the surface?  
+AV: Unfortunately not. All our previous attempts of putting up barriers and wards only bought us time. But this corruption inevitably finds its way around. And while the prospect of losing our world is frightening, the ones who will awake are even more so.
+
+Z: You mean the Saint?  
+AV: Not only her… AL, what would you say about this matter?  
+AL: She certainly would be disappointed with the current state of the world, but that's not what you were asking… You ask about the domain of the Sleeper. Can't say I know much about it.
+
+Zaar: Maybe High Chancellor Elliot can tell us more about it?
+
+Elliot: Hmm… It's a mountainous region with a sparse population. They are unwelcoming towards strangers, but not outwardly hostile. And they worship someone known as the Sleeper. For as long as I remember, the council prohibited mages from venturing there, and if they did for some reason, avoid using magic at all cost. I have been there a couple of times and really did not like the place. Always had a feeling of somebody watching my every move. Someone outside of the realm of normality.
+
+Zaar: Someone like a god?
+
+Elliot: No. At least I don't think so. Or hope not. I actually met a few gods in other worlds. Their presence felt different. But attention from the Sleeper felt almost malevolent. Like they were waiting for me to make a wrong move. For an opportunity to justify the ultimate punishment.
+
+Zaar: Shouldn't we allow the Rot to erase that place?
+
+Aven: Should her slumber be disturbed, the council and the world will be wiped out.
+=> choose
+
+~ return
+Alastor : So … What now?
+Elliot : We should go back and inform Archchancellor. The two of us are not enough to deal with whatever is going on here.
+Alastor : Right. With his help we surely will get to the bottom of this!
+do ObjectLink.cutscene.next_scene()
+=> END
