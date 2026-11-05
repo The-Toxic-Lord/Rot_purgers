@@ -115,6 +115,7 @@ func _apply_responses() -> void:
 
 	# Add new items
 	if responses.size() > 0:
+		var temp := DialogueResponse.new()
 		for response: Variant in responses:
 			if hide_failed_responses and not response.is_allowed \
 				# The response might be tagged with "show_if"

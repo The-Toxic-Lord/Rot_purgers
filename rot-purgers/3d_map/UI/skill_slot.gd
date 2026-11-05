@@ -22,7 +22,7 @@ func set_skill(_skill : Skill_base, magic_left : int):
 		%Skill_button.disabled = true
 		self.modulate = Color("505050")
 	
-	skill_button.focus_entered.connect(skill_focused.emit.bind(skill.desctiption))
+	skill_button.focus_entered.connect(skill_focused.emit.bind(skill))
 	#skill_button.mouse_entered.connect(skill_focused.emit.bind(skill.desctiption))
 	skill_button.mouse_entered.connect(skill_button.grab_focus)
 

@@ -2,10 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://cl8qptvj4vxcr" path="res://3d_map/map_cell_materials/material_textures/Stone_15-128x128.png" id="1_1d8x7"]
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_2k3gs"]
+[ext_resource type="Resource" uid="uid://34aejkmspc04" path="res://dialogue/texts/lessons.dialogue" id="2_5u0sb"]
 [ext_resource type="PackedScene" uid="uid://db62brkwigfba" path="res://Workshop/campfire.tscn" id="2_tj6kr"]
 [ext_resource type="PackedScene" uid="uid://dr70ea2o3swse" path="res://blender_models/Objects/rocks.glb" id="4_vkyhc"]
+[ext_resource type="AudioStream" uid="uid://iwd02p6sb7wa" path="res://sound/SFX/Torch Loop.ogg" id="4_worwp"]
 [ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar.glb" id="5_1cf6d"]
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="6_focet"]
+[ext_resource type="Script" uid="uid://dud0dpynr11sk" path="res://map_data_res/Cutscenes/cutscene_player.gd" id="6_fvbci"]
 [ext_resource type="PackedScene" uid="uid://bi5tqlawmk7io" path="res://blender_models/Objects/rocks2.glb" id="6_lapgc"]
 [ext_resource type="PackedScene" uid="uid://3fqacgbxafv0" path="res://blender_models/Objects/rocks3.glb" id="7_12qli"]
 [ext_resource type="PackedScene" uid="uid://sy1m1fqofdxj" path="res://blender_models/Objects/rocks1.glb" id="8_bi5g5"]
@@ -82,8 +85,223 @@ size = Vector2(20, 20)
 albedo_texture = ExtResource("1_1d8x7")
 uv1_scale = Vector3(10, 10, 10)
 
+[sub_resource type="QuadMesh" id="QuadMesh_5u0sb"]
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvbci"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_fvbci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Fade_in:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_aven:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.2721665, 0.2075854, 2.4648595)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_aven:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.2249713, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yga5h"]
+resource_name = "lesson_Alastor"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Fade_in:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_aven:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_elliot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8dvci"]
+resource_name = "lesson_Aven"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Fade_in:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_elliot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_alastor:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rock_aven:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.38, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.2721665, 0.2075854, 2.4648595), Vector3(-0.2721665, 0.2075854, 2.4648595), Vector3(-2.0764937, 0.20758516, 0.30867738)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rock_aven:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.38, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -2.2249713, 0), Vector3(0, -2.2249713, 0), Vector3(0, 2.552205, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5u0sb"]
+resource_name = "lesson_Elliot"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Fade_in:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_alastor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_aven:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rock_elliot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4333333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.6088097, 0.07292658, -0.0015012026), Vector3(1.6088097, 0.07292658, -0.0015012026), Vector3(-2.2986658, 0.07292658, -0.0015012026)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rock_elliot:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4333333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.0892327, 0), Vector3(0, 3.0892327, 0), Vector3(0, -0.05235988, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_lbvty"]
 resource_name = "start"
+length = 0.1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -91,21 +309,126 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": ["crevise"],
+"args": [ExtResource("4_worwp"), 2],
+"method": &"play_sfx"
+}, {
+"args": ["camp_choose"],
 "method": &"start_dialogue"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_zaar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.214059, 0, -2.037313)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_zaar:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.9860156, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rock_alastor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.4100022, 0.20292139, 0.089258194)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rock_alastor:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rock_aven:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.2721665, 0.2075854, 2.4648595)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rock_aven:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.2249713, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("rock_elliot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.6088097, 0.07292658, -0.0015012026)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("rock_elliot:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.0889382, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2k3gs"]
 _data = {
+&"RESET": SubResource("Animation_fvbci"),
+&"lesson_Alastor": SubResource("Animation_yga5h"),
+&"lesson_Aven": SubResource("Animation_8dvci"),
+&"lesson_Elliot": SubResource("Animation_5u0sb"),
 &"start": SubResource("Animation_lbvty")
 }
 
-[node name="Camp_base" type="Node3D" unique_id=550347613]
+[node name="Camp_base" type="Node3D" unique_id=550347613 node_paths=PackedStringArray("player")]
 script = ExtResource("1_2k3gs")
+text_data = ExtResource("2_5u0sb")
+player = NodePath("AnimationPlayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1517063395]
 environment = SubResource("Environment_5u0sb")
@@ -128,22 +451,31 @@ light_energy = 10.0
 omni_range = 5.8
 vfx_light_energy = 10.0
 
+[node name="AudioStreamPlayer3D" parent="Campfire/VFXBasicFire_01" index="4" unique_id=246486139]
+volume_db = 0.0
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1038794718]
 transform = Transform3D(0.78260916, -0.32757527, 0.52935565, 0, 0.85035217, 0.526214, -0.6225134, -0.4118199, 0.6654934, 1.737937, 2.9153528, 2.3395476)
 current = true
 
+[node name="Fade_in" type="MeshInstance3D" parent="Camera3D" unique_id=462933685]
+transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, -2.9802322e-08, 5.9604645e-08, 1, 0.03564155, -0.08756387, -0.1681788)
+mesh = SubResource("QuadMesh_5u0sb")
+surface_material_override/0 = SubResource("StandardMaterial3D_fvbci")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1037496433]
 libraries/ = SubResource("AnimationLibrary_2k3gs")
+script = ExtResource("6_fvbci")
 
 [node name="rock_zaar" parent="." unique_id=1794994475 instance=ExtResource("4_vkyhc")]
-transform = Transform3D(-0.49396113, 0, 0.07747512, 0, 0.5, 0, -0.07747512, 0, -0.49396113, 0.214059, 0, -2.037313)
+transform = Transform3D(-0.49396107, 0, 0.077475116, 0, 0.5, 0, -0.077475116, 0, -0.49396107, 0.214059, 0, -2.037313)
 
 [node name="Zaar5" parent="rock_zaar" unique_id=2032189682 instance=ExtResource("5_1cf6d")]
 transform = Transform3D(-1.9758447, 0, -0.30990052, 0, 2, 0, 0.30990052, 0, -1.9758447, -0.33012474, 0, -0.31367493)
 script = ExtResource("6_focet")
 start_anim = "Sit_rock"
 
-[node name="Sword" parent="rock_zaar/Zaar5/Armature/Skeleton3D/Sword_2" parent_id_path=PackedInt32Array(2032189682, 1466474277) index="0" unique_id=1199680409]
+[node name="Sword" parent="rock_zaar/Zaar5/Armature/Skeleton3D/Sword_2" parent_id_path=PackedInt32Array(2032189682, 1761178248) index="0" unique_id=1979494606]
 visible = false
 
 [node name="rock_alastor" parent="." unique_id=1428445695 instance=ExtResource("6_lapgc")]
@@ -154,29 +486,29 @@ transform = Transform3D(0.0051032566, 0, 1.9999934, 0, 2, 0, -1.9999934, 0, 0.00
 script = ExtResource("6_focet")
 start_anim = "Sit_rock"
 
-[node name="Staff" parent="rock_alastor/Alastor1/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1803624731, 1340817144) index="9" unique_id=877897413]
+[node name="Staff" parent="rock_alastor/Alastor1/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1803624731, 1328754638) index="9" unique_id=359440085]
 visible = false
 
 [node name="rock_aven" parent="." unique_id=1549827777 instance=ExtResource("7_12qli")]
-transform = Transform3D(-0.30425242, 0, -0.39677513, 0, 0.5, 0, 0.39677513, 0, -0.30425242, -0.2721665, 0.2075854, 2.4648595)
+transform = Transform3D(-0.30425236, 0, -0.3967751, 0, 0.5, 0, 0.3967751, 0, -0.30425236, -0.2721665, 0.2075854, 2.4648595)
 
 [node name="Aven" parent="rock_aven" unique_id=2101898650 instance=ExtResource("10_focet")]
 transform = Transform3D(1.1347711, 0, -1.6469045, 0, 2, 0, 1.6469045, 0, 1.1347711, -0.91089964, -0.31208134, 0.66231704)
 script = ExtResource("6_focet")
 start_anim = "Sit_rock"
 
-[node name="Staff" parent="rock_aven/Aven/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2101898650, 1646796818) index="10" unique_id=529933352]
+[node name="Staff" parent="rock_aven/Aven/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2101898650, 224315342) index="10" unique_id=2095654772]
 visible = false
 
 [node name="rock_elliot" parent="." unique_id=1156241977 instance=ExtResource("8_bi5g5")]
-transform = Transform3D(-0.49930704, 0, 0.026315045, 0, 0.5, 0, -0.026315045, 0, -0.49930704, 1.6088097, 0.07292658, -0.0015012026)
+transform = Transform3D(-0.49931476, 0, 0.026168024, 0, 0.5, 0, -0.026168024, 0, -0.49931476, 1.6088097, 0.07292658, -0.0015012026)
 
 [node name="Ellio3" parent="rock_elliot" unique_id=554260028 instance=ExtResource("11_worwp")]
 transform = Transform3D(-0.13771592, 0, 1.995253, 0, 2, 0, -1.995253, 0, -0.13771592, 0.5136924, -0.14585316, -0.2401485)
 script = ExtResource("6_focet")
 start_anim = "Sit_rock"
 
-[node name="Cube_001" parent="rock_elliot/Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 1754710543) index="3" unique_id=889848206]
+[node name="Cube_001" parent="rock_elliot/Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 347021490) index="3" unique_id=1233119995]
 visible = false
 
 [editable path="Campfire"]

@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_bf23l"]
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_2rqge"]
 [ext_resource type="Resource" uid="uid://dfefbrwmuckxc" path="res://Skills/Skill_res/heal.tres" id="3_2rqge"]
+[ext_resource type="Texture2D" uid="uid://c8y2tx181sk85" path="res://dialogue/char_sprites/Zaar.png" id="4_uriq2"]
 
 [resource]
 script = ExtResource("2_2rqge")
 name = "Zaar"
 char_class = "Chancellor"
+sprite = ExtResource("4_uriq2")
 max_health = 150
 max_magic = 70
 strength = 40

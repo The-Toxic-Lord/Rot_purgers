@@ -1,0 +1,275 @@
+~ camp_choose
+if !GlobalData.read_dialogues.has("camp_1")
+	=> camp_1
+else
+	- Elliot [if !GlobalData.has_dialogue(["lesson_Elliot_1", "lesson_Elliot_2"]) /] => Elliot_choose
+	- Alastor [if !GlobalData.has_dialogue(["lesson_Alastor_1", "lesson_Alastor_2"]) /] => Alastor_choose
+	- Aven [if GlobalData.has_dialogue(["lesson_Alastor_1", "lesson_Alastor_2", "lesson_Elliot_1", "lesson_Elliot_2"]) /] => Aven_choose
+=> END
+
+~ Elliot_choose
+do ObjectLink.cutscene_player._play("lesson_Elliot", true)
+if GlobalData.has_dialogue(["lesson_Elliot_1"])
+	=> lesson_Elliot_2
+else
+	=> lesson_Elliot_1
+
+~ Alastor_choose
+do ObjectLink.cutscene_player._play("lesson_Alastor", true)
+if GlobalData.has_dialogue(["lesson_Alastor_1"])
+	=> lesson_Alastor_2
+else
+	=> lesson_Alastor_1
+
+~ Aven_choose
+do ObjectLink.cutscene_player._play("lesson_Aven", true)
+if GlobalData.has_dialogue(["lesson_Aven_1"])
+	=> lesson_Aven_2
+else
+	=> lesson_Aven_1
+
+~ load_next_scene
+match GlobalData.read_dialogues.size()
+	when 2
+		do ObjectLink.cutscene.next_scene("uid://c014ngt8nk8fn")
+	when 3
+		do ObjectLink.cutscene.next_scene("uid://bil8sei2ynyy")
+	when 4
+		do ObjectLink.cutscene.next_scene("uid://dgrln7v3tyyp8")
+	when 5
+		do ObjectLink.cutscene.next_scene("uid://7m0xdfuygtn5")
+	when 6
+		do ObjectLink.cutscene.next_scene("uid://cysm1hdmsd00l")
+	when 7
+		do ObjectLink.cutscene.next_scene("uid://dhh4e5pxljxay")
+=> END
+
+~ camp_1
+Elliot: I must say, that was some impressive skill you have shown there.
+
+Zaar: You mean it?
+
+Elliot: Of course! You still have room for growth, of course. But in due time you will be a better fighter than me. Mark my words!
+
+Zaar: I… Heh. Thank you. I will not disappoint. But aren't you afraid?
+
+Elliot: Of what?
+
+Zaar: That I will take your seat from you?
+
+Elliot: Hahaha! Be my guest! I am long overdue for a retirement. So if you will be able to prove yourself worthy, I will gladly resign.
+
+Alastor: He may be a good fighter, High Chancellor, but as a mage he still has a long way to go.
+
+Elliot: Then why don't you give him a few lessons?
+
+Zaar: As if there is something he can teach me. I would rather you or the archchancellor share your knowledge.
+
+Elliot: Now, now, there is no need for skepticism. Alastor is a first-class mage. Better than me, probably. If I left, he would be the one to take my place, no doubt.
+
+Alastor: I am unworthy of such praise.
+
+Elliot: This attitude is the only thing that concerns me. As for me, I am always ready to give you a lesson if you ask! What do you think, Archchancellor?
+
+Aven: I will let you two handle it for now. I have to organize my mind first.
+$> GlobalData.read_dialogues.append("camp_1")
+=> camp_choose
+=> END
+
+~ lesson_Elliot_1
+Elliot: Let's start with a brief overview. Our fighting styles are different, and so is our magic. While I prefer single, but devastating strikes, you seem to prefer quick and accurate blows. As I understand, the tactic that you used in a fight with Maverik is not possible here.
+
+Zaar: How did you …? Yes. This place makes hopping unreliable. I can't tell exactly where I will end up.
+
+Elliot: Well, if distance is the problem, I can teach you my technique.
+
+Zaar: The one where you launch a wave of light?
+
+Elliot: It's actually a space distortion. I warp reality with my sword and send it. It doesn't have a cutting edge exactly, more crushing than slicing, but it's my take on this spell. The original was more suited for someone like you. The principle is the same.
+
+Zaar: I take it that I shouldn't use the whole sword, but only the edge.
+
+Elliot: Exactly!
+
+Zaar: You are quite bad at explaining. Why are you being so vague?
+
+Elliot: Well… I trusted you to figure out minor details by yourself. This much is expected from a chancellor.
+
+Zaar: I feel like you are omitting something, but I will not pry further for now.
+$> GlobalData.read_dialogues.append("lesson_Elliot_1")
+=> load_next_scene
+
+~ lesson_Elliot_2
+Elliot: There are a lot more enemies that I have anticipated. There might come a moment when I will not be able to cover for everyone. That's why I'm asking you to share this duty with me.
+
+if !GlobalData.read_dialogues.has("lesson_Alastor_2")
+	Zaar: Can't they take care of it themselves?
+
+	Elliot: It's hard to establish a solid protective barrier in this place. Physical objects do a better job. Our swords are perfect tools for this. You will have to keep a closer distance, though.
+
+	Zaar: And you think they will trust me to protect them?
+
+	Elliot: We all do. The only one who is in doubt is you.
+
+	Zaar: … . Alright. I will do my best.
+else:
+	Zaar: I am sure that both of them are quite capable of taking care of themselves.
+
+	Elliot: Oh? I sense a distinct lack of distrust in your words. What came over you?
+
+	Zaar: It's only fair to trust with trust.
+
+	Elliot: Heh. What of my request then?
+
+	Zaar: If such a need arises, you can rely on me.
+$> GlobalData.read_dialogues.append("lesson_Elliot_2")
+do GlobalData.mod_char("Zaar", load("uid://dkwukbqlnba8d"))
+Zaar gained [i]Protection[/i] skill.
+=> load_next_scene
+
+~ lesson_Alastor_1
+Alastor: I have noticed that you maintain the same level of physical abilities throughout our encounters.
+
+Zaar: I … do. I am actually confused about how you can have enough dexterity to dodge attacks, yet you still somehow managed to stumble and fall on a flat floor.
+
+Alastor: Hmm. I see. It is an easy spell, but an obscure and convoluted one.
+
+Zaar: I am listening.
+
+Alastor: Imagine your current state as normal. And you require more strength. You could boost yourself with magic. Or you could draw energy from one aspect and focus it on another.
+
+Zaar: What?
+
+Alastor: For example, you need more strength. Perhaps you want to use the High Chancellor's sword. But it can't come from nothing. So you can imagine that you traded speed for it. You already do so unconsciously, right? But try to do so while actively focusing on it, imagining the transfer of energy.
+
+Zaar: Hmm. I think I understand what you are talking about. It's a strange sensation.
+
+Alastor: Good. Remember it. And practice until it becomes effortless. You may need this power down the road.
+$> GlobalData.read_dialogues.append("lesson_Alastor_1")
+do GlobalData.mod_char("Zaar", null, "can_rearange_stats", true)
+=> load_next_scene
+
+~ lesson_Alastor_2
+Alastor: And this is how you can change the shape of the surrounding terrain. Use this knowledge wisely.
+
+Zaar: I wanted to ask you one more thing.
+
+Alastor: Go ahead.
+
+Zaar: Why did you agree to teach me?
+
+Alastor: You are young and foolish. But it would be a great loss to simply dismiss someone like you. Mages like you should be properly taught and cared for by their betters. Otherwise it can spell disaster.
+
+Zaar: I think I heard a sense of regret. What did one of your students follow the path of Mage of Pride?
+
+Alastor: Hmm. Can you remind me that story?
+
+Zaar: Don't you know it yourself? This story is told to every young mage so that they would fear the council.
+
+Alastor: Humor me, please.
+
+Zaar: Fine. It goes like this. There was once a very powerful and foolish mage. His master was a chancellor and taught him magic from a young age. But it was the only thing that he did. He didn't teach him when he should and shouldn't use his power.
+
+Zaar: And when there was nothing left for a young mage to learn, he challenged his master for his place. The battle was quick and brutal. Young mage easily overpowered his master and delivered him to the afterlife. He was baffled by his master's weakness and proclaimed that if this is what all a chancellor is amounts to, then he has no interest in joining the council.
+
+Zaar: The foolish mage decided instead to make his own kingdom. He reasoned that if he were more powerful than the council, then his way of doing things was the right way. He swiftly conquered large swaths of land as nobody could stop or even slow him down. He ever fought and killed another chancellor that tried to stop him.
+
+Zaar: But it all ended when a single old man stood in his path. The Archchancellor. The young mage pridefully declared that the age of council has come to an end and that he will rule this world as his own. The old man simply smiled back. And young mages head has fallen to his feet.
+
+Alastor: How overly dramatic. I see that the story has changed over the years. And not for the better.
+
+Zaar: Oh? What changed? Do tell!
+
+Alastor: In the first revision young mages master was described as too kind, which ultimately spoiled his student. And that is also why he didn't put up much of a fight in their duel.
+
+Zaar: Huh.
+
+Alastor: Also, the portrayal of the Archcancellor became much more grim. He actually deflected or countered all spells that young mage tried to use. And then he killed him as far as the story is concerned.
+
+Zaar: Hmm. It does change the message a bit. Perhaps I should be a bit more wary of him. Although it's hard for me to picture him simply killing the mage.
+
+Alastor: You have a keen eye. True, it's hard to imagine that scenario once you are acquainted with Archchancellor. In reality he severed my limbs, not my head.
+
+Zaar: … Your? You … are the Mage of Pride?
+
+Alastor: Was. Somewhat around five hundred years ago.
+
+Zaar: Why … were you spared?
+
+Alastor: As I said earlier. It would be a great loss to simply dismiss someone like that. If properly taught, this power can bring much good to the world.
+
+Zaar: So that's why you act like that.
+
+Alastor: Losing all limbs greatly humbles one. I hope that you will be wiser than me and won't need to learn such a lesson.
+
+Zaar: I … Yeah.
+$> GlobalData.read_dialogues.append("lesson_Alastor_2")
+=> load_next_scene
+
+~ lesson_Aven_1
+Aven: I see that I was right to take you on this journey. It is fair to say that now you are truly a member of the council.
+
+Zaar: It was hard to remain distant under such circumstances.
+
+Aven: So, is there something that you want to know? I did promise that I would teach you.
+
+Zaar: I was curious about the way you use magic. There are a lot of different ways to cast, what is essentially the same spell. For example, Alastor uses his staff as a focus. Elliot casts spells with specific sets of movements. I myself use a mix of different techniques from different schools. But you, I don't understand how you do it.
+
+Aven: You indeed have keen eyes. You remind me, in a good way, of a grand mage of old. He once said that perhaps every mage has his own unique way of using magic. Even if a diligent student will heed every lesson that his master teaches him, his magic will still be slightly different.
+
+Aven: He was the first one to discover the fundamental principles of magic, at least in this world. I was the third. And you just might be the fourth. At least of those to survive and be able to use magic.
+
+Zaar: You are not going to tell me?
+
+Aven: No. It's extremely dangerous knowledge. Most people who discovered it were never able to use magic again. And only those who came up with the idea themselves were able to maintain their power.
+
+Zaar: Didn't you doom me by telling me this?
+
+Aven: No. A slight push in the right direction does no harm.
+
+Zaar: By the way, you never mentioned neither the name of that grand mage nor who was the second one.
+
+Aven: I cannot tell you the name of the first one, but you already know the second. We have been fighting her servants since we entered this place.
+$> GlobalData.read_dialogues.append("lesson_Aven_1")
+=> load_next_scene
+
+~ lesson_Aven_2
+Zaar: I decided to continue my investigation into the matters of magic and made another observation.
+
+Aven: I am listening.
+
+Zaar: Not only is your way of casting spells different, but so is your equipment. Which is to say the lack of one.
+
+Zaar: Elliot's sword is made out of alloys that are unfamiliar to me, and Alastor's staff is capped with a gem that he apparently extracted from a volcano. While you seem to be carrying some random stick.
+
+Aven: I actually found a dead apple tree around three years ago and made it out of one of its branches.
+
+Zaar: But it doesn't hold any special magic properties.
+
+Aven: Not in my eyes, at least.
+
+Zaar: A decoy then, huh. Interesting.
+
+Aven: And what about your gear?
+
+Zaar: What about it? A tailored cape and an old sword. Found it in a warehouse when I was doing oddjobs. It was stuffed in a box with metal junk, which was my payment. I was extremely surprised to find it there in a perfect condition. No rust, and I never had to sharpen it. And now that I've said it out loud, it does seem strange. Do you know something?
+
+Aven: It's an ancient artifact, made to never break, never dull, never rust. If you look under the grip, you might find a name engraved on it.
+
+Zaar: Let's see. It says … Evelyn.
+
+Aven: Oh. Not quite what I expected.
+
+Zaar: So, is it the name of the sword? The one who forged it? Or the one it was made for?
+
+Aven: I believe the latter.
+
+Zaar: So who is this Evelyn?
+
+Aven: I met her two millennia ago. And it's the memory that I would rather not remember. Use the sword wisely. But we have drifted far enough from our initial topic. I can confirm that your observation will lead you down the path that you pursue. I only ask you to hold off your curiosity until we leave this place.
+
+Zaar: Why so?
+
+Aven: We will need everyone's strength in battles to come. You losing your power would be devastating.
+$> GlobalData.read_dialogues.append("lesson_Aven_2")
+=> load_next_scene

@@ -14,6 +14,7 @@ enum save_types { BATTLE, DIALOGUE }
 @export_storage var modified_cells : Dictionary[Vector2i, float] = {}
 @export_storage var dead_chars : Array[String] = []
 @export_storage var char_mods : Dictionary[String, Char_mods] = {}
+@export_storage var read_dialogues : Array[String] = []
 
 func make_save_char_data():
 	char_data.clear()
@@ -40,6 +41,7 @@ func make_save():
 	
 	dead_chars = GlobalData.dead_chars
 	char_mods = GlobalData.char_mods
+	read_dialogues = GlobalData.read_dialogues
 	
 	await make_save_char_data()
 	#await make_screen()

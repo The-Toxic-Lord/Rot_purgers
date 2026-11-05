@@ -32,15 +32,20 @@ func load_save(game_save : Game_save):
 func start_dialogue(cue : String):
 	DialogueBalloon.start(text_data, cue)
 
-func next_scene():
+func next_scene(map_path := next_map_path):
 	var main : Main_node = get_parent()
-	main.load_scene_path(next_map_path)
+	main.load_scene_path(map_path)
 
 func make_camera_current(id : int):
 	for i in cameras.size():
 		cameras[i].clear_current()
 	await get_tree().process_frame
 	cameras[id].make_current()
+
+func play_sfx(sfx : AudioStream, sfx_player_id := 0):
+	SoundHandler.play_sfx(sfx, sfx_player_id)
+
+
 
 
 

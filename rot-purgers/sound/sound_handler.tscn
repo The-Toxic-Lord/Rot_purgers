@@ -25,3 +25,15 @@ bus = &"Music"
 unique_name_in_owner = true
 max_polyphony = 5
 bus = &"Sfx"
+
+[node name="Sfx_m12" type="AudioStreamPlayer" parent="." unique_id=1949798716]
+unique_name_in_owner = true
+volume_db = -12.0
+max_polyphony = 5
+bus = &"Sfx"
+
+[node name="Sfx_m24" type="AudioStreamPlayer" parent="." unique_id=1047130327]
+unique_name_in_owner = true
+volume_db = -24.0
+max_polyphony = 5
+bus = &"Sfx"

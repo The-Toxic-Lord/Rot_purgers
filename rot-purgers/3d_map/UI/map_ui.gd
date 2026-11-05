@@ -143,6 +143,7 @@ func close_all():
 		%Spell_select_menu.hide()
 		%Spell_select_menu.clear_skills()
 		%Char_action_menu.focus(2)
+		%Skill_description.hide()
 		return
 	if %Rearange_menu.visible:
 		%Rearange_menu.hide()
@@ -198,6 +199,7 @@ func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
 	%Char_action_menu.hide()
 	%Height_box.show()
 	%Focused_char_stats.hide()
+	%Skill_description.hide()
 	map_generator.freze_selector = false
 	match skill.skill_type:
 		Skill_base.skill_types.ATTACK:
@@ -353,12 +355,10 @@ func _on_char_action_menu_boost() -> void:
 func _on_stats_boost_menu_confirm() -> void:
 	%Char_action_menu.focus()
 
-func update_skill_description(text : String):
-	%Skill_description.show()
-	%Description_lb.text = text
 
-func _on_spell_select_menu_hide_description() -> void:
-	%Skill_description.hide()
+
+
+
 
 
 

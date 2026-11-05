@@ -33,6 +33,8 @@ var neighbors_sides : Array[Vector2i] = [
 func clear_data():
 	ally_team.clear()
 	dead_chars.clear()
+	read_dialogues.clear()
+	char_mods.clear()
 
 @export var char_mods : Dictionary[String, Char_mods] = {}
 
@@ -65,9 +67,19 @@ func load_save(save : Game_save):
 	dead_chars = save.dead_chars
 	map_magic_cost_adjustment = save.map_data.magic_cost_adjustment
 	char_mods = save.char_mods
+	read_dialogues = save.read_dialogues
 
 @export var char_pictures : Dictionary[String, Texture2D]
+@export var read_dialogues : Array[String] = ["camp_1", "lesson_Elliot_1"]
 
+func has_dialogue(dial_arr : Array[String]) -> bool:
+	var count := 0
+	for dial in dial_arr:
+		if read_dialogues.has(dial):
+			count += 1
+	if count == dial_arr.size():
+		return true
+	return false
 
 
 
