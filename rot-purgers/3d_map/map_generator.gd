@@ -322,7 +322,12 @@ func spawn_objects():
 	for cell in object_map:
 		var zone : Node3D = load(object_map[cell].node_UID).instantiate()
 		add_child(zone)
-		zone.position = map_cells[cell].position
+		if map_cells.has(cell):
+			zone.position = map_cells[cell].position
+			if object_map[cell].height != 0:
+				zone.position.y = object_map[cell].height * 0.1
+		else:
+			zone.position = Vector3(cell.x * 2.0, object_map[cell].height * 0.1, cell.y * 2.0)
 		match object_map[cell].object_type: 
 			Map_object.types.SPAWN:
 				spawn_zones[cell] = zone

@@ -19,6 +19,7 @@ func send(target : Vector3):
 	var tween := create_tween()
 	tween.tween_property(plasma_orb, "global_position", target, 0.5)
 	tween.tween_callback(explode)
+	projectile_send.emit()
 
 func explode():
 	plasma_orb.hide()

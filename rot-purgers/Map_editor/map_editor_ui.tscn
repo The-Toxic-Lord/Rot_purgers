@@ -707,7 +707,6 @@ popup/item_3/id = 3
 
 [node name="Object_maker" type="MarginContainer" parent="." unique_id=817420164]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -767,6 +766,22 @@ horizontal_alignment = 1
 [node name="Object_type" type="OptionButton" parent="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=604899439]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Label16" type="Label" parent="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1038541019]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Height"
+horizontal_alignment = 1
+
+[node name="Object_height" type="LineEdit" parent="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=549769280]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
 
 [node name="Label15" type="Label" parent="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1711453113]
 unique_name_in_owner = true
@@ -850,6 +865,7 @@ root_subfolder = "data/Enemy_data/"
 [connection signal="item_selected" from="Enemy_maker/MarginContainer/HBoxContainer/VBoxContainer3/rot_stage" to="." method="_on_rot_stage_item_selected"]
 [connection signal="item_selected" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_dir_select" to="." method="_on_object_dir_select_item_selected"]
 [connection signal="item_selected" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_type" to="." method="_on_object_type_item_selected"]
+[connection signal="text_changed" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_height" to="." method="_on_object_height_text_changed"]
 [connection signal="pressed" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Select_data_bt" to="." method="_on_select_data_bt_pressed"]
 [connection signal="file_selected" from="FileDialog2" to="." method="_on_file_dialog_2_file_selected"]
 [connection signal="files_selected" from="FileDialog2" to="." method="_on_file_dialog_2_files_selected"]

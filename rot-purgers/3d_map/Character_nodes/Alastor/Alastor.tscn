@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cpgsmi4r45bbx"]
 
-[ext_resource type="Script" uid="uid://de4ffuqj8v6xm" path="res://3d_map/Character_nodes/character_node.gd" id="1_nnxq0"]
+[ext_resource type="Script" uid="uid://cv56jqwo230gp" path="res://3d_map/Character_nodes/Alastor/alastor.gd" id="1_hd1s2"]
 [ext_resource type="Texture2D" uid="uid://bxryalgtocu3t" path="res://blender_models/Chars/Alastor_Aven_texture.png" id="2_hd1s2"]
 [ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor.glb" id="3_lmefn"]
 
@@ -124,7 +124,7 @@ _data = {
 }
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
-script = ExtResource("1_nnxq0")
+script = ExtResource("1_hd1s2")
 texture = ExtResource("2_hd1s2")
 char_animation = NodePath("Alastor1/AnimationPlayer")
 char_model_node = NodePath("Alastor1")
@@ -161,5 +161,41 @@ libraries/ = SubResource("AnimationLibrary_nnxq0")
 
 [node name="Alastor1" parent="." unique_id=1803624731 instance=ExtResource("3_lmefn")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Alastor1/Armature" parent_id_path=PackedInt32Array(1803624731, 1885177146) index="0" unique_id=1328754638]
+bones/0/position = Vector3(0.75735354, 0.19837224, -1.4559083)
+bones/0/rotation = Quaternion(-0.5057127, 0.49422136, -0.49422136, 0.5057126)
+bones/1/position = Vector3(-0.9792404, 0.9542016, -0.70415133)
+bones/1/rotation = Quaternion(-0.46787906, -0.043847423, 0.703982, 0.53251857)
+bones/2/position = Vector3(0, 0, -1.3462672)
+bones/3/rotation = Quaternion(7.2561456e-08, -1.4041031e-08, 0.0026454756, 0.9999965)
+bones/5/rotation = Quaternion(-0.04085292, -0.00027601665, 0.0071258955, 0.9991397)
+bones/6/rotation = Quaternion(-0.014066676, 0.014498294, -0.98847854, 0.15000749)
+bones/7/rotation = Quaternion(-0.00037187475, 0.001767965, -0.08014329, 0.9967817)
+bones/8/rotation = Quaternion(-0.0022871057, -5.4439675e-05, -0.024341919, 0.9997011)
+bones/11/rotation = Quaternion(0.23636127, -0.053411823, 0.9423419, 0.23080787)
+bones/12/rotation = Quaternion(0.5716587, 0.1905388, -0.30707115, 0.7366197)
+bones/13/rotation = Quaternion(-0.04169201, 0.30695593, 0.102354, 0.94528496)
+bones/15/position = Vector3(-0.09061939, 0.42330477, -0.9250468)
+bones/17/rotation = Quaternion(0.99873817, 0.033528883, 0.0037526623, 0.037199445)
+bones/17/scale = Vector3(1.0000345, 0.99999905, 1.0000421)
+bones/18/rotation = Quaternion(0.09569837, 0.006907609, -0.009166143, 0.9953443)
+bones/18/scale = Vector3(1.0000011, 1.0000007, 0.99999905)
+bones/19/rotation = Quaternion(0.99873817, -0.033528898, -0.0037526486, 0.037199438)
+bones/19/scale = Vector3(1.0000345, 0.99999905, 1.0000421)
+bones/20/rotation = Quaternion(0.09569835, -0.0069076093, 0.009166145, 0.9953443)
+bones/20/scale = Vector3(1.0000011, 1.0000007, 0.9999991)
+bones/21/position = Vector3(0.37081864, -1.901628, -1.4728117)
+bones/21/rotation = Quaternion(-0.70702475, 0.010771897, -0.010771897, 0.7070247)
+bones/22/position = Vector3(3.0051874e-06, 3.4609275e-06, 9.5832036e-08)
+bones/22/rotation = Quaternion(0.9469912, 0.0072120246, 0.007586829, -0.32108903)
+bones/24/position = Vector3(-0.37081864, -1.901628, -1.4728117)
+bones/24/rotation = Quaternion(-0.70702475, -0.010771897, 0.010771897, 0.7070247)
+bones/25/position = Vector3(-3.0945657e-06, 3.4611467e-06, 9.827002e-08)
+bones/25/rotation = Quaternion(0.9469912, -0.0072120246, -0.007586829, -0.32108903)
+bones/27/position = Vector3(0.26896888, -0.73601276, 0.67840004)
+bones/28/position = Vector3(-0.26896888, -0.73601276, 0.67840004)
+bones/29/position = Vector3(-0.9705863, -0.03298056, -0.44242144)
+bones/29/rotation = Quaternion(0.059642076, 0.6461939, 0.061101854, 0.7583817)
 
 [editable path="Alastor1"]

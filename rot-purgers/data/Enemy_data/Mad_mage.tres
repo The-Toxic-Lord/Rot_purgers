@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://cpmdm814r7sob"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_yuc1w"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_mg3ww"]
+[ext_resource type="Texture2D" uid="uid://cq5yw6r4nrunv" path="res://dialogue/char_sprites/Neiro.png" id="3_yuc1w"]
+
+[resource]
+script = ExtResource("2_mg3ww")
+name = "Neiro"
+char_class = "Mage"
+age = 4358
+sprite = ExtResource("3_yuc1w")
+node_UID = "uid://dyctrkv6gr2dx"
+AI_type = 2
+spawn_node_UUID = "uid://bkwt1lvhkpr71"
+metadata/_custom_type_script = "uid://by1rq468n504l"

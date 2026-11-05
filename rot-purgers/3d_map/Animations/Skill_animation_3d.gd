@@ -1,6 +1,8 @@
 class_name Skill_animation_3d extends Node3D
 
 signal animation_finished
+@warning_ignore("unused_signal")
+signal projectile_send
 
 func _ready() -> void:
 	animation_finished.connect(kill)

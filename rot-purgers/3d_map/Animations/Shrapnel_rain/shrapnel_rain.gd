@@ -38,6 +38,7 @@ func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
 			var proj_targ : Vector3 = targ_pos + Vector3(randf_range(-1, 1), 0.0 , randf_range(-1, 1))
 			proj.look_at(proj_targ, Vector3.UP, true)
 			tween.tween_property(proj, "global_position", proj_targ, animation_time)
+	projectile_send.emit()
 	await get_tree().create_timer(animation_time).timeout
 	#SoundHandler.stop_sfx()
 	animation_finished.emit()

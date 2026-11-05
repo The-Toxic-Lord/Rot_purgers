@@ -12,3 +12,5 @@ class_name Map_object
 enum types { STATIC, SPAWN, EXIT }
 @export var object_type : types = types.STATIC
 @export var extra_data : String
+
+@export var height : int = 0

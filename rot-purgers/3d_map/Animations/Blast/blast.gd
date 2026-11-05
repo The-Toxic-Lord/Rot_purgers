@@ -14,5 +14,6 @@ func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
 		hits[i].global_position = pos
 		hits[i].play()
 	SoundHandler.play_sfx(sfx)
+	projectile_send.emit()
 	await get_tree().create_timer(0.5).timeout
 	animation_finished.emit()

@@ -69,6 +69,7 @@ func _ready() -> void:
 	for type in Map_object.types.keys():
 		%Object_type.add_item(type)
 
+
 #region TERRAIN
 
 @warning_ignore("unused_parameter")
@@ -234,6 +235,8 @@ var map_objects : Array[Map_object] = []
 func load_object_data():
 	var dir_acc := DirAccess.open(map_objects_file_path)
 	var files := dir_acc.get_files()
+	var pop : PopupMenu = %Object_selector.get_popup()
+	pop.add_theme_constant_override("icon_max_width", 32)
 	for i in files.size():
 		var obj_res : Map_object = ResourceLoader.load(map_objects_file_path + files[i])
 		map_objects.append(obj_res)
@@ -286,6 +289,7 @@ func _on_object_dir_select_item_selected(index: int) -> void:
 func load_seleced_object():
 	%Object_dir_select.selected = map_editor.selected_object.direction
 	%Object_type.selected = map_editor.selected_object.object_type
+	%Object_height.text = str(map_editor.selected_object.height)
 	_on_object_type_item_selected(%Object_type.selected)
 
 func _on_file_dialog_file_selected(path: String) -> void:
@@ -402,7 +406,9 @@ func _on_confirm_stats_2_pressed() -> void:
 func _on_file_dialog_3_file_selected(path: String) -> void:
 	selected_enemy_data.spawn_node_UUID = path
 
-
+func _on_object_height_text_changed(new_text: String) -> void:
+	if new_text.is_valid_int():
+		map_editor.selected_object.height = new_text.to_int()
 
 
 

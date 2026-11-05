@@ -5,8 +5,10 @@ extends Skill_animation_3d
 
 @warning_ignore("unused_parameter")
 func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
+	await get_tree().process_frame
 	global_position = target
 	anim.play("Main")
 	SoundHandler.play_sfx(sfx)
+	projectile_send.emit()
 	await anim.animation_finished
 	animation_finished.emit()

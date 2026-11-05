@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://3d_map/Character_nodes/char_materials/dissolve_base_material.gdshader" id="4_5rggv"]
 [ext_resource type="PackedScene" uid="uid://dk1kcb3icintd" path="res://3d_map/Character_nodes/Elliot/Elliot.tscn" id="5_fny85"]
 [ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="5_g6qvc"]
-[ext_resource type="PackedScene" uid="uid://cpgsmi4r45bbx" path="res://3d_map/Character_nodes/Alastor.tscn" id="6_quv0c"]
+[ext_resource type="PackedScene" uid="uid://cpgsmi4r45bbx" path="res://3d_map/Character_nodes/Alastor/Alastor.tscn" id="6_quv0c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ahdu0"]
 sky_top_color = Color(0.3841999, 0.44939798, 0.57756805, 1)

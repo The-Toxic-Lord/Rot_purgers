@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Map_object" format=3 uid="uid://dp4idd0yw7nvi"]
+
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="1_7tx53"]
+[ext_resource type="Texture2D" uid="uid://dgk14i8f62fkw" path="res://import/D_H.png" id="2_7tx53"]
+
+[resource]
+script = ExtResource("1_7tx53")
+name = "Dragon heart"
+sprite = ExtResource("2_7tx53")
+node_UID = "uid://c7amneiqfibus"
+metadata/_custom_type_script = "uid://m48jo33kjka0"

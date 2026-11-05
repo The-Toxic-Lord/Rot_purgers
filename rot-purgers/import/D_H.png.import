@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://17edt1wbsdj3"
-path.s3tc="res://.godot/imported/Mad_mage_mad_mage_texture.png-252398c143d92ece06b094f5bf1462c1.s3tc.ctex"
+uid="uid://dgk14i8f62fkw"
+path="res://.godot/imported/D_H.png-4bbd3c0aebe5f63ccd0b3e9326b07c0c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "aaca4b99d578417f834c9373979e0cbf"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://blender_models/Mad_mage_mad_mage_texture.png"
-dest_files=["res://.godot/imported/Mad_mage_mad_mage_texture.png-252398c143d92ece06b094f5bf1462c1.s3tc.ctex"]
+source_file="res://import/D_H.png"
+dest_files=["res://.godot/imported/D_H.png-4bbd3c0aebe5f63ccd0b3e9326b07c0c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -41,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

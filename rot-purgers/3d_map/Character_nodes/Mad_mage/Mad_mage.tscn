@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://dyctrkv6gr2dx"]
+
+[ext_resource type="Script" uid="uid://cshgqr5hslq2x" path="res://3d_map/Character_nodes/Mad_mage/mad_mage.gd" id="1_27adb"]
+[ext_resource type="Texture2D" uid="uid://bi1l7g1j0cf0t" path="res://blender_models/Chars/Mad_mage_mad_mage_texture.png" id="2_hso8a"]
+[ext_resource type="PackedScene" uid="uid://dcwsgdo2lf8e1" path="res://blender_models/Chars/Mad_mage.glb" id="3_0la17"]
+
+[sub_resource type="Animation" id="Animation_pnqru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pgqjc"]
+resource_name = "move_jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_boujc"]
+resource_name = "move_step"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqru"]
+_data = {
+&"RESET": SubResource("Animation_pnqru"),
+&"move_jump": SubResource("Animation_pgqjc"),
+&"move_step": SubResource("Animation_boujc")
+}
+
+[node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
+script = ExtResource("1_27adb")
+texture = ExtResource("2_hso8a")
+char_animation = NodePath("Mad_mage/AnimationPlayer")
+char_model_node = NodePath("Mad_mage")
+skeleton = NodePath("Mad_mage/Armature/Skeleton3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
+libraries/ = SubResource("AnimationLibrary_pnqru")
+
+[node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0815837, 0)
+visible = false
+pixel_size = 0.0025
+billboard = 1
+fixed_size = true
+alpha_cut = 1
+modulate = Color(0.90814126, 0, 0.15889099, 1)
+text = "9999"
+font_size = 24
+outline_size = 8
+
+[node name="Executed_order" type="Label3D" parent="." unique_id=1189262446]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4014068, 0)
+visible = false
+pixel_size = 0.0025
+billboard = 1
+fixed_size = true
+alpha_cut = 1
+modulate = Color(0.5957073, 0.4703809, 1.92523e-07, 1)
+text = "E"
+font_size = 24
+outline_size = 8
+
+[node name="Mad_mage" parent="." unique_id=607442515 instance=ExtResource("3_0la17")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Mad_mage/Armature" parent_id_path=PackedInt32Array(607442515, 1746327682) index="0" unique_id=50842667]
+bones/0/position = Vector3(0.79738224, 0.7467369, -0.74802613)
+bones/0/rotation = Quaternion(-0.5194856, 0.4388819, -0.5438441, 0.49168196)
+bones/1/position = Vector3(-1.0346949, 2.9754765, -1.5066954)
+bones/1/rotation = Quaternion(-0.5057127, -0.49422136, 0.49422136, 0.5057126)
+bones/2/position = Vector3(0, 0.13884057, -1.3462672)
+bones/3/rotation = Quaternion(0.00053800974, -0.2033422, 0.0025901906, 0.9791042)
+bones/5/rotation = Quaternion(-0.038556606, 0.2083283, 0.015057909, 0.9771827)
+bones/6/rotation = Quaternion(0.057923004, 0.18031818, -0.97328985, 0.12975839)
+bones/7/rotation = Quaternion(0.561258, -0.15206873, 0.17248894, 0.79505485)
+bones/8/rotation = Quaternion(-0.1277175, 0.16634141, -0.06907812, 0.97531897)
+bones/12/rotation = Quaternion(-0.002089426, 0.13733424, 0.3853828, 0.91247743)
+bones/13/rotation = Quaternion(0.3330223, 0.8897377, 0.12339603, 0.2867689)
+bones/14/rotation = Quaternion(0.0070947073, -0.37826774, 0.023397112, 0.9253734)
+bones/18/position = Vector3(0.22065322, -0.022968043, -0.042642333)
+bones/18/rotation = Quaternion(0.99909735, 0.03662725, 0.010546006, -0.018755779)
+bones/18/scale = Vector3(1.0000342, 0.9999984, 1.0000426)
+bones/19/rotation = Quaternion(0.0037715193, 0.0069396887, -0.0003612625, 0.9999688)
+bones/19/scale = Vector3(1.000001, 0.99999726, 0.99999934)
+bones/20/position = Vector3(-0.21901271, -0.0009483397, -0.011088435)
+bones/20/rotation = Quaternion(0.99893504, -0.03653709, -0.010321658, -0.026216783)
+bones/20/scale = Vector3(1.0000343, 0.99999696, 1.0000433)
+bones/21/rotation = Quaternion(0.003776456, -0.0069396887, 0.00036172764, 0.99996877)
+bones/21/scale = Vector3(1.0000007, 0.9999979, 1.0000007)
+bones/22/position = Vector3(0.37081864, -1.901628, -1.4728117)
+bones/22/rotation = Quaternion(-0.62843394, 0.011848884, -0.009574522, 0.7777139)
+bones/23/position = Vector3(-0.013546139, 0.021839812, 0.12749954)
+bones/23/rotation = Quaternion(0.9469912, 0.0072120246, 0.007586829, -0.32108903)
+bones/25/rotation = Quaternion(0.99882287, 1.1639633e-10, 0.048506252, -2.101946e-12)
+bones/26/position = Vector3(-0.37081864, -1.901628, -1.4728117)
+bones/26/rotation = Quaternion(-0.62843394, -0.011848884, 0.009574522, 0.7777139)
+bones/27/position = Vector3(0.016006654, 0.023533564, 0.15100543)
+bones/27/rotation = Quaternion(0.9469912, -0.0072120256, -0.00758683, -0.32108903)
+bones/29/rotation = Quaternion(0.99882287, -2.3279269e-10, -0.048506252, -4.203899e-12)
+
+[editable path="Mad_mage"]

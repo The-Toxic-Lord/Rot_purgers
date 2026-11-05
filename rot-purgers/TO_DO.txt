@@ -1,6 +1,5 @@
 
 MONITOR:
-+ healing
 + defence
 + undo
 + добавить показатель высоты и ассоциированные вещи
@@ -9,19 +8,15 @@ MONITOR:
 + terrain mod skills
 + movement when using skill
 + skill move
-+ accuracy box
 + save menu
 + fast camera move button
 + if order failed on enemy turn try salvage
 + change accuracy damage boost
-+ char mod (+ save)
-+ рисовать клетки под защитой
++ char mod (+ save
 + stat boost
 + move selector and camera with controller
-+ level transition
-+ dialogue system
 
-critical:
+to do:
 	+- parry\defend
 	- music
 	+- game over
@@ -40,6 +35,8 @@ critical:
 	+- enemy AI
 	- tutorial
 	- fix freeze on projectile load
+	- remove overwrite load button in main menu
+	- fix char turn on move after attack
 
 -- ramps
 - background image

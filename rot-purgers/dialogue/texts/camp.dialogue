@@ -10,6 +10,8 @@ if !GlobalData.read_dialogues.has("camp_1")
 	=> camp_1
 if GlobalData.read_dialogues.size() == 3
 	=> the_sleeper
+if GlobalData.read_dialogues.size() == 7
+	=> final_push
 => choose
 
 ~ Elliot_choose
@@ -323,3 +325,15 @@ Elliot : We should go back and inform Archchancellor. The two of us are not enou
 Alastor : Right. With his help we surely will get to the bottom of this!
 do ObjectLink.cutscene.next_scene()
 => END
+
+~ final_push
+Aven: I think we are almost there.
+
+Alastor: Considering how strongly the Rot affects creatures here, I agree.
+
+Elliot: Steel yourselves.
+
+Zaar: Don't fall behind.
+do ObjectLink.cutscene.next_scene()
+=> END
+

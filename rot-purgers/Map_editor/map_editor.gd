@@ -259,8 +259,8 @@ func change_terrain(cell : Vector2i):
 			cell_to_depth_line[cell].text = str(selected_depth)
 
 func change_object(cell : Vector2i):
-	if !terrain_map_data.has(cell):
-		return
+	#if !terrain_map_data.has(cell):
+		#return
 	if !cell_to_object_node.has(cell):
 		if selected_object == null:
 			return

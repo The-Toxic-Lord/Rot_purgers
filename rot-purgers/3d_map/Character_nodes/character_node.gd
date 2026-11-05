@@ -47,6 +47,7 @@ signal direction_changed
 signal move_finished
 signal attack_finished
 signal animation_ended
+signal skill_animated
 
 var rot_stage : Dictionary[int, float] = {
 	0 : 0,
@@ -401,8 +402,9 @@ func melee_attack():
 		await char_animation.animation_finished
 		if attack_trail != null:
 			attack_trail.turn_off()
-		if char_animation.has_animation("Attack_1_back"):
-			char_animation.play("Attack_1_back")
+		char_animation.play("Attack_1_back")
+		await char_animation.animation_finished
+		char_animation.play("Idle")
 
 func deflect():
 	if char_animation.has_animation("Attack_1"):
@@ -439,19 +441,32 @@ cells : Array[Vector2i] = []):
 	
 	if skill_data.animation_node_UID != "":
 		var skill_node : Skill_animation_3d = load(skill_data.animation_node_UID).instantiate()
+		skill_node.hide()
 		add_child(skill_node)
 		var pos : Vector3
 		if ObjectLink.map_gen.map_cells.has(target_cell):
 			pos = ObjectLink.map_gen.map_cells[target_cell].position
 		else:
 			pos = Vector3(target_cell.x * 2.0, 0, target_cell.y * 2.0)
+		await skill_windup()
+		skill_node.show()
 		skill_node.start(pos, cells)
+		await skill_node.projectile_send
+		animate_skill(skill_node)
 		await skill_node.animation_finished
 	
 	if skill_is_jump:
 		animate_skill_jump(target_cell)
 	else:
 		attack_finished.emit()
+
+func skill_windup():
+	pass
+
+@warning_ignore("unused_parameter")
+func animate_skill(skill_node : Skill_animation_3d):
+	await get_tree().process_frame
+	skill_animated.emit()
 
 func animate_skill_jump(target_cell):
 	if char_animation.has_animation("Spell_jump_up"):

@@ -5,12 +5,14 @@
 [ext_resource type="Resource" uid="uid://dhhs70r647yrx" path="res://Skills/Skill_res/Slash.tres" id="3_i27qx"]
 [ext_resource type="Resource" uid="uid://d0lnxgg3anglw" path="res://Skills/Skill_res/Blast.tres" id="3_l4prs"]
 [ext_resource type="Resource" uid="uid://c5ughog08rjix" path="res://Skills/Skill_res/gravity_bend.tres" id="5_qo432"]
+[ext_resource type="Texture2D" uid="uid://nc443psun6ns" path="res://dialogue/char_sprites/Aven.png" id="6_uuhbo"]
 
 [resource]
 script = ExtResource("1_qo432")
 name = "Aven"
 char_class = "Archchancellor"
 age = 4576
+sprite = ExtResource("6_uuhbo")
 max_health = 80
 max_magic = 200
 strength = 20
