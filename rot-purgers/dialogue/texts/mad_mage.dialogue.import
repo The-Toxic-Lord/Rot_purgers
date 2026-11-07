@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://be4c3d3vnci72"
+path="res://.godot/imported/mad_mage.dialogue-a6bc0f55efaa30798eda39713862e303.tres"
+
+[deps]
+
+source_file="res://dialogue/texts/mad_mage.dialogue"
+dest_files=["res://.godot/imported/mad_mage.dialogue-a6bc0f55efaa30798eda39713862e303.tres"]
+
+[params]
+
+defaults=true

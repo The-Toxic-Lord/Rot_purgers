@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="5_2egc0"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_8a7dn"]
 [ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="7_sfqiu"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="8_ebkxi"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="8_ebkxi"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="9_pimnx"]
 [ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="10_si3qr"]
 [ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="11_7v3ya"]

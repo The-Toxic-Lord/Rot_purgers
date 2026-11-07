@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dsbe0eog177ex"
+path="res://.godot/imported/custcenes_small.dialogue-f9b93ef6f7adfd0bd1842fc4d1716988.tres"
+
+[deps]
+
+source_file="res://dialogue/texts/custcenes_small.dialogue"
+dest_files=["res://.godot/imported/custcenes_small.dialogue-f9b93ef6f7adfd0bd1842fc4d1716988.tres"]
+
+[params]
+
+defaults=true

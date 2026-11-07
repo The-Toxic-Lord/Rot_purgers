@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c131pecdedawl" path="res://import/check_button.png" id="5_u7tnb"]
 [ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="5_xw8wd"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_7rlnu"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="6_xw8wd"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="6_xw8wd"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="7_bkgsn"]
 [ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="8_3usr4"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="9_3usr4"]

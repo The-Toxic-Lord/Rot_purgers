@@ -181,12 +181,16 @@ func end_battle(object_data : Map_object = null):
 	GlobalData.ally_team.clear()
 	if object_data != null:
 		if object_data.extra_data != "":
-			ObjectLink.main.load_scene_path(object_data.extra_data)
+			ObjectLink.main.load_scene_path(object_data.extra_data, object_data.dialogue_cue)
 			return
-	ObjectLink.main.load_scene_path(map_gen.map_data.next_map_path)
+	ObjectLink.main.load_scene_path(map_gen.map_data.next_map_path, map_gen.map_data.cutscene_cue)
 
 func game_over():
-	main_node.game_over()
+	if map_gen.map_data.game_over_scene == "":
+		main_node.game_over()
+	else:
+		ObjectLink.main.load_scene_path(map_gen.map_data.game_over_scene,\
+		 map_gen.map_data.game_over_scene_cue)
 
 func add_protect(attacker : Character_node, skill : Skill_base):
 	var order := Order_protect.new()

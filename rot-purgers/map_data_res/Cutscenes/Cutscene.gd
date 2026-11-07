@@ -7,7 +7,6 @@ class_name Cutscene
 @export var chars : Dictionary[String, Cutscene_char] = {}
 @export var next_map_path : String
 @export var cameras : Array[Camera3D]
-@export var extra_data : String
 @export var music : AudioStream
 
 signal load_finished
@@ -27,7 +26,7 @@ func start_cutscene(_extra_data = null):
 		SoundHandler.play_music(music)
 	if player != null:
 		ObjectLink.cutscene_player = player
-		if _extra_data != null and _extra_data is String:
+		if _extra_data != null and _extra_data is String and _extra_data != "":
 			player.play(_extra_data)
 		else:
 			player.play("start")
@@ -40,12 +39,9 @@ func load_save(game_save : Game_save):
 func start_dialogue(cue : String):
 	DialogueBalloon.start(text_data, cue)
 
-func next_scene(map_path := next_map_path):
+func next_scene(map_path := next_map_path, scene_cue := ""):
 	var main : Main_node = get_parent()
-	var _extra = null
-	if extra_data != "":
-		_extra = extra_data
-	main.load_scene_path(map_path, _extra)
+	main.load_scene_path(map_path, scene_cue)
 
 func make_camera_current(id : int):
 	for i in cameras.size():

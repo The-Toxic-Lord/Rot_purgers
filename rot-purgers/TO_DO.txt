@@ -37,6 +37,7 @@ to do:
 	- fix freeze on projectile load
 	- remove overwrite load button in main menu
 	- fix char turn on move after attack
+	- Neiro AI
 
 -- ramps
 - background image

@@ -1,0 +1,80 @@
+~ mad_mage_001
+Aven: Oh no…
+
+Mad mage: Oh. It's you.
+
+Zaar: Another famous person I've never heard before?
+
+Alastor: This time you are not alone.
+
+Mad mage: Why don't you introduce us, Aven?
+
+Elliot: Allow me. Zaar, Alastor, this man is the second founder of the council, Neiro. He left his post about a millennium and a half ago. And around five hundred years, give or take, he disappeared without a trace.
+
+Neiro: I didn't ask you to tell my entire live story, Chancellor.
+
+Elliot: It's High Chancellor to you.
+
+Neiro: Hohoho. Why so resentful? Did I mistreat you in some way?
+
+Zaar: You poisoned the whole world, you mad bastard!
+
+Neiro: I did not ask for a pet's opinion. You have brought quite a company, Aven.
+
+Aven: You brought it upon yourself. What were you trying to achieve here?
+
+Neiro: Argh! If only you would listen to me before! But it's alright. I will gladly explain it again. We are inside the Beast. The one that consumes souls of the dead. I seek its destruction.
+
+Aven: You know not the consequences of your actions. You are killing people by the thousands and displacing even more.
+
+Neiro: If this is what it takes to be free from the Beast, so be it.
+
+Zaar: Is it true? That souls end up here after death?
+
+Alastor: I am sure that's just the nonsense of a madman. Right, Archchancellor?
+
+Aven: …
+
+Alastor: Huh?
+
+Elliot: It's true.
+
+Alastor: …
+
+Zaar: Then… Those weird creatures… Were they people before?
+
+Elliot: Are you afraid?
+
+Zaar: I am…
+
+Aven: Lost. For all that I learned in my life, I know that there is a lot that I don't know. I cannot tell what will happen when I or someone else dies, but surely you must recognize that what he is doing is wrong.
+
+Zaar: I… agree. Let's end his crusade of madness and return home.
+
+Elliot: Good thinking. I am already fed up with this place.
+
+Alastor: I concur.
+
+Neiro: WHY?! Why can't you understand?! Why must you stand in my way? No matter. If you wish to perish, I will gladly be the one to send you off.
+do ObjectLink.cutscene.next_scene("res://map_data_res/mad_mage_map.tres")
+=> END
+
+~ mad_mage_loss_1
+Neiro: NO! Why? Why can't you see? Why are you all so stupid?
+
+Zaar: You are the only blind one here.
+
+Aven: Farewell, old friend.
+
+Alastor: Should we do something about this?
+
+Aven: No. It will heal on its own.
+
+Elliot: Then let's leave. I am sick of this place.
+
+Zaar: Shall we race to the exit?
+
+Elliot: Hahaha! You are on!
+
+Aven: Too slow!
+=> END

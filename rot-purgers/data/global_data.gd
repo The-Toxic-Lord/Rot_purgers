@@ -70,7 +70,7 @@ func load_save(save : Game_save):
 	read_dialogues = save.read_dialogues
 
 @export var char_pictures : Dictionary[String, Texture2D]
-@export var read_dialogues : Array[String] = ["camp_1", "lesson_Elliot_1"]
+@export var read_dialogues : Array[String] = []
 
 func has_dialogue(dial_arr : Array[String]) -> bool:
 	var count := 0
@@ -80,6 +80,11 @@ func has_dialogue(dial_arr : Array[String]) -> bool:
 	if count == dial_arr.size():
 		return true
 	return false
+
+
+
+
+
 
 
 

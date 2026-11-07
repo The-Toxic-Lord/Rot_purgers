@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://du5wjwaa46sn"]
 
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_djnl5"]
-[ext_resource type="Resource" uid="uid://34aejkmspc04" path="res://dialogue/texts/camp.dialogue" id="2_vdr65"]
+[ext_resource type="Resource" uid="uid://dsbe0eog177ex" path="res://dialogue/texts/custcenes_small.dialogue" id="2_djnl5"]
 [ext_resource type="PackedScene" uid="uid://b57jse1cfeshi" path="res://3d_map/map_cell.tscn" id="3_ryep6"]
 [ext_resource type="Texture2D" uid="uid://cas4qsfild2do" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_02-128x128.png" id="4_gef82"]
 [ext_resource type="Material" uid="uid://co6ojt5md8bdi" path="res://3d_map/map_cell_materials/cave_floor_2.tres" id="5_irfq3"]
@@ -928,7 +928,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["return"],
+"args": ["repultion"],
 "method": &"start_dialogue"
 }]
 }
@@ -940,10 +940,9 @@ _data = {
 
 [node name="Map_generator" type="Node3D" unique_id=230936383 node_paths=PackedStringArray("player")]
 script = ExtResource("1_djnl5")
-text_data = ExtResource("2_vdr65")
+text_data = ExtResource("2_djnl5")
 player = NodePath("AnimationPlayer")
 next_map_path = "uid://cn0yh7eofq5xa"
-extra_data = "start_lesson"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2141279964]
 environment = SubResource("Environment_ti2bc")

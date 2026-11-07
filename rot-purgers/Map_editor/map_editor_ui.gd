@@ -290,6 +290,7 @@ func load_seleced_object():
 	%Object_dir_select.selected = map_editor.selected_object.direction
 	%Object_type.selected = map_editor.selected_object.object_type
 	%Object_height.text = str(map_editor.selected_object.height)
+	%Object_dial_cue.text = map_editor.selected_object.dialogue_cue
 	_on_object_type_item_selected(%Object_type.selected)
 
 func _on_file_dialog_file_selected(path: String) -> void:
@@ -410,7 +411,8 @@ func _on_object_height_text_changed(new_text: String) -> void:
 	if new_text.is_valid_int():
 		map_editor.selected_object.height = new_text.to_int()
 
-
+func _on_object_dial_cue_text_changed(new_text: String) -> void:
+	map_editor.selected_object.dialogue_cue = new_text
 
 
 

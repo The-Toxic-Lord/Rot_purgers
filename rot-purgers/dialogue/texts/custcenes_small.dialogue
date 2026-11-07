@@ -1,0 +1,37 @@
+~ next
+do ObjectLink.cutscene.next_scene()
+=> END!
+
+~ repultion
+Aven: Very interesting.
+
+Alastor: I didn't expect that you would be affected too.
+
+Aven: It was no magic that affected us, but our instincts as living beings.
+
+Elliot: Why weren't we affected this time?
+
+Aven: Probably because of your previous encounter. It has built up your tolerance.
+
+Zaar: These things do not belong in our world. We must get rid of them!
+
+Aven: I concur. We will stop this.
+do ObjectLink.cutscene.next_scene("uid://cn0yh7eofq5xa", "start_lesson")
+=> END
+
+~ final_push
+Aven: I think we are almost there.
+
+Alastor: Considering how strongly the Rot affects creatures here, I agree.
+
+Elliot: Steel yourselves.
+
+Zaar: Don't fall behind.
+=> next
+
+~ return
+Alastor : So … What now?
+Elliot : We should go back and inform Archchancellor. The two of us are not enough to deal with whatever is going on here.
+Alastor : Right. With his help we surely will get to the bottom of this!
+=> next
+

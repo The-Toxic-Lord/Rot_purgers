@@ -1,3 +1,15 @@
+~ map_001
+Zaar: So… These are the creatures that infest this cavern. They look… artificial. Like they were created with a purpose.
+Aven: You have a good pair of eyes on you. These are without a doubt the servants of the Empress.
+Zaar: If it is true, then you did a poor job of wiping them out. I can feel hundreds of them down below.
+Aven: There was no need to "hunt them down". They cannot survive without their master.
+Zaar: Why not?
+Aven: Observe them closely. They have no digestive system, and so their lifespan is limited to about a week. They were a weapon, mindless, for the most part. And when she no longer needed it, she simply stopped sustaining them.
+Aven: But something is not right. They lack coordination. You see, there is usually a strict chain of command, a hierarchy. But here are just simple drones. Under normal circumstances, the entire hive would be upon us, but only those in the vicinity noticed us.
+Zaar: Makes our job easier if you ask me.
+Aven: Certainly.
+=> END
+
 ~ map_002
 Zaar: These look different.
 
@@ -87,15 +99,35 @@ Elliot: Then let's poke their eyes out and see if there is anything inside them.
 => END
 
 ~ pre_02
-Alastor : These look strange… 
-Alastor : AH! The Rot is affecting them. Its source must be here after all.
-Elliot : Let's not jump to conclusions, Chancellor. We have yet to witness it. We must go deeper.
+Alastor: These look strange… 
+Alastor: AH! The Rot is affecting them. Its source must be here after all.
+Elliot: Let's not jump to conclusions, Chancellor. We have yet to witness it. We must go deeper.
 => END
 
 ~ pre_03
-Alastor : Do my eyes deceive me?
-Elliot : I am afraid not. Whatever that thing is, it's not of this world.
-Alastor : What should we do? Kill? Restrain? Study?
-Elliot : Purge it.
+Alastor: Do my eyes deceive me?
+Elliot: I am afraid not. Whatever that thing is, it's not of this world.
+Alastor: What should we do? Kill? Restrain? Study?
+Elliot: Purge it.
+=> END
+
+~ evelyn_01
+Evelyn: Huh!? So some managed to surv… no. Clones? Hahaha! Even I was not this lazy. But I suppose I will take it as an honor. To have my work be recognized by the Dragon to be worthy of replication. I am touched. Well, time to kill them all.
+=> END
+
+~ evelyn_02
+Evelyn: And what is this now? Such a ridiculous form. Do you even take yourself seriously?
+
+Crystall: …
+
+Evelyn: And completely mindless to boot. Just a bunch of automatons with no concepts. Another obstacle to crush.
+=> END
+
+~ evelyn_03
+Evelyn: Almost there. What was it, an hour? Too slow. Seems I got a bit rusty with all the sleep.
+
+Takes out a knife.
+
+Evelyn: I wonder, what would you do? Heh. [i]Do not choose a path among the ones that are laid down before you by somebody else, carve your own.[/i] Hmm. I think that spot will do. Time to make a new path.
 => END
 

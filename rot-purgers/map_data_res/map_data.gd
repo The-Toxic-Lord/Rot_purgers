@@ -19,4 +19,7 @@ enum map_end_conditions { ENEMY, DOOR }
 @export var text_data : DialogueResource
 @export var text_cue : String = "map_dialogue"
 @export var next_map_path : String
+@export var cutscene_cue : String = ""
 @export var player_chars : Array[Character_stats] = []
+@export var game_over_scene : String = ""
+@export var game_over_scene_cue : String = ""

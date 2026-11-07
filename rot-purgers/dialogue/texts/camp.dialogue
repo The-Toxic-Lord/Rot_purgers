@@ -10,8 +10,6 @@ if !GlobalData.read_dialogues.has("camp_1")
 	=> camp_1
 if GlobalData.read_dialogues.size() == 3
 	=> the_sleeper
-if GlobalData.read_dialogues.size() == 7
-	=> final_push
 => choose
 
 ~ Elliot_choose
@@ -281,23 +279,6 @@ Aven: We will need everyone's strength in battles to come. You losing your power
 $> GlobalData.read_dialogues.append("lesson_Aven_2")
 => load_next_scene
 
-~ repultion
-Aven: Very interesting.
-
-Alastor: I didn't expect that you would be affected too.
-
-Aven: It was no magic that affected us, but our instincts as living beings.
-
-Elliot: Why weren't we affected this time?
-
-Aven: Probably because of your previous encounter. It has built up your tolerance.
-
-Zaar: These things do not belong in our world. We must get rid of them!
-
-Aven: I concur. We will stop this.
-do ObjectLink.cutscene.next_scene()
-=> END
-
 ~ the_sleeper
 Z: Argh! Why are we even here?! Can't we do something about it from the surface?  
 AV: Unfortunately not. All our previous attempts of putting up barriers and wards only bought us time. But this corruption inevitably finds its way around. And while the prospect of losing our world is frightening, the ones who will awake are even more so.
@@ -319,21 +300,5 @@ Zaar: Shouldn't we allow the Rot to erase that place?
 Aven: Should her slumber be disturbed, the council and the world will be wiped out.
 => choose
 
-~ return
-Alastor : So … What now?
-Elliot : We should go back and inform Archchancellor. The two of us are not enough to deal with whatever is going on here.
-Alastor : Right. With his help we surely will get to the bottom of this!
-do ObjectLink.cutscene.next_scene()
-=> END
 
-~ final_push
-Aven: I think we are almost there.
-
-Alastor: Considering how strongly the Rot affects creatures here, I agree.
-
-Elliot: Steel yourselves.
-
-Zaar: Don't fall behind.
-do ObjectLink.cutscene.next_scene()
-=> END
 

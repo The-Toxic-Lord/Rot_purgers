@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="3_waenl"]
 [ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="4_64l44"]
 [ext_resource type="Texture2D" uid="uid://c131pecdedawl" path="res://import/check_button.png" id="4_pkdx2"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data.gd" id="5_jvmv2"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="5_jvmv2"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_64l44"]
 [ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="7_122r7"]
 [ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="8_3ebdj"]
