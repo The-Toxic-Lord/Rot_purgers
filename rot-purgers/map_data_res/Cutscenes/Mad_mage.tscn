@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_ee0fi"]
 [ext_resource type="PackedScene" uid="uid://b57jse1cfeshi" path="res://3d_map/map_cell.tscn" id="2_41mlh"]
+[ext_resource type="Resource" uid="uid://be4c3d3vnci72" path="res://dialogue/texts/mad_mage.dialogue" id="2_gnan7"]
+[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://import/magic_envt.tres" id="3_3iggx"]
 [ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="3_gnan7"]
 [ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="4_3iggx"]
 [ext_resource type="ArrayMesh" uid="uid://yobxpbt374w4" path="res://Workshop/floor_mesh.tres" id="5_0p6e6"]
@@ -12,19 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="10_q6ll6"]
 [ext_resource type="PackedScene" uid="uid://dcwsgdo2lf8e1" path="res://blender_models/Chars/Mad_mage.glb" id="11_ajwbs"]
 [ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar.glb" id="12_vq7o0"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_38kli"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_r00ey"]
-sky_material = SubResource("ProceduralSkyMaterial_38kli")
-
-[sub_resource type="Environment" id="Environment_ti2bc"]
-background_mode = 2
-background_energy_multiplier = 1.5
-sky = SubResource("Sky_r00ey")
-glow_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_efj6b"]
 _surfaces = [{
@@ -1581,8 +1570,135 @@ visible_instance_count = 107
 mesh = ExtResource("5_0p6e6")
 buffer = PackedFloat32Array(1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 8, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 10, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 12, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 14, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 16, 1, 0, 0, 2, 0, 1, 0, 2, 0, 0, 1, 6, 1, 0, 0, 2, 0, 1, 0, 2, 0, 0, 1, 8, 1, 0, 0, 2, 0, 1, 0, 2, 0, 0, 1, 10, 1, 0, 0, 2, 0, 1, 0, 2, 0, 0, 1, 12, 1, 0, 0, 2, 0, 1, 0, 2, 0, 0, 1, 14, 1, 0, 0, 2, 0, 1, 0, 2, 0, 0, 1, 16, 1, 0, 0, 2, 0, 1, 0, 2, 0, 0, 1, 18, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 6, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 8, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 10, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 12, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 14, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 16, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 18, 1, 0, 0, 4, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 6, 0, 1, 0, 2, 0, 0, 1, 2, 1, 0, 0, 6, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 6, 0, 1, 0, 2, 0, 0, 1, 6, 1, 0, 0, 6, 0, 1, 0, 2, 0, 0, 1, 8, 1, 0, 0, 6, 0, 1, 0, 2, 0, 0, 1, 16, 1, 0, 0, 6, 0, 1, 0, 2, 0, 0, 1, 18, 1, 0, 0, 6, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 6, 0, 1, 0, 2, 0, 0, 1, 22, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 2, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 6, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 18, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 22, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 24, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 2, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 22, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 24, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 2, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 22, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 24, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 2, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 22, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 24, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 2, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 6, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 18, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 22, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 24, 1, 0, 0, 18, 0, 1, 0, 2, 0, 0, 1, 2, 1, 0, 0, 18, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 18, 0, 1, 0, 2, 0, 0, 1, 6, 1, 0, 0, 18, 0, 1, 0, 2, 0, 0, 1, 8, 1, 0, 0, 18, 0, 1, 0, 2, 0, 0, 1, 16, 1, 0, 0, 18, 0, 1, 0, 2, 0, 0, 1, 18, 1, 0, 0, 18, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 18, 0, 1, 0, 2, 0, 0, 1, 22, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 4, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 6, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 8, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 10, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 12, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 14, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 16, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 18, 1, 0, 0, 20, 0, 1, 0, 2, 0, 0, 1, 20, 1, 0, 0, 22, 0, 1, 0, 2, 0, 0, 1, 6, 1, 0, 0, 22, 0, 1, 0, 2, 0, 0, 1, 8, 1, 0, 0, 22, 0, 1, 0, 2, 0, 0, 1, 10, 1, 0, 0, 22, 0, 1, 0, 2, 0, 0, 1, 12, 1, 0, 0, 22, 0, 1, 0, 2, 0, 0, 1, 14, 1, 0, 0, 22, 0, 1, 0, 2, 0, 0, 1, 16, 1, 0, 0, 22, 0, 1, 0, 2, 0, 0, 1, 18, 1, 0, 0, 24, 0, 1, 0, 2, 0, 0, 1, 8, 1, 0, 0, 24, 0, 1, 0, 2, 0, 0, 1, 10, 1, 0, 0, 24, 0, 1, 0, 2, 0, 0, 1, 12, 1, 0, 0, 24, 0, 1, 0, 2, 0, 0, 1, 14, 1, 0, 0, 24, 0, 1, 0, 2, 0, 0, 1, 16, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 26, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 28, 1, 0, 0, 10, 0, 1, 0, 2, 0, 0, 1, 30, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 30, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 28, 1, 0, 0, 12, 0, 1, 0, 2, 0, 0, 1, 26, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 26, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 28, 1, 0, 0, 14, 0, 1, 0, 2, 0, 0, 1, 30, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 30, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 28, 1, 0, 0, 16, 0, 1, 0, 2, 0, 0, 1, 26, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 26, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 28, 1, 0, 0, 8, 0, 1, 0, 2, 0, 0, 1, 30)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gnan7"]
+animation = &"Shake"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3iggx"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_0p6e6"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Bone.003"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_m8u4e"]
+graph_offset = Vector2(-571.93787, 106.42142)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_0p6e6")
+nodes/OneShot/position = Vector2(80, 160)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_3iggx")
+nodes/Animation/position = Vector2(-220, 120)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_gnan7")
+"nodes/Animation 2/position" = Vector2(-220, 300)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 2"]
+
+[sub_resource type="Animation" id="Animation_gnan7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Zaar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(11.0866, 2, 25.506369)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elliot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.752778, 2, 25.403395)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Aven:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.869624, 2, 24.591167)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Alastor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(15.376943, 2, 25.42514)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mad_mage:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.0852785, 4.7405396, 27.798355)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.08290357, -0.008727292, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mad_mage:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.0481205, 2, 20.0838)]
+}
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mad_mage/Armature/Skeleton3D:Bone.003")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -0.026926, 0.642451, 0.0317, 0.765198)
+
 [sub_resource type="Animation" id="Animation_lbvty"]
 resource_name = "start"
+length = 3.0000000000000004
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1590,24 +1706,285 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["return"],
+"args": ["mad_mage_001"],
 "method": &"start_dialogue"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Zaar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(11.0866, 2, 29.736938), Vector3(11.0866, 2, 25.506369)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elliot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(8.752778, 2, 29.633965), Vector3(8.752778, 2, 25.403395)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Aven:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(12.869624, 2, 28.821737), Vector3(12.869624, 2, 24.591167)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Alastor:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(15.376943, 2, 29.65571), Vector3(15.376943, 2, 25.42514)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Zaar:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Elliot:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Aven:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Alastor:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Alastor")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Walk"],
+"method": &"play_anim"
+}, {
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Aven")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Walk"],
+"method": &"play_anim"
+}, {
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Zaar")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Walk"],
+"method": &"play_anim"
+}, {
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Elliot")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Walk"],
+"method": &"play_anim"
+}, {
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Camera3D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.0852785, 4.7405396, 27.798355)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Camera3D:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.08290357, -0.008727292, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3iggx"]
+resource_name = "turn_01"
+length = 7.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mad_mage:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0), Vector3(0, -3.1415925, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mad_mage/Armature/Skeleton3D:Bone.003")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(1, 1, -0.040852927, -0.00027601674, 0.007125895, 0.9991397, 2, 1, -0.026926, 0.642451, 0.0317, 0.765198, 3, 1, -0.026926, 0.642451, 0.0317, 0.765198, 4.5, 1, -0.040852927, -0.00027601674, 0.007125895, 0.9991397)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(12.0852785, 4.7405396, 27.798355), Vector3(12.029, 3.551, 21.925), Vector3(12.029, 3.551, 21.925), Vector3(12.0852785, 4.7405396, 27.798355)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7, 7.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["mad_mage_001_02"],
+"method": &"start_dialogue"
+}, {
+"args": ["turn_02"],
+"method": &"play_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0p6e6"]
+resource_name = "turn_02"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mad_mage/AnimationTree:parameters/OneShot/request")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ee0fi"]
 _data = {
-&"start": SubResource("Animation_lbvty")
+&"RESET": SubResource("Animation_gnan7"),
+&"start": SubResource("Animation_lbvty"),
+&"turn_01": SubResource("Animation_3iggx"),
+&"turn_02": SubResource("Animation_0p6e6")
 }
 
-[node name="Map_generator" type="Node3D" unique_id=230936383]
+[node name="Map_generator" type="Node3D" unique_id=230936383 node_paths=PackedStringArray("player")]
 script = ExtResource("1_ee0fi")
+text_data = ExtResource("2_gnan7")
+player = NodePath("AnimationPlayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2141279964]
-environment = SubResource("Environment_ti2bc")
+environment = ExtResource("3_3iggx")
 
 [node name="Map_cell_holder" type="Node3D" parent="." unique_id=1096133750]
 unique_name_in_owner = true
@@ -2481,29 +2858,77 @@ multimesh = SubResource("MultiMesh_3t3uh")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 12, 6, 12)
 
 [node name="Alastor" parent="." unique_id=560470842 instance=ExtResource("7_d4314")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.376943, 2, 25.669518)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 15.376943, 2, 25.42514)
 script = ExtResource("8_r54y2")
 start_anim = "Idle"
 
 [node name="Aven" parent="." unique_id=1354689649 instance=ExtResource("9_1qwxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.869624, 2, 24.835545)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 12.869624, 2, 24.591167)
 script = ExtResource("8_r54y2")
 start_anim = "Idle"
 
 [node name="Elliot" parent="." unique_id=1095901482 instance=ExtResource("10_q6ll6")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.752778, 2, 25.647772)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 8.752778, 2, 25.403395)
 script = ExtResource("8_r54y2")
 start_anim = "Idle"
 
 [node name="Mad_mage" parent="." unique_id=82481975 instance=ExtResource("11_ajwbs")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.0481205, 2, 20.0838)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 12.0481205, 2, 20.0838)
 script = ExtResource("8_r54y2")
 start_anim = "Idle"
 
+[node name="Skeleton3D" parent="Mad_mage/Armature" parent_id_path=PackedInt32Array(82481975, 985326926) index="0" unique_id=705978499]
+bones/0/position = Vector3(0.99423605, -0.17601645, -1.6584761)
+bones/0/rotation = Quaternion(-0.5194856, 0.4388819, -0.5438441, 0.49168196)
+bones/1/position = Vector3(-0.90778744, 0.051288605, -1.216522)
+bones/1/rotation = Quaternion(-0.5057127, -0.49422136, 0.49422136, 0.5057126)
+bones/2/position = Vector3(1.0323571e-25, -0.00014843192, -1.3462672)
+bones/2/rotation = Quaternion(0.00020264719, 0, -9.259984e-19, 1)
+bones/3/rotation = Quaternion(7.2561456e-08, -1.4041031e-08, 0.0026454756, 0.9999965)
+bones/5/rotation = Quaternion(-0.026925985, 0.6424506, 0.031699978, 0.7651976)
+bones/6/rotation = Quaternion(-0.058819085, 0.056941804, -0.9852799, 0.15007155)
+bones/7/rotation = Quaternion(0.00034512999, -0.13313557, 0.0029348757, 0.99109346)
+bones/8/rotation = Quaternion(-0.12771748, 0.16634135, -0.0690781, 0.97531897)
+bones/12/rotation = Quaternion(0.048208486, 0.051410608, 0.9856627, 0.15330389)
+bones/13/rotation = Quaternion(-0.00041831896, 0.2402789, 0.0030036792, 0.97069925)
+bones/14/rotation = Quaternion(0.0070947064, -0.37826774, 0.023397109, 0.9253734)
+bones/18/position = Vector3(0.2206532, -0.022968058, -0.042642392)
+bones/18/rotation = Quaternion(0.9987175, 0.033478886, 0.0037667379, 0.037793435)
+bones/18/scale = Vector3(1.0000345, 0.99999905, 1.0000421)
+bones/19/rotation = Quaternion(0.09650129, 0.006907066, -0.009243048, 0.9952661)
+bones/19/scale = Vector3(1.0000011, 1.0000007, 0.99999905)
+bones/20/position = Vector3(-0.21901271, -0.0009483546, -0.011088494)
+bones/20/rotation = Quaternion(0.99882895, -0.039510664, -0.0013210679, -0.027890265)
+bones/20/scale = Vector3(1.0000343, 0.9999969, 1.0000434)
+bones/21/rotation = Quaternion(0.0037451822, -0.0069396896, 0.0003587351, 0.9999689)
+bones/21/scale = Vector3(1.0000008, 0.99999803, 1.0000008)
+bones/22/position = Vector3(0.37081864, -1.901628, -1.4728117)
+bones/22/rotation = Quaternion(-0.70702475, 0.010771897, -0.010771897, 0.7070247)
+bones/23/position = Vector3(3.0051874e-06, 3.4609275e-06, 9.5832036e-08)
+bones/23/rotation = Quaternion(0.9469912, 0.0072120246, 0.007586829, -0.32108903)
+bones/25/rotation = Quaternion(0.99882287, 0, 0.048506252, 0)
+bones/26/position = Vector3(-0.37081864, -1.901628, -1.4728117)
+bones/26/rotation = Quaternion(-0.70702475, -0.010771897, 0.010771897, 0.7070247)
+bones/27/position = Vector3(0.001678817, -0.00093345006, 0.015203787)
+bones/27/rotation = Quaternion(0.9469912, -0.0072120246, -0.007586829, -0.32108903)
+bones/29/rotation = Quaternion(0.99882287, 0, -0.048506252, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="Mad_mage" unique_id=1032652655]
+tree_root = SubResource("AnimationNodeBlendTree_m8u4e")
+anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 1
+
 [node name="Zaar" parent="." unique_id=1546463438 instance=ExtResource("12_vq7o0")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.0866, 2, 25.750746)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 11.0866, 2, 25.506369)
 script = ExtResource("8_r54y2")
 start_anim = "Idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1945350222]
 libraries/ = SubResource("AnimationLibrary_ee0fi")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=936282732]
+transform = Transform3D(0.9999619, 0.00072268595, -0.008697206, 0, 0.99656546, 0.08280863, 0.008727181, -0.082805485, 0.99652743, 12.0852785, 4.7405396, 27.798355)
+
+[editable path="Mad_mage"]

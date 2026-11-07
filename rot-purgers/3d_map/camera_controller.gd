@@ -111,7 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			quaternion = quat * quaternion
 
 @warning_ignore("unused_parameter")
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	handle_movement()
 	handle_height()
 	handle_rotation()
@@ -187,7 +187,6 @@ func handle_zoom(delta : float):
 		-1:
 			zoom_target += zoom_speed * delta * 10
 	zoom_target = clamp(zoom_target, zoom_min, zoom_max)
-
 
 var dirs : Array[Map_generator.directions] = []
 func handle_dir():

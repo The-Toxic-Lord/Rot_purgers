@@ -52,7 +52,8 @@ func make_camera_current(id : int):
 func play_sfx(sfx : AudioStream, sfx_player_id := 0):
 	SoundHandler.play_sfx(sfx, sfx_player_id)
 
-
+func play_animation(anim_name : String):
+	player.play(anim_name)
 
 
 

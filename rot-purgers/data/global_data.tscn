@@ -13,15 +13,18 @@
 [ext_resource type="Resource" uid="uid://ggqhl80errbm" path="res://data/Enemy_data/Shapes.tres" id="12_rdq6i"]
 [ext_resource type="Resource" uid="uid://bw766n42tsyfr" path="res://data/Enemy_data/Crystal.tres" id="13_idmur"]
 [ext_resource type="Texture2D" uid="uid://cq5yw6r4nrunv" path="res://dialogue/char_sprites/Neiro.png" id="13_r650u"]
+[ext_resource type="Texture2D" uid="uid://cx3cvqx7o8rct" path="res://dialogue/char_sprites/Evelyn.png" id="14_r650u"]
 
 [node name="Global_data" type="Node" unique_id=1876976633]
 script = ExtResource("1_215bx")
 enemy_data = Array[ExtResource("6_lbxat")]([ExtResource("8_lbxat"), ExtResource("13_idmur"), ExtResource("12_rdq6i"), ExtResource("9_et4q3"), ExtResource("10_7c7dr"), ExtResource("8_rdq6i")])
-map_data_path = Array[String](["uid://du5wjwaa46sn"])
+map_data_path = Array[String](["uid://rppfsqmhy6x1"])
 char_pictures = Dictionary[String, Texture2D]({
 "Alastor": ExtResource("9_7c7dr"),
 "Aven": ExtResource("11_17ap7"),
 "Elliot": ExtResource("8_et4q3"),
+"Evelyn": ExtResource("14_r650u"),
+"Mad mage": ExtResource("13_r650u"),
 "Neiro": ExtResource("13_r650u"),
 "Zaar": ExtResource("10_17ap7")
 })

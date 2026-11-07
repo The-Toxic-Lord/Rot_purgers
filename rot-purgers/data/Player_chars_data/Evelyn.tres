@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://bey6puoeedq1m"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_cbuay"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_6tk23"]
+[ext_resource type="Resource" uid="uid://dhhs70r647yrx" path="res://Skills/Skill_res/Slash.tres" id="3_wgktq"]
+[ext_resource type="Resource" uid="uid://d0lnxgg3anglw" path="res://Skills/Skill_res/Blast.tres" id="4_k0qrl"]
+[ext_resource type="Resource" uid="uid://c5ughog08rjix" path="res://Skills/Skill_res/gravity_bend.tres" id="5_4rq7i"]
+[ext_resource type="Texture2D" uid="uid://cx3cvqx7o8rct" path="res://dialogue/char_sprites/Evelyn.png" id="6_cbuay"]
+
+[resource]
+script = ExtResource("2_6tk23")
+name = "Evelyn"
+char_class = "Empress"
+age = 4569
+sprite = ExtResource("6_cbuay")
+max_health = 80
+max_magic = 200
+strength = 20
+defence = 20
+magic_strenght = 90
+accuracy = 70
+speed = 60
+move_speed = 10
+jump_height = 30
+node_UID = "uid://blnnuohsuxyvg"
+skills = Array[ExtResource("1_cbuay")]([ExtResource("3_wgktq"), ExtResource("4_k0qrl"), ExtResource("5_4rq7i")])
+self_path = "uid://bey6puoeedq1m"
+metadata/_custom_type_script = "uid://by1rq468n504l"

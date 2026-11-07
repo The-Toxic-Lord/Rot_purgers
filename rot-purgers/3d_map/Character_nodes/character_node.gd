@@ -86,6 +86,9 @@ func _ready() -> void:
 				child.set_surface_override_material(0, material)
 	#if material is ShaderMaterial:
 		#material.set_shader_parameter("dissolve", -0.1)
+	#char_animation.animation_changed.connect(print_data)
+
+
 
 func new_round():
 	can_move = true
@@ -182,14 +185,22 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 	
 	var prev_pos : Vector2i = map_pos
 	
-	#if path == []:
-		#print(map_pos)
-		#print(self)
-		#print(target_cell)
-		#print(move_zones)
-	
 	path.remove_at(0)
+	
+	turn(move_to_direction[path[0] - prev_pos], true)
+	await self.direction_changed
+	current_direction = move_to_direction[path[0] - prev_pos]
+	
 	for cell in path:
+		if move_straight_check(cell, terrain_map, prev_pos, map_cells):
+			prev_pos = map_pos
+			if cell != path.back():
+				continue
+		if move_straight_list != []:
+			await move_normal(move_straight_list.back(), move_straight_list.size() * 0.5)
+			move_straight_list = []
+			if cell == path.back():
+				break
 		previous_direction = current_direction
 		turn(move_to_direction[cell - prev_pos], true)
 		await self.direction_changed
@@ -251,6 +262,17 @@ terrain_map : Dictionary[Vector2i, Terrain_data]) -> Array:
 		iter -= 1
 	return path
 
+var move_straight_list : Array[Vector3] = []
+func move_straight_check(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
+prev_pos : Vector2i, map_cells : Dictionary[Vector2i, Map_cell]) -> bool:
+	if move_to_direction[target_cell - prev_pos] != current_direction:
+		return false
+	if terrain_map[map_pos].height != terrain_map[target_cell].height:
+		return false
+	move_straight_list.append(map_cells[target_cell].position)
+	map_pos = target_cell
+	return true
+
 func move_next(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
 map_cells : Dictionary[Vector2i, Map_cell]):
 	if terrain_map[map_pos].height == terrain_map[target_cell].height:
@@ -265,9 +287,9 @@ map_cells : Dictionary[Vector2i, Map_cell]):
 			await move_drop(map_cells[target_cell].position)
 	map_pos = target_cell
 
-func move_normal(pos : Vector3):
+func move_normal(pos : Vector3, time := 0.5):
 	var tween := create_tween()
-	tween.tween_property(self, "position", pos, 0.5)
+	tween.tween_property(self, "position", pos, time)
 	if char_animation.has_animation("Walk"):
 		if char_animation.current_animation != "Walk":
 			char_animation.play("Walk")
@@ -586,7 +608,6 @@ func move_flyer(target_pos : Vector3):
 		can_undo_move = true
 		move_finished.emit()
 		)
-
 
 
 

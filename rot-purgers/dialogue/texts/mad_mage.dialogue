@@ -1,6 +1,10 @@
 ~ mad_mage_001
 Aven: Oh no…
 
+do ObjectLink.cutscene_player.play("turn_01")
+=> END
+
+~ mad_mage_001_02
 Mad mage: Oh. It's you.
 
 Zaar: Another famous person I've never heard before?
@@ -19,10 +23,11 @@ Neiro: Hohoho. Why so resentful? Did I mistreat you in some way?
 
 Zaar: You poisoned the whole world, you mad bastard!
 
-Neiro: I did not ask for a pet's opinion. You have brought quite a company, Aven.
+Neiro: I did not ask for a demon's opinion. You have brought quite a company, Aven.
 
 Aven: You brought it upon yourself. What were you trying to achieve here?
 
+do ObjectLink.cutscene_player.play("turn_02")
 Neiro: Argh! If only you would listen to me before! But it's alright. I will gladly explain it again. We are inside the Beast. The one that consumes souls of the dead. I seek its destruction.
 
 Aven: You know not the consequences of your actions. You are killing people by the thousands and displacing even more.
@@ -77,4 +82,74 @@ Zaar: Shall we race to the exit?
 Elliot: Hahaha! You are on!
 
 Aven: Too slow!
+=> END
+
+
+
+~ evelyn_and_mad_mage
+Evelyn: [i]Oh great. People that know me and will be more useful alive than dead. How did I play this role again? Probably something like this.[/i]
+
+Evelyn: So you are the one who is responsible for this mess. Hmm… I think I know you. What was your name again?
+
+Neiro: It's Neiro, Evelyn.
+
+Evelyn: I don't remember allowing you this level of familiarity, pest.
+
+Neiro: So what? I am no longer scared of you! Even you can't stop me now! No one can!
+
+Evelyn: Hmm. Staff with an unfaceted Dragon scale. And _you_ can cast magic in its vicinity. Impressive. You have grown since our last encounter.
+
+Neiro: Thank you for the compliment! Surely you recognize there is no chance for you to win now.
+
+Evelyn: How so?
+
+Neiro: Ugh! No spell can survive in its vicinity.
+
+Evelyn: But yours can?
+
+Neiro: It took me decades to adapt to a field of magic chaos that this thing creates. Casting magic near it is like trying to blow a storm with a handheld fan. I myself can only use internal magic, like self-strengthening and healing. What hope do you have?
+
+Evelyn: As one would expect. Its effect is similar to the environment of this place, just magnitudes stronger. But it still can be overcome with enough magic.
+
+Neiro: HAHAHA! You mad witch! As if there exists a mage with such a ridiculous amount of magic.
+
+Evelyn: Probably not. No one can store such an amount in themself.
+
+Neiro: Oh! What are you going to do with that, slit my throat?
+
+Evelyn: Throat? I will reap your damned head off with my bare hands. As if I would ever use his gift on a filth, such as you. You said no mage can hold enough magic to break through your staff. But one can still channel enough to silence you forever.
+
+Neiro: HAHAHA! And what is tha…
+
+Evelyn: What's wrong? Did the cat get your tongue?
+
+Neiro: WHAT! NO! IMPOSSIBLE! THIS IS MADNESS! DON'T COME CLO…
+=> END
+
+~ evelyn_and_group
+Evelyn: Still alive, old man?
+
+Aven: Barely, Your Excellence.
+
+Evelyn: Finally, someone who knows their place. I must say, I was not expecting you to fail the task I left you with. I mean, it was an easy task, and yet. What excuse are you going to use to weasel out?
+
+Aven: The Dragon Scale is an astronomically rare artifact. The fact that Neiro went insane and that he would find one. I simply could not foresee something like that.
+
+Evelyn: And you just added two more failings to the list. You allowed such a rare artifact slip by unnoticed and failed to keep tabs on a powerful mage. You just keep digging the hole you are in.
+
+Zaar: Enough! You saved our lives, but you have no right to talk to the Archchancellor like that!
+
+Evelyn: I have every right to address anyone however I want, demon.
+
+Evelyn: _Why did you have to say that? Let's hope Aven can come up with an excuse to keep you alive._
+
+Aven: Can I attempt to convince you that he is more useful to you alive than dead?
+
+Evelyn: Go on.
+
+Aven: Surely you have recognized whose blood runs through him. In time he will become a mighty mage, just like his ancestor. And just like him, he will be of great use in keeping this world at peace.
+
+Evelyn: _Good. A way out!_
+
+Evelyn: Make sure that he knows how to address his betters next time, Archchancellor. Farewell.
 => END

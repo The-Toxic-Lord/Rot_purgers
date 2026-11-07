@@ -35,3 +35,26 @@ Elliot : We should go back and inform Archchancellor. The two of us are not enou
 Alastor : Right. With his help we surely will get to the bottom of this!
 => next
 
+~ evelyn_wakes_up
+We must not disturb the Sleepers rest!
+
+The Rot with wake him up anyway.
+
+You don't know that! We will get cursed, I tell you!
+
+We will be dead if we do nothing!
+
+Evelyn: You are so noisy, you just might wake up the dead.
+
+This is the Sleeper?
+
+Evelyn: Watch your tongue unless you want to lose it.
+
+Evelyn: It will take me a few hours to take care of this minor business. And when I get back, I expect to see a table breaking under the weight of food stacked on it. I suggest you get to it.
+
+Evelyn: *Sigh. Can't the world just let me be. Once again, I have to play some tiresome role.*
+=> END
+
+~ evelyn_fissure
+Evelyn: So this is the place. Well, no time to waste. Down we go.
+=> END

@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://blnnuohsuxyvg"]
+
+[ext_resource type="Script" uid="uid://ohun5ybdo2ak" path="res://3d_map/Character_nodes/Evelyn/Evelyn.gd" id="1_o6ryx"]
+[ext_resource type="Texture2D" uid="uid://cgptl18ixmaud" path="res://blender_models/Chars/Evelyn_Evelyn_texture.png" id="2_26cmt"]
+[ext_resource type="PackedScene" uid="uid://cab586b27pb30" path="res://blender_models/Chars/Evelyn.glb" id="4_sotvy"]
+
+[sub_resource type="Animation" id="Animation_2jqbt"]
+resource_name = "Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:char_model_node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.050177757, 0.10035551, 0.149773, 0.20071103, 0.24936825, 0.29878575, 0.34972376, 0.4006618),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7s3t3"]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3s0yo"]
+resource_name = "Spell_jump_back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uiu5v"]
+resource_name = "Spell_jump_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hljk3"]
+resource_name = "move_jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_boujc"]
+resource_name = "move_step"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei1fh"]
+_data = {
+&"Damage": SubResource("Animation_2jqbt"),
+&"Death": SubResource("Animation_7s3t3"),
+&"Spell_jump_back": SubResource("Animation_3s0yo"),
+&"Spell_jump_up": SubResource("Animation_uiu5v"),
+&"move_jump": SubResource("Animation_hljk3"),
+&"move_step": SubResource("Animation_boujc")
+}
+
+[node name="Evelyn" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
+script = ExtResource("1_o6ryx")
+texture = ExtResource("2_26cmt")
+char_animation = NodePath("Evelyn/AnimationPlayer")
+char_model_node = NodePath("Evelyn")
+skeleton = NodePath("Evelyn/Armature/Skeleton3D")
+
+[node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0815837, 0)
+visible = false
+pixel_size = 0.0025
+billboard = 1
+fixed_size = true
+alpha_cut = 1
+modulate = Color(0.90814126, 0, 0.15889099, 1)
+text = "9999"
+font_size = 24
+outline_size = 8
+
+[node name="Executed_order" type="Label3D" parent="." unique_id=1303701797]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4014068, 0)
+visible = false
+pixel_size = 0.0025
+billboard = 1
+fixed_size = true
+alpha_cut = 1
+modulate = Color(0.5957073, 0.4703809, 1.92523e-07, 1)
+text = "E"
+font_size = 24
+outline_size = 8
+
+[node name="Evelyn" parent="." unique_id=698526459 instance=ExtResource("4_sotvy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Evelyn/Armature" parent_id_path=PackedInt32Array(698526459, 1367502904) index="0" unique_id=803182441]
+bones/0/position = Vector3(1.3322676e-15, 0.94689864, 5.587934e-09)
+bones/0/rotation = Quaternion(0.15032479, 1.1785465e-07, 1.7920115e-08, 0.9886367)
+bones/1/rotation = Quaternion(-0.08490712, 2.6201263e-14, -2.0243432e-08, 0.9963889)
+bones/4/rotation = Quaternion(-0.042242147, 0.0463851, 0.98214984, -0.1773296)
+bones/5/rotation = Quaternion(0.41159207, 0.014123356, -0.18302117, 0.8926902)
+bones/9/rotation = Quaternion(-0.11281833, -0.16980569, 0.9601164, 0.19134942)
+bones/10/rotation = Quaternion(-0.0007626622, -0.0020275775, 0.0028175586, 0.99999374)
+bones/14/rotation = Quaternion(4.4463002e-05, 0.05283046, 0.99860334, -0.0007098993)
+bones/15/rotation = Quaternion(-0.003056115, -9.772222e-05, 0.00016969565, 0.99999535)
+bones/16/rotation = Quaternion(-0.08834222, 0.1837566, 0.9789581, 0.008382527)
+bones/17/rotation = Quaternion(-0.43615985, 8.791033e-05, -0.024217736, 0.8995433)
+bones/18/position = Vector3(0.18425, 1.0961605, 0.2698059)
+bones/18/rotation = Quaternion(-0.35034075, 0.6378691, -0.5554388, 0.4023333)
+bones/19/position = Vector3(-0.300533, 1.0954794, -0.12915683)
+bones/19/rotation = Quaternion(0.35034075, 0.6378691, -0.5554388, -0.4023333)
+bones/20/position = Vector3(0.09966216, 0.2700269, -0.13830751)
+bones/20/rotation = Quaternion(-1.5950447e-05, 0.84145755, -0.5403234, 2.4839992e-05)
+bones/21/position = Vector3(9.209846e-07, 0.00012715998, -0.0005441424)
+bones/24/position = Vector3(-0.08907897, 0.39066198, -0.27644873)
+bones/24/rotation = Quaternion(0.09376848, 0.9110989, -0.39927486, 0.04106018)
+bones/25/position = Vector3(-9.0772045e-07, -2.2692143e-06, 1.3849909e-05)
+bones/27/rotation = Quaternion(0.9999814, -5.586766e-09, 0.006101408, -2.0871578e-10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1083816104]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ei1fh")
+
+[editable path="Evelyn"]
