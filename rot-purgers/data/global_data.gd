@@ -65,7 +65,8 @@ func apply_char_mods():
 func load_save(save : Game_save):
 	ally_team = save.ally_team
 	dead_chars = save.dead_chars
-	map_magic_cost_adjustment = save.map_data.magic_cost_adjustment
+	if save.save_type == Game_save.save_types.BATTLE:
+		map_magic_cost_adjustment = save.map_data.magic_cost_adjustment
 	char_mods = save.char_mods
 	read_dialogues = save.read_dialogues
 

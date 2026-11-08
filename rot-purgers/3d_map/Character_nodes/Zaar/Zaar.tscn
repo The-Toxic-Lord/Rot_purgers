@@ -35,6 +35,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_7s3t3"]
 resource_name = "Death"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,7 +43,7 @@ tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -79,11 +80,10 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_61r11"]
-resource_name = "empty"
-
-[sub_resource type="Animation" id="Animation_hljk3"]
+[sub_resource type="Animation" id="Animation_qrojq"]
+resource_local_to_scene = true
 resource_name = "move_jump"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -91,13 +91,14 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_boujc"]
+[sub_resource type="Animation" id="Animation_2aj4y"]
+resource_local_to_scene = true
 resource_name = "move_step"
 length = 0.5
 tracks/0/type = "value"
@@ -113,15 +114,15 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnxq0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tspv0"]
+resource_local_to_scene = true
 _data = {
 &"Damage": SubResource("Animation_2jqbt"),
 &"Death": SubResource("Animation_7s3t3"),
 &"Spell_jump_back": SubResource("Animation_3s0yo"),
 &"Spell_jump_up": SubResource("Animation_uiu5v"),
-&"empty": SubResource("Animation_61r11"),
-&"move_jump": SubResource("Animation_hljk3"),
-&"move_step": SubResource("Animation_boujc")
+&"move_jump": SubResource("Animation_qrojq"),
+&"move_step": SubResource("Animation_2aj4y")
 }
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton", "attack_trail")]
@@ -158,13 +159,10 @@ text = "E"
 font_size = 24
 outline_size = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=798619618]
-libraries/ = SubResource("AnimationLibrary_nnxq0")
-
 [node name="Zaar5" parent="." unique_id=2032189682 instance=ExtResource("3_2aj4y")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 85984013) index="11" unique_id=297218186]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 1861621235) index="11" unique_id=297218186]
 transform = Transform3D(1, 0, -1.1046703e-06, -1.1046703e-06, 0, -1, 0, 1, 0, -1.0744636, 1.3326683, -0.053068116)
 bone_name = "Sword_2"
 bone_idx = 39
@@ -172,6 +170,9 @@ bone_idx = 39
 [node name="Sword_trail" parent="Zaar5/Armature/Skeleton3D/BoneAttachment3D" unique_id=1366018007 instance=ExtResource("4_qrojq")]
 transform = Transform3D(1, 0, 8.44271e-21, 0, 0.35, 0, -8.44271e-21, 0, 1, 0.0014590025, 0.5134719, -0.012722731)
 visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=87160848]
+libraries/Movement_anim = SubResource("AnimationLibrary_tspv0")
 
 [editable path="Zaar5"]
 [editable path="Zaar5/Armature/Skeleton3D/BoneAttachment3D/Sword_trail"]

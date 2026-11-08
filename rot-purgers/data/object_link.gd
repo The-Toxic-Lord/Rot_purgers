@@ -3,6 +3,8 @@ extends Node
 class_name Object_link
 
 var map_gen : Map_generator
+var name_to_node
+
 var focused_char_stats : Focused_char_stats
 var mini_char_stats : Mini_char_stats
 var enemy_manager : Enemy_manager

@@ -86,12 +86,17 @@ func _ready() -> void:
 			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
 		start()
 
-
-
+var skip := false
+var skip_delay := 0.25
 func _process(_delta: float) -> void:
 	if is_instance_valid(dialogue_line):
 		progress.visible = not dialogue_label.is_typing and dialogue_line.responses.size() == 0 and not dialogue_line.has_tag("voice")
-
+	if skip_delay >= 0:
+		skip_delay -= _delta
+		return
+	if skip:
+		skip_delay = 0.25
+		next(dialogue_line.next_id)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
@@ -129,7 +134,8 @@ func apply_dialogue_line() -> void:
 	progress.hide()
 	is_waiting_for_input = false
 	balloon.focus_mode = Control.FOCUS_ALL
-	balloon.grab_focus()
+	if !skip:
+		balloon.grab_focus()
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
@@ -166,7 +172,8 @@ func apply_dialogue_line() -> void:
 	else:
 		is_waiting_for_input = true
 		balloon.focus_mode = Control.FOCUS_ALL
-		balloon.grab_focus()
+		if !skip:
+			balloon.grab_focus()
 
 
 ## Go to the next line
@@ -220,22 +227,12 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 func save():
-	#var game_save := Game_save.new()
-	#game_save.make_dialogue_save()
 	ObjectLink.save_menu.show()
 	ObjectLink.save_menu.show_new_save()
-	#ResourceSaver.save(game_save, "user://save.tres")
-	#saved_id = dialogue_line.id
-	#print(await DialogueManager.get_line(dialogue_resource, "1", []))
-	#print(dialogue_line.id)
-	#print(dialogue_line.next_id)
-	#print(await DialogueManager.get_line(dialogue_resource, dialogue_line.id, []))
-	#next(dialogue_line.next_id)
-	#print(1)
-	#DialogueManager.
 
 func load_str(saved_id):
 	dialogue_line = await DialogueManager.get_line(dialogue_resource, saved_id, [])
+	is_working = true
 
 var current_char_name : String = ""
 @onready var char_picture: TextureRect = %Char_picture
@@ -254,11 +251,15 @@ func load_picture():
 				char_picture.texture = GlobalData.char_pictures[char_name]
 				return
 	char_picture.texture = null
-	
+
+func _on_skip_bt_button_down() -> void:
+	if !%ResponsesMenu.visible:
+		skip = true
 
 
-
-
+func _on_skip_bt_button_up() -> void:
+	skip = false
+	balloon.grab_focus()
 
 
 

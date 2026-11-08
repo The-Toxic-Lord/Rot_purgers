@@ -4,8 +4,52 @@
 [ext_resource type="Texture2D" uid="uid://bi1l7g1j0cf0t" path="res://blender_models/Chars/Mad_mage_mad_mage_texture.png" id="2_hso8a"]
 [ext_resource type="PackedScene" uid="uid://dcwsgdo2lf8e1" path="res://blender_models/Chars/Mad_mage.glb" id="3_0la17"]
 
-[sub_resource type="Animation" id="Animation_pnqru"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_2jqbt"]
+resource_name = "Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:char_model_node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.050177757, 0.10035551, 0.149773, 0.20071103, 0.24936825, 0.29878575, 0.34972376, 0.4006618),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7s3t3"]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3s0yo"]
+resource_name = "Spell_jump_back"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,13 +57,30 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_pgqjc"]
+[sub_resource type="Animation" id="Animation_uiu5v"]
+resource_name = "Spell_jump_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_27adb"]
+resource_local_to_scene = true
 resource_name = "move_jump"
 length = 0.5
 tracks/0/type = "value"
@@ -32,10 +93,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_boujc"]
+[sub_resource type="Animation" id="Animation_hso8a"]
+resource_local_to_scene = true
 resource_name = "move_step"
 length = 0.5
 tracks/0/type = "value"
@@ -51,11 +113,15 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqru"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0la17"]
+resource_local_to_scene = true
 _data = {
-&"RESET": SubResource("Animation_pnqru"),
-&"move_jump": SubResource("Animation_pgqjc"),
-&"move_step": SubResource("Animation_boujc")
+&"Damage": SubResource("Animation_2jqbt"),
+&"Death": SubResource("Animation_7s3t3"),
+&"Spell_jump_back": SubResource("Animation_3s0yo"),
+&"Spell_jump_up": SubResource("Animation_uiu5v"),
+&"move_jump": SubResource("Animation_27adb"),
+&"move_step": SubResource("Animation_hso8a")
 }
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
@@ -64,9 +130,6 @@ texture = ExtResource("2_hso8a")
 char_animation = NodePath("Mad_mage/AnimationPlayer")
 char_model_node = NodePath("Mad_mage")
 skeleton = NodePath("Mad_mage/Armature/Skeleton3D")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
-libraries/ = SubResource("AnimationLibrary_pnqru")
 
 [node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
 unique_name_in_owner = true
@@ -97,7 +160,7 @@ outline_size = 8
 [node name="Mad_mage" parent="." unique_id=607442515 instance=ExtResource("3_0la17")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Mad_mage/Armature" parent_id_path=PackedInt32Array(607442515, 1746327682) index="0" unique_id=50842667]
+[node name="Skeleton3D" parent="Mad_mage/Armature" parent_id_path=PackedInt32Array(607442515, 985326926) index="0" unique_id=705978499]
 bones/0/position = Vector3(0.79738224, 0.7467369, -0.74802613)
 bones/0/rotation = Quaternion(-0.5194856, 0.4388819, -0.5438441, 0.49168196)
 bones/1/position = Vector3(-1.0346949, 2.9754765, -1.5066954)
@@ -131,5 +194,8 @@ bones/26/rotation = Quaternion(-0.62843394, -0.011848884, 0.009574522, 0.7777139
 bones/27/position = Vector3(0.016006654, 0.023533564, 0.15100543)
 bones/27/rotation = Quaternion(0.9469912, -0.0072120256, -0.00758683, -0.32108903)
 bones/29/rotation = Quaternion(0.99882287, -2.3279269e-10, -0.048506252, -4.203899e-12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2078678525]
+libraries/Movement_anim = SubResource("AnimationLibrary_0la17")
 
 [editable path="Mad_mage"]

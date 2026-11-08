@@ -62,6 +62,7 @@ func execute_orders():
 	state = states.ANIMATION
 	for order_data in order_array:
 		var attacker : Character_node = get_node(order_data.attacker)
+		print("handling order by " + attacker.name)
 		map_gen.set_camera_target(attacker)
 		map_gen.set_selector(attacker.map_pos)
 		attacker.can_undo_move = false
@@ -76,7 +77,7 @@ func execute_orders():
 		else:
 			handle_attack(order_data)
 		await order_handled
-		print("order handled")
+		print("order handled by " + attacker.name)
 	order_array.clear()
 	state = prev_state
 	if map_gen != null:
@@ -225,6 +226,10 @@ func handle_spawn(order : Order_spawn):
 
 func _ready() -> void:
 	%Enemy_manager.get_new_dir(Vector2i(10,10), Vector2i(12, 12))
+
+
+
+
 
 
 

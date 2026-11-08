@@ -13,3 +13,9 @@ func load_data(save : Game_save):
 	%delete_bt.pressed.connect(delete.emit.bind(save.save_name))
 	%Overwrite_bt.pressed.connect(overwrite.emit.bind(save.save_name))
 	%Load_bt_big.pressed.connect(load.emit.bind(save.save_name))
+
+func disable_overwrite():
+	%Overwrite_bt.disabled = true
+
+func enable_overwrite():
+	%Overwrite_bt.disabled = false

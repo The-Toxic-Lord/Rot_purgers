@@ -91,9 +91,17 @@ func _input(event: InputEvent) -> void:
 
 func hide_new_save():
 	%Add_save_bt.hide()
+	for save_slot : Save_slot in save_name_to_slot.values():
+		save_slot.disable_overwrite()
 
 func show_new_save():
 	%Add_save_bt.show()
+	for save_slot : Save_slot in save_name_to_slot.values():
+		save_slot.enable_overwrite()
+
+
+
+
 
 
 

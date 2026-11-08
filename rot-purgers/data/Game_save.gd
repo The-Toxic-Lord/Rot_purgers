@@ -37,10 +37,7 @@ func make_save():
 		if ObjectLink.map_gen.map_cells[cell].position.y != ObjectLink.map_gen.terrain_map[cell].height * 0.1:
 			modified_cells[cell] = ObjectLink.map_gen.map_cells[cell].position.y
 	
-	dead_chars = GlobalData.dead_chars
-	char_mods = GlobalData.char_mods
-	read_dialogues = GlobalData.read_dialogues
-	
+	await save_global_data()
 	await make_save_char_data()
 	#await make_screen()
 	save_type = save_types.BATTLE
@@ -68,9 +65,17 @@ func make_screen():
 @export_storage var line_id : String
 @export_storage var cutscene_path : String
 
+func save_global_data():
+	dead_chars = GlobalData.dead_chars
+	char_mods = GlobalData.char_mods
+	read_dialogues = GlobalData.read_dialogues
+
 func make_dialogue_save():
 	line_id = DialogueBalloon.dialogue_line.id
 	cutscene_path = ObjectLink.cutscene.scene_file_path
+	
+	await save_global_data()
+	
 	save_type = save_types.DIALOGUE
 	#await make_screen()
 

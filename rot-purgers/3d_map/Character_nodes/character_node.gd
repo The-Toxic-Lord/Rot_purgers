@@ -86,9 +86,6 @@ func _ready() -> void:
 				child.set_surface_override_material(0, material)
 	#if material is ShaderMaterial:
 		#material.set_shader_parameter("dissolve", -0.1)
-	#char_animation.animation_changed.connect(print_data)
-
-
 
 func new_round():
 	can_move = true
@@ -126,8 +123,8 @@ func display_damage(display_mini := false, is_heal := false):
 		await get_tree().create_timer(0.5).timeout
 	else:
 		SoundHandler.play_damage()
-		if $AnimationPlayer.has_animation("Damage"):
-			$AnimationPlayer.play("Damage")
+		if $AnimationPlayer.has_animation("Movement_anim/Damage"):
+			$AnimationPlayer.play("Movement_anim/Damage")
 		if char_animation.has_animation("Damage"):
 			char_animation.play("Damage")
 			await char_animation.animation_finished
@@ -140,7 +137,7 @@ func display_damage(display_mini := false, is_heal := false):
 		is_dead = true
 		if display_mini:
 			ObjectLink.mini_char_stats.play_dead()
-		$AnimationPlayer.play("Death")
+		$AnimationPlayer.play("Movement_anim/Death")
 		await $AnimationPlayer.animation_finished
 		animation_ended.emit()
 		BattleHandler.char_dies(self)
@@ -151,13 +148,14 @@ func display_damage(display_mini := false, is_heal := false):
 func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data], 
 select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Vector2i, Map_cell]):
 	var move_zones : Array[Vector2i]
+	var dist : int = stats.get_stat_boosted(Character_stats.stats.move_speed)
 	if BattleHandler.enemies.has(self):
 		move_zones = ObjectLink.map_gen.get_flow_cells(
-			map_pos, stats.move_speed, false, true, stats.jump_height, false
+			map_pos, dist, false, true, stats.jump_height, false
 		)
 	else:
 		move_zones = ObjectLink.map_gen.get_flow_cells(
-			map_pos, stats.move_speed, false, false, stats.jump_height
+			map_pos, dist, false, false, stats.jump_height
 		)
 	var path := find_flow_path(target_cell, move_zones, terrain_map)
 	previous_map_pos = map_pos
@@ -186,20 +184,21 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 	var prev_pos : Vector2i = map_pos
 	
 	path.remove_at(0)
-	
-	turn(move_to_direction[path[0] - prev_pos], true)
-	await self.direction_changed
-	current_direction = move_to_direction[path[0] - prev_pos]
+	if path != []:
+		turn(move_to_direction[path[0] - prev_pos], true)
+		await self.direction_changed
+		current_direction = move_to_direction[path[0] - prev_pos]
 	
 	for cell in path:
-		if move_straight_check(cell, terrain_map, prev_pos, map_cells):
+		var str_check := move_straight_check(cell, terrain_map, prev_pos, map_cells)
+		if str_check:
 			prev_pos = map_pos
 			if cell != path.back():
 				continue
 		if move_straight_list != []:
 			await move_normal(move_straight_list.back(), move_straight_list.size() * 0.5)
 			move_straight_list = []
-			if cell == path.back():
+			if cell == path.back() and str_check:
 				break
 		previous_direction = current_direction
 		turn(move_to_direction[cell - prev_pos], true)
@@ -297,7 +296,7 @@ func move_normal(pos : Vector3, time := 0.5):
 
 func move_step(pos : Vector3):
 	var ap : AnimationPlayer = $AnimationPlayer
-	var anim := ap.get_animation("move_step")
+	var anim := ap.get_animation("Movement_anim/move_step")
 	anim.track_set_key_value(0, 0, position)
 	var dir : Vector3 = pos - position
 	var step : Vector3 = Vector3(position.x + dir.x / 2.0, position.y, position.z + dir.z / 2.0)
@@ -305,12 +304,14 @@ func move_step(pos : Vector3):
 	step.y += dir.y
 	anim.track_set_key_value(0, 2, step)
 	anim.track_set_key_value(0, 3, pos)
-	ap.play("move_step")
+	ap.play("Movement_anim/move_step")
+	
 	await ap.animation_finished
+	#position = pos
 
 func move_jump(pos : Vector3):
 	var ap : AnimationPlayer = $AnimationPlayer
-	var anim := ap.get_animation("move_jump")
+	var anim := ap.get_animation("Movement_anim/move_jump")
 	anim.track_set_key_value(0, 0, position)
 	var dir : Vector3 = pos - position
 	var step : Vector3 = position + Vector3(dir.x * 0.25, dir.y, dir.z * 0.25)
@@ -321,14 +322,15 @@ func move_jump(pos : Vector3):
 	if char_animation.has_animation("Jump_up"):
 		await play_jump()
 	else:
-		ap.play("move_jump")
+		ap.play("Movement_anim/move_jump")
 		await ap.animation_finished
 	play_idle()
+	#position = pos
 
 func play_jump():
 	char_animation.play("Crouch_jump_up")
 	await char_animation.animation_finished
-	$AnimationPlayer.play("move_jump")
+	$AnimationPlayer.play("Movement_anim/move_jump")
 	char_animation.play("Jump_up")
 	await $AnimationPlayer.animation_finished
 	char_animation.play("Land_jump_up")
@@ -339,7 +341,7 @@ func play_idle():
 
 func move_drop(pos : Vector3):
 	var ap : AnimationPlayer = $AnimationPlayer
-	var anim := ap.get_animation("move_jump")
+	var anim := ap.get_animation("Movement_anim/move_jump")
 	anim.track_set_key_value(0, 0, position)
 	var dir : Vector3 = pos - position
 	var step : Vector3 = position + Vector3(dir.x * 0.25, 0.5, dir.z * 0.25)
@@ -350,14 +352,15 @@ func move_drop(pos : Vector3):
 	if char_animation.has_animation("Jump_up"):
 		await play_jump_down()
 	else:
-		ap.play("move_jump")
+		ap.play("Movement_anim/move_jump")
 		await ap.animation_finished
 	play_idle()
+	#position = pos
 
 func play_jump_down():
 	char_animation.play("Crouch_jump_down")
 	await char_animation.animation_finished
-	$AnimationPlayer.play("move_jump")
+	$AnimationPlayer.play("Movement_anim/move_jump")
 	char_animation.play("Jump_down")
 	await $AnimationPlayer.animation_finished
 	char_animation.play("Land_jump_down")
@@ -462,7 +465,9 @@ cells : Array[Vector2i] = []):
 	await self.direction_changed
 	
 	if skill_data.animation_node_UID != "":
-		var skill_node : Skill_animation_3d = load(skill_data.animation_node_UID).instantiate()
+		load_skill_animation(skill_data)
+		await skill_loaded
+		var skill_node : Skill_animation_3d = skill_animation_node
 		skill_node.hide()
 		add_child(skill_node)
 		var pos : Vector3
@@ -482,6 +487,14 @@ cells : Array[Vector2i] = []):
 	else:
 		attack_finished.emit()
 
+signal skill_loaded
+var skill_animation_node : Skill_animation_3d = null
+func load_skill_animation(skill_data : Skill_base):
+	await get_tree().process_frame
+	var skill_node : Skill_animation_3d = load(skill_data.animation_node_UID).instantiate()
+	skill_animation_node = skill_node
+	skill_loaded.emit()
+
 func skill_windup():
 	pass
 
@@ -496,10 +509,10 @@ func animate_skill_jump(target_cell):
 		await char_animation.animation_finished
 		
 		var ap : AnimationPlayer = $AnimationPlayer
-		var anim := ap.get_animation("Spell_jump_up")
+		var anim := ap.get_animation("Movement_anim/Spell_jump_up")
 		anim.track_set_key_value(0, 0, position)
 		anim.track_set_key_value(0, 1, position + Vector3(0, 10, 0))
-		ap.play("Spell_jump_up")
+		ap.play("Movement_anim/Spell_jump_up")
 		await ap.animation_finished
 		
 		char_animation.play("Spell_jump_attack_windup")
@@ -511,10 +524,10 @@ func animate_skill_jump(target_cell):
 		
 		send_projectile(target_cell)
 		
-		anim = ap.get_animation("Spell_jump_back")
+		anim = ap.get_animation("Movement_anim/Spell_jump_back")
 		anim.track_set_key_value(0, 0, position)
 		anim.track_set_key_value(0, 1, position - Vector3(0, 10, 0))
-		ap.play("Spell_jump_back")
+		ap.play("Movement_anim/Spell_jump_back")
 		char_animation.play("Spell_jump_attack_back")
 		await char_animation.animation_finished
 		char_animation.play("Spell_jump_back")
@@ -572,7 +585,7 @@ func turn_to_target(target_cell : Vector2i, forse_turn := false):
 		if id == 3:
 			id = -1
 		new_dir = dir_arr[id + 1]
-	else:
+	elif angle > 50 or angle < -50:
 		if id >= 2:
 			id -= 4
 		new_dir = dir_arr[id + 2]
@@ -593,6 +606,7 @@ func load_state(save_char_data : Save_char_data):
 	map_pos = save_char_data.map_pos
 	previous_map_pos = save_char_data.previous_map_pos
 	stats = save_char_data.stats
+	set_rot(stats.rot_stage)
 	is_enemy = save_char_data.is_enemy
 	can_rearange = save_char_data.can_rearange
 	base_stats = save_char_data.base_stats

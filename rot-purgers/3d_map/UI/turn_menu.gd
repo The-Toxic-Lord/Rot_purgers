@@ -14,7 +14,6 @@ signal end_turn
 signal settings
 signal exit
 
-
 func _on_turn_button_pressed(source: BaseButton) -> void:
 	button_to_signal[source].emit()
 
@@ -29,3 +28,7 @@ func focus():
 func _on_save_pressed() -> void:
 	ObjectLink.save_menu.show()
 	ObjectLink.save_menu.show_new_save()
+
+
+func _on_skip_pressed() -> void:
+	BattleHandler.end_battle()

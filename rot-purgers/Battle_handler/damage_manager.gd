@@ -36,11 +36,25 @@ func cals_hit_acc_dmg_bonus(chance : float):
 	else:
 		return 0.0
 
-func deflect_check(target : Character_node, attacker : Character_node) -> bool:
+func check_same_team(actor_1 : Character_node, actor_2 : Character_node) -> bool:
+	var ac_1 := 0
+	var ac_2 := 0
+	if BattleHandler.allies.has(actor_1):
+		ac_1 = 1
+	if BattleHandler.allies.has(actor_2):
+		ac_2 = 1
+	if ac_1 == ac_2:
+		return true
+	else:
+		return false
+
+func deflect_check(target : Character_node, attacker : Character_node) -> Dictionary:
 	var points : Array[Vector2i] = Geometry2D.bresenham_line(attacker.map_pos, target.map_pos)
 	var closest_char : Character_node
 	var closest_cell : Vector2i
 	for char_node in BattleHandler.protected_cells:
+		if check_same_team(attacker, char_node):
+			continue
 		var cells : Array[Vector2i] = BattleHandler.protected_cells[char_node]
 		for v in points:
 			if !cells.has(v):
@@ -58,16 +72,18 @@ func deflect_check(target : Character_node, attacker : Character_node) -> bool:
 		closest_char.deflects_left -= 1
 		if closest_char.deflects_left == 0:
 			BattleHandler.protected_cells.erase(closest_char)
-		return true
-	return false
+		return {"deflector" : closest_char, "success" : true}
+	return {"success" : false}
 
 func attack_damage(target : Character_node, attacker : Character_node):
 	attacker.attack(target.map_pos)
 	await attacker.attack_finished
 	#if (target.map_pos - attacker.map_pos).length() > 1:
-	if deflect_check(target, attacker):
-		target.deflect()
-		await target.attack_finished
+	var deflect_dir : Dictionary = deflect_check(target, attacker)
+	if deflect_dir["success"]:
+		print(attacker.name + " attack deflected by " + deflect_dir["deflector"].name)
+		deflect_dir["deflector"].deflect()
+		await deflect_dir["deflector"].attack_finished
 		order_ended.emit()
 		return
 	map_gen.set_camera_target(target)

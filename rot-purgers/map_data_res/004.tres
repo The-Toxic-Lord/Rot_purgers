@@ -881,6 +881,6 @@ Vector2i(18, 17): SubResource("Resource_c5a7s")
 magic_cost_adjustment = 1.5
 text_data = ExtResource("19_j17rj")
 text_cue = "map_004"
-next_map_path = "res://map_data_res/005.tres"
+next_map_path = "uid://cn0yh7eofq5xa"
 cutscene_cue = "the_sleeper"
 player_chars = Array[ExtResource("1_fqnh8")]([ExtResource("9_7elpe"), ExtResource("10_j17rj"), ExtResource("11_ub6j5"), ExtResource("12_c5a7s")])

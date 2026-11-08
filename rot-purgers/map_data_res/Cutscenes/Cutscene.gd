@@ -16,25 +16,31 @@ func _ready() -> void:
 
 func start_cutscene(_extra_data = null):
 	await get_tree().process_frame
-	if !chars.is_empty():
-		ObjectLink.cutscene_chars = chars
-	if !cameras.is_empty():
-		ObjectLink.cutscene_cameras = cameras
+	bind_objects()
 	load_finished.emit()
 	SoundHandler.stop_music()
 	if music != null:
 		SoundHandler.play_music(music)
 	if player != null:
-		ObjectLink.cutscene_player = player
 		if _extra_data != null and _extra_data is String and _extra_data != "":
 			player.play(_extra_data)
 		else:
 			player.play("start")
 
+func bind_objects():
+	if !chars.is_empty():
+		ObjectLink.cutscene_chars = chars
+	if !cameras.is_empty():
+		ObjectLink.cutscene_cameras = cameras
+	if player != null:
+		ObjectLink.cutscene_player = player
+
 func load_save(game_save : Game_save):
-	DialogueBalloon.start(text_data, "cutscene")
+	bind_objects()
+	DialogueBalloon.dialogue_resource = text_data
 	await get_tree().process_frame
 	DialogueBalloon.load_str(game_save.line_id)
+	DialogueBalloon.show()
 
 func start_dialogue(cue : String):
 	DialogueBalloon.start(text_data, cue)

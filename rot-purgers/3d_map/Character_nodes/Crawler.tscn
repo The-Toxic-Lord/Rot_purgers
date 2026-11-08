@@ -359,6 +359,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_7s3t3"]
 resource_name = "Death"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -366,7 +367,7 @@ tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -403,11 +404,10 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_61r11"]
-resource_name = "empty"
-
-[sub_resource type="Animation" id="Animation_hljk3"]
+[sub_resource type="Animation" id="Animation_6aou4"]
+resource_local_to_scene = true
 resource_name = "move_jump"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -415,13 +415,14 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_boujc"]
+[sub_resource type="Animation" id="Animation_md6jv"]
+resource_local_to_scene = true
 resource_name = "move_step"
 length = 0.5
 tracks/0/type = "value"
@@ -437,15 +438,15 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtxpa"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bl5a2"]
+resource_local_to_scene = true
 _data = {
 &"Damage": SubResource("Animation_2jqbt"),
 &"Death": SubResource("Animation_7s3t3"),
 &"Spell_jump_back": SubResource("Animation_3s0yo"),
 &"Spell_jump_up": SubResource("Animation_uiu5v"),
-&"empty": SubResource("Animation_61r11"),
-&"move_jump": SubResource("Animation_hljk3"),
-&"move_step": SubResource("Animation_boujc")
+&"move_jump": SubResource("Animation_6aou4"),
+&"move_step": SubResource("Animation_md6jv")
 }
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
@@ -638,5 +639,5 @@ skeleton = NodePath("..")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_83vke")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=825518852]
-libraries/ = SubResource("AnimationLibrary_gtxpa")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=83145555]
+libraries/Movement_anim = SubResource("AnimationLibrary_bl5a2")

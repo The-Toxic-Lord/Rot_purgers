@@ -44,7 +44,8 @@ func load_save(save_name : String):
 	if cutscene != null:
 		cutscene.queue_free()
 		DialogueBalloon.hide()
-	var save = ResourceLoader.load("user://saves/" + save_name + ".tres")
+	var save = ResourceLoader.load("user://saves/" + save_name + ".tres", "", ResourceLoader.CACHE_MODE_IGNORE_DEEP)
+	await GlobalData.load_save(save)
 	match save.save_type:
 		Game_save.save_types.BATTLE:
 			map_generator = load("uid://buyr0671du0pe").instantiate()

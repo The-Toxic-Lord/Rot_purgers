@@ -4,6 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://cgptl18ixmaud" path="res://blender_models/Chars/Evelyn_Evelyn_texture.png" id="2_26cmt"]
 [ext_resource type="PackedScene" uid="uid://cab586b27pb30" path="res://blender_models/Chars/Evelyn.glb" id="4_sotvy"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ei1fh"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o6ryx"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_26cmt"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vwy4y"]
+graph_offset = Vector2(-334.0777, -77.532394)
+nodes/output/position = Vector2(620, 320)
+nodes/walk_blend/node = SubResource("AnimationNodeBlend2_26cmt")
+nodes/walk_blend/position = Vector2(-60, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_o6ryx")
+nodes/Animation/position = Vector2(-300, 80)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ei1fh")
+"nodes/Animation 2/position" = Vector2(-300, 260)
+node_connections = [&"output", 0, &"walk_blend", &"walk_blend", 0, &"Animation", &"walk_blend", 1, &"Animation 2"]
+
 [sub_resource type="Animation" id="Animation_2jqbt"]
 resource_name = "Damage"
 length = 0.5
@@ -79,7 +98,8 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_hljk3"]
+[sub_resource type="Animation" id="Animation_ei1fh"]
+resource_local_to_scene = true
 resource_name = "move_jump"
 length = 0.5
 tracks/0/type = "value"
@@ -95,7 +115,8 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_boujc"]
+[sub_resource type="Animation" id="Animation_o6ryx"]
+resource_local_to_scene = true
 resource_name = "move_step"
 length = 0.5
 tracks/0/type = "value"
@@ -111,14 +132,15 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei1fh"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26cmt"]
+resource_local_to_scene = true
 _data = {
 &"Damage": SubResource("Animation_2jqbt"),
 &"Death": SubResource("Animation_7s3t3"),
 &"Spell_jump_back": SubResource("Animation_3s0yo"),
 &"Spell_jump_up": SubResource("Animation_uiu5v"),
-&"move_jump": SubResource("Animation_hljk3"),
-&"move_step": SubResource("Animation_boujc")
+&"move_jump": SubResource("Animation_ei1fh"),
+&"move_step": SubResource("Animation_o6ryx")
 }
 
 [node name="Evelyn" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
@@ -157,32 +179,38 @@ outline_size = 8
 [node name="Evelyn" parent="." unique_id=698526459 instance=ExtResource("4_sotvy")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Evelyn/Armature" parent_id_path=PackedInt32Array(698526459, 1367502904) index="0" unique_id=803182441]
-bones/0/position = Vector3(1.3322676e-15, 0.94689864, 5.587934e-09)
-bones/0/rotation = Quaternion(0.15032479, 1.1785465e-07, 1.7920115e-08, 0.9886367)
-bones/1/rotation = Quaternion(-0.08490712, 2.6201263e-14, -2.0243432e-08, 0.9963889)
-bones/4/rotation = Quaternion(-0.042242147, 0.0463851, 0.98214984, -0.1773296)
-bones/5/rotation = Quaternion(0.41159207, 0.014123356, -0.18302117, 0.8926902)
-bones/9/rotation = Quaternion(-0.11281833, -0.16980569, 0.9601164, 0.19134942)
-bones/10/rotation = Quaternion(-0.0007626622, -0.0020275775, 0.0028175586, 0.99999374)
-bones/14/rotation = Quaternion(4.4463002e-05, 0.05283046, 0.99860334, -0.0007098993)
-bones/15/rotation = Quaternion(-0.003056115, -9.772222e-05, 0.00016969565, 0.99999535)
-bones/16/rotation = Quaternion(-0.08834222, 0.1837566, 0.9789581, 0.008382527)
-bones/17/rotation = Quaternion(-0.43615985, 8.791033e-05, -0.024217736, 0.8995433)
-bones/18/position = Vector3(0.18425, 1.0961605, 0.2698059)
-bones/18/rotation = Quaternion(-0.35034075, 0.6378691, -0.5554388, 0.4023333)
-bones/19/position = Vector3(-0.300533, 1.0954794, -0.12915683)
-bones/19/rotation = Quaternion(0.35034075, 0.6378691, -0.5554388, -0.4023333)
-bones/20/position = Vector3(0.09966216, 0.2700269, -0.13830751)
-bones/20/rotation = Quaternion(-1.5950447e-05, 0.84145755, -0.5403234, 2.4839992e-05)
-bones/21/position = Vector3(9.209846e-07, 0.00012715998, -0.0005441424)
-bones/24/position = Vector3(-0.08907897, 0.39066198, -0.27644873)
-bones/24/rotation = Quaternion(0.09376848, 0.9110989, -0.39927486, 0.04106018)
-bones/25/position = Vector3(-9.0772045e-07, -2.2692143e-06, 1.3849909e-05)
-bones/27/rotation = Quaternion(0.9999814, -5.586766e-09, 0.006101408, -2.0871578e-10)
+[node name="Skeleton3D" parent="Evelyn/Armature" parent_id_path=PackedInt32Array(698526459, 1416876624) index="0" unique_id=593502633]
+bones/0/position = Vector3(-6.54812e-10, 0.9637351, -8.6157176e-10)
+bones/0/rotation = Quaternion(0.06324702, 1.1897061e-07, 7.5396365e-09, 0.99799794)
+bones/1/rotation = Quaternion(-0.08490712, 2.1316282e-14, -2.024343e-08, 0.9963889)
+bones/4/rotation = Quaternion(0.05796027, -0.08630225, 0.9771556, -0.18536341)
+bones/5/rotation = Quaternion(0.08268176, 0.006028275, -0.11780291, 0.98957056)
+bones/9/rotation = Quaternion(-0.039665684, -0.017591804, 0.98710626, 0.15407267)
+bones/10/rotation = Quaternion(0.0020764298, -0.0062655476, 0.0022623402, 0.99997574)
+bones/14/rotation = Quaternion(-0.0003420916, 0.052830096, 0.9986032, -0.00072899414)
+bones/15/rotation = Quaternion(-0.0030561076, -9.7722455e-05, 0.0001696952, 0.99999535)
+bones/16/rotation = Quaternion(-0.08853967, 0.20650536, 0.9744312, 0.00029162315)
+bones/17/rotation = Quaternion(-0.3587612, 9.119568e-05, -0.019920187, 0.9332168)
+bones/18/position = Vector3(0.26128548, 1.0665181, -0.013750626)
+bones/18/rotation = Quaternion(-0.38419953, 0.5868244, -0.60911936, 0.37013707)
+bones/19/position = Vector3(-0.28431496, 1.0611721, 0.017209113)
+bones/19/rotation = Quaternion(0.38419953, 0.5868244, -0.60911936, -0.37013707)
+bones/20/position = Vector3(0.09966216, 0.27311713, -0.018197648)
+bones/20/rotation = Quaternion(-1.2135018e-05, 0.91160154, -0.41107515, 2.6910653e-05)
+bones/21/position = Vector3(9.298295e-07, 0.00035974645, -0.00042780428)
+bones/24/position = Vector3(-0.08907897, 0.32578734, -0.08697508)
+bones/24/rotation = Quaternion(0.089816265, 0.87267005, -0.47746068, 0.049107023)
+bones/25/position = Vector3(-1.0834145e-06, -3.5982787e-06, 1.11824065e-05)
+bones/27/rotation = Quaternion(0.9999814, 2.7939158e-09, 0.0061014076, 1.7047247e-11)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1083816104]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=804089499]
 unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_ei1fh")
+root_node = NodePath("%AnimationTree/../Evelyn")
+tree_root = SubResource("AnimationNodeBlendTree_vwy4y")
+anim_player = NodePath("../Evelyn/AnimationPlayer")
+parameters/walk_blend/blend_amount = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2086227160]
+libraries/Movement_anim = SubResource("AnimationLibrary_26cmt")
 
 [editable path="Evelyn"]

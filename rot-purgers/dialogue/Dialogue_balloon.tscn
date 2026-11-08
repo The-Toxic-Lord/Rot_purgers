@@ -232,6 +232,17 @@ offset_right = 185.0
 offset_bottom = 50.0
 text = "Load"
 
+[node name="Skip_bt" type="Button" parent="Balloon" unique_id=1851830442]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 205.0
+offset_top = 2.0
+offset_right = 293.0
+offset_bottom = 50.0
+action_mode = 0
+keep_pressed_outside = true
+text = "Skip"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1162558754]
 unique_name_in_owner = true
 
@@ -239,3 +250,5 @@ unique_name_in_owner = true
 [connection signal="response_selected" from="Balloon/CenterContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
 [connection signal="pressed" from="Balloon/Button" to="." method="save"]
 [connection signal="pressed" from="Balloon/Button2" to="." method="load_str"]
+[connection signal="button_down" from="Balloon/Skip_bt" to="." method="_on_skip_bt_button_down"]
+[connection signal="button_up" from="Balloon/Skip_bt" to="." method="_on_skip_bt_button_up"]

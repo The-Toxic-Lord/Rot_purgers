@@ -5,123 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="3_pp0gv"]
 [ext_resource type="PackedScene" uid="uid://btguubnakfyy8" path="res://3d_map/Character_nodes/Elliot/sword_trail.tscn" id="4_2jqbt"]
 [ext_resource type="PackedScene" uid="uid://bnnjcttj2n2pd" path="res://3d_map/Animations/flying_slash/flying_slash.tscn" id="5_xwkw5"]
-
-[sub_resource type="Animation" id="Animation_2jqbt"]
-resource_name = "Damage"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:char_model_node:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.050177757, 0.10035551, 0.149773, 0.20071103, 0.24936825, 0.29878575, 0.34972376, 0.4006618),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_7s3t3"]
-resource_name = "Death"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_3s0yo"]
-resource_name = "Spell_jump_back"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_uiu5v"]
-resource_name = "Spell_jump_up"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_hljk3"]
-resource_name = "move_jump"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_boujc"]
-resource_name = "move_step"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqru"]
-_data = {
-&"Damage": SubResource("Animation_2jqbt"),
-&"Death": SubResource("Animation_7s3t3"),
-&"Spell_jump_back": SubResource("Animation_3s0yo"),
-&"Spell_jump_up": SubResource("Animation_uiu5v"),
-&"move_jump": SubResource("Animation_hljk3"),
-&"move_step": SubResource("Animation_boujc")
-}
+[ext_resource type="AnimationLibrary" uid="uid://dx483sxwdiow" path="res://3d_map/Character_nodes/animations/Movement_anim.res" id="6_pp0gv"]
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton", "attack_trail")]
 script = ExtResource("1_hljk3")
@@ -130,9 +14,6 @@ char_animation = NodePath("Ellio/AnimationPlayer")
 char_model_node = NodePath("Ellio")
 skeleton = NodePath("Ellio/Armature/Skeleton3D")
 attack_trail = NodePath("Ellio/Armature/Skeleton3D/BoneAttachment3D/Node3D/Sword_trail")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
-libraries/ = SubResource("AnimationLibrary_pnqru")
 
 [node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
 unique_name_in_owner = true
@@ -163,8 +44,44 @@ outline_size = 8
 [node name="Ellio" parent="." unique_id=711042152 instance=ExtResource("3_pp0gv")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Ellio/Armature/Skeleton3D" parent_id_path=PackedInt32Array(711042152, 1696694404) index="12" unique_id=1149740795]
-transform = Transform3D(0.99999976, 1.45618e-07, -7.3696995e-08, -8.381897e-08, 0.04342193, -0.9990566, -1.0826648e-07, 0.99905634, 0.043421943, -2.3233597, 1.2903197, -1.1724176)
+[node name="Skeleton3D" parent="Ellio/Armature" parent_id_path=PackedInt32Array(711042152, 202872766) index="0" unique_id=347021490]
+bones/0/position = Vector3(0.065365314, 0.67797107, -0.1509366)
+bones/0/rotation = Quaternion(-0.5057127, 0.49422133, -0.49422133, 0.5057126)
+bones/1/position = Vector3(-0.41812527, 0.5077417, -0.64291894)
+bones/1/rotation = Quaternion(-0.00776425, -0.0075878357, 0.69889337, 0.7151435)
+bones/2/position = Vector3(0, -0.5389929, -1.1469487)
+bones/2/rotation = Quaternion(0, -0.22636779, 0, 0.97404194)
+bones/3/rotation = Quaternion(7.2561456e-08, -1.40410314e-08, 0.0026454756, 0.9999965)
+bones/5/rotation = Quaternion(-0.038254775, 0.22134398, 0.016009742, 0.97431374)
+bones/6/rotation = Quaternion(0.23459162, -0.1929878, -0.78540987, 0.5393086)
+bones/7/rotation = Quaternion(0.69284457, 0.00901794, -0.20747736, 0.6905348)
+bones/8/rotation = Quaternion(-0.004177896, -0.07799394, -0.024089513, 0.99665403)
+bones/11/rotation = Quaternion(0.4301, 0.02293828, 0.90100884, 0.051680256)
+bones/12/rotation = Quaternion(0.5126755, -0.24967727, -0.56653774, 0.5948614)
+bones/13/rotation = Quaternion(0.16495328, 0.6858918, -0.20329049, 0.67898154)
+bones/17/rotation = Quaternion(0.91285837, 0.090215124, -0.19582912, 0.34670144)
+bones/17/scale = Vector3(1.0000325, 1.0000052, 1.0000348)
+bones/18/rotation = Quaternion(0.5263802, 0.0058905594, -0.050417554, 0.8487327)
+bones/18/scale = Vector3(1.0000004, 0.9999906, 1.0000091)
+bones/19/rotation = Quaternion(0.9462061, -0.19600198, -0.22802357, -0.11950949)
+bones/19/scale = Vector3(1.0000352, 0.99999744, 1.000044)
+bones/20/rotation = Quaternion(0.12462411, -0.070450425, -0.17938353, 0.9733073)
+bones/20/scale = Vector3(1.0000051, 1.0000017, 0.9999929)
+bones/21/position = Vector3(0.37081864, -2.1805, -1.0402814)
+bones/21/rotation = Quaternion(-0.70702475, 0.010771897, -0.010771897, 0.7070247)
+bones/22/position = Vector3(6.0658235e-06, 9.323785e-06, -6.438971e-05)
+bones/22/rotation = Quaternion(0.9469912, 0.0072120237, 0.0075868363, -0.32108903)
+bones/24/position = Vector3(-0.37081864, -2.1805, -2.1614914)
+bones/24/rotation = Quaternion(-0.70702475, -0.010771897, 0.010771897, 0.7070247)
+bones/25/position = Vector3(-4.347878e-06, 2.3320623e-05, -2.4630603e-05)
+bones/25/rotation = Quaternion(0.8645116, -0.39538312, 0.12497038, -0.284032)
+bones/27/position = Vector3(0.26896888, -1.0148847, 1.1109302)
+bones/28/position = Vector3(-0.26896888, -1.0148847, 1.1109302)
+bones/29/position = Vector3(-0.38811314, 0.6577014, -0.19947755)
+bones/29/rotation = Quaternion(-0.35827535, 0.62213814, -0.14375177, 0.6811155)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Ellio/Armature/Skeleton3D" index="12" unique_id=1149740795]
+transform = Transform3D(0.18456006, -0.24996907, 0.9505014, -0.64161676, 0.70194834, 0.30918646, -0.7444899, -0.6669209, -0.030832687, -0.3881128, 0.6577012, -0.19947848)
 bone_name = "Staff"
 bone_idx = 15
 
@@ -178,5 +95,8 @@ visible = false
 unique_name_in_owner = true
 transform = Transform3D(1, -1.02191706e-07, 1.6486496e-08, 5.1095853e-08, 1.6228329, -0.5844684, 1.6486496e-08, 1.1689368, 0.81141645, -0.059120785, 0.46009278, 2.1562595)
 visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=570041664]
+libraries/Movement_anim = ExtResource("6_pp0gv")
 
 [editable path="Ellio"]

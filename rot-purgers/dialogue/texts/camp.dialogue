@@ -8,8 +8,6 @@ Who should Zaar take lesson from?
 ~ camp_choose
 if !GlobalData.read_dialogues.has("camp_1")
 	=> camp_1
-if GlobalData.read_dialogues.size() == 3
-	=> the_sleeper
 => choose
 
 ~ Elliot_choose
@@ -78,8 +76,7 @@ Elliot: This attitude is the only thing that concerns me. As for me, I am always
 
 Aven: I will let you two handle it for now. I have to organize my mind first.
 $> GlobalData.read_dialogues.append("camp_1")
-=> camp_choose
-=> END
+=> choose
 
 ~ lesson_Elliot_1
 Elliot: Let's start with a brief overview. Our fighting styles are different, and so is our magic. While I prefer single, but devastating strikes, you seem to prefer quick and accurate blows. As I understand, the tactic that you used in a fight with Maverik is not possible here.

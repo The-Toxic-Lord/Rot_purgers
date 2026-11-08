@@ -123,7 +123,7 @@ func handle_movement():
 	if follow_target != null:
 		move_target = follow_target.position
 	elif DialogueBalloon.is_working:
-		return
+		pass
 	elif BattleHandler.state == Battle_handler.states.PLAYER:
 		if map_generator.terrain_mod_menu_active:
 			return

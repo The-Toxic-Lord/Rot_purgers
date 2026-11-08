@@ -43,7 +43,10 @@ Zaar: Didn't see that one before.
 
 Alastor: Careful. I think it's about to do something.
 
-///
+$> ObjectLink.map_camera.move_target = Vector3(30.0, 1.5, 32.0)
+$> wait(1.0)
+
+
 
 Zaar: WHAT.
 

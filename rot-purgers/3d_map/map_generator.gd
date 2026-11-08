@@ -194,7 +194,7 @@ func calculate_boundary():
 	selector_boundary = Rect2i(corners[0], corners[1] - corners[0] + Vector2i(1, 1))
 	var camera_boundary : Rect2 = Rect2((corners[0] - Vector2i(1, 1)) * cell_size,\
 	 (selector_boundary.size + Vector2i(1, 1)) * cell_size)
-	%Camera_position.move_boundary = camera_boundary
+	camera.move_boundary = camera_boundary
 
 func move_selector_to_spawn():
 	var focus_cell : Vector2i
@@ -517,7 +517,8 @@ func spawn_select_zone(ch_node : Character_node, st : states):
 	var ignore_enemies : bool = true
 	match st:
 		states.MOVE:
-			dist = ch_node.stats.move_speed
+			dist = ch_node.stats.get_stat_boosted(Character_stats.stats.move_speed)
+			#dist = ch_node.stats.move_speed
 			ignore_chars = false
 			ignore_enemies = false
 			move_cells = get_flow_cells(ch_node.map_pos, dist, ignore_chars, ignore_enemies, ch_node.stats.jump_height)
@@ -984,10 +985,9 @@ func load_save(game_save : Game_save):
 	object_map = game_save.object_map
 	map_data = game_save.map_data
 	
-	await GlobalData.load_save(game_save)
-	
 	await spawn_cells()
 	await calculate_boundary()
+	%Camera_position.cell_boundary = selector_boundary
 	await move_selector_to_spawn()
 	await spawn_objects()
 	
@@ -1035,12 +1035,12 @@ var char_skill_move_cell : Vector2i
 var prev_cell : Vector2i
 var start_skill_move_position : Vector2i
 func move_char_skill():
-	camera.follow_target = selected_char
+	#camera.follow_target = selected_char
 	prev_cell = char_skill_move_cell
 	char_skill_move_cell = selected_cell
 	selected_char.position = map_cells[selected_cell].position
 	await get_tree().process_frame
-	camera.follow_target = null
+	#camera.follow_target = null
 	move_skill(char_skill_move_cell, prev_cell)
 
 func pause_skill_move():

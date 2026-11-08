@@ -4,8 +4,52 @@
 [ext_resource type="Texture2D" uid="uid://dj1xbfjn7r2fq" path="res://blender_models/Chars/Aven_True_Aven_texture.png" id="2_lxm4k"]
 [ext_resource type="PackedScene" uid="uid://bugdajyv2i82u" path="res://blender_models/Chars/Aven.glb" id="3_lxm4k"]
 
-[sub_resource type="Animation" id="Animation_pnqru"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_2jqbt"]
+resource_name = "Damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:char_model_node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/emission_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.050177757, 0.10035551, 0.149773, 0.20071103, 0.24936825, 0.29878575, 0.34972376, 0.4006618),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0, 0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7s3t3"]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3s0yo"]
+resource_name = "Spell_jump_back"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,13 +57,30 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_pgqjc"]
+[sub_resource type="Animation" id="Animation_uiu5v"]
+resource_name = "Spell_jump_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lxm4k"]
+resource_local_to_scene = true
 resource_name = "move_jump"
 length = 0.5
 tracks/0/type = "value"
@@ -32,10 +93,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_boujc"]
+[sub_resource type="Animation" id="Animation_87fr6"]
+resource_local_to_scene = true
 resource_name = "move_step"
 length = 0.5
 tracks/0/type = "value"
@@ -51,11 +113,15 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqru"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ip05d"]
+resource_local_to_scene = true
 _data = {
-&"RESET": SubResource("Animation_pnqru"),
-&"move_jump": SubResource("Animation_pgqjc"),
-&"move_step": SubResource("Animation_boujc")
+&"Damage": SubResource("Animation_2jqbt"),
+&"Death": SubResource("Animation_7s3t3"),
+&"Spell_jump_back": SubResource("Animation_3s0yo"),
+&"Spell_jump_up": SubResource("Animation_uiu5v"),
+&"move_jump": SubResource("Animation_lxm4k"),
+&"move_step": SubResource("Animation_87fr6")
 }
 
 [node name="Character_node" type="Node3D" unique_id=741036927 node_paths=PackedStringArray("char_animation", "char_model_node", "skeleton")]
@@ -64,9 +130,6 @@ texture = ExtResource("2_lxm4k")
 char_animation = NodePath("Aven/AnimationPlayer")
 char_model_node = NodePath("Aven")
 skeleton = NodePath("Aven/Armature/Skeleton3D")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1466387640]
-libraries/ = SubResource("AnimationLibrary_pnqru")
 
 [node name="Damage_numbers" type="Label3D" parent="." unique_id=92879057]
 unique_name_in_owner = true
@@ -96,5 +159,8 @@ outline_size = 8
 
 [node name="Aven" parent="." unique_id=91258124 instance=ExtResource("3_lxm4k")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1208074022]
+libraries/Movement_anim = SubResource("AnimationLibrary_ip05d")
 
 [editable path="Aven"]
