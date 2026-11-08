@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_cbuay"]
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_6tk23"]
-[ext_resource type="Resource" uid="uid://dhhs70r647yrx" path="res://Skills/Skill_res/Slash.tres" id="3_wgktq"]
-[ext_resource type="Resource" uid="uid://d0lnxgg3anglw" path="res://Skills/Skill_res/Blast.tres" id="4_k0qrl"]
-[ext_resource type="Resource" uid="uid://c5ughog08rjix" path="res://Skills/Skill_res/gravity_bend.tres" id="5_4rq7i"]
+[ext_resource type="Resource" uid="uid://bo4iuvaxxxup6" path="res://Skills/Skill_res/Aura_smash.tres" id="3_8cule"]
+[ext_resource type="Resource" uid="uid://gd67fw6ewp42" path="res://Skills/Skill_res/Dissolve.tres" id="4_uoesq"]
 [ext_resource type="Texture2D" uid="uid://cx3cvqx7o8rct" path="res://dialogue/char_sprites/Evelyn.png" id="6_cbuay"]
 
 [resource]
@@ -23,6 +22,6 @@ speed = 60
 move_speed = 10
 jump_height = 30
 node_UID = "uid://blnnuohsuxyvg"
-skills = Array[ExtResource("1_cbuay")]([ExtResource("3_wgktq"), ExtResource("4_k0qrl"), ExtResource("5_4rq7i")])
+skills = Array[ExtResource("1_cbuay")]([ExtResource("3_8cule"), ExtResource("4_uoesq")])
 self_path = "uid://bey6puoeedq1m"
 metadata/_custom_type_script = "uid://by1rq468n504l"

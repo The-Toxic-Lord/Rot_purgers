@@ -174,7 +174,10 @@ func skill_oneshot(order : Order_skill_data):
 	for target in targets:
 		target_damage[target] = skill_damage(target, attacker, order.skill)
 	for target in targets:
-		target.damage(target_damage[target])
+		if order.skill.skill_type != Skill_base.skill_types.ANNIHILATION:
+			target.damage(target_damage[target])
+		else:
+			target.kill()
 	if !targets.is_empty():
 		await targets[0].animation_ended
 		await get_tree().process_frame
@@ -227,8 +230,28 @@ attacker : Character_node, target : Character_node = null):
 		Skill_base.move.TARGET:
 			map_gen.teleport_char(target, order.move_target)
 
-
-
+func skill_annihilate(order : Order_skill_data):
+	await get_tree().process_frame
+	var targets : Array[Character_node] = []
+	var attacker : Character_node = get_node(order.attacker)
+	for cell in order.damage_cells:
+		if map_gen.char_positions.has(cell):
+			var height : float = map_gen.char_positions[cell].position.y
+			if abs(height - attacker.position.y) <= order.skill.max_height_difference * 0.1:
+				targets.append(map_gen.char_positions[cell])
+	if map_gen.map_data != null:
+		attacker.magic_cost(int(order.skill.magic_cost * GlobalData.map_magic_cost_adjustment))
+	else:
+		attacker.magic_cost(int(order.skill.magic_cost))
+	map_gen.set_selector(attacker.map_pos)
+	attacker.skill(order.selected_cell, order.skill, order.skill.animation_jump, order.damage_cells)
+	await attacker.attack_finished
+	if targets.is_empty():
+		if order.skill.move_mode == Skill_base.move.SELF:
+			await handle_skill_movement(order, attacker)
+		order_ended.emit()
+		return
+	
 
 
 

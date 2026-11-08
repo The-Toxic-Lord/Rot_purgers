@@ -217,6 +217,9 @@ func _on_spell_select_menu_skill_selected(skill : Skill_base) -> void:
 		Skill_base.skill_types.PROTECT:
 			map_generator.state = Map_generator.states.SKILL_PROTECT
 			map_generator.show_defend_zone(skill)
+		Skill_base.skill_types.ANNIHILATION:
+			map_generator.display_skill(skill)
+			map_generator.state = Map_generator.states.SKILL
 			#map_generator.state_select()
 			#selected_char.can_attack = false
 			#selected_char.has_order = true

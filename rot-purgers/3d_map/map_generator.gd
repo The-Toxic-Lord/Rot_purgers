@@ -734,6 +734,7 @@ func make_bound_skill(skill : Skill_base):
 	var i := 0
 	
 	skill_animation_target_cell = skill.skill_map.animation_target + selected_char.map_pos
+	print(skill_animation_target_cell)
 	
 	for damage_cell in skill.skill_map.damage_cells:
 		var damage_zone : Node3D = load("uid://bnwwdeckahhsa").instantiate()
@@ -854,6 +855,7 @@ func rotate_skill(prev_dir : directions):
 	if selected_skill == null:
 		return
 	var new_select_zone : Dictionary[Vector2i, Node3D] = {}
+	var skill_animation_target_cell_rotated := false
 	for cell in select_zones:
 		var zone : Node3D = select_zones[cell]
 		var temp_v : Vector2 = cell - selected_char.map_pos
@@ -861,8 +863,9 @@ func rotate_skill(prev_dir : directions):
 		temp_v = temp_v.rotated(angle)
 		var new_cell : Vector2i = selected_char.map_pos + Vector2i(round(temp_v.x), round(temp_v.y))
 		new_select_zone[new_cell] = zone
-		if cell == skill_animation_target_cell:
+		if cell == skill_animation_target_cell and !skill_animation_target_cell_rotated:
 			skill_animation_target_cell = new_cell
+			skill_animation_target_cell_rotated = true
 		if map_cells.has(new_cell):
 			zone.position = map_cells[new_cell].position
 		else:
@@ -879,11 +882,14 @@ func move_skill(new_pos : Vector2i, old_pos : Vector2i):
 		if unbound_spell_range.has(cell):
 			unbound_spell_range[cell].show()
 	
+	var skill_animation_target_cell_moved := false
+	
 	var temp_cell : Vector2i
 	for cell in select_zones:
 		var new_pos_cell := cell + dir
-		if cell == skill_animation_target_cell:
+		if cell == skill_animation_target_cell and !skill_animation_target_cell_moved:
 			temp_cell = new_pos_cell
+			skill_animation_target_cell_moved = true
 		if map_cells.has(new_pos_cell):
 			select_zones[cell].position = map_cells[new_pos_cell].position
 			new_select_zones[new_pos_cell] = select_zones[cell]
@@ -908,14 +914,16 @@ func rotate_unbound_skill():
 	
 	var new_select_zone : Dictionary[Vector2i, Node3D] = {}
 	var angle : float = PI / 2
+	var skill_animation_target_cell_rotated := false
 	for cell in select_zones:
 		var zone : Node3D = select_zones[cell]
 		var temp_v : Vector2 = cell - unbound_spell_center
 		temp_v = temp_v.rotated(angle)
 		var new_cell : Vector2i = unbound_spell_center + Vector2i(round(temp_v.x), round(temp_v.y))
 		new_select_zone[new_cell] = zone
-		if cell == skill_animation_target_cell:
+		if cell == skill_animation_target_cell and !skill_animation_target_cell_rotated:
 			skill_animation_target_cell = new_cell
+			skill_animation_target_cell_rotated = true
 		if map_cells.has(new_cell):
 			zone.position = map_cells[new_cell].position
 		else:

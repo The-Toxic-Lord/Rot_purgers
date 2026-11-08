@@ -140,13 +140,17 @@ func stop_animation_freeze():
 func handle_skill(order : Order_skill_data):
 	await get_tree().process_frame
 	if has_node(order.attacker):
-		for cell in order.move_cells:
-			if map_gen.char_positions.has(cell):
-				print("order failed")
-				var attacker : Character_node = get_node(order.attacker)
-				en_mng.salwage_failed_order(attacker)
-				order_handled.emit()
-				return
+		var attacker : Character_node = get_node(order.attacker)
+		if enemies.has(attacker):
+			for cell in order.move_cells:
+				if map_gen.char_positions.has(cell):
+					print("order failed")
+					en_mng.salwage_failed_order(attacker)
+					order_handled.emit()
+					return
+		
+		#if order.skill.skill_type == Skill_base.skill_types.ANNIHILATION:
+			#pass
 		if order.skill.is_one_shot:
 			dmg_mng.skill_oneshot(order)
 		else:

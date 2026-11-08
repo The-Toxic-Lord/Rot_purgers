@@ -35,7 +35,6 @@ to do:
 	- tutorial
 	-? fix char turn on move after attack
 	- Neiro AI
-	- disable camera move on spell move with mouse
 	- fix Elliot blade wave after animation
 	- death animation
 	- fix freeze on projectile load

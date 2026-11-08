@@ -2,7 +2,7 @@ extends Character_node
 
 class_name Observer
 
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var beam_vfx: Beam_vfx = %BaseBeamVFX
 @onready var eye_forward: MeshInstance3D = %Eye_forward
 

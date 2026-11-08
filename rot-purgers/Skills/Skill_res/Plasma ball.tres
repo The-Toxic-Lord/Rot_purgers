@@ -11,4 +11,5 @@ magic_cost = 20
 skill_map = ExtResource("2_egmsf")
 damage = 2.0
 accuracy_modifier = 0.3
+max_magic_strenght = null
 animation_node_UID = "uid://bp5vhlmtq38ue"

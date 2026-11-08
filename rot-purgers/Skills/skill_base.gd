@@ -9,7 +9,7 @@ class_name Skill_base
 
 @export var skill_map : Skill_map_data
 
-enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN }
+enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN, ANNIHILATION }
 @export var skill_type : skill_types = skill_types.ATTACK:
 	set(value):
 		skill_type = value
@@ -26,6 +26,7 @@ enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN }
 @export var animation_jump : bool = false
 @export var can_be_deflected : bool = false
 @export var line_of_sight_check := false
+@export var max_magic_strenght := 0
 
 enum move { NONE, SELF, TARGET }
 @export var move_mode : move = move.NONE
@@ -41,8 +42,7 @@ enum terrain_mods { MOVE, HEIGHT }
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["damage", "is_one_shot", "move_mode", "can_be_deflected",
-	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump",
-	"line_of_sight_check"]:
+	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump"]:
 		if skill_type != skill_types.ATTACK:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["heal_value"]:
@@ -52,7 +52,8 @@ func _validate_property(property: Dictionary) -> void:
 		if skill_type == skill_types.HEAL:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name == "max_height_difference":
-		if skill_type != skill_types.ATTACK and skill_type != skill_types.PROTECT:
+		if skill_type != skill_types.ATTACK and skill_type != skill_types.PROTECT \
+		and skill_type != skill_types.ANNIHILATION:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["terrain_mod"]:
 		if skill_type != skill_types.TERRAIN:
@@ -62,6 +63,12 @@ func _validate_property(property: Dictionary) -> void:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name == "spawn_node_UUID":
 		if skill_type != skill_types.SPAWN:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "max_magic_strenght":
+		if skill_type != skill_types.ANNIHILATION:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "line_of_sight_check":
+		if skill_type != skill_types.ANNIHILATION and skill_type != skill_types.ATTACK:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func get_attack_stat_used(st : Character_stats) -> int:

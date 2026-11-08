@@ -132,7 +132,10 @@ func display_damage(display_mini := false, is_heal := false):
 		else:
 			await get_tree().create_timer(0.5).timeout
 	%Damage_numbers.hide()
-	#animation_ended.emit()
+	if !await check_dead():
+		animation_ended.emit()
+
+func check_dead(display_mini = false):
 	if stats.health == 0:
 		is_dead = true
 		if display_mini:
@@ -141,8 +144,13 @@ func display_damage(display_mini := false, is_heal := false):
 		await $AnimationPlayer.animation_finished
 		animation_ended.emit()
 		BattleHandler.char_dies(self)
+		return true
 	else:
-		animation_ended.emit()
+		return false
+
+func kill():
+	stats.health = 0
+	check_dead()
 
 @warning_ignore("unused_parameter")
 func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data], 
