@@ -16,6 +16,7 @@ MONITOR:
 + move selector and camera with controller
 + in-game save
 + fix load char health
++ fix freeze on projectile load
 
 to do:
 	+- parry\defend
@@ -35,8 +36,6 @@ to do:
 	- tutorial
 	-? fix char turn on move after attack
 	- Neiro AI
-	- fix Elliot blade wave after animation
 	- death animation
-	- fix freeze on projectile load
 
 - background image

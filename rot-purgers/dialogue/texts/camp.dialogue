@@ -44,7 +44,8 @@ match GlobalData.read_dialogues.size()
 	when 6
 		do ObjectLink.cutscene.next_scene("uid://cysm1hdmsd00l")
 	when 7
-		do ObjectLink.cutscene.next_scene("uid://dhh4e5pxljxay")
+#		do ObjectLink.cutscene.next_scene("uid://dhh4e5pxljxay")
+		do ObjectLink.cutscene.next_scene("uid://bp0i1x7u3x3hk")
 => END!
 
 ~ camp_1
@@ -277,12 +278,12 @@ $> GlobalData.read_dialogues.append("lesson_Aven_2")
 => load_next_scene
 
 ~ the_sleeper
-Z: Argh! Why are we even here?! Can't we do something about it from the surface?  
-AV: Unfortunately not. All our previous attempts of putting up barriers and wards only bought us time. But this corruption inevitably finds its way around. And while the prospect of losing our world is frightening, the ones who will awake are even more so.
+Zaar: Argh! Why are we even here?! Can't we do something about it from the surface?  
+Aven: Unfortunately not. All our previous attempts of putting up barriers and wards only bought us time. But this corruption inevitably finds its way around. And while the prospect of losing our world is frightening, the ones who will awake are even more so.
 
-Z: You mean the Saint?  
-AV: Not only her… AL, what would you say about this matter?  
-AL: She certainly would be disappointed with the current state of the world, but that's not what you were asking… You ask about the domain of the Sleeper. Can't say I know much about it.
+Zaar: You mean the Saint?  
+Aven: Not only her… AL, what would you say about this matter?  
+Alastor: She certainly would be disappointed with the current state of the world, but that's not what you were asking… You ask about the domain of the Sleeper. Can't say I know much about it.
 
 Zaar: Maybe High Chancellor Elliot can tell us more about it?
 
@@ -297,5 +298,14 @@ Zaar: Shouldn't we allow the Rot to erase that place?
 Aven: Should her slumber be disturbed, the council and the world will be wiped out.
 => choose
 
+~ final_push
+Aven: I think we are almost there.
 
+Alastor: Considering how strongly the Rot affects creatures here, I agree.
+
+Elliot: Steel yourselves.
+
+Zaar: Don't fall behind.
+do ObjectLink.cutscene.next_scene("uid://rppfsqmhy6x1")
+=> END
 

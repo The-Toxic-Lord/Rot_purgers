@@ -19,16 +19,6 @@ Aven: I concur. We will stop this.
 do ObjectLink.cutscene.next_scene("uid://cn0yh7eofq5xa", "start_lesson")
 => END
 
-~ final_push
-Aven: I think we are almost there.
-
-Alastor: Considering how strongly the Rot affects creatures here, I agree.
-
-Elliot: Steel yourselves.
-
-Zaar: Don't fall behind.
-=> next
-
 ~ return
 Alastor : So … What now?
 Elliot : We should go back and inform Archchancellor. The two of us are not enough to deal with whatever is going on here.

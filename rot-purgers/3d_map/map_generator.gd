@@ -734,7 +734,6 @@ func make_bound_skill(skill : Skill_base):
 	var i := 0
 	
 	skill_animation_target_cell = skill.skill_map.animation_target + selected_char.map_pos
-	print(skill_animation_target_cell)
 	
 	for damage_cell in skill.skill_map.damage_cells:
 		var damage_zone : Node3D = load("uid://bnwwdeckahhsa").instantiate()

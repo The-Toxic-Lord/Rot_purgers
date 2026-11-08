@@ -852,5 +852,6 @@ Vector2i(11, 15): SubResource("Resource_c1rjv")
 magic_cost_adjustment = 1.8
 text_data = ExtResource("18_fnpjt")
 text_cue = "map_006"
-next_map_path = "res://map_data_res/007.tres"
+next_map_path = "uid://cn0yh7eofq5xa"
+cutscene_cue = "choose"
 player_chars = Array[ExtResource("1_7owhy")]([ExtResource("9_3usr4"), ExtResource("10_fnpjt"), ExtResource("11_vjpvs"), ExtResource("12_d0qoo")])

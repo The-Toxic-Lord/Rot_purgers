@@ -2882,25 +2882,25 @@ bones/0/position = Vector3(0.99423605, -0.17601645, -1.6584761)
 bones/0/rotation = Quaternion(-0.5194856, 0.4388819, -0.5438441, 0.49168196)
 bones/1/position = Vector3(-0.90778744, 0.051288605, -1.216522)
 bones/1/rotation = Quaternion(-0.5057127, -0.49422136, 0.49422136, 0.5057126)
-bones/2/position = Vector3(1.0323571e-25, -0.00014843192, -1.3462672)
-bones/2/rotation = Quaternion(0.00020264719, 0, -9.259984e-19, 1)
+bones/2/position = Vector3(0, -0.018720094, -1.3462672)
+bones/2/rotation = Quaternion(0.01176343, 0, 0, 0.9999308)
 bones/3/rotation = Quaternion(7.2561456e-08, -1.4041031e-08, 0.0026454756, 0.9999965)
 bones/5/rotation = Quaternion(-0.026925985, 0.6424506, 0.031699978, 0.7651976)
-bones/6/rotation = Quaternion(-0.058819085, 0.056941804, -0.9852799, 0.15007155)
+bones/6/rotation = Quaternion(-0.058283508, 0.05649361, -0.9852358, 0.15073806)
 bones/7/rotation = Quaternion(0.00034512999, -0.13313557, 0.0029348757, 0.99109346)
 bones/8/rotation = Quaternion(-0.12771748, 0.16634135, -0.0690781, 0.97531897)
-bones/12/rotation = Quaternion(0.048208486, 0.051410608, 0.9856627, 0.15330389)
+bones/12/rotation = Quaternion(0.048334304, 0.05152972, 0.9853616, 0.15514837)
 bones/13/rotation = Quaternion(-0.00041831896, 0.2402789, 0.0030036792, 0.97069925)
 bones/14/rotation = Quaternion(0.0070947064, -0.37826774, 0.023397109, 0.9253734)
 bones/18/position = Vector3(0.2206532, -0.022968058, -0.042642392)
-bones/18/rotation = Quaternion(0.9987175, 0.033478886, 0.0037667379, 0.037793435)
+bones/18/rotation = Quaternion(0.9950467, 0.029037816, 0.0049522873, 0.09494542)
 bones/18/scale = Vector3(1.0000345, 0.99999905, 1.0000421)
-bones/19/rotation = Quaternion(0.09650129, 0.006907066, -0.009243048, 0.9952661)
+bones/19/rotation = Quaternion(0.16916078, 0.0068388106, -0.016202461, 0.98543155)
 bones/19/scale = Vector3(1.0000011, 1.0000007, 0.99999905)
 bones/20/position = Vector3(-0.21901271, -0.0009483546, -0.011088494)
-bones/20/rotation = Quaternion(0.99882895, -0.039510664, -0.0013210679, -0.027890265)
+bones/20/rotation = Quaternion(0.99919957, -0.03650148, -0.0018692147, 0.016264908)
 bones/20/scale = Vector3(1.0000343, 0.9999969, 1.0000434)
-bones/21/rotation = Quaternion(0.0037451822, -0.0069396896, 0.0003587351, 0.9999689)
+bones/21/rotation = Quaternion(0.05649922, -0.006928563, 0.0054115956, 0.998364)
 bones/21/scale = Vector3(1.0000008, 0.99999803, 1.0000008)
 bones/22/position = Vector3(0.37081864, -1.901628, -1.4728117)
 bones/22/rotation = Quaternion(-0.70702475, 0.010771897, -0.010771897, 0.7070247)
@@ -2909,7 +2909,7 @@ bones/23/rotation = Quaternion(0.9469912, 0.0072120246, 0.007586829, -0.32108903
 bones/25/rotation = Quaternion(0.99882287, 0, 0.048506252, 0)
 bones/26/position = Vector3(-0.37081864, -1.901628, -1.4728117)
 bones/26/rotation = Quaternion(-0.70702475, -0.010771897, 0.010771897, 0.7070247)
-bones/27/position = Vector3(0.001678817, -0.00093345006, 0.015203787)
+bones/27/position = Vector3(5.0299404e-05, -2.3201077e-05, 0.00048403261)
 bones/27/rotation = Quaternion(0.9469912, -0.0072120246, -0.007586829, -0.32108903)
 bones/29/rotation = Quaternion(0.99882287, 0, -0.048506252, 0)
 
@@ -2918,7 +2918,7 @@ tree_root = SubResource("AnimationNodeBlendTree_m8u4e")
 anim_player = NodePath("../AnimationPlayer")
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
-parameters/OneShot/request = 1
+parameters/OneShot/request = 0
 
 [node name="Zaar" parent="." unique_id=1546463438 instance=ExtResource("12_vq7o0")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 11.0866, 2, 25.506369)
@@ -2929,6 +2929,6 @@ start_anim = "Idle"
 libraries/ = SubResource("AnimationLibrary_ee0fi")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=936282732]
-transform = Transform3D(0.9999619, 0.00072268595, -0.008697206, 0, 0.99656546, 0.08280863, 0.008727181, -0.082805485, 0.99652743, 12.0852785, 4.7405396, 27.798355)
+transform = Transform3D(0.9999619, 0.00072268595, -0.008697206, 0, 0.99656546, 0.08280863, 0.008727181, -0.082805485, 0.9965274, 12.0852785, 4.7405396, 27.798355)
 
 [editable path="Mad_mage"]

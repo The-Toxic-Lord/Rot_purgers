@@ -203,6 +203,120 @@ tracks/8/keys = {
 "values": [Vector3(0, -2.2249713, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_sh3bb"]
+resource_name = "choose"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["choose"],
+"method": &"start_dialogue"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_zaar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.214059, 0, -2.037313)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_zaar:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.9860156, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rock_alastor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.4100022, 0.20292139, 0.089258194)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rock_alastor:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rock_aven:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.2721665, 0.2075854, 2.4648595)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rock_aven:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.2249713, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("rock_elliot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.6088097, 0.07292658, -0.0015012026)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("rock_elliot:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.0889382, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_yga5h"]
 resource_name = "lesson_Alastor"
 length = 3.0000000000000004
@@ -599,14 +713,130 @@ tracks/8/keys = {
 "values": [Vector3(0, 3.0889382, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_tp878"]
+resource_name = "the_sleeper"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["the_sleeper"],
+"method": &"start_dialogue"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rock_zaar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.214059, 0, -2.037313)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rock_zaar:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.9860156, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rock_alastor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.4100022, 0.20292139, 0.089258194)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rock_alastor:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rock_aven:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.2721665, 0.2075854, 2.4648595)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rock_aven:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.2249713, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("rock_elliot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.6088097, 0.07292658, -0.0015012026)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("rock_elliot:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.0889382, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2k3gs"]
 _data = {
 &"RESET": SubResource("Animation_fvbci"),
+&"choose": SubResource("Animation_sh3bb"),
 &"lesson_Alastor": SubResource("Animation_yga5h"),
 &"lesson_Aven": SubResource("Animation_8dvci"),
 &"lesson_Elliot": SubResource("Animation_5u0sb"),
 &"start": SubResource("Animation_lbvty"),
-&"start_lesson": SubResource("Animation_ahc4e")
+&"start_lesson": SubResource("Animation_ahc4e"),
+&"the_sleeper": SubResource("Animation_tp878")
 }
 
 [node name="Camp_base" type="Node3D" unique_id=550347613 node_paths=PackedStringArray("player")]
@@ -652,7 +882,7 @@ libraries/ = SubResource("AnimationLibrary_2k3gs")
 script = ExtResource("5_p0aim")
 
 [node name="rock_zaar" parent="." unique_id=1794994475 instance=ExtResource("6_3khie")]
-transform = Transform3D(-0.49396098, 0, 0.0774751, 0, 0.5, 0, -0.0774751, 0, -0.49396098, 0.214059, 0, -2.037313)
+transform = Transform3D(-0.49396095, 0, 0.07747509, 0, 0.5, 0, -0.07747509, 0, -0.49396095, 0.214059, 0, -2.037313)
 
 [node name="Zaar5" parent="rock_zaar" unique_id=2032189682 instance=ExtResource("7_4nnqv")]
 transform = Transform3D(-1.9758447, 0, -0.30990052, 0, 2, 0, 0.30990052, 0, -1.9758447, -0.33012474, 0, -0.31367493)
@@ -692,7 +922,7 @@ transform = Transform3D(-0.13771592, 0, 1.995253, 0, 2, 0, -1.995253, 0, -0.1377
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
-[node name="Cube_001" parent="rock_elliot/Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 347021490) index="3" unique_id=1233119995]
+[node name="Cube_001" parent="rock_elliot/Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 1268125533) index="3" unique_id=528913245]
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1804703121]

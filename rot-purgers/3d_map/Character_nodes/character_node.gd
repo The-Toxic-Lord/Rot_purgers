@@ -474,6 +474,8 @@ cells : Array[Vector2i] = []):
 	
 	if skill_data.animation_node_UID != "":
 		load_skill_animation(skill_data)
+		skill_animation_thread = Thread.new()
+		skill_animation_thread.start(load_skill_animation.bind(skill_data))
 		await skill_loaded
 		var skill_node : Skill_animation_3d = skill_animation_node
 		skill_node.hide()
@@ -497,11 +499,16 @@ cells : Array[Vector2i] = []):
 
 signal skill_loaded
 var skill_animation_node : Skill_animation_3d = null
+var skill_animation_thread : Thread
 func load_skill_animation(skill_data : Skill_base):
-	await get_tree().process_frame
 	var skill_node : Skill_animation_3d = load(skill_data.animation_node_UID).instantiate()
-	skill_animation_node = skill_node
-	skill_loaded.emit()
+	call_deferred("skill_animation_loaded")
+	return skill_node
+
+func skill_animation_loaded():
+	if skill_animation_thread.is_alive():
+		skill_animation_node = skill_animation_thread.wait_to_finish()
+		skill_loaded.emit()
 
 func skill_windup():
 	pass

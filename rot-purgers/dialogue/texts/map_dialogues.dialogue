@@ -44,10 +44,10 @@ Zaar: Didn't see that one before.
 Alastor: Careful. I think it's about to do something.
 
 $> ObjectLink.map_camera.move_target = Vector3(30.0, 1.5, 32.0)
-$> wait(1.0)
+$> wait(0.5)
 
-
-
+do BattleHandler.add_spawn(load("uid://qggvqmnv22by"), Vector2i(14, 16), Map_generator.directions.W, BattleHandler.enemies[3])
+do BattleHandler.execute_orders()
 Zaar: WHAT.
 
 Alastor: I sensed no magic! What is this nonsense!
@@ -72,7 +72,7 @@ Elliot: Correct.
 
 Zaar: What in the Saint's name is going on?
 
-Alastor: You know she actually has a name, and it's
+Alastor: You know she actually has a name, and it's L...[next=0]
 
 Zaar: I DON'T CARE. WHERE ARE WE?
 
