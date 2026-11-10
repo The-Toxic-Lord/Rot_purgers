@@ -64,6 +64,11 @@ Neiro: WHY?! Why can't you understand?! Why must you stand in my way? No matter.
 do ObjectLink.cutscene.next_scene("res://map_data_res/mad_mage_map.tres")
 => END
 
+~ mad_mage_victory
+Neiro: Hah. Finally! Now no one can stand in my way! Soon it will all be over!
+do ObjectLink.cutscene.next_scene("uid://cofltnaea86y5")
+=> END
+
 ~ mad_mage_loss_1
 Neiro: NO! Why? Why can't you see? Why are you all so stupid?
 
@@ -84,10 +89,13 @@ Elliot: Hahaha! You are on!
 Aven: Too slow!
 => END
 
-
+~ mad_mage_evelyn
+Neiro: I didn't want to do this to you, Aven. IF YOU WOULD ONLY SEE REASON! But alas, it's time to end this.
+do ObjectLink.cutscene_player.play("evelyn_enter")
+=> END
 
 ~ evelyn_and_mad_mage
-Evelyn: [i]Oh great. People that know me and will be more useful alive than dead. How did I play this role again? Probably something like this.[/i]
+Neiro: YOU!
 
 Evelyn: So you are the one who is responsible for this mess. Hmm… I think I know you. What was your name again?
 
@@ -97,7 +105,7 @@ Evelyn: I don't remember allowing you this level of familiarity, pest.
 
 Neiro: So what? I am no longer scared of you! Even you can't stop me now! No one can!
 
-Evelyn: Hmm. Staff with an unfaceted Dragon scale. And _you_ can cast magic in its vicinity. Impressive. You have grown since our last encounter.
+Evelyn: Hmm. Staff with an unfaceted Dragon scale. And [i]you[/i] can cast magic in its vicinity. Impressive. You have grown since our last encounter.
 
 Neiro: Thank you for the compliment! Surely you recognize there is no chance for you to win now.
 
@@ -114,16 +122,23 @@ Evelyn: As one would expect. Its effect is similar to the environment of this pl
 Neiro: HAHAHA! You mad witch! As if there exists a mage with such a ridiculous amount of magic.
 
 Evelyn: Probably not. No one can store such an amount in themself.
+do ObjectLink.cutscene_player.play("evelyn_knife_takeout")
+=> END
 
+~ evelyn_knife_out
 Neiro: Oh! What are you going to do with that, slit my throat?
 
 Evelyn: Throat? I will reap your damned head off with my bare hands. As if I would ever use his gift on a filth, such as you. You said no mage can hold enough magic to break through your staff. But one can still channel enough to silence you forever.
 
 Neiro: HAHAHA! And what is tha…
+do ObjectLink.cutscene_player.play("evelyn_knife_stab")
+=> END
 
+~ evelyn_knife_in
 Evelyn: What's wrong? Did the cat get your tongue?
 
 Neiro: WHAT! NO! IMPOSSIBLE! THIS IS MADNESS! DON'T COME CLO…
+do ObjectLink.cutscene_player.play("evelyn_kill")
 => END
 
 ~ evelyn_and_group
@@ -131,7 +146,7 @@ Evelyn: Still alive, old man?
 
 Aven: Barely, Your Excellence.
 
-Evelyn: Finally, someone who knows their place. I must say, I was not expecting you to fail the task I left you with. I mean, it was an easy task, and yet. What excuse are you going to use to weasel out?
+Evelyn: Finally, someone who knows their place. I must say, I was not expecting you to fail the task I left you with. It was such an easy task, and yet. What excuse are you going to use to weasel out?
 
 Aven: The Dragon Scale is an astronomically rare artifact. The fact that Neiro went insane and that he would find one. I simply could not foresee something like that.
 
@@ -141,7 +156,7 @@ Zaar: Enough! You saved our lives, but you have no right to talk to the Archchan
 
 Evelyn: I have every right to address anyone however I want, demon.
 
-Evelyn: _Why did you have to say that? Let's hope Aven can come up with an excuse to keep you alive._
+Evelyn: (Why did you have to say that? Let's hope Aven can come up with an excuse to keep you alive.)
 
 Aven: Can I attempt to convince you that he is more useful to you alive than dead?
 
@@ -149,7 +164,7 @@ Evelyn: Go on.
 
 Aven: Surely you have recognized whose blood runs through him. In time he will become a mighty mage, just like his ancestor. And just like him, he will be of great use in keeping this world at peace.
 
-Evelyn: _Good. A way out!_
+Evelyn: (Good. A way out!)
 
 Evelyn: Make sure that he knows how to address his betters next time, Archchancellor. Farewell.
 => END

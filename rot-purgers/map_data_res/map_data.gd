@@ -23,3 +23,4 @@ enum map_end_conditions { ENEMY, DOOR }
 @export var player_chars : Array[Character_stats] = []
 @export var game_over_scene : String = ""
 @export var game_over_scene_cue : String = ""
+@export var enviroment : Environment

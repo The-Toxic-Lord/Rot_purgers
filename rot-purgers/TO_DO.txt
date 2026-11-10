@@ -36,7 +36,7 @@ to do:
 	- tutorial
 	-? fix char turn on move after attack
 	- Neiro AI
-	- death animation
+	- death animation (poses)
 	+- fix save at cutscene (now fix scenes)
 
 - background image

@@ -66,7 +66,7 @@ func load_scene_path(path : String, extra_data = null):
 	await transition_start()
 	if background != null:
 		background.queue_free()
-	var map_data = ResourceLoader.load(path)
+	var map_data = ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE_DEEP)
 	if map_data is Map_data:
 		var new_map_gen : Map_generator = load("uid://buyr0671du0pe").instantiate()
 		new_map_gen.hide()

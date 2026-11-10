@@ -16,6 +16,8 @@ var state_to_zone : Dictionary[states, String] = {
 	states.ATTACK : "uid://bnwwdeckahhsa"
 }
 
+@onready var world_environment: WorldEnvironment = %WorldEnvironment
+
 @onready var camera : Camera_controller = %Camera_position
 @onready var map_ui: Map_UI = %Map_UI
 
@@ -64,6 +66,26 @@ func load_map(map : Map_data):
 	object_map = map.object_map_data
 	map_data = map
 	GlobalData.map_magic_cost_adjustment = map_data.magic_cost_adjustment
+	 
+	await load_static_stuff(map)
+	
+	await map_ui.populate_spawn_list(map_data)
+	
+	TransitionScreen.set_lb("spawning enemies")
+	await get_tree().process_frame
+	await spawn_enemies(map.enemy_map_data)
+	TransitionScreen.reset_progress_bar()
+	
+	if map_data.text_data != null:
+		freze_selector = true
+		DialogueBalloon.start(map_data.text_data, map_data.text_cue)
+		dialogue_end()
+	else:
+		activate_controlls()
+	
+	map_loaded.emit()
+
+func load_static_stuff(map : Map_data):
 	await calculate_boundary()
 	
 	TransitionScreen.set_lb("spawning cells")
@@ -79,23 +101,11 @@ func load_map(map : Map_data):
 	await spawn_objects()
 	TransitionScreen.reset_progress_bar()
 	
-	await map_ui.populate_spawn_list(map_data)
+	await make_multi_meshes()
 	await BattleHandler.new_battle_start()
 	
-	TransitionScreen.set_lb("spawning enemies")
-	await get_tree().process_frame
-	await spawn_enemies(map.enemy_map_data)
-	TransitionScreen.reset_progress_bar()
-	
-	await make_multi_meshes()
-	if map_data.text_data != null:
-		freze_selector = true
-		DialogueBalloon.start(map_data.text_data, map_data.text_cue)
-		dialogue_end()
-	else:
-		activate_controlls()
-	
-	map_loaded.emit()
+	if map.enviroment != null:
+		world_environment.environment = map.enviroment
 
 func dialogue_end():
 	await DialogueManager.dialogue_ended
@@ -992,14 +1002,8 @@ func load_save(game_save : Game_save):
 	object_map = game_save.object_map
 	map_data = game_save.map_data
 	
-	await spawn_cells()
-	await calculate_boundary()
-	%Camera_position.cell_boundary = selector_boundary
-	await move_selector_to_spawn()
-	await spawn_objects()
+	await load_static_stuff(game_save.map_data)
 	
-	await make_multi_meshes()
-	await BattleHandler.new_battle_start()
 	await load_chars(game_save)
 	await map_ui.populate_spawn_list(map_data, true)
 	

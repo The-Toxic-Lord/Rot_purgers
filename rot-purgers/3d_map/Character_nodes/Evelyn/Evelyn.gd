@@ -1,6 +1,6 @@
 extends Character_node
 
-@onready var animation_tree: AnimationTree = %AnimationTree
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 func move_normal(pos : Vector3, time := 0.5):
 	var tween_blend := create_tween()

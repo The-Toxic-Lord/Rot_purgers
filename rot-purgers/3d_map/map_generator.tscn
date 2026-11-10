@@ -22,6 +22,7 @@ glow_enabled = true
 script = ExtResource("1_38kli")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2141279964]
+unique_name_in_owner = true
 environment = SubResource("Environment_ti2bc")
 
 [node name="Map_cell_holder" type="Node3D" parent="." unique_id=1096133750]

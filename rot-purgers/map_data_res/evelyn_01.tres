@@ -1226,4 +1226,5 @@ end_condition = 1
 magic_cost_adjustment = 1.5
 text_data = ExtResource("10_s1r2t")
 text_cue = "evelyn_01"
+next_map_path = "uid://dnj8j3btud0lf"
 player_chars = Array[ExtResource("1_3euue")]([ExtResource("5_3euue")])

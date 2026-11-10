@@ -271,190 +271,94 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Zaar5/rock_zaar:position")
+tracks/1/path = NodePath("Zaar5:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.214059, 0, -2.037313)]
+"values": [Vector3(0.3528257, 0, -1.8567933)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Zaar5/rock_zaar:rotation")
+tracks/2/path = NodePath("Alastor1:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 2.9860156, 0)]
+"values": [Vector3(-1.847, 0, 0.058)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Alastor1/rock_alastor:position")
+tracks/3/path = NodePath("Aven:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-2.4100022, 0.20292139, 0.089258194)]
+"values": [Vector3(-0.25781405, 0.051544726, 1.9019257)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Alastor1/rock_alastor:rotation")
+tracks/4/path = NodePath("Ellio3:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(1.346, 0, 0.1048888)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Aven/rock_aven:position")
+tracks/5/path = NodePath("Zaar5:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.2721665, 0.2075854, 2.4648595)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Aven/rock_aven:rotation")
+tracks/6/path = NodePath("Alastor1:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -2.2249713, 0)]
+"values": [Vector3(0, 1.5682447, 0)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Ellio3/rock_elliot:position")
+tracks/7/path = NodePath("Aven:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.6088097, 0.07292658, -0.0015012026)]
+"values": [Vector3(0, 3.0907452, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Ellio3/rock_elliot:rotation")
+tracks/8/path = NodePath("Ellio3:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.0889382, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Zaar5:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.3528257, 0, -1.8567933)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Alastor1:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.847, 0, 0.058)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Aven:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.25781405, 0.051544726, 1.9019257)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Ellio3:position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.346, 0, 0.1048888)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Zaar5:rotation")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Alastor1:rotation")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.5682447, 0)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Aven:rotation")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.0907452, 0)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Ellio3:rotation")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1037,29 +941,29 @@ transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0.3528257, 0,
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
-[node name="Sword_2" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 1861621235) index="0" unique_id=1761178248]
+[node name="Sword_2" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 932142755) index="0" unique_id=1476654305]
 visible = false
 
 [node name="rock_zaar" parent="Zaar5" unique_id=1794994475 instance=ExtResource("6_3khie")]
-transform = Transform3D(-0.49396095, 0, 0.07747509, 0, 0.5, 0, -0.07747509, 0, -0.49396095, -0.13876675, 0, -0.1805197)
+transform = Transform3D(-0.49396092, 0, 0.07747509, 0, 0.5, 0, -0.07747509, 0, -0.49396092, -0.13876675, 0, -0.1805197)
 
 [node name="Alastor1" parent="." unique_id=1803624731 instance=ExtResource("10_cc0f0")]
-transform = Transform3D(0.0025516278, 0, 0.99999654, 0, 1, 0, -0.99999654, 0, 0.0025516278, -1.847, 0, 0.058)
+transform = Transform3D(0.0025516276, 0, 0.9999965, 0, 1, 0, -0.9999965, 0, 0.0025516276, -1.847, 0, 0.058)
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
-[node name="Staff" parent="Alastor1/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1803624731, 1328754638) index="9" unique_id=359440085]
+[node name="Staff" parent="Alastor1/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1803624731, 974080909) index="9" unique_id=1823077067]
 visible = false
 
 [node name="rock_alastor" parent="Alastor1" unique_id=1428445695 instance=ExtResource("9_kdahx")]
 transform = Transform3D(0.0012758143, 0, -0.49999842, 0, 0.5, 0, 0.49999842, 0, 0.0012758143, -0.032694675, 0.20292139, -0.5629208)
 
 [node name="Aven" parent="." unique_id=2101898650 instance=ExtResource("12_1ebqx")]
-transform = Transform3D(-0.9987071, 0, 0.050825514, 0, 1, 0, -0.050825514, 0, -0.9987071, -0.25781405, 0.051544726, 1.9019257)
+transform = Transform3D(-0.99870706, 0, 0.05082551, 0, 1, 0, -0.05082551, 0, -0.99870706, -0.25781405, 0.051544726, 1.9019257)
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
-[node name="Staff" parent="Aven/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2101898650, 665281206) index="10" unique_id=529762390]
+[node name="Staff" parent="Aven/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2101898650, 1503243318) index="10" unique_id=1578321674]
 visible = false
 
 [node name="rock_aven" parent="Aven" unique_id=1549827777 instance=ExtResource("11_yyp21")]
@@ -1070,7 +974,7 @@ transform = Transform3D(0.016257359, 0, -0.9998678, 0, 1, 0, 0.9998678, 0, 0.016
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
-[node name="Cube_001" parent="Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 1268125533) index="3" unique_id=528913245]
+[node name="Cube_001" parent="Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 745560480) index="3" unique_id=414022517]
 visible = false
 
 [node name="rock_elliot" parent="Ellio3" unique_id=1156241977 instance=ExtResource("13_0yey6")]

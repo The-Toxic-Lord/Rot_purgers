@@ -95,7 +95,7 @@ func _process(_delta: float) -> void:
 		skip_delay -= _delta
 		return
 	if skip:
-		skip_delay = 0.25
+		skip_delay = 0.1
 		next(dialogue_line.next_id)
 
 func _unhandled_input(_event: InputEvent) -> void:

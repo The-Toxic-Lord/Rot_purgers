@@ -119,18 +119,20 @@ Evelyn: Huh!? So some managed to surv[speed=0.1]... [speed=1.0]no.[wait=1] Clone
 => END
 
 ~ evelyn_02
-Evelyn: And what is this now? Such a ridiculous form. Do you even take yourself seriously?
+Evelyn: And what is this now? Such ridiculous form. How am I supposed to take you seriously?
 
-Crystall: …
+Crystall: ...
 
-Evelyn: And completely mindless to boot. Just a bunch of automatons with no concepts. Another obstacle to crush.
+Evelyn: And completely mindless to boot. Just a bunch of automatons with no concepts. I can hardly see you as an obstacle.
 => END
 
 ~ evelyn_03
-Evelyn: Almost there. What was it, an hour? Too slow. Seems I got a bit rusty with all the sleep.
+Evelyn: Almost there. What was it, two hours? Too slow. Seems I got a bit rusty with all the sleep.
 
 Takes out a knife.
 
-Evelyn: I wonder, what would you do? Heh. [i]Do not choose a path among the ones that are laid down before you by somebody else, carve your own.[/i] Hmm. I think that spot will do. Time to make a new path.
+Evelyn: I wonder, what would you do? Heh. [i]Do not choose a path among the ones that are laid down before you by somebody else, carve your own.[/i] Hmm. 
+#$> ObjectLink.map_camera.move_target = Vector3(30.0, 1.5, 32.0)
+Evelyn: I think that spot will do. Time to make a new path.
 => END
 

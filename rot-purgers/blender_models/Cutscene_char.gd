@@ -4,10 +4,14 @@ class_name Cutscene_char
 
 @export var start_anim : String
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+var animation_tree: AnimationTree
+
 
 func _ready() -> void:
 	if start_anim != "":
 		animation_player.play(start_anim)
+	if find_child("AnimationTree") != null:
+		animation_tree = find_child("AnimationTree")
 
 func play_anim(anim_name : String):
 	animation_player.play(anim_name)
@@ -29,3 +33,19 @@ func get_anim_name() -> String:
 		return animation_player.current_animation
 	else:
 		return last_anim_name
+
+func stop_animation():
+	animation_player.stop()
+
+func stop_tree():
+	animation_tree.active = false
+
+
+
+
+
+
+
+
+
+#
