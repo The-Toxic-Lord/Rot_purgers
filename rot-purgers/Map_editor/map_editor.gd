@@ -343,6 +343,8 @@ func show_height():
 
 func save_map_data(file_path : String):
 	var save_data := Map_data.new()
+	if ResourceLoader.exists(file_path):
+		save_data = ResourceLoader.load(file_path)
 	save_data.terrain_map_data = terrain_map_data
 	save_data.object_map_data = object_map_data
 	save_data.enemy_map_data = enemy_map_data

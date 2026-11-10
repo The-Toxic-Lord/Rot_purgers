@@ -32,3 +32,7 @@ func _on_save_pressed() -> void:
 
 func _on_skip_pressed() -> void:
 	BattleHandler.end_battle()
+
+
+func _on_skip_2_pressed() -> void:
+	BattleHandler.game_over()

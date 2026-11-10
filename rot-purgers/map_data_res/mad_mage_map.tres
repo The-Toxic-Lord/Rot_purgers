@@ -1019,4 +1019,4 @@ magic_cost_adjustment = 2.0
 text_cue = "mad_mage_001"
 next_map_path = "uid://rppfsqmhy6x1"
 cutscene_cue = "mad_mage_loss_1"
-game_over_scene = "uid://rppfsqmhy6x1"
+game_over_scene = "uid://cofltnaea86y5"

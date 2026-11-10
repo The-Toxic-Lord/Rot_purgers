@@ -707,6 +707,7 @@ popup/item_3/id = 3
 
 [node name="Object_maker" type="MarginContainer" parent="." unique_id=817420164]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5

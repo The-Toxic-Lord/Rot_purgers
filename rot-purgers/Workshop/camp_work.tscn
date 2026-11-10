@@ -61,7 +61,6 @@ uv1_scale = Vector3(10, 10, 10)
 [node name="Camp" type="Node3D" unique_id=113607136]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1732784145]
-visible = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D" unique_id=1793987643]
 radius = 10.0
@@ -90,8 +89,10 @@ size = Vector3(1, 7.010498, 5.5401)
 material = SubResource("StandardMaterial3D_h0aqh")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1902201244]
+visible = false
 mesh = SubResource("ArrayMesh_2tifw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1571804145]
+visible = false
 mesh = SubResource("PlaneMesh_vwy4y")
 surface_material_override/0 = SubResource("StandardMaterial3D_qsvqa")

@@ -1,0 +1,498 @@
+[gd_scene format=4 uid="uid://cofltnaea86y5"]
+
+[ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_dpeyx"]
+[ext_resource type="Resource" uid="uid://dsbe0eog177ex" path="res://dialogue/texts/custcenes_small.dialogue" id="2_cusr2"]
+[ext_resource type="Texture2D" uid="uid://cmb2kme6vv828" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="2_j5tbc"]
+[ext_resource type="Texture2D" uid="uid://cas4qsfild2do" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_02-128x128.png" id="3_cusr2"]
+[ext_resource type="PackedScene" uid="uid://c3hld21tvc28s" path="res://blender_models/Objects/Coffin.glb" id="4_58w2d"]
+[ext_resource type="PackedScene" uid="uid://dra0ivq7stx8c" path="res://assets/BinbunVFX_Vol2/FlameFX/effects/fire/vfx_basic_fire_01.tscn" id="5_63vve"]
+[ext_resource type="Script" uid="uid://cuvfksx8uqkku" path="res://map_data_res/Cutscenes/cutscene_object.gd" id="6_58w2d"]
+[ext_resource type="PackedScene" uid="uid://cab586b27pb30" path="res://blender_models/Chars/Evelyn.glb" id="6_tq8nf"]
+[ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="7_n1j4m"]
+[ext_resource type="PackedScene" uid="uid://opby7ghw6lqr" path="res://blender_models/Chars/Cape.glb" id="9_cusr2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h03he"]
+albedo_texture = ExtResource("2_j5tbc")
+uv1_scale = Vector3(5, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xou2o"]
+albedo_texture = ExtResource("2_j5tbc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tlj6"]
+albedo_texture = ExtResource("3_cusr2")
+uv1_scale = Vector3(1, 5, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cfiqv"]
+_surfaces = [{
+"aabb": AABB(-10, -2, -10, 20, 12, 20),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AAAgwQAAAMAAACDBAAAgwQAAIEEAACDBAAAgwQAAAMAAACBBAAAgwQAAAMAAACDBAAAgwQAAAMAAACBBAAAgQQAAAMAAACDBAAAgwQAAAMAAACDBAAAgQQAAAMAAACDBAAAgwQAAIEEAACDBAAAgwQAAAMAAACBBAAAgwQAAIEEAACDBAAAgwQAAIEEAACBBAAAgwQAAAMAAACBBAAAgwQAAIEEAACBBAAAgQQAAIEEAACBBAAAgwQAAIEEAACDBAAAgQQAAIEEAACBBAAAgwQAAIEEAACBBAAAgwQAAAMAAACBBAAAgQQAAAMAAACBBAAAgQQAAAMAAACDBAAAgwQAAAMAAACBBAAAgQQAAIEEAACBBAAAgQQAAAMAAACBBAAAgQQAAAMAAACDBAAAgQQAAAMAAACBBAAAgQQAAIEEAACBBAAAgwQAAIEEAACDBAAAgQQAAAMAAACDBAAAgQQAAIEEAACDBAAAgwQAAIEEAACDBAAAgQQAAIEEAACDBAAAgQQAAIEEAACBBAAAgQQAAAMAAACDBAAAgQQAAIEEAACBBAAAgQQAAIEEAACDBAAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}, {
+"aabb": AABB(-5, -1, -5, 10, 5.6776123, 14.305664),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAIA/MzOzPlEoZT8zM7M+AACAPwAAAABRKGU/MzOzPvN4Lz8zM7M+AACAPwAAAABmZiY/hlu0PmZmJj8AAAAAAACAPwAAAAAAAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAIA/AACAP2ZmJj+GW7Q+AACAPwAAgD8zM7M+hlu0PmZmJj+GW7Q+AACAPwAAAADzeC8/MzOzPgAAAAAAAAAA83gvPzMzsz7zeC8/ZmYmPwAAAAAAAAAAAACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAAAACAPwAAAAAAAAAAUShlPzMzsz5RKGU/ZmYmP1EoZT9mZiY/AACAPwAAgD9RKGU/ZmYmPwAAgD9mZiY/UShlP2ZmJj9RKGU/ZmYmPwAAgD8AAIA/UShlP2ZmJj8AAIA/AACAP/N4Lz9mZiY/AAAAAAAAAAAzM7M+AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAACAPzMzsz6GW7Q+AAAAAAAAgD8zM7M+AAAAADMzsz6GW7Q+AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAAAAAAAAAADzeC8/ZmYmPwAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAgD8AAAAA"),
+"format": 34359738391,
+"material": SubResource("StandardMaterial3D_h03he"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("AACgwAAAgL8AAKDAAADAvwAAgL8AAKDAAADAvwAAgL8AAGDAAACgwAAAgL8AAKDAAADAvwAAgL8AAGDAAQDAvwAAgL8AAAC/AACgwAAAgL8AAKDAAADAvwAAgD8AAKDAAADAvwAAgL8AAKDAAACgwAAAgL8AAKDAAACgwAAAgL8A5BRBAACgwACvlUAAAKDAAACgwAAAgL8AAKDAAACgwACvlUAAAKDAAADAvwAAgD8AAKDAAACgwACvlUAAAKDAAADAPwAAgD8AAKDAAADAvwAAgD8AAKDAAACgwAAAgL8AAKDAAQDAvwAAgL8AAAC/AACgwAAAgL8A5BRBAQDAvwAAgL8AAAC//v+/PwAAgL/4//++AACgwAAAgL8A5BRBAACgwAAAgL8A5BRBAACgwACvlUAA5BRBAACgwACvlUAAAKDAAACgwAAAgL8A5BRBAACgQACvlUAA5BRBAACgwACvlUAA5BRBAACgwACvlUAAAKDAAACgwACvlUAA5BRBAACgQACvlUAA5BRBAADAvwAAgL8AAGDAAADAPwAAgL8AAGDAAADAPwAAgL///1/AAACgQAAAgL8AAKDAAADAPwAAgL8AAGDAAADAPwAAgL8AAKDAAADAPwAAgL///1/AAADAPwAAgL8AAGDAAACgQAAAgL8AAKDAAADAPwAAgL///1/AAACgQAAAgL8AAKDA/v+/PwAAgL/4//++AACgQAAAgL8AAKDAAADAPwAAgL8AAKDAAACgQACvlUAAAKDAAACgwACvlUAAAKDAAACgQACvlUAAAKDAAADAPwAAgD8AAKDAAACgQACvlUAAAKDAAADAPwAAgL8AAKDAAADAPwAAgD8AAKDAAACgQAAAgL8AAKDAAACgQACvlUAAAKDAAACgQACvlUAA5BRBAACgwAAAgL8A5BRB/v+/PwAAgL/4//++AACgQAAAgL8AAKDAAACgwAAAgL8A5BRBAACgQAAAgL8AAKDAAACgQAAAgL8A5BRBAACgwAAAgL8A5BRBAACgQAAAgL8A5BRBAACgQACvlUAA5BRBAACgQAAAgL8AAKDAAACgQACvlUAA5BRBAACgQAAAgL8A5BRBAACgwACvlUAAAKDAAACgQACvlUAA5BRBAACgQACvlUAAAKDA/3//////////f/////////9//////////3//////////f/////////9//////////3//fwAA/7//f/9/AAD/v/9//38AAP+/////f/9/AID///9//38AgP///3//fwCA/3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//////////f/////////9//////////3//////////f/////////9/////////////f/9/AID///9//38AgP///3//fwCA/////wAA/7//////AAD/v/////8AAP+//38AAP//////fwAA//////9/AAD//////3///////7//f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+/AAD/f/9/AIAAAP9//38AgAAA/3//fwCA/3//////////f/////////9//////////3//////////f/////////9//////////////wAA/7//////AAD/v/////8AAP+/AAD/f/9/AIAAAP9//38AgAAA/3//fwCA/38AAP//////fwAA//////9/AAD/////")
+}, {
+"aabb": AABB(-1.5, -1, -5, 3, 2, 1.5),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": 34359738391,
+"material": SubResource("StandardMaterial3D_xou2o"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AADAvwAAgL8AAKDAAADAvwAAgD8AAKDAAADAvwAAgL8AAGDAAADAvwAAgD8AAKDAAADAvwAAgD8AAGDAAADAvwAAgL8AAGDAAADAPwAAgD8AAGDAAADAvwAAgL8AAGDAAADAvwAAgD8AAGDAAADAPwAAgD8AAGDAAADAvwAAgD8AAGDAAADAvwAAgD8AAKDAAADAPwAAgD8AAGDAAADAPwAAgL8AAGDAAADAvwAAgL8AAGDAAADAPwAAgD8AAGDAAADAPwAAgL8AAKDAAADAPwAAgL8AAGDAAADAPwAAgD8AAGDAAADAPwAAgD8AAKDAAADAPwAAgL8AAKDAAADAPwAAgD8AAGDAAADAvwAAgD8AAKDAAADAPwAAgD8AAKDAAAD/f/9//n8AAP9//3/+fwAA/3//f/5/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//3//////AAD/f/////8AAP9//////wAA")
+}, {
+"aabb": AABB(-1.5000001, -1, -3.5, 3, 2, 3.0000002),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAA/AABgPwAAAD8AAIA/AAAAAAAAgD8AAMA+AABgPwAAAD8AAGA/AAAAAGZm5j4AAAAAzczMPgAAgD9mZuY+AAAAAAAAgD8AAAA+AAAgPwAAgD4AAEA/AAAAAAAAgD8AAAAAAAAAPwAAAD4AACA/AAAAPgAAID8AAAAAAAAAPwAAAD4AAAA/AAAAAAAAAAAAAIA/zcxMPQAAAADNzEw9AAAAAJqZGT4AAAAAzczMPQAAgD+amRk+AAAAAAAAgD8AAIA+AABAPwAAwD4AAGA/AACAPgAAQD8AAMA+AABAPwAAwD4AAGA/AAAAPgAAID8AAIA+AAAgPwAAgD4AAEA/AAAAAAAAgD4AAAAAzcxMPgAAgD8AAIA+AAAAAAAAgD4AAIA/mpmZPgAAAACamZk+AAAAADMzsz4AAAAAmpmZPgAAgD8zM7M+AAAAADMzsz4AAIA/zczMPgAAAADNzMw+AAAAAJqZGT4AAIA/zcxMPgAAAADNzEw+AAAAAM3MTD0AAIA/zczMPQAAAADNzMw9AAAAAM3MzD4AAIA/zczMPgAAgD9mZuY+AACAPwAAgD8AAAA/AACAPwAAAD8AAGA/AACAPwAAgD8AAAA/AABgPwAAID8AAGA/AAAAAAAAAAAAAIA/AAAAAAAAgD/NzEw9AAAAAM3MzD0AAIA/zczMPQAAgD+amRk+AACAPwAAgD8AAEA/AABAPwAAYD8AACA/AACAPwAAgD8AAGA/AAAgPwAAgD8AAAA/AABgPwAAID8AAGA/AAAAPwAAgD8AAAA/AAAAAAAAgD4AAIA/AACAPgAAgD+amZk+AAAAADMzsz4AAIA/MzOzPgAAgD/NzMw+AAAAAJqZmT4AAIA/mpmZPgAAgD8zM7M+AAAAAM3MTD4AAIA/zcxMPgAAgD8AAIA+AAAAAJqZGT4AAIA/mpkZPgAAgD/NzEw+AACAPwAAgD8AACA/AABgPwAAQD8AAEA/AABAPwAAQD8AACA/AABgPwAAID8AAEA/AABgPwAAID8AAEA/AABAPwAAQD8AACA/AAAAAM3MTD0AAIA/zcxMPQAAgD/NzMw9"),
+"format": 34359738391,
+"material": SubResource("StandardMaterial3D_0tlj6"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 102,
+"vertex_data": PackedByteArray("AADAvwAAgL8AAGDAAQDAvwAAAL8AAAC/AQDAvwAAgL8AAAC/AADAvwAAgL8AAGDAAQDAvwAAAL8AAKC/AQDAvwAAAL8AAAC/AQDAvwAAgL8AAAC/AQDAvwAAAL8AAAC//v+/PwAAgL/4//++AADAvwAAgL8AAGDAAADAvwAAAD8AADDAAQDAvwAAAAAAAADAAADAvwAAgL8AAGDAAADAvwAAgD8AAGDAAADAvwAAAD8AADDAAADAvwAAAD8AADDAAADAvwAAgD8AAGDAAADAvwAAgD8AADDAAADAvwAAgL8AAGDAAADAPwAAgD///1/AAADAvwAAgD8AAGDAAADAvwAAAD8AADDAAADAvwAAgD8AADDAAADAPwAAAD8AADDAAADAvwAAgL8AAGDAAQDAvwAAAAAAAADAAQDAvwAAAL8AAKC/AQDAvwAAAAAAAADAAQDAvwAAAAAAAKC/AQDAvwAAAL8AAKC/AADAvwAAAD8AADDAAQDAvwAAAD8AAADAAQDAvwAAAAAAAADAAQDAvwAAAAAAAADAAQDAvwAAAD8AAADAAADAPwAAAAD///+/AQDAvwAAAAAAAADAAADAPwAAAAD+/5+/AQDAvwAAAAAAAKC/AQDAvwAAAL8AAKC/AQDAvwAAAAAAAKC/AADAPwAAAL/+/5+/AQDAvwAAAL8AAKC//v+/PwAAAL/4//++AQDAvwAAAL8AAAC/AADAvwAAAD8AADDAAADAPwAAAD////+/AQDAvwAAAD8AAADAAADAvwAAgD8AAGDAAADAPwAAgD8AADDAAADAvwAAgD8AADDAAQDAvwAAAL8AAAC//v+/PwAAAL/4//++/v+/PwAAgL/4//++AADAPwAAgL///1/A/v+/PwAAgL/4//++/v+/PwAAAL/4//++AADAPwAAgL///1/A/v+/PwAAAL/4//++AADAPwAAAL/+/5+/AADAvwAAgL8AAGDAAADAPwAAgL///1/AAADAPwAAgD///1/AAADAvwAAgD8AADDAAADAPwAAgD8AADDAAADAPwAAAD8AADDAAADAPwAAgL///1/AAADAPwAAAAD///+/AADAPwAAAD8AADDAAADAPwAAgL///1/AAADAPwAAAD8AADDAAADAPwAAgD///1/AAADAPwAAAD8AADDAAADAPwAAgD8AADDAAADAPwAAgD///1/AAQDAvwAAAAAAAADAAADAPwAAAAD///+/AADAPwAAAAD+/5+/AQDAvwAAAL8AAKC/AADAPwAAAL/+/5+//v+/PwAAAL/4//++AQDAvwAAAAAAAKC/AADAPwAAAAD+/5+/AADAPwAAAL/+/5+/AQDAvwAAAD8AAADAAADAPwAAAD////+/AADAPwAAAAD///+/AADAvwAAAD8AADDAAADAPwAAAD8AADDAAADAPwAAAD////+/AADAPwAAgL///1/AAADAPwAAAL/+/5+/AADAPwAAAAD///+/AADAPwAAAAD///+/AADAPwAAAL/+/5+/AADAPwAAAAD+/5+/AADAPwAAAD8AADDAAADAPwAAAAD///+/AADAPwAAAD////+/AADAvwAAgD8AAGDAAADAPwAAgD///1/AAADAPwAAgD8AADDAAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3//f/7//7//f/9//v//v/9//3/+//+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+///////7//7///////v//v//////+//+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3//f////7//f/9/////v/9//3////+//3////7//7//f///////v/9////+//+//3//f/7//7//f/9//v//v/9//3/+//+//3////7//7//f////v//v/9////+//+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3//f/7//7//f/9//v//v/9//3/+//+//v//f//////+//9///////7//3///////v//f////v/+//9////+//7//3////7///////7//7///////v//v//////+//+//3//f////7//f/9/////v/9//3////+/////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3///////3////7//7//f///////v/9///////+//3////7//7//f////v//v/9////+//+//3//f/7//7//f/9//v//v/9//3/+//+//3//f////7//f/9/////v/9//3////+//3///////7//f///////v/9///////+/////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3///////3///////7//f////v//v/9///////+/")
+}]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cfiqv"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+energy_multiplier = 0.0
+
+[sub_resource type="Sky" id="Sky_worwp"]
+sky_material = SubResource("ProceduralSkyMaterial_cfiqv")
+
+[sub_resource type="Environment" id="Environment_0tlj6"]
+background_mode = 2
+sky = SubResource("Sky_worwp")
+glow_enabled = true
+
+[sub_resource type="Animation" id="Animation_63vve"]
+resource_name = "Lean"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coffin/coffin lid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, -0.4000001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Coffin/coffin lid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5010085, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Evelyn")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Rise_lean"],
+"method": &"play_anim"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Bow"],
+"method": &"play_anim"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cape2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Bow"],
+"method": &"play_anim"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D/Fade_in:surface_material_override/0:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 4.5, 5.5, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cape:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cape2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(7, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.015071465, 1.712495, 4.775469), Vector3(0.009883191, 1.8860195, -2.7514362)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(7, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.17016952, 0.013089976, 0), Vector3(-0.15271628, 0.017453298, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_58w2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coffin/coffin lid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Coffin/coffin lid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/Fade_in:surface_material_override/0:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cape:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cape2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.015071465, 1.712495, 4.775469)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.17016952, 0.013089976, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cusr2"]
+resource_name = "Rise"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coffin/coffin lid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 0.5, -0.4), Vector3(0, 0.5, -0.4000001), Vector3(0, 0.5, -0.4000001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Coffin/coffin lid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.426703, 0, 0), Vector3(-1.5010085, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Evelyn")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Rise"],
+"method": &"play_anim"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lbvty"]
+resource_name = "start"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["evelyn_wakes_up"],
+"method": &"start_dialogue"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p1b3g"]
+_data = {
+&"Lean": SubResource("Animation_63vve"),
+&"RESET": SubResource("Animation_58w2d"),
+&"Rise": SubResource("Animation_cusr2"),
+&"start": SubResource("Animation_lbvty")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_cusr2"]
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58w2d"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+
+[node name="The_Sleepers_tomb" type="Node3D" unique_id=1158843495 node_paths=PackedStringArray("player", "chars", "objects", "cameras")]
+script = ExtResource("1_dpeyx")
+text_data = ExtResource("2_cusr2")
+player = NodePath("AnimationPlayer")
+chars = [NodePath("Evelyn"), NodePath("Cape"), NodePath("Cape2")]
+objects = [NodePath("Coffin/coffin lid")]
+next_map_path = "uid://cwra5g7pj6npf"
+cameras = [NodePath("Camera3D")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1869080808]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2122265574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+size = Vector3(20, 12, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1284167205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8388062, 2.152832)
+operation = 2
+size = Vector3(10, 5.6776123, 14.305664)
+material = SubResource("StandardMaterial3D_h03he")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=194835024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.25)
+size = Vector3(3, 2, 1.5)
+material = SubResource("StandardMaterial3D_xou2o")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=853099075]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5, -1, -3.5)
+polygon = PackedVector2Array(0, 0, 0, 2, 0.75, 2, 0.75, 1.5, 1.5, 1.5, 1.5, 1, 2.25, 1, 2.25, 0.5, 3, 0.5, 3, 0)
+depth = 3.0
+material = SubResource("StandardMaterial3D_0tlj6")
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=881406188]
+mesh = SubResource("ArrayMesh_cfiqv")
+
+[node name="Coffin" parent="." unique_id=1376107188 instance=ExtResource("4_58w2d")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 1, -4)
+
+[node name="coffin lid" parent="Coffin" index="1" unique_id=595324894]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0.5, 0)
+script = ExtResource("6_58w2d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2003342129]
+environment = SubResource("Environment_0tlj6")
+
+[node name="VFXBasicFire_01" parent="." unique_id=2052583828 instance=ExtResource("5_63vve")]
+transform = Transform3D(-0.40937388, 0, 0.91236687, 0, 1, 0, -0.91236687, 0, -0.40937388, -3, 3, -2.5)
+primary_color = Color(0.87058824, 0.7137255, 0.92156863, 1)
+emission = 3.0
+light_color = Color(0.87143487, 0.71314055, 0.92220396, 1)
+lifetime = 0.5
+
+[node name="Particles" parent="VFXBasicFire_01" index="0" unique_id=1479074696]
+lifetime = 0.5
+
+[node name="OmniLight3D" parent="VFXBasicFire_01" index="2" unique_id=1340843048]
+light_color = Color(0.87143487, 0.71314055, 0.92220396, 1)
+omni_range = 7.0
+
+[node name="VFXBasicFire_02" parent="." unique_id=1897953673 instance=ExtResource("5_63vve")]
+transform = Transform3D(-0.40937388, 0, 0.91236687, 0, 1, 0, -0.91236687, 0, -0.40937388, 3, 3, -2.5)
+primary_color = Color(0.87058824, 0.7137255, 0.92156863, 1)
+emission = 3.0
+light_color = Color(0.87143487, 0.71314055, 0.92220396, 1)
+lifetime = 0.5
+
+[node name="Particles" parent="VFXBasicFire_02" index="0" unique_id=1479074696]
+lifetime = 0.5
+
+[node name="OmniLight3D" parent="VFXBasicFire_02" index="2" unique_id=1340843048]
+light_color = Color(0.87143487, 0.71314055, 0.92220396, 1)
+omni_range = 7.0
+
+[node name="Evelyn" parent="." unique_id=1005498321 instance=ExtResource("6_tq8nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.077, 1, -4)
+script = ExtResource("7_n1j4m")
+start_anim = "Lay"
+
+[node name="Skeleton3D" parent="Evelyn/Armature" parent_id_path=PackedInt32Array(1005498321, 1364874208) index="0" unique_id=894109866]
+bones/0/position = Vector3(0.04597958, 0.30022246, -0.013543654)
+bones/0/rotation = Quaternion(-0.4574041, 0.5392418, 0.457404, 0.53924155)
+bones/1/rotation = Quaternion(-0.15344198, 3.6414407e-14, -3.6583415e-08, 0.9881577)
+bones/4/rotation = Quaternion(0.06431378, -0.12394605, 0.9664081, -0.21577)
+bones/5/rotation = Quaternion(0.12444476, 0.0058515724, -0.215711, 0.9684772)
+bones/6/rotation = Quaternion(-0.020015787, 0.00015017831, -0.0032896514, 0.99979424)
+bones/9/rotation = Quaternion(-0.065828525, -0.081677176, 0.98695564, 0.122123286)
+bones/10/rotation = Quaternion(0.032726664, -0.006626447, 0.06847905, 0.9970936)
+bones/11/rotation = Quaternion(-0.020015782, -0.00015017387, 0.0032896514, 0.99979424)
+bones/12/rotation = Quaternion(-5.5618123e-08, 3.6033452e-07, 3.6281682e-07, 1)
+bones/14/rotation = Quaternion(-0.0020094155, 0.13128911, 0.99132353, 0.0060616746)
+bones/15/rotation = Quaternion(-0.10950255, -9.713054e-05, 0.0060801036, 0.99396795)
+bones/16/rotation = Quaternion(0.002009135, 0.13128856, 0.9913237, -0.0060615013)
+bones/17/rotation = Quaternion(-0.10950157, 9.712013e-05, -0.006080067, 0.99396807)
+bones/18/position = Vector3(-0.057750463, 0.30022252, -0.25921935)
+bones/18/rotation = Quaternion(-0.9753096, -1.1920929e-07, -0.22084203, -8.940697e-08)
+bones/19/position = Vector3(-0.03747818, 0.3002224, 0.20510201)
+bones/19/rotation = Quaternion(-0.22084191, -5.9604645e-08, -0.9753096, 5.9604645e-08)
+bones/20/position = Vector3(0.7317834, 0.28219587, -0.10833918)
+bones/20/rotation = Quaternion(-0.70712763, 5.2837102e-08, -0.7070859, -2.9802326e-08)
+bones/21/position = Vector3(4.8329703e-08, 3.8806917e-07, 4.8472785e-08)
+bones/24/position = Vector3(0.73178345, 0.28219575, 0.08125208)
+bones/24/rotation = Quaternion(-0.7070858, -1.13675924e-07, -0.70712775, 5.9604645e-08)
+bones/25/position = Vector3(-1.7482117e-08, 4.5335779e-07, 6.462631e-08)
+bones/27/rotation = Quaternion(0.9999814, -5.2925737e-16, 0.006101408, -8.272383e-16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=380411818]
+libraries/ = SubResource("AnimationLibrary_p1b3g")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2115253586]
+transform = Transform3D(0.99991435, -0.002216716, 0.012900538, 0, 0.9855559, 0.16934942, -0.013089603, -0.16933489, 0.98547167, 0.015071465, 1.712495, 4.775469)
+current = true
+
+[node name="Fade_in" type="MeshInstance3D" parent="Camera3D" unique_id=13244495]
+transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, -2.9802322e-08, 5.9604645e-08, 1, 0.03564155, -0.08756387, -0.1681788)
+mesh = SubResource("QuadMesh_cusr2")
+surface_material_override/0 = SubResource("StandardMaterial3D_58w2d")
+
+[node name="Cape" parent="." unique_id=1712773284 instance=ExtResource("9_cusr2")]
+transform = Transform3D(-0.97147846, 0, 0.23712784, 0, 1, 0, -0.23712784, 0, -0.97147846, -1.3216363, -1, 1.8132143)
+script = ExtResource("7_n1j4m")
+start_anim = "Idle"
+
+[node name="Cape2" parent="." unique_id=1677873201 instance=ExtResource("9_cusr2")]
+transform = Transform3D(-0.9409195, 0, -0.33863026, 0, 1, 0, 0.33863026, 0, -0.9409195, 1.2224675, -1, 1.7405849)
+script = ExtResource("7_n1j4m")
+start_anim = "Idle"
+
+[editable path="Coffin"]
+[editable path="VFXBasicFire_01"]
+[editable path="VFXBasicFire_02"]
+[editable path="Evelyn"]

@@ -115,7 +115,7 @@ Elliot: Purge it.
 => END
 
 ~ evelyn_01
-Evelyn: Huh!? So some managed to surv… no. Clones? Hahaha! Even I was not this lazy. But I suppose I will take it as an honor. To have my work be recognized by the Dragon to be worthy of replication. I am touched. Well, time to kill them all.
+Evelyn: Huh!? So some managed to surv[speed=0.1]... [speed=1.0]no.[wait=1] Clones?[wait=1] Hahaha! Even I was not this lazy. But I suppose I will take it as an honor. To have my work be recognized by the Dragon. I am touched. Well, time to kill them all.
 => END
 
 ~ evelyn_02

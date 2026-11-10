@@ -11,6 +11,9 @@ class_name Focused_char_stats
 	Character_stats.stats.move_speed : %Move_speed
 }
 
+func _ready() -> void:
+	set_process(false)
+
 func update_stats(ch : Character_stats):
 	%Char_name.text = ch.name
 	%Class.text = ch.char_class
@@ -32,8 +35,15 @@ func update_stats(ch : Character_stats):
 			continue
 		if ch.boosts[stat] != 0:
 			st_to_lb[stat].text += "+" + str(ch.boosts[stat])
+	
+	if ch.magic_strenght == 999:
+		set_process(true)
+	else:
+		set_process(false)
 
-
+@warning_ignore("unused_parameter")
+func _process(delta: float) -> void:
+	%Mag_str.text = "Magic Str : " + str(randi_range(-999, 999))
 
 
 

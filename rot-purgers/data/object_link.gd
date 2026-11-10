@@ -11,7 +11,7 @@ var enemy_manager : Enemy_manager
 var map_ui : Map_UI
 
 var cutscene : Cutscene
-var cutscene_chars : Dictionary[String, Cutscene_char]
+var cutscene_chars : Array[Cutscene_char]
 var cutscene_player : AnimationPlayer
 var cutscene_cameras : Array[Camera3D]
 

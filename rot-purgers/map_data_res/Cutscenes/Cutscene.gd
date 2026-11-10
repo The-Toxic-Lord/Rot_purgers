@@ -1,18 +1,34 @@
-extends Node3D
+@tool extends Node3D
 
 class_name Cutscene
 
 @export var text_data : DialogueResource
 @export var player : AnimationPlayer
-@export var chars : Dictionary[String, Cutscene_char] = {}
+@export_tool_button("Find chars") var find_chars = chars_find
+@export var chars : Array[Cutscene_char] = []
+@export var objects : Array[Cutscene_object] = []
 @export var next_map_path : String
 @export var cameras : Array[Camera3D]
 @export var music : AudioStream
 
 signal load_finished
 
+func chars_find():
+	chars = []
+	cameras = []
+	objects = []
+	for child in get_children():
+		if child is Cutscene_char:
+			chars.append(child)
+		elif child is Camera3D:
+			cameras.append(child)
+	for child in get_children(true):
+		if child is Cutscene_object:
+			objects.append(child)
+
 func _ready() -> void:
-	ObjectLink.cutscene = self
+	if !Engine.is_editor_hint():
+		ObjectLink.cutscene = self
 
 func start_cutscene(_extra_data = null):
 	await get_tree().process_frame
@@ -37,6 +53,18 @@ func bind_objects():
 
 func load_save(game_save : Game_save):
 	bind_objects()
+	for i in cameras.size():
+		cameras[i].position = game_save.cameras_position[i]
+		cameras[i].quaternion = game_save.cameras_rotation[i]
+	for i in chars.size():
+		chars[i].position = game_save.chars_position[i]
+		chars[i].quaternion = game_save.chars_rotation[i]
+		chars[i].visible = game_save.chars_visibility[i]
+		chars[i].load_anim(game_save.chars_animation[i])
+	for i in objects.size():
+		objects[i].position = game_save.objects_position[i]
+		objects[i].quaternion = game_save.objects_rotation[i]
+		objects[i].visible = game_save.objects_visibility[i]
 	DialogueBalloon.dialogue_resource = text_data
 	await get_tree().process_frame
 	DialogueBalloon.load_str(game_save.line_id)

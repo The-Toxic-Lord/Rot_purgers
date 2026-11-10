@@ -34,6 +34,9 @@ You don't know that! We will get cursed, I tell you!
 
 We will be dead if we do nothing!
 
+do ObjectLink.cutscene_player.play("Rise")
+$> wait(16)
+
 Evelyn: You are so noisy, you just might wake up the dead.
 
 This is the Sleeper?
@@ -42,9 +45,16 @@ Evelyn: Watch your tongue unless you want to lose it.
 
 Evelyn: It will take me a few hours to take care of this minor business. And when I get back, I expect to see a table breaking under the weight of food stacked on it. I suggest you get to it.
 
-Evelyn: *Sigh. Can't the world just let me be. Once again, I have to play some tiresome role.*
-=> END
+do ObjectLink.cutscene_player.play("Lean")
+$> wait(10)
+
+Evelyn: Sigh. Maybe I should just abandon this world after all.
+
+Evelyn: No. That would mean that our work and sacrifice were for nothing. I cannot allow that.
+
+Evelyn: All I wanted was some sleep, but once again, I have to play some tiresome role.
+=> next
 
 ~ evelyn_fissure
 Evelyn: So this is the place. Well, no time to waste. Down we go.
-=> END
+=> next

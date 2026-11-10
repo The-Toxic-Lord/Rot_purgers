@@ -64,6 +64,15 @@ func make_screen():
 
 @export_storage var line_id : String
 @export_storage var cutscene_path : String
+@export_storage var cameras_position : Array[Vector3] = []
+@export_storage var cameras_rotation : Array[Quaternion] = []
+@export_storage var chars_position : Array[Vector3] = []
+@export_storage var chars_rotation : Array[Quaternion] = []
+@export_storage var chars_visibility : Array[bool] = []
+@export_storage var chars_animation : Array[String] = []
+@export_storage var objects_position : Array[Vector3] = []
+@export_storage var objects_rotation : Array[Quaternion] = []
+@export_storage var objects_visibility : Array[bool] = []
 
 func save_global_data():
 	dead_chars = GlobalData.dead_chars
@@ -73,6 +82,24 @@ func save_global_data():
 func make_dialogue_save():
 	line_id = DialogueBalloon.dialogue_line.id
 	cutscene_path = ObjectLink.cutscene.scene_file_path
+	
+	for i in ObjectLink.cutscene_cameras.size():
+		var camera : Camera3D = ObjectLink.cutscene_cameras[i]
+		cameras_position.append(camera.position)
+		cameras_rotation.append(camera.quaternion)
+	
+	for i in ObjectLink.cutscene.chars.size():
+		var ch : Cutscene_char = ObjectLink.cutscene.chars[i]
+		chars_position.append(ch.position)
+		chars_rotation.append(ch.quaternion)
+		chars_visibility.append(ch.visible)
+		chars_animation.append(ch.get_anim_name())
+	
+	for i in ObjectLink.cutscene.objects.size():
+		var ch : Cutscene_object = ObjectLink.cutscene.objects[i]
+		objects_position.append(ch.position)
+		objects_rotation.append(ch.quaternion)
+		objects_visibility.append(ch.visible)
 	
 	await save_global_data()
 	

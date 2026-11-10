@@ -57,9 +57,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Skip"
 
+[node name="Skip2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=377072522]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Loose"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Execute" to="." method="_on_turn_button_pressed" flags=18]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/End_turn" to="." method="_on_turn_button_pressed" flags=18]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_turn_button_pressed" flags=18]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_turn_button_pressed" flags=18]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Skip2" to="." method="_on_skip_2_pressed"]
