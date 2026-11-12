@@ -8,6 +8,9 @@ signal order_ended
 
 enum hit_types { MISS, NORMAL, NICK, BULLSEYE }
 
+func _ready() -> void:
+	ObjectLink.damage_manager = self
+
 func calc_hit_chance(target : Character_node, attacker : Character_node, acc_mod : float = 0.0) -> float:
 	var chance = float(attacker.stats.get_stat_boosted(Character_stats.stats.accuracy))/\
 	float(target.stats.get_stat_boosted(Character_stats.stats.speed)) + acc_mod
@@ -94,18 +97,23 @@ func attack_damage(target : Character_node, attacker : Character_node):
 	if acc_dmg_mod == 0.0:
 		await target.damage(-1)
 	else:
-		var damage : float = attacker.stats.get_stat_boosted(attacker.stats.attack_stat)
-		damage *= acc_dmg_mod
-		if target.is_defending:
-			damage -= target.stats.get_stat_boosted(attacker.stats.defender_stat)
-		else:
-			damage -= (float(target.stats.get_stat_boosted(attacker.stats.defender_stat)) / 2)
-		if damage < 0:
-			damage = 0
+		var damage : float = calc_atk_damage(target, attacker, acc_dmg_mod)
 		await target.damage(damage, true)
 	await target.animation_ended
 	await get_tree().process_frame
 	order_ended.emit()
+
+func calc_atk_damage(target : Character_node, attacker : Character_node, acc_dmg_mod : float) -> float:
+	var damage : float = attacker.stats.get_stat_boosted(attacker.stats.attack_stat)
+	damage *= acc_dmg_mod
+	if target.is_defending:
+		damage -= target.stats.get_stat_boosted(attacker.stats.defender_stat)
+	else:
+		damage -= (float(target.stats.get_stat_boosted(attacker.stats.defender_stat)) / 2)
+	if damage < 0:
+		damage = 0
+	
+	return damage
 
 func skill_mass(order : Order_skill_data):
 	await get_tree().process_frame

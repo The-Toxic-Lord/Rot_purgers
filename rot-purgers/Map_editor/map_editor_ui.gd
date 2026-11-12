@@ -176,8 +176,12 @@ func _on_stat_text_changed(new_text: String, source: LineEdit) -> void:
 	source.text = str(selected_enemy_data.get(id_to_stat[id]))
 
 func _on_ai_type_item_selected(index: int) -> void:
-	@warning_ignore("int_as_enum_without_cast")
-	selected_enemy_data.AI_type = index
+	match index:
+		6:
+			selected_enemy_data.AI_type = Character_stats.AI_types.NEIRO
+		_:
+			@warning_ignore("int_as_enum_without_cast")
+			selected_enemy_data.AI_type = index
 
 var dir_arr : Array[Map_generator.directions] = [Map_generator.directions.N, Map_generator.directions.E, 
 Map_generator.directions.S, Map_generator.directions.W]

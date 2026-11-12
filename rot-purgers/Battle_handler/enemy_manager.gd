@@ -29,6 +29,8 @@ func start_enemy_turn():
 				await handle_spawner_AI(enemy)
 			Character_stats.AI_types.FLYER, Character_stats.AI_types.FLYER_CHARGE:
 				await handle_Flyer_IA(enemy)
+			Character_stats.AI_types.NEIRO:
+				await handle_Neiro(enemy)
 	for enemy in char_planned_moves:
 		match enemy.stats.AI_type:
 			Character_stats.AI_types.FLYER, Character_stats.AI_types.FLYER_CHARGE:
@@ -265,17 +267,73 @@ func handle_spawner_AI(enemy : Character_node):
 		pass
 
 func handle_Flyer_IA(enemy : Character_node):
-	var pos_pos : Array[Vector3] = get_possible_flyer_possition(enemy)
-	var desired_height : float = find_flyer_desired_height(enemy)
-	if check_trigger(enemy):
-		enemy.stats.AI_type = Character_stats.AI_types.FLYER_CHARGE
+	var pos_pos : Array[Vector3] = [enemy.position]
+	var desired_height : float = enemy.position.y
+	if enemy.stats.move_speed != 0:
+		pos_pos = get_possible_flyer_possition(enemy)
+		desired_height = find_flyer_desired_height(enemy)
+		if check_trigger(enemy):
+			enemy.stats.AI_type = Character_stats.AI_types.FLYER_CHARGE
 	
 	if await flyer_can_attack(enemy, pos_pos, desired_height):
-		enemy.stats.AI_type = Character_stats.AI_types.FLYER_CHARGE
-		return
+		if enemy.stats.move_speed != 0:
+			enemy.stats.AI_type = Character_stats.AI_types.FLYER_CHARGE
+			return
 	
 	if enemy.stats.AI_type == Character_stats.AI_types.FLYER_CHARGE:
 		await move_closest_position(pos_pos, enemy)
+
+func handle_Neiro(enemy : Character_node):
+	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
+	false, true, enemy.stats.jump_height, false)
+	
+	for cell in occupied_cells:
+		move_cells.erase(cell)
+	move_cells.insert(0, enemy.map_pos)
+	
+	var attack_possibilities : Dictionary[Vector2i, Array] = {}
+	for cell in move_cells:
+		@warning_ignore("confusable_local_declaration")
+		var targets : Array[Vector2i] = can_attack_fom_position(
+			enemy.stats.attack_distance, cell, enemy.stats.attack_height, enemy.position)
+		if !targets.is_empty():
+			attack_possibilities[cell] = targets
+	
+	var selected_cell : Vector2i
+	var selected_target : Character_node = null
+	var rejected_targets : Array[Character_node] = []
+	# check for a kill
+	for cell in attack_possibilities.keys():
+		var found_check := false
+		for target : Character_node in attack_possibilities[cell]:
+			if rejected_targets.has(target):
+				continue
+			var hit_chance : float = ObjectLink.damage_manager.calc_hit_chance(target, enemy)
+			var dmg_bonus : float = ObjectLink.damage_manager.cals_hit_acc_dmg_bonus(hit_chance)
+			var damage : float = ObjectLink.damage_manager.calc_atk_damage(target, enemy, dmg_bonus)
+			if damage > target.stats.health:
+				selected_cell = cell
+				selected_target = target
+				found_check = true
+				break
+			else:
+				rejected_targets.append(target)
+		if found_check:
+			break
+	if selected_target != null:
+		var move := Planned_move_data.new()
+		var dir : Map_generator.directions = get_new_dir(selected_cell, selected_target.map_pos)
+		move.set_target(selected_cell, move_cells, dir)
+		char_planned_moves[enemy] = move
+		occupied_cells.erase(enemy.map_pos)
+		occupied_cells.append(selected_cell)
+		BattleHandler.add_attack(enemy, map_gen.char_positions[selected_target.map_pos])
+	
+	# if cannot kill look for rot targets
+	# if target has no rot -> rot
+	# if target has some rot -> roll
+	# if target has 2 rot -> attack
+	# if no targets walk closer
 
 func move_closest_position(pos_pos : Array[Vector3], enemy : Character_node):
 	var min_dist : float = 999999.0
@@ -374,14 +432,14 @@ func get_possible_flyer_possition(enemy : Character_node) -> Array[Vector3]:
 		var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
 		if !map_gen.map_cells.has(cell):
 			continue
-		if pos.y <= map_gen.map_cells[cell].position.y or occupied_cells.has(cell):
+		if pos.y <= map_gen.map_cells[cell].position.y or (occupied_cells.has(cell) and cell != enemy.map_pos):
 			delete_3d.append(pos)
 	for pos in delete_3d:
 		checked_pos.erase(pos)
 	delete_3d.clear()
 	for pos in checked_pos:
 		var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
-		if occupied_cells.has(cell):
+		if occupied_cells.has(cell) and cell != enemy.map_pos:
 			delete_3d.append(pos)
 	for pos in delete_3d:
 		checked_pos.erase(pos)

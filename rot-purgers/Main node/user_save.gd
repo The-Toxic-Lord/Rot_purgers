@@ -13,13 +13,17 @@ class_name User_save
 
 func add_achievement(diff : Global_data.Difficulty, line : String):
 	var cue : String = Global_data.Difficulty.keys()[diff] + "_" + line
-	check_cue(cue)
+	await check_cue(cue)
 	if diff == Global_data.Difficulty.HARD and GlobalData.dead_chars.is_empty():
-		check_cue("HARD_all_alive")
+		await check_cue("HARD_all_alive")
 	GlobalData.clear_data()
+	save_self()
 
 func check_cue(cue : String):
 	if achievements.has(cue):
 		if !achievements[cue]:
 			ObjectLink.main.main_menu.animate_achievement(ObjectLink.main.main_menu.achievement_texts[cue])
 		achievements[cue] = true
+
+func save_self():
+	ResourceSaver.save(self, "user://saves/user.res")

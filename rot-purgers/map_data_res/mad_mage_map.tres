@@ -1,17 +1,17 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://be52j2wwp2yvi"]
+[gd_resource type="Resource" script_class="Map_data" format=3]
 
-[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_clc6w"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="2_4ywtq"]
-[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_nwstx"]
-[ext_resource type="Texture2D" uid="uid://cq5yw6r4nrunv" path="res://dialogue/char_sprites/Neiro.png" id="3_e3u7p"]
-[ext_resource type="Texture2D" uid="uid://dgk14i8f62fkw" path="res://import/D_H.png" id="3_nwstx"]
-[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://import/magic_envt.tres" id="4_6tk1j"]
-[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="4_e3u7p"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="5_ajjvo"]
-[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_pymye"]
-[ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="7_l5dh1"]
-[ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="8_y0pm5"]
-[ext_resource type="Material" uid="uid://dkma81f54rlrp" path="res://3d_map/map_cell_materials/tile_wall.tres" id="9_x4usv"]
+[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_clc6w"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_4ywtq"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_nwstx"]
+[ext_resource type="Texture2D" path="res://dialogue/char_sprites/Neiro.png" id="3_e3u7p"]
+[ext_resource type="Texture2D" path="res://import/D_H.png" id="3_nwstx"]
+[ext_resource type="Environment" path="res://import/magic_envt.tres" id="4_6tk1j"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="4_e3u7p"]
+[ext_resource type="Script" path="res://map_data_res/map_data.gd" id="5_ajjvo"]
+[ext_resource type="Script" path="res://data/terrain_data.gd" id="6_pymye"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_floor.tres" id="7_l5dh1"]
+[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="8_y0pm5"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="9_x4usv"]
 
 [sub_resource type="Resource" id="Resource_ajjvo"]
 script = ExtResource("1_clc6w")
@@ -19,9 +19,12 @@ name = "Neiro"
 char_class = "Mage"
 age = 4358
 sprite = ExtResource("3_e3u7p")
+max_health = 1000
+move_speed = 5
+jump_height = 100
 node_UID = "uid://dyctrkv6gr2dx"
 start_dir = 2
-AI_type = 2
+AI_type = 8
 spawn_node_UUID = "uid://bkwt1lvhkpr71"
 metadata/_custom_type_script = "uid://by1rq468n504l"
 

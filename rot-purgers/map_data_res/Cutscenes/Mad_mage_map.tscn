@@ -6660,7 +6660,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/stand_up/blend_amount = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=936282732]
-transform = Transform3D(0.9999619, 0.00072268595, -0.008697206, 0, 0.99656546, 0.08280863, 0.008727181, -0.082805485, 0.99652743, 12.0852785, 4.7405396, 27.798355)
+transform = Transform3D(0.9999619, 0.00072268595, -0.008697206, 0, 0.99656546, 0.08280863, 0.008727181, -0.082805485, 0.9965274, 12.0852785, 4.7405396, 27.798355)
 
 [node name="Fade_in" type="MeshInstance3D" parent="Camera3D" unique_id=708150231]
 transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, -2.9802322e-08, 5.9604645e-08, 1, 0.03564155, -0.08756387, -0.1681788)

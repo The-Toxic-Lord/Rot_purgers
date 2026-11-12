@@ -2,6 +2,8 @@ extends Node
 
 class_name Object_link
 
+var damage_manager : Damage_manager
+
 var map_gen : Map_generator
 var name_to_node
 

@@ -47,7 +47,7 @@ func set_stat(stat : stats, value : int):
 @export var node_UID : String
 @export var start_dir : Map_generator.directions
 
-enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER, FLYER, FLYER_CHARGE, FLYER_TURRET }
+enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER, FLYER, FLYER_CHARGE, NEIRO }
 @export var AI_type : AI_types = AI_types.NORMAL:
 	set(value):
 		AI_type = value

@@ -1,50 +1,28 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://c1qqc4litayla"]
+[gd_resource type="Resource" script_class="Map_data" format=3]
 
-[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_bwvuj"]
-[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_j7tpd"]
-[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="2_ys7s5"]
-[ext_resource type="Texture2D" uid="uid://c5f5mptu5chck" path="res://import/Eye.png" id="3_3mwm5"]
-[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="3_alebe"]
-[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="4_2qeye"]
-[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="4_o70wc"]
-[ext_resource type="Texture2D" uid="uid://c131pecdedawl" path="res://import/check_button.png" id="4_ys7s5"]
-[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="5_ead5j"]
-[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="5_j7tpd"]
-[ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="6_3mwm5"]
-[ext_resource type="Texture2D" uid="uid://c6oqat6ko8geo" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="7_kqyk2"]
-[ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="8_kqyk2"]
-[ext_resource type="Resource" uid="uid://c5xtfota7ng1v" path="res://data/Player_chars_data/Zaar.tres" id="9_jcw8x"]
-[ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="9_kqyk2"]
-[ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="12_ead5j"]
-[ext_resource type="Resource" uid="uid://bey6puoeedq1m" path="res://data/Player_chars_data/Evelyn.tres" id="13_g2qwr"]
-
-[sub_resource type="Resource" id="Resource_rmrwd"]
-script = ExtResource("1_bwvuj")
-name = "Crawler"
-char_class = "Servant"
-age = 3
-sprite = ExtResource("5_ead5j")
-max_magic = 0
-strength = 30
-defence = 30
-magic_strenght = 0
-accuracy = 50
-speed = 40
-move_speed = 5
-jump_height = 10
-counter = 0
-trigger_distance = 10
-node_UID = "uid://dunq80ub3v1jk"
-potential_skills = Array[ExtResource("2_j7tpd")]([ExtResource("4_o70wc")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
+[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_bwvuj"]
+[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_j7tpd"]
+[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_ys7s5"]
+[ext_resource type="Texture2D" path="res://import/Eye.png" id="3_3mwm5"]
+[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="3_alebe"]
+[ext_resource type="Script" path="res://map_data_res/map_data.gd" id="4_2qeye"]
+[ext_resource type="Texture2D" path="res://import/check_button.png" id="4_ys7s5"]
+[ext_resource type="Script" path="res://data/terrain_data.gd" id="5_j7tpd"]
+[ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="6_3mwm5"]
+[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="7_kqyk2"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="8_kqyk2"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Zaar.tres" id="9_jcw8x"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="9_kqyk2"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Aven.tres" id="12_ead5j"]
+[ext_resource type="Resource" path="res://data/Player_chars_data/Evelyn.tres" id="13_g2qwr"]
 
 [sub_resource type="Resource" id="Resource_kqj3p"]
 script = ExtResource("1_bwvuj")
 name = "Observer"
 char_class = "Eosinophil"
 sprite = ExtResource("3_3mwm5")
-move_speed = 2
-jump_height = 10
+move_speed = 0
+jump_height = 0
 attack_distance = 4
 node_UID = "uid://ckmkqe73jj58e"
 AI_type = 5
@@ -619,7 +597,6 @@ Vector2i(13, 11): SubResource("Resource_ys7s5"),
 Vector2i(13, 14): SubResource("Resource_jcw8x")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_bwvuj")]({
-Vector2i(13, 13): SubResource("Resource_rmrwd"),
 Vector2i(15, 12): SubResource("Resource_kqj3p")
 })
 magic_cost_adjustment = 1.8

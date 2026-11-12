@@ -20,23 +20,25 @@ MONITOR:
 
 to do:
 	+- parry\defend
-	- music
-	+- game over
-	+- player characters models
 	+- settings
 	+- main menu
-	- level maps
-	+- skills description
 	- silly mode
-	- cutscenes
 	+- battle system
 	+- character animated movement
-	+- skills
 	+- enemy AI
-	- tutorial
 	-? fix char turn on move after attack
-	- Neiro AI
-	- death animation (poses)
+	+- death animation (poses)
 	+- fix save at cutscene (now fix scenes)
 
 - background image
+
+1.0 must:
+	- music
+	- finish map_mage cutscene (Neiro death)
+	- tutorial
+	- balance
+	- skills
+	+- skills description
+	- level maps
+	+- cutscenes
+	- Neiro AI

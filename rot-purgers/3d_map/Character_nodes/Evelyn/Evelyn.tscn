@@ -179,37 +179,39 @@ outline_size = 8
 libraries/Movement_anim = SubResource("AnimationLibrary_26cmt")
 
 [node name="Evelyn" parent="." unique_id=517922839 instance=ExtResource("4_sotvy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Evelyn/Armature" parent_id_path=PackedInt32Array(517922839, 574428796) index="0" unique_id=580278671]
-bones/0/position = Vector3(-5.9765526e-10, 1.0011454, 8.269191e-09)
+[node name="Skeleton3D" parent="Evelyn/Armature" parent_id_path=PackedInt32Array(517922839, 1985776395) index="0" unique_id=411688116]
+bones/0/position = Vector3(1.04281916e-10, 1.0002668, 1.0710807e-08)
 bones/0/rotation = Quaternion(0.06324702, 1.1897061e-07, 7.5396365e-09, 0.99799794)
 bones/1/rotation = Quaternion(-0.08490712, 2.1316282e-14, -2.024343e-08, 0.9963889)
 bones/4/rotation = Quaternion(0.057960268, -0.08630214, 0.97715557, -0.18536332)
 bones/5/rotation = Quaternion(0.08268154, 0.006028273, -0.117802575, 0.9895706)
 bones/6/rotation = Quaternion(-0.020015785, 0.00015017121, -0.0032896418, 0.99979424)
-bones/9/rotation = Quaternion(-0.039665684, -0.017591814, 0.98710626, 0.15407267)
+bones/9/rotation = Quaternion(-0.03984889, -0.018016787, 0.98909456, 0.14063974)
 bones/10/rotation = Quaternion(0.002076426, -0.0062655485, 0.0022623402, 0.99997574)
 bones/11/rotation = Quaternion(-0.020015782, -0.00015016997, 0.0032896511, 0.99979424)
 bones/12/rotation = Quaternion(-5.5152462e-08, 3.5692938e-07, 3.6242392e-07, 1)
+bones/13/rotation = Quaternion(0.6976178, 3.087806e-08, 0.09604664, 0.71000314)
 bones/15/rotation = Quaternion(-0.0003420969, 0.052830096, 0.9986032, -0.0007290002)
 bones/16/rotation = Quaternion(-0.0030561076, -9.7722455e-05, 0.0001696952, 0.99999535)
 bones/17/rotation = Quaternion(-0.088539675, 0.20650536, 0.9744312, 0.00029161756)
 bones/18/rotation = Quaternion(-0.3587612, 9.120034e-05, -0.019920185, 0.9332168)
-bones/19/position = Vector3(0.26128545, 1.1039282, -0.013750626)
+bones/19/position = Vector3(0.26128548, 1.1030496, -0.013750626)
 bones/19/rotation = Quaternion(-0.38419953, 0.5868244, -0.60911936, 0.37013707)
-bones/20/position = Vector3(-0.284315, 1.0985823, 0.017209113)
+bones/20/position = Vector3(-0.284315, 1.0443356, 0.017209113)
 bones/20/rotation = Quaternion(0.38419953, 0.5868244, -0.60911936, -0.37013707)
-bones/21/position = Vector3(0.09966216, 0.31052732, -0.018197648)
+bones/21/position = Vector3(0.09966216, 0.30964872, -0.018197648)
 bones/21/rotation = Quaternion(-1.2135018e-05, 0.91160154, -0.41107515, 2.6910653e-05)
 bones/22/position = Vector3(9.2237894e-07, 0.00035974645, -0.00042780428)
-bones/25/position = Vector3(-0.08907897, 0.36319754, -0.08697508)
+bones/25/position = Vector3(-0.08907897, 0.36231893, -0.08697508)
 bones/25/rotation = Quaternion(0.089816265, 0.87267005, -0.47746068, 0.049107023)
 bones/26/position = Vector3(-1.0908652e-06, -3.5969626e-06, 1.1182445e-05)
 bones/28/rotation = Quaternion(0.9999814, 2.7939158e-09, 0.0061014076, 1.7047247e-11)
-bones/29/position = Vector3(-0.28615493, 1.035028, -0.029901603)
-bones/29/rotation = Quaternion(0.07324084, 0.6827991, 0.7259874, 0.036926482)
+bones/29/position = Vector3(-0.2703625, 1.029936, -0.029760977)
+bones/29/rotation = Quaternion(0.06375361, 0.68375236, 0.7264383, 0.026562933)
 
-[node name="Sword" parent="Evelyn/Armature/Skeleton3D" index="4" unique_id=507388863]
+[node name="Sword" parent="Evelyn/Armature/Skeleton3D" index="4" unique_id=988346268]
 visible = false
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=212120219]
