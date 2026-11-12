@@ -69,6 +69,7 @@ mesh = SubResource("SphereMesh_2ounw")
 surface_material_override/0 = SubResource("StandardMaterial3D_2ounw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=803337346]
+visible = false
 light_color = Color(0.46969736, 7.041529e-05, 0.42280382, 1)
 light_energy = 10.0
 shadow_enabled = true

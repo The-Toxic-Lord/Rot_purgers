@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://bq3s1qjaw05vw" path="res://Skills/Skill_res/Power_shot.tres" id="3_7oyti"]
 [ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="3_346bi"]
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="4_kmpbo"]
+[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/cave.tres" id="5_8qaw5"]
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="5_ishe6"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_1fplb"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_nesw8"]
@@ -476,3 +477,4 @@ text_data = ExtResource("13_hfnye")
 text_cue = "pre_03"
 next_map_path = "uid://b213luqwl2tnl"
 player_chars = Array[ExtResource("1_d1v7g")]([ExtResource("7_rukkg"), ExtResource("8_hfnye")])
+enviroment = ExtResource("5_8qaw5")

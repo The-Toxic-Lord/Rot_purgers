@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="6_574v3"]
 [ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="6_j4ma5"]
 [ext_resource type="Material" uid="uid://cq3hrppxee3p4" path="res://3d_map/map_cell_materials/lava_floor_test.tres" id="7_m0xds"]
+[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/cave.tres" id="7_ub6j5"]
 [ext_resource type="Texture2D" uid="uid://bm02bsmgrkna4" path="res://3d_map/map_cell_materials/material_textures/Elements_09-128x128.png" id="8_1gyjt"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="9_7elpe"]
 [ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="10_j17rj"]
@@ -884,3 +885,4 @@ text_cue = "map_004"
 next_map_path = "uid://cn0yh7eofq5xa"
 cutscene_cue = "the_sleeper"
 player_chars = Array[ExtResource("1_fqnh8")]([ExtResource("9_7elpe"), ExtResource("10_j17rj"), ExtResource("11_ub6j5"), ExtResource("12_c5a7s")])
+enviroment = ExtResource("7_ub6j5")

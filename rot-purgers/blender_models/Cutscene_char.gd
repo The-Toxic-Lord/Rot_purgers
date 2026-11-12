@@ -37,6 +37,9 @@ func get_anim_name() -> String:
 func stop_animation():
 	animation_player.stop()
 
+func start_tree():
+	animation_tree.active = true
+
 func stop_tree():
 	animation_tree.active = false
 

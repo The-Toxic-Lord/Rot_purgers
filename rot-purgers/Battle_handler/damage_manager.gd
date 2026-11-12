@@ -193,7 +193,7 @@ func skill_oneshot(order : Order_skill_data):
 	order_ended.emit()
 
 func skill_damage(target : Character_node, attacker : Character_node, skill : Skill_base) -> float:
-	var hit_chance : float = calc_hit_chance(target, attacker)
+	var hit_chance : float = calc_hit_chance(target, attacker, skill.accuracy_modifier)
 	var hit_type : hit_types = calc_hit_type(hit_chance)
 	match hit_type:
 		hit_types.MISS:
@@ -251,7 +251,7 @@ func skill_annihilate(order : Order_skill_data):
 			await handle_skill_movement(order, attacker)
 		order_ended.emit()
 		return
-	
+
 
 
 

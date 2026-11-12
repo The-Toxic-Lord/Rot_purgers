@@ -18,6 +18,7 @@
 [ext_resource type="Material" uid="uid://dkma81f54rlrp" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_u11de"]
 [ext_resource type="Resource" uid="uid://bdy6yy4aten05" path="res://Skills/Skill_res/Push.tres" id="9_tdbp5"]
 [ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="10_2c4b7"]
+[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://import/magic_envt.tres" id="11_7ky5t"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="14_kdvi8"]
 [ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="15_hydoq"]
 [ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="16_7ky5t"]
@@ -15176,3 +15177,4 @@ text_cue = "tower"
 next_map_path = "uid://c65qqtxalpma"
 cutscene_cue = "final_push"
 player_chars = Array[ExtResource("1_8ufhi")]([ExtResource("14_kdvi8"), ExtResource("15_hydoq"), ExtResource("16_7ky5t"), ExtResource("17_8j4nd")])
+enviroment = ExtResource("11_7ky5t")

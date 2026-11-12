@@ -637,14 +637,19 @@ func move_character():
 	BattleHandler.stop_animation_freeze()
 	selected_char.can_move = false
 	update_char_position(selected_char, selected_cell)
-	if exit_zones.has(selected_cell):
-		BattleHandler.end_battle(map_data.object_map_data[selected_cell])
+	if check_exit(selected_cell):
 		return
 	if selected_char.can_attack:
 		state = states.MENU
 		map_ui.open_char_action_menu(selected_char)
 		return
 	state = states.SELECT
+
+func check_exit(cell : Vector2i) -> bool:
+	if exit_zones.has(cell):
+		BattleHandler.end_battle(map_data.object_map_data[cell])
+		return true
+	return false
 
 func update_char_position(char_node : Character_node, new_pos : Vector2i):
 	char_positions.erase(char_node.map_pos)
@@ -1163,6 +1168,7 @@ func teleport_char(char_node : Character_node, new_cell : Vector2i):
 	char_node.position = map_cells[new_cell].position
 	char_node.map_pos = new_cell
 	char_positions[new_cell] = char_node
+	check_exit(new_cell)
 
 func update_map_cells(dirs : Array[directions]):
 	for map_cell in map_cells.values():

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_lmo18"]
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="2_i525o"]
+[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://import/magic_envt.tres" id="2_mwxnt"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="3_t37lf"]
 [ext_resource type="Texture2D" uid="uid://c131pecdedawl" path="res://import/check_button.png" id="4_i525o"]
 [ext_resource type="Resource" uid="uid://bey6puoeedq1m" path="res://data/Player_chars_data/Evelyn.tres" id="4_mwxnt"]
@@ -467,3 +468,4 @@ text_cue = "evelyn_03"
 next_map_path = "uid://rppfsqmhy6x1"
 cutscene_cue = "evelyn_mad_mage"
 player_chars = Array[ExtResource("1_lmo18")]([ExtResource("4_mwxnt")])
+enviroment = ExtResource("2_mwxnt")

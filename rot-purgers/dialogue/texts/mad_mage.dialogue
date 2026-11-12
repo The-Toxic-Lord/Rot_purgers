@@ -152,11 +152,17 @@ Aven: The Dragon Scale is an astronomically rare artifact. The fact that Neiro w
 
 Evelyn: And you just added two more failings to the list. You allowed such a rare artifact slip by unnoticed and failed to keep tabs on a powerful mage. You just keep digging the hole you are in.
 
+do ObjectLink.cutscene_player.play("evelyn_group_zaar_stand")
+=> END
+
+~ zaar_object
 Zaar: Enough! You saved our lives, but you have no right to talk to the Archchancellor like that!
 
-Evelyn: I have every right to address anyone however I want, demon.
+Evelyn: (Why did you have to say that?)
 
-Evelyn: (Why did you have to say that? Let's hope Aven can come up with an excuse to keep you alive.)
+do ObjectLink.cutscene_player.play("evelyn_group_zaar_hold")
+
+Evelyn: I have every right to address anyone however I want, demon.
 
 Aven: Can I attempt to convince you that he is more useful to you alive than dead?
 
@@ -164,7 +170,7 @@ Evelyn: Go on.
 
 Aven: Surely you have recognized whose blood runs through him. In time he will become a mighty mage, just like his ancestor. And just like him, he will be of great use in keeping this world at peace.
 
-Evelyn: (Good. A way out!)
+do ObjectLink.cutscene_player.play("evelyn_group_zaar_release")
 
 Evelyn: Make sure that he knows how to address his betters next time, Archchancellor. Farewell.
 => END

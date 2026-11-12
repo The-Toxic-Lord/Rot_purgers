@@ -25,15 +25,11 @@ func update(skill : Skill_base = null, text : String = ""):
 				description_lb.text += " | " + "Accuracy mod : "
 				if skill.accuracy_modifier > 0:
 					description_lb.text += "+"
-				else:
-					description_lb.text += "-"
 				description_lb.text += str(roundi(skill.accuracy_modifier * 100)) + "%"
 			if skill.damage != 1.0:
 				description_lb.text += " | " + "Power mod : "
 				if skill.damage > 1.0:
 					description_lb.text += "+"
-				else:
-					description_lb.text += "-"
 				description_lb.text += str(roundi(skill.damage * 100)-100) + "%"
 		Skill_base.skill_types.HEAL:
 			description_lb.text += "\n" + "Healing strength : " + str(roundi(skill.heal_value * 100)) + "%"

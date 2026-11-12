@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_nwstx"]
 [ext_resource type="Texture2D" uid="uid://cq5yw6r4nrunv" path="res://dialogue/char_sprites/Neiro.png" id="3_e3u7p"]
 [ext_resource type="Texture2D" uid="uid://dgk14i8f62fkw" path="res://import/D_H.png" id="3_nwstx"]
+[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://import/magic_envt.tres" id="4_6tk1j"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="4_e3u7p"]
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="5_ajjvo"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_pymye"]
@@ -1021,3 +1022,4 @@ next_map_path = "uid://rppfsqmhy6x1"
 cutscene_cue = "mad_mage_loss_1"
 game_over_scene = "uid://rppfsqmhy6x1"
 game_over_scene_cue = "mad_mage_victory"
+enviroment = ExtResource("4_6tk1j")

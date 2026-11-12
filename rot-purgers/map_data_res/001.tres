@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="3_ehe8t"]
 [ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="4_dr8i6"]
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="5_5j27t"]
+[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/cave.tres" id="5_euyro"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_x2dq3"]
 [ext_resource type="Texture2D" uid="uid://c131pecdedawl" path="res://import/check_button.png" id="7_euyro"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="8_5j27t"]
@@ -1091,3 +1092,4 @@ text_data = ExtResource("17_x2dq3")
 text_cue = "map_001"
 next_map_path = "res://map_data_res/002.tres"
 player_chars = Array[ExtResource("1_fepub")]([ExtResource("8_5j27t"), ExtResource("9_x2dq3"), ExtResource("10_euyro"), ExtResource("11_xtksh")])
+enviroment = ExtResource("5_euyro")

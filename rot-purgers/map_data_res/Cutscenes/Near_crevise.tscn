@@ -8,19 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="5_ejvkc"]
 [ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar.glb" id="6_2spcw"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lykj6"]
-sky_top_color = Color(0.3841999, 0.44939798, 0.57756805, 1)
-sky_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
-ground_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
-
-[sub_resource type="Sky" id="Sky_l2akv"]
-sky_material = SubResource("ProceduralSkyMaterial_lykj6")
-
-[sub_resource type="Environment" id="Environment_c2sxo"]
-background_mode = 2
-sky = SubResource("Sky_l2akv")
-glow_enabled = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylduk"]
 albedo_color = Color(0.2614262, 0.502946, 0.0629354, 1)
 
@@ -165,14 +152,24 @@ _data = {
 &"turn_zaar_1": SubResource("Animation_d4brp")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d4brp"]
+sky_top_color = Color(0.17254902, 0.45490196, 0.7607843, 1)
+sky_horizon_color = Color(0.6076106, 0.76082885, 0.9707214, 1)
+ground_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
+
+[sub_resource type="Sky" id="Sky_l2akv"]
+sky_material = SubResource("ProceduralSkyMaterial_d4brp")
+
+[sub_resource type="Environment" id="Environment_ejvkc"]
+background_mode = 2
+sky = SubResource("Sky_l2akv")
+glow_enabled = true
+
 [node name="First_map" type="Node3D" unique_id=964775134 node_paths=PackedStringArray("player")]
 script = ExtResource("1_tdlk6")
 text_data = ExtResource("2_d4brp")
 player = NodePath("AnimationPlayer")
 next_map_path = "uid://xuek2728s2v3"
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=749763083]
-environment = SubResource("Environment_c2sxo")
 
 [node name="Backglound" type="MeshInstance3D" parent="." unique_id=961171160]
 mesh = SubResource("ArrayMesh_fneqh")
@@ -223,3 +220,6 @@ start_anim = "Idle"
 transform = Transform3D(-0.9984208, 0, 0.056178216, 0, 1, 0, -0.056178216, 0, -0.9984208, -0.6878977, -1.9073486e-06, 0.8331959)
 script = ExtResource("4_ejvkc")
 start_anim = "Idle"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1015995540]
+environment = SubResource("Environment_ejvkc")

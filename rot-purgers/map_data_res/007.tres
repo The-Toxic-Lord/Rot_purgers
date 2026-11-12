@@ -17,6 +17,7 @@
 [ext_resource type="Material" uid="uid://dkma81f54rlrp" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_eohbu"]
 [ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="8_t1blu"]
 [ext_resource type="Texture2D" uid="uid://c5f5mptu5chck" path="res://import/Eye.png" id="9_xdwra"]
+[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://import/magic_envt.tres" id="10_6rlev"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="13_3fr55"]
 [ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="14_n8wmh"]
 [ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="15_6rlev"]
@@ -3509,3 +3510,4 @@ text_cue = "map_007"
 next_map_path = "uid://cn0yh7eofq5xa"
 cutscene_cue = "choose"
 player_chars = Array[ExtResource("1_cm0e1")]([ExtResource("13_3fr55"), ExtResource("14_n8wmh"), ExtResource("15_6rlev"), ExtResource("16_mbn7s")])
+enviroment = ExtResource("10_6rlev")

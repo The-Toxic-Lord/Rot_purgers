@@ -443,7 +443,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.077, 1, -4)
 script = ExtResource("7_n1j4m")
 start_anim = "Lay"
 
-[node name="Skeleton3D" parent="Evelyn/Armature" parent_id_path=PackedInt32Array(1005498321, 574428796) index="0" unique_id=580278671]
+[node name="Skeleton3D" parent="Evelyn/Armature" parent_id_path=PackedInt32Array(1005498321, 1985776395) index="0" unique_id=411688116]
 bones/0/position = Vector3(0.04597958, 0.30022246, -0.013543654)
 bones/0/rotation = Quaternion(-0.4574041, 0.5392418, 0.457404, 0.53924155)
 bones/1/rotation = Quaternion(-0.15344198, 3.6414407e-14, -3.6583415e-08, 0.9881577)
@@ -470,14 +470,14 @@ bones/24/rotation = Quaternion(-0.7070858, -1.13675924e-07, -0.70712775, 5.96046
 bones/25/position = Vector3(-1.7482117e-08, 4.5335779e-07, 6.462631e-08)
 bones/27/rotation = Quaternion(0.9999814, -5.2925737e-16, 0.006101408, -8.272383e-16)
 
-[node name="Sword" parent="Evelyn/Armature/Skeleton3D" index="4" unique_id=507388863]
+[node name="Sword" parent="Evelyn/Armature/Skeleton3D" index="4" unique_id=988346268]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=380411818]
 libraries/ = SubResource("AnimationLibrary_p1b3g")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2115253586]
-transform = Transform3D(0.99991435, -0.002216716, 0.012900538, 0, 0.9855558, 0.16934942, -0.013089603, -0.16933487, 0.98547167, 0.015071465, 1.712495, 4.775469)
+transform = Transform3D(0.99991435, -0.0022167158, 0.012900538, 0, 0.98555577, 0.16934942, -0.013089603, -0.16933487, 0.98547167, 0.015071465, 1.712495, 4.775469)
 current = true
 
 [node name="Fade_in" type="MeshInstance3D" parent="Camera3D" unique_id=13244495]

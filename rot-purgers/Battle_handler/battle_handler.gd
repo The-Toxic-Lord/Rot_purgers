@@ -5,6 +5,7 @@ class_name Battle_handler
 enum states { PLAYER, ENEMY, ANIMATION }
 var state : states = states.PLAYER
 var prev_state : states
+var working := false
 
 var map_gen : Map_generator
 
@@ -30,6 +31,7 @@ func new_battle_start():
 	enemies = []
 	order_array = []
 	en_mng.map_gen = map_gen
+	working = false
 
 func add_attack(attacker : Character_node, target : Character_node):
 	var order_data := Order_data.new()
@@ -60,7 +62,10 @@ func handle_attack(order_data : Order_data):
 func execute_orders():
 	prev_state = state
 	state = states.ANIMATION
+	working = true
 	for order_data in order_array:
+		if !working:
+			break
 		var attacker : Character_node = get_node(order_data.attacker)
 		print("handling order by " + attacker.name)
 		map_gen.set_camera_target(attacker)
@@ -182,6 +187,7 @@ func remove_order(char_node : Character_node):
 			return
 
 func end_battle(object_data : Map_object = null):
+	working = false
 	map_gen.active = false
 	GlobalData.ally_team.clear()
 	if object_data != null:

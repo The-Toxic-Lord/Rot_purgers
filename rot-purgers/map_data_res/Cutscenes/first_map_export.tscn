@@ -7,19 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dk1kcb3icintd" path="res://3d_map/Character_nodes/Elliot/Elliot.tscn" id="4_bhoiu"]
 [ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="4_r8xqd"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lykj6"]
-sky_top_color = Color(0.3841999, 0.44939798, 0.57756805, 1)
-sky_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
-ground_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
-
-[sub_resource type="Sky" id="Sky_l2akv"]
-sky_material = SubResource("ProceduralSkyMaterial_lykj6")
-
-[sub_resource type="Environment" id="Environment_c2sxo"]
-background_mode = 2
-sky = SubResource("Sky_l2akv")
-glow_enabled = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylduk"]
 albedo_color = Color(0.2614262, 0.502946, 0.0629354, 1)
 
@@ -178,14 +165,24 @@ _data = {
 &"start": SubResource("Animation_lbvty")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mr5n3"]
+sky_top_color = Color(0.17254902, 0.45490196, 0.7607843, 1)
+sky_horizon_color = Color(0.6076106, 0.76082885, 0.9707214, 1)
+ground_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
+
+[sub_resource type="Sky" id="Sky_7h5cb"]
+sky_material = SubResource("ProceduralSkyMaterial_mr5n3")
+
+[sub_resource type="Environment" id="Environment_jeb1u"]
+background_mode = 2
+sky = SubResource("Sky_7h5cb")
+glow_enabled = true
+
 [node name="First_map" type="Node3D" unique_id=964775134 node_paths=PackedStringArray("player")]
 script = ExtResource("1_8fycp")
 text_data = ExtResource("2_r8xqd")
 player = NodePath("AnimationPlayer")
 next_map_path = "uid://wjt5k3krqruv"
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=749763083]
-environment = SubResource("Environment_c2sxo")
 
 [node name="Backglound" type="MeshInstance3D" parent="." unique_id=961171160]
 mesh = SubResource("ArrayMesh_fneqh")
@@ -223,3 +220,6 @@ transform = Transform3D(0.6882797, 0, -0.72544545, 0, 1, 0, 0.72544545, 0, 0.688
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=993361220]
 libraries/ = SubResource("AnimationLibrary_mr5n3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1320062568]
+environment = SubResource("Environment_jeb1u")
