@@ -2,9 +2,24 @@ extends Resource
 
 class_name User_save
 
-@export_storage var achievements : Array[String] = []
+@export_storage var achievements : Dictionary[String, bool] = {
+	"NORMAL_end_a" : false,
+	"NORMAL_end_b" : false,
+	"HARD_end_a" : false,
+	"EASY_end_a" : false,
+	"EASY_secret" : false,
+	"HARD_all_alive" : false
+}
 
 func add_achievement(diff : Global_data.Difficulty, line : String):
-	if achievements.has(line):
-		return
-	achievements.append(line)
+	var cue : String = Global_data.Difficulty.keys()[diff] + "_" + line
+	check_cue(cue)
+	if diff == Global_data.Difficulty.HARD and GlobalData.dead_chars.is_empty():
+		check_cue("HARD_all_alive")
+	GlobalData.clear_data()
+
+func check_cue(cue : String):
+	if achievements.has(cue):
+		if !achievements[cue]:
+			ObjectLink.main.main_menu.animate_achievement(ObjectLink.main.main_menu.achievement_texts[cue])
+		achievements[cue] = true

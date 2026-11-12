@@ -35,6 +35,7 @@ func clear_data():
 	dead_chars.clear()
 	read_dialogues.clear()
 	char_mods.clear()
+	dead_chars.clear()
 
 @export var char_mods : Dictionary[String, Char_mods] = {}
 
@@ -83,7 +84,8 @@ func has_dialogue(dial_arr : Array[String]) -> bool:
 	return false
 
 enum Difficulty { EASY, NORMAL, HARD }
-var difficulty : Difficulty = Difficulty.NORMAL
+var difficulty : Difficulty = Difficulty.HARD
+
 
 
 

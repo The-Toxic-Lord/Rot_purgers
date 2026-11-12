@@ -52,9 +52,8 @@ func hide_menu():
 	#show_menu()
 	#%Game_over_screen.hide()
 
-@onready var animation_player: AnimationPlayer = $Victory/AnimationPlayer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 func game_end(line : String):
-	GlobalData.clear_data()
 	match line:
 		"end_b":
 			%Victory_lb.text = "The End" + "\n" + "Ending B"
@@ -63,14 +62,14 @@ func game_end(line : String):
 		"game_over":
 			%Victory_lb.text = "Game Over"
 	%Victory.show()
-	if line != "game_over":
-		user_save.add_achievement(GlobalData.difficulty, line)
 	await get_tree().create_timer(0.5).timeout
 	animation_player.play("show_victory_lb")
 	await animation_player.animation_finished
 	%Victory.hide()
 	main.load_background()
 	show_menu()
+	if line != "game_over":
+		user_save.add_achievement(GlobalData.difficulty, line)
 
 var user_save : User_save
 func load_user_save():
@@ -119,7 +118,20 @@ func _on_save_menu_load_save(save_name: String) -> void:
 	%Save_menu.hide()
 	ObjectLink.main.load_save(save_name)
 
+var achievement_line : Array[String] = []
+func animate_achievement(text : String):
+	if animation_player.is_playing():
+		achievement_line.append(text)
+		return
+	%Achievement_lb.text = text
+	animation_player.play("show_achievement")
+	await animation_player.animation_finished
+	if achievement_line.has(text):
+		achievement_line.remove_at(0)
+	if !achievement_line.is_empty():
+		animate_achievement(achievement_line[0])
 
+@export var achievement_texts : Dictionary[String, String] = {}
 
 
 

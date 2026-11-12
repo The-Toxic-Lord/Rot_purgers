@@ -506,7 +506,37 @@ tracks/0/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": ["end_a"],
+"method": &"load_main"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Fade_in:surface_material_override/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u5nxp"]
+resource_name = "end_b"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["end_b"],
 "method": &"load_main"
 }]
 }
@@ -2946,6 +2976,468 @@ tracks/20/keys = {
 "values": [Vector3(0, 0.40916672, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_r3njn"]
+resource_name = "mad_mage_loss"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["mad_mage_loss"],
+"method": &"start_dialogue"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Zaar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(11.819252, 2, 21.351273)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elliot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9.469946, 2.0000002, 23.029446)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Aven:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(13.752748, 2, 22.379908)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Alastor:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.300135, 2, 24.823008)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Zaar:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Elliot:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.13623205, 2.651568, -0.013045325)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Aven:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.6196122, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Alastor:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1020992, 0)]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Alastor")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Aven")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Zaar")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Elliot")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Camera3D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.101208, 4.9541636, 23.744802)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Camera3D:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.34034, -1.6362462, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Mad_mage:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(11.82593, 2, 19.909918)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Mad_mage:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.03824436, 0)]
+}
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Mad_mage")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_l03xe"]
+resource_name = "mad_mage_loss_kill"
+length = 3.0000000000000004
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["mad_mage_loss_2"],
+"method": &"start_dialogue"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Zaar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(11.819252, 2, 21.351273)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elliot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9.469946, 2.0000002, 23.029446)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Aven:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(13.752748, 2, 22.379908)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Alastor:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.300135, 2, 24.823008)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Zaar:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Elliot:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.13623205, 2.651568, -0.013045325)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Aven:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.6196122, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Alastor:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1020992, 0)]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Zaar")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop_animation"
+}, {
+"args": [PackedStringArray("Attack_1_windup", "Attack_1", "Attack_1_back", "Idle")],
+"method": &"play_anim_sequence"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Elliot")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera3D:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.556787, 4.618848, 20.66779)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Camera3D:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.3883368, -2.081306, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Mad_mage:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(11.82593, 2, 19.909918)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Mad_mage:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.03824436, 0)]
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Mad_mage")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_animation"
+}]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Mad_mage/Armature/Skeleton3D/Head:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.85, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.36388, -0.0026810176, 0.014572532), Vector3(-0.75611144, -0.014335897, 0.03609274)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Mad_mage/Armature/Skeleton3D/Head:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0.85, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.19285965, 2.737534, -5.0405045)]
+}
+
 [sub_resource type="Animation" id="Animation_pmn1u"]
 resource_name = "mad_mage_victory"
 tracks/0/type = "method"
@@ -3476,7 +3968,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ee0fi"]
 _data = {
 &"RESET": SubResource("Animation_gnan7"),
-&"end": SubResource("Animation_kft4o"),
+&"end_a": SubResource("Animation_kft4o"),
+&"end_b": SubResource("Animation_u5nxp"),
 &"evelyn_enter": SubResource("Animation_yo0s1"),
 &"evelyn_group": SubResource("Animation_ydrwk"),
 &"evelyn_group_zaar_hold": SubResource("Animation_1jje5"),
@@ -3486,6 +3979,8 @@ _data = {
 &"evelyn_knife_stab": SubResource("Animation_mbw6q"),
 &"evelyn_knife_takeout": SubResource("Animation_uvyb4"),
 &"evelyn_mad_mage": SubResource("Animation_e3f3j"),
+&"mad_mage_loss": SubResource("Animation_r3njn"),
+&"mad_mage_loss_kill": SubResource("Animation_l03xe"),
 &"mad_mage_victory": SubResource("Animation_pmn1u"),
 &"start": SubResource("Animation_lbvty"),
 &"turn_01": SubResource("Animation_3iggx"),
@@ -5075,7 +5570,6 @@ animation = &"Fallen"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_mbw6q"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vwy4y"]
-graph_offset = Vector2(-521.36365, 14.775345)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_e3f3j")
 nodes/Animation/position = Vector2(-200, 40)
 nodes/stand_up/node = SubResource("AnimationNodeBlend2_mbw6q")
@@ -6052,7 +6546,7 @@ script = ExtResource("8_r54y2")
 start_anim = "Idle"
 
 [node name="Elliot" parent="." unique_id=1095901482 instance=ExtResource("10_q6ll6")]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 8.752778, 2, 25.403395)
+transform = Transform3D(-0.99999994, 0, -1.509958e-07, 0, 1, 0, 1.5099579e-07, 0, -1, 8.752778, 2, 25.403395)
 script = ExtResource("8_r54y2")
 start_anim = "Idle"
 
@@ -6098,7 +6592,7 @@ bones/27/rotation = Quaternion(0.9469912, -0.0072120246, -0.007586829, -0.321089
 bones/29/rotation = Quaternion(0.99882287, 0, -0.048506252, 0)
 
 [node name="Head" parent="Mad_mage/Armature/Skeleton3D" index="5" unique_id=1050851317]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000001, 0, 0, 0)
+transform = Transform3D(1.0000002, 0, 0, 0, 1.000001, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="Mad_mage" unique_id=1032652655]
 active = false
@@ -6114,46 +6608,50 @@ script = ExtResource("8_r54y2")
 start_anim = "Idle"
 
 [node name="Skeleton3D" parent="Zaar/Armature" parent_id_path=PackedInt32Array(1546463438, 689606978) index="0" unique_id=932142755]
-bones/0/position = Vector3(0.33738324, 0.9616806, 0.0015501142)
-bones/1/position = Vector3(-0.34213376, 0.89470994, -0.0634872)
-bones/3/rotation = Quaternion(-0.8137216, 0.006937664, 0.046790514, 0.5793269)
-bones/4/rotation = Quaternion(-0.51775926, -2.6337844e-08, 0.022001693, 0.8552434)
-bones/7/rotation = Quaternion(-0.8137216, -0.006937664, -0.046790514, 0.5793269)
-bones/8/rotation = Quaternion(-0.51775926, 2.6337844e-08, -0.022001693, 0.8552434)
+bones/0/position = Vector3(0.0115407705, 1.2384212, -0.15237302)
+bones/1/position = Vector3(-0.7523758, 1.5201623, 0.2341529)
+bones/2/position = Vector3(0.12264625, 0.3856348, -0.15507606)
+bones/3/rotation = Quaternion(-0.7931048, 0.006756969, 0.045972236, 0.6073102)
+bones/4/rotation = Quaternion(-0.5823415, 0.0007787334, 0.026032425, 0.81252706)
+bones/6/position = Vector3(-0.12264625, 0.3856348, -0.15507606)
+bones/7/rotation = Quaternion(-0.7931048, -0.006756969, -0.045972236, 0.6073102)
+bones/8/rotation = Quaternion(-0.58234143, -0.00077873364, -0.02603243, 0.81252706)
+bones/10/position = Vector3(0, 0.89168596, -0.020540342)
+bones/10/rotation = Quaternion(0.12014903, 1.1834572e-07, 1.4322879e-08, 0.9927559)
 bones/11/rotation = Quaternion(0.94594127, 0.013733638, -0.024924373, -0.32308725)
-bones/12/rotation = Quaternion(-0.13905573, -0.00024161239, 0.01263839, 0.99020386)
-bones/13/rotation = Quaternion(0.07480714, 3.1282221e-09, -0.004130305, 0.99718946)
-bones/14/rotation = Quaternion(0.1376919, 2.3655258e-09, -0.0076023443, 0.99044603)
-bones/15/rotation = Quaternion(0.22596477, 0.02247917, 0.0009577401, 0.9738757)
-bones/16/rotation = Quaternion(0.42496505, 0.046318084, -0.01724828, 0.90385944)
-bones/17/rotation = Quaternion(0.3359813, -0.0051713157, -0.03168465, 0.9413214)
-bones/18/rotation = Quaternion(0.10305983, 0.0054583238, -0.031330753, 0.9941667)
+bones/12/rotation = Quaternion(-0.13905573, -0.00024161309, 0.012638391, 0.99020386)
+bones/13/rotation = Quaternion(0.07480712, -8.600175e-12, -0.0041303034, 0.99718946)
+bones/14/rotation = Quaternion(0.119551584, 0.08424507, -0.14880967, 0.9779908)
+bones/15/rotation = Quaternion(0.19014809, 0.034579113, -0.17063296, 0.96619487)
+bones/16/rotation = Quaternion(0.2475069, -0.048282813, -0.15525284, 0.9551469)
+bones/17/rotation = Quaternion(0.1539637, -0.058743384, -0.20288758, 0.96523625)
+bones/18/rotation = Quaternion(-0.029045641, 0.21023807, -0.05262448, 0.97580075)
 bones/24/position = Vector3(0.18298054, 0.3805927, 0.0015507181)
 bones/24/rotation = Quaternion(0.009993294, -0.015825415, 0.9144645, -0.4042331)
 bones/24/scale = Vector3(1.0000005, 1.0000001, 0.99999994)
-bones/25/rotation = Quaternion(0.038256966, 0.00993155, -0.059248358, 0.9974605)
-bones/26/rotation = Quaternion(-0.035059523, -0.00027090564, -0.01622897, 0.9992535)
-bones/27/rotation = Quaternion(0.0055654044, -3.2795722e-07, 0.017030858, 0.9998395)
-bones/28/rotation = Quaternion(0.22558714, -0.025814027, 0.003304865, 0.97387534)
+bones/25/rotation = Quaternion(-0.03451805, 0.024189103, -0.5716364, 0.8194237)
+bones/26/rotation = Quaternion(-0.03505952, -0.00027089418, -0.016228959, 0.9992535)
+bones/27/rotation = Quaternion(0.005565413, -3.30273e-07, 0.017030861, 0.9998395)
+bones/28/rotation = Quaternion(0.22558713, -0.025814027, 0.0033048405, 0.97387534)
 bones/29/position = Vector3(-0.18298054, 0.3805927, 0.0015506308)
 bones/29/rotation = Quaternion(-0.041545443, -0.04009136, 0.91011816, 0.41030678)
 bones/29/scale = Vector3(0.99999994, 1.0000001, 1)
-bones/30/rotation = Quaternion(0.00111632, -0.009579441, 0.003016194, 0.999949)
-bones/31/rotation = Quaternion(-0.19546275, -0.15669501, 0.04884572, 0.96687907)
-bones/33/rotation = Quaternion(0.53182214, 0.46649787, 0.469195, 0.52858394)
-bones/35/rotation = Quaternion(0.9975468, 0.04467837, -0.003140097, 0.053799786)
-bones/35/scale = Vector3(1.0000196, 1.0000006, 1.0000296)
-bones/36/rotation = Quaternion(0.5964553, 0.0036833468, 0.021051232, 0.8023618)
-bones/36/scale = Vector3(0.99999946, 1.0000019, 0.99999845)
-bones/37/rotation = Quaternion(0.9975468, -0.044678397, 0.0031402148, 0.05379971)
-bones/37/scale = Vector3(1.0000196, 1.0000004, 1.0000296)
-bones/38/rotation = Quaternion(0.5964551, -0.0036833505, -0.021051215, 0.8023619)
-bones/38/scale = Vector3(0.9999992, 1.0000017, 0.9999982)
-bones/39/position = Vector3(-0.33496833, 0.86328727, -0.17137063)
-bones/39/rotation = Quaternion(0.47637734, -0.35020027, -0.7266923, 0.34977537)
+bones/30/rotation = Quaternion(0.002068321, 0.0086694565, -0.0024763998, 0.99995726)
+bones/31/rotation = Quaternion(-0.0350595, 0.0002709114, 0.016228965, 0.9992535)
+bones/33/rotation = Quaternion(0.5318222, 0.46649793, 0.46919498, 0.528584)
+bones/35/rotation = Quaternion(0.9944989, 0.03559075, -0.0100538675, 0.098000854)
+bones/35/scale = Vector3(1.0000197, 1.0000006, 1.0000298)
+bones/36/rotation = Quaternion(0.32949266, 0.0043339105, 0.0116291195, 0.9440766)
+bones/36/scale = Vector3(1.0000005, 1.0000017, 0.9999888)
+bones/37/rotation = Quaternion(0.9944989, -0.035590824, 0.010054, 0.09800084)
+bones/37/scale = Vector3(1.0000198, 1.0000004, 1.0000298)
+bones/38/rotation = Quaternion(0.32949266, -0.0043339096, -0.011629105, 0.94407666)
+bones/38/scale = Vector3(1.0000007, 1.0000017, 0.99998873)
+bones/39/position = Vector3(-0.8657327, 1.4994681, 0.19019127)
+bones/39/rotation = Quaternion(0.07282224, 0.6427385, 0.76257783, -0.0076893866)
 
 [node name="Sword_2" parent="Zaar/Armature/Skeleton3D" index="0" unique_id=1476654305]
-transform = Transform3D(-0.3014437, 0.17470321, -0.9373423, -0.842013, -0.51003397, 0.17572555, -0.4473766, 0.8422257, 0.3008489, -0.33496833, 0.86328727, -0.17137063)
+transform = Transform3D(-0.9892756, 0.105338834, 0.101180725, 0.08188381, -0.1736561, 0.9813962, 0.12094978, 0.9791564, 0.16316819, -0.8657327, 1.4994681, 0.19019127)
 
 [node name="AnimationTree" type="AnimationTree" parent="Zaar" unique_id=2038678192]
 active = false
@@ -6162,7 +6660,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/stand_up/blend_amount = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=936282732]
-transform = Transform3D(0.9999619, 0.00072268595, -0.0086972015, 0, 0.99656546, 0.082808584, 0.008727181, -0.082805485, 0.99652684, 12.0852785, 4.7405396, 27.798355)
+transform = Transform3D(0.9999619, 0.00072268595, -0.008697206, 0, 0.99656546, 0.08280863, 0.008727181, -0.082805485, 0.99652743, 12.0852785, 4.7405396, 27.798355)
 
 [node name="Fade_in" type="MeshInstance3D" parent="Camera3D" unique_id=708150231]
 transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, -2.9802322e-08, 5.9604645e-08, 1, 0.03564155, -0.08756387, -0.1681788)

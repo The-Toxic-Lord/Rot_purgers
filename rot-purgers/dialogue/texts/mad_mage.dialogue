@@ -69,11 +69,14 @@ Neiro: Hah. Finally! Now no one can stand in my way! Soon it will all be over!
 do ObjectLink.cutscene.next_scene("uid://cofltnaea86y5")
 => END
 
-~ mad_mage_loss_1
+~ mad_mage_loss
 Neiro: NO! Why? Why can't you see? Why are you all so stupid?
 
 Zaar: You are the only blind one here.
+do ObjectLink.cutscene_player.play("mad_mage_loss_kill")
+=> END
 
+~ mad_mage_loss_2
 Aven: Farewell, old friend.
 
 Alastor: Should we do something about this?
@@ -87,6 +90,7 @@ Zaar: Shall we race to the exit?
 Elliot: Hahaha! You are on!
 
 Aven: Too slow!
+do ObjectLink.cutscene_player.play("end_a")
 => END
 
 ~ mad_mage_evelyn
@@ -173,5 +177,5 @@ Aven: Surely you have recognized whose blood runs through him. In time he will b
 do ObjectLink.cutscene_player.play("evelyn_group_zaar_release")
 
 Evelyn: Make sure that he knows how to address his betters next time, Archchancellor. Farewell.
-do ObjectLink.cutscene_player.play("end")
+do ObjectLink.cutscene_player.play("end_b")
 => END

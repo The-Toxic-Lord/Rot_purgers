@@ -20,24 +20,75 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x2qg"]
+bg_color = Color(0.043039158, 0.04303915, 0.04303915, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="Animation" id="Animation_6p7wi"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%Victory_lb:modulate")
+tracks/0/path = NodePath(".:offset_transform_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
+"values": [Vector2(0, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Victory_lb:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Achievement_popup:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 150)]
 }
 
 [sub_resource type="Animation" id="Animation_0x2qg"]
 resource_name = "show_bictory_lb"
-length = 5.0
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Achievement_popup:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 150), Vector2(0, 0), Vector2(0, 0), Vector2(0, 150)]
+}
+
+[sub_resource type="Animation" id="Animation_jr2m4"]
+resource_name = "show_victory_lb"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,7 +96,7 @@ tracks/0/path = NodePath("%Victory_lb:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3.5, 5),
+"times": PackedFloat32Array(0, 1, 3, 4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -54,11 +105,20 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6p7wi"]
 _data = {
 &"RESET": SubResource("Animation_6p7wi"),
-&"show_victory_lb": SubResource("Animation_0x2qg")
+&"show_achievement": SubResource("Animation_0x2qg"),
+&"show_victory_lb": SubResource("Animation_jr2m4")
 }
 
 [node name="Main_menu" type="CanvasLayer" unique_id=1506471088]
 script = ExtResource("1_qy1io")
+achievement_texts = Dictionary[String, String]({
+"EASY_end_a": "Achiement: Beat the game on easy, but why?",
+"EASY_secret": "Achiement: ...",
+"HARD_all_alive": "Achiement: Keep everyone alive.",
+"HARD_end_a": "Achiement: The true challenge.",
+"NORMAL_end_a": "Achiement: Complete the game!",
+"NORMAL_end_b": "Achiement: Task failed successfully!"
+})
 
 [node name="Menu" type="MarginContainer" parent="." unique_id=483753304]
 unique_name_in_owner = true
@@ -269,6 +329,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+offset_transform_position = Vector2(0, 150)
 
 [node name="Panel" type="Panel" parent="Victory" unique_id=122841378]
 layout_mode = 2
@@ -294,7 +355,47 @@ Ending B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Victory" unique_id=585116452]
+[node name="Achievement_popup" type="MarginContainer" parent="." unique_id=242664445]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -658.0
+offset_top = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 150)
+
+[node name="Panel" type="Panel" parent="Achievement_popup" unique_id=1321291452]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0x2qg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Achievement_popup" unique_id=1769682436]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Achievement_lb" type="Label" parent="Achievement_popup/MarginContainer" unique_id=935710409]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("5_0x2qg")
+theme_override_font_sizes/font_size = 52
+text = "Achiement: Complete the game!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=585116452]
+unique_name_in_owner = true
+root_node = NodePath("../Victory")
 libraries/ = SubResource("AnimationLibrary_6p7wi")
 
 [connection signal="pressed" from="Menu/VBoxContainer/New_game" to="." method="_on_new_game_pressed"]
