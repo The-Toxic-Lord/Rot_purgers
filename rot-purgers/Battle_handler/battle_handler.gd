@@ -198,7 +198,8 @@ func end_battle(object_data : Map_object = null):
 
 func game_over():
 	if map_gen.map_data.game_over_scene == "":
-		main_node.game_over()
+		main_node.main_menu.game_end("game_over")
+		map_gen.queue_free()
 	else:
 		ObjectLink.main.load_scene_path(map_gen.map_data.game_over_scene,\
 		 map_gen.map_data.game_over_scene_cue)

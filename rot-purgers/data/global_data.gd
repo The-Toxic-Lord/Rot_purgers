@@ -82,7 +82,8 @@ func has_dialogue(dial_arr : Array[String]) -> bool:
 		return true
 	return false
 
-
+enum Difficulty { EASY, NORMAL, HARD }
+var difficulty : Difficulty = Difficulty.NORMAL
 
 
 

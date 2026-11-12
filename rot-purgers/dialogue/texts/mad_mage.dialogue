@@ -173,4 +173,5 @@ Aven: Surely you have recognized whose blood runs through him. In time he will b
 do ObjectLink.cutscene_player.play("evelyn_group_zaar_release")
 
 Evelyn: Make sure that he knows how to address his betters next time, Archchancellor. Farewell.
+do ObjectLink.cutscene_player.play("end")
 => END

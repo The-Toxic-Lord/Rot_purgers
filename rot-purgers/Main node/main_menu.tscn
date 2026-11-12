@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cw74744wjquox" path="res://import/settings.tscn" id="2_bctjb"]
 [ext_resource type="Theme" uid="uid://cj8f8s4ud3c4x" path="res://new_theme.tres" id="2_lduah"]
 [ext_resource type="PackedScene" uid="uid://p8xk7obnrcmy" path="res://Main node/Save_menu/save_menu.tscn" id="4_ravco"]
+[ext_resource type="FontFile" uid="uid://b8pau7rxamhnn" path="res://Fonts/False Earthdream.ttf" id="5_0x2qg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bctjb"]
-bg_color = Color(0.14117648, 0.14117648, 0.14117648, 0.7176471)
+bg_color = Color(0.043039158, 0.04303915, 0.04303915, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lduah"]
 bg_color = Color(0.047557652, 0.047557652, 0.047557607, 1)
@@ -18,6 +19,43 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_6p7wi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Victory_lb:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0x2qg"]
+resource_name = "show_bictory_lb"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Victory_lb:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6p7wi"]
+_data = {
+&"RESET": SubResource("Animation_6p7wi"),
+&"show_victory_lb": SubResource("Animation_0x2qg")
+}
 
 [node name="Main_menu" type="CanvasLayer" unique_id=1506471088]
 script = ExtResource("1_qy1io")
@@ -220,6 +258,44 @@ text = "Back"
 [node name="Save_menu" parent="." unique_id=2011810987 instance=ExtResource("4_ravco")]
 unique_name_in_owner = true
 visible = false
+
+[node name="Victory" type="MarginContainer" parent="." unique_id=605844211]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Victory" unique_id=122841378]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bctjb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Victory" unique_id=805672260]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Victory_lb" type="Label" parent="Victory/MarginContainer" unique_id=1224550229]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("5_0x2qg")
+theme_override_font_sizes/font_size = 52
+text = "The End
+Ending B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Victory" unique_id=585116452]
+libraries/ = SubResource("AnimationLibrary_6p7wi")
 
 [connection signal="pressed" from="Menu/VBoxContainer/New_game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Load" to="." method="_on_load_pressed"]

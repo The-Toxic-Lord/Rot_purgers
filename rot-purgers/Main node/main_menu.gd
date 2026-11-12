@@ -9,6 +9,7 @@ func _ready() -> void:
 	if !ResourceLoader.exists("user://save.tres"):
 		%Load.disabled = true
 	%New_game.grab_focus()
+	await load_user_save()
 
 func _on_map_editor_pressed() -> void:
 	%Menu.hide()
@@ -42,18 +43,41 @@ func show_menu():
 func hide_menu():
 	%Menu.hide()
 
-func on_game_over():
+#func on_game_over():
+	#GlobalData.clear_data()
+	#%Game_over_screen.show()
+	#await get_tree().create_timer(3).timeout
+	#main.close_map()
+	#main.load_background()
+	#show_menu()
+	#%Game_over_screen.hide()
+
+@onready var animation_player: AnimationPlayer = $Victory/AnimationPlayer
+func game_end(line : String):
 	GlobalData.clear_data()
-	%Game_over_screen.show()
-	await get_tree().create_timer(3).timeout
-	main.close_map()
+	match line:
+		"end_b":
+			%Victory_lb.text = "The End" + "\n" + "Ending B"
+		"end_a":
+			%Victory_lb.text = "Victory!" + "\n" + "Ending A"
+		"game_over":
+			%Victory_lb.text = "Game Over"
+	%Victory.show()
+	if line != "game_over":
+		user_save.add_achievement(GlobalData.difficulty, line)
+	await get_tree().create_timer(0.5).timeout
+	animation_player.play("show_victory_lb")
+	await animation_player.animation_finished
+	%Victory.hide()
 	main.load_background()
 	show_menu()
-	%Game_over_screen.hide()
 
-func on_victory():
-	GlobalData.clear_data()
-	%Demo_victory.show()
+var user_save : User_save
+func load_user_save():
+	if ResourceLoader.exists("user://saves/user.res"):
+		user_save = load("user://saves/user.res")
+	else:
+		user_save = User_save.new()
 
 func _on_tutorial_pressed() -> void:
 	%Menu.hide()
@@ -72,6 +96,8 @@ func _on_credits_pressed() -> void:
 func _on_credit_back_pressed() -> void:
 	%Credit_box.hide()
 	%Menu.show()
+
+
 
 
 

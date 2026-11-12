@@ -89,7 +89,12 @@ func play_sfx(sfx : AudioStream, sfx_player_id := 0):
 func play_animation(anim_name : String):
 	player.play(anim_name)
 
-
+func load_main():
+	var main : Main_menu_UI = ObjectLink.main.main_menu
+	hide()
+	main.game_end("end_b")
+	GlobalData.clear_data()
+	queue_free()
 
 
 

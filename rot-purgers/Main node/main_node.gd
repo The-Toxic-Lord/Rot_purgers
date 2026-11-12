@@ -4,6 +4,9 @@ class_name Main_node
 
 var map_editor : Map_editor
 var map_generator : Map_generator
+@onready var main_menu: Main_menu_UI = %Main_menu
+
+
 var cutscene : Cutscene
 
 var background : Node3D
@@ -109,8 +112,8 @@ func _ready() -> void:
 	BattleHandler.main_node = self
 	load_background()
 
-func game_over():
-	%Main_menu.on_game_over()
+#func game_over():
+	#%Main_menu.on_game_over()
 
 func close_map():
 	if map_generator != null:
