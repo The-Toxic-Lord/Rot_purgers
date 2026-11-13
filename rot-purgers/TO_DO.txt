@@ -43,6 +43,7 @@ to do:
 	+- cutscenes
 	- Neiro AI
 	- шейдер для фона (rot stage)
+	- fix rotation on undo
 
 secret:
 	- destroy saves

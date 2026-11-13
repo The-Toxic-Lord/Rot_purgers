@@ -157,13 +157,14 @@ func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_dat
 select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Vector2i, Map_cell]):
 	var move_zones : Array[Vector2i]
 	var dist : int = stats.get_stat_boosted(Character_stats.stats.move_speed)
+	var jump : int = stats.get_stat_boosted(Character_stats.stats.jump_height)
 	if BattleHandler.enemies.has(self):
 		move_zones = ObjectLink.map_gen.get_flow_cells(
-			map_pos, dist, false, true, stats.jump_height, false
+			map_pos, dist, false, true, jump, false
 		)
 	else:
 		move_zones = ObjectLink.map_gen.get_flow_cells(
-			map_pos, dist, false, false, stats.jump_height
+			map_pos, dist, false, false, jump
 		)
 	var path := find_flow_path(target_cell, move_zones, terrain_map)
 	previous_map_pos = map_pos

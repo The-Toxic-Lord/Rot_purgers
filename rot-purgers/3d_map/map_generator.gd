@@ -229,10 +229,9 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 	if freze_selector or BattleHandler.state != Battle_handler.states.PLAYER:
 		return
 	if state == states.SKILL:
-		if !selected_skill.line_of_sight_check:
-			if !selected_skill.skill_map.bound_to_char:
-				if !unbound_spell_range.has(map_cell_to_data_cell[map_cell]):
-					return
+		if !selected_skill.skill_map.bound_to_char:
+			if !unbound_spell_range.has(map_cell_to_data_cell[map_cell]):
+				return
 	if state == states.SKILL_TERRAIN:
 		var mouse_pos : Vector2 = get_viewport().get_mouse_position()
 		var dead_zone : Rect2 = map_ui.dead_zone
@@ -257,14 +256,13 @@ func move_selector(map_cell : Map_cell, mouse_move := true):
 	else:
 		map_ui.hide_mini_stats()
 	if state == states.SKILL:
-		if !selected_skill.line_of_sight_check:
-			if showing_move_zone:
-				if move_zones.has(selected_cell):
-					move_char_skill()
-			else:
-				await turn_to_selection()
-				if !selected_skill.skill_map.bound_to_char:
-					await move_skill(selected_cell, prev_selector_cell)
+		if showing_move_zone:
+			if move_zones.has(selected_cell):
+				move_char_skill()
+		else:
+			await turn_to_selection()
+			if !selected_skill.skill_map.bound_to_char:
+				await move_skill(selected_cell, prev_selector_cell)
 	await get_tree().process_frame
 	check_accuracy_ui()
 
@@ -276,18 +274,17 @@ func check_accuracy_ui():
 				targets = [char_positions[selected_cell].stats]
 				map_ui.show_accuracy(targets, null)
 	if state == states.SKILL:
-		if selected_skill.line_of_sight_check:
-			if select_zones.has(selected_cell):
-				targets = [char_positions[selected_cell].stats]
-		else:
-			for cell in select_zones.keys():
-				if char_positions.has(cell):
-					if char_positions[cell] == selected_char:
+		for cell in select_zones.keys():
+			if char_positions.has(cell):
+				if char_positions[cell] == selected_char:
+					continue
+				if selected_skill.line_of_sight_check:
+					if !ObjectLink.enemy_manager.pretend_fire(selected_char.position, char_positions[cell].position):
 						continue
-					var height : float = char_positions[cell].position.y
-					if abs(height - selected_char.position.y) <= selected_skill.max_height_difference * 0.1:
-						targets.append(char_positions[cell].stats)
-			map_ui.show_accuracy(targets, selected_skill)
+				var height : float = char_positions[cell].position.y
+				if abs(height - selected_char.position.y) <= selected_skill.max_height_difference * 0.1:
+					targets.append(char_positions[cell].stats)
+		map_ui.show_accuracy(targets, selected_skill)
 	if targets.is_empty():
 		map_ui.hide_accuracy()
 
@@ -528,10 +525,11 @@ func spawn_select_zone(ch_node : Character_node, st : states):
 	match st:
 		states.MOVE:
 			dist = ch_node.stats.get_stat_boosted(Character_stats.stats.move_speed)
+			var jump : int = ch_node.stats.get_stat_boosted(Character_stats.stats.jump_height)
 			#dist = ch_node.stats.move_speed
 			ignore_chars = false
 			ignore_enemies = false
-			move_cells = get_flow_cells(ch_node.map_pos, dist, ignore_chars, ignore_enemies, ch_node.stats.jump_height)
+			move_cells = get_flow_cells(ch_node.map_pos, dist, ignore_chars, ignore_enemies, jump)
 		states.ATTACK:
 			for target in get_targets(ch_node):
 				move_cells.append(target.map_pos)
@@ -735,9 +733,9 @@ func remove_enemy(ch_node : Character_node):
 func display_skill(skill : Skill_base):
 	selected_skill = skill
 	
-	if skill.line_of_sight_check:
-		make_projectile_skill(skill)
-		return
+	#if skill.line_of_sight_check:
+		#make_projectile_skill(skill)
+		#return
 	
 	if skill.skill_map.bound_to_char:
 		selected_char.previous_map_pos = selected_char.map_pos
