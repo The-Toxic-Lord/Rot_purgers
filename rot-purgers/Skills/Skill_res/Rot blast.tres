@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://db3vcixjjbenb"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_ptnle"]
+[ext_resource type="Resource" uid="uid://yrgoq240tx0j" path="res://Skills/skill_map_data_res/Plasma_ball.tres" id="2_pjogs"]
+
+[resource]
+script = ExtResource("1_ptnle")
+name = "Rot blast"
+skill_map = ExtResource("2_pjogs")
+skill_type = 6
+damage = 0.1
+accuracy_modifier = 0.2
+rot_stage_add = 1
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

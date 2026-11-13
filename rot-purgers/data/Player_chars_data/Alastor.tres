@@ -9,6 +9,8 @@
 [ext_resource type="Resource" uid="uid://d3enrcnktuvq4" path="res://Skills/Skill_res/Plasma ball.tres" id="6_2ulin"]
 [ext_resource type="Texture2D" uid="uid://blrb3oenhm7o" path="res://dialogue/char_sprites/Alastor.png" id="7_2ulin"]
 [ext_resource type="Resource" uid="uid://cue18iythuit2" path="res://Skills/Skill_res/Modify_terrain.tres" id="7_hngfa"]
+[ext_resource type="Resource" uid="uid://bm80ehv0f3ib2" path="res://Skills/Skill_res/Rot ray.tres" id="9_7cbgh"]
+[ext_resource type="Resource" uid="uid://db3vcixjjbenb" path="res://Skills/Skill_res/Rot blast.tres" id="10_xrw43"]
 
 [resource]
 script = ExtResource("1_miulx")
@@ -24,6 +26,6 @@ accuracy = 60
 speed = 50
 move_speed = 10
 node_UID = "uid://cpgsmi4r45bbx"
-skills = Array[ExtResource("2_vo2ee")]([ExtResource("3_ujksa"), ExtResource("3_6rxxe"), ExtResource("4_hn48a"), ExtResource("5_3bdwe"), ExtResource("6_2ulin"), ExtResource("7_hngfa")])
+skills = Array[ExtResource("2_vo2ee")]([ExtResource("3_ujksa"), ExtResource("3_6rxxe"), ExtResource("4_hn48a"), ExtResource("5_3bdwe"), ExtResource("6_2ulin"), ExtResource("7_hngfa"), ExtResource("9_7cbgh"), ExtResource("10_xrw43")])
 self_path = "uid://d2mat2b43iwxg"
 metadata/_custom_type_script = "uid://by1rq468n504l"

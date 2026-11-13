@@ -138,6 +138,8 @@ func skill_mass(order : Order_skill_data):
 			map_gen.set_selector(target.map_pos)
 			target.damage(target_damage[target], true)
 			await target.animation_ended
+			if order.skill.skill_type == Skill_base.skill_types.ROT:
+				target.change_rot(order.skill.rot_stage_add)
 		#await target_damage.keys()[0].animation_ended
 		await get_tree().process_frame
 		while true:
@@ -184,6 +186,8 @@ func skill_oneshot(order : Order_skill_data):
 	for target in targets:
 		if order.skill.skill_type != Skill_base.skill_types.ANNIHILATION:
 			target.damage(target_damage[target])
+			if order.skill.skill_type == Skill_base.skill_types.ROT:
+				target.change_rot(order.skill.rot_stage_add)
 		else:
 			target.kill()
 	if !targets.is_empty():
@@ -259,7 +263,6 @@ func skill_annihilate(order : Order_skill_data):
 			await handle_skill_movement(order, attacker)
 		order_ended.emit()
 		return
-
 
 
 

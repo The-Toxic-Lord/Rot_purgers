@@ -86,6 +86,7 @@ func has_dialogue(dial_arr : Array[String]) -> bool:
 enum Difficulty { EASY, NORMAL, HARD }
 var difficulty : Difficulty = Difficulty.HARD
 
+@export var rot_penalties : Dictionary[Character_stats.stats, int] = {}
 
 
 

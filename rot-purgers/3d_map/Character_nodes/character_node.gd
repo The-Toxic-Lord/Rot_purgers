@@ -402,6 +402,7 @@ func turn_finished():
 	direction_changed.emit()
 
 func heal(value : float):
+	await change_rot(-1)
 	var heal_val : int = int(stats.max_health * value)
 	stats.health = clampi(heal_val + stats.health, 0, stats.max_health)
 	%Damage_numbers.text = str(heal_val)
@@ -637,7 +638,9 @@ func move_flyer(target_pos : Vector3):
 		move_finished.emit()
 		)
 
-
+func change_rot(value : int):
+	await stats.change_rot(value)
+	await set_rot(stats.rot_stage)
 
 
 

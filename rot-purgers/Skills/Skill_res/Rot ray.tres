@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://bm80ehv0f3ib2"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_ehd2t"]
+[ext_resource type="Resource" uid="uid://bfduh2thntgq1" path="res://Skills/skill_map_data_res/single_tile_damage.tres" id="2_nda2r"]
+
+[resource]
+script = ExtResource("1_ehd2t")
+name = "Rot ray"
+magic_cost = 5
+skill_map = ExtResource("2_nda2r")
+skill_type = 6
+damage = 0.2
+max_dist = 10
+accuracy_modifier = 0.5
+rot_stage_add = 2
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

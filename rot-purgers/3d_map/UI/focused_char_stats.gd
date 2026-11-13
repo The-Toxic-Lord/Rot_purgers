@@ -2,7 +2,7 @@ extends MarginContainer
 
 class_name Focused_char_stats
 
-@onready var st_to_lb : Dictionary[Character_stats.stats, Label] = {
+@onready var st_to_lb : Dictionary[Character_stats.stats, Control] = {
 	Character_stats.stats.strength : %Strength,
 	Character_stats.stats.defence : %Defence,
 	Character_stats.stats.accuracy : %Accuracy,
@@ -35,6 +35,13 @@ func update_stats(ch : Character_stats):
 			continue
 		if ch.boosts[stat] != 0:
 			st_to_lb[stat].text += "+" + str(ch.boosts[stat])
+	
+	for stat in st_to_lb.keys():
+		if !ch.penalties.has(stat):
+			continue
+		if ch.penalties[stat] != 0:
+			var text : String = "[color=#508800] - " + str(ch.penalties[stat]) + "[/color]"
+			st_to_lb[stat].text += text
 	
 	if ch.magic_strenght == 999:
 		set_process(true)

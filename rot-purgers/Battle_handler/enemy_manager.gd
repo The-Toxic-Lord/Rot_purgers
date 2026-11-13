@@ -30,7 +30,8 @@ func start_enemy_turn():
 			Character_stats.AI_types.FLYER, Character_stats.AI_types.FLYER_CHARGE:
 				await handle_Flyer_IA(enemy)
 			Character_stats.AI_types.NEIRO:
-				await handle_Neiro(enemy)
+				handle_Neiro(enemy)
+				await enemy_plan_finished
 	for enemy in char_planned_moves:
 		match enemy.stats.AI_type:
 			Character_stats.AI_types.FLYER, Character_stats.AI_types.FLYER_CHARGE:
@@ -107,7 +108,6 @@ func handle_normal_AI(enemy : Character_node):
 	
 	for cell in occupied_cells:
 		move_cells.erase(cell)
-	move_cells.insert(0, enemy.map_pos)
 	if AI_can_use_skill(move_cells, enemy):
 		enemy.stats.AI_type = Character_stats.AI_types.CHARGER
 		return
@@ -283,67 +283,7 @@ func handle_Flyer_IA(enemy : Character_node):
 	if enemy.stats.AI_type == Character_stats.AI_types.FLYER_CHARGE:
 		await move_closest_position(pos_pos, enemy)
 
-func handle_Neiro(enemy : Character_node):
-	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
-	false, true, enemy.stats.jump_height, false)
-	
-	for cell in occupied_cells:
-		move_cells.erase(cell)
-	move_cells.insert(0, enemy.map_pos)
-	
-	var attack_possibilities : Dictionary[Vector2i, Array] = {}
-	for cell in move_cells:
-		@warning_ignore("confusable_local_declaration")
-		var targets : Array[Vector2i] = can_attack_fom_position(
-			enemy.stats.attack_distance, cell, enemy.stats.attack_height, enemy.position)
-		if !targets.is_empty():
-			attack_possibilities[cell] = targets
-	
-	var selected_cell : Vector2i
-	var selected_target : Character_node = null
-	var rejected_targets : Array[Character_node] = []
-	# check for a kill
-	for cell in attack_possibilities.keys():
-		var found_check := false
-		for target : Character_node in attack_possibilities[cell]:
-			if rejected_targets.has(target):
-				continue
-			var hit_chance : float = ObjectLink.damage_manager.calc_hit_chance(target, enemy)
-			var dmg_bonus : float = ObjectLink.damage_manager.cals_hit_acc_dmg_bonus(hit_chance)
-			var damage : float = ObjectLink.damage_manager.calc_atk_damage(target, enemy, dmg_bonus)
-			if damage > target.stats.health:
-				selected_cell = cell
-				selected_target = target
-				found_check = true
-				break
-			else:
-				rejected_targets.append(target)
-		if found_check:
-			break
-	if selected_target != null:
-		var move := Planned_move_data.new()
-		var dir : Map_generator.directions = get_new_dir(selected_cell, selected_target.map_pos)
-		move.set_target(selected_cell, move_cells, dir)
-		char_planned_moves[enemy] = move
-		occupied_cells.erase(enemy.map_pos)
-		occupied_cells.append(selected_cell)
-		BattleHandler.add_attack(enemy, map_gen.char_positions[selected_target.map_pos])
-	
-	var rot_possibilities : Dictionary[Vector2i, Array] = {}
-	for cell in move_cells:
-		@warning_ignore("confusable_local_declaration")
-		var targets : Array[Vector2i] = can_attack_fom_position(
-			enemy.stats.skills[0].max_dist, cell, enemy.stats.attack_height, enemy.position)
-		if !targets.is_empty():
-			rot_possibilities[cell] = targets
-	
-	
-	
-	# if cannot kill look for rot targets
-	# if target has no rot -> rot
-	# if target has some rot -> roll
-	# if target has 2 rot -> attack
-	# if no targets walk closer
+signal enemy_plan_finished
 
 func move_closest_position(pos_pos : Array[Vector3], enemy : Character_node):
 	var min_dist : float = 999999.0
@@ -542,7 +482,7 @@ order_salvage := false) -> bool:
 	for cell in move_cells:
 		@warning_ignore("confusable_local_declaration")
 		var targets : Array[Vector2i] = can_attack_fom_position(
-			enemy.stats.attack_distance, cell, enemy.stats.attack_height, enemy.position)
+			enemy.stats.attack_distance, cell, enemy.stats.attack_height)
 		if !targets.is_empty():
 			attack_possibilities[cell] = targets
 	
@@ -588,7 +528,7 @@ func move_charger(cell : Vector2i, enemy : Character_node, move_cells : Array[Ve
 	await map_gen.update_char_position(enemy, enemy.map_pos)
 
 func can_attack_fom_position(attack_distance : int, position_cell : Vector2i,
-char_attack_height : int, attacker_pos : Vector3) -> Array[Vector2i]:
+char_attack_height : int) -> Array[Vector2i]:
 	var range_cells : Array[Vector2i] = map_gen.get_flow_cells(position_cell, attack_distance,
 	true, true, 9999, true, true, true)
 	var targers : Array[Vector2i] = []
@@ -602,7 +542,8 @@ char_attack_height : int, attacker_pos : Vector3) -> Array[Vector2i]:
 		var cell_height : int = map_gen.terrain_map[cell].height
 		if abs(cell_height - char_height) > char_attack_height:
 			continue
-		if pretend_fire(attacker_pos, char_node.position):
+		var pos : Vector3 = map_gen.map_cells[position_cell].position
+		if pretend_fire(pos, char_node.position):
 			targers.append(cell)
 	return targers
 
@@ -819,6 +760,96 @@ func salwage_failed_order(enemy : Character_node) -> bool:
 	
 	
 	return false
+
+
+func handle_Neiro(enemy : Character_node):
+	await get_tree().process_frame
+	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
+	false, true, enemy.stats.jump_height, false)
+	
+	for cell in occupied_cells:
+		move_cells.erase(cell)
+	move_cells.insert(0, enemy.map_pos)
+	
+	var attack_possibilities : Dictionary[Vector2i, Array] = {}
+	for cell in move_cells:
+		@warning_ignore("confusable_local_declaration")
+		var targets : Array[Vector2i] = can_attack_fom_position(
+			enemy.stats.attack_distance, cell, enemy.stats.attack_height)
+		if !targets.is_empty():
+			attack_possibilities[cell] = targets
+	
+	# check for a kill
+	if check_for_kill(attack_possibilities, enemy, move_cells):
+		return
+	
+	# if cannot kill look for rot targets
+	var skill_possibilities : Array[Skill_able_data] = []
+	for cell in move_cells:
+		skill_possibilities.append_array(can_use_skills_in_position(enemy, cell))
+	
+	var best_possibilities : Array[Skill_able_data] = []
+	var rot_added := 0
+	if !skill_possibilities.is_empty():
+		for skill_possible in skill_possibilities:
+			var skill_rot_power : int = skill_possible.skill.rot_stage_add
+			var _rot_added : int = 0
+			for target_cell in skill_possible.enemy_targets:
+				var rot_stage : int = map_gen.char_positions[target_cell].stats.rot_stage
+				if rot_stage == 3:
+					continue
+				_rot_added += clampi(rot_stage + skill_rot_power, 0, 3) - rot_stage
+			if _rot_added > rot_added:
+				best_possibilities.clear()
+				best_possibilities.append(skill_possible)
+				rot_added = _rot_added
+			elif _rot_added == rot_added:
+				best_possibilities.append(skill_possible)
+	
+	if !best_possibilities.is_empty():
+		pass
+	
+	
+	# if target has no rot -> rot
+	# if target has some rot -> roll
+	# if target has 2 rot -> attack
+	# if no targets walk closer
+
+func check_for_kill(attack_possibilities, enemy, move_cells) -> bool:
+	var rejected_targets : Array[Character_node] = []
+	var selected_cell : Vector2i
+	var selected_target : Character_node = null
+	for cell in attack_possibilities.keys():
+		var found_check := false
+		for target : Character_node in attack_possibilities[cell]:
+			if rejected_targets.has(target):
+				continue
+			var hit_chance : float = ObjectLink.damage_manager.calc_hit_chance(target, enemy)
+			var dmg_bonus : float = ObjectLink.damage_manager.cals_hit_acc_dmg_bonus(hit_chance)
+			var damage : float = ObjectLink.damage_manager.calc_atk_damage(target, enemy, dmg_bonus)
+			if damage > target.stats.health:
+				selected_cell = cell
+				selected_target = target
+				found_check = true
+				break
+			else:
+				rejected_targets.append(target)
+		if found_check:
+			break
+	if selected_target != null:
+		var move := Planned_move_data.new()
+		var dir : Map_generator.directions = get_new_dir(selected_cell, selected_target.map_pos)
+		move.set_target(selected_cell, move_cells, dir)
+		char_planned_moves[enemy] = move
+		occupied_cells.erase(enemy.map_pos)
+		occupied_cells.append(selected_cell)
+		BattleHandler.add_attack(enemy, map_gen.char_positions[selected_target.map_pos])
+		enemy_plan_finished.emit()
+		return true
+	return false
+
+
+
 
 
 

@@ -42,3 +42,8 @@ to do:
 	- level maps
 	+- cutscenes
 	- Neiro AI
+	- шейдер для фона (rot stage)
+
+secret:
+	- destroy saves
+	- do not allow to save(dialogue)

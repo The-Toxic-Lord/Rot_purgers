@@ -9,7 +9,7 @@ class_name Skill_base
 
 @export var skill_map : Skill_map_data
 
-enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN, ANNIHILATION, DEBUFF }
+enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN, ANNIHILATION, ROT }
 @export var skill_type : skill_types = skill_types.ATTACK:
 	set(value):
 		skill_type = value
@@ -20,6 +20,7 @@ enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN, ANNIHILATION, DEBUFF }
 @export var max_height_difference : int = 10
 @export var max_dist : int = 1
 @export var accuracy_modifier : float = 0.0
+@export var rot_stage_add : int = 0
 @export var crit_chance : float = 0.05
 @export var stat_used : Character_stats.stats = Character_stats.stats.magic_strenght
 @export var defence_stat : Character_stats.stats = Character_stats.stats.magic_strenght
@@ -43,11 +44,10 @@ enum terrain_mods { MOVE, HEIGHT }
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["damage", "is_one_shot", "move_mode", "can_be_deflected",
 	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump"]:
-		if skill_type != skill_types.ATTACK and skill_type != skill_types.DEBUFF:
+		if skill_type != skill_types.ATTACK and skill_type != skill_types.ROT:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
-	if property.name in ["damage", "move_mode", "can_be_deflected",
-	"crit_chance", "stat_used", "defence_stat", "animation_jump"]:
-		if skill_type == skill_types.DEBUFF:
+	if property.name in ["crit_chance", "animation_jump"]:
+		if skill_type == skill_types.ROT:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["heal_value"]:
 		if skill_type != skill_types.HEAL:
@@ -74,6 +74,9 @@ func _validate_property(property: Dictionary) -> void:
 	if property.name == "line_of_sight_check":
 		if skill_type != skill_types.ANNIHILATION and skill_type != skill_types.ATTACK:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name in ["rot_stage_add"]:
+		if skill_type != skill_types.ROT:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func get_attack_stat_used(st : Character_stats) -> int:
 	return st.get_stat_boosted(stat_used)
@@ -82,8 +85,6 @@ func get_defence_stat_used(st : Character_stats) -> int:
 	return st.get_stat_boosted(defence_stat)
 
 @export var animation_node_UID : String
-
-
 
 
 

@@ -28,9 +28,12 @@ func get_stat(stat : stats) -> int:
 	return get(stats.keys()[stat])
 
 func get_stat_boosted(stat : stats) -> int:
+	var value : int = get_stat(stat)
 	if boosts.has(stat):
-		return get_stat(stat) + boosts[stat]
-	return get_stat(stat)
+		value += boosts[stat]
+	if penalties.has(stat):
+		value -= penalties[stat]
+	return value
 
 func set_stat(stat : stats, value : int):
 	set(stats.keys()[stat], value)
@@ -43,6 +46,7 @@ func set_stat(stat : stats, value : int):
 @export var counter : int = 1
 @export var trigger_distance : int = 0
 @export_range(0, 3) var rot_stage : int = 0
+@export var immune_to_rot : bool = false
 @export_group("", "")
 @export var node_UID : String
 @export var start_dir : Map_generator.directions
@@ -106,8 +110,17 @@ func apply_boost_magic_cost():
 	else:
 		magic -= boost_magic_cost
 
+@export_storage var penalties : Dictionary[stats, int] = {}
 
+func change_rot(value : int):
+	if immune_to_rot:
+		return
+	rot_stage = clampi(rot_stage + value, 0, 3)
+	await recalc_penalty()
 
+func recalc_penalty():
+	for stat in GlobalData.rot_penalties.keys():
+		penalties[stat] = GlobalData.rot_penalties[stat] * rot_stage
 
 
 

@@ -28,3 +28,12 @@ char_pictures = Dictionary[String, Texture2D]({
 "Neiro": ExtResource("13_r650u"),
 "Zaar": ExtResource("10_17ap7")
 })
+rot_penalties = Dictionary[int, int]({
+0: 20,
+4: 15,
+5: 15,
+7: 15,
+8: 15,
+9: 10,
+10: 1
+})

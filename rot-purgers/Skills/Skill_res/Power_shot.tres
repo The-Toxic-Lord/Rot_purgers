@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("1_bg2wj")
 name = "Power shot"
-magic_cost = 20
 skill_map = ExtResource("2_un7qo")
 damage = 1.5
 max_height_difference = 20
 max_dist = 5
+rot_stage_add = null
 stat_used = 4
 defence_stat = 5
 line_of_sight_check = true
