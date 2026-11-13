@@ -329,6 +329,16 @@ func handle_Neiro(enemy : Character_node):
 		occupied_cells.append(selected_cell)
 		BattleHandler.add_attack(enemy, map_gen.char_positions[selected_target.map_pos])
 	
+	var rot_possibilities : Dictionary[Vector2i, Array] = {}
+	for cell in move_cells:
+		@warning_ignore("confusable_local_declaration")
+		var targets : Array[Vector2i] = can_attack_fom_position(
+			enemy.stats.skills[0].max_dist, cell, enemy.stats.attack_height, enemy.position)
+		if !targets.is_empty():
+			rot_possibilities[cell] = targets
+	
+	
+	
 	# if cannot kill look for rot targets
 	# if target has no rot -> rot
 	# if target has some rot -> roll

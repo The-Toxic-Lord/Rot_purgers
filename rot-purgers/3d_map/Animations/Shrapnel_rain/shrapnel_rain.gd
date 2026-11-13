@@ -19,6 +19,7 @@ extends Skill_animation_3d
 
 @export var sfx : AudioStream
 
+@warning_ignore("unused_parameter")
 func start(target : Vector3, cells : Array[Vector2i] = []) -> void:
 	SoundHandler.play_sfx(sfx)
 	position.y = 5.0

@@ -9,7 +9,7 @@ class_name Skill_base
 
 @export var skill_map : Skill_map_data
 
-enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN, ANNIHILATION }
+enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN, ANNIHILATION, DEBUFF }
 @export var skill_type : skill_types = skill_types.ATTACK:
 	set(value):
 		skill_type = value
@@ -43,7 +43,11 @@ enum terrain_mods { MOVE, HEIGHT }
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["damage", "is_one_shot", "move_mode", "can_be_deflected",
 	"accuracy_modifier", "crit_chance", "stat_used", "defence_stat", "animation_jump"]:
-		if skill_type != skill_types.ATTACK:
+		if skill_type != skill_types.ATTACK and skill_type != skill_types.DEBUFF:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name in ["damage", "move_mode", "can_be_deflected",
+	"crit_chance", "stat_used", "defence_stat", "animation_jump"]:
+		if skill_type == skill_types.DEBUFF:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["heal_value"]:
 		if skill_type != skill_types.HEAL:
