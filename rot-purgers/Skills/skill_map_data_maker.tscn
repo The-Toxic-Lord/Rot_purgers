@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://deixxh30w22nj" path="res://Skills/skill_map_data_maker.gd" id="1_1tdyk"]
 [ext_resource type="Texture2D" uid="uid://b6jm4arw4swlc" path="res://aseprite_stuff/Skill_colors_2.png" id="1_e5281"]
-[ext_resource type="Script" uid="uid://dx7gtvivqkl2s" path="res://Skills/skill_map_data.gd" id="3_uk1rf"]
+[ext_resource type="Resource" uid="uid://dqgynx3dmoo3a" path="res://Skills/skill_map_data_res/cross.tres" id="3_uk1rf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk1rf"]
 texture = ExtResource("1_e5281")
@@ -28,14 +28,8 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_uk1rf")
 
-[sub_resource type="Resource" id="Resource_13j71"]
-script = ExtResource("3_uk1rf")
-bound_to_char = true
-damage_cells = Array[Vector2i]([Vector2i(0, -3)])
-animation_target = Vector2i(0, -3)
-
 [node name="Skill_map_data_maker" type="TileMapLayer" unique_id=547403321]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 1, 0, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 1, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_e5281")
 script = ExtResource("1_1tdyk")
-data = SubResource("Resource_13j71")
+data = ExtResource("3_uk1rf")

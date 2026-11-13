@@ -119,6 +119,7 @@ func spawn_ally(ch : Character_stats):
 
 var spawn_move_check := false
 var spawn_attack_check := false
+# CHANGE
 func spawn_select_zone(ch_node : Character_node, st : states):
 	var move_cells : Array[Vector2i] = []
 	

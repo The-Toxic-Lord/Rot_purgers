@@ -29,6 +29,7 @@ to do:
 	-? fix char turn on move after attack
 	+- death animation (poses)
 	+- fix save at cutscene (now fix scenes)
+	- harder diff mod - enemy manager check for kill
 
 - background image
 
@@ -48,3 +49,14 @@ to do:
 secret:
 	- destroy saves
 	- do not allow to save(dialogue)
+	- rot immunity flip (set rot to 3 then give immunity, dialogue(explain how it works))
+
+
+
+
+
+
+
+
+
+#

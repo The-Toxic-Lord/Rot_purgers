@@ -98,8 +98,7 @@ func handle_turret_AI(enemy : Character_node):
 	#BattleHandler.add_attack(enemy, target)
 
 func handle_normal_AI(enemy : Character_node):
-	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
-	false, true, enemy.stats.jump_height, false)
+	var move_cells : Array[Vector2i] = get_move_cells(enemy)
 	
 	if check_trigger(enemy):
 		enemy.stats.AI_type = Character_stats.AI_types.CHARGER
@@ -108,7 +107,7 @@ func handle_normal_AI(enemy : Character_node):
 	
 	for cell in occupied_cells:
 		move_cells.erase(cell)
-	if AI_can_use_skill(move_cells, enemy):
+	if await AI_can_use_skill(move_cells, enemy):
 		enemy.stats.AI_type = Character_stats.AI_types.CHARGER
 		return
 	
@@ -117,18 +116,20 @@ func handle_normal_AI(enemy : Character_node):
 		return
 
 func handle_charger_AI(enemy : Character_node):
-	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
-	false, true, enemy.stats.jump_height, false)
+	var move_cells : Array[Vector2i] = get_move_cells(enemy)
 	
 	for cell in occupied_cells:
 		move_cells.erase(cell)
 	move_cells.insert(0, enemy.map_pos)
-	if AI_can_use_skill(move_cells, enemy):
+	if await AI_can_use_skill(move_cells, enemy):
 		return
 	
 	if AI_can_attack(move_cells, enemy):
 		return
 	
+	await move_as_charger(enemy, move_cells)
+
+func move_as_charger(enemy : Character_node, move_cells : Array[Vector2i]):
 	var a_star := AStarGrid2D.new()
 	a_star.region = map_gen.selector_boundary
 	a_star.cell_size = Vector2i(1,1)
@@ -180,75 +181,9 @@ func handle_charger_AI(enemy : Character_node):
 		
 		occupied_cells.erase(enemy.map_pos)
 		occupied_cells.append(move_cell)
-	
-	#var skip := false
-	#for path : Array[Vector2i] in paths:
-		#if move_cells.has(path[path.size() - 2]):
-			#await move_charger(path[path.size() - 2], enemy, move_cells)
-			#skip = true
-			#break
-	#
-	#if !skip:
-		#for cell in move_cells:
-			#var bb := false
-			#if bb:
-				#break
-			#for neib in neib_side:
-				#var t_c : Vector2i = neib + cell
-				#if map_gen.char_positions.has(t_c):
-					#if BattleHandler.allies.has(map_gen.char_positions[t_c]) and !skip and !bb:
-						#await move_charger(cell, enemy, move_cells)
-						#skip = true
-						#bb = true
-						#break
-	
-	#if !skip and !paths.is_empty():
-	
-	
-	#if !paths.is_empty():
-		#var id : int = 0
-		#for i in paths.size():
-			#if paths[i].size() < paths[id].size() and !map_gen.char_positions.keys().has(paths[i][enemy.stats.move_speed]):
-				#id = i
-		#for en in BattleHandler.enemies:
-			#a_star.set_point_solid(en.map_pos, true)
-		#a_star.set_point_solid(targets[id].map_pos, true)
-		#for cell in move_cells:
-			#a_star.set_point_solid(cell, false)
-		#a_star.set_point_solid(enemy.map_pos, false)
-		#var path : Array[Vector2i] = a_star.get_id_path(enemy.map_pos, targets[id].map_pos, true)
-		#if path.is_empty() or path.size() == 1:
-			#return
-		#var cell : Vector2i
-		#if path.size() >= enemy.stats.move_speed + 1:
-			#cell = path[enemy.stats.move_speed]
-		#else:
-			#cell = path.back()
-		#path.remove_at(0)
-		#for p_c in path:
-			#if p_c == cell:
-				#break
-			#if !move_cells.has(p_c):
-				#return
-		#
-		#var move := Planned_move_data.new(cell, move_cells, Map_generator.directions.S)
-		#char_planned_moves[enemy] = move
-		#
-		#occupied_cells.erase(enemy.map_pos)
-		#occupied_cells.append(cell)
-		
-		#await move_charger(cell, enemy, move_cells)
-	
-	#for neib in neib_side:
-		#if map_gen.char_positions.has(neib + enemy.map_pos):
-			#if BattleHandler.allies.has(map_gen.char_positions[neib + enemy.map_pos]):
-				#var height : int = map_gen.terrain_map[neib + enemy.map_pos].height
-				#if abs(height - map_gen.terrain_map[enemy.map_pos].height) < enemy.stats.attack_height:
-					#BattleHandler.add_attack(enemy, map_gen.char_positions[neib + enemy.map_pos])
 
 func handle_spawner_AI(enemy : Character_node):
-	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
-	false, true, enemy.stats.jump_height, false)
+	var move_cells : Array[Vector2i] = get_move_cells(enemy)
 	
 	var dist_check := false
 	for ally in BattleHandler.allies:
@@ -282,6 +217,13 @@ func handle_Flyer_IA(enemy : Character_node):
 	
 	if enemy.stats.AI_type == Character_stats.AI_types.FLYER_CHARGE:
 		await move_closest_position(pos_pos, enemy)
+
+func get_move_cells(enemy : Character_node) -> Array[Vector2i]:
+	var dist : int = enemy.stats.get_stat_boosted(Character_stats.stats.move_speed)
+	var jump : int = enemy.stats.get_stat_boosted(Character_stats.stats.jump_height)
+	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, dist,
+	false, true, jump, false)
+	return move_cells
 
 signal enemy_plan_finished
 
@@ -336,8 +278,9 @@ func move_flyer(pos : Vector3, enemy : Character_node):
 
 func find_flyer_desired_height(enemy : Character_node) -> float:
 	var desired_height : float
+	var dist : int = enemy.stats.get_stat_boosted(Character_stats.stats.move_speed)
 	var cells := map_gen.get_flow_cells(
-		enemy.map_pos, enemy.stats.move_speed, true, true,
+		enemy.map_pos, dist, true, true,
 		9999, true, true, true
 	)
 	var h_d : Dictionary[float, int] = {}
@@ -455,26 +398,30 @@ func AI_can_use_skill(move_cells : Array[Vector2i], enemy : Character_node,
 				max_targets = skill_possible.enemy_targets.size()
 				frienly_targets = skill_possible.targets.size() - max_targets
 		
-		if !order_salvage:
-			var move : Planned_move_data
-			
-			if chosen_possibility.skill.skill_map.bound_to_char:
-				move = Planned_move_data.new()
-				move.set_target(chosen_possibility.used_position, 
-			move_cells, chosen_possibility.dir)
-			else:
-				move = Planned_move_data.new()
-				move.set_target(chosen_possibility.used_position, 
-			move_cells, get_new_dir(chosen_possibility.used_position, chosen_possibility.target_cell))
-		
-			char_planned_moves[enemy] = move
-			occupied_cells.erase(enemy.map_pos)
-			occupied_cells.append(chosen_possibility.used_position)
-		
-		BattleHandler.add_skill(enemy, chosen_possibility.skill, 
-		chosen_possibility.damage_cells, chosen_possibility.move_cells, chosen_possibility.target_cell)
+		await skill_possibility_to_order(chosen_possibility, move_cells, enemy, order_salvage)
 		return true
 	return false
+
+func skill_possibility_to_order(chosen_possibility : Skill_able_data, 
+move_cells : Array[Vector2i], enemy : Character_node, order_salvage := false):
+	if !order_salvage:
+		var move : Planned_move_data
+		
+		if chosen_possibility.skill.skill_map.bound_to_char:
+			move = Planned_move_data.new()
+			move.set_target(chosen_possibility.used_position, 
+		move_cells, chosen_possibility.dir)
+		else:
+			move = Planned_move_data.new()
+			move.set_target(chosen_possibility.used_position, 
+		move_cells, get_new_dir(chosen_possibility.used_position, chosen_possibility.target_cell))
+	
+		char_planned_moves[enemy] = move
+		occupied_cells.erase(enemy.map_pos)
+		occupied_cells.append(chosen_possibility.used_position)
+		
+	BattleHandler.add_skill(enemy, chosen_possibility.skill, 
+	chosen_possibility.damage_cells, chosen_possibility.move_cells, chosen_possibility.target_cell)
 
 func AI_can_attack(move_cells : Array[Vector2i], enemy : Character_node,
 order_salvage := false) -> bool:
@@ -702,9 +649,9 @@ var neighbors_sides : Array[Vector2i] = [
 	Vector2i.LEFT,
 ]
 
-var checked_cells : Array[Vector2i] = []
+
 func get_flow_distance(cell : Vector2i, target_cell : Vector2i) -> int:
-	checked_cells.clear()
+	var checked_cells : Array[Vector2i] = []
 	var border : Array[Vector2i] = [cell]
 	var terrain_map : Array[Vector2i] = map_gen.terrain_map.keys()
 	var iter := 0
@@ -748,7 +695,7 @@ func salwage_failed_order(enemy : Character_node) -> bool:
 	if enemy.stats.AI_type not in [Character_stats.AI_types.FLYER_CHARGE, 
 	Character_stats.AI_types.FLYER_CHARGE]:
 		var pos : Array[Vector2i] = [enemy.map_pos]
-		if AI_can_use_skill(pos, enemy, true):
+		if await AI_can_use_skill(pos, enemy, true):
 			return true
 		
 		if AI_can_attack(pos, enemy):
@@ -761,11 +708,9 @@ func salwage_failed_order(enemy : Character_node) -> bool:
 	
 	return false
 
-
 func handle_Neiro(enemy : Character_node):
 	await get_tree().process_frame
-	var move_cells : Array[Vector2i] = map_gen.get_flow_cells(enemy.map_pos, enemy.stats.move_speed,
-	false, true, enemy.stats.jump_height, false)
+	var move_cells : Array[Vector2i] = get_move_cells(enemy)
 	
 	for cell in occupied_cells:
 		move_cells.erase(cell)
@@ -780,7 +725,7 @@ func handle_Neiro(enemy : Character_node):
 			attack_possibilities[cell] = targets
 	
 	# check for a kill
-	if check_for_kill(attack_possibilities, enemy, move_cells):
+	if await check_for_kill(attack_possibilities, enemy, move_cells):
 		return
 	
 	# if cannot kill look for rot targets
@@ -807,21 +752,43 @@ func handle_Neiro(enemy : Character_node):
 				best_possibilities.append(skill_possible)
 	
 	if !best_possibilities.is_empty():
-		pass
+		if rot_added >= 3:
+			var chosen_possibility := find_best_further_possibility(best_possibilities)
+			skill_possibility_to_order(chosen_possibility, move_cells, enemy)
+			enemy_plan_finished.emit()
+			return
+		elif rot_added == 2:
+			if randf() > 0.5:
+				var chosen_possibility := find_best_further_possibility(best_possibilities)
+				skill_possibility_to_order(chosen_possibility, move_cells, enemy)
+				enemy_plan_finished.emit()
+	
+	if !attack_possibilities.is_empty():
+		var possibility : Vector2i = attack_possibilities.keys().pick_random()
+		var target_cell : Vector2i
+		var rot_value : int = -1
+		for target : Vector2i in attack_possibilities[possibility]:
+			if map_gen.char_positions[target].stats.rot_stage > rot_value:
+				rot_value = map_gen.char_positions[target].stats.rot_stage
+				target_cell = target
+		var dir : Map_generator.directions = get_new_dir(possibility, target_cell)
+		await make_attack_order(possibility, enemy, target_cell, move_cells, dir)
+		enemy_plan_finished.emit()
+		return
 	
 	
-	# if target has no rot -> rot
-	# if target has some rot -> roll
-	# if target has 2 rot -> attack
-	# if no targets walk closer
+	await move_as_charger(enemy, move_cells)
+	enemy_plan_finished.emit()
 
-func check_for_kill(attack_possibilities, enemy, move_cells) -> bool:
+func check_for_kill(attack_possibilities : Dictionary[Vector2i, Array],
+ enemy : Character_node, move_cells : Array[Vector2i], order_salvage := false) -> bool:
 	var rejected_targets : Array[Character_node] = []
 	var selected_cell : Vector2i
 	var selected_target : Character_node = null
 	for cell in attack_possibilities.keys():
 		var found_check := false
-		for target : Character_node in attack_possibilities[cell]:
+		for target_cell : Vector2i in attack_possibilities[cell]:
+			var target : Character_node = map_gen.char_positions[target_cell]
 			if rejected_targets.has(target):
 				continue
 			var hit_chance : float = ObjectLink.damage_manager.calc_hit_chance(target, enemy)
@@ -837,20 +804,50 @@ func check_for_kill(attack_possibilities, enemy, move_cells) -> bool:
 		if found_check:
 			break
 	if selected_target != null:
-		var move := Planned_move_data.new()
 		var dir : Map_generator.directions = get_new_dir(selected_cell, selected_target.map_pos)
-		move.set_target(selected_cell, move_cells, dir)
-		char_planned_moves[enemy] = move
-		occupied_cells.erase(enemy.map_pos)
-		occupied_cells.append(selected_cell)
-		BattleHandler.add_attack(enemy, map_gen.char_positions[selected_target.map_pos])
+		await make_attack_order(selected_cell, enemy, selected_target.map_pos,
+		move_cells, dir, order_salvage)
+		#if !order_salvage:
+			#var move := Planned_move_data.new()
+			#move.set_target(selected_cell, move_cells, dir)
+			#char_planned_moves[enemy] = move
+			#occupied_cells.erase(enemy.map_pos)
+			#occupied_cells.append(selected_cell)
+		#BattleHandler.add_attack(enemy, map_gen.char_positions[selected_target.map_pos])
 		enemy_plan_finished.emit()
 		return true
 	return false
 
+func find_best_further_possibility(best_possibilities : Array[Skill_able_data]) -> Skill_able_data:
+	var dist : int = 99
+	var chosen_possibility := best_possibilities[0]
+	for target in best_possibilities[0].enemy_targets:
+		var _dist : int = get_flow_distance(best_possibilities[0].used_position, target)
+		if _dist < dist:
+			dist = _dist
+	for possibility in best_possibilities:
+		var pos : Vector2i = possibility.used_position
+		var pos_dist : int = 99
+		for target in possibility.enemy_targets:
+			var _dist : int = get_flow_distance(pos, target)
+			if _dist < pos_dist:
+				pos_dist = _dist
+		if pos_dist > dist:
+			dist = pos_dist
+			chosen_possibility = possibility
+	return chosen_possibility
 
-
-
+func make_attack_order(chosen_possibility : Vector2i, enemy : Character_node, target : Vector2i, 
+move_cells : Array[Vector2i], dir : Map_generator.directions, order_salvage := false):
+	if !order_salvage:
+		var move := Planned_move_data.new()
+		move.set_target(chosen_possibility, 
+		move_cells, dir)
+		char_planned_moves[enemy] = move
+		occupied_cells.erase(enemy.map_pos)
+		occupied_cells.append(chosen_possibility)
+	
+	BattleHandler.add_attack(enemy, map_gen.char_positions[target])
 
 
 

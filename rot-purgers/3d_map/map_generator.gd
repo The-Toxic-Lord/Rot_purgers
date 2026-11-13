@@ -1031,8 +1031,10 @@ func load_chars(game_save : Game_save):
 
 func spawn_move_skill_cells():
 	var move_cells : Array[Vector2i] = []
+	var dist : int = selected_char.stats.get_stat_boosted(Character_stats.stats.move_speed)
+	var jump : int = selected_char.stats.get_stat_boosted(Character_stats.stats.jump_height)
 	move_cells = get_flow_cells(start_skill_move_position, 
-	selected_char.stats.move_speed, false, false, selected_char.stats.jump_height)
+	dist, false, false, jump)
 	
 	for ally in BattleHandler.allies:
 		if ally == selected_char:

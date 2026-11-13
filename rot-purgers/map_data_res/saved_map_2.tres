@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://data/Character_stats.gd" id="1_7k66w"]
 [ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_4wd40"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="3_ak3rm"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="4_7k66w"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Rot ray.tres" id="3_ak3rm"]
+[ext_resource type="Resource" path="res://Skills/Skill_res/Rot blast.tres" id="4_4wd40"]
+[ext_resource type="Texture2D" path="res://dialogue/char_sprites/Neiro.png" id="4_7k66w"]
 [ext_resource type="Script" path="res://Map_editor/map_object.gd" id="6_tj6jb"]
 [ext_resource type="Texture2D" path="res://import/check_button.png" id="7_kmjd8"]
 [ext_resource type="Texture2D" path="res://import/check_button_2.png" id="8_a7aub"]
@@ -17,19 +18,17 @@
 [ext_resource type="Material" path="res://3d_map/map_cell_materials/cave_floor.tres" id="16_3cr2j"]
 [ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Stone_11-128x128.png" id="17_feyff"]
 
-[sub_resource type="Resource" id="Resource_4wd40"]
+[sub_resource type="Resource" id="Resource_7k66w"]
 script = ExtResource("1_7k66w")
-name = "Crystal"
-char_class = "Neutrophil"
-age = 468
+name = "Neiro"
+char_class = "Mage"
+age = 4358
 sprite = ExtResource("4_7k66w")
-max_magic = 0
-magic_strenght = 0
-attack_distance = 5
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
-skills = Array[ExtResource("2_4wd40")]([ExtResource("3_ak3rm")])
-potential_skills = Array[ExtResource("2_4wd40")]([ExtResource("3_ak3rm")])
+immune_to_rot = true
+node_UID = "uid://dyctrkv6gr2dx"
+AI_type = 7
+skills = Array[ExtResource("2_4wd40")]([ExtResource("3_ak3rm"), ExtResource("4_4wd40")])
+spawn_node_UUID = "uid://bkwt1lvhkpr71"
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_ys7s5"]
@@ -482,6 +481,70 @@ floor_material = ExtResource("16_3cr2j")
 wall_material = ExtResource("16_3cr2j")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
+[sub_resource type="Resource" id="Resource_ysc0c"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_a7aub"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_kmjd8"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_tj6jb"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_l6gpx"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_so5cs"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_depu4"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_4wd40"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
 [sub_resource type="Resource" id="Resource_55ftl"]
 script = ExtResource("15_tav8l")
 sprite = ExtResource("17_feyff")
@@ -523,6 +586,62 @@ wall_material = ExtResource("16_3cr2j")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 
 [sub_resource type="Resource" id="Resource_lj058"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_50a4v"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_ywovb"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_rpwpc"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_t0ylp"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_x6pl8"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_tav8l"]
+script = ExtResource("15_tav8l")
+sprite = ExtResource("17_feyff")
+height = 60
+floor_material = ExtResource("16_3cr2j")
+wall_material = ExtResource("16_3cr2j")
+metadata/_custom_type_script = "uid://cmno6gpgjclkg"
+
+[sub_resource type="Resource" id="Resource_3cr2j"]
 script = ExtResource("15_tav8l")
 sprite = ExtResource("17_feyff")
 height = 60
@@ -588,19 +707,34 @@ Vector2i(20, 12): SubResource("Resource_brvf0"),
 Vector2i(20, 13): SubResource("Resource_t3mh4"),
 Vector2i(20, 14): SubResource("Resource_8rl3u"),
 Vector2i(20, 15): SubResource("Resource_8dwos"),
+Vector2i(21, 2): SubResource("Resource_ysc0c"),
+Vector2i(21, 3): SubResource("Resource_a7aub"),
+Vector2i(21, 4): SubResource("Resource_kmjd8"),
+Vector2i(21, 5): SubResource("Resource_tj6jb"),
+Vector2i(21, 6): SubResource("Resource_l6gpx"),
+Vector2i(21, 7): SubResource("Resource_so5cs"),
+Vector2i(21, 8): SubResource("Resource_depu4"),
+Vector2i(21, 9): SubResource("Resource_4wd40"),
 Vector2i(21, 10): SubResource("Resource_55ftl"),
 Vector2i(21, 11): SubResource("Resource_l5vmc"),
 Vector2i(21, 12): SubResource("Resource_ahyom"),
 Vector2i(21, 13): SubResource("Resource_u7ypl"),
 Vector2i(21, 14): SubResource("Resource_obrpj"),
-Vector2i(21, 15): SubResource("Resource_lj058")
+Vector2i(21, 15): SubResource("Resource_lj058"),
+Vector2i(22, 2): SubResource("Resource_50a4v"),
+Vector2i(23, 2): SubResource("Resource_ywovb"),
+Vector2i(24, 2): SubResource("Resource_rpwpc"),
+Vector2i(25, 2): SubResource("Resource_t0ylp"),
+Vector2i(26, 2): SubResource("Resource_x6pl8"),
+Vector2i(27, 2): SubResource("Resource_tav8l"),
+Vector2i(28, 2): SubResource("Resource_3cr2j")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("6_tj6jb")]({
 Vector2i(13, 11): SubResource("Resource_ys7s5"),
 Vector2i(13, 14): SubResource("Resource_jcw8x")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_7k66w")]({
-Vector2i(16, 14): SubResource("Resource_4wd40")
+Vector2i(28, 2): SubResource("Resource_7k66w")
 })
 magic_cost_adjustment = 1.8
 next_map_path = "res://map_data_res/tower.tres"
