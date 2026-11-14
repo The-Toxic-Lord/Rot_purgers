@@ -100,6 +100,7 @@ Elliot: Well… I trusted you to figure out minor details by yourself. This much
 
 Zaar: I feel like you are omitting something, but I will not pry further for now.
 $> GlobalData.read_dialogues.append("lesson_Elliot_1")
+do GlobalData.mod_char("Zaar", load("uid://dtccikym1vuc"))
 => load_next_scene
 
 ~ lesson_Elliot_2
@@ -234,6 +235,7 @@ Zaar: By the way, you never mentioned neither the name of that grand mage nor wh
 
 Aven: I cannot tell you the name of the first one, but you already know the second. We have been fighting her servants since we entered this place.
 $> GlobalData.read_dialogues.append("lesson_Aven_1")
+do GlobalData.mod_char("Zaar", null, "magic_strength", 55)
 => load_next_scene
 
 ~ lesson_Aven_2

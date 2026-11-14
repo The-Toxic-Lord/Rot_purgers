@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Skill_map_data" format=3 uid="uid://dkki03x66kl7j"]
+
+[ext_resource type="Script" uid="uid://dx7gtvivqkl2s" path="res://Skills/skill_map_data.gd" id="1_4eyfx"]
+
+[resource]
+script = ExtResource("1_4eyfx")
+bound_to_char = true
+damage_cells = Array[Vector2i]([Vector2i(0, -1)])
+animation_target = Vector2i(0, -1)

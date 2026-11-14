@@ -48,7 +48,7 @@ func set_label(id : int, value : int):
 
 func set_magic_cost_label():
 	%Cost.text = "Magic cost per turn : " +\
-	 str(snappedi(magic_cost * GlobalData.map_magic_cost_adjustment, 1))
+	 str(magic_cost)
 
 var magic_cost := 0
 func _on_slider_drag_ended(value_changed: bool, source: Slider) -> void:
@@ -82,7 +82,7 @@ func _on_confirm_bt_pressed() -> void:
 	hide()
 	confirm.emit()
 	ObjectLink.focused_char_stats.update_stats(char_stats)
-	char_stats.boost_magic_cost = snappedi(magic_cost * GlobalData.map_magic_cost_adjustment, 1)
+	char_stats.boost_magic_cost = magic_cost
 
 
 

@@ -39,7 +39,7 @@ enum difficulyties { EASY, NORMAL, HARD, IMPOSSIBLE }
 @export_tool_button("Calculate_stats") var bt_1 = calculate_stats
 
 var used_stats : Array[String] = [
-	"max_health", "max_magic", "strength", "magic_strenght",
+	"max_health", "max_magic", "strength", "magic_strength",
 "defence", "accuracy", "speed"
 ]
 
@@ -65,7 +65,8 @@ func calculate_stats():
 		for stat in used_stats:
 			medium_stats.set(stat, medium_stats.get(stat) + ally.get(stat))
 	for stat in used_stats:
-		medium_stats.set(stat, roundi(medium_stats.get(stat) / allies.size()))
+		
+		medium_stats.set(stat, roundi(medium_stats.get(stat) / allies.size()) + 25)
 	
 	enemy_stats = Character_stats.new()
 	var diff_dict = diff_dicts[difficulty]
@@ -73,7 +74,7 @@ func calculate_stats():
 	enemy_stats.speed = get_speed(medium_stats, diff_dict["get_hit_chance"])
 	enemy_stats.strength = get_str(medium_stats, diff_dict["hit_chance"], diff_dict["num_turns_kill"])
 	enemy_stats.defence = 0
-	enemy_stats.magic_strenght = 0
+	enemy_stats.magic_strength = 0
 	health = enemy_stats.max_health
 	defence = 0
 	speed = enemy_stats.speed
@@ -117,7 +118,7 @@ func recalc_def_hp():
 	var hit_chance : float = float(medium_stats.accuracy)/float(enemy_stats.speed)
 	if hit_chance < 1.0:
 		damage /= hit_chance
-	var damage_skill : float = medium_stats.magic_strenght * 1.5
+	var damage_skill : float = medium_stats.magic_strength * 1.5
 	health = diff_dicts[difficulty]["num_turns_dead"] * (damage_skill + damage) / 2.0
 	enemy_stats.max_health = health
 	#if use_magic_str:

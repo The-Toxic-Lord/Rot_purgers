@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://4q78c8ungofd"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_sviol"]
+[ext_resource type="Resource" uid="uid://cqf5ypsfqo3fc" path="res://Skills/skill_map_data_res/Cross_bound_diag_big.tres" id="2_sviol"]
+
+[resource]
+script = ExtResource("1_sviol")
+name = "Rot bishop"
+magic_cost = 10
+skill_map = ExtResource("2_sviol")
+skill_type = 6
+damage = 0.1
+max_dist = 5
+accuracy_modifier = 0.2
+rot_stage_add = 1
+metadata/_custom_type_script = "uid://ceg7shg67rmfw"

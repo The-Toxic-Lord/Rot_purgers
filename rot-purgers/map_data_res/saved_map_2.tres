@@ -734,7 +734,7 @@ Vector2i(13, 11): SubResource("Resource_ys7s5"),
 Vector2i(13, 14): SubResource("Resource_jcw8x")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_7k66w")]({
-Vector2i(28, 2): SubResource("Resource_7k66w")
+Vector2i(16, 12): SubResource("Resource_7k66w")
 })
 magic_cost_adjustment = 1.8
 next_map_path = "res://map_data_res/tower.tres"

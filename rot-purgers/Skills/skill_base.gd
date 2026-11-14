@@ -22,8 +22,8 @@ enum skill_types { ATTACK, HEAL, TERRAIN, PROTECT, SPAWN, ANNIHILATION, ROT }
 @export var accuracy_modifier : float = 0.0
 @export var rot_stage_add : int = 0
 @export var crit_chance : float = 0.05
-@export var stat_used : Character_stats.stats = Character_stats.stats.magic_strenght
-@export var defence_stat : Character_stats.stats = Character_stats.stats.magic_strenght
+@export var stat_used : Character_stats.stats = Character_stats.stats.magic_strength
+@export var defence_stat : Character_stats.stats = Character_stats.stats.magic_strength
 @export var animation_jump : bool = false
 @export var can_be_deflected : bool = false
 @export var line_of_sight_check := false

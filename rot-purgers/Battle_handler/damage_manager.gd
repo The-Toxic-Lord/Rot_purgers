@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func calc_hit_chance(target : Character_node, attacker : Character_node, acc_mod : float = 0.0) -> float:
 	var chance = float(attacker.stats.get_stat_boosted(Character_stats.stats.accuracy))/\
-	float(target.stats.get_stat_boosted(Character_stats.stats.speed)) + acc_mod
+	clampf(float(target.stats.get_stat_boosted(Character_stats.stats.speed)), 1.0, INF) + acc_mod
 	return chance
 
 func calc_hit_type(chance : float) -> hit_types:

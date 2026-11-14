@@ -36,7 +36,7 @@ var id_to_stat : Dictionary = {
 	1 : "max_magic",
 	2 : "strength",
 	3 : "defence",
-	4 : "magic_strenght",
+	4 : "magic_strength",
 	5 : "accuracy",
 	6 : "speed",
 	7 : "move_speed",
@@ -362,7 +362,10 @@ func next_map_selected(path : String):
 	if path == "":
 		return
 	next_map_path = path
-	%next_map_lb.text = get_path_file_name(path)
+	if path.find("uid") >= 0:
+		%next_map_lb.text = get_path_file_name(ResourceUID.uid_to_path(path))
+	else:
+		%next_map_lb.text = get_path_file_name(path)
 
 func _on_rot_stage_item_selected(index: int) -> void:
 	selected_enemy_data.rot_stage = index

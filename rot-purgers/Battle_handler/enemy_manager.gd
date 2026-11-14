@@ -764,6 +764,7 @@ func handle_Neiro(enemy : Character_node):
 				enemy_plan_finished.emit()
 	
 	if !attack_possibilities.is_empty():
+		#ADD hard seek for better hit chance
 		var possibility : Vector2i = attack_possibilities.keys().pick_random()
 		var target_cell : Vector2i
 		var rot_value : int = -1

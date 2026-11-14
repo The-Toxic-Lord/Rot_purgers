@@ -24,7 +24,7 @@ func update_stats(ch : Character_stats):
 	%Magic.text = str(int(ch.magic)) + " / " + str(int(ch.max_magic))
 	%Strength.text = "Str : " + str(ch.strength)
 	%Defence.text = "Def : " + str(ch.defence)
-	%Mag_str.text = "Magic Str : " + str(ch.magic_strenght)
+	%Mag_str.text = "Magic Str : " + str(ch.magic_strength)
 	%Accuracy.text = "Acc : " + str(ch.accuracy)
 	%Speed.text = "Spd : " + str(ch.speed)
 	if ch.sprite != null:
@@ -43,7 +43,7 @@ func update_stats(ch : Character_stats):
 			var text : String = "[color=#508800] - " + str(ch.penalties[stat]) + "[/color]"
 			st_to_lb[stat].text += text
 	
-	if ch.magic_strenght == 999:
+	if ch.magic_strength == 999:
 		set_process(true)
 	else:
 		set_process(false)

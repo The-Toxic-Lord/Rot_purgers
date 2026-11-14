@@ -14,6 +14,11 @@
 [ext_resource type="Resource" uid="uid://bw766n42tsyfr" path="res://data/Enemy_data/Crystal.tres" id="13_idmur"]
 [ext_resource type="Texture2D" uid="uid://cq5yw6r4nrunv" path="res://dialogue/char_sprites/Neiro.png" id="13_r650u"]
 [ext_resource type="Texture2D" uid="uid://cx3cvqx7o8rct" path="res://dialogue/char_sprites/Evelyn.png" id="14_r650u"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="15_vpoa1"]
+
+[sub_resource type="Resource" id="Resource_e1spi"]
+script = ExtResource("6_lbxat")
+metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [node name="Global_data" type="Node" unique_id=1876976633]
 script = ExtResource("1_215bx")
@@ -37,3 +42,4 @@ rot_penalties = Dictionary[int, int]({
 9: 10,
 10: 1
 })
+neiro_possible_stats = Array[ExtResource("6_lbxat")]([SubResource("Resource_e1spi")])

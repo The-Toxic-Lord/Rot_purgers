@@ -5,6 +5,8 @@
 [ext_resource type="Resource" uid="uid://bm80ehv0f3ib2" path="res://Skills/Skill_res/Rot ray.tres" id="3_mg3ww"]
 [ext_resource type="Texture2D" uid="uid://cq5yw6r4nrunv" path="res://dialogue/char_sprites/Neiro.png" id="3_yuc1w"]
 [ext_resource type="Resource" uid="uid://db3vcixjjbenb" path="res://Skills/Skill_res/Rot blast.tres" id="4_8t8vk"]
+[ext_resource type="Resource" uid="uid://b2o2xqifn8ibv" path="res://Skills/Skill_res/Rot_rook.tres" id="5_p6m61"]
+[ext_resource type="Resource" uid="uid://4q78c8ungofd" path="res://Skills/Skill_res/Rot_bishop.tres" id="6_oyvih"]
 
 [resource]
 script = ExtResource("2_mg3ww")
@@ -15,7 +17,7 @@ sprite = ExtResource("3_yuc1w")
 immune_to_rot = true
 node_UID = "uid://dyctrkv6gr2dx"
 AI_type = 2
-skills = Array[ExtResource("1_yuc1w")]([ExtResource("3_mg3ww"), ExtResource("4_8t8vk")])
+skills = Array[ExtResource("1_yuc1w")]([ExtResource("3_mg3ww"), ExtResource("4_8t8vk"), ExtResource("5_p6m61"), ExtResource("6_oyvih")])
 spawn_node_UUID = "uid://bkwt1lvhkpr71"
 penalties = null
 metadata/_custom_type_script = "uid://by1rq468n504l"

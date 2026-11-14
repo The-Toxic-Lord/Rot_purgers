@@ -3,7 +3,7 @@
 class_name Character_stats
 
 enum stats { max_health, health, max_magic, magic, strength, 
-defence, magic_strenght, accuracy, speed, jump_height, move_speed }
+defence, magic_strength, accuracy, speed, jump_height, move_speed }
 
 @export_group("visual")
 @export var name := "rename me"
@@ -18,7 +18,7 @@ defence, magic_strenght, accuracy, speed, jump_height, move_speed }
 @export_storage var magic : int
 @export var strength : int = 10
 @export var defence : int = 5
-@export var magic_strenght : int = 10
+@export var magic_strength : int = 0
 @export var accuracy : int = 10
 @export var speed : int = 5
 @export var attack_stat : stats = stats.strength

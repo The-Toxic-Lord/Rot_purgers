@@ -35,16 +35,22 @@ to do:
 
 1.0 must:
 	- music
-	- finish map_mage cutscene (Neiro death)
 	- tutorial
 	- balance
-	- skills
+	+- skills
 	+- skills description
 	- level maps
 	+- cutscenes
-	- Neiro AI
+	+ Neiro AI
+	- fix double hit
 	- шейдер для фона (rot stage)
 	- fix rotation on undo
+
+1.1 hard:
+	- better AI
+	- char death
+	- dialogue paths
+	
 
 secret:
 	- destroy saves

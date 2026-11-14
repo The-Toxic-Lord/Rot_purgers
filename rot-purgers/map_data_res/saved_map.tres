@@ -23,8 +23,11 @@ name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_g2qwr")
+max_health = 10000
 max_magic = 0
+defence = 0
 magic_strenght = 0
+speed = 40
 attack_distance = 5
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
@@ -85,7 +88,7 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_ead5j"]
 script = ExtResource("5_j7tpd")
 sprite = ExtResource("7_kqyk2")
-height = 90
+height = 60
 floor_material = ExtResource("6_3mwm5")
 wall_material = ExtResource("6_3mwm5")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
@@ -125,7 +128,7 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_8vpye"]
 script = ExtResource("5_j7tpd")
 sprite = ExtResource("7_kqyk2")
-height = 90
+height = 60
 floor_material = ExtResource("6_3mwm5")
 wall_material = ExtResource("6_3mwm5")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
@@ -141,7 +144,7 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_g2qwr"]
 script = ExtResource("5_j7tpd")
 sprite = ExtResource("7_kqyk2")
-height = 90
+height = 60
 floor_material = ExtResource("6_3mwm5")
 wall_material = ExtResource("6_3mwm5")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"
@@ -181,7 +184,7 @@ metadata/_custom_type_script = "uid://cmno6gpgjclkg"
 [sub_resource type="Resource" id="Resource_to1fk"]
 script = ExtResource("5_j7tpd")
 sprite = ExtResource("7_kqyk2")
-height = 90
+height = 60
 floor_material = ExtResource("6_3mwm5")
 wall_material = ExtResource("6_3mwm5")
 metadata/_custom_type_script = "uid://cmno6gpgjclkg"

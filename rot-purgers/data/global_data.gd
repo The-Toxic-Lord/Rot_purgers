@@ -87,7 +87,7 @@ enum Difficulty { EASY, NORMAL, HARD }
 var difficulty : Difficulty = Difficulty.HARD
 
 @export var rot_penalties : Dictionary[Character_stats.stats, int] = {}
-
+@export var neiro_possible_stats : Array[Character_stats] = []
 
 
 
