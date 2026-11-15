@@ -13,5 +13,7 @@ _dir : Map_generator.directions) -> void:
 	dir = _dir
 
 var target_pos : Vector3
-func set_3d(_target_pos : Vector3):
+var pos_pos : Array[Vector3]
+func set_3d(_target_pos : Vector3, _pos_pos : Array[Vector3]):
 	target_pos = _target_pos
+	pos_pos = _pos_pos

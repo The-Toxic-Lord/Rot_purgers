@@ -35,7 +35,7 @@ func start_enemy_turn():
 	for enemy in char_planned_moves:
 		match enemy.stats.AI_type:
 			Character_stats.AI_types.FLYER, Character_stats.AI_types.FLYER_CHARGE:
-				enemy.move_flyer(char_planned_moves[enemy].target_pos)
+				enemy.move_flyer(char_planned_moves[enemy])
 				var pos : Vector3 = char_planned_moves[enemy].target_pos
 				var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
 				map_gen.update_char_position(enemy, cell)
@@ -237,7 +237,7 @@ func move_closest_position(pos_pos : Array[Vector3], enemy : Character_node):
 				min_dist = dist
 				selected_pos = pos
 	if min_dist != 999999.0:
-		await move_flyer(selected_pos, enemy)
+		await move_flyer(selected_pos, pos_pos, enemy)
 
 func flyer_can_attack(enemy : Character_node, pos_pos : Array[Vector3], desired_height : float,
 order_salvage := false) -> bool:
@@ -246,7 +246,7 @@ order_salvage := false) -> bool:
 		for ally in BattleHandler.allies:
 			if (ally.position - pos).length() > enemy.stats.attack_distance * 2.0:
 				continue
-			if pretend_fire(pos, ally.position):
+			if pretend_fire(pos, ally.position, Vector3.ZERO):
 				if possible_pos.has(pos):
 					possible_pos[pos].append(ally)
 				else:
@@ -256,20 +256,20 @@ order_salvage := false) -> bool:
 	if !possible_pos.is_empty():
 		for pos in possible_pos:
 			if pos.y == desired_height:
-				await move_flyer(pos, enemy)
+				await move_flyer(pos, pos_pos, enemy)
 				BattleHandler.add_attack(enemy, possible_pos[pos].pick_random())
 				return true
 		var pos = possible_pos.keys().pick_random()
 		if !order_salvage:
-			await move_flyer(pos, enemy)
+			await move_flyer(pos, pos_pos, enemy)
 		BattleHandler.add_attack(enemy, possible_pos[pos].pick_random())
 		return true
 	
 	return false
 
-func move_flyer(pos : Vector3, enemy : Character_node):
+func move_flyer(pos : Vector3, pos_pos : Array[Vector3], enemy : Character_node):
 	var pl_pos := Planned_move_data.new()
-	pl_pos.set_3d(pos)
+	pl_pos.set_3d(pos, pos_pos)
 	char_planned_moves[enemy] = pl_pos
 	
 	occupied_cells.erase(enemy.map_pos)
@@ -316,26 +316,31 @@ func get_possible_flyer_possition(enemy : Character_node) -> Array[Vector3]:
 					continue
 				if new_border.has(new_pos):
 					continue
+				var cell : Vector2i = Vector2i(roundi(new_pos.x / 2.0), roundi(new_pos.z / 2.0))
+				if occupied_cells.has(cell) and cell != enemy.map_pos:
+					continue
+				if map_gen.map_cells.has(cell):
+					var height : float = map_gen.map_cells[cell].position.y
+					var cell_is_ground : bool = true if map_gen.terrain_map[cell].depth == 0 else false
+					if cell_is_ground and new_pos.y <= height:
+						continue
+					elif !cell_is_ground:
+						var depth : float = map_gen.terrain_map[cell].depth * 0.1
+						if new_pos.y >= height - depth:
+							continue
 				new_border.append(new_pos)
 		border = new_border
 		distance -= 10
 	checked_pos.append_array(border)
-	var delete_3d : Array[Vector3] = []
-	for pos in checked_pos:
-		var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
-		if !map_gen.map_cells.has(cell):
-			continue
-		if pos.y <= map_gen.map_cells[cell].position.y or (occupied_cells.has(cell) and cell != enemy.map_pos):
-			delete_3d.append(pos)
-	for pos in delete_3d:
-		checked_pos.erase(pos)
-	delete_3d.clear()
-	for pos in checked_pos:
-		var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
-		if occupied_cells.has(cell) and cell != enemy.map_pos:
-			delete_3d.append(pos)
-	for pos in delete_3d:
-		checked_pos.erase(pos)
+	#var delete_3d : Array[Vector3] = []
+	#for pos in checked_pos:
+		#var cell : Vector2i = Vector2i(roundi(pos.x / 2.0), roundi(pos.z / 2.0))
+		#if !map_gen.map_cells.has(cell):
+			#continue
+		#if pos.y <= map_gen.map_cells[cell].position.y or (occupied_cells.has(cell) and cell != enemy.map_pos):
+			#delete_3d.append(pos)
+	#for pos in delete_3d:
+		#checked_pos.erase(pos)
 	
 	return checked_pos
 
@@ -631,8 +636,9 @@ map_pos : Vector2i, char_height : int, char_current_pos : Vector2i) -> Array[Ski
 						skill_able_data.targets.append(cell)
 	return skill_able_data_arr
 
-func pretend_fire(attacker : Vector3, target : Vector3) -> bool:
-	var query := PhysicsRayQueryParameters3D.create(attacker + Vector3(0, 1.5, 0), target + Vector3(0, 1.5, 0))
+func pretend_fire(attacker : Vector3, target : Vector3, 
+attacker_offset : Vector3 = Vector3(0, 1.5, 0)) -> bool:
+	var query := PhysicsRayQueryParameters3D.create(attacker + attacker_offset, target + Vector3(0, 1.5, 0))
 	query.collide_with_areas = true
 	query.collision_mask = 0x0002
 	var space_state = ObjectLink.map_gen.get_world_3d().direct_space_state

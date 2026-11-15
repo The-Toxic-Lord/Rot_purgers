@@ -50,7 +50,10 @@ var used_stats : Array[String] = [
 		defence = value
 		recalc_def_hp()
 @export var accuracy : int
-@export var speed : int
+@export var speed : int:
+	set(value):
+		speed = value
+		recalc_def_hp()
 
 
 @export var enemy_stats : Character_stats
@@ -66,16 +69,16 @@ func calculate_stats():
 			medium_stats.set(stat, medium_stats.get(stat) + ally.get(stat))
 	for stat in used_stats:
 		
-		medium_stats.set(stat, roundi(medium_stats.get(stat) / allies.size()) + 25)
+		medium_stats.set(stat, roundi(medium_stats.get(stat) / allies.size()) + 15)
 	
 	enemy_stats = Character_stats.new()
 	var diff_dict = diff_dicts[difficulty]
 	enemy_stats.accuracy = get_acc(medium_stats, diff_dict["hit_chance"])
-	enemy_stats.speed = get_speed(medium_stats, diff_dict["get_hit_chance"])
+	speed = get_speed(medium_stats, diff_dict["get_hit_chance"])
 	enemy_stats.strength = get_str(medium_stats, diff_dict["hit_chance"], diff_dict["num_turns_kill"])
+	await get_tree().process_frame
 	enemy_stats.defence = 0
 	enemy_stats.magic_strength = 0
-	health = enemy_stats.max_health
 	defence = 0
 	speed = enemy_stats.speed
 	strength = enemy_stats.strength
@@ -112,21 +115,18 @@ func get_def(med_st : Character_stats, hit_chance : float, num_of_turns : int) -
 		def *= 2
 		return roundi(def)
 
+@export_tool_button("recalc_health") var bt_2 = recalc_def_hp
+
 func recalc_def_hp():
+	enemy_stats.speed = speed
 	enemy_stats.defence = defence
 	var damage : float = medium_stats.strength - defence / 2.0
 	var hit_chance : float = float(medium_stats.accuracy)/float(enemy_stats.speed)
-	if hit_chance < 1.0:
-		damage /= hit_chance
-	var damage_skill : float = medium_stats.magic_strength * 1.5
+	damage *= hit_chance
+	var damage_skill : float = medium_stats.magic_strength * hit_chance
 	health = diff_dicts[difficulty]["num_turns_dead"] * (damage_skill + damage) / 2.0
 	enemy_stats.max_health = health
-	#if use_magic_str:
-		#health = diff_dicts[difficulty]["num_turns_dead"] * damage_skill
-		#enemy_stats.max_health = health
-	#else:
-		#health = diff_dicts[difficulty]["num_turns_dead"] * damage
-		#enemy_stats.max_health = health
+	
 
 
 

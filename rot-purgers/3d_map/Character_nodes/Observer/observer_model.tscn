@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2f3i6lg4epdq"]
 
 [ext_resource type="ArrayMesh" uid="uid://dyothhl71cr5v" path="res://import/eye_cube.tres" id="1_5d6ao"]
-[ext_resource type="Script" uid="uid://b8dhlp104lwd1" path="res://3d_map/Character_nodes/observer_model.gd" id="1_kykh1"]
+[ext_resource type="Script" uid="uid://b8dhlp104lwd1" path="res://3d_map/Character_nodes/Observer/observer_model.gd" id="1_kykh1"]
 [ext_resource type="SphereMesh" uid="uid://qab2cfu0420f" path="res://import/eye.tres" id="2_nd5d7"]
 [ext_resource type="Material" uid="uid://b3i5h8qjxhfla" path="res://3d_map/Character_nodes/char_materials/Eye_material.tres" id="3_byv1l"]
 

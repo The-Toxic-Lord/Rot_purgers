@@ -631,13 +631,39 @@ func load_state(save_char_data : Save_char_data):
 func magic_cost(value : int):
 	stats.magic -= value
 
-func move_flyer(target_pos : Vector3):
-	var tween := create_tween()
-	tween.tween_property(self, "position", target_pos, 2.0)
-	tween.tween_callback(func() -> void:
-		can_undo_move = true
-		move_finished.emit()
-		)
+
+func move_flyer(data : Planned_move_data):
+	var neib_3d : Array[Vector3] = ObjectLink.enemy_manager.neib_3d
+	
+	var astar_3d := AStar3D.new()
+	var vec_to_id : Dictionary[Vector3, int] = {}
+	var id_to_vec : Dictionary[int, Vector3] = {}
+	var id := 0
+	for pos in data.pos_pos:
+		astar_3d.add_point(id, pos)
+		vec_to_id[pos] = id
+		id_to_vec[id] = pos
+		id += 1
+	for pos in data.pos_pos:
+		for neib in neib_3d:
+			var test_vec : Vector3 = pos + neib
+			if vec_to_id.has(test_vec):
+				astar_3d.connect_points(vec_to_id[pos], vec_to_id[test_vec])
+	
+	var path := astar_3d.get_id_path(vec_to_id[position], vec_to_id[data.target_pos])
+	path.remove_at(0)
+	
+	for i in path:
+		var tween := create_tween()
+		tween.tween_property(self, "position", id_to_vec[i], 0.25)
+		await tween.finished
+		#tween.tween_callback(func() -> void:
+			#can_undo_move = true
+			#move_finished.emit()
+			#)
+	
+	can_undo_move = true
+	move_finished.emit()
 
 func change_rot(value : int):
 	await stats.change_rot(value)

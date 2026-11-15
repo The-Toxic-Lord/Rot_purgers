@@ -136,3 +136,7 @@ Evelyn: I wonder, what would you do? Heh. [i]Do not choose a path among the ones
 Evelyn: I think that spot will do. Time to make a new path.
 => END
 
+
+~ secret_path
+To pass through here, you need to meet these requirements \: \nEasy difficulty\nFull party
+=> END

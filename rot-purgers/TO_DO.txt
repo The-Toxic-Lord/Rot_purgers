@@ -45,12 +45,14 @@ to do:
 	- fix double hit
 	- шейдер для фона (rot stage)
 	- fix rotation on undo
+	+ better flyer move
+	- neiro terrain cost mod
 
 1.1 hard:
-	- better AI
+	- better AI:
+		- shapes runs away
 	- char death
 	- dialogue paths
-	
 
 secret:
 	- destroy saves

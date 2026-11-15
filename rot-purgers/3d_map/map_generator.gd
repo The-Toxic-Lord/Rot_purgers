@@ -645,6 +645,11 @@ func move_character():
 
 func check_exit(cell : Vector2i) -> bool:
 	if exit_zones.has(cell):
+		if object_map[cell].dialogue_cue == "secret":
+			if GlobalData.dead_chars.size() != 0 or GlobalData.difficulty != Global_data.Difficulty.EASY:
+				DialogueBalloon.start(load("uid://bljae404ietm2"), "secret_path")
+				return false
+			return true
 		BattleHandler.end_battle(map_data.object_map_data[cell])
 		return true
 	return false
