@@ -737,6 +737,7 @@ func remove_enemy(ch_node : Character_node):
 
 func display_skill(skill : Skill_base):
 	selected_skill = skill
+	selected_char.pre_move_dir = selected_char.current_direction
 	
 	#if skill.line_of_sight_check:
 		#make_projectile_skill(skill)
@@ -1185,6 +1186,7 @@ func move_char_skill_back():
 	if selected_char.previous_map_pos != Vector2i(-1, -1):
 		selected_char.position = map_cells[selected_char.previous_map_pos].position
 		selected_char.map_pos = selected_char.previous_map_pos
+		selected_char.turn(selected_char.pre_move_dir, true)
 		selected_char.previous_map_pos = Vector2i(-1, -1)
 
 @warning_ignore("unused_parameter")

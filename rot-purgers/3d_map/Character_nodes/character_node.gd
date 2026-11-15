@@ -23,6 +23,7 @@ var has_order := false:
 			%Executed_order.hide()
 var map_pos : Vector2i
 var previous_map_pos : Vector2i
+var pre_move_dir : Map_generator.directions
 var can_undo_move := false
 var is_enemy := true
 var can_rearange := true
@@ -155,6 +156,7 @@ func kill():
 @warning_ignore("unused_parameter")
 func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data], 
 select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Vector2i, Map_cell]):
+	pre_move_dir = current_direction
 	var move_zones : Array[Vector2i]
 	var dist : int = stats.get_stat_boosted(Character_stats.stats.move_speed)
 	var jump : int = stats.get_stat_boosted(Character_stats.stats.jump_height)
@@ -612,6 +614,7 @@ func undo_move(map_cells : Dictionary[Vector2i, Map_cell]):
 	can_move = true
 	map_pos = previous_map_pos
 	can_undo_move = false
+	turn(pre_move_dir, true)
 
 func load_state(save_char_data : Save_char_data):
 	can_move = save_char_data.can_move
@@ -630,7 +633,6 @@ func load_state(save_char_data : Save_char_data):
 
 func magic_cost(value : int):
 	stats.magic -= value
-
 
 func move_flyer(data : Planned_move_data):
 	var neib_3d : Array[Vector3] = ObjectLink.enemy_manager.neib_3d

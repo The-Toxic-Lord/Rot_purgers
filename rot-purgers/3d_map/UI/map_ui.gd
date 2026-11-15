@@ -317,7 +317,13 @@ func calculate_terrain_cost() -> int:
 	for terr_cell : Vector2i in map_generator.terrain_mod_data.keys():
 		var base_height : int = map_generator.terrain_map[terr_cell].height
 		var new_height : int = map_generator.terrain_mod_data[terr_cell].height
-		cost += abs(base_height - new_height)
+		var added_cost : int = abs(base_height - new_height)
+		if map_generator.char_positions.has(terr_cell):
+			if map_generator.char_positions[terr_cell].name == "Neiro":
+				added_cost *= 10
+			elif map_generator.char_positions[terr_cell] != selected_char:
+				added_cost *= 2
+		cost += added_cost
 	@warning_ignore("narrowing_conversion")
 	cost *= 0.1
 	@warning_ignore("narrowing_conversion")

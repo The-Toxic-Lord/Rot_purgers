@@ -44,9 +44,9 @@ to do:
 	+ Neiro AI
 	- fix double hit
 	- шейдер для фона (rot stage)
-	- fix rotation on undo
+	+ fix rotation on undo
 	+ better flyer move
-	- neiro terrain cost mod
+	+ neiro terrain cost mod
 
 1.1 hard:
 	- better AI:
