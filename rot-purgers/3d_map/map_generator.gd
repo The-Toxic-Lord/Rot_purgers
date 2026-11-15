@@ -1074,6 +1074,7 @@ func finalize_skill_move():
 	char_positions[char_skill_move_cell] = selected_char
 	selected_char.can_move = false
 	selected_char.can_undo_move = true
+	selected_char.check_stepped_cell()
 
 var terrain_mod_selected_cells : Array[Vector2i] = []
 var terrain_mod_data : Dictionary[Vector2i, Terrain_data] = {}

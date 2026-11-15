@@ -47,6 +47,7 @@ to do:
 	+ fix rotation on undo
 	+ better flyer move
 	+ neiro terrain cost mod
+	+ rot terrain debuff
 
 1.1 hard:
 	- better AI:
@@ -58,6 +59,7 @@ secret:
 	- destroy saves
 	- do not allow to save(dialogue)
 	- rot immunity flip (set rot to 3 then give immunity, dialogue(explain how it works))
+	- pre map - battle against doppelgangers
 
 
 

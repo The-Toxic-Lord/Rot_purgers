@@ -30,6 +30,8 @@ var can_rearange := true
 var is_dead := false
 var deflects_left : int = 0
 
+var rot_pre_move : int = 0
+
 var previous_direction : Map_generator.directions = Map_generator.directions.N
 var current_direction : Map_generator.directions = Map_generator.directions.N
 var move_to_direction: Dictionary[Vector2i, Map_generator.directions] = {
@@ -157,6 +159,7 @@ func kill():
 func move(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data], 
 select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Vector2i, Map_cell]):
 	pre_move_dir = current_direction
+	rot_pre_move = stats.rot_stage
 	var move_zones : Array[Vector2i]
 	var dist : int = stats.get_stat_boosted(Character_stats.stats.move_speed)
 	var jump : int = stats.get_stat_boosted(Character_stats.stats.jump_height)
@@ -201,13 +204,15 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 		current_direction = move_to_direction[path[0] - prev_pos]
 	
 	for cell in path:
-		var str_check := move_straight_check(cell, terrain_map, prev_pos, map_cells)
+		var str_check := move_straight_check(cell, terrain_map, prev_pos)
 		if str_check:
 			prev_pos = map_pos
 			if cell != path.back():
 				continue
 		if move_straight_list != []:
-			await move_normal(move_straight_list.back(), move_straight_list.size() * 0.5)
+			var pos : Vector3 = Vector3(move_straight_list.back().x * 2.0, 0.0, move_straight_list.back().y * 2.0)
+			pos.y = ObjectLink.map_gen.map_cells[move_straight_list.back()].position.y
+			await move_normal(pos, move_straight_list.size() * 0.5, move_straight_list)
 			move_straight_list = []
 			if cell == path.back() and str_check:
 				break
@@ -219,6 +224,7 @@ select_zones : Array[Vector2i], map_boundary : Rect2i, map_cells : Dictionary[Ve
 		prev_pos = map_pos
 	can_undo_move = true
 	char_animation.play("Idle")
+	check_stepped_cell()
 	move_finished.emit()
 
 var making_move := false
@@ -272,21 +278,21 @@ terrain_map : Dictionary[Vector2i, Terrain_data]) -> Array:
 		iter -= 1
 	return path
 
-var move_straight_list : Array[Vector3] = []
+var move_straight_list : Array[Vector2i] = []
 func move_straight_check(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
-prev_pos : Vector2i, map_cells : Dictionary[Vector2i, Map_cell]) -> bool:
+prev_pos : Vector2i) -> bool:
 	if move_to_direction[target_cell - prev_pos] != current_direction:
 		return false
 	if terrain_map[map_pos].height != terrain_map[target_cell].height:
 		return false
-	move_straight_list.append(map_cells[target_cell].position)
+	move_straight_list.append(target_cell)
 	map_pos = target_cell
 	return true
 
 func move_next(target_cell : Vector2i, terrain_map : Dictionary[Vector2i, Terrain_data],
 map_cells : Dictionary[Vector2i, Map_cell]):
 	if terrain_map[map_pos].height == terrain_map[target_cell].height:
-		await move_normal(map_cells[target_cell].position)
+		await move_normal(map_cells[target_cell].position, 0.5, [target_cell])
 	else:
 		var height : int = terrain_map[target_cell].height - terrain_map[map_pos].height
 		if height >=-5 and height <= 5:
@@ -297,13 +303,28 @@ map_cells : Dictionary[Vector2i, Map_cell]):
 			await move_drop(map_cells[target_cell].position)
 	map_pos = target_cell
 
-func move_normal(pos : Vector3, time := 0.5):
+func check_stepped_cell():
+	if ObjectLink.map_gen.object_map.has(map_pos):
+		var obj_data : Map_object = ObjectLink.map_gen.object_map[map_pos]
+		if obj_data.object_type != Map_object.types.ROT:
+			return
+		if randf() >= obj_data.rot_chance:
+			return
+		await stats.change_rot(1)
+		set_rot(stats.rot_stage)
+
+@warning_ignore("unused_parameter")
+func move_normal(pos : Vector3, time := 0.5, path : Array[Vector2i] = []):
 	var tween := create_tween()
 	tween.tween_property(self, "position", pos, time)
 	if char_animation.has_animation("Walk"):
 		if char_animation.current_animation != "Walk":
 			char_animation.play("Walk")
 	await tween.finished
+	#for cell in path:
+		#await get_tree().create_timer(0.5).timeout
+		#map_pos = cell
+		#check_stepped_cell()
 
 func move_step(pos : Vector3):
 	var ap : AnimationPlayer = $AnimationPlayer
@@ -615,6 +636,8 @@ func undo_move(map_cells : Dictionary[Vector2i, Map_cell]):
 	map_pos = previous_map_pos
 	can_undo_move = false
 	turn(pre_move_dir, true)
+	await stats.change_rot(rot_pre_move - stats.rot_stage)
+	set_rot(stats.rot_stage)
 
 func load_state(save_char_data : Save_char_data):
 	can_move = save_char_data.can_move

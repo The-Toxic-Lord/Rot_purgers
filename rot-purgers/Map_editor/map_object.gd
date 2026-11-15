@@ -9,9 +9,10 @@ class_name Map_object
 @export var node_UID : String
 @export var direction := Map_generator.directions.N
 
-enum types { STATIC, SPAWN, EXIT }
+enum types { STATIC, SPAWN, EXIT, ROT }
 @export var object_type : types = types.STATIC
 @export var extra_data : String
 @export var dialogue_cue : String
 
 @export var height : int = 0
+@export var rot_chance : float = 0.0

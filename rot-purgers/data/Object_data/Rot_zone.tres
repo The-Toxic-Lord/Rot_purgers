@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Map_object" format=3 uid="uid://bf25d5qkw66ia"]
+
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="1_d70le"]
+[ext_resource type="Texture2D" uid="uid://manw7rgau7qu" path="res://3d_map/map_cell_materials/material_textures/Texture_128x128_11.png" id="2_d70le"]
+
+[resource]
+script = ExtResource("1_d70le")
+name = "rot_zone"
+sprite = ExtResource("2_d70le")
+node_UID = "uid://demjls6g6q0ro"
+rot_chance = 1.0
+metadata/_custom_type_script = "uid://m48jo33kjka0"
