@@ -61,7 +61,8 @@ secret:
 	- rot immunity flip (set rot to 3 then give immunity, dialogue(explain how it works))
 	- pre map - battle against doppelgangers
 
-
+rot shader tile:
+	разделить рамку на 4 стороны и выключать те где есть соседи
 
 
 

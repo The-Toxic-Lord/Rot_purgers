@@ -31,6 +31,7 @@ var is_dead := false
 var deflects_left : int = 0
 
 var rot_pre_move : int = 0
+var rot_cells_checks : Dictionary[Vector2i, bool] = {}
 
 var previous_direction : Map_generator.directions = Map_generator.directions.N
 var current_direction : Map_generator.directions = Map_generator.directions.N
@@ -98,6 +99,7 @@ func new_round():
 	can_undo_move = false
 	can_rearange = stats.can_rearange_stats
 	previous_map_pos = Vector2i(-1, -1)
+	rot_cells_checks.clear()
 	
 	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.05), 0, stats.max_magic)
 	stats.apply_boost_magic_cost()
@@ -304,12 +306,19 @@ map_cells : Dictionary[Vector2i, Map_cell]):
 	map_pos = target_cell
 
 func check_stepped_cell():
+	if rot_cells_checks.has(map_pos):
+		if rot_cells_checks[map_pos]:
+			return
+		await stats.change_rot(1)
+		set_rot(stats.rot_stage)
 	if ObjectLink.map_gen.object_map.has(map_pos):
 		var obj_data : Map_object = ObjectLink.map_gen.object_map[map_pos]
 		if obj_data.object_type != Map_object.types.ROT:
 			return
 		if randf() >= obj_data.rot_chance:
+			rot_cells_checks[map_pos] = true
 			return
+		rot_cells_checks[map_pos] = false
 		await stats.change_rot(1)
 		set_rot(stats.rot_stage)
 

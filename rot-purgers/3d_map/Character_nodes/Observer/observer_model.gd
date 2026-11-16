@@ -3,7 +3,7 @@ extends Node3D
 class_name Observer_model
 
 @onready var eyes : Array[MeshInstance3D] = [
-	%Eye_top, %Eye_forward, %Eye_back, %Eye_left, %Eye_right
+	%Eye_top, %Eye_forward, %Eye_back, %Eye_left, %Eye_right, %Eye_bottom
 ]
 
 var start_quat : Array[Quaternion] = []

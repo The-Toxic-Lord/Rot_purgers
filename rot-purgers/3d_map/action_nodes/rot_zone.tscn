@@ -1,14 +1,28 @@
 [gd_scene format=3 uid="uid://demjls6g6q0ro"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8mbec"]
+[ext_resource type="Shader" uid="uid://bjjhyipmqnv1d" path="res://Workshop/rot_zone.tres" id="1_0noxs"]
+[ext_resource type="ArrayMesh" uid="uid://yobxpbt374w4" path="res://Workshop/floor_mesh.tres" id="1_74i16"]
+[ext_resource type="Texture2D" uid="uid://bsx30ktt1bnck" path="res://Workshop/ramka_2.png" id="2_0dbhs"]
+[ext_resource type="Texture2D" uid="uid://ge26qimprirr" path="res://3d_map/map_cell_materials/material_textures/Texture_128x128_13.png" id="2_robd1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_robd1"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_0noxs")
+shader_parameter/dissolve = 0.6
+shader_parameter/divisions = 4
+shader_parameter/emmision = 4.0
+shader_parameter/wave_size = 0.04
+shader_parameter/wave_wave_size = 0.03
+shader_parameter/ramka = ExtResource("2_0dbhs")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pn5p5"]
 transparency = 1
-albedo_color = Color(0.15401608, 0.39459822, 0.12242665, 0.5137255)
+albedo_texture = ExtResource("2_robd1")
 
 [node name="Spawn_zone" type="Node3D" unique_id=270369021]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1006737940]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-mesh = SubResource("PlaneMesh_8mbec")
+material_override = SubResource("ShaderMaterial_robd1")
+mesh = ExtResource("1_74i16")
 surface_material_override/0 = SubResource("StandardMaterial3D_pn5p5")

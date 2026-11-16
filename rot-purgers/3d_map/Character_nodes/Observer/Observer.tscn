@@ -213,6 +213,12 @@ transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 0.99999994, 0, -0.9999
 mesh = ExtResource("5_41ov8")
 surface_material_override/0 = ExtResource("6_p1nuy")
 
+[node name="Eye_bottom" type="MeshInstance3D" parent="Observer_model/eye_holder" unique_id=1169106661]
+unique_name_in_owner = true
+transform = Transform3D(0.9999998, 0, 0, 0, -4.371138e-08, 0.9999998, 0, -0.9999998, -4.371138e-08, 0, -0.8, 0)
+mesh = ExtResource("5_41ov8")
+surface_material_override/0 = ExtResource("6_p1nuy")
+
 [node name="Range_target" type="Node3D" parent="." unique_id=124908131]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=316780914]
