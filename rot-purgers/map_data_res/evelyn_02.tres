@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_em36n"]
 [ext_resource type="Resource" uid="uid://bq3s1qjaw05vw" path="res://Skills/Skill_res/Power_shot.tres" id="3_73yyp"]
 [ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="4_y3gxb"]
+[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/Enviroments/cave.tres" id="5_5gtol"]
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="5_yhg4d"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_qufo4"]
 [ext_resource type="Resource" uid="uid://bey6puoeedq1m" path="res://data/Player_chars_data/Evelyn.tres" id="7_06y5y"]
@@ -24,7 +25,6 @@ max_health = 150
 max_magic = 0
 strength = 50
 defence = 40
-magic_strenght = 0
 accuracy = 50
 speed = 55
 move_speed = 2
@@ -48,7 +48,6 @@ max_health = 150
 max_magic = 0
 strength = 50
 defence = 40
-magic_strenght = 0
 accuracy = 50
 speed = 55
 move_speed = 2
@@ -72,7 +71,6 @@ max_health = 3000
 max_magic = 80
 strength = 60
 defence = 60
-magic_strenght = 0
 accuracy = 60
 speed = 40
 move_speed = 2
@@ -96,7 +94,6 @@ max_health = 150
 max_magic = 0
 strength = 50
 defence = 40
-magic_strenght = 0
 accuracy = 50
 speed = 55
 move_speed = 2
@@ -120,7 +117,6 @@ max_health = 150
 max_magic = 0
 strength = 50
 defence = 40
-magic_strenght = 0
 accuracy = 50
 speed = 55
 move_speed = 2
@@ -549,3 +545,4 @@ text_data = ExtResource("13_x3cg1")
 text_cue = "evelyn_02"
 next_map_path = "uid://b38vlimyh61w5"
 player_chars = Array[ExtResource("1_nu1ln")]([ExtResource("7_06y5y")])
+enviroment = ExtResource("5_5gtol")

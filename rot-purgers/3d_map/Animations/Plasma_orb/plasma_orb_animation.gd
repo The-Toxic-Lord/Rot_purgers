@@ -4,7 +4,6 @@ class_name Plasma_orb_animation
 
 @onready var player: AnimationPlayer = %Player
 @onready var plasma_orb: Magic_orb_VFX = %Plasma_orb
-@onready var explosion: VFXExplosionBB = %Explosion
 
 @warning_ignore("unused_parameter")
 func start(target : Vector3, cells : Array[Vector2i] = []):
@@ -23,7 +22,9 @@ func send(target : Vector3):
 
 func explode():
 	plasma_orb.hide()
-	explosion.position = plasma_orb.position
+	var explosion = preload("uid://chqijevfxuhpd").instantiate()
+	add_child(explosion)
+	explosion.global_position = plasma_orb.global_position
 	explosion.play()
 	await explosion.finished
 	animation_finished.emit()

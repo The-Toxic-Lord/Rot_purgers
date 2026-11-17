@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Map_data" format=3]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://dqy0oaob26506"]
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_fepub"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_s1j2q"]
@@ -261,88 +261,7 @@ AI_type = 2
 potential_skills = Array[ExtResource("2_s1j2q")]([ExtResource("3_ehe8t")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_a5w7f"]
-script = ExtResource("5_5j27t")
-name = "rot_zone"
-sprite = ExtResource("9_xtksh")
-node_UID = "uid://demjls6g6q0ro"
-object_type = 3
-rot_chance = 0.2
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_jtf8v"]
-script = ExtResource("5_5j27t")
-name = "spawn_zone"
-sprite = ExtResource("6_x2dq3")
-node_UID = "uid://b77u0ogcrnmlx"
-object_type = 1
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_pjaby"]
-script = ExtResource("5_5j27t")
-name = "exit_zone"
-sprite = ExtResource("7_euyro")
-atlas_coord = Vector2i(1, 0)
-node_UID = "uid://bcjtmasx0q6dh"
-object_type = 2
-extra_data = "res://map_data_res/002.tres"
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_xlfys"]
-script = ExtResource("5_5j27t")
-name = "rot_zone"
-sprite = ExtResource("9_xtksh")
-node_UID = "uid://demjls6g6q0ro"
-object_type = 3
-rot_chance = 0.2
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_k0i8u"]
-script = ExtResource("5_5j27t")
-name = "rot_zone"
-sprite = ExtResource("9_xtksh")
-node_UID = "uid://demjls6g6q0ro"
-object_type = 3
-rot_chance = 0.2
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_sryp0"]
-script = ExtResource("5_5j27t")
-name = "rot_zone"
-sprite = ExtResource("9_xtksh")
-node_UID = "uid://demjls6g6q0ro"
-object_type = 3
-rot_chance = 0.2
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_tl0nx"]
-script = ExtResource("5_5j27t")
-name = "rot_zone"
-sprite = ExtResource("9_xtksh")
-node_UID = "uid://demjls6g6q0ro"
-object_type = 3
-rot_chance = 0.2
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_oqgqi"]
-script = ExtResource("5_5j27t")
-name = "rot_zone"
-sprite = ExtResource("9_xtksh")
-node_UID = "uid://demjls6g6q0ro"
-object_type = 3
-rot_chance = 0.2
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_k5onh"]
-script = ExtResource("5_5j27t")
-name = "rot_zone"
-sprite = ExtResource("9_xtksh")
-node_UID = "uid://demjls6g6q0ro"
-object_type = 3
-rot_chance = 0.2
-metadata/_custom_type_script = "uid://m48jo33kjka0"
-
-[sub_resource type="Resource" id="Resource_k8ger"]
+[sub_resource type="Resource" id="Resource_6v5bt"]
 script = ExtResource("5_5j27t")
 name = "rot_zone"
 sprite = ExtResource("9_xtksh")
@@ -360,13 +279,94 @@ object_type = 3
 rot_chance = 0.2
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
-[sub_resource type="Resource" id="Resource_6v5bt"]
+[sub_resource type="Resource" id="Resource_k8ger"]
 script = ExtResource("5_5j27t")
 name = "rot_zone"
 sprite = ExtResource("9_xtksh")
 node_UID = "uid://demjls6g6q0ro"
 object_type = 3
 rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_k5onh"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_a5w7f"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_k0i8u"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_xlfys"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_oqgqi"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jtf8v"]
+script = ExtResource("5_5j27t")
+name = "spawn_zone"
+sprite = ExtResource("6_x2dq3")
+node_UID = "uid://b77u0ogcrnmlx"
+object_type = 1
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_tl0nx"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_sryp0"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_pjaby"]
+script = ExtResource("5_5j27t")
+name = "exit_zone"
+sprite = ExtResource("7_euyro")
+atlas_coord = Vector2i(1, 0)
+node_UID = "uid://bcjtmasx0q6dh"
+object_type = 2
+extra_data = "res://map_data_res/002.tres"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_xq60x"]
