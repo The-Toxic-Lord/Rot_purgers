@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_ob4x1"]
 [ext_resource type="Resource" uid="uid://dsbe0eog177ex" path="res://dialogue/texts/custcenes_small.dialogue" id="2_ph5yb"]
 [ext_resource type="PackedScene" uid="uid://b57jse1cfeshi" path="res://3d_map/map_cell.tscn" id="2_s3kgn"]
-[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/cave.tres" id="3_04b02"]
+[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/Enviroments/cave.tres" id="3_04b02"]
 [ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="3_ph5yb"]
 [ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor.glb" id="5_s3kgn"]
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="6_04b02"]

@@ -53,6 +53,9 @@ func handle_attack(order_data : Order_data):
 	await get_tree().process_frame
 	if has_node(order_data.target) and has_node(order_data.attacker):
 		var target : Character_node = get_node(order_data.target)
+		if target.is_dead:
+			order_handled.emit()
+			return
 		var attacker : Character_node = get_node(order_data.attacker)
 		dmg_mng.attack_damage(target, attacker)
 		await dmg_mng.order_ended
@@ -124,14 +127,16 @@ func start_player_turn():
 func char_dies(char_node : Character_node):
 	if enemies.has(char_node):
 		enemies.erase(char_node)
-		await map_gen.remove_enemy(char_node)
+		#await map_gen.remove_enemy(char_node)
 		if enemies.is_empty() and map_gen.map_data.end_condition == Map_data.map_end_conditions.ENEMY:
+			await char_node.battle_can_over
 			end_battle()
 	else:
 		allies.erase(char_node)
-		map_gen.remove_enemy(char_node)
+		#map_gen.remove_enemy(char_node)
 		GlobalData.dead_chars.append(char_node.name)
 		if allies.is_empty() and GlobalData.ally_team.is_empty():
+			await char_node.battle_can_over
 			game_over()
 			# ADD game_over
 

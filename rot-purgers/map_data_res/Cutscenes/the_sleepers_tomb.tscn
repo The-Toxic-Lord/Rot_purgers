@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dra0ivq7stx8c" path="res://assets/BinbunVFX_Vol2/FlameFX/effects/fire/vfx_basic_fire_01.tscn" id="5_63vve"]
 [ext_resource type="Script" uid="uid://cuvfksx8uqkku" path="res://map_data_res/Cutscenes/cutscene_object.gd" id="6_58w2d"]
 [ext_resource type="PackedScene" uid="uid://cab586b27pb30" path="res://blender_models/Chars/Evelyn.glb" id="6_tq8nf"]
+[ext_resource type="Environment" uid="uid://bfa1d8jck2rq1" path="res://Workshop/Enviroments/dark.tres" id="7_63vve"]
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="7_n1j4m"]
 [ext_resource type="PackedScene" uid="uid://opby7ghw6lqr" path="res://blender_models/Chars/Cape.glb" id="9_cusr2"]
 
@@ -59,19 +60,6 @@ _surfaces = [{
 "vertex_count": 102,
 "vertex_data": PackedByteArray("AADAvwAAgL8AAGDAAQDAvwAAAL8AAAC/AQDAvwAAgL8AAAC/AADAvwAAgL8AAGDAAQDAvwAAAL8AAKC/AQDAvwAAAL8AAAC/AQDAvwAAgL8AAAC/AQDAvwAAAL8AAAC//v+/PwAAgL/4//++AADAvwAAgL8AAGDAAADAvwAAAD8AADDAAQDAvwAAAAAAAADAAADAvwAAgL8AAGDAAADAvwAAgD8AAGDAAADAvwAAAD8AADDAAADAvwAAAD8AADDAAADAvwAAgD8AAGDAAADAvwAAgD8AADDAAADAvwAAgL8AAGDAAADAPwAAgD///1/AAADAvwAAgD8AAGDAAADAvwAAAD8AADDAAADAvwAAgD8AADDAAADAPwAAAD8AADDAAADAvwAAgL8AAGDAAQDAvwAAAAAAAADAAQDAvwAAAL8AAKC/AQDAvwAAAAAAAADAAQDAvwAAAAAAAKC/AQDAvwAAAL8AAKC/AADAvwAAAD8AADDAAQDAvwAAAD8AAADAAQDAvwAAAAAAAADAAQDAvwAAAAAAAADAAQDAvwAAAD8AAADAAADAPwAAAAD///+/AQDAvwAAAAAAAADAAADAPwAAAAD+/5+/AQDAvwAAAAAAAKC/AQDAvwAAAL8AAKC/AQDAvwAAAAAAAKC/AADAPwAAAL/+/5+/AQDAvwAAAL8AAKC//v+/PwAAAL/4//++AQDAvwAAAL8AAAC/AADAvwAAAD8AADDAAADAPwAAAD////+/AQDAvwAAAD8AAADAAADAvwAAgD8AAGDAAADAPwAAgD8AADDAAADAvwAAgD8AADDAAQDAvwAAAL8AAAC//v+/PwAAAL/4//++/v+/PwAAgL/4//++AADAPwAAgL///1/A/v+/PwAAgL/4//++/v+/PwAAAL/4//++AADAPwAAgL///1/A/v+/PwAAAL/4//++AADAPwAAAL/+/5+/AADAvwAAgL8AAGDAAADAPwAAgL///1/AAADAPwAAgD///1/AAADAvwAAgD8AADDAAADAPwAAgD8AADDAAADAPwAAAD8AADDAAADAPwAAgL///1/AAADAPwAAAAD///+/AADAPwAAAD8AADDAAADAPwAAgL///1/AAADAPwAAAD8AADDAAADAPwAAgD///1/AAADAPwAAAD8AADDAAADAPwAAgD8AADDAAADAPwAAgD///1/AAQDAvwAAAAAAAADAAADAPwAAAAD///+/AADAPwAAAAD+/5+/AQDAvwAAAL8AAKC/AADAPwAAAL/+/5+//v+/PwAAAL/4//++AQDAvwAAAAAAAKC/AADAPwAAAAD+/5+/AADAPwAAAL/+/5+/AQDAvwAAAD8AAADAAADAPwAAAD////+/AADAPwAAAAD///+/AADAvwAAAD8AADDAAADAPwAAAD8AADDAAADAPwAAAD////+/AADAPwAAgL///1/AAADAPwAAAL/+/5+/AADAPwAAAAD///+/AADAPwAAAAD///+/AADAPwAAAL/+/5+/AADAPwAAAAD+/5+/AADAPwAAAD8AADDAAADAPwAAAAD///+/AADAPwAAAD////+/AADAvwAAgD8AAGDAAADAPwAAgD///1/AAADAPwAAgD8AADDAAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3//f/7//7//f/9//v//v/9//3/+//+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+///////7//7///////v//v//////+//+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3//f////7//f/9/////v/9//3////+//3////7//7//f///////v/9////+//+//3//f/7//7//f/9//v//v/9//3/+//+//3////7//7//f////v//v/9////+//+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3//f/7//7//f/9//v//v/9//3/+//+//v//f//////+//9///////7//3///////v//f////v/+//9////+//7//3////7///////7//7///////v//v//////+//+//3//f////7//f/9/////v/9//3////+/////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3///////3////7//7//f///////v/9///////+//3////7//7//f////v//v/9////+//+//3//f/7//7//f/9//v//v/9//3/+//+//3//f////7//f/9/////v/9//3////+//3///////7//f///////v/9///////+/////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3///////3///////7//f////v//v/9///////+/")
 }]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cfiqv"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-energy_multiplier = 0.0
-
-[sub_resource type="Sky" id="Sky_worwp"]
-sky_material = SubResource("ProceduralSkyMaterial_cfiqv")
-
-[sub_resource type="Environment" id="Environment_0tlj6"]
-background_mode = 2
-sky = SubResource("Sky_worwp")
-glow_enabled = true
 
 [sub_resource type="Animation" id="Animation_63vve"]
 resource_name = "Lean"
@@ -408,7 +396,7 @@ transform = Transform3D(0.99999976, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0
 script = ExtResource("6_58w2d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2003342129]
-environment = SubResource("Environment_0tlj6")
+environment = ExtResource("7_63vve")
 
 [node name="VFXBasicFire_01" parent="." unique_id=2052583828 instance=ExtResource("5_63vve")]
 transform = Transform3D(-0.40937388, 0, 0.91236687, 0, 1, 0, -0.91236687, 0, -0.40937388, -3, 3, -2.5)
@@ -477,7 +465,7 @@ visible = false
 libraries/ = SubResource("AnimationLibrary_p1b3g")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2115253586]
-transform = Transform3D(0.99991435, -0.0022167158, 0.012900538, 0, 0.98555577, 0.16934942, -0.013089603, -0.16933487, 0.98547167, 0.015071465, 1.712495, 4.775469)
+transform = Transform3D(0.99991435, -0.0022167158, 0.012900538, 0, 0.9855557, 0.16934942, -0.013089603, -0.16933486, 0.98547167, 0.015071465, 1.712495, 4.775469)
 current = true
 
 [node name="Fade_in" type="MeshInstance3D" parent="Camera3D" unique_id=13244495]

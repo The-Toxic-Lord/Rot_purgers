@@ -1,17 +1,18 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://xuek2728s2v3"]
+[gd_resource type="Resource" script_class="Map_data" format=3]
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_fepub"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_s1j2q"]
 [ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="3_ehe8t"]
 [ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="4_dr8i6"]
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="5_5j27t"]
-[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/cave.tres" id="5_euyro"]
+[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/Enviroments/cave.tres" id="5_euyro"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_x2dq3"]
 [ext_resource type="Texture2D" uid="uid://c131pecdedawl" path="res://import/check_button.png" id="7_euyro"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="8_5j27t"]
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="8_xtksh"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="9_3cdmx"]
 [ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="9_x2dq3"]
+[ext_resource type="Texture2D" uid="uid://dvwbobehs3rei" path="res://aseprite_stuff/rot_tile_sprite.png" id="9_xtksh"]
 [ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="10_euyro"]
 [ext_resource type="Material" uid="uid://co6ojt5md8bdi" path="res://3d_map/map_cell_materials/cave_floor_2.tres" id="10_otsvp"]
 [ext_resource type="Texture2D" uid="uid://cmb2kme6vv828" path="res://3d_map/map_cell_materials/material_textures/Horror_Stone_01-128x128.png" id="11_jtf8v"]
@@ -29,7 +30,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -50,7 +50,6 @@ max_health = 150
 max_magic = 10
 strength = 50
 defence = 40
-magic_strenght = 0
 accuracy = 50
 speed = 55
 move_speed = 5
@@ -72,7 +71,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -93,7 +91,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -113,7 +110,6 @@ max_health = 150
 max_magic = 10
 strength = 50
 defence = 40
-magic_strenght = 0
 accuracy = 50
 speed = 55
 move_speed = 5
@@ -135,7 +131,6 @@ max_health = 150
 max_magic = 10
 strength = 50
 defence = 40
-magic_strenght = 0
 accuracy = 50
 speed = 55
 move_speed = 5
@@ -157,7 +152,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -178,7 +172,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -199,7 +192,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -220,7 +212,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -241,7 +232,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -262,7 +252,6 @@ max_health = 50
 max_magic = 0
 strength = 30
 defence = 30
-magic_strenght = 0
 accuracy = 40
 speed = 45
 move_speed = 5
@@ -271,6 +260,15 @@ node_UID = "uid://dunq80ub3v1jk"
 AI_type = 2
 potential_skills = Array[ExtResource("2_s1j2q")]([ExtResource("3_ehe8t")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_a5w7f"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_jtf8v"]
 script = ExtResource("5_5j27t")
@@ -288,6 +286,87 @@ atlas_coord = Vector2i(1, 0)
 node_UID = "uid://bcjtmasx0q6dh"
 object_type = 2
 extra_data = "res://map_data_res/002.tres"
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_xlfys"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_k0i8u"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_sryp0"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_tl0nx"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_oqgqi"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_k5onh"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_k8ger"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_5p7xw"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_6v5bt"]
+script = ExtResource("5_5j27t")
+name = "rot_zone"
+sprite = ExtResource("9_xtksh")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.2
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_xq60x"]
@@ -1070,7 +1149,17 @@ Vector2i(22, 10): SubResource("Resource_h1gqw"),
 Vector2i(22, 11): SubResource("Resource_nwb2i")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("5_5j27t")]({
+Vector2i(10, 3): SubResource("Resource_6v5bt"),
+Vector2i(11, 3): SubResource("Resource_5p7xw"),
+Vector2i(12, 3): SubResource("Resource_k8ger"),
+Vector2i(12, 4): SubResource("Resource_k5onh"),
+Vector2i(12, 7): SubResource("Resource_a5w7f"),
+Vector2i(13, 5): SubResource("Resource_k0i8u"),
+Vector2i(13, 6): SubResource("Resource_xlfys"),
+Vector2i(14, 3): SubResource("Resource_oqgqi"),
 Vector2i(14, 12): SubResource("Resource_jtf8v"),
+Vector2i(15, 3): SubResource("Resource_tl0nx"),
+Vector2i(15, 6): SubResource("Resource_sryp0"),
 Vector2i(16, 1): SubResource("Resource_pjaby")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_fepub")]({

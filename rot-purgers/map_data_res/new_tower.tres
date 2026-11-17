@@ -1,25 +1,28 @@
-[gd_resource type="Resource" script_class="Map_data" format=3]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://bmkvi4n2ae0j"]
 
-[ext_resource type="Script" path="res://data/Character_stats.gd" id="1_4vewh"]
-[ext_resource type="Script" path="res://Map_editor/map_object.gd" id="2_2ab1q"]
-[ext_resource type="Script" path="res://Skills/skill_base.gd" id="2_drdfs"]
-[ext_resource type="Texture2D" path="res://import/check_button.png" id="3_7bmbd"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Power_shot.tres" id="3_gypqx"]
-[ext_resource type="Script" path="res://map_data_res/map_data.gd" id="3_kahi2"]
-[ext_resource type="Script" path="res://data/terrain_data.gd" id="4_ltseb"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crystal.png" id="4_q2jkj"]
-[ext_resource type="Texture2D" path="res://import/check_button_2.png" id="4_u4bl8"]
-[ext_resource type="Resource" path="res://Skills/Skill_res/Charge.tres" id="5_q2jkj"]
-[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_floor.tres" id="6_u4bl8"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Crawler.png" id="6_wne1x"]
-[ext_resource type="Texture2D" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="7_hwfj4"]
-[ext_resource type="Texture2D" path="res://aseprite_stuff/Shapes.png" id="7_wne1x"]
-[ext_resource type="Texture2D" path="res://import/Eye.png" id="8_sdsx8"]
-[ext_resource type="Material" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_vjq6o"]
-[ext_resource type="Resource" path="res://data/Player_chars_data/Alastor.tres" id="12_nclqm"]
-[ext_resource type="Resource" path="res://data/Player_chars_data/Aven.tres" id="13_473e2"]
-[ext_resource type="Resource" path="res://data/Player_chars_data/Elliot.tres" id="14_gy2u6"]
-[ext_resource type="Resource" path="res://data/Player_chars_data/Zaar.tres" id="15_7djmx"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_4vewh"]
+[ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="2_2ab1q"]
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_drdfs"]
+[ext_resource type="Texture2D" uid="uid://c131pecdedawl" path="res://import/check_button.png" id="3_7bmbd"]
+[ext_resource type="Resource" uid="uid://bq3s1qjaw05vw" path="res://Skills/Skill_res/Power_shot.tres" id="3_gypqx"]
+[ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="3_kahi2"]
+[ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="4_ltseb"]
+[ext_resource type="Texture2D" uid="uid://bhn8cse4urgec" path="res://aseprite_stuff/Crystal.png" id="4_q2jkj"]
+[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="4_u4bl8"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="5_q2jkj"]
+[ext_resource type="Material" uid="uid://c27l174y6lnwi" path="res://3d_map/map_cell_materials/tile_floor.tres" id="6_u4bl8"]
+[ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="6_wne1x"]
+[ext_resource type="Texture2D" uid="uid://cykqggsfoqhqp" path="res://3d_map/map_cell_materials/material_textures/Tile_25-128x128.png" id="7_hwfj4"]
+[ext_resource type="Texture2D" uid="uid://ba5njglj1gpcp" path="res://aseprite_stuff/Shapes.png" id="7_wne1x"]
+[ext_resource type="Texture2D" uid="uid://c5f5mptu5chck" path="res://import/Eye.png" id="8_sdsx8"]
+[ext_resource type="Material" uid="uid://dkma81f54rlrp" path="res://3d_map/map_cell_materials/tile_wall.tres" id="8_vjq6o"]
+[ext_resource type="Resource" uid="uid://bdy6yy4aten05" path="res://Skills/Skill_res/Push.tres" id="9_7djmx"]
+[ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="10_onvuo"]
+[ext_resource type="Texture2D" uid="uid://dvwbobehs3rei" path="res://aseprite_stuff/rot_tile_sprite.png" id="12_473e2"]
+[ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="12_nclqm"]
+[ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="13_473e2"]
+[ext_resource type="Resource" uid="uid://dg6k5myc0u1ir" path="res://data/Player_chars_data/Elliot.tres" id="14_gy2u6"]
+[ext_resource type="Resource" uid="uid://c5xtfota7ng1v" path="res://data/Player_chars_data/Zaar.tres" id="15_7djmx"]
 
 [sub_resource type="Resource" id="Resource_ymi76"]
 script = ExtResource("1_4vewh")
@@ -41,7 +44,7 @@ start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_7acai"]
+[sub_resource type="Resource" id="Resource_6trlu"]
 script = ExtResource("1_4vewh")
 name = "Crawler"
 char_class = "Servant"
@@ -82,7 +85,7 @@ start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_ahxkh"]
+[sub_resource type="Resource" id="Resource_f8vkf"]
 script = ExtResource("1_4vewh")
 name = "Crawler"
 char_class = "Servant"
@@ -101,6 +104,46 @@ trigger_distance = 10
 node_UID = "uid://dunq80ub3v1jk"
 start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_nhkou"]
+script = ExtResource("1_4vewh")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("8_sdsx8")
+max_health = 70
+max_magic = 0
+strength = 50
+defence = 50
+accuracy = 60
+speed = 60
+move_speed = 5
+jump_height = 10
+attack_distance = 5
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 50
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_mf23f"]
+script = ExtResource("1_4vewh")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("8_sdsx8")
+max_health = 70
+max_magic = 0
+strength = 50
+defence = 50
+accuracy = 60
+speed = 60
+move_speed = 5
+jump_height = 10
+attack_distance = 5
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 50
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_ldetp"]
@@ -123,7 +166,7 @@ start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_exnoe"]
+[sub_resource type="Resource" id="Resource_ahxkh"]
 script = ExtResource("1_4vewh")
 name = "Crawler"
 char_class = "Servant"
@@ -144,42 +187,156 @@ start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_txabv"]
+[sub_resource type="Resource" id="Resource_hq46h"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 115
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
-move_speed = 0
-jump_height = 0
-attack_distance = 6
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_hvxgm"]
+[sub_resource type="Resource" id="Resource_qn4f6"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 115
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_5r7v5"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 115
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_8rjhy"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 115
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_42y78"]
+script = ExtResource("1_4vewh")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("8_sdsx8")
+max_health = 130
 max_magic = 0
 strength = 70
-defence = 70
+defence = 40
 accuracy = 80
-speed = 80
+speed = 95
+move_speed = 10
+jump_height = 10
+attack_distance = 5
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 70
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_40t5l"]
+script = ExtResource("1_4vewh")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("8_sdsx8")
+max_health = 130
+max_magic = 0
+strength = 70
+defence = 40
+accuracy = 80
+speed = 95
+move_speed = 10
+jump_height = 10
+attack_distance = 5
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 70
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_ok61x"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 115
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_txabv"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 150
+max_magic = 0
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
@@ -192,57 +349,97 @@ name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_r4d0a"]
+[sub_resource type="Resource" id="Resource_1btmw"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 115
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 1
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_hvxgm"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 150
+max_magic = 0
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_r8wgk"]
+[sub_resource type="Resource" id="Resource_vmp5k"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_vfamf"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 150
+max_magic = 0
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
+move_speed = 0
+jump_height = 0
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
@@ -270,21 +467,21 @@ AI_type = 0
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_6qr7b"]
+[sub_resource type="Resource" id="Resource_hpm7q"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
@@ -310,6 +507,26 @@ node_UID = "uid://dunq80ub3v1jk"
 start_dir = 3
 AI_type = 0
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_4jvos"]
+script = ExtResource("1_4vewh")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("8_sdsx8")
+max_health = 130
+max_magic = 0
+strength = 70
+defence = 40
+accuracy = 80
+speed = 95
+move_speed = 0
+jump_height = 10
+attack_distance = 8
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 70
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_xm05j"]
@@ -352,6 +569,26 @@ start_dir = 1
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
+[sub_resource type="Resource" id="Resource_gmu41"]
+script = ExtResource("1_4vewh")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("8_sdsx8")
+max_health = 70
+max_magic = 0
+strength = 50
+defence = 50
+accuracy = 60
+speed = 60
+move_speed = 5
+jump_height = 10
+attack_distance = 5
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 50
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
 [sub_resource type="Resource" id="Resource_1y4qo"]
 script = ExtResource("1_4vewh")
 name = "Shapes"
@@ -371,55 +608,13 @@ AI_type = 4
 spawn_node_UUID = "res://data/Enemy_data/tower-spawn_01.tres"
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_fwm4b"]
+[sub_resource type="Resource" id="Resource_oxoqi"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
-max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
-move_speed = 0
-jump_height = 0
-attack_distance = 6
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
-start_dir = 2
-potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_ygelw"]
-script = ExtResource("1_4vewh")
-name = "Crystal"
-char_class = "Neutrophil"
-age = 468
-sprite = ExtResource("4_q2jkj")
-max_health = 135
-max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
-move_speed = 0
-jump_height = 0
-attack_distance = 6
-attack_height = 30
-node_UID = "uid://c7bbx7glxoob8"
-start_dir = 2
-potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_u7q7o"]
-script = ExtResource("1_4vewh")
-name = "Crystal"
-char_class = "Neutrophil"
-age = 468
-sprite = ExtResource("4_q2jkj")
-max_health = 170
+max_health = 150
 max_magic = 0
 strength = 85
 defence = 85
@@ -434,24 +629,104 @@ start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_vmp5k"]
+[sub_resource type="Resource" id="Resource_r8wgk"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_u7q7o"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 150
+max_magic = 0
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
+move_speed = 0
+jump_height = 0
+attack_distance = 8
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_6qr7b"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 150
+max_magic = 0
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
+move_speed = 0
+jump_height = 0
+attack_distance = 8
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 2
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_r37as"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 115
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 1
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_5kiuj"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 115
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 1
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
@@ -499,36 +774,36 @@ name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_eydax"]
+[sub_resource type="Resource" id="Resource_ygelw"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
@@ -556,7 +831,7 @@ start_dir = 1
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_6trlu"]
+[sub_resource type="Resource" id="Resource_exnoe"]
 script = ExtResource("1_4vewh")
 name = "Crawler"
 char_class = "Servant"
@@ -577,7 +852,7 @@ start_dir = 1
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_f8vkf"]
+[sub_resource type="Resource" id="Resource_7acai"]
 script = ExtResource("1_4vewh")
 name = "Crawler"
 char_class = "Servant"
@@ -598,87 +873,126 @@ start_dir = 1
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_hpm7q"]
+[sub_resource type="Resource" id="Resource_r4d0a"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_oxoqi"]
+[sub_resource type="Resource" id="Resource_fwm4b"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_vfamf"]
+[sub_resource type="Resource" id="Resource_eydax"]
 script = ExtResource("1_4vewh")
 name = "Crystal"
 char_class = "Neutrophil"
 age = 468
 sprite = ExtResource("4_q2jkj")
-max_health = 135
+max_health = 150
 max_magic = 0
-strength = 70
-defence = 70
-accuracy = 80
-speed = 80
+strength = 85
+defence = 85
+accuracy = 90
+speed = 90
 move_speed = 0
 jump_height = 0
-attack_distance = 6
+attack_distance = 8
 attack_height = 30
 node_UID = "uid://c7bbx7glxoob8"
 start_dir = 2
 potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_gmu41"]
+[sub_resource type="Resource" id="Resource_gx5yn"]
+script = ExtResource("1_4vewh")
+name = "Crystal"
+char_class = "Neutrophil"
+age = 468
+sprite = ExtResource("4_q2jkj")
+max_health = 115
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 65
+speed = 65
+attack_distance = 5
+attack_height = 30
+node_UID = "uid://c7bbx7glxoob8"
+start_dir = 1
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("3_gypqx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_hkg37"]
 script = ExtResource("1_4vewh")
 name = "Observer"
 char_class = "Eosinophil"
 sprite = ExtResource("8_sdsx8")
-max_health = 130
+max_health = 70
 max_magic = 0
-strength = 70
-defence = 40
-accuracy = 80
-speed = 95
-move_speed = 10
+strength = 50
+defence = 50
+accuracy = 60
+speed = 60
+move_speed = 5
 jump_height = 10
 attack_distance = 5
 node_UID = "uid://ckmkqe73jj58e"
 start_dir = 2
 AI_type = 5
-start_height = 70
+start_height = 50
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_1an6t"]
+script = ExtResource("1_4vewh")
+name = "Observer"
+char_class = "Eosinophil"
+sprite = ExtResource("8_sdsx8")
+max_health = 70
+max_magic = 0
+strength = 50
+defence = 50
+accuracy = 60
+speed = 60
+move_speed = 5
+jump_height = 10
+attack_distance = 5
+node_UID = "uid://ckmkqe73jj58e"
+start_dir = 2
+AI_type = 5
+start_height = 50
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_k4yv0"]
@@ -701,65 +1015,1395 @@ AI_type = 5
 start_height = 70
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_4jvos"]
+[sub_resource type="Resource" id="Resource_3vxfc"]
 script = ExtResource("1_4vewh")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("8_sdsx8")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("10_onvuo")
 max_health = 130
 max_magic = 0
 strength = 70
-defence = 40
+defence = 80
 accuracy = 80
-speed = 95
-move_speed = 0
-jump_height = 10
-attack_distance = 8
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 70
+speed = 80
+move_speed = 5
+node_UID = "uid://b6n303wyg5i5g"
+AI_type = 0
+skills = Array[ExtResource("2_drdfs")]([ExtResource("9_7djmx")])
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj"), ExtResource("9_7djmx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_40t5l"]
+[sub_resource type="Resource" id="Resource_o8iyx"]
 script = ExtResource("1_4vewh")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("8_sdsx8")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("10_onvuo")
 max_health = 130
 max_magic = 0
 strength = 70
-defence = 40
+defence = 80
 accuracy = 80
-speed = 95
-move_speed = 10
-jump_height = 10
-attack_distance = 5
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 70
+speed = 80
+move_speed = 5
+node_UID = "uid://b6n303wyg5i5g"
+AI_type = 0
+skills = Array[ExtResource("2_drdfs")]([ExtResource("9_7djmx")])
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj"), ExtResource("9_7djmx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_42y78"]
+[sub_resource type="Resource" id="Resource_tvflf"]
 script = ExtResource("1_4vewh")
-name = "Observer"
-char_class = "Eosinophil"
-sprite = ExtResource("8_sdsx8")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("10_onvuo")
 max_health = 130
 max_magic = 0
 strength = 70
-defence = 40
+defence = 80
 accuracy = 80
-speed = 95
-move_speed = 10
-jump_height = 10
-attack_distance = 5
-node_UID = "uid://ckmkqe73jj58e"
-start_dir = 2
-AI_type = 5
-start_height = 70
+speed = 80
+move_speed = 5
+node_UID = "uid://b6n303wyg5i5g"
+AI_type = 0
+skills = Array[ExtResource("2_drdfs")]([ExtResource("9_7djmx")])
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj"), ExtResource("9_7djmx")])
 metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_0tkm7"]
+script = ExtResource("1_4vewh")
+name = "Shapes"
+char_class = "Basophil"
+sprite = ExtResource("7_wne1x")
+max_health = 200
+max_magic = 0
+strength = 50
+defence = 70
+accuracy = 80
+speed = 80
+move_speed = 5
+trigger_distance = 15
+node_UID = "uid://cuxixch36l8i3"
+AI_type = 4
+spawn_node_UUID = "res://data/Enemy_data/tower-spawn_01.tres"
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_d0kmi"]
+script = ExtResource("1_4vewh")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("10_onvuo")
+max_health = 130
+max_magic = 0
+strength = 70
+defence = 80
+accuracy = 80
+speed = 80
+move_speed = 5
+node_UID = "uid://b6n303wyg5i5g"
+AI_type = 0
+skills = Array[ExtResource("2_drdfs")]([ExtResource("9_7djmx")])
+potential_skills = Array[ExtResource("2_drdfs")]([ExtResource("5_q2jkj"), ExtResource("9_7djmx")])
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_r6l5j"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_kl0yk"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_42vr0"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_v0537"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_agc84"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_gahk8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_rl4ep"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_isopu"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_2wpdv"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_dvubc"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_e47wl"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_i470g"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_pswoh"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_yvsx8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ss3ik"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_d6ie8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_5cyxu"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_2cka7"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_b5a4d"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_urhbn"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_w022e"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_avgn0"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_p6v4a"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_g5jvm"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_xry38"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_vco1w"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_upjil"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_0srdg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_tv01h"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_50arn"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_t7xw1"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_rcjum"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_vuxev"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_fgqsk"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_hq420"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_1oon4"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_fcq5i"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_a2wyl"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_65j41"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_agvow"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_uxvxg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_05r3u"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_aov4o"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_kuts2"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_4qr81"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_7pofr"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_f1lme"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_68j6w"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ifd6b"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_65mhc"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_28v5w"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_pxn0j"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_11fn7"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_apf5u"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_6eanm"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jyx3p"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_iaa8r"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_pb3vs"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_1g7ys"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_y2b2r"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_a0gd5"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_wmaif"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_2qsog"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_8eqnx"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_sjqax"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_bam4y"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_kjac5"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_14vxf"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_2jag0"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_4mq1x"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_n4plu"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_6v5uk"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_a80dm"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_p4c6h"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_06xbg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_32awf"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jgbav"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_57ogg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_5v4a8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_suwc0"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_56fot"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_nuqpf"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_leo0f"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_p8p2i"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_kdgrn"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_y5uby"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_h2sjg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_0ifjx"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_wc0v4"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_mw62f"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_dnxth"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_wbr1y"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_twia1"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_c6wga"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_oekuy"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_vu2wk"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_av8ql"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_vs101"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_x0lwd"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_3aa10"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_iipww"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_fboal"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_3k7c3"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_3p5ik"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_py24e"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_w0mrc"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_72edy"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_spjss"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ttnc1"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_4c3fa"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_nq2wa"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_gpxmg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_n23ww"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_xgkiy"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_y6q46"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_3yauj"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_t3cf5"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_w5tew"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_i7sgg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_y0ru5"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_g3otp"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_lqito"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_bmym3"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_oe44w"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_p25ah"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_wqvnt"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_vjjt6"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_xgqfb"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_qs4iy"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ojviw"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_krl6p"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_8ev56"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_qobei"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_okbut"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_c70gf"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_c8dtw"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_eypic"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_4vtd4"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_kug12"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_nmbqu"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_bxndx"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_7j20g"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_cwaec"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_luevr"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_drdfs"]
 script = ExtResource("2_2ab1q")
@@ -769,6 +2413,960 @@ atlas_coord = Vector2i(1, 0)
 node_UID = "uid://bcjtmasx0q6dh"
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
+[sub_resource type="Resource" id="Resource_2o3dl"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_7xatj"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_3heto"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_af1r1"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_f1p22"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_yg8bs"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_uf0f8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ms045"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_vx44e"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_s1ijx"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_owma7"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_oi3sg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_q1p1u"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_e11xt"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ubs1d"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_8f56t"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_eoti1"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_6bixd"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_1eook"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_6o0xq"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_tlpmc"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_vqfkp"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_2h6kh"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_wvqrn"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_swtj4"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_t1bky"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_185f0"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_g2aoy"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ie1wi"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_onckg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_4ub44"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_a8iv0"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_8k18x"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_srqxw"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_eui67"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_qsv6l"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_xdx0m"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_7hld5"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ektsg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_je3mj"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_47tf2"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_7sv2u"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ace1q"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_kqtpf"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_5jli6"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_7if01"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jsrol"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_6duyb"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_tquvo"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_8qyc6"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_5l3cu"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_s7v1j"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_nhvd7"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_vgxsi"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_027dj"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_4ffas"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ys5lb"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_wcukr"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_cxvdw"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_55mht"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_2vx38"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_uqqg6"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jpvwo"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_nshew"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_l6f7g"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_b0jye"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_r6lfa"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_era4u"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_5ar45"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_hfja1"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_qsaal"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_j7lcn"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_plk5k"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_k1888"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jwc5j"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_obyvk"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_53j01"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_kt1yt"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_lkpmd"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_q4vnc"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_j42xb"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ssb0v"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_a7swa"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_805b6"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jj1uy"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_t3tae"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_mxhl5"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_t5f70"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jyo6q"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_h7dak"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_xexba"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_0fgar"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_fp8pl"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_nr2tv"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_54dvr"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_lnst6"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_00l7y"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ge40b"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_v3s4f"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_qxyyq"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_qpqfp"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_p2ykp"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_buhlu"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_yc5r0"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_8gbe8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ra7ic"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
 [sub_resource type="Resource" id="Resource_r6flg"]
 script = ExtResource("2_2ab1q")
 name = "exit_zone"
@@ -776,6 +3374,339 @@ sprite = ExtResource("3_7bmbd")
 atlas_coord = Vector2i(1, 0)
 node_UID = "uid://bcjtmasx0q6dh"
 object_type = 2
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_o1ilc"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_43hsh"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_j1ab2"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_5mjmv"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_l7uyp"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ldlga"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_bveth"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_t2mmw"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_4g58q"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ol0bi"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_obwpm"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_dfvlg"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_so27v"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_jhhvo"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_bekk1"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_33c2j"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_j5pn8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_8e07s"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_orhlc"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_m4ytb"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_eud5i"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_mxoek"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_lrkj3"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_kanrj"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_4wh08"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_7aipc"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_3rn3a"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_7gbup"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_62fq1"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_iempk"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ba0i8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_ijad0"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_dr2ln"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_p5585"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_22hr8"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_wb1j2"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
+metadata/_custom_type_script = "uid://m48jo33kjka0"
+
+[sub_resource type="Resource" id="Resource_58vcu"]
+script = ExtResource("2_2ab1q")
+name = "rot_zone"
+sprite = ExtResource("12_473e2")
+node_UID = "uid://demjls6g6q0ro"
+object_type = 3
+rot_chance = 0.5
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_poaok"]
@@ -7442,48 +10373,353 @@ Vector2i(38, 21): SubResource("Resource_nmtqh"),
 Vector2i(38, 22): SubResource("Resource_p4mfb")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("2_2ab1q")]({
+Vector2i(3, 17): SubResource("Resource_r6l5j"),
+Vector2i(3, 21): SubResource("Resource_kl0yk"),
+Vector2i(4, 14): SubResource("Resource_42vr0"),
+Vector2i(4, 17): SubResource("Resource_v0537"),
+Vector2i(4, 22): SubResource("Resource_agc84"),
+Vector2i(4, 24): SubResource("Resource_gahk8"),
+Vector2i(5, 14): SubResource("Resource_rl4ep"),
+Vector2i(5, 16): SubResource("Resource_isopu"),
+Vector2i(5, 22): SubResource("Resource_2wpdv"),
+Vector2i(5, 23): SubResource("Resource_dvubc"),
+Vector2i(5, 26): SubResource("Resource_e47wl"),
+Vector2i(6, 14): SubResource("Resource_i470g"),
+Vector2i(6, 15): SubResource("Resource_pswoh"),
+Vector2i(6, 26): SubResource("Resource_yvsx8"),
+Vector2i(6, 27): SubResource("Resource_ss3ik"),
+Vector2i(6, 28): SubResource("Resource_d6ie8"),
+Vector2i(7, 10): SubResource("Resource_5cyxu"),
+Vector2i(7, 11): SubResource("Resource_2cka7"),
+Vector2i(7, 19): SubResource("Resource_b5a4d"),
+Vector2i(7, 30): SubResource("Resource_urhbn"),
+Vector2i(8, 11): SubResource("Resource_w022e"),
+Vector2i(8, 18): SubResource("Resource_avgn0"),
+Vector2i(8, 19): SubResource("Resource_p6v4a"),
+Vector2i(8, 20): SubResource("Resource_g5jvm"),
+Vector2i(8, 21): SubResource("Resource_xry38"),
+Vector2i(8, 22): SubResource("Resource_vco1w"),
+Vector2i(8, 23): SubResource("Resource_upjil"),
+Vector2i(8, 30): SubResource("Resource_0srdg"),
+Vector2i(9, 9): SubResource("Resource_tv01h"),
+Vector2i(9, 15): SubResource("Resource_50arn"),
+Vector2i(9, 21): SubResource("Resource_t7xw1"),
+Vector2i(9, 23): SubResource("Resource_rcjum"),
+Vector2i(9, 24): SubResource("Resource_vuxev"),
+Vector2i(9, 25): SubResource("Resource_fgqsk"),
+Vector2i(9, 32): SubResource("Resource_hq420"),
+Vector2i(9, 33): SubResource("Resource_1oon4"),
+Vector2i(10, 8): SubResource("Resource_fcq5i"),
+Vector2i(10, 9): SubResource("Resource_a2wyl"),
+Vector2i(10, 13): SubResource("Resource_65j41"),
+Vector2i(10, 14): SubResource("Resource_agvow"),
+Vector2i(10, 15): SubResource("Resource_uxvxg"),
+Vector2i(10, 16): SubResource("Resource_05r3u"),
+Vector2i(10, 25): SubResource("Resource_aov4o"),
+Vector2i(10, 26): SubResource("Resource_kuts2"),
+Vector2i(10, 27): SubResource("Resource_4qr81"),
+Vector2i(10, 31): SubResource("Resource_7pofr"),
+Vector2i(10, 32): SubResource("Resource_f1lme"),
+Vector2i(11, 9): SubResource("Resource_68j6w"),
+Vector2i(11, 12): SubResource("Resource_ifd6b"),
+Vector2i(11, 21): SubResource("Resource_65mhc"),
+Vector2i(11, 27): SubResource("Resource_28v5w"),
+Vector2i(11, 28): SubResource("Resource_pxn0j"),
+Vector2i(12, 6): SubResource("Resource_11fn7"),
+Vector2i(12, 7): SubResource("Resource_apf5u"),
+Vector2i(12, 11): SubResource("Resource_6eanm"),
+Vector2i(12, 18): SubResource("Resource_jyx3p"),
+Vector2i(12, 19): SubResource("Resource_iaa8r"),
+Vector2i(12, 21): SubResource("Resource_pb3vs"),
+Vector2i(12, 22): SubResource("Resource_1g7ys"),
+Vector2i(12, 29): SubResource("Resource_y2b2r"),
+Vector2i(12, 33): SubResource("Resource_a0gd5"),
+Vector2i(12, 34): SubResource("Resource_wmaif"),
+Vector2i(12, 35): SubResource("Resource_2qsog"),
+Vector2i(13, 6): SubResource("Resource_8eqnx"),
+Vector2i(13, 11): SubResource("Resource_sjqax"),
+Vector2i(13, 17): SubResource("Resource_bam4y"),
+Vector2i(13, 18): SubResource("Resource_kjac5"),
+Vector2i(13, 19): SubResource("Resource_14vxf"),
+Vector2i(13, 22): SubResource("Resource_2jag0"),
+Vector2i(13, 24): SubResource("Resource_4mq1x"),
+Vector2i(13, 25): SubResource("Resource_n4plu"),
+Vector2i(13, 29): SubResource("Resource_6v5uk"),
+Vector2i(13, 34): SubResource("Resource_a80dm"),
+Vector2i(14, 6): SubResource("Resource_p4c6h"),
+Vector2i(14, 10): SubResource("Resource_06xbg"),
+Vector2i(14, 11): SubResource("Resource_32awf"),
+Vector2i(14, 14): SubResource("Resource_jgbav"),
+Vector2i(14, 15): SubResource("Resource_57ogg"),
+Vector2i(14, 16): SubResource("Resource_5v4a8"),
+Vector2i(14, 25): SubResource("Resource_suwc0"),
+Vector2i(14, 26): SubResource("Resource_56fot"),
+Vector2i(14, 29): SubResource("Resource_nuqpf"),
+Vector2i(14, 30): SubResource("Resource_leo0f"),
+Vector2i(15, 10): SubResource("Resource_p8p2i"),
+Vector2i(15, 19): SubResource("Resource_kdgrn"),
+Vector2i(15, 20): SubResource("Resource_y5uby"),
+Vector2i(15, 21): SubResource("Resource_h2sjg"),
+Vector2i(15, 25): SubResource("Resource_0ifjx"),
+Vector2i(15, 36): SubResource("Resource_wc0v4"),
+Vector2i(16, 5): SubResource("Resource_mw62f"),
+Vector2i(16, 6): SubResource("Resource_dnxth"),
+Vector2i(16, 9): SubResource("Resource_wbr1y"),
+Vector2i(16, 13): SubResource("Resource_twia1"),
+Vector2i(16, 18): SubResource("Resource_c6wga"),
+Vector2i(16, 19): SubResource("Resource_oekuy"),
+Vector2i(16, 20): SubResource("Resource_vu2wk"),
+Vector2i(16, 21): SubResource("Resource_av8ql"),
+Vector2i(16, 22): SubResource("Resource_vs101"),
+Vector2i(16, 23): SubResource("Resource_x0lwd"),
+Vector2i(16, 26): SubResource("Resource_3aa10"),
+Vector2i(16, 27): SubResource("Resource_iipww"),
+Vector2i(16, 28): SubResource("Resource_fboal"),
+Vector2i(16, 35): SubResource("Resource_3k7c3"),
+Vector2i(17, 9): SubResource("Resource_3p5ik"),
+Vector2i(17, 13): SubResource("Resource_py24e"),
+Vector2i(17, 14): SubResource("Resource_w0mrc"),
+Vector2i(17, 17): SubResource("Resource_72edy"),
+Vector2i(17, 19): SubResource("Resource_spjss"),
+Vector2i(17, 21): SubResource("Resource_ttnc1"),
+Vector2i(17, 22): SubResource("Resource_4c3fa"),
+Vector2i(17, 23): SubResource("Resource_nq2wa"),
+Vector2i(17, 24): SubResource("Resource_gpxmg"),
+Vector2i(17, 27): SubResource("Resource_n23ww"),
+Vector2i(17, 31): SubResource("Resource_xgkiy"),
+Vector2i(17, 32): SubResource("Resource_y6q46"),
+Vector2i(18, 8): SubResource("Resource_3yauj"),
+Vector2i(18, 9): SubResource("Resource_t3cf5"),
+Vector2i(18, 13): SubResource("Resource_w5tew"),
+Vector2i(18, 16): SubResource("Resource_i7sgg"),
+Vector2i(18, 17): SubResource("Resource_y0ru5"),
+Vector2i(18, 18): SubResource("Resource_g3otp"),
+Vector2i(18, 23): SubResource("Resource_lqito"),
+Vector2i(18, 24): SubResource("Resource_bmym3"),
+Vector2i(18, 31): SubResource("Resource_oe44w"),
+Vector2i(19, 10): SubResource("Resource_p25ah"),
+Vector2i(19, 13): SubResource("Resource_wqvnt"),
+Vector2i(19, 16): SubResource("Resource_vjjt6"),
+Vector2i(19, 17): SubResource("Resource_xgqfb"),
+Vector2i(19, 18): SubResource("Resource_qs4iy"),
+Vector2i(19, 20): SubResource("Resource_ojviw"),
+Vector2i(19, 23): SubResource("Resource_krl6p"),
+Vector2i(19, 24): SubResource("Resource_8ev56"),
+Vector2i(19, 25): SubResource("Resource_qobei"),
+Vector2i(19, 27): SubResource("Resource_okbut"),
+Vector2i(19, 28): SubResource("Resource_c70gf"),
+Vector2i(19, 31): SubResource("Resource_c8dtw"),
+Vector2i(19, 32): SubResource("Resource_eypic"),
+Vector2i(19, 33): SubResource("Resource_4vtd4"),
+Vector2i(19, 35): SubResource("Resource_kug12"),
+Vector2i(19, 37): SubResource("Resource_nmbqu"),
+Vector2i(20, 9): SubResource("Resource_bxndx"),
+Vector2i(20, 16): SubResource("Resource_7j20g"),
+Vector2i(20, 18): SubResource("Resource_cwaec"),
+Vector2i(20, 19): SubResource("Resource_luevr"),
 Vector2i(20, 20): SubResource("Resource_drdfs"),
+Vector2i(20, 21): SubResource("Resource_2o3dl"),
+Vector2i(20, 24): SubResource("Resource_7xatj"),
+Vector2i(20, 25): SubResource("Resource_3heto"),
+Vector2i(20, 27): SubResource("Resource_af1r1"),
+Vector2i(20, 29): SubResource("Resource_f1p22"),
+Vector2i(20, 33): SubResource("Resource_yg8bs"),
+Vector2i(21, 9): SubResource("Resource_uf0f8"),
+Vector2i(21, 13): SubResource("Resource_ms045"),
+Vector2i(21, 17): SubResource("Resource_vx44e"),
+Vector2i(21, 18): SubResource("Resource_s1ijx"),
+Vector2i(21, 19): SubResource("Resource_owma7"),
+Vector2i(21, 20): SubResource("Resource_oi3sg"),
+Vector2i(21, 23): SubResource("Resource_q1p1u"),
+Vector2i(21, 24): SubResource("Resource_e11xt"),
+Vector2i(21, 25): SubResource("Resource_ubs1d"),
+Vector2i(21, 27): SubResource("Resource_8f56t"),
+Vector2i(21, 29): SubResource("Resource_eoti1"),
+Vector2i(21, 32): SubResource("Resource_6bixd"),
+Vector2i(21, 33): SubResource("Resource_1eook"),
+Vector2i(21, 36): SubResource("Resource_6o0xq"),
+Vector2i(22, 4): SubResource("Resource_tlpmc"),
+Vector2i(22, 5): SubResource("Resource_vqfkp"),
+Vector2i(22, 10): SubResource("Resource_2h6kh"),
+Vector2i(22, 13): SubResource("Resource_wvqrn"),
+Vector2i(22, 19): SubResource("Resource_swtj4"),
+Vector2i(22, 22): SubResource("Resource_t1bky"),
+Vector2i(22, 23): SubResource("Resource_185f0"),
+Vector2i(22, 24): SubResource("Resource_g2aoy"),
+Vector2i(22, 27): SubResource("Resource_ie1wi"),
+Vector2i(22, 28): SubResource("Resource_onckg"),
+Vector2i(22, 29): SubResource("Resource_4ub44"),
+Vector2i(22, 32): SubResource("Resource_a8iv0"),
+Vector2i(22, 33): SubResource("Resource_8k18x"),
+Vector2i(23, 6): SubResource("Resource_srqxw"),
+Vector2i(23, 10): SubResource("Resource_eui67"),
+Vector2i(23, 11): SubResource("Resource_qsv6l"),
+Vector2i(23, 15): SubResource("Resource_xdx0m"),
+Vector2i(23, 21): SubResource("Resource_7hld5"),
+Vector2i(23, 23): SubResource("Resource_ektsg"),
+Vector2i(23, 24): SubResource("Resource_je3mj"),
+Vector2i(23, 26): SubResource("Resource_47tf2"),
+Vector2i(23, 27): SubResource("Resource_7sv2u"),
+Vector2i(23, 28): SubResource("Resource_ace1q"),
+Vector2i(23, 31): SubResource("Resource_kqtpf"),
+Vector2i(23, 32): SubResource("Resource_5jli6"),
+Vector2i(23, 36): SubResource("Resource_7if01"),
+Vector2i(24, 6): SubResource("Resource_jsrol"),
+Vector2i(24, 10): SubResource("Resource_6duyb"),
+Vector2i(24, 15): SubResource("Resource_tquvo"),
+Vector2i(24, 16): SubResource("Resource_8qyc6"),
+Vector2i(24, 18): SubResource("Resource_5l3cu"),
+Vector2i(24, 19): SubResource("Resource_s7v1j"),
+Vector2i(24, 21): SubResource("Resource_nhvd7"),
+Vector2i(24, 26): SubResource("Resource_vgxsi"),
+Vector2i(24, 28): SubResource("Resource_027dj"),
+Vector2i(24, 35): SubResource("Resource_4ffas"),
+Vector2i(25, 7): SubResource("Resource_ys5lb"),
+Vector2i(25, 10): SubResource("Resource_wcukr"),
+Vector2i(25, 12): SubResource("Resource_cxvdw"),
+Vector2i(25, 17): SubResource("Resource_55mht"),
+Vector2i(25, 18): SubResource("Resource_2vx38"),
+Vector2i(25, 19): SubResource("Resource_uqqg6"),
+Vector2i(25, 21): SubResource("Resource_jpvwo"),
+Vector2i(25, 25): SubResource("Resource_nshew"),
+Vector2i(25, 26): SubResource("Resource_l6f7g"),
+Vector2i(25, 27): SubResource("Resource_b0jye"),
+Vector2i(25, 31): SubResource("Resource_r6lfa"),
+Vector2i(26, 7): SubResource("Resource_era4u"),
+Vector2i(26, 12): SubResource("Resource_5ar45"),
+Vector2i(26, 13): SubResource("Resource_hfja1"),
+Vector2i(26, 14): SubResource("Resource_qsaal"),
+Vector2i(26, 17): SubResource("Resource_j7lcn"),
+Vector2i(26, 18): SubResource("Resource_plk5k"),
+Vector2i(26, 19): SubResource("Resource_k1888"),
+Vector2i(26, 24): SubResource("Resource_jwc5j"),
+Vector2i(26, 25): SubResource("Resource_obyvk"),
+Vector2i(26, 26): SubResource("Resource_53j01"),
+Vector2i(26, 27): SubResource("Resource_kt1yt"),
+Vector2i(26, 30): SubResource("Resource_lkpmd"),
+Vector2i(26, 31): SubResource("Resource_q4vnc"),
+Vector2i(26, 36): SubResource("Resource_j42xb"),
+Vector2i(27, 7): SubResource("Resource_ssb0v"),
+Vector2i(27, 13): SubResource("Resource_a7swa"),
+Vector2i(27, 14): SubResource("Resource_805b6"),
+Vector2i(27, 15): SubResource("Resource_jj1uy"),
+Vector2i(27, 16): SubResource("Resource_t3tae"),
+Vector2i(27, 22): SubResource("Resource_mxhl5"),
+Vector2i(27, 24): SubResource("Resource_t5f70"),
+Vector2i(27, 26): SubResource("Resource_jyo6q"),
+Vector2i(27, 30): SubResource("Resource_h7dak"),
+Vector2i(27, 33): SubResource("Resource_xexba"),
+Vector2i(28, 7): SubResource("Resource_0fgar"),
+Vector2i(28, 8): SubResource("Resource_fp8pl"),
+Vector2i(28, 15): SubResource("Resource_nr2tv"),
+Vector2i(28, 16): SubResource("Resource_54dvr"),
+Vector2i(28, 17): SubResource("Resource_lnst6"),
+Vector2i(28, 18): SubResource("Resource_00l7y"),
+Vector2i(28, 22): SubResource("Resource_ge40b"),
+Vector2i(28, 23): SubResource("Resource_v3s4f"),
+Vector2i(28, 24): SubResource("Resource_qxyyq"),
+Vector2i(28, 25): SubResource("Resource_qpqfp"),
+Vector2i(28, 29): SubResource("Resource_p2ykp"),
+Vector2i(28, 33): SubResource("Resource_buhlu"),
+Vector2i(28, 34): SubResource("Resource_yc5r0"),
+Vector2i(29, 11): SubResource("Resource_8gbe8"),
+Vector2i(29, 16): SubResource("Resource_ra7ic"),
 Vector2i(29, 19): SubResource("Resource_r6flg"),
+Vector2i(29, 21): SubResource("Resource_o1ilc"),
+Vector2i(29, 22): SubResource("Resource_43hsh"),
+Vector2i(29, 23): SubResource("Resource_j1ab2"),
+Vector2i(29, 27): SubResource("Resource_5mjmv"),
+Vector2i(29, 29): SubResource("Resource_l7uyp"),
+Vector2i(30, 10): SubResource("Resource_ldlga"),
+Vector2i(30, 11): SubResource("Resource_bveth"),
+Vector2i(30, 26): SubResource("Resource_t2mmw"),
+Vector2i(30, 31): SubResource("Resource_4g58q"),
+Vector2i(31, 11): SubResource("Resource_ol0bi"),
+Vector2i(31, 13): SubResource("Resource_obwpm"),
+Vector2i(31, 24): SubResource("Resource_dfvlg"),
+Vector2i(31, 25): SubResource("Resource_so27v"),
+Vector2i(31, 26): SubResource("Resource_jhhvo"),
+Vector2i(31, 30): SubResource("Resource_bekk1"),
+Vector2i(31, 31): SubResource("Resource_33c2j"),
+Vector2i(31, 32): SubResource("Resource_j5pn8"),
+Vector2i(32, 14): SubResource("Resource_8e07s"),
+Vector2i(32, 15): SubResource("Resource_orhlc"),
+Vector2i(32, 19): SubResource("Resource_m4ytb"),
+Vector2i(32, 23): SubResource("Resource_eud5i"),
+Vector2i(32, 24): SubResource("Resource_mxoek"),
+Vector2i(32, 30): SubResource("Resource_lrkj3"),
+Vector2i(32, 31): SubResource("Resource_kanrj"),
+Vector2i(33, 15): SubResource("Resource_4wh08"),
+Vector2i(33, 17): SubResource("Resource_7aipc"),
+Vector2i(33, 18): SubResource("Resource_3rn3a"),
+Vector2i(33, 19): SubResource("Resource_7gbup"),
+Vector2i(33, 22): SubResource("Resource_62fq1"),
+Vector2i(33, 30): SubResource("Resource_iempk"),
+Vector2i(33, 31): SubResource("Resource_ba0i8"),
+Vector2i(34, 20): SubResource("Resource_ijad0"),
+Vector2i(34, 21): SubResource("Resource_dr2ln"),
+Vector2i(34, 26): SubResource("Resource_p5585"),
+Vector2i(35, 26): SubResource("Resource_22hr8"),
+Vector2i(36, 26): SubResource("Resource_wb1j2"),
+Vector2i(36, 27): SubResource("Resource_58vcu"),
 Vector2i(37, 21): SubResource("Resource_poaok")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_4vewh")]({
 Vector2i(3, 19): SubResource("Resource_ymi76"),
-Vector2i(3, 20): SubResource("Resource_7acai"),
+Vector2i(3, 20): SubResource("Resource_6trlu"),
 Vector2i(4, 20): SubResource("Resource_fqheq"),
-Vector2i(4, 21): SubResource("Resource_ahxkh"),
+Vector2i(4, 21): SubResource("Resource_f8vkf"),
+Vector2i(4, 33): SubResource("Resource_nhkou"),
+Vector2i(5, 7): SubResource("Resource_mf23f"),
 Vector2i(5, 19): SubResource("Resource_ldetp"),
-Vector2i(5, 20): SubResource("Resource_exnoe"),
+Vector2i(5, 20): SubResource("Resource_ahxkh"),
+Vector2i(7, 23): SubResource("Resource_hq46h"),
+Vector2i(9, 20): SubResource("Resource_qn4f6"),
+Vector2i(9, 27): SubResource("Resource_5r7v5"),
+Vector2i(10, 24): SubResource("Resource_8rjhy"),
 Vector2i(11, 10): SubResource("Resource_42y78"),
 Vector2i(12, 26): SubResource("Resource_40t5l"),
+Vector2i(12, 28): SubResource("Resource_ok61x"),
 Vector2i(13, 20): SubResource("Resource_txabv"),
-Vector2i(14, 17): SubResource("Resource_hvxgm"),
-Vector2i(16, 15): SubResource("Resource_a50rw"),
-Vector2i(17, 18): SubResource("Resource_r4d0a"),
-Vector2i(17, 20): SubResource("Resource_r8wgk"),
+Vector2i(14, 17): SubResource("Resource_a50rw"),
+Vector2i(15, 31): SubResource("Resource_1btmw"),
+Vector2i(16, 15): SubResource("Resource_hvxgm"),
+Vector2i(17, 18): SubResource("Resource_vmp5k"),
+Vector2i(17, 20): SubResource("Resource_vfamf"),
 Vector2i(18, 5): SubResource("Resource_1md3g"),
-Vector2i(18, 22): SubResource("Resource_6qr7b"),
+Vector2i(18, 22): SubResource("Resource_hpm7q"),
 Vector2i(19, 4): SubResource("Resource_n3o5f"),
 Vector2i(19, 5): SubResource("Resource_4jvos"),
 Vector2i(19, 6): SubResource("Resource_xm05j"),
 Vector2i(19, 36): SubResource("Resource_lgph1"),
+Vector2i(19, 39): SubResource("Resource_gmu41"),
 Vector2i(20, 5): SubResource("Resource_1y4qo"),
-Vector2i(20, 14): SubResource("Resource_fwm4b"),
-Vector2i(20, 17): SubResource("Resource_ygelw"),
+Vector2i(20, 14): SubResource("Resource_oxoqi"),
+Vector2i(20, 17): SubResource("Resource_r8wgk"),
 Vector2i(20, 20): SubResource("Resource_u7q7o"),
-Vector2i(20, 23): SubResource("Resource_vmp5k"),
+Vector2i(20, 23): SubResource("Resource_6qr7b"),
+Vector2i(20, 31): SubResource("Resource_r37as"),
+Vector2i(21, 31): SubResource("Resource_5kiuj"),
 Vector2i(21, 35): SubResource("Resource_6s30x"),
 Vector2i(21, 37): SubResource("Resource_0qw5q"),
 Vector2i(22, 15): SubResource("Resource_o6xhl"),
-Vector2i(22, 18): SubResource("Resource_eydax"),
+Vector2i(22, 18): SubResource("Resource_ygelw"),
 Vector2i(22, 35): SubResource("Resource_g2yje"),
-Vector2i(22, 36): SubResource("Resource_6trlu"),
-Vector2i(22, 37): SubResource("Resource_f8vkf"),
-Vector2i(23, 22): SubResource("Resource_hpm7q"),
-Vector2i(24, 17): SubResource("Resource_oxoqi"),
-Vector2i(24, 20): SubResource("Resource_vfamf"),
-Vector2i(31, 16): SubResource("Resource_gmu41"),
-Vector2i(31, 22): SubResource("Resource_k4yv0")
+Vector2i(22, 36): SubResource("Resource_exnoe"),
+Vector2i(22, 37): SubResource("Resource_7acai"),
+Vector2i(23, 22): SubResource("Resource_r4d0a"),
+Vector2i(24, 17): SubResource("Resource_fwm4b"),
+Vector2i(24, 20): SubResource("Resource_eydax"),
+Vector2i(25, 30): SubResource("Resource_gx5yn"),
+Vector2i(30, 36): SubResource("Resource_hkg37"),
+Vector2i(31, 16): SubResource("Resource_1an6t"),
+Vector2i(31, 22): SubResource("Resource_k4yv0"),
+Vector2i(32, 18): SubResource("Resource_3vxfc"),
+Vector2i(32, 21): SubResource("Resource_o8iyx"),
+Vector2i(33, 20): SubResource("Resource_tvflf"),
+Vector2i(33, 21): SubResource("Resource_0tkm7"),
+Vector2i(34, 19): SubResource("Resource_d0kmi")
 })
-magic_cost_adjustment = 0.0
+magic_cost_adjustment = 2.0
 next_map_path = "uid://c65qqtxalpma"
 player_chars = Array[ExtResource("1_4vewh")]([ExtResource("12_nclqm"), ExtResource("13_473e2"), ExtResource("14_gy2u6"), ExtResource("15_7djmx")])

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="4_ejvkc"]
 [ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="5_ejvkc"]
 [ext_resource type="PackedScene" uid="uid://dr4fjc8045gap" path="res://blender_models/Chars/Zaar.glb" id="6_2spcw"]
+[ext_resource type="Environment" uid="uid://rvsb56j2quva" path="res://Workshop/Enviroments/cervise.tres" id="8_ejvkc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylduk"]
 albedo_color = Color(0.2614262, 0.502946, 0.0629354, 1)
@@ -152,19 +153,6 @@ _data = {
 &"turn_zaar_1": SubResource("Animation_d4brp")
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d4brp"]
-sky_top_color = Color(0.17254902, 0.45490196, 0.7607843, 1)
-sky_horizon_color = Color(0.6076106, 0.76082885, 0.9707214, 1)
-ground_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
-
-[sub_resource type="Sky" id="Sky_l2akv"]
-sky_material = SubResource("ProceduralSkyMaterial_d4brp")
-
-[sub_resource type="Environment" id="Environment_ejvkc"]
-background_mode = 2
-sky = SubResource("Sky_l2akv")
-glow_enabled = true
-
 [node name="First_map" type="Node3D" unique_id=964775134 node_paths=PackedStringArray("player")]
 script = ExtResource("1_tdlk6")
 text_data = ExtResource("2_d4brp")
@@ -222,4 +210,7 @@ script = ExtResource("4_ejvkc")
 start_anim = "Idle"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1015995540]
-environment = SubResource("Environment_ejvkc")
+environment = ExtResource("8_ejvkc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1312412231]
+transform = Transform3D(0.8582347, -0.0010712048, -0.5132563, 0.5132575, 0.0017911971, 0.8582329, 0, -0.9999979, 0.0020870713, 0, 5.1118784, 0)

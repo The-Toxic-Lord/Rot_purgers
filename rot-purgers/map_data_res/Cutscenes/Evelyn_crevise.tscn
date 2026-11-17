@@ -2,21 +2,9 @@
 
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_h5pqc"]
 [ext_resource type="Resource" uid="uid://dsbe0eog177ex" path="res://dialogue/texts/custcenes_small.dialogue" id="2_fc6b5"]
+[ext_resource type="Environment" uid="uid://rvsb56j2quva" path="res://Workshop/Enviroments/cervise.tres" id="3_vgckq"]
 [ext_resource type="PackedScene" uid="uid://cab586b27pb30" path="res://blender_models/Chars/Evelyn.glb" id="3_yft80"]
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="4_sdwdv"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lykj6"]
-sky_top_color = Color(0.17254902, 0.45490196, 0.7607843, 1)
-sky_horizon_color = Color(0.6076106, 0.76082885, 0.9707214, 1)
-ground_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
-
-[sub_resource type="Sky" id="Sky_7h5cb"]
-sky_material = SubResource("ProceduralSkyMaterial_lykj6")
-
-[sub_resource type="Environment" id="Environment_c2sxo"]
-background_mode = 2
-sky = SubResource("Sky_7h5cb")
-glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylduk"]
 albedo_color = Color(0.2614262, 0.502946, 0.0629354, 1)
@@ -223,7 +211,7 @@ player = NodePath("AnimationPlayer")
 next_map_path = "uid://qpan22uix2tj"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=749763083]
-environment = SubResource("Environment_c2sxo")
+environment = ExtResource("3_vgckq")
 
 [node name="Backglound" type="MeshInstance3D" parent="." unique_id=961171160]
 mesh = SubResource("ArrayMesh_fneqh")
@@ -262,5 +250,8 @@ start_anim = "Idle"
 
 [node name="Sword" parent="Evelyn/Armature/Skeleton3D" parent_id_path=PackedInt32Array(902555420, 411688116) index="4" unique_id=988346268]
 visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=535223883]
+transform = Transform3D(0.8582347, -0.0010712048, -0.5132563, 0.5132575, 0.0017911971, 0.8582329, 0, -0.9999979, 0.0020870713, 0, 5.1118784, 0)
 
 [editable path="Evelyn"]

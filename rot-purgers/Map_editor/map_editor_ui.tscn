@@ -584,9 +584,9 @@ unique_name_in_owner = true
 layout_mode = 2
 selected = 0
 item_count = 8
-popup/item_0/text = "Normal"
+popup/item_0/text = "Turret"
 popup/item_0/id = 0
-popup/item_1/text = "Turret"
+popup/item_1/text = "Normal"
 popup/item_1/id = 1
 popup/item_2/text = "Charger"
 popup/item_2/id = 2
@@ -816,6 +816,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Select data"
 
+[node name="Label17" type="Label" parent="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=2131696458]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Chance"
+horizontal_alignment = 1
+
+[node name="Object_chance" type="LineEdit" parent="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1776073308]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
 [node name="FileDialog2" type="FileDialog" parent="." unique_id=553400258]
 unique_name_in_owner = true
 title = "Open File(s)"
@@ -878,6 +896,7 @@ root_subfolder = "data/Enemy_data/"
 [connection signal="text_changed" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_height" to="." method="_on_object_height_text_changed"]
 [connection signal="text_changed" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_dial_cue" to="." method="_on_object_dial_cue_text_changed"]
 [connection signal="pressed" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Select_data_bt" to="." method="_on_select_data_bt_pressed"]
+[connection signal="text_changed" from="Object_maker/MarginContainer/HBoxContainer/VBoxContainer2/Object_chance" to="." method="_on_object_chance_text_changed"]
 [connection signal="file_selected" from="FileDialog2" to="." method="_on_file_dialog_2_file_selected"]
 [connection signal="files_selected" from="FileDialog2" to="." method="_on_file_dialog_2_files_selected"]
 [connection signal="file_selected" from="FileDialog3" to="." method="_on_file_dialog_3_file_selected"]

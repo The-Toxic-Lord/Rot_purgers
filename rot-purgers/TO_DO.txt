@@ -41,13 +41,8 @@ to do:
 	+- skills description
 	- level maps
 	+- cutscenes
-	+ Neiro AI
 	- fix double hit
 	- шейдер для фона (rot stage)
-	+ fix rotation on undo
-	+ better flyer move
-	+ neiro terrain cost mod
-	+ rot terrain debuff
 
 1.1 hard:
 	- better AI:

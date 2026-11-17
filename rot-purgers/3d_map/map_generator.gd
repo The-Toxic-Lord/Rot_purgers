@@ -326,8 +326,21 @@ func turn_to_selection():
 		await rotate_skill(selected_char.previous_direction)
 
 func spawn_objects():
+	var i := 0
+	var tick := Time.get_unix_time_from_system()
+	var size := object_map.size()
+	var rot_zone : Node3D = load("uid://demjls6g6q0ro").instantiate()
 	for cell in object_map:
-		var zone : Node3D = load(object_map[cell].node_UID).instantiate()
+		i += 1
+		if Time.get_unix_time_from_system() - tick >= 1.0:
+			tick = Time.get_unix_time_from_system()
+			TransitionScreen.update_progress(i as float/size)
+			await get_tree().process_frame
+		var zone : Node3D
+		if object_map[cell].node_UID == "uid://demjls6g6q0ro":
+			zone = rot_zone.duplicate()
+		else:
+			zone = load(object_map[cell].node_UID).instantiate()
 		add_child(zone)
 		if map_cells.has(cell):
 			zone.position = map_cells[cell].position
@@ -340,6 +353,7 @@ func spawn_objects():
 				spawn_zones[cell] = zone
 			Map_object.types.EXIT:
 				exit_zones[cell] = zone
+	rot_zone.queue_free()
 
 var showing_move_zone := false
 
@@ -733,7 +747,7 @@ func spawn_enemy(enemy_stats : Character_stats, cell : Vector2i, dir : direction
 
 func remove_enemy(ch_node : Character_node):
 	char_positions.erase(ch_node.map_pos)
-	ch_node.queue_free()
+	#ch_node.queue_free()
 
 func display_skill(skill : Skill_base):
 	selected_skill = skill

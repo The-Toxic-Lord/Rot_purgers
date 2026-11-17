@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_tp878"]
 [ext_resource type="Resource" uid="uid://34aejkmspc04" path="res://dialogue/texts/camp.dialogue" id="2_sh3bb"]
 [ext_resource type="Texture2D" uid="uid://cl8qptvj4vxcr" path="res://3d_map/map_cell_materials/material_textures/Stone_15-128x128.png" id="3_enj5r"]
+[ext_resource type="Environment" uid="uid://bfa1d8jck2rq1" path="res://Workshop/Enviroments/dark.tres" id="3_sh3bb"]
 [ext_resource type="PackedScene" uid="uid://db62brkwigfba" path="res://Workshop/campfire.tscn" id="4_04gc5"]
 [ext_resource type="Script" uid="uid://dud0dpynr11sk" path="res://map_data_res/Cutscenes/cutscene_player.gd" id="5_p0aim"]
 [ext_resource type="PackedScene" uid="uid://dr70ea2o3swse" path="res://blender_models/Objects/rocks.glb" id="6_3khie"]
@@ -15,19 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://sy1m1fqofdxj" path="res://blender_models/Objects/rocks1.glb" id="13_0yey6"]
 [ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="14_1kxm2"]
 [ext_resource type="AudioStream" uid="uid://iwd02p6sb7wa" path="res://sound/SFX/Torch Loop.ogg" id="15_ti0yy"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_focet"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-energy_multiplier = 0.0
-
-[sub_resource type="Sky" id="Sky_worwp"]
-sky_material = SubResource("ProceduralSkyMaterial_focet")
-
-[sub_resource type="Environment" id="Environment_5u0sb"]
-background_mode = 2
-sky = SubResource("Sky_worwp")
-glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwy4y"]
 albedo_texture = ExtResource("3_enj5r")
@@ -894,7 +882,7 @@ player = NodePath("AnimationPlayer")
 chars = [NodePath("Zaar5"), NodePath("Alastor1"), NodePath("Aven"), NodePath("Ellio3")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1517063395]
-environment = SubResource("Environment_5u0sb")
+environment = ExtResource("3_sh3bb")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=229516050]
 mesh = SubResource("ArrayMesh_tj6kr")
@@ -948,7 +936,7 @@ visible = false
 transform = Transform3D(-0.49396092, 0, 0.07747509, 0, 0.5, 0, -0.07747509, 0, -0.49396092, -0.13876675, 0, -0.1805197)
 
 [node name="Alastor1" parent="." unique_id=1803624731 instance=ExtResource("10_cc0f0")]
-transform = Transform3D(0.0025516276, 0, 0.9999964, 0, 1, 0, -0.9999964, 0, 0.0025516276, -1.847, 0, 0.058)
+transform = Transform3D(0.002551627, 0, 0.9999963, 0, 1, 0, -0.9999963, 0, 0.002551627, -1.847, 0, 0.058)
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
@@ -959,7 +947,7 @@ visible = false
 transform = Transform3D(0.0012758143, 0, -0.49999842, 0, 0.5, 0, 0.49999842, 0, 0.0012758143, -0.032694675, 0.20292139, -0.5629208)
 
 [node name="Aven" parent="." unique_id=2101898650 instance=ExtResource("12_1ebqx")]
-transform = Transform3D(-0.998707, 0, 0.05082551, 0, 1, 0, -0.05082551, 0, -0.998707, -0.25781405, 0.051544726, 1.9019257)
+transform = Transform3D(-0.9987069, 0, 0.050825503, 0, 1, 0, -0.050825503, 0, -0.9987069, -0.25781405, 0.051544726, 1.9019257)
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 

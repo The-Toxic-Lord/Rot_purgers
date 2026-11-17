@@ -128,6 +128,7 @@ func damage(value : float, display_mini := false):
 	display_damage(display_mini)
 
 func display_damage(display_mini := false, is_heal := false):
+	await get_tree().process_frame
 	%Damage_numbers.show()
 	if is_heal and display_mini:
 		ObjectLink.mini_char_stats.display_damage(stats.health)
@@ -143,22 +144,29 @@ func display_damage(display_mini := false, is_heal := false):
 			char_animation.play("Idle")
 		else:
 			await get_tree().create_timer(0.5).timeout
+	check_dead()
+	await data_removed
+	animation_ended.emit()
 	%Damage_numbers.hide()
-	if !await check_dead():
-		animation_ended.emit()
 
+
+signal data_removed
+signal battle_can_over
 func check_dead(display_mini = false):
+	await get_tree().process_frame
 	if stats.health == 0:
+		ObjectLink.map_gen.remove_enemy(self)
+		BattleHandler.char_dies(self)
 		is_dead = true
+		data_removed.emit()
 		if display_mini:
 			ObjectLink.mini_char_stats.play_dead()
 		$AnimationPlayer.play("Movement_anim/Death")
 		await $AnimationPlayer.animation_finished
-		animation_ended.emit()
-		BattleHandler.char_dies(self)
-		return true
+		battle_can_over.emit()
+		queue_free()
 	else:
-		return false
+		data_removed.emit()
 
 func kill():
 	stats.health = 0

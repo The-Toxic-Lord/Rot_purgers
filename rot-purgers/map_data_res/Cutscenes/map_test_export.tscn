@@ -3,24 +3,14 @@
 [ext_resource type="Script" uid="uid://wm3k8l6rkhmg" path="res://map_data_res/Cutscenes/Cutscene.gd" id="1_gxf7a"]
 [ext_resource type="Resource" uid="uid://wpbpmt268edo" path="res://dialogue/texts/test2.dialogue" id="2_5rggv"]
 [ext_resource type="PackedScene" uid="uid://d2vin440kgbfe" path="res://import/sphere_mesh.tscn" id="2_w1o7y"]
+[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/Enviroments/cave.tres" id="3_oop41"]
 [ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://3d_map/Character_nodes/char_materials/dissolve_base_material.gdshader" id="4_5rggv"]
 [ext_resource type="PackedScene" uid="uid://dk1kcb3icintd" path="res://3d_map/Character_nodes/Elliot/Elliot.tscn" id="5_fny85"]
 [ext_resource type="Texture2D" uid="uid://dj67sdw8oodpr" path="res://blender_models/Ellio1_Elliot.png" id="5_g6qvc"]
 [ext_resource type="PackedScene" uid="uid://cpgsmi4r45bbx" path="res://3d_map/Character_nodes/Alastor/Alastor.tscn" id="6_quv0c"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ahdu0"]
-sky_top_color = Color(0.3841999, 0.44939798, 0.57756805, 1)
-sky_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
-ground_horizon_color = Color(0.6608169, 0.6693664, 0.6924089, 1)
-
-[sub_resource type="Sky" id="Sky_5mbox"]
-sky_material = SubResource("ProceduralSkyMaterial_ahdu0")
-
-[sub_resource type="Environment" id="Environment_i1nft"]
-background_mode = 2
-sky = SubResource("Sky_5mbox")
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://5wbdacpqkmuy" path="res://blender_models/Chars/Alastor.glb" id="8_ud5fa"]
+[ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="9_oop41"]
+[ext_resource type="PackedScene" uid="uid://bgvrqtgr2aflo" path="res://blender_models/Chars/Elliot.glb" id="10_1anqk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3nwy"]
 albedo_color = Color(0.3328807, 0.33288068, 0.33288068, 1)
@@ -53,7 +43,7 @@ frequency = 0.1016
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l2wnj"]
 noise = SubResource("FastNoiseLite_g8kef")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnpjq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7y4l"]
 resource_local_to_scene = true
 resource_name = "Material.001"
 render_priority = 0
@@ -76,6 +66,12 @@ shader_parameter/dissolve_color = Color(0, 0, 0, 1)
 shader_parameter/rot = Color(0.22352941, 0.7372549, 0, 0)
 shader_parameter/emission = Color(1, 1, 1, 1)
 shader_parameter/emission_energy = 0.0
+shader_parameter/rot_stage = 0
+shader_parameter/non_rot_array = PackedFloat32Array(0, 0, 0, 0)
+shader_parameter/divisions = 0
+shader_parameter/rot_wave_strength = 1.0
+shader_parameter/wave_size = 0.1
+shader_parameter/wave_wave_size = 0.01
 
 [sub_resource type="Animation" id="Animation_lbvty"]
 resource_name = "start"
@@ -106,7 +102,7 @@ player = NodePath("AnimationPlayer")
 next_map_path = "res://map_data_res/pre_01.tres"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=859351150]
-environment = SubResource("Environment_i1nft")
+environment = ExtResource("3_oop41")
 
 [node name="Sphere_mesh" parent="." unique_id=1742780130 instance=ExtResource("2_w1o7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01917839, 0, 0.0024747849)
@@ -129,10 +125,22 @@ transform = Transform3D(-0.65934885, 0.26887548, -0.7021147, 0, 0.9338654, 0.357
 
 [node name="Character_node" parent="." unique_id=741036927 instance=ExtResource("5_fny85")]
 transform = Transform3D(-0.7396298, 0, 0.6730139, 0, 1, 0, -0.6730139, 0, -0.7396298, 0.094753385, 0.1, 2.0521977)
-material = SubResource("ShaderMaterial_lnpjq")
+visible = false
+material = SubResource("ShaderMaterial_p7y4l")
 
 [node name="Character_node2" parent="." unique_id=892761576 instance=ExtResource("6_quv0c")]
 transform = Transform3D(0.5941783, 0, -0.8043333, 0, 1, 0, 0.8043333, 0, 0.5941783, -1.8288414, 0.1, 3.8460915)
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=458467658]
 libraries/ = SubResource("AnimationLibrary_44d7n")
+
+[node name="Alastor1" parent="." unique_id=125655584 instance=ExtResource("8_ud5fa")]
+transform = Transform3D(-0.6137849, 0, 0.7894733, 0, 1, 0, -0.7894733, 0, -0.6137849, -1.902, 0.1, 4.034)
+script = ExtResource("9_oop41")
+start_anim = "Idle"
+
+[node name="Ellio3" parent="." unique_id=1686490743 instance=ExtResource("10_1anqk")]
+transform = Transform3D(0.81212753, 0, -0.5834799, 0, 1, 0, 0.5834799, 0, 0.81212753, 0.24, 0.1, 1.791)
+script = ExtResource("9_oop41")
+start_anim = "Idle"

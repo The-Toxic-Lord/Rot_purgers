@@ -295,6 +295,7 @@ func load_seleced_object():
 	%Object_type.selected = map_editor.selected_object.object_type
 	%Object_height.text = str(map_editor.selected_object.height)
 	%Object_dial_cue.text = map_editor.selected_object.dialogue_cue
+	%Object_chance.text = str(map_editor.selected_object.rot_chance)
 	_on_object_type_item_selected(%Object_type.selected)
 
 func _on_file_dialog_file_selected(path: String) -> void:
@@ -326,6 +327,12 @@ func _on_object_type_item_selected(index: int) -> void:
 	else:
 		for cont in exit_controlls:
 			cont.hide()
+	if index == Map_object.types.ROT:
+		%Label17.show()
+		%Object_chance.show()
+	else:
+		%Label17.hide()
+		%Object_chance.hide()
 
 func _on_select_data_bt_pressed() -> void:
 	file_state = file_states.OBJECT_DATA
@@ -421,7 +428,9 @@ func _on_object_height_text_changed(new_text: String) -> void:
 func _on_object_dial_cue_text_changed(new_text: String) -> void:
 	map_editor.selected_object.dialogue_cue = new_text
 
-
+func _on_object_chance_text_changed(new_text: String) -> void:
+	if new_text.is_valid_float():
+		map_editor.selected_object.rot_chance = float(new_text)
 
 
 

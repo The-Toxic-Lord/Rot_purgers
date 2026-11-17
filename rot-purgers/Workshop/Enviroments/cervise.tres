@@ -1,0 +1,27 @@
+[gd_resource type="Environment" format=3 uid="uid://rvsb56j2quva"]
+
+[ext_resource type="Shader" uid="uid://cloj07qo8apha" path="res://Workshop/Enviroments/sky.gdshader" id="1_o1abd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mr5n3"]
+shader = ExtResource("1_o1abd")
+shader_parameter/sky_color = Color(0.2, 0.5, 0.9, 1)
+shader_parameter/horizon_color = Color(0.5, 0.8, 1, 1)
+shader_parameter/horizon_blur = 0.1
+shader_parameter/sun_color = Color(1, 1, 0.8, 1)
+shader_parameter/sun_size = 0.05
+shader_parameter/sun_blur = 0.01
+shader_parameter/cloud_color = Color(1, 1, 1, 1)
+shader_parameter/cloud_edge_sharpness = 0.2000000095
+shader_parameter/cloud_scale = 2.0
+shader_parameter/cloud_speed = 0.02
+
+[sub_resource type="Sky" id="Sky_7h5cb"]
+sky_material = SubResource("ShaderMaterial_mr5n3")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_7h5cb")
+tonemap_mode = 4
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true

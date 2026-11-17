@@ -95,10 +95,10 @@ func attack_damage(target : Character_node, attacker : Character_node):
 	var hit_chance : float = calc_hit_chance(target, attacker)
 	var acc_dmg_mod : float = cals_hit_acc_dmg_bonus(hit_chance)
 	if acc_dmg_mod == 0.0:
-		await target.damage(-1)
+		target.damage(-1)
 	else:
 		var damage : float = calc_atk_damage(target, attacker, acc_dmg_mod)
-		await target.damage(damage, true)
+		target.damage(damage, true)
 	await target.animation_ended
 	await get_tree().process_frame
 	order_ended.emit()
@@ -146,14 +146,14 @@ func skill_mass(order : Order_skill_data):
 				target.change_rot(order.skill.rot_stage_add)
 		#await target_damage.keys()[0].animation_ended
 		await get_tree().process_frame
-		while true:
-			var dead_check := true
-			for target in target_damage.keys():
-				if target != null:
-					if target.is_dead:
-						dead_check = false
-			if dead_check:
-				break
+		#while true:
+			#var dead_check := true
+			#for target in target_damage.keys():
+				#if target != null:
+					#if target.is_dead:
+						#dead_check = false
+			#if dead_check:
+				#break
 	
 	order_ended.emit()
 
@@ -199,16 +199,16 @@ func skill_oneshot(order : Order_skill_data):
 		else:
 			target.kill()
 	if !targets.is_empty():
-		await targets[0].animation_ended
+		#await targets[0].animation_ended
 		await get_tree().process_frame
-		while true:
-			var dead_check := true
-			for target in targets:
-				if target != null:
-					if target.is_dead:
-						dead_check = false
-			if dead_check:
-				break
+		#while true:
+			#var dead_check := true
+			#for target in targets:
+				#if target != null:
+					#if target.is_dead:
+						#dead_check = false
+			#if dead_check:
+				#break
 	
 	order_ended.emit()
 

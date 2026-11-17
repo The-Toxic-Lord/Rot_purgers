@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cc2fywiyu0mah"]
 
 [ext_resource type="PackedScene" uid="uid://c7amneiqfibus" path="res://import/spawner_node.tscn" id="1_30sdh"]
-[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://import/magic_envt.tres" id="1_cc2c2"]
+[ext_resource type="Environment" uid="uid://b3qlx6eainf8l" path="res://Workshop/Enviroments/magic_envt.tres" id="1_cc2c2"]
 [ext_resource type="PackedScene" uid="uid://dcwsgdo2lf8e1" path="res://blender_models/Chars/Mad_mage.glb" id="3_kycr6"]
 [ext_resource type="Script" uid="uid://c70xoioo0qrlj" path="res://blender_models/Cutscene_char.gd" id="4_2mhsq"]
 

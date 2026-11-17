@@ -12,7 +12,8 @@ sky_material = SubResource("ProceduralSkyMaterial_efxa6")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_ss5bj")
-tonemap_mode = 2
+reflected_light_source = 2
+tonemap_mode = 4
 ssao_enabled = true
 ssao_radius = 1.5
 ssao_intensity = 2.5
