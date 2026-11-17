@@ -948,7 +948,7 @@ visible = false
 transform = Transform3D(-0.49396092, 0, 0.07747509, 0, 0.5, 0, -0.07747509, 0, -0.49396092, -0.13876675, 0, -0.1805197)
 
 [node name="Alastor1" parent="." unique_id=1803624731 instance=ExtResource("10_cc0f0")]
-transform = Transform3D(0.0025516276, 0, 0.9999965, 0, 1, 0, -0.9999965, 0, 0.0025516276, -1.847, 0, 0.058)
+transform = Transform3D(0.0025516276, 0, 0.9999964, 0, 1, 0, -0.9999964, 0, 0.0025516276, -1.847, 0, 0.058)
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
@@ -959,7 +959,7 @@ visible = false
 transform = Transform3D(0.0012758143, 0, -0.49999842, 0, 0.5, 0, 0.49999842, 0, 0.0012758143, -0.032694675, 0.20292139, -0.5629208)
 
 [node name="Aven" parent="." unique_id=2101898650 instance=ExtResource("12_1ebqx")]
-transform = Transform3D(-0.99870706, 0, 0.05082551, 0, 1, 0, -0.05082551, 0, -0.99870706, -0.25781405, 0.051544726, 1.9019257)
+transform = Transform3D(-0.998707, 0, 0.05082551, 0, 1, 0, -0.05082551, 0, -0.998707, -0.25781405, 0.051544726, 1.9019257)
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 

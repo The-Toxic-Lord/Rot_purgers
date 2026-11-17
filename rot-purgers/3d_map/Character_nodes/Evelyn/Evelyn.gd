@@ -2,7 +2,8 @@ extends Character_node
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
-func move_normal(pos : Vector3, time := 0.5):
+@warning_ignore("unused_parameter")
+func move_normal(pos : Vector3, time := 0.5, path : Array[Vector2i] = []):
 	var tween_blend := create_tween()
 	tween_blend.tween_property(animation_tree, "parameters/walk_blend/blend_amount", 1.0, 0.25)
 	

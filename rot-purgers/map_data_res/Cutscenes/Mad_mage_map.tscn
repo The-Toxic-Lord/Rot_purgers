@@ -492,6 +492,18 @@ tracks/41/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("Mad_mage/AnimationTree:active")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_kft4o"]
 resource_name = "end"
@@ -3948,10 +3960,26 @@ tracks/3/keys = {
 "method": &"play_animation"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mad_mage")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.9, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop_animation"
+}, {
+"args": ["Idle"],
+"method": &"play_anim"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_0p6e6"]
 resource_name = "turn_02"
-length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3959,10 +3987,22 @@ tracks/0/path = NodePath("Mad_mage/AnimationTree:parameters/OneShot/request")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mad_mage/AnimationTree:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ee0fi"]
@@ -5553,6 +5593,7 @@ filter_enabled = true
 filters = ["Armature/Skeleton3D:Bone.003"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_m8u4e"]
+graph_offset = Vector2(-467.2421, 56.753723)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_0p6e6")
 nodes/OneShot/position = Vector2(80, 160)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_3iggx")
@@ -6560,25 +6601,25 @@ bones/0/position = Vector3(0.99423605, -0.17601645, -1.6584761)
 bones/0/rotation = Quaternion(-0.5194856, 0.4388819, -0.5438441, 0.49168196)
 bones/1/position = Vector3(-0.90778744, 0.051288605, -1.216522)
 bones/1/rotation = Quaternion(-0.5057127, -0.49422136, 0.49422136, 0.5057126)
-bones/2/position = Vector3(1.7281349e-25, -0.0011164624, -1.3462672)
-bones/2/rotation = Quaternion(0.00074043137, 0, -3.3834088e-18, 0.9999998)
+bones/2/position = Vector3(1.5132383e-25, -0.02698463, -1.3462672)
+bones/2/rotation = Quaternion(0.0165193, 0, -2.3447903e-18, 0.9998636)
 bones/3/rotation = Quaternion(7.2561456e-08, -1.4041031e-08, 0.0026454756, 0.9999965)
 bones/5/rotation = Quaternion(-0.04085292, -0.00027601665, 0.0071258955, 0.9991397)
-bones/6/rotation = Quaternion(-0.058785535, 0.056913733, -0.98527724, 0.15011328)
+bones/6/rotation = Quaternion(-0.058466054, 0.056646377, -0.98525095, 0.15051088)
 bones/7/rotation = Quaternion(0.00034512999, -0.13313557, 0.0029348757, 0.99109346)
 bones/8/rotation = Quaternion(-0.12771748, 0.16634135, -0.0690781, 0.97531897)
-bones/12/rotation = Quaternion(0.048228215, 0.05142968, 0.9856344, 0.15347317)
+bones/12/rotation = Quaternion(0.048309475, 0.05150662, 0.9854411, 0.15465799)
 bones/13/rotation = Quaternion(-0.00041831896, 0.2402789, 0.0030036792, 0.97069925)
 bones/14/rotation = Quaternion(0.0070947064, -0.37826774, 0.023397109, 0.9253734)
 bones/18/position = Vector3(0.2206532, -0.022968058, -0.042642392)
-bones/18/rotation = Quaternion(0.9985858, 0.03318016, 0.00385048, 0.041361567)
+bones/18/rotation = Quaternion(0.99301475, 0.027662082, 0.0053023864, 0.114579506)
 bones/18/scale = Vector3(1.0000345, 0.99999905, 1.0000421)
-bones/19/rotation = Quaternion(0.10130421, 0.006903722, -0.00970308, 0.9947843)
+bones/19/rotation = Quaternion(0.19313288, 0.006807876, -0.018498536, 0.9809746)
 bones/19/scale = Vector3(1.0000011, 1.0000007, 0.99999905)
 bones/20/position = Vector3(-0.21901271, -0.0009483546, -0.011088494)
-bones/20/rotation = Quaternion(0.9988465, -0.039534263, -0.0012802241, -0.027225124)
+bones/20/rotation = Quaternion(0.9978765, -0.033065055, -0.0029086347, 0.05604198)
 bones/20/scale = Vector3(1.0000343, 0.9999969, 1.0000434)
-bones/21/rotation = Quaternion(0.0037446015, -0.006939689, 0.0003586809, 0.9999689)
+bones/21/rotation = Quaternion(0.111904494, -0.006895762, 0.010718379, 0.9936373)
 bones/21/scale = Vector3(1.0000008, 0.99999803, 1.0000008)
 bones/22/position = Vector3(0.37081864, -1.901628, -1.4728117)
 bones/22/rotation = Quaternion(-0.70702475, 0.010771897, -0.010771897, 0.7070247)
@@ -6587,7 +6628,7 @@ bones/23/rotation = Quaternion(0.9469912, 0.0072120246, 0.007586829, -0.32108903
 bones/25/rotation = Quaternion(0.99882287, 0, 0.048506252, 0)
 bones/26/position = Vector3(-0.37081864, -1.901628, -1.4728117)
 bones/26/rotation = Quaternion(-0.70702475, -0.010771897, 0.010771897, 0.7070247)
-bones/27/position = Vector3(0.0015751434, -0.0008756628, 0.014261201)
+bones/27/position = Vector3(5.0301987e-05, -2.3190185e-05, 0.00048411495)
 bones/27/rotation = Quaternion(0.9469912, -0.0072120246, -0.007586829, -0.32108903)
 bones/29/rotation = Quaternion(0.99882287, 0, -0.048506252, 0)
 
@@ -6600,7 +6641,7 @@ tree_root = SubResource("AnimationNodeBlendTree_m8u4e")
 anim_player = NodePath("../AnimationPlayer")
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
+parameters/OneShot/request = 1
 
 [node name="Zaar" parent="." unique_id=1546463438 instance=ExtResource("12_vq7o0")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 11.0866, 2, 25.506369)
@@ -6660,7 +6701,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/stand_up/blend_amount = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=936282732]
-transform = Transform3D(0.9999619, 0.00072268595, -0.008697202, 0, 0.99656546, 0.08280859, 0.008727181, -0.082805485, 0.99652696, 12.0852785, 4.7405396, 27.798355)
+transform = Transform3D(0.9999619, 0.00072268595, -0.0086972015, 0, 0.99656546, 0.082808584, 0.008727181, -0.082805485, 0.9965269, 12.0852785, 4.7405396, 27.798355)
 
 [node name="Fade_in" type="MeshInstance3D" parent="Camera3D" unique_id=708150231]
 transform = Transform3D(1, -2.9802322e-08, 0, 0, 1, 0, -2.9802322e-08, 5.9604645e-08, 1, 0.03564155, -0.08756387, -0.1681788)

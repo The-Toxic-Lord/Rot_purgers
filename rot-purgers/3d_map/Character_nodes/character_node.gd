@@ -88,8 +88,15 @@ func _ready() -> void:
 		for child in skeleton.get_children():
 			if child is MeshInstance3D:
 				child.set_surface_override_material(0, material)
-	#if material is ShaderMaterial:
-		#material.set_shader_parameter("dissolve", -0.1)
+	if material is ShaderMaterial:
+		var noise_texture : NoiseTexture2D = NoiseTexture2D.new()
+		noise_texture.seamless = true
+		var noise = FastNoiseLite.new()
+		noise.frequency = 0.02
+		noise.seed = randi()
+		noise.noise_type = FastNoiseLite.TYPE_CELLULAR
+		noise_texture.noise = noise
+		material.set_shader_parameter("rot_noise", noise_texture)
 
 func new_round():
 	can_move = true
