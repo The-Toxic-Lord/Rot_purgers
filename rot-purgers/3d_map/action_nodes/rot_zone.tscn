@@ -1,17 +1,195 @@
 [gd_scene format=3 uid="uid://demjls6g6q0ro"]
 
-[ext_resource type="Shader" uid="uid://bjjhyipmqnv1d" path="res://Workshop/rot_zone.tres" id="1_0noxs"]
 [ext_resource type="ArrayMesh" uid="uid://yobxpbt374w4" path="res://Workshop/floor_mesh.tres" id="1_74i16"]
 [ext_resource type="Texture2D" uid="uid://bsx30ktt1bnck" path="res://Workshop/ramka_2.png" id="2_0dbhs"]
 [ext_resource type="Texture2D" uid="uid://ge26qimprirr" path="res://3d_map/map_cell_materials/material_textures/Texture_128x128_13.png" id="2_robd1"]
+[ext_resource type="Texture2D" uid="uid://dghsdxtdtaw65" path="res://Workshop/rot_noise.tres" id="2_xxowm"]
+
+[sub_resource type="Shader" id="Shader_0dbhs"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform float non_rot_persentage;
+uniform int divisions;
+uniform sampler2D rot_noise;
+uniform float rot_wave_strength = 1.0;
+uniform float wave_size = 0.10000000149012;
+uniform float wave_wave_size = 0.00999999977648;
+uniform sampler2D ramka;
+
+
+
+void fragment() {
+// ColorConstant:42
+	vec4 n_out42p0 = vec4(0.000000, 0.101625, 0.015891, 1.000000);
+
+
+// FloatParameter:7
+	float n_out7p0 = non_rot_persentage;
+
+
+// Input:17
+	vec2 n_out17p0 = UV;
+
+
+// Vector2Constant:31
+	vec2 n_out31p0 = vec2(1.000000, 1.000000);
+
+
+// IntParameter:37
+	int n_out37p0 = divisions;
+
+
+// VectorOp:32
+	vec2 n_out32p0 = n_out31p0 * vec2(float(n_out37p0));
+
+
+// VectorOp:24
+	vec2 n_out24p0 = n_out17p0 / n_out32p0;
+
+
+// Input:10
+	vec3 n_out10p0 = NODE_POSITION_WORLD;
+
+
+// VectorDecompose:12
+	float n_out12p0 = n_out10p0.x;
+	float n_out12p1 = n_out10p0.y;
+	float n_out12p2 = n_out10p0.z;
+
+
+// FloatOp:28
+	float n_in28p1 = 2.00000;
+	float n_out28p0 = n_out12p0 / n_in28p1;
+
+
+// FloatOp:33
+	float n_out33p0 = n_out28p0 / float(n_out37p0);
+
+
+// FloatOp:29
+	float n_in29p1 = 2.00000;
+	float n_out29p0 = n_out12p2 / n_in29p1;
+
+
+// FloatOp:34
+	float n_out34p0 = n_out29p0 / float(n_out37p0);
+
+
+// VectorCompose:35
+	vec2 n_out35p0 = vec2(n_out33p0, n_out34p0);
+
+
+// VectorOp:36
+	vec2 n_out36p0 = n_out24p0 + n_out35p0;
+
+
+	vec4 n_out11p0;
+// Texture2D:11
+	n_out11p0 = texture(rot_noise, n_out36p0);
+	float n_out11p1 = n_out11p0.r;
+
+
+// Step:5
+	float n_out5p0 = step(n_out7p0, n_out11p1);
+
+
+// VectorOp:43
+	vec3 n_out43p0 = vec3(n_out42p0.xyz) * vec3(n_out5p0);
+
+
+// ColorConstant:44
+	vec4 n_out44p0 = vec4(0.122864, 0.341398, 0.000000, 1.000000);
+
+
+// FloatParameter:60
+	float n_out60p0 = rot_wave_strength;
+
+
+// VectorCompose:59
+	vec3 n_out59p0 = vec3(n_out60p0, n_out60p0, n_out60p0);
+
+
+// VectorOp:58
+	vec3 n_out58p0 = vec3(n_out44p0.xyz) * n_out59p0;
+
+
+// FloatParameter:38
+	float n_out38p0 = wave_size;
+
+
+// Input:23
+	float n_out23p0 = TIME;
+
+
+// FloatFunc:20
+	float n_out20p0 = sin(n_out23p0);
+
+
+// FloatParameter:47
+	float n_out47p0 = wave_wave_size;
+
+
+// FloatOp:48
+	float n_out48p0 = n_out20p0 * n_out47p0;
+
+
+// FloatOp:49
+	float n_out49p0 = n_out38p0 + n_out48p0;
+
+
+// FloatOp:40
+	float n_out40p0 = n_out7p0 + n_out49p0;
+
+
+// Step:39
+	float n_out39p0 = step(n_out40p0, n_out11p1);
+
+
+// FloatOp:41
+	float n_out41p0 = n_out5p0 - n_out39p0;
+
+
+// VectorOp:45
+	vec3 n_out45p0 = n_out58p0 * vec3(n_out41p0);
+
+
+	vec4 n_out62p0;
+// Texture2D:62
+	n_out62p0 = texture(ramka, UV);
+	float n_out62p1 = n_out62p0.r;
+
+
+// Step:66
+	float n_in66p0 = 0.50000;
+	float n_out66p0 = step(n_in66p0, n_out62p1);
+
+
+// VectorOp:64
+	vec3 n_out64p0 = vec3(n_out66p0) * n_out58p0;
+
+
+// VectorOp:65
+	vec3 n_out65p0 = n_out45p0 + n_out64p0;
+
+
+// Output:0
+	ALBEDO = n_out43p0;
+	ALPHA = n_out5p0;
+	EMISSION = n_out65p0;
+
+
+}
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_robd1"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_0noxs")
-shader_parameter/dissolve = 0.6
+shader = SubResource("Shader_0dbhs")
+shader_parameter/non_rot_persentage = 0.6
 shader_parameter/divisions = 4
-shader_parameter/emmision = 4.0
+shader_parameter/rot_noise = ExtResource("2_xxowm")
+shader_parameter/rot_wave_strength = 4.0
 shader_parameter/wave_size = 0.04
 shader_parameter/wave_wave_size = 0.03
 shader_parameter/ramka = ExtResource("2_0dbhs")

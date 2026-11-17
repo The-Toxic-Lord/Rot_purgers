@@ -1,22 +1,14 @@
 [gd_resource type="VisualShader" format=3 uid="uid://bjjhyipmqnv1d"]
 
+[ext_resource type="Texture2D" uid="uid://dghsdxtdtaw65" path="res://Workshop/rot_noise.tres" id="1_i2yu2"]
+
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_067qi"]
 input_name = "node_position_world"
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0dbhs"]
-resource_local_to_scene = true
-noise_type = 2
-frequency = 0.0201
-cellular_distance_function = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0noxs"]
-resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_0dbhs")
-seamless = true
-
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_i2yu2"]
 expanded_output_ports = [0]
-texture = SubResource("NoiseTexture2D_0noxs")
+source = 5
+texture = ExtResource("1_i2yu2")
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_067qi"]
 
@@ -30,7 +22,6 @@ function = 0
 input_name = "time"
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_067qi"]
-output_port_for_preview = 0
 default_input_values = [0, Vector2(0, 0), 1, Vector2(2, 2)]
 op_type = 0
 operator = 3
@@ -95,7 +86,7 @@ constant = Color(0.12286445, 0.34139788, 4.813075e-08, 1)
 operator = 2
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_8m7yy"]
-operator = 6
+operator = 2
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_i2yu2"]
 parameter_name = "wave_wave_size"
@@ -116,7 +107,7 @@ operator = 2
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_cc0mh"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_0g8wt"]
-parameter_name = "emmision"
+parameter_name = "rot_wave_strength"
 default_value_enabled = true
 default_value = 1.0
 
@@ -135,8 +126,11 @@ operator = 2
 [sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_a203n"]
 default_input_values = [0, 0.5, 1, 0.0]
 
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_i2yu2"]
+parameter_name = "rot_noise"
+
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_mu0vg"]
-parameter_name = "dissolve"
+parameter_name = "non_rot_persentage"
 
 [resource]
 resource_local_to_scene = true
@@ -217,4 +211,6 @@ nodes/fragment/65/node = SubResource("VisualShaderNodeVectorOp_cc0mh")
 nodes/fragment/65/position = Vector2(920, 380)
 nodes/fragment/66/node = SubResource("VisualShaderNodeStep_a203n")
 nodes/fragment/66/position = Vector2(100, -340)
-nodes/fragment/connections = PackedInt32Array(11, 1, 5, 1, 7, 0, 5, 0, 23, 0, 20, 0, 17, 0, 24, 0, 31, 0, 32, 0, 32, 0, 24, 1, 24, 0, 36, 0, 36, 0, 11, 0, 37, 0, 32, 1, 33, 0, 35, 0, 34, 0, 35, 1, 35, 0, 36, 1, 28, 0, 33, 0, 12, 0, 28, 0, 29, 0, 34, 0, 12, 2, 29, 0, 10, 0, 12, 0, 37, 0, 33, 1, 37, 0, 34, 1, 7, 0, 40, 0, 40, 0, 39, 0, 11, 1, 39, 1, 5, 0, 41, 0, 39, 0, 41, 1, 42, 0, 43, 0, 5, 0, 43, 1, 41, 0, 45, 1, 43, 0, 46, 0, 47, 0, 48, 1, 38, 0, 49, 0, 48, 0, 49, 1, 49, 0, 40, 1, 20, 0, 48, 0, 5, 0, 0, 1, 59, 0, 58, 1, 60, 0, 59, 0, 60, 0, 59, 1, 60, 0, 59, 2, 61, 0, 62, 2, 46, 0, 0, 0, 44, 0, 58, 0, 58, 0, 45, 0, 58, 0, 64, 1, 64, 0, 65, 1, 65, 0, 0, 5, 66, 0, 64, 0, 62, 1, 66, 1, 45, 0, 65, 0)
+nodes/fragment/67/node = SubResource("VisualShaderNodeTexture2DParameter_i2yu2")
+nodes/fragment/67/position = Vector2(-1600, -120)
+nodes/fragment/connections = PackedInt32Array(11, 1, 5, 1, 7, 0, 5, 0, 23, 0, 20, 0, 17, 0, 24, 0, 31, 0, 32, 0, 32, 0, 24, 1, 24, 0, 36, 0, 36, 0, 11, 0, 37, 0, 32, 1, 33, 0, 35, 0, 34, 0, 35, 1, 35, 0, 36, 1, 28, 0, 33, 0, 12, 0, 28, 0, 29, 0, 34, 0, 12, 2, 29, 0, 10, 0, 12, 0, 37, 0, 33, 1, 37, 0, 34, 1, 7, 0, 40, 0, 40, 0, 39, 0, 11, 1, 39, 1, 5, 0, 41, 0, 39, 0, 41, 1, 42, 0, 43, 0, 5, 0, 43, 1, 41, 0, 45, 1, 47, 0, 48, 1, 38, 0, 49, 0, 48, 0, 49, 1, 49, 0, 40, 1, 20, 0, 48, 0, 59, 0, 58, 1, 60, 0, 59, 0, 60, 0, 59, 1, 60, 0, 59, 2, 61, 0, 62, 2, 44, 0, 58, 0, 58, 0, 45, 0, 58, 0, 64, 1, 64, 0, 65, 1, 66, 0, 64, 0, 62, 1, 66, 1, 45, 0, 65, 0, 67, 0, 11, 2, 65, 0, 0, 5, 5, 0, 0, 1, 43, 0, 0, 0)

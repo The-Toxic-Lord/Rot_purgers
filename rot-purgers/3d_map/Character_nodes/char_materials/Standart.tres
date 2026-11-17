@@ -1,7 +1,9 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://djueu0s6ee3mk"]
 
 [ext_resource type="Shader" uid="uid://df14vwumld6sx" path="res://3d_map/Character_nodes/char_materials/dissolve_base_material.gdshader" id="1_r3vy3"]
-[ext_resource type="Texture2D" uid="uid://3jetmtf7qtoe" path="res://blender_models/better_crawler2_Crawler_texture.png" id="2_r3vy3"]
+[ext_resource type="Texture2D" uid="uid://bwgnvdu114knh" path="res://icon.svg" id="2_r3vy3"]
+[ext_resource type="Texture2D" uid="uid://bsx30ktt1bnck" path="res://Workshop/ramka_2.png" id="2_yp2gx"]
+[ext_resource type="Texture2D" uid="uid://dghsdxtdtaw65" path="res://Workshop/rot_noise.tres" id="3_dibuk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g8kef"]
 frequency = 0.1016
@@ -16,7 +18,7 @@ render_priority = 0
 shader = ExtResource("1_r3vy3")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_r3vy3")
-shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/albedo_texture_size = Vector2i(128, 128)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.5
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
@@ -32,3 +34,11 @@ shader_parameter/dissolve_color = Color(0.26211932, 0.7460902, 0.9999998, 1)
 shader_parameter/rot = Color(0.22352941, 0.7372549, 0, 0)
 shader_parameter/emission = Color(1, 1, 1, 1)
 shader_parameter/emission_energy = 0.0
+shader_parameter/rot_stage = 0
+shader_parameter/non_rot_array = PackedFloat32Array(0, 0.3, 0.4, 0.6)
+shader_parameter/divisions = 1
+shader_parameter/rot_noise = ExtResource("3_dibuk")
+shader_parameter/rot_wave_strength = 1.0
+shader_parameter/wave_size = 0.05
+shader_parameter/wave_wave_size = 0.04
+shader_parameter/ramka = ExtResource("2_yp2gx")

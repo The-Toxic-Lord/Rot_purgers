@@ -67,7 +67,7 @@ var rot_colors : Dictionary[int, Color] = {
 }
 func set_rot(stage : int):
 	if material is ShaderMaterial:
-		material.set_shader_parameter("rot", rot_colors[stage])
+		material.set_shader_parameter("rot_stage", stage)
 	else:
 		push_error("wrong material")
 
