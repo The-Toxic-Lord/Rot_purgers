@@ -44,8 +44,6 @@ to do:
 	- fix double hit
 	- шейдер для фона (rot stage)
 	- перевод
-	-CONTROLLER support for rearange and boost menues
-	- disable char ui when rearange and boost selected
 
 1.1 hard:
 	- better AI:

@@ -150,10 +150,12 @@ func close_all():
 	if %Rearrange_menu.visible:
 		%Rearrange_menu.hide()
 		%Rearrange_menu.remove_changes()
+		await %Char_action_menu.update_disabled(selected_char)
 		%Char_action_menu.focus(5)
 		return
 	if %Stats_boost_menu.visible:
 		%Stats_boost_menu.hide()
+		await %Char_action_menu.update_disabled(selected_char)
 		%Char_action_menu.focus(6)
 		return
 	for menu in menues:
@@ -346,6 +348,8 @@ func _on_char_action_menu_rearange() -> void:
 	_on_spell_select_menu_exit()
 	%Rearrange_menu.show()
 	%Rearrange_menu.load_char(selected_char)
+	%Char_action_menu.disable_all()
+	%Rearrange_menu.focus()
 
 func _on_rearange_menu_confirm() -> void:
 	selected_char.can_rearrange = false
@@ -362,8 +366,11 @@ func hide_accuracy():
 func _on_char_action_menu_boost() -> void:
 	%Stats_boost_menu.load_char(selected_char)
 	%Stats_boost_menu.show()
+	%Char_action_menu.disable_all()
+	%Stats_boost_menu.focus()
 
 func _on_stats_boost_menu_confirm() -> void:
+	await %Char_action_menu.update_disabled(selected_char)
 	%Char_action_menu.focus()
 
 

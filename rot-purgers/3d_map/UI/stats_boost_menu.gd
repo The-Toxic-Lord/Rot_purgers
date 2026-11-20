@@ -23,8 +23,10 @@ var stats : Array[Character_stats.stats] = [
 ]
 
 var char_stats : Character_stats
+var boosts : Dictionary[Character_stats.stats, int] = {}
 func load_char(char_node : Character_node):
 	char_stats = char_node.stats
+	boosts = char_stats.boosts.duplicate(true)
 	var stat_value : int = 0
 	magic_cost = 0
 	for id in stats.size():
@@ -59,7 +61,7 @@ func _on_slider_drag_ended(value_changed: bool, source: Slider) -> void:
 	var value : float = source.value
 	var value_change : float = source.value - char_stats.boosts[stats[id]]
 	
-	char_stats.boosts[stats[id]] = int(value)
+	boosts[stats[id]] = int(value)
 	
 	set_label(id, int(value))
 	
@@ -70,7 +72,7 @@ func _on_slider_value_changed(value: float, source: Range) -> void:
 	var id : int = sliders.find(source)
 	var value_change : float = source.value - char_stats.boosts[stats[id]]
 	
-	char_stats.boosts[stats[id]] = int(value)
+	boosts[stats[id]] = int(value)
 	
 	set_label(id, int(value))
 	
@@ -80,6 +82,7 @@ func _on_slider_value_changed(value: float, source: Range) -> void:
 signal confirm
 func _on_confirm_bt_pressed() -> void:
 	if magic_cost <= char_stats.magic:
+		char_stats.boosts = boosts
 		hide()
 		confirm.emit()
 		ObjectLink.focused_char_stats.update_stats(char_stats)
@@ -87,7 +90,8 @@ func _on_confirm_bt_pressed() -> void:
 	else:
 		SoundHandler.play_error()
 
-
+func focus():
+	%Strength_slider2.grab_focus()
 
 
 

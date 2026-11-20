@@ -60,7 +60,9 @@ func focus(id : int = 0):
 	var bt_array : Array[BaseButton] = button_to_signal.keys()
 	bt_array[id].grab_focus()
 
-
+func disable_all():
+	for bt : BaseButton in button_to_signal.keys():
+		bt.disabled = true
 
 
 

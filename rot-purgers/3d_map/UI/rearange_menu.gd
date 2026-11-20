@@ -144,6 +144,12 @@ func remove_changes():
 		char_stats.set_stat(stats[id], old_stats.get_stat(stats[id]))
 	char_stats.set_stat(Character_stats.stats.health, old_stats.get_stat(Character_stats.stats.health))
 
+func focus():
+	%Health_slider.grab_focus()
+
+func _on_slider_focus_exited(source: Control) -> void:
+	_on_slider_drag_ended(true, source)
+
 
 
 
