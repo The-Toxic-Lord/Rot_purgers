@@ -284,7 +284,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Back"
 
-[node name="Rearange_menu" parent="." unique_id=1136149641 instance=ExtResource("9_bj6fb")]
+[node name="Rearrange_menu" parent="." unique_id=1136149641 instance=ExtResource("9_bj6fb")]
 unique_name_in_owner = true
 visible = false
 offset_left = 997.0
@@ -345,7 +345,7 @@ autowrap_mode = 2
 [connection signal="defend" from="Char_action_menu" to="." method="_on_char_action_menu_defend"]
 [connection signal="exit" from="Char_action_menu" to="." method="_on_char_action_menu_exit"]
 [connection signal="move" from="Char_action_menu" to="." method="_on_char_action_menu_move"]
-[connection signal="rearange" from="Char_action_menu" to="." method="_on_char_action_menu_rearange"]
+[connection signal="rearrange" from="Char_action_menu" to="." method="_on_char_action_menu_rearange"]
 [connection signal="spell" from="Char_action_menu" to="." method="_on_char_action_menu_spell"]
 [connection signal="end_turn" from="Turn_menu" to="." method="_on_turn_menu_end_turn"]
 [connection signal="execute" from="Turn_menu" to="." method="_on_turn_menu_execute"]
@@ -363,5 +363,5 @@ autowrap_mode = 2
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/HBoxContainer/terr_bt_06" to="." method="_on_terr_bt_pressed" flags=18]
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/Terrain_mod_button" to="." method="_on_terrain_mod_button_pressed"]
 [connection signal="pressed" from="Terrain_mod/MarginContainer/VBoxContainer/Terrain_mod_back" to="." method="_on_terrain_mod_back_pressed"]
-[connection signal="confirm" from="Rearange_menu" to="." method="_on_rearange_menu_confirm"]
+[connection signal="confirm" from="Rearrange_menu" to="." method="_on_rearange_menu_confirm"]
 [connection signal="confirm" from="Stats_boost_menu" to="." method="_on_stats_boost_menu_confirm"]

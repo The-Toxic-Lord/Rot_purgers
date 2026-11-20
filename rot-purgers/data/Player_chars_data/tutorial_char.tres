@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Character_stats" format=3 uid="uid://dol5sjrolq23y"]
+
+[ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_u0wxn"]
+[ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_b0bbc"]
+[ext_resource type="Texture2D" uid="uid://nc443psun6ns" path="res://dialogue/char_sprites/Aven.png" id="8_qu11v"]
+
+[resource]
+script = ExtResource("2_b0bbc")
+name = "Aven"
+char_class = "Archchancellor"
+age = 4576
+sprite = ExtResource("8_qu11v")
+max_health = 80
+max_magic = 200
+strength = 20
+defence = 20
+magic_strength = 90
+accuracy = 70
+speed = 60
+move_speed = 10
+jump_height = 30
+node_UID = "uid://b6cxctwdbk7gr"
+self_path = "uid://c8uo7wqbb15qk"
+can_rearange_stats = false
+can_boost_stats = null
+health_pre_rot = null
+metadata/_custom_type_script = "uid://by1rq468n504l"

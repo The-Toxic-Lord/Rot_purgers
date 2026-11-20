@@ -18,12 +18,28 @@ func update_stats(ch : Character_stats):
 	%Health_bar.value = ch.health
 	%Health.text = str(ch.health)
 	
+	if ch.penalties.has(Character_stats.stats.max_health) and ch.penalties[Character_stats.stats.max_health] != 0:
+		%Rot_bar.show()
+		%Rot_bar.max_value = ch.max_health
+		%Rot_bar.value = ch.penalties[Character_stats.stats.max_health]
+		change_health_corners(0)
+	else:
+		%Rot_bar.hide()
+		change_health_corners(4)
+
+	
 	%Magic_bar.max_value = ch.max_magic
 	%Magic_bar.value = ch.magic
 	%Magic.text = str(ch.magic)
 	
 	if ch.sprite != null:
 		%Sprite.texture = ch.sprite
+
+func change_health_corners(value : int):
+	var health_bar: ProgressBar = %Health_bar
+	var style_box : StyleBoxFlat = health_bar.get_theme_stylebox("fill")
+	style_box.corner_radius_top_right = value
+	style_box.corner_radius_bottom_right = value
 
 var damage_tween : Tween
 

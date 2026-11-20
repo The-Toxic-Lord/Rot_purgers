@@ -65,11 +65,14 @@ enum AI_types { TURRET, NORMAL, CHARGER, MEATWALL, SPAWNER, FLYER, FLYER_CHARGE,
 @export_storage var number_of_pc : int = 0
 @export_storage var start_height : int = 20
 @export var self_path : String
-@export var can_rearange_stats := true
+@export var can_rearrange_stats := true
+@export var can_boost_stats := true
 
 func new() -> void:
 	health = max_health
 	magic = max_magic
+	await recalc_penalty()
+	heal(0.0)
 
 enum adjust_stats { max_health, strength, defence, accuracy, speed }
 
@@ -103,16 +106,22 @@ func reset_stats():
 @export_storage var boosts : Dictionary[stats, int] = {}
 @export_storage var boost_magic_cost : int = 0
 
+var self_node : Character_node
 func apply_boost_magic_cost():
+	magic -= boost_magic_cost
 	if boost_magic_cost > magic:
 		boost_magic_cost = 0
 		boosts.clear()
-	else:
-		magic -= boost_magic_cost
+		if magic < 0:
+			self_node.damage(-magic * GlobalData.map_magic_cost_adjustment)
+			magic = 0
 
 @export_storage var penalties : Dictionary[stats, int] = {}
+@export_storage var health_pre_rot : int
 
 func change_rot(value : int):
+	if value > 0:
+		health_pre_rot = health
 	if immune_to_rot:
 		return
 	rot_stage = clampi(rot_stage + value, 0, 3)
@@ -121,8 +130,13 @@ func change_rot(value : int):
 func recalc_penalty():
 	for stat in GlobalData.rot_penalties.keys():
 		penalties[stat] = GlobalData.rot_penalties[stat] * rot_stage
+	heal(0.0)
 
-
+func heal(value : float):
+	var penalty : int = 0
+	if penalties.has(stats.max_health):
+		penalty = penalties[stats.max_health]
+	health = clampi(health + int(max_health * value), 0, max_health - penalty)
 
 
 

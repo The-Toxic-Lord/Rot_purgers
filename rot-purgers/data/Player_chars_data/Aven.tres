@@ -27,4 +27,5 @@ jump_height = 30
 node_UID = "uid://mcx4phaimhpc"
 skills = Array[ExtResource("2_uuhbo")]([ExtResource("3_wnfiw"), ExtResource("3_l4prs"), ExtResource("5_qo432"), ExtResource("6_4hydk"), ExtResource("7_4qxk4")])
 self_path = "uid://c8uo7wqbb15qk"
+health_pre_rot = null
 metadata/_custom_type_script = "uid://by1rq468n504l"

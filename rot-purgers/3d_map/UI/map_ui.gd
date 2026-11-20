@@ -131,10 +131,12 @@ func _on_turn_menu_exit() -> void:
 	#if map_generator is not Tutorial:
 		#await make_save()
 	var main : Main_node = map_generator.get_parent()
+	await main.transition_start()
 	await main.load_background()
 	main.show_menu()
 	GlobalData.clear_data()
 	map_generator.queue_free()
+	await main.transition_end()
 
 func close_all():
 	if ObjectLink.save_menu.visible:
@@ -145,9 +147,9 @@ func close_all():
 		%Char_action_menu.focus(2)
 		%Skill_description.hide()
 		return
-	if %Rearange_menu.visible:
-		%Rearange_menu.hide()
-		%Rearange_menu.remove_changes()
+	if %Rearrange_menu.visible:
+		%Rearrange_menu.hide()
+		%Rearrange_menu.remove_changes()
 		%Char_action_menu.focus(5)
 		return
 	if %Stats_boost_menu.visible:
@@ -342,11 +344,11 @@ func _ready() -> void:
 
 func _on_char_action_menu_rearange() -> void:
 	_on_spell_select_menu_exit()
-	%Rearange_menu.show()
-	%Rearange_menu.load_char(selected_char)
+	%Rearrange_menu.show()
+	%Rearrange_menu.load_char(selected_char)
 
 func _on_rearange_menu_confirm() -> void:
-	selected_char.can_rearange = false
+	selected_char.can_rearrange = false
 	%Char_action_menu.update_disabled(selected_char)
 	%Char_action_menu.focus()
 

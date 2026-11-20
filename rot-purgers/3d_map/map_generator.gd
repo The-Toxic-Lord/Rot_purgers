@@ -46,6 +46,7 @@ var skill_animation_target_cell : Vector2i
 var map_data : Map_data
 var spawn_zones : Dictionary[Vector2i, Node3D] = {}
 var exit_zones : Dictionary[Vector2i, Node3D] = {}
+var map_objects : Dictionary[Vector2i, Node3D] = {}
 signal map_loaded
 
 var void_cells : Dictionary[Vector2i, Map_cell] = {}
@@ -104,8 +105,8 @@ func load_static_stuff(map : Map_data):
 	await make_multi_meshes()
 	await BattleHandler.new_battle_start()
 	
-	if map.enviroment != null:
-		world_environment.environment = map.enviroment
+	if map.environment != null:
+		world_environment.environment = map.environment
 
 func dialogue_end():
 	await DialogueManager.dialogue_ended
@@ -353,6 +354,7 @@ func spawn_objects():
 				spawn_zones[cell] = zone
 			Map_object.types.EXIT:
 				exit_zones[cell] = zone
+		map_objects[cell] = zone
 	rot_zone.queue_free()
 
 var showing_move_zone := false
@@ -716,8 +718,7 @@ func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 		if enemy_map[cell].number_of_pc > GlobalData.ally_team.size():
 			continue
 		var char_node : Character_node = load(enemy_map[cell].node_UID).duplicate(true).instantiate()
-		char_node.stats = enemy_map[cell]
-		char_node.stats.new()
+		await char_node.set_stats(enemy_map[cell])
 		add_child(char_node)
 		if map_cells.has(cell) and enemy_map[cell].AI_type != Character_stats.AI_types.FLYER:
 			char_node.position = map_cells[cell].position
@@ -728,7 +729,7 @@ func spawn_enemies(enemy_map : Dictionary[Vector2i, Character_stats]):
 			char_node.position = Vector3(cell.x * 2.0, enemy_map[cell].start_height * 0.1, cell.y * 2.0)
 		char_node.name = enemy_map[cell].name
 		char_node.map_pos = cell
-		char_node.set_rot(enemy_map[cell].rot_stage)
+		#char_node.set_rot(enemy_map[cell].rot_stage)
 		char_node.turn(enemy_map[cell].start_dir, true)
 		BattleHandler.enemies.append(char_node)
 		char_positions[cell] = char_node
@@ -737,8 +738,7 @@ func spawn_enemy(enemy_stats : Character_stats, cell : Vector2i, dir : direction
 	var char_node : Character_node = load(enemy_stats.node_UID).duplicate(true).instantiate()
 	add_child(char_node)
 	char_node.position = map_cells[cell].position
-	char_node.stats = enemy_stats
-	char_node.stats.new()
+	await char_node.set_stats(enemy_stats)
 	char_node.name = enemy_stats.name
 	char_node.map_pos = cell
 	char_node.turn(dir, true)

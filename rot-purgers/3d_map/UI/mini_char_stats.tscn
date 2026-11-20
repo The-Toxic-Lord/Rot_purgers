@@ -10,6 +10,18 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us3cq"]
+bg_color = Color(0.45840496, 0.45840508, 0.4584049, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfbt5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfbt5"]
+bg_color = Color(0.3852769, 0.5626356, 0, 1)
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
 [node name="Mini_char_stats" type="MarginContainer" unique_id=1192290151]
 offset_right = 600.0
 offset_bottom = 220.0
@@ -89,6 +101,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_us3cq")
 step = 1.0
 value = 100.0
 show_percentage = false
@@ -114,6 +127,18 @@ theme_override_font_sizes/font_size = 36
 text = "500"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Rot_bar" type="ProgressBar" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer2/Health_bar" unique_id=1502428339]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 0
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxEmpty_xfbt5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xfbt5")
+step = 1.0
+value = 10.0
+fill_mode = 1
+show_percentage = false
 
 [node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/CenterContainer2/VBoxContainer/HBoxContainer4/VBoxContainer2" unique_id=478402994]
 custom_minimum_size = Vector2(0, 18)

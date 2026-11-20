@@ -1,18 +1,6 @@
-~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
-=> END
-
 ~ t1
 YO! LUNACY!
-Let us get through this quick. I have to finish this game after all.
+do ObjectLink.map_gen.tutorial_sequence()
 => END
 
 ~ t2
@@ -32,7 +20,7 @@ The green zone is the entrance to the map. Click it, then select the character t
 => END
 
 ~ t6
-Click on character to open his action menu. Then click on the move button.
+Click on the move button to see available moves.
 => END
 
 ~ t7
@@ -44,15 +32,16 @@ Now select character again and choose attack.
 => END
 
 ~ t9
-Red zones under enemies show who you can target with a basic attack. Press ESC to cancel the attack, open the skill menu, and choose Slash.
+Red zones under enemies show who you can target with a basic attack. Press ESC to cancel the attack, open the skill menu, and choose [b]Slash[/b].
 => END
 
 ~ t10
-This skill is bound to character and will rotate with him. Cancel it and choose Blast.
+This skill is bound to character and will rotate with him.
+Red zones show where the damage will occure, yellow where character will move. Cancel it and choose [b]Blast[/b].
 => END
 
 ~ t11
-This one is unbound. Blue zones show where it can be cast. You can rotate unbound spells by pressing R. Now choose where to cast it.
+This one is unbound. Purple zones show where it can be cast. You can rotate unbound spells by pressing R. Now choose where to cast it.
 => END
 
 ~ t12
@@ -64,10 +53,112 @@ With this, every action you chose is sealed. Open the turn menu and end the turn
 => END
 
 ~ t14
-If you made a wrong move or want to cancel an attack or skill before execution, move the selector over character and press Z.
+If a character did not move, you can select a bound skill, press [b]F[/b], and move them to a new position. Select [b]Slash[/b] skill and try to do so.
 => END
 
 ~ t15
-Some maps require to kill all enemies. Some to reach a certain zone.
-With this tutorial is concluded. Good luck!
+If you made a wrong move or want to cancel an attack or skill before execution, move the selector over character and press [b]Z[/b].
+=> END
+
+~ t16
+With this basic tutorial is concluded. Good luck!
+=> END
+
+
+~ t_e_01
+In this tutorial I shall explain various environment interactions.
+
+$> ObjectLink.map_camera.move_target = Vector3(12, 2, 8)
+$> wait(0.5)
+
+Here you can see some Rot tiles. If a character ends their move on one of these, they have a chance to gain some rot.
+
+In this tutorial all Rot tiles have a 100% chance to give character rot.
+
+Try stepping on one.
+do! ObjectLink.map_gen.tutorial_sequence_environment()
+=> END
+
+~ t_e_03
+Characters affected by Rot have a penalty applied to their stats. The maximum amount of rot is 3. If you are interested, you can look at those 3 crawlers to check out the penalties.
+
+If you undo your move, the rot will also reverse. Do so.
+=> END
+
+~ t_e_04
+The next topic is the terrain modification spell. Please cast it.
+$> BattleHandler.allies[0].stats.skills.append(load("uid://cue18iythuit2"))
+=> END
+
+~ t_e_05
+First you need to select one cell or more, and then you can adjust their individual height in the menu at the bottom right corner. If you are using a controller, press [b]Y[/b] to switch to it. Now adjust the terrain so that you can reach that circle tile.
+=> END
+
+~ t_e_06
+Adjusting terrain is very useful. One can use it to block enemies, reach high places, or block projectiles.
+
+Now, about that circle. It represents the map exit. When any of your characters reaches it, the map is complete, and you move on to the next. If you don't see any such exit on a map, then in order to progress you need to get rid of all the enemies.
+
+Now you move to the exit and complete this tutorial.
+=> END
+
+
+~ t_c_01
+This tutorial will cover various things concerning characters.
+
+During your expedition you will face many threats. So let's start with damage mitigation.
+
+Select a character and use [b]Protection[/b].
+
+do! ObjectLink.map_gen.tutorial_sequence_char()
+=> END
+
+~ t_c_02
+The yellow zone represents tiles that are protected from enemy attacks. Not from skills. Although some skills can be neutralized this way. Now confirm its use and end the turn.
+=> END
+
+~ t_c_03
+do BattleHandler.enemies[0].kill()
+$> wait(0.1)
+do BattleHandler.enemies[0].kill()
+$> wait(0.1)
+do BattleHandler.enemies[0].kill()
+$> wait(0.1)
+
+$> ObjectLink.map_camera.move_target = Vector3(8, 2, 8)
+$> wait(0.5)
+Good. But let's say for the sake of an argument that you took damage. Like this.
+
+do BattleHandler.allies[0].damage(79)
+$> wait(0.5)
+
+In order to restore health, use the [b]Heal[/b] spell.
+=> END
+
+~ t_c_04
+Unfortunately, a character can only heal himself. Press Execute in turn menu.
+=> END
+
+~ t_c_05
+Please keep an eye on the current magic that character has and end the turn.
+=> END
+
+~ t_c_06
+At the beginning of a turn characters recover 5% of their magic.
+
+Now let's move to a more interesting topic. Character stats can be rearranged! Select a character and press the [b]Rearrange[/b] button.
+=> END
+
+~ t_c_07
+Move the sliders around to get the feel for how it works. When you are finished, press confirm.
+=> END
+
+~ t_c_08
+You can only rearrange stats once per turn, but it's free. Now let's see how [b]Boost[/b] works.
+=> END
+
+~ t_c_09
+Boost can be applied at the start of a turn before any action is taken. The cost will be applied at the start of the next turn, after magic recovery. If the cost was greater than the remaining magic, there will be a penalty, and the boost will be gone.
+
+This covers this section.
 => END

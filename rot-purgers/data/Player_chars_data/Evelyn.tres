@@ -25,4 +25,6 @@ attack_height = 50
 node_UID = "uid://blnnuohsuxyvg"
 skills = Array[ExtResource("1_cbuay")]([ExtResource("3_8cule"), ExtResource("4_uoesq")])
 self_path = "uid://bey6puoeedq1m"
+can_rearange_stats = false
+can_boost_stats = false
 metadata/_custom_type_script = "uid://by1rq468n504l"

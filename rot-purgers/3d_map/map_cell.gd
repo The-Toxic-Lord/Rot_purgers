@@ -370,9 +370,12 @@ func update_height(value : int, zone : Node3D):
 	move_tween.tween_property(self, "position", position + Vector3(0, value * 0.1 - position.y, 0), 1.0)
 	move_tween.tween_property(zone, "position", position + Vector3(0, value * 0.1 - position.y, 0), 1.0)
 	move_tween.tween_property(self, "tween_progress", 1.0, 1.0)
-	if BattleHandler.map_gen.char_positions.has(cell_position):
-		var char_node : Character_node = BattleHandler.map_gen.char_positions[cell_position]
+	if ObjectLink.map_gen.char_positions.has(cell_position):
+		var char_node : Character_node = ObjectLink.map_gen.char_positions[cell_position]
 		move_tween.tween_property(char_node, "position", char_node.position + Vector3(0, value * 0.1 - position.y, 0), 1.0)
+	if ObjectLink.map_gen.map_objects.has(cell_position):
+		var object_node : Node3D = ObjectLink.map_gen.map_objects[cell_position]
+		move_tween.tween_property(object_node, "position", object_node.position + Vector3(0, value * 0.1 - position.y, 0), 1.0)
 
 func update_walls():
 	for dir in walls:

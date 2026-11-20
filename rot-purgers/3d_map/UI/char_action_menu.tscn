@@ -61,7 +61,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 action_mode = 0
-text = "Rearange"
+text = "Rearrange"
 
 [node name="Stat_boost" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1160156721]
 unique_name_in_owner = true

@@ -26,5 +26,6 @@ func explode():
 	add_child(explosion)
 	explosion.global_position = plasma_orb.global_position
 	explosion.play()
+	SoundHandler.play_sfx(preload("uid://cxq4nhsux8vm1"))
 	await explosion.finished
 	animation_finished.emit()

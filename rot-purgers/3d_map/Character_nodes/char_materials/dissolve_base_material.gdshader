@@ -268,5 +268,5 @@ void fragment() {
 	rot_overlay_output rot_out = rot_overlay(UV, NODE_POSITION_WORLD);
 	if (rot_out.alpha_out == 1.0)
 		ALBEDO = rot_out.albedo_out;
-		EMISSION = rot_out.emission_out;
+		EMISSION = EMISSION + rot_out.emission_out;
 }

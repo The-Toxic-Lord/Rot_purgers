@@ -26,7 +26,7 @@ var previous_map_pos : Vector2i
 var pre_move_dir : Map_generator.directions
 var can_undo_move := false
 var is_enemy := true
-var can_rearange := true
+var can_rearrange := true
 var is_dead := false
 var deflects_left : int = 0
 
@@ -73,9 +73,13 @@ func set_rot(stage : int):
 
 func set_stats(char_stat : Character_stats):
 	stats = char_stat.duplicate()
+	stats.new()
+	stats.self_node = self
 	base_stats = char_stat.duplicate()
+	ready()
+	set_rot(stats.rot_stage)
 
-func _ready() -> void:
+func ready() -> void:
 	material = load("uid://djueu0s6ee3mk").duplicate(true)
 	material.set_shader_parameter("texture_albedo", texture)
 	if char_animation.has_animation("Idle"):
@@ -104,9 +108,11 @@ func new_round():
 	is_defending = false
 	has_order = false
 	can_undo_move = false
-	can_rearange = stats.can_rearange_stats
+	can_rearrange = stats.can_rearrange_stats
 	previous_map_pos = Vector2i(-1, -1)
 	rot_cells_checks.clear()
+	rot_pre_move = stats.rot_stage
+	stats.health_pre_rot = stats.health
 	
 	stats.magic = clampi(stats.magic + int(stats.max_magic * 0.05), 0, stats.max_magic)
 	stats.apply_boost_magic_cost()
@@ -155,8 +161,8 @@ signal battle_can_over
 func check_dead(display_mini = false):
 	await get_tree().process_frame
 	if stats.health == 0:
-		ObjectLink.map_gen.remove_enemy(self)
-		BattleHandler.char_dies(self)
+		await ObjectLink.map_gen.remove_enemy(self)
+		await BattleHandler.char_dies(self)
 		is_dead = true
 		data_removed.emit()
 		if display_mini:
@@ -326,6 +332,7 @@ func check_stepped_cell():
 			return
 		await stats.change_rot(1)
 		set_rot(stats.rot_stage)
+		return
 	if ObjectLink.map_gen.object_map.has(map_pos):
 		var obj_data : Map_object = ObjectLink.map_gen.object_map[map_pos]
 		if obj_data.object_type != Map_object.types.ROT:
@@ -334,8 +341,7 @@ func check_stepped_cell():
 			rot_cells_checks[map_pos] = true
 			return
 		rot_cells_checks[map_pos] = false
-		await stats.change_rot(1)
-		set_rot(stats.rot_stage)
+		await change_rot(1)
 
 @warning_ignore("unused_parameter")
 func move_normal(pos : Vector3, time := 0.5, path : Array[Vector2i] = []):
@@ -452,7 +458,7 @@ func turn_finished():
 func heal(value : float):
 	await change_rot(-1)
 	var heal_val : int = int(stats.max_health * value)
-	stats.health = clampi(heal_val + stats.health, 0, stats.max_health)
+	stats.heal(value)
 	%Damage_numbers.text = str(heal_val)
 	%Damage_numbers.modulate = Color("39ad00ff")
 	display_damage(true, true)
@@ -489,6 +495,7 @@ func melee_attack():
 		char_animation.play("Idle")
 
 func deflect():
+	await get_tree().process_frame
 	if char_animation.has_animation("Attack_1"):
 		char_animation.play("Attack_1")
 		await char_animation.animation_finished
@@ -660,8 +667,10 @@ func undo_move(map_cells : Dictionary[Vector2i, Map_cell]):
 	map_pos = previous_map_pos
 	can_undo_move = false
 	turn(pre_move_dir, true)
-	await stats.change_rot(rot_pre_move - stats.rot_stage)
-	set_rot(stats.rot_stage)
+	await change_rot(rot_pre_move - stats.rot_stage)
+	#await stats.change_rot(rot_pre_move - stats.rot_stage)
+	#set_rot(stats.rot_stage)
+	stats.health = stats.health_pre_rot
 
 func load_state(save_char_data : Save_char_data):
 	can_move = save_char_data.can_move
@@ -671,11 +680,9 @@ func load_state(save_char_data : Save_char_data):
 	can_undo_move = save_char_data.can_undo_move
 	map_pos = save_char_data.map_pos
 	previous_map_pos = save_char_data.previous_map_pos
-	stats = save_char_data.stats
-	set_rot(stats.rot_stage)
+	await set_stats(save_char_data.stats)
 	is_enemy = save_char_data.is_enemy
-	can_rearange = save_char_data.can_rearange
-	base_stats = save_char_data.base_stats
+	can_rearrange = save_char_data.can_rearrange
 	turn(save_char_data.current_direction, true)
 
 func magic_cost(value : int):

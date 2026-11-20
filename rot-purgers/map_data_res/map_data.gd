@@ -7,7 +7,7 @@ class_name Map_data
 
 @export_storage var terrain_map_data : Dictionary[Vector2i, Terrain_data] = {}
 @export_storage var object_map_data : Dictionary[Vector2i, Map_object] = {}
-@export_storage var enemy_map_data : Dictionary[Vector2i, Character_stats] = {}
+@export var enemy_map_data : Dictionary[Vector2i, Character_stats] = {}
 
 
 
@@ -23,4 +23,4 @@ enum map_end_conditions { ENEMY, DOOR }
 @export var player_chars : Array[Character_stats] = []
 @export var game_over_scene : String = ""
 @export var game_over_scene_cue : String = ""
-@export var enviroment : Environment
+@export var environment : Environment

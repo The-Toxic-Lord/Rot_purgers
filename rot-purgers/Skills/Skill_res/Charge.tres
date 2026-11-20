@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://daygwp60xitvb"]
+[gd_resource type="Resource" script_class="Skill_base" format=3 uid="uid://dvgh4p7xot41f"]
 
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_phxyp"]
 [ext_resource type="Resource" uid="uid://xespvymln3vv" path="res://Skills/skill_map_data_res/Charge.tres" id="2_ip1hy"]

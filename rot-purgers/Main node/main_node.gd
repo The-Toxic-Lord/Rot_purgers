@@ -40,6 +40,7 @@ func _on_load_pressed() -> void:
 var temp_save : Game_save
 func load_save(save_name : String):
 	await transition_start()
+	SoundHandler.stop_music()
 	if background != null:
 		background.queue_free()
 	if map_generator != null:
@@ -67,11 +68,17 @@ func remove_background():
 
 func load_scene_path(path : String, extra_data = null):
 	await transition_start()
+	SoundHandler.stop_music()
+	%Main_menu.hide_menu()
 	if background != null:
 		background.queue_free()
 	var map_data = ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE_DEEP)
 	if map_data is Map_data:
-		var new_map_gen : Map_generator = load("uid://buyr0671du0pe").instantiate()
+		var new_map_gen : Map_generator
+		if extra_data == "tutorial":
+			new_map_gen = load("uid://2imm1twj3hd").instantiate()
+		else:
+			new_map_gen = load("uid://buyr0671du0pe").instantiate()
 		new_map_gen.hide()
 		add_child(new_map_gen)
 		new_map_gen.load_map(map_data)
@@ -120,20 +127,6 @@ func close_map():
 		map_generator.queue_free()
 	if cutscene != null:
 		cutscene.queue_free()
-
-func load_tutorial():
-	var map_data = load("res://map_data_res/tutorial.tres")
-	var new_map_gen : Tutorial = load("uid://2imm1twj3hd").instantiate()
-	new_map_gen.hide()
-	add_child(new_map_gen)
-	new_map_gen.load_map(map_data)
-	await new_map_gen.map_loaded
-	remove_background()
-	if map_generator != null:
-		map_generator.queue_free()
-	map_generator = new_map_gen
-	map_generator.show()
-	SoundHandler.play_tutor()
 
 func transition_start():
 	TransitionScreen.on()

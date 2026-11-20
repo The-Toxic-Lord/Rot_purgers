@@ -13,7 +13,7 @@ class_name Save_char_data
 @export_storage var current_direction : Map_generator.directions
 @export_storage var is_enemy : bool
 @export_storage var name : String
-@export_storage var can_rearange := true
+@export_storage var can_rearrange := true
 @export_storage var deflects_left : int = 0
 @export_storage var base_stats : Character_stats
 @export_storage var position : Vector3
@@ -30,7 +30,7 @@ func make(char_node : Character_node) -> void:
 	current_direction = char_node.current_direction
 	is_enemy = char_node.is_enemy
 	name = char_node.name
-	can_rearange = char_node.can_rearange
+	can_rearrange = char_node.can_rearrange
 	deflects_left = char_node.deflects_left
 	base_stats = char_node.base_stats
 	position = char_node.position

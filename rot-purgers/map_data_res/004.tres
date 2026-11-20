@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://bil8sei2ynyy"]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://5j2rtim3avlh"]
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_fqnh8"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_574v3"]
@@ -6,14 +6,13 @@
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="3_m0xds"]
 [ext_resource type="Texture2D" uid="uid://ba5njglj1gpcp" path="res://aseprite_stuff/Shapes.png" id="3_yu7on"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="4_1gyjt"]
-[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/Charge.tres" id="4_xit38"]
-[ext_resource type="Resource" uid="uid://bdy6yy4aten05" path="res://Skills/Skill_res/Push.tres" id="5_ijutv"]
+[ext_resource type="Resource" uid="uid://daygwp60xitvb" path="res://Skills/Skill_res/enemy_skills/Charge.tres" id="4_xit38"]
+[ext_resource type="Resource" uid="uid://bdy6yy4aten05" path="res://Skills/Skill_res/enemy_skills/Push.tres" id="5_ijutv"]
 [ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="5_pew05"]
 [ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="5_pxani"]
 [ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="6_574v3"]
 [ext_resource type="Texture2D" uid="uid://cas0frcomecel" path="res://aseprite_stuff/Crawler_cap.png" id="6_j4ma5"]
 [ext_resource type="Material" uid="uid://cq3hrppxee3p4" path="res://3d_map/map_cell_materials/lava_floor_test.tres" id="7_m0xds"]
-[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/Enviroments/cave.tres" id="7_ub6j5"]
 [ext_resource type="Texture2D" uid="uid://bm02bsmgrkna4" path="res://3d_map/map_cell_materials/material_textures/Elements_09-128x128.png" id="8_1gyjt"]
 [ext_resource type="Resource" uid="uid://d2mat2b43iwxg" path="res://data/Player_chars_data/Alastor.tres" id="9_7elpe"]
 [ext_resource type="Resource" uid="uid://c8uo7wqbb15qk" path="res://data/Player_chars_data/Aven.tres" id="10_j17rj"]
@@ -21,24 +20,46 @@
 [ext_resource type="Resource" uid="uid://c5xtfota7ng1v" path="res://data/Player_chars_data/Zaar.tres" id="12_c5a7s"]
 [ext_resource type="Resource" uid="uid://bljae404ietm2" path="res://dialogue/texts/map_dialogues.dialogue" id="19_j17rj"]
 
-[sub_resource type="Resource" id="Resource_j17rj"]
+[sub_resource type="Resource" id="Resource_obwef"]
 script = ExtResource("1_fqnh8")
 name = "Crawler"
 char_class = "Captain"
 age = 10
 sprite = ExtResource("6_j4ma5")
-max_health = 150
-max_magic = 10
+max_health = 300
+max_magic = 0
 strength = 60
 defence = 60
-accuracy = 60
-speed = 70
+accuracy = 80
+speed = 80
 trigger_distance = 8
 node_UID = "uid://b6n303wyg5i5g"
 start_dir = 1
+AI_type = 2
 skills = Array[ExtResource("2_574v3")]([ExtResource("5_ijutv")])
 potential_skills = Array[ExtResource("2_574v3")]([ExtResource("4_xit38"), ExtResource("5_ijutv")])
-number_of_pc = 3
+number_of_pc = 2
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_c5a7s"]
+script = ExtResource("1_fqnh8")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("6_j4ma5")
+max_health = 300
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 80
+speed = 80
+trigger_distance = 8
+node_UID = "uid://b6n303wyg5i5g"
+start_dir = 1
+AI_type = 2
+skills = Array[ExtResource("2_574v3")]([ExtResource("5_ijutv")])
+potential_skills = Array[ExtResource("2_574v3")]([ExtResource("4_xit38"), ExtResource("5_ijutv")])
+number_of_pc = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_ub6j5"]
@@ -47,35 +68,16 @@ name = "Crawler"
 char_class = "Captain"
 age = 10
 sprite = ExtResource("6_j4ma5")
-max_health = 150
-max_magic = 10
+max_health = 300
+max_magic = 0
 strength = 60
 defence = 60
-accuracy = 60
-speed = 70
-trigger_distance = 8
-node_UID = "uid://b6n303wyg5i5g"
-start_dir = 1
-skills = Array[ExtResource("2_574v3")]([ExtResource("5_ijutv")])
-potential_skills = Array[ExtResource("2_574v3")]([ExtResource("4_xit38"), ExtResource("5_ijutv")])
-number_of_pc = 4
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_hj3m8"]
-script = ExtResource("1_fqnh8")
-name = "Crawler"
-char_class = "Captain"
-age = 10
-sprite = ExtResource("6_j4ma5")
-max_health = 150
-max_magic = 10
-strength = 60
-defence = 60
-accuracy = 60
-speed = 70
+accuracy = 80
+speed = 80
 trigger_distance = 8
 node_UID = "uid://b6n303wyg5i5g"
 start_dir = 2
+AI_type = 2
 skills = Array[ExtResource("2_574v3")]([ExtResource("5_ijutv")])
 potential_skills = Array[ExtResource("2_574v3")]([ExtResource("4_xit38"), ExtResource("5_ijutv")])
 number_of_pc = 2
@@ -86,6 +88,10 @@ script = ExtResource("1_fqnh8")
 name = "Shapes"
 char_class = "Basophil"
 sprite = ExtResource("3_yu7on")
+max_health = 300
+max_magic = 0
+defence = 10
+speed = 10
 trigger_distance = 30
 node_UID = "uid://cuxixch36l8i3"
 AI_type = 4
@@ -98,15 +104,37 @@ name = "Crawler"
 char_class = "Captain"
 age = 10
 sprite = ExtResource("6_j4ma5")
-max_health = 150
-max_magic = 10
+max_health = 300
+max_magic = 0
 strength = 60
 defence = 60
-accuracy = 60
-speed = 70
+accuracy = 80
+speed = 80
 trigger_distance = 8
 node_UID = "uid://b6n303wyg5i5g"
 start_dir = 2
+AI_type = 2
+skills = Array[ExtResource("2_574v3")]([ExtResource("5_ijutv")])
+potential_skills = Array[ExtResource("2_574v3")]([ExtResource("4_xit38"), ExtResource("5_ijutv")])
+number_of_pc = 2
+metadata/_custom_type_script = "uid://by1rq468n504l"
+
+[sub_resource type="Resource" id="Resource_8yg1q"]
+script = ExtResource("1_fqnh8")
+name = "Crawler"
+char_class = "Captain"
+age = 10
+sprite = ExtResource("6_j4ma5")
+max_health = 300
+max_magic = 0
+strength = 60
+defence = 60
+accuracy = 80
+speed = 80
+trigger_distance = 8
+node_UID = "uid://b6n303wyg5i5g"
+start_dir = 3
+AI_type = 2
 skills = Array[ExtResource("2_574v3")]([ExtResource("5_ijutv")])
 potential_skills = Array[ExtResource("2_574v3")]([ExtResource("4_xit38"), ExtResource("5_ijutv")])
 number_of_pc = 2
@@ -118,38 +146,19 @@ name = "Crawler"
 char_class = "Captain"
 age = 10
 sprite = ExtResource("6_j4ma5")
-max_health = 150
-max_magic = 10
+max_health = 300
+max_magic = 0
 strength = 60
 defence = 60
-accuracy = 60
-speed = 70
+accuracy = 80
+speed = 80
 trigger_distance = 8
 node_UID = "uid://b6n303wyg5i5g"
 start_dir = 3
+AI_type = 2
 skills = Array[ExtResource("2_574v3")]([ExtResource("5_ijutv")])
 potential_skills = Array[ExtResource("2_574v3")]([ExtResource("4_xit38"), ExtResource("5_ijutv")])
-number_of_pc = 3
-metadata/_custom_type_script = "uid://by1rq468n504l"
-
-[sub_resource type="Resource" id="Resource_c5a7s"]
-script = ExtResource("1_fqnh8")
-name = "Crawler"
-char_class = "Captain"
-age = 10
-sprite = ExtResource("6_j4ma5")
-max_health = 150
-max_magic = 10
-strength = 60
-defence = 60
-accuracy = 60
-speed = 70
-trigger_distance = 8
-node_UID = "uid://b6n303wyg5i5g"
-start_dir = 3
-skills = Array[ExtResource("2_574v3")]([ExtResource("5_ijutv")])
-potential_skills = Array[ExtResource("2_574v3")]([ExtResource("4_xit38"), ExtResource("5_ijutv")])
-number_of_pc = 4
+number_of_pc = 2
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
 [sub_resource type="Resource" id="Resource_ijutv"]
@@ -865,13 +874,13 @@ object_map_data = Dictionary[Vector2i, ExtResource("2_peabw")]({
 Vector2i(15, 25): SubResource("Resource_ijutv")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_fqnh8")]({
-Vector2i(12, 15): SubResource("Resource_j17rj"),
-Vector2i(12, 17): SubResource("Resource_ub6j5"),
-Vector2i(14, 13): SubResource("Resource_hj3m8"),
+Vector2i(12, 15): SubResource("Resource_obwef"),
+Vector2i(12, 17): SubResource("Resource_c5a7s"),
+Vector2i(14, 13): SubResource("Resource_ub6j5"),
 Vector2i(15, 16): SubResource("Resource_xit38"),
 Vector2i(16, 13): SubResource("Resource_7elpe"),
-Vector2i(18, 15): SubResource("Resource_2o5b1"),
-Vector2i(18, 17): SubResource("Resource_c5a7s")
+Vector2i(18, 15): SubResource("Resource_8yg1q"),
+Vector2i(18, 17): SubResource("Resource_2o5b1")
 })
 magic_cost_adjustment = 1.5
 text_data = ExtResource("19_j17rj")
@@ -879,4 +888,3 @@ text_cue = "map_004"
 next_map_path = "uid://cn0yh7eofq5xa"
 cutscene_cue = "the_sleeper"
 player_chars = Array[ExtResource("1_fqnh8")]([ExtResource("9_7elpe"), ExtResource("10_j17rj"), ExtResource("11_ub6j5"), ExtResource("12_c5a7s")])
-enviroment = ExtResource("7_ub6j5")

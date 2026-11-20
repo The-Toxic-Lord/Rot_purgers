@@ -24,6 +24,7 @@ glow_enabled = true
 script = ExtResource("1_d55np")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2141279964]
+unique_name_in_owner = true
 environment = SubResource("Environment_ti2bc")
 
 [node name="Map_cell_holder" type="Node3D" parent="." unique_id=1096133750]
@@ -42,5 +43,10 @@ move_speed = 0.2
 [node name="Map_UI" parent="." unique_id=1270663533 instance=ExtResource("4_vmawb")]
 unique_name_in_owner = true
 script = ExtResource("6_ne87w")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1860526762]
+
+[node name="MultiMeshInstance_holder" type="Node3D" parent="." unique_id=333855052]
+unique_name_in_owner = true
 
 [connection signal="map_spawn_character" from="Map_UI" to="." method="spawn_ally"]

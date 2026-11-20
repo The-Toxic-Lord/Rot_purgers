@@ -144,7 +144,7 @@ func skill_mass(order : Order_skill_data):
 			await target.animation_ended
 			if order.skill.skill_type == Skill_base.skill_types.ROT:
 				target.change_rot(order.skill.rot_stage_add)
-		#await target_damage.keys()[0].animation_ended
+		await target_damage.keys()[0].animation_ended
 		await get_tree().process_frame
 		#while true:
 			#var dead_check := true
@@ -199,7 +199,7 @@ func skill_oneshot(order : Order_skill_data):
 		else:
 			target.kill()
 	if !targets.is_empty():
-		#await targets[0].animation_ended
+		await targets[0].animation_ended
 		await get_tree().process_frame
 		#while true:
 			#var dead_check := true

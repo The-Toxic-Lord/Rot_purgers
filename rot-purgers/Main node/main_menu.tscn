@@ -398,6 +398,35 @@ unique_name_in_owner = true
 root_node = NodePath("../Victory")
 libraries/ = SubResource("AnimationLibrary_6p7wi")
 
+[node name="Tutorial_menu" type="VBoxContainer" parent="." unique_id=2092784929]
+unique_name_in_owner = true
+visible = false
+offset_left = 511.0
+offset_top = 363.0
+offset_right = 799.0
+offset_bottom = 572.0
+offset_transform_position = Vector2(300, -73)
+theme = ExtResource("2_lduah")
+theme_override_constants/separation = 10
+
+[node name="Tutorial_01" type="Button" parent="Tutorial_menu" unique_id=1274395326]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
+layout_mode = 2
+text = "Basic controlls"
+
+[node name="Tutorial_02" type="Button" parent="Tutorial_menu" unique_id=733257969]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
+layout_mode = 2
+text = "Environment"
+
+[node name="Tutorial_03" type="Button" parent="Tutorial_menu" unique_id=748424876]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(219, 63)
+layout_mode = 2
+text = "Characters"
+
 [connection signal="pressed" from="Menu/VBoxContainer/New_game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
@@ -408,3 +437,6 @@ libraries/ = SubResource("AnimationLibrary_6p7wi")
 [connection signal="pressed" from="Demo_victory/MarginContainer/CenterContainer/VBoxContainer/exit_demo" to="." method="_on_exit_demo_pressed"]
 [connection signal="pressed" from="Credit_box/MarginContainer/CenterContainer/VBoxContainer/credit_back" to="." method="_on_credit_back_pressed"]
 [connection signal="load_save" from="Save_menu" to="." method="_on_save_menu_load_save"]
+[connection signal="pressed" from="Tutorial_menu/Tutorial_01" to="." method="_on_tutorial_bt_pressed" flags=18]
+[connection signal="pressed" from="Tutorial_menu/Tutorial_02" to="." method="_on_tutorial_bt_pressed" flags=18]
+[connection signal="pressed" from="Tutorial_menu/Tutorial_03" to="." method="_on_tutorial_bt_pressed" flags=18]

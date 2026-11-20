@@ -79,10 +79,13 @@ func _on_slider_value_changed(value: float, source: Range) -> void:
 
 signal confirm
 func _on_confirm_bt_pressed() -> void:
-	hide()
-	confirm.emit()
-	ObjectLink.focused_char_stats.update_stats(char_stats)
-	char_stats.boost_magic_cost = magic_cost
+	if magic_cost <= char_stats.magic:
+		hide()
+		confirm.emit()
+		ObjectLink.focused_char_stats.update_stats(char_stats)
+		char_stats.boost_magic_cost = magic_cost
+	else:
+		SoundHandler.play_error()
 
 
 

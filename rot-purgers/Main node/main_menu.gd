@@ -42,6 +42,7 @@ func show_menu():
 
 func hide_menu():
 	%Menu.hide()
+	%Tutorial_menu.hide()
 
 #func on_game_over():
 	#GlobalData.clear_data()
@@ -78,9 +79,19 @@ func load_user_save():
 	else:
 		user_save = User_save.new()
 
-func _on_tutorial_pressed() -> void:
+@onready var tutorial_btsns : Dictionary[BaseButton, String] = {
+	%Tutorial_01 : "uid://b7t1sx6ug0nmh",
+	%Tutorial_02 : "uid://cfeal5nlxu50a",
+	%Tutorial_03 : "res://map_data_res/tutorial_03.tres"
+}
+
+func show_tutorial():
+	%Tutorial_menu.show()
+
+func _on_tutorial_bt_pressed(sourse : BaseButton) -> void:
 	%Menu.hide()
-	main.load_tutorial()
+	%Tutorial_menu.hide()
+	main.load_scene_path(tutorial_btsns[sourse], "tutorial")
 
 func _on_exit_demo_pressed() -> void:
 	main.close_map()
@@ -133,7 +144,8 @@ func animate_achievement(text : String):
 
 @export var achievement_texts : Dictionary[String, String] = {}
 
-
+func _on_tutorial_pressed() -> void:
+	%Tutorial_menu.show()
 
 
 

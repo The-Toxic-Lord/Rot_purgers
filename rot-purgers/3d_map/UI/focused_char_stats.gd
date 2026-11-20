@@ -30,6 +30,10 @@ func update_stats(ch : Character_stats):
 	if ch.sprite != null:
 		%Sprite.texture = ch.sprite
 	
+	if ch.penalties.has(Character_stats.stats.max_health) and ch.penalties[Character_stats.stats.max_health] != 0:
+		var line : String = "[color=#508800]-" + str(ch.penalties[Character_stats.stats.max_health]) + "[/color]"
+		%Health.text += line
+	
 	for stat in st_to_lb.keys():
 		if !ch.boosts.has(stat):
 			continue

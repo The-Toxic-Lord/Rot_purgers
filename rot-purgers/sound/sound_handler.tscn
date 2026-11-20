@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2tvljyop82p8"]
 
 [ext_resource type="Script" uid="uid://d205e5ysnrxov" path="res://sound/sound_handler.gd" id="1_dbx84"]
-[ext_resource type="AudioStream" uid="uid://cumdvk255psmc" path="res://sound/Hit3.ogg" id="2_bq2ro"]
+[ext_resource type="AudioStream" uid="uid://cumdvk255psmc" path="res://sound/SFX/Hit3.ogg" id="2_bq2ro"]
 [ext_resource type="AudioStream" uid="uid://dki2gptcubi6f" path="res://sound/Dark Procession OGG.ogg" id="2_psjqt"]
 [ext_resource type="AudioStream" uid="uid://dc516g15tuvgw" path="res://sound/Spellbound MP3.mp3" id="3_psjqt"]
 [ext_resource type="AudioStream" uid="uid://b6ic3vpt0q1iy" path="res://sound/SFX/Error Triplet-5.wav" id="4_upq1o"]

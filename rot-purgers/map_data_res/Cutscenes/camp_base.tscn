@@ -929,14 +929,14 @@ transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0.3528257, 0,
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
-[node name="Sword_2" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 932142755) index="0" unique_id=1476654305]
+[node name="Sword_2" parent="Zaar5/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2032189682, 1561252215) index="0" unique_id=1327768396]
 visible = false
 
 [node name="rock_zaar" parent="Zaar5" unique_id=1794994475 instance=ExtResource("6_3khie")]
 transform = Transform3D(-0.49396092, 0, 0.07747509, 0, 0.5, 0, -0.07747509, 0, -0.49396092, -0.13876675, 0, -0.1805197)
 
 [node name="Alastor1" parent="." unique_id=1803624731 instance=ExtResource("10_cc0f0")]
-transform = Transform3D(0.002551627, 0, 0.9999963, 0, 1, 0, -0.9999963, 0, 0.002551627, -1.847, 0, 0.058)
+transform = Transform3D(0.002551627, 0, 0.99999624, 0, 1, 0, -0.99999624, 0, 0.002551627, -1.847, 0, 0.058)
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
@@ -947,7 +947,7 @@ visible = false
 transform = Transform3D(0.0012758143, 0, -0.49999842, 0, 0.5, 0, 0.49999842, 0, 0.0012758143, -0.032694675, 0.20292139, -0.5629208)
 
 [node name="Aven" parent="." unique_id=2101898650 instance=ExtResource("12_1ebqx")]
-transform = Transform3D(-0.9987069, 0, 0.050825503, 0, 1, 0, -0.050825503, 0, -0.9987069, -0.25781405, 0.051544726, 1.9019257)
+transform = Transform3D(-0.9987068, 0, 0.0508255, 0, 1, 0, -0.0508255, 0, -0.9987068, -0.25781405, 0.051544726, 1.9019257)
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
@@ -962,7 +962,7 @@ transform = Transform3D(0.016257359, 0, -0.9998678, 0, 1, 0, 0.9998678, 0, 0.016
 script = ExtResource("8_d5172")
 start_anim = "Sit_rock"
 
-[node name="Cube_001" parent="Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 745560480) index="3" unique_id=414022517]
+[node name="Cube_001" parent="Ellio3/Armature/Skeleton3D" parent_id_path=PackedInt32Array(554260028, 581849768) index="3" unique_id=1170554458]
 visible = false
 
 [node name="rock_elliot" parent="Ellio3" unique_id=1156241977 instance=ExtResource("13_0yey6")]

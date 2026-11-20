@@ -1,6 +1,6 @@
 extends MarginContainer
 
-class_name Rearange_menu
+class_name Rearrange_menu
 
 @onready var labels : Array[Label] = [
 	%Health_lb, %Strength_lb2, %Defence_lb3, 

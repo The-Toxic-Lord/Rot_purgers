@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="1_yuc1w"]
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="2_mg3ww"]
-[ext_resource type="Resource" uid="uid://bm80ehv0f3ib2" path="res://Skills/Skill_res/Rot ray.tres" id="3_mg3ww"]
+[ext_resource type="Resource" uid="uid://bm80ehv0f3ib2" path="res://Skills/Skill_res/enemy_skills/Rot ray.tres" id="3_mg3ww"]
 [ext_resource type="Texture2D" uid="uid://cq5yw6r4nrunv" path="res://dialogue/char_sprites/Neiro.png" id="3_yuc1w"]
-[ext_resource type="Resource" uid="uid://db3vcixjjbenb" path="res://Skills/Skill_res/Rot blast.tres" id="4_8t8vk"]
-[ext_resource type="Resource" uid="uid://b2o2xqifn8ibv" path="res://Skills/Skill_res/Rot_rook.tres" id="5_p6m61"]
-[ext_resource type="Resource" uid="uid://4q78c8ungofd" path="res://Skills/Skill_res/Rot_bishop.tres" id="6_oyvih"]
+[ext_resource type="Resource" uid="uid://db3vcixjjbenb" path="res://Skills/Skill_res/enemy_skills/Rot blast.tres" id="4_8t8vk"]
+[ext_resource type="Resource" uid="uid://b2o2xqifn8ibv" path="res://Skills/Skill_res/enemy_skills/Rot_rook.tres" id="5_p6m61"]
+[ext_resource type="Resource" uid="uid://4q78c8ungofd" path="res://Skills/Skill_res/enemy_skills/Rot_bishop.tres" id="6_oyvih"]
 
 [resource]
 script = ExtResource("2_mg3ww")

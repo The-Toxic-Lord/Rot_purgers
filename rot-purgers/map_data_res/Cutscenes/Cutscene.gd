@@ -69,6 +69,9 @@ func load_save(game_save : Game_save):
 	await get_tree().process_frame
 	DialogueBalloon.load_str(game_save.line_id)
 	DialogueBalloon.show()
+	SoundHandler.stop_music()
+	if music != null:
+		SoundHandler.play_music(music)
 
 func start_dialogue(cue : String):
 	DialogueBalloon.start(text_data, cue)

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://dhh4e5pxljxay"]
+[gd_resource type="Resource" script_class="Map_data" format=3 uid="uid://b7t1sx6ug0nmh"]
 
 [ext_resource type="Script" uid="uid://by1rq468n504l" path="res://data/Character_stats.gd" id="1_ys7s5"]
 [ext_resource type="Script" uid="uid://ceg7shg67rmfw" path="res://Skills/skill_base.gd" id="2_alebe"]
 [ext_resource type="Texture2D" uid="uid://ddm68nmmo8vj1" path="res://aseprite_stuff/Crawler.png" id="3_2qeye"]
-[ext_resource type="Environment" uid="uid://o0bi0r4doiff" path="res://Workshop/Enviroments/cave.tres" id="4_cqwe1"]
 [ext_resource type="Script" uid="uid://m48jo33kjka0" path="res://Map_editor/map_object.gd" id="4_j7tpd"]
+[ext_resource type="AudioStream" uid="uid://dc516g15tuvgw" path="res://sound/Spellbound MP3.mp3" id="5_0wr32"]
 [ext_resource type="Script" uid="uid://6g4ao2hml6aw" path="res://map_data_res/map_data.gd" id="5_3mwm5"]
+[ext_resource type="Texture2D" uid="uid://dr71juhuy77tu" path="res://import/check_button_2.png" id="6_iuqqh"]
 [ext_resource type="Script" uid="uid://cmno6gpgjclkg" path="res://data/terrain_data.gd" id="6_kqyk2"]
+[ext_resource type="Resource" uid="uid://dol5sjrolq23y" path="res://data/Player_chars_data/tutorial_char.tres" id="7_geymr"]
 [ext_resource type="Material" uid="uid://cfvfk3hl011jv" path="res://3d_map/map_cell_materials/cave_floor.tres" id="7_jcw8x"]
 [ext_resource type="Texture2D" uid="uid://cwk436mbjhriv" path="res://aseprite_stuff/terrain_cave.png" id="8_o70wc"]
 [ext_resource type="Resource" uid="uid://bv1vqvpte3jit" path="res://dialogue/texts/Tutorial.dialogue" id="9_a8ydb"]
@@ -19,7 +21,6 @@ age = 3
 sprite = ExtResource("3_2qeye")
 strength = 2
 defence = 1
-magic_strenght = 1
 accuracy = 3
 move_speed = 5
 jump_height = 10
@@ -37,7 +38,6 @@ age = 3
 sprite = ExtResource("3_2qeye")
 strength = 2
 defence = 1
-magic_strenght = 1
 accuracy = 3
 move_speed = 5
 jump_height = 10
@@ -55,7 +55,6 @@ age = 3
 sprite = ExtResource("3_2qeye")
 strength = 2
 defence = 1
-magic_strenght = 1
 accuracy = 3
 move_speed = 5
 jump_height = 10
@@ -65,10 +64,12 @@ start_dir = 2
 AI_type = 3
 metadata/_custom_type_script = "uid://by1rq468n504l"
 
-[sub_resource type="Resource" id="Resource_to1fk"]
+[sub_resource type="Resource" id="Resource_geymr"]
 script = ExtResource("4_j7tpd")
 name = "spawn_zone"
+sprite = ExtResource("6_iuqqh")
 node_UID = "uid://b77u0ogcrnmlx"
+object_type = 1
 metadata/_custom_type_script = "uid://m48jo33kjka0"
 
 [sub_resource type="Resource" id="Resource_04624"]
@@ -518,12 +519,14 @@ Vector2i(7, 6): SubResource("Resource_xvbjr"),
 Vector2i(7, 7): SubResource("Resource_7vw2l")
 })
 object_map_data = Dictionary[Vector2i, ExtResource("4_j7tpd")]({
-Vector2i(4, 4): SubResource("Resource_to1fk")
+Vector2i(4, 4): SubResource("Resource_geymr")
 })
 enemy_map_data = Dictionary[Vector2i, ExtResource("1_ys7s5")]({
 Vector2i(2, 2): SubResource("Resource_2qeye"),
 Vector2i(4, 2): SubResource("Resource_alebe"),
 Vector2i(6, 2): SubResource("Resource_ys7s5")
 })
+music = ExtResource("5_0wr32")
 text_data = ExtResource("9_a8ydb")
-enviroment = ExtResource("4_cqwe1")
+text_cue = "t1"
+player_chars = Array[ExtResource("1_ys7s5")]([ExtResource("7_geymr")])

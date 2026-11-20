@@ -17,12 +17,15 @@ func on():
 	show_progress()
 
 func off():
+	%Panel2.show()
+	animation_player.play("turn_off")
 	hide_progress()
 	show()
+	await get_tree().process_frame
 	%Panel.hide()
-	%Panel2.show()
+	#%Panel2.show()
 	#await get_tree().process_frame
-	animation_player.play("turn_off")
+	#animation_player.play("turn_off")
 
 @warning_ignore("unused_parameter")
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

@@ -34,17 +34,16 @@ else
 ~ load_next_scene
 match GlobalData.read_dialogues.size()
 	when 2
-		do ObjectLink.cutscene.next_scene("uid://c014ngt8nk8fn")
+		do ObjectLink.cutscene.next_scene("res://map_data_res/003.tres")
 	when 3
-		do ObjectLink.cutscene.next_scene("uid://bil8sei2ynyy")
+		do ObjectLink.cutscene.next_scene("uid://5j2rtim3avlh")
 	when 4
-		do ObjectLink.cutscene.next_scene("uid://dgrln7v3tyyp8")
+		do ObjectLink.cutscene.next_scene("uid://dn2j3l6xkbk17")
 	when 5
 		do ObjectLink.cutscene.next_scene("uid://7m0xdfuygtn5")
 	when 6
 		do ObjectLink.cutscene.next_scene("uid://cysm1hdmsd00l")
 	when 7
-#		do ObjectLink.cutscene.next_scene("uid://dhh4e5pxljxay")
 		do ObjectLink.cutscene.next_scene("uid://bp0i1x7u3x3hk")
 => END!
 
@@ -99,6 +98,7 @@ Zaar: You are quite bad at explaining. Why are you being so vague?
 Elliot: Well… I trusted you to figure out minor details by yourself. This much is expected from a chancellor.
 
 Zaar: I feel like you are omitting something, but I will not pry further for now.
+[i]Zaar gained [b]Wave slice[/b] skill.[/i]
 $> GlobalData.read_dialogues.append("lesson_Elliot_1")
 do GlobalData.mod_char("Zaar", load("uid://dtccikym1vuc"))
 => load_next_scene
@@ -128,7 +128,7 @@ else:
 	Zaar: If such a need arises, you can rely on me.
 $> GlobalData.read_dialogues.append("lesson_Elliot_2")
 do GlobalData.mod_char("Zaar", load("uid://dkwukbqlnba8d"))
-Zaar gained [i]Protection[/i] skill.
+[i]Zaar gained [b]Protection skill.[/b][/i]
 => load_next_scene
 
 ~ lesson_Alastor_1
@@ -149,6 +149,7 @@ Alastor: For example, you need more strength. Perhaps you want to use the High C
 Zaar: Hmm. I think I understand what you are talking about. It's a strange sensation.
 
 Alastor: Good. Remember it. And practice until it becomes effortless. You may need this power down the road.
+[i]Zaar can not rearrange stats.[/i]
 $> GlobalData.read_dialogues.append("lesson_Alastor_1")
 do GlobalData.mod_char("Zaar", null, "can_rearange_stats", true)
 => load_next_scene
@@ -234,6 +235,7 @@ Aven: No. A slight push in the right direction does no harm.
 Zaar: By the way, you never mentioned neither the name of that grand mage nor who was the second one.
 
 Aven: I cannot tell you the name of the first one, but you already know the second. We have been fighting her servants since we entered this place.
+[i]Zaar's magic strength rises.[/i]
 $> GlobalData.read_dialogues.append("lesson_Aven_1")
 do GlobalData.mod_char("Zaar", null, "magic_strength", 55)
 => load_next_scene

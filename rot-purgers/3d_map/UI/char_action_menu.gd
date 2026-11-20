@@ -7,7 +7,7 @@ signal attack
 signal spell
 signal defend
 signal exit
-signal rearange
+signal rearrange
 signal boost
 
 @onready var button_to_signal : Dictionary[BaseButton, Signal] = {
@@ -16,7 +16,7 @@ signal boost
 	%Spell : spell,
 	%Defend : defend,
 	%Exit : exit,
-	%Stats : rearange,
+	%Stats : rearrange,
 	%Stat_boost : boost
 }
 
@@ -50,10 +50,11 @@ func update_disabled(ch_node : Character_node):
 		%Attack.disabled = true
 		%Spell.disabled = true
 		%Defend.disabled = true
-	if ch_node.can_rearange:
-		%Stats.disabled = false
+	%Stats.disabled = !ch_node.can_rearrange
+	if ch_node.stats.can_boost_stats and ch_node.can_attack and ch_node.can_move:
+		%Stat_boost.disabled = false
 	else:
-		%Stats.disabled = true
+		%Stat_boost.disabled = true
 
 func focus(id : int = 0):
 	var bt_array : Array[BaseButton] = button_to_signal.keys()

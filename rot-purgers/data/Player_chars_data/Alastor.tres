@@ -25,4 +25,5 @@ move_speed = 10
 node_UID = "uid://cpgsmi4r45bbx"
 skills = Array[ExtResource("2_vo2ee")]([ExtResource("3_ujksa"), ExtResource("4_hn48a"), ExtResource("5_3bdwe"), ExtResource("6_2ulin"), ExtResource("7_hngfa")])
 self_path = "uid://d2mat2b43iwxg"
+health_pre_rot = null
 metadata/_custom_type_script = "uid://by1rq468n504l"
