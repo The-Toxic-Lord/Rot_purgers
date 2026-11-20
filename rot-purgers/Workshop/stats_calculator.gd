@@ -44,12 +44,18 @@ var used_stats : Array[String] = [
 ]
 
 @export var health : int
-@export var strength : int
+@export var strength : int:
+	set(value):
+		strength = value
+		recalc_acc()
 @export var defence : int:
 	set(value):
 		defence = value
 		recalc_def_hp()
-@export var accuracy : int
+@export var accuracy : int:
+	set(value):
+		accuracy = value
+		recalc_str()
 @export var speed : int:
 	set(value):
 		speed = value
@@ -60,6 +66,7 @@ var used_stats : Array[String] = [
 @export var medium_stats : Character_stats
 
 func calculate_stats():
+	lock = true
 	medium_stats = Character_stats.new()
 	medium_stats.name = "enemy"
 	for stat in used_stats:
@@ -74,7 +81,7 @@ func calculate_stats():
 	enemy_stats = Character_stats.new()
 	var diff_dict = diff_dicts[difficulty]
 	enemy_stats.accuracy = get_acc(medium_stats, diff_dict["hit_chance"])
-	speed = get_speed(medium_stats, diff_dict["get_hit_chance"])
+	enemy_stats.speed = get_speed(medium_stats, diff_dict["get_hit_chance"])
 	enemy_stats.strength = get_str(medium_stats, diff_dict["hit_chance"], diff_dict["num_turns_kill"])
 	await get_tree().process_frame
 	enemy_stats.defence = 0
@@ -83,6 +90,10 @@ func calculate_stats():
 	speed = enemy_stats.speed
 	strength = enemy_stats.strength
 	accuracy = enemy_stats.accuracy
+	await get_tree().process_frame
+	lock = false
+	await recalc_def_hp()
+	await recalc_acc()
 
 func calc_hit_chance(target : Character_stats, attacker : Character_stats) -> float:
 	var chance = float(attacker.accuracy)/float(target.speed)
@@ -117,7 +128,10 @@ func get_def(med_st : Character_stats, hit_chance : float, num_of_turns : int) -
 
 @export_tool_button("recalc_health") var bt_2 = recalc_def_hp
 
+@export var lock := false
 func recalc_def_hp():
+	if lock:
+		return
 	enemy_stats.speed = speed
 	enemy_stats.defence = defence
 	var damage : float = medium_stats.strength - defence / 2.0
@@ -126,11 +140,59 @@ func recalc_def_hp():
 	var damage_skill : float = medium_stats.magic_strength * hit_chance
 	health = diff_dicts[difficulty]["num_turns_dead"] * (damage_skill + damage) / 2.0
 	enemy_stats.max_health = health
+
+func recalc_acc():
+	if lock:
+		return
+	enemy_stats.strength = strength
+	var num_turns : int = diff_dicts[difficulty]["num_turns_kill"]
+	@warning_ignore("narrowing_conversion")
+	var damage : int = strength - medium_stats.defence / 2.0
+	var sum_damage : int = damage * num_turns
+	if sum_damage > medium_stats.max_health:
+		var hit_chance : float = float(medium_stats.max_health) / float(sum_damage)
+		lock = true
+		@warning_ignore("narrowing_conversion")
+		accuracy = hit_chance * medium_stats.speed
+		await get_tree().process_frame
+		lock = false
+		return
+	if sum_damage > 0:
+		var acc_mod : float = float(medium_stats.max_health) / float(sum_damage)
+		var hit_chance : float = (acc_mod - 1) * 2 + 1
+		lock = true
+		@warning_ignore("narrowing_conversion")
+		accuracy = hit_chance * medium_stats.speed
+		await get_tree().process_frame
+		lock = false
+	else:
+		print("strength too low")
+
+func recalc_str():
+	if lock:
+		return
+	enemy_stats.accuracy = accuracy
+	@warning_ignore("integer_division")
+	var hit_chance : float = float(accuracy) / medium_stats.speed
+	@warning_ignore("unused_variable")
+	var acc_mod : float
+	if hit_chance <= 1.0:
+		acc_mod = hit_chance
+	else:
+		acc_mod = 1.0 + (hit_chance - 1.0) / 2.0
 	
-
-
-
-
+	var num_turns : int = diff_dicts[difficulty]["num_turns_kill"]
+	@warning_ignore("integer_division")
+	var temp : int = medium_stats.max_health / num_turns
+	@warning_ignore("narrowing_conversion")
+	temp /= acc_mod
+	@warning_ignore("narrowing_conversion")
+	temp += medium_stats.defence / 2.0
+	lock = true
+	strength = temp
+	enemy_stats.strength = temp
+	await get_tree().process_frame
+	lock = false
 
 
 
