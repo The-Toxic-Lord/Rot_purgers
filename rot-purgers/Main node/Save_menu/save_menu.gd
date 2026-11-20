@@ -73,6 +73,8 @@ func name_submited(over_name : String = ""):
 
 func _on_back_bt_pressed() -> void:
 	hide()
+	var main : Main_menu_UI = get_parent()
+	main.focus(main.last_bt_pressed)
 
 func _on_back_name_bt_pressed() -> void:
 	%Save_name_box.hide()
@@ -86,8 +88,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("menu_back"):
 		if %Save_name_box.visible:
 			%Save_name_box.hide()
+			%Add_save_bt.grab_focus()
 		else:
-			hide()
+			_on_back_bt_pressed()
 
 func hide_new_save():
 	%Add_save_bt.hide()
@@ -99,7 +102,14 @@ func show_new_save():
 	for save_slot : Save_slot in save_name_to_slot.values():
 		save_slot.enable_overwrite()
 
-
+func focus(save_bt := true):
+	if save_bt:
+		%Add_save_bt.grab_focus()
+		return
+	if saves_box.get_children().size() > 1:
+		saves_box.get_children()[1].focus()
+	else:
+		%Back_bt.grab_focus()
 
 
 

@@ -5,6 +5,9 @@ class_name Main_menu_UI
 @onready var main : Main_node = get_parent()
 @onready var save_menu: Save_menu = %Save_menu
 
+var in_main_menu := true
+var last_bt_pressed : BaseButton
+
 func _ready() -> void:
 	if !ResourceLoader.exists("user://save.tres"):
 		%Load.disabled = true
@@ -16,12 +19,17 @@ func _on_map_editor_pressed() -> void:
 	main._on_map_editor_pressed()
 
 func _on_load_pressed() -> void:
+	await close_all()
 	save_menu.show()
 	save_menu.hide_new_save()
+	save_menu.focus(false)
+	last_bt_pressed = %Load
 
 func _on_new_game_pressed() -> void:
-	%Menu.hide()
-	main.load_scene_path(GlobalData.map_data_path[0])
+	await close_all()
+	%Difficuly_menu.show()
+	%normal_bt.grab_focus()
+	last_bt_pressed = %New_game
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -30,28 +38,22 @@ func _on_settings_pressed() -> void:
 	%Menu.hide()
 	%Settings.show()
 	%Settings.grab()
+	last_bt_pressed = %Settings_button
 
 func settings_exit():
 	%Menu.show()
 	%Settings.hide()
+	%Settings_button.grab_focus()
 
 func show_menu():
 	%Menu.show()
+	%New_game.grab_focus()
 	if ResourceLoader.exists("user://save.tres"):
 		%Load.disabled = false
 
 func hide_menu():
 	%Menu.hide()
 	%Tutorial_menu.hide()
-
-#func on_game_over():
-	#GlobalData.clear_data()
-	#%Game_over_screen.show()
-	#await get_tree().create_timer(3).timeout
-	#main.close_map()
-	#main.load_background()
-	#show_menu()
-	#%Game_over_screen.hide()
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 func game_end(line : String):
@@ -102,6 +104,7 @@ func _on_exit_demo_pressed() -> void:
 func _on_credits_pressed() -> void:
 	%Credit_box.show()
 	%Menu.hide()
+	last_bt_pressed = %Credits
 
 func _on_credit_back_pressed() -> void:
 	%Credit_box.hide()
@@ -145,7 +148,31 @@ func animate_achievement(text : String):
 @export var achievement_texts : Dictionary[String, String] = {}
 
 func _on_tutorial_pressed() -> void:
+	await close_all()
 	%Tutorial_menu.show()
+	%Tutorial_01.grab_focus()
+
+func _input(event: InputEvent) -> void:
+	if !in_main_menu:
+		return
+	if event.is_action_pressed("menu_back"):
+		if %Difficuly_menu.visible:
+			%Difficuly_menu.hide()
+			%New_game.grab_focus()
+		elif %Tutorial_menu.visible:
+			%Tutorial_menu.hide()
+			%Tutorial.grab_focus()
+
+
+@onready var small_menus : Array[Node] = [
+	%Tutorial_menu, %Difficuly_menu, %Save_menu
+]
+func close_all():
+	for menu in small_menus:
+		menu.hide()
+
+func focus(node : Control = %New_game):
+	node.grab_focus()
 
 
 

@@ -19,3 +19,6 @@ func disable_overwrite():
 
 func enable_overwrite():
 	%Overwrite_bt.disabled = false
+
+func focus():
+	%Load_bt_big.grab_focus()
